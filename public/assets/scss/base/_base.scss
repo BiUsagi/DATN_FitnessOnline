@@ -1,0 +1,444 @@
+*,
+*::after,
+*::before {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: inherit;
+    -webkit-tap-highlight-color: transparent;
+    -tap-highlight-color:transparent;
+    -moz-tap-highlight-color:transparent;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Regular.woff2') format('woff2'),
+        url('../font/Poppins-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-ExtraLight.woff2') format('woff2'),
+        url('../font/Poppins-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Bold.woff2') format('woff2'),
+        url('../font/Poppins-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-ExtraBold.woff2') format('woff2'),
+        url('../font/Poppins-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Light.woff2') format('woff2'),
+        url('../font/Poppins-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-SemiBold.woff2') format('woff2'),
+        url('../font/Poppins-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Medium.woff2') format('woff2'),
+        url('../font/Poppins-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Black.woff2') format('woff2'),
+        url('../font/Poppins-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/Roboto-Regular.woff2') format('woff2'),
+        url('../font/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Thin.woff2') format('woff2'),
+        url('../font/Poppins-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+	box-sizing: border-box;
+    font-family: $primary-font;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    font-size: 16px;
+    line-height: 30px;
+}
+html{scroll-behavior: smooth;height: 100%;}
+section{flex: 1 0 auto;}
+::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder, ::placeholder {
+    font-family: $primary-font;
+    font-size: 14px;
+}
+button:focus{
+    box-shadow: none !important;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.page_loader{
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: #242529;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+.f-0{font-size: 0;line-height: 0;}
+button {
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+img {
+    max-width: 100%;
+}
+a {
+    text-decoration: none;
+    color: $theme;
+}
+p{
+    color: $gray;
+    margin: 0 0 15px;
+    text-transform: none;
+    font-weight: 400;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+.btn {
+    display: inline-block;
+    text-transform: capitalize;
+    transition: all 0.35s ease-in-out;
+    overflow: hidden;
+    border-radius: 0px;
+    font-size: 16px;
+    border: none;
+    min-width: 175px;
+    padding: 14px 20px;
+    background: $theme;
+    color: $white;
+    position: relative;
+    text-transform: uppercase;
+    span{
+        position: relative;
+        z-index: 2;
+    }  
+    &:hover{
+        background: $white;
+        color: $black;
+    }
+    @media screen and (max-width:991px) {
+        min-width: 150px;
+        padding: 10px 16px;
+    }
+}
+.default-padding {
+    padding: 80px 0;
+    @media screen and (max-width:767px){
+        padding: 60px 0;
+    }
+    @media screen and (max-width:575px){
+        padding: 40px 0;
+    }
+}
+.default-padding-bottom{
+    padding: 0 0 80px 0;
+    @media screen and (max-width:767px){
+        padding: 0 0 60px 0;
+    }
+    @media screen and (max-width:575px){
+        padding: 0 0 40px 0;
+    }
+}
+.default-padding-top{
+    padding: 80px 0 0 0;
+    @media screen and (max-width:767px){
+        padding: 60px 0 0 0;
+    }
+    @media screen and (max-width:575px){
+        padding: 40px 0 0 0;
+    }
+}
+/* SITE HEADING CSS START HERE */
+.heading {
+    @media(max-width: 767px) {
+        text-align: center;
+    }
+    h2, h3 {
+        font-size: 36px;
+        color: $white;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        padding-bottom: 12px;
+        margin-bottom: 22px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+        span{
+            color: $theme;
+        }
+        &::after {
+            position: absolute;
+            content: '';
+            background: $theme;
+            bottom: 0;
+            content: "";
+            height: 2px;
+            left: 50%;
+            margin-left: -25px;
+            position: absolute;
+            width: 50px;
+        }
+        &::before {
+            background: $theme;
+            bottom: 0;
+            content: "";
+            height: 2px;
+            left: 50%;
+            margin-left: 30px;
+            position: absolute;
+            width: 15px;
+        }
+        @media(max-width: 991px) {
+            font-size: 32px;
+        }
+        @media(max-width: 575px) {
+            font-size: 24px;
+        }
+    }
+    &.left{        
+        h2,h3{
+            &::before{
+                left: 0;
+                margin-left: 60px;                
+                @media(max-width: 991px) {
+                    left: 0;
+                    right: -40px;
+                    margin: auto;
+                }
+            }
+            &::after{
+                left: 0;
+                margin-left: 0;
+                @media(max-width: 991px) {
+                    left: -40px;
+                    right: 0;
+                    margin: auto;
+                }
+            }
+        }
+    }
+    &.light{
+       h2,h3{
+        color: $theme;
+        span{
+            color: $black;
+        }
+       }
+    }
+    p {
+        font-size: 14px;
+        line-height: 22px;
+        color: $white;
+    }
+}
+/* SITE HEADING CSS END'S HERE */
+
+/* FORM GROUP CSS START HERE */
+form {
+    label {
+        font-size: 15px;
+        color: #282828;
+    }
+    textarea {
+        min-height: 150px;
+        max-height: 150px;
+    }
+    .form-group{
+        padding-bottom: 20px;
+        .user-input {
+            padding: 15px;
+            border: 0;
+            border-bottom: 1px solid #DDE3E4;
+            background: transparent;
+            color: $white;
+            display: inline-block;
+            font-size: 14px;
+            line-height: 20px;
+            width: 100%;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            -webkit-appearance: none;
+            position: relative;
+            transition: 0.3s all;
+            &:focus {
+                outline: none;
+                border: 0;
+                border-bottom: 1px solid $theme;
+                &::-webkit-input-placeholder{
+                    color: $white !important;
+                }
+            }
+            &::-webkit-input-placeholder {
+                font-size: 15px;
+                line-height: 20px;
+                color: rgba(112, 122, 133, 0.3) !important;
+            }
+        }
+    }
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 1000px #242529 inset !important;
+    -webkit-text-fill-color: $white !important;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color: transparent;
+    color: $white;
+}
+/* FORM GROUP CSS END'S HERE */

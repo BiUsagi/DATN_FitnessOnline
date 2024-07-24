@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('support_exercises', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_exercise');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_staff');
+            $table->text('content');
+            $table->timestamps();
+
+            $table->foreign('id_exercise')->references('id')->on('exercises')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_staff')->references('id')->on('staff')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('support__exercises');
+    }
+};
