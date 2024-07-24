@@ -64,10 +64,10 @@
                             <div class="collapse navbar-collapse tabActive" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">HOME</a>
+                                        <a class="nav-link" href="{{route('')}}">TRANG CHỦ</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="about-us.html">ABOUT US</a>
+                                        <a class="nav-link" href="{{route('about')}}">GIỚI THIỆU</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#courses">Courses</a>
