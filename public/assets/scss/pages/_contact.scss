@@ -1,0 +1,95 @@
+/* CONTACT US SECTION CSS START HERE */
+.contact-us {
+    background: $black;
+    @media (max-width: 991px){
+        text-align: center;
+    }
+    .contact-title {
+        padding-bottom: 50px;
+        @media (max-width: 991px){
+            text-align: center;
+        }
+    }
+    .our-contact-info {
+        @media (max-width: 991px){
+            display: inline-block;
+            text-align: left;
+        }
+        .our-deatils {
+            .information-icon {
+                background: $theme;
+                min-width: 90px;
+                min-height: 90px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @media (max-width: 1199px){
+                    min-width: 80px;
+                    min-height: 80px;
+                }
+                @media (max-width: 767px){
+                    min-width: 60px;
+                    min-height: 60px;
+                }
+            }
+            .information-details {
+                color: $white;
+                text-transform: uppercase;
+                padding-left: 30px;
+                @media (max-width: 1199px){
+                    padding-left: 24px;
+                }
+                h6 {
+                    font-weight: 700;
+                    @media (max-width: 575px){
+                        font-size: 14px;
+                        margin-bottom: 2px;
+                    }
+                }
+                .number, .address {
+                    margin: 0;
+                    line-height: 1.2;
+                    color: $white;
+                    a {
+                        color: $white;
+                        margin-bottom: 0;
+                        font-weight: unset;
+                        transition: 0.3s all;
+                        &:hover{
+                            color: $theme;
+                        }
+                        @media (max-width: 575px){
+                            font-size: 13px;
+                        }
+                    }
+                }
+                .address{
+                    max-width: 300px;
+                    @media (max-width: 575px){
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+    .appointment-form{
+        // border: 1px solid $dark-gray;
+        padding:0 40px 40px;
+        @media (max-width: 991px){
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 30px;
+        }
+        @media (max-width: 575px){
+            padding: 30px 20px;
+        }
+        .appointment-title{
+            padding-bottom: 40px;
+        }
+    }
+}
+
+.google-map{
+    line-height: 0;
+}
+/* CONTACT US SECTION CSS END HERE */
