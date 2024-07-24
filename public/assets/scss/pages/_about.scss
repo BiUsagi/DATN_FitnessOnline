@@ -1,0 +1,545 @@
+/* BREADCRUMB BLOCK CSS START HERE */
+.breadcrumb_wrapper{
+    background: url(../images/team-breadcrumb.webp) no-repeat center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    position: relative;
+    &:after{
+        content: "";
+        background: linear-gradient( 90deg, rgb(40,40,40) 0%, rgb(20,20,20) 25%, rgb(0,0,0) 100%);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0.851;          
+    }
+    .breadcrumb_block{
+        min-height: 375px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        @media screen and (max-width:991px){
+            min-height: 260px;
+        }
+        @media screen and (max-width:767px){
+            display: block;
+            padding: 100px 0 50px;
+            min-height: auto;
+        }
+        h1{
+            color: $white;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            font-size: 55px;
+            text-shadow: 0px 3px 8px rgba(52, 52, 52, 0.25);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin: 0;
+            span{
+                color: $theme;
+            }
+            @media screen and (max-width:1199px){
+                font-size: 36px;
+            }
+            @media screen and (max-width:991px){
+                font-size: 28px;
+            }
+            @media screen and (max-width:767px){
+                font-size: 22px;
+                font-weight: 600;
+            }
+        }
+        .trackPage{
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            bottom: 30px;
+            @media screen and (max-width:767px){
+                position: relative;
+                bottom: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            a,span{
+                color: $white;
+                font-size: 18px;
+                text-transform: uppercase;
+                line-height: 30px;
+                &::after{
+                    content: ">";
+                    color: $theme;
+                    font-size: 24px;
+                    position: relative;
+                    top: 2px;
+                    margin-right: 2px;
+                    margin-left: 6px;
+                    @media screen and (max-width:1199px){
+                        top: 3px;
+                    }
+                }
+                @media screen and (max-width:1199px){
+                    font-size: 16px;
+                }
+                @media screen and (max-width:767px){
+                    font-size: 14px;
+                }
+            }
+            span{
+                &::after{
+                    content: none;
+                }
+            }
+            a{
+                transition: all 0.5s ease;
+                &:hover{
+                    color: $theme;
+                }
+            }
+        }
+    }
+}
+/* BREADCRUMB BLOCK CSS END'S HERE */
+
+/*  ABOUT US CSS START HERE */
+.why-choose-us {
+    background: url(../images/get-touch.webp) no-repeat center;
+    background-size: cover;
+    @media (max-width: 991px) {
+        background: $black;
+    }
+    .why-choose-us-left {
+        line-height: 0;
+        padding-left: 80px;
+        @media (max-width: 1399px) {
+            padding-left: unset;
+        }
+        @media (max-width: 991px) {
+            text-align: center;
+        }
+        img {
+            @media (min-width: 1200px) {
+                min-width: 500px;
+            }
+            @media screen and (min-width: 992px) and (max-width: 1199px) {
+                min-width: 420px;
+            }
+        }
+    }
+    .why-choose-right {
+        padding: 80px 0;
+        @media (max-width: 1199px) {
+            padding: 50px 0;
+        }
+        .why-choose-title {
+            padding-bottom: 50px;
+            @media (max-width: 1199px) {
+                padding-bottom: 30px;
+            }
+            @media (max-width: 991px) {
+                text-align: center;
+            }
+        }
+        p {
+            color: $white;
+            padding-bottom: 30px;
+            margin: 0;
+            @media (max-width: 1199px) {
+                padding-bottom: 20px;
+            }
+            @media (max-width: 991px) {
+                text-align: center;
+            }
+        }
+        .gym-progressbar {
+            .single-progressbar {
+                h4 {
+                    color: $white;
+                    font-size: 14px;
+                    padding-left: 15px;
+                }
+                .proggress {
+                    border-radius: 10px !important;
+                }
+                .progressbar {
+                    border-radius: 10px !important;
+                    background-color: $white  !important;
+                }
+                .martial-arts {
+                    .progressbar {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.client-say {
+    .client-say-content {
+        text-align: center;
+        padding-bottom: 30px;
+        h2 {
+            color: $black;
+            margin-bottom: 50px;
+        }
+        p {
+            color: $gray;
+        }
+    }
+    .clientSwiper {
+        .swiper-wrapper {
+            .swiper-slide {
+                border: 6px solid $theme;
+                padding: 24px;
+                cursor: pointer;
+                transition: 0.3s all;
+                box-sizing: border-box;
+                @media (max-width: 575px) {
+                    padding: 22px;
+                }
+                @media (max-width: 375px) {
+                    padding: 20px;
+                }
+                .client-details {
+                    align-items: center;
+                    padding-bottom: 20px;
+                    position: relative;
+                    .d-flex{
+                        img{
+                            border-radius: 100%;
+                        }
+                    }
+                    .client-info {
+                        padding-left: 30px;
+                        @media (max-width: 991px) {
+                            padding-left: 15px;
+                        }
+                        h6 {
+                            font-size: 20px;
+                            color: $theme;
+                            font-weight: 700;
+                            margin-bottom: 0;
+                            padding-bottom: 5px;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            width: 150px;
+                        }
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        background: url(../images/icons/quote-white.svg) no-repeat;
+                        right: -5px;
+                        top: 0;
+                        width: 30px;
+                        height: 30px;
+                        background-size: contain;
+                        filter: brightness(0.5);
+                        @media (max-width: 375px) {
+                            right: -12px;
+                        }
+                    }
+                }
+                &:hover{
+                    background: $theme;
+                    .client-details{
+                        h6, p{
+                            color: $white;
+                        }
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            background: url(../images/icons/quote-white.svg) no-repeat;
+                            right: -5px;
+                            top: 0;
+                            width: 30px;
+                            height: 30px;
+                            background-size: contain;
+                            filter: brightness(1);
+                            @media (max-width: 375px) {
+                                right: -12px;
+                            }
+                        }
+                    }
+                    p{
+                        color: $white;
+                    }
+                }
+            }
+        }
+        .swiper-pagination {
+            position: unset;
+            padding-top: 20px;
+            .swiper-pagination-bullet {
+                background: $gray;
+                transition: 0.3s all;
+                &.swiper-pagination-bullet-active {
+                    background: $theme;
+                    width: 20px;
+                    height: 6px;
+                    border-radius: 3px;
+                    transition: 0.3s all;
+                }
+            }
+        }
+    }
+}
+
+/* VIDEO CSS START HERE */
+.Video {
+    .video-inner {
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+        background: #000;
+        @media(max-width: 1399px) {
+            height: 400px;
+        }
+        @media(max-width: 991px) {
+            height: 300px;
+        }
+        @media (max-width: 575px){
+            height: 250px;
+        }
+        @media(max-width: 400px) {
+            height: 200px;
+        }
+        &:hover {
+            button {
+                &.playing {
+                    svg {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        video {
+            height: 100% !important;
+            // width: 100%;
+            // object-fit: cover;
+            // object-position: center;
+            display: block;
+            margin: auto;
+        }
+        button {
+            width: 100%;
+            cursor: pointer;
+            position: absolute;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            z-index: 999;
+            height: 100%;
+            .gym-video{
+                position: relative;
+                display: inline-block;
+                svg {
+                    width: 95px;
+                    margin: 0 auto;
+                    background: $theme;
+                    border-radius: 50%;
+                    fill: $white;
+                    padding: 25px;
+                    transition: 0.3s all;
+                    position: relative;
+                    display: block;
+                    z-index: 99;
+                    @media(max-width: 1399px) {
+                        width: 80px;
+                        padding: 20px;
+                    }
+    
+                    @media(max-width: 991px) {
+                        width: 60px;
+                        padding: 15px;
+                    }
+    
+                    @media(max-width: 767px) {
+                        width: 40px;
+                        padding: 10px;
+                    }
+                }
+                &:before{
+                    content: "";
+                    border-radius: 50%;
+                    background: #1face1;
+                    opacity: 0.25;
+                    position: absolute;
+                    width: calc(100% + 10px);
+                    height: calc(100% + 10px);
+                    z-index: 159;
+                    animation-timing-function: ease;
+                    animation: pulse 2s infinite;    
+                    left: -5%;
+                    top: -5%;
+                    transform: translate(-50%, -50%);
+                    @media (max-width: 1399px){
+                        left: -6%;
+                        top: -6%;
+                    }
+                    @media (max-width: 991px){
+                        left: -8%;
+                        top: -8%;
+                    }
+                    @media (max-width: 767px){
+                        left: -12%;
+                        top: -12%;
+                    }
+                }
+            }
+            @keyframes pulse {
+                0% {
+                  transform: scale(1, 1);
+                }
+                25% {
+                  transform: scale(1, 1);
+                }
+                50% {
+                  transform: scale(1.2, 1.2);
+                }
+                100% {
+                  transform: scale(1, 1);
+                }
+              }
+            &.playing {
+                .video_text,
+                svg {
+                    opacity: 0;
+                }
+                .gym-video{
+                    &::before{
+                        display: none;
+                    }
+                }
+            }
+            .video_text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 21;
+                font-weight: 700;
+                font-size: 32px;
+                line-height: 1;
+                letter-spacing: 2px;
+                width: 100%;
+                height: 100%;
+                color: $white;
+                background: url(../images/video-img.webp) no-repeat center;
+                background-size: cover;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s all;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    background: rgba(0, 0, 0, 0.75);
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                }
+                @media(max-width: 991px) {
+                    font-size: 28px;
+                }
+                @media(max-width: 767px) {
+                    font-size: 22px;
+                }
+                .text {
+                    padding-top: 200px;
+                    @media (max-width: 991px){
+                        padding-top: 160px;
+                    }
+                    @media (max-width: 767px){
+                        padding-top: 140px;
+                    }
+                    @media (max-width: 400px){
+                        padding-top: 120px;
+                    }
+                    @media (max-width: 375px){
+                        padding-top: 120px;
+                    }
+                    h5 {
+                        font-weight: 700;
+                        font-size: 32px;
+                        @media (max-width: 991px){
+                            font-size: 30px;
+                        }
+                        @media (max-width: 767px){
+                            font-size: 26px;
+                        }
+                        @media (max-width: 575px){
+                            font-size: 24px;
+                        }
+                        @media (max-width: 480px){
+                            font-size: 20px;
+                        }
+                        @media (max-width: 375px){
+                            font-size: 18px;
+                        }
+                    }
+                    .watch{
+                        font-weight: 400;
+                        text-transform: uppercase;
+                        @media (max-width: 575px){
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+.video-play{
+    .gym-video{
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        background: $theme;
+        z-index: 999;
+        margin: auto;
+        transition: all 0.5s ease;
+        &::before{
+            left: -6px !important;
+            top: -5px !important;
+        }
+    }
+    .play,.pause{
+        position: relative;
+        z-index: 400;
+        width: 28px;
+    }
+    .pause{
+        display: none;
+    }
+    &.playing{
+        .gym-video{
+            opacity: 0;
+        }
+        &:hover{
+            .gym-video{
+                opacity: 1;
+            }
+        }
+        .pause{
+            display: block;
+        }
+        .play{
+            display: none;
+        }
+    }
+}
+/* VIDEO CSS END HERE */
+/*  ABOUT US CSS END HERE */
