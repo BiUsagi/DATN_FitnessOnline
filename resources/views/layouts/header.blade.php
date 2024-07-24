@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <base href="http://127.0.0.1:8000/">
     <!-- ------------- META TAG START HERE ------------- -->
     <meta charset="UTF-8" />
     <meta name="title" content="Gymfit.com">
@@ -64,10 +65,10 @@
                             <div class="collapse navbar-collapse tabActive" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('')}}">TRANG CHỦ</a>
+                                        <a class="nav-link" href="{{route('index')}}">TRANG CHỦ</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('about')}}">GIỚI THIỆU</a>
+                                        <a class="nav-link" href="{{route('about.index')}}">GIỚI THIỆU</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#courses">Courses</a>
