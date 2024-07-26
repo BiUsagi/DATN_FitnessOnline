@@ -1,4 +1,5 @@
-@include('layouts/header')
+@include('layouts/head')
+@include('layouts/nav')
    
     
 @yield('main')
