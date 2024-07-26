@@ -1,4 +1,4 @@
-@extends('layouts/app-user')
+@extends('frontend/layouts/app-user')
 
 
 @section('main')
