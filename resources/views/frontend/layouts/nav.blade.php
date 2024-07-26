@@ -5,7 +5,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-lg ">
                             <a class="navbar-brand" href="index.html">
-                                <img loading='lazy' src="assets/images/logo.svg" alt="logo" width="139" height="30">
+                                <img loading='lazy' src="assets/frontend/images/logo.svg" alt="logo" width="139" height="30">
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
