@@ -1,8 +1,8 @@
-@include('layouts/head')
-@include('layouts/nav')
+@include('frontend/layouts/head')
+@include('frontend/layouts/nav')
    
     
 @yield('main')
     
 
-@include('layouts/footer')
+@include('frontend/layouts/footer')
