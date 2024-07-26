@@ -23,7 +23,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 order-2 order-lg-1">
                     <div class="text-center f-0">
-                        <img loading='lazy' src="assets/images/about.webp" alt="img" />
+                        <img loading='lazy' src="assets/frontend/images/about.webp" alt="img" />
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 mb-lg-0 mb-5 wow fadeInUp" data-wow-duration="1.5s">
@@ -51,7 +51,7 @@
             <div class="row justify-content-lg-between justify-content-center align-items-end">
                 <div class="col-lg-5 order-2 order-lg-1">
                     <div class="why-choose-us-left">
-                        <img loading='lazy' src="assets/images/why-choose-us.webp" alt="">
+                        <img loading='lazy' src="assets/frontend/images/why-choose-us.webp" alt="">
                     </div>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2">
@@ -105,7 +105,7 @@
                     <div class="swiper-slide">
                         <div class="client-details">
                             <div class="d-flex">
-                                <img loading='lazy' src="assets/images/client-one.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
                                 <div class="client-info">
                                     <h6>Kiara Milly</h6>
                                     <p>Personal Trainer</p>
@@ -121,7 +121,7 @@
                     <div class="swiper-slide">
                         <div class="client-details">
                             <div class="d-flex">
-                                <img loading='lazy' src="assets/images/client-two.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/client-two.webp" alt="">
                                 <div class="client-info">
                                     <h6>Rihana Smith</h6>
                                     <p>Personal Trainer</p>
@@ -136,7 +136,7 @@
                     <div class="swiper-slide">
                         <div class="client-details">
                             <div class="d-flex">
-                                <img loading='lazy' src="assets/images/client-three.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/client-three.webp" alt="">
                                 <div class="client-info">
                                     <h6>John Doe</h6>
                                     <p>Personal Trainer</p>
@@ -151,7 +151,7 @@
                     <div class="swiper-slide">
                         <div class="client-details">
                             <div class="d-flex">
-                                <img loading='lazy' src="assets/images/client-one.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
                                 <div class="client-info">
                                     <h6>Kiara Milly</h6>
                                     <p>Personal Trainer</p>
@@ -166,7 +166,7 @@
                     <div class="swiper-slide">
                         <div class="client-details">
                             <div class="d-flex">
-                                <img loading='lazy' src="assets/images/client-one.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
                                 <div class="client-info">
                                     <h6>Kiara Milly</h6>
                                     <p>Personal Trainer</p>
@@ -181,7 +181,7 @@
                     <div class="swiper-slide">
                         <div class="client-details">
                             <div class="d-flex">
-                                <img loading='lazy' src="assets/images/client-one.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
                                 <div class="client-info">
                                     <h6>Kiara Milly</h6>
                                     <p>Personal Trainer</p>
@@ -204,12 +204,12 @@
     <div class="Video">
         <div class="video-inner">
             <video controls>
-                <source src="assets/video/video.mp4">
+                <source src="assets/frontend/video/video.mp4">
             </video>
             <button class="video-play" id="playpause">
                 <div class="gym-video">
-                    <img loading='lazy' src="assets/images/icons/play-button-arrowhead.webp" alt="icon" class="play">
-                    <img loading='lazy' src="assets/images/icons/pause-button-arrowhead.webp" alt="icon" class="pause">
+                    <img loading='lazy' src="assets/frontend/images/icons/play-button-arrowhead.webp" alt="icon" class="play">
+                    <img loading='lazy' src="assets/frontend/images/icons/pause-button-arrowhead.webp" alt="icon" class="pause">
                 </div>
                 <div class="video_text">
                     <div class="text">
@@ -239,19 +239,19 @@
                     <div class="row">
                         <div class="col-md-4 f-0">
                             <div class="team-block">
-                                <img loading='lazy' src="assets/images/team/1.webp" alt="Coaches">
+                                <img loading='lazy' src="assets/frontend/images/team/1.webp" alt="Coaches">
                                 <h3>Joshua <span>Franklin</span></h3>
                             </div>
                         </div>
                         <div class="col-md-4 f-0">
                             <div class="team-block">
-                                <img loading='lazy' src="assets/images/team/2.webp" alt="Coaches">
+                                <img loading='lazy' src="assets/frontend/images/team/2.webp" alt="Coaches">
                                 <h3>Reflina <span>Deovanger</span></h3>
                             </div>
                         </div>
                         <div class="col-md-4 f-0">
                             <div class="team-block">
-                                <img loading='lazy' src="assets/images/team/3.webp" alt="Coaches">
+                                <img loading='lazy' src="assets/frontend/images/team/3.webp" alt="Coaches">
                                 <h3>Devin <span>Tremson</span></h3>
                             </div>
                         </div>

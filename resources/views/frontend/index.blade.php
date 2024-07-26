@@ -8,7 +8,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/images/banner/banner-1.webp"
+                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/banner-1.webp"
                             alt="banner-slide" width="416" height="666">
                         <div class="banner-text">
                             <h2 data-swiper-parallax="-800">BUILD YOUR</h2>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/images/banner/banner-2.webp"
+                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/banner-2.webp"
                             alt="banner-slide" width="375" height="600">
                         <div class="banner-text">
                             <h2 data-swiper-parallax="-800">BUILD YOUR</h2>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/images/banner/banner-3.webp"
+                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/banner-3.webp"
                             alt="banner-slide" width="517" height="600">
                         <div class="banner-text">
                             <h2 data-swiper-parallax="-800">Get Free</h2>
@@ -49,7 +49,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 order-2 order-lg-1">
                     <div class="text-center f-0">
-                        <img loading='lazy' src="assets/images/about.webp" alt="img" width="470" height="468" />
+                        <img loading='lazy' src="assets/frontend/images/about.webp" alt="img" width="470" height="468" />
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 mb-lg-0 mb-5 wow fadeInUp" data-wow-duration="1.5s">
@@ -87,21 +87,21 @@
                     <div class="row">
                         <div class="col-md-4 f-0">
                             <div class="team-block">
-                                <img loading='lazy' src="assets/images/team/1.webp" alt="Coaches" width="210"
+                                <img loading='lazy' src="assets/frontend/images/team/1.webp" alt="Coaches" width="210"
                                     height="339">
                                 <h3>Joshua <span>Franklin</span></h3>
                             </div>
                         </div>
                         <div class="col-md-4 f-0">
                             <div class="team-block">
-                                <img loading='lazy' src="assets/images/team/2.webp" alt="Coaches" width="210"
+                                <img loading='lazy' src="assets/frontend/images/team/2.webp" alt="Coaches" width="210"
                                     height="339">
                                 <h3>Reflina <span>Deovanger</span></h3>
                             </div>
                         </div>
                         <div class="col-md-4 f-0">
                             <div class="team-block">
-                                <img loading='lazy' src="assets/images/team/3.webp" alt="Coaches" width="210"
+                                <img loading='lazy' src="assets/frontend/images/team/3.webp" alt="Coaches" width="210"
                                     height="339">
                                 <h3>Devin <span>Tremson</span></h3>
                             </div>
@@ -122,7 +122,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="assets/images/icons/courses-1.svg" alt="icons" width="60"
+                            <img loading='lazy' src="assets/frontend/images/icons/courses-1.svg" alt="icons" width="60"
                                 height="60">
                             <span>GYM</span>
                             <h2>Kettlebells Course</h2>
@@ -130,14 +130,14 @@
                                 porta. </p>
                             <div class="button-sec">
                                 <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/images/icons/btn-arrow.svg" alt="icon"
+                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
                                         width="25" height="14"></a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="assets/images/icons/courses-2.svg" alt="icons" width="60"
+                            <img loading='lazy' src="assets/frontend/images/icons/courses-2.svg" alt="icons" width="60"
                                 height="60">
                             <span>GYM</span>
                             <h2>Weight Lifting</h2>
@@ -145,14 +145,14 @@
                                 porta. </p>
                             <div class="button-sec">
                                 <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/images/icons/btn-arrow.svg" alt="icon"
+                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
                                         width="25" height="14"></a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="assets/images/icons/courses-3.svg" alt="icons" width="60"
+                            <img loading='lazy' src="assets/frontend/images/icons/courses-3.svg" alt="icons" width="60"
                                 height="60">
                             <span>GYM</span>
                             <h2>Running</h2>
@@ -160,14 +160,14 @@
                                 porta. </p>
                             <div class="button-sec">
                                 <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/images/icons/btn-arrow.svg" alt="icon"
+                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
                                         width="25" height="14"></a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="assets/images/icons/courses-4.svg" alt="icons" width="60"
+                            <img loading='lazy' src="assets/frontend/images/icons/courses-4.svg" alt="icons" width="60"
                                 height="60">
                             <span>GYM</span>
                             <h2>Meditation</h2>
@@ -175,14 +175,14 @@
                                 porta. </p>
                             <div class="button-sec">
                                 <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/images/icons/btn-arrow.svg" alt="icon"
+                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
                                         width="25" height="14"></a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="assets/images/icons/courses-5.svg" alt="icons" width="60"
+                            <img loading='lazy' src="assets/frontend/images/icons/courses-5.svg" alt="icons" width="60"
                                 height="60">
                             <span>GYM</span>
                             <h2>Body Building</h2>
@@ -190,14 +190,14 @@
                                 porta. </p>
                             <div class="button-sec">
                                 <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/images/icons/btn-arrow.svg" alt="icon"
+                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
                                         width="25" height="14"></a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="assets/images/icons/courses-6.svg" alt="icons" width="60"
+                            <img loading='lazy' src="assets/frontend/images/icons/courses-6.svg" alt="icons" width="60"
                                 height="60">
                             <span>GYM</span>
                             <h2>Cardio Exercises</h2>
@@ -205,7 +205,7 @@
                                 porta. </p>
                             <div class="button-sec">
                                 <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/images/icons/btn-arrow.svg" alt="icon"
+                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
                                         width="25" height="14"></a>
                             </div>
                         </div>
@@ -267,7 +267,7 @@
                 </div>
                 <div class="col-md-3 d-xl-block d-none">
                     <div class="images_wrapper f-0">
-                        <img loading='lazy' src="assets/images/pricing-2.webp" alt="pricing">
+                        <img loading='lazy' src="assets/frontend/images/pricing-2.webp" alt="pricing">
                     </div>
                 </div>
             </div>
@@ -285,7 +285,7 @@
                     <div class="card">
                         <a href="blog-details.html" aria-label="Blog 1">
                             <div class="card-img f-0">
-                                <img loading='lazy' src="assets/images/blog/blog-1.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/blog/blog-1.webp" alt="">
                             </div>
                         </a>
                         <div class="card-body">
@@ -319,7 +319,7 @@
                     <div class="card">
                         <a href="blog-details.html" aria-label="Blog 2">
                             <div class="card-img f-0">
-                                <img loading='lazy' src="assets/images/blog/blog-2.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/blog/blog-2.webp" alt="">
                             </div>
                         </a>
                         <div class="card-body">
@@ -353,7 +353,7 @@
                     <div class="card">
                         <a href="blog-details.html" aria-label="Blog 3">
                             <div class="card-img f-0">
-                                <img loading='lazy' src="assets/images/blog/blog-3.webp" alt="">
+                                <img loading='lazy' src="assets/frontend/images/blog/blog-3.webp" alt="">
                             </div>
                         </a>
                         <div class="card-body">
@@ -393,7 +393,7 @@
             <div class="row justify-content-lg-between justify-content-center align-items-end">
                 <div class="col-lg-6 col-md-8 col-sm-8 order-2 order-lg-1">
                     <div class="get-touch-banner">
-                        <img loading='lazy' src="assets/images/get-touch-img.webp" alt="">
+                        <img loading='lazy' src="assets/frontend/images/get-touch-img.webp" alt="">
                     </div>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2">
@@ -454,37 +454,37 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <a href="#!" class="slides" aria-label="Slide 1">
-                            <img loading='lazy' src="assets/images/post/post-1.webp" alt="Post Image" width="309"
+                            <img loading='lazy' src="assets/frontend/images/post/post-1.webp" alt="Post Image" width="309"
                                 height="309">
                             <div class="links">
-                                <img loading='lazy' src="assets/images/icons/link.svg" alt="icon">
+                                <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                             </div>
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="#!" class="slides" aria-label="Slide 2">
-                            <img loading='lazy' src="assets/images/post/post-2.webp" alt="Post Image" width="309"
+                            <img loading='lazy' src="assets/frontend/images/post/post-2.webp" alt="Post Image" width="309"
                                 height="309">
                             <div class="links">
-                                <img loading='lazy' src="assets/images/icons/link.svg" alt="icon">
+                                <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                             </div>
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="#!" class="slides" aria-label="Slide 3">
-                            <img loading='lazy' src="assets/images/post/post-3.webp" alt="Post Image" width="309"
+                            <img loading='lazy' src="assets/frontend/images/post/post-3.webp" alt="Post Image" width="309"
                                 height="309">
                             <div class="links">
-                                <img loading='lazy' src="assets/images/icons/link.svg" alt="icon">
+                                <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                             </div>
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="#!" class="slides" aria-label="Slide 3">
-                            <img loading='lazy' src="assets/images/post/post-4.webp" alt="Post Image" width="309"
+                            <img loading='lazy' src="assets/frontend/images/post/post-4.webp" alt="Post Image" width="309"
                                 height="309">
                             <div class="links">
-                                <img loading='lazy' src="assets/images/icons/link.svg" alt="icon">
+                                <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                             </div>
                         </a>
                     </div>

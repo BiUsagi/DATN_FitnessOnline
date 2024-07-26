@@ -5,15 +5,15 @@
                     <div class="row justify-content-between">
                         <div class="col-xl-4 d-xl-flex justify-content-xl-start">
                             <div class="our-information">
-                                <a href="index.html" class="website-logo"><img loading='lazy' src="assets/images/footer-logo.svg" alt="logo" width="140" height="30"></a>
+                                <a href="index.html" class="website-logo"><img loading='lazy' src="assets/frontend/images/footer-logo.svg" alt="logo" width="140" height="30"></a>
                                 <p class="web-about">ligula sed porta cursus, lectus ligula interdum tortor, vitae
                                     tempor leo
                                     eros lobortis ante. Integer semper, metus in tincidunt euismod.</p>
                                 <div class="social-icon">
-                                    <a href="#!" aria-label="Facebook"><img loading='lazy' src="assets/images/icons/facebook.svg" alt="Facebook Icon"></a>
-                                    <a href="#!" aria-label="Twitter"><img loading='lazy' src="assets/images/icons/twitter.svg" alt="Twitter Icon"></a>
-                                    <a href="#!" aria-label="Instagram"><img loading='lazy' src="assets/images/icons/instagram.svg" alt="Instagram Icon"></a>
-                                    <a href="#!" aria-label="Google Plus"><img loading='lazy' src="assets/images/icons/google-plus.svg" alt="Google Plus Icon"></a>
+                                    <a href="#!" aria-label="Facebook"><img loading='lazy' src="assets/frontend/images/icons/facebook.svg" alt="Facebook Icon"></a>
+                                    <a href="#!" aria-label="Twitter"><img loading='lazy' src="assets/frontend/images/icons/twitter.svg" alt="Twitter Icon"></a>
+                                    <a href="#!" aria-label="Instagram"><img loading='lazy' src="assets/frontend/images/icons/instagram.svg" alt="Instagram Icon"></a>
+                                    <a href="#!" aria-label="Google Plus"><img loading='lazy' src="assets/frontend/images/icons/google-plus.svg" alt="Google Plus Icon"></a>
                                 </div>
                             </div>
                         </div>
@@ -42,19 +42,19 @@
                                 </h2>
                                 <div class="recent-posts">
                                     <div class="post">
-                                        <img loading='lazy' src="assets/images/blog/blog-1.webp" alt="post" class="post-img">
+                                        <img loading='lazy' src="assets/frontend/images/blog/blog-1.webp" alt="post" class="post-img">
                                         <a href="blog-details.html">
                                             <p class="post-content">Etiam venenatis nisl in orci posuere ultricies.</p>
                                         </a>
                                     </div>
                                     <div class="post">
-                                        <img loading='lazy' src="assets/images/blog/blog-2.webp" alt="post" class="post-img">
+                                        <img loading='lazy' src="assets/frontend/images/blog/blog-2.webp" alt="post" class="post-img">
                                         <a href="blog-details.html">
                                             <p class="post-content">Etiam venenatis nisl in orci posuere ultricies.</p>
                                         </a>
                                     </div>
                                     <div class="post">
-                                        <img loading='lazy' src="assets/images/blog/blog-3.webp" alt="post" class="post-img">
+                                        <img loading='lazy' src="assets/frontend/images/blog/blog-3.webp" alt="post" class="post-img">
                                         <a href="blog-details.html">
                                             <p class="post-content">Etiam venenatis nisl in orci posuere ultricies.</p>
                                         </a>
@@ -71,14 +71,14 @@
                                 </h2>
                                 <ul id="contactus" class="collapse foot-mob" data-bs-parent="#foot-accordion">
                                     <div class="contacts">
-                                        <img loading='lazy' src="assets/images/icons/foot-call.svg" alt="call" class="support-icon">
+                                        <img loading='lazy' src="assets/frontend/images/icons/foot-call.svg" alt="call" class="support-icon">
                                         <div class="details">
                                             <p class="text"><a href="tel:+123-1234-123">123-1234-123</a></p>
                                             <p class="text"><a href="tel:+003-1234-123">003-1234-123</a></p>
                                         </div>
                                     </div>
                                     <div class="contacts">
-                                        <img loading='lazy' src="assets/images/icons/foot-mail.svg" alt="mail" class="support-icon">
+                                        <img loading='lazy' src="assets/frontend/images/icons/foot-mail.svg" alt="mail" class="support-icon">
                                         <div class="details">
                                             <p class="text"><a
                                                     href="mailto:fitness@yourdomain.com">fitness@yourdomain.com</a></p>
@@ -86,7 +86,7 @@
                                         </div>
                                     </div>
                                     <div class="contacts">
-                                        <img loading='lazy' src="assets/images/icons/foot-location.svg" alt="location"
+                                        <img loading='lazy' src="assets/frontend/images/icons/foot-location.svg" alt="location"
                                             class="support-icon">
                                         <div class="details">
                                             <p class="text location">1011Santa Monica boulevard <br>
@@ -98,10 +98,10 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="social-icon-mob">
-                                <a href="#!" aria-label="Facebook"><img loading='lazy' src="assets/images/icons/facebook.svg" alt="Facebook Icon"></a>
-                                <a href="#!" aria-label="Twitter"><img loading='lazy' src="assets/images/icons/twitter.svg" alt="Twitter Icon"></a>
-                                <a href="#!" aria-label="Instagram"><img loading='lazy' src="assets/images/icons/instagram.svg" alt="Instagram Icon"></a>
-                                <a href="#!" aria-label="Google Plus"><img loading='lazy' src="assets/images/icons/google-plus.svg" alt="Google Plus Icon"></a>
+                                <a href="#!" aria-label="Facebook"><img loading='lazy' src="assets/frontend/images/icons/facebook.svg" alt="Facebook Icon"></a>
+                                <a href="#!" aria-label="Twitter"><img loading='lazy' src="assets/frontend/images/icons/twitter.svg" alt="Twitter Icon"></a>
+                                <a href="#!" aria-label="Instagram"><img loading='lazy' src="assets/frontend/images/icons/instagram.svg" alt="Instagram Icon"></a>
+                                <a href="#!" aria-label="Google Plus"><img loading='lazy' src="assets/frontend/images/icons/google-plus.svg" alt="Google Plus Icon"></a>
                             </div>
                         </div>
                     </div>
@@ -118,10 +118,10 @@
     <!-- FOOTER END HERE -->
 
     <!-- LOCAL SCRIPT ATTACHMENT -->
-    <script src='assets/js/jquery.min.js'></script>
-    <script src='assets/js/bootstrap.js'></script>
-    <script src='assets/js/swiper.js'></script>
-    <script src='assets/js/main.js'></script>
+    <script src='assets/frontend/js/jquery.min.js'></script>
+    <script src='assets/frontend/js/bootstrap.js'></script>
+    <script src='assets/frontend/js/swiper.js'></script>
+    <script src='assets/frontend/js/main.js'></script>
 </body>
 
 </html>

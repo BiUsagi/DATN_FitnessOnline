@@ -27,7 +27,7 @@
                     <div class="our-contact-info">
                         <div class="our-deatils mb-5 d-flex align-items-center">
                             <div class="information-icon">
-                                <img loading='lazy' src="assets/images/icons/calling.svg" alt="">
+                                <img loading='lazy' src="assets/frontend/images/icons/calling.svg" alt="">
                             </div>
                             <div class="information-details">
                                 <h6>CALL NOW</h6>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="our-deatils mb-5 d-flex align-items-center">
                             <div class="information-icon">
-                                <img loading='lazy' src="assets/images/icons/mail.svg" alt="">
+                                <img loading='lazy' src="assets/frontend/images/icons/mail.svg" alt="">
                             </div>
                             <div class="information-details">
                                 <h6>Email Us</h6>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="our-deatils d-flex align-items-center">
                             <div class="information-icon">
-                                <img loading='lazy' src="assets/images/icons/location.svg" alt="">
+                                <img loading='lazy' src="assets/frontend/images/icons/location.svg" alt="">
                             </div>
                             <div class="information-details">
                                 <h6>Our Location</h6>
