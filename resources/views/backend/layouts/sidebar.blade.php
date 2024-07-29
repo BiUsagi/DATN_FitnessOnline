@@ -12,91 +12,184 @@
       <!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#package-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-archive"></i><span>Quản lý gói tập</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="package-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Alerts</span>
+              <i class="bi bi-circle"></i><span>Danh sách gói tập</span>
             </a>
           </li>
           <li>
             <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Accordion</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-badges.html">
-              <i class="bi bi-circle"></i><span>Badges</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-breadcrumbs.html">
-              <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-buttons.html">
-              <i class="bi bi-circle"></i><span>Buttons</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-cards.html">
-              <i class="bi bi-circle"></i><span>Cards</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-carousel.html">
-              <i class="bi bi-circle"></i><span>Carousel</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-list-group.html">
-              <i class="bi bi-circle"></i><span>List group</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-modal.html">
-              <i class="bi bi-circle"></i><span>Modal</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-tabs.html">
-              <i class="bi bi-circle"></i><span>Tabs</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-pagination.html">
-              <i class="bi bi-circle"></i><span>Pagination</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-progress.html">
-              <i class="bi bi-circle"></i><span>Progress</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-spinners.html">
-              <i class="bi bi-circle"></i><span>Spinners</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-tooltips.html">
-              <i class="bi bi-circle"></i><span>Tooltips</span>
+              <i class="bi bi-circle"></i><span>Thêm gói tập</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Components Nav -->
+      </li><!-- End gói tập -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
-          <i class="bi bi-book-half"></i>
-          <span>Quản lý bài tập</span>
+        <a class="nav-link collapsed" data-bs-target="#exercise-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-book-half"></i><span>Quản lý bài tập</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li>
-      {{-- End gói tập --}}
+        <ul id="exercise-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Danh sách bài tập</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-accordion.html">
+              <i class="bi bi-circle"></i><span>Thêm bài tập</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End bài tập -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#posts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-pencil-square"></i><span>Quản lý bài viết</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="posts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Danh sách bài viết</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-accordion.html">
+              <i class="bi bi-circle"></i><span>Thêm bài viết</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End bài viết -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#comment-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-chat-dots"></i><span>Quản lý bình luận</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="comment-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Danh sách bình luận</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-accordion.html">
+              <i class="bi bi-circle"></i><span>Danh sách đen</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End bình luận -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="bi bi-headset"></i><span>Chăm sóc khách hàng</span>
+        </a>
+      </li><!-- End hỗ trợ -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-person"></i><span>Quản lý tài khoản</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Quản lý nhân viên</span>
+            </a>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Quản lý khách hàng</span>
+            </a>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Kiểm duyệt hồ sơ</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End users -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#order-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-handbag"></i><span>Quản lý đơn hàng</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="order-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Đơn hàng</span>
+            </a>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Khách hàng</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End order -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#statistical-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Thống kê</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="statistical-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Thống kê doanh thu</span>
+            </a>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Thống kê khách hàng</span>
+            </a>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Thống kê gói tập</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End interface -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#interface-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-wtf"></i><span>Giao diện</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="interface-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Layout</span>
+            </a>
+         
+          </li>
+        </ul>
+      </li><!-- End interface -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#marketing-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gift"></i><span>Tiếp thị</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="marketing-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Các ưu đãi</span>
+            </a>
+         
+          </li>
+        </ul>
+      </li><!-- End marketing -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#configuration-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gear"></i><span>Cấu hình</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="configuration-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Ngôn ngữ</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End cấu hình -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="bi bi-box-arrow-in-right"></i><span>Đăng xuất</span>
+        </a>
+      </li><!-- End đăng xuất -->
     </ul>
 
   </aside><!-- End Sidebar-->
