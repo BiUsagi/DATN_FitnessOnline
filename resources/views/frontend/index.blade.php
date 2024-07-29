@@ -8,8 +8,8 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/banner-1.webp"
-                            alt="banner-slide" width="416" height="666">
+                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/slide1.png"
+                            alt="banner-slide" width="900" height="666">
                         <div class="banner-text">
                             <h2 data-swiper-parallax="-800">BUILD YOUR</h2>
                             <h3 data-swiper-parallax="-1000">BODY</h3>
@@ -18,8 +18,8 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/banner-2.webp"
-                            alt="banner-slide" width="375" height="600">
+                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/slide2.png"
+                            alt="banner-slide" width="700" height="800">
                         <div class="banner-text">
                             <h2 data-swiper-parallax="-800">BUILD YOUR</h2>
                             <h3 data-swiper-parallax="-1000">Shape</h3>
@@ -28,8 +28,8 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/banner-3.webp"
-                            alt="banner-slide" width="517" height="600">
+                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/slide3.png"
+                            alt="banner-slide" width="700" height="700">
                         <div class="banner-text">
                             <h2 data-swiper-parallax="-800">Get Free</h2>
                             <h3 data-swiper-parallax="-1000">Diet</h3>

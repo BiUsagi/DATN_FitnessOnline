@@ -15,3 +15,4 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 // Back End
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
