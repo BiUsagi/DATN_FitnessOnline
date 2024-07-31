@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="title-seo">
                                         <span class="title-customize mt-2">Du lịch Gia Lai: Cẩm nang du lịch và 32 địa điểm đẹp, hấp ...</span>
-                                        <p class="title-customize-small">Gia Lai là một trong những danh lam thắng cảnh tại Việt Nam. Cẩm nang du lịch Gia Lai và 32 địa điểm du lịch đẹp, hấp dẫn chi tiết nhất.</p>
+                                        <p class="title-customize-small">Gia Lai là một trong những danh lam thắng cảnh tại Việt Nam. Cẩm nang du lịch Gia Lai và 32 địa điểm du lịch đẹp, hấp dẫn chi tiết nhất...</p>
                                     </div>
                                     
                                 </div>
