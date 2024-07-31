@@ -25,24 +25,22 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <b>N</b>ame
-                                    </th>
-                                    <th>Ext.</th>
-                                    <th>City</th>
-                                    <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                    <th>Completion</th>
+                                    <th>ID</th>
+                                    <th>Nội dung</th>
+                                    <th>Bài tập</th>
+                                    <th>Khách hàng</th>
+                                    <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @for ($i = 1; $i<=100; $i++)
                                 <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>9958</td>
-                                    <td>Curicó</td>
+                                    <td>{{$i}}</td>
+                                    <td>Bài này có khó quá không</td>
+                                    <td>Tập tay</td>
+                                    <td>Phước Luân</td>
                                     <td>2005/02/11</td>
-                                    <td>37%</td>
                                 </tr>
                                 @endfor
                                 

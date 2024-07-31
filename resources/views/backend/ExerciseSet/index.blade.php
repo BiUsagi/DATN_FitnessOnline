@@ -3,12 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Data Tables</h1>
+        <h1>Quản lí gói tập</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active">Data</li>
+                <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+                <li class="breadcrumb-item">Quản lý gói tập</li>
+                <li class="breadcrumb-item active">Danh sách gói tập</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -19,24 +19,30 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Datatables</h5>
-                        <p>Add lightweight datatables to your project with using the <a
+                        <div class="d-flex justify-content-between">    
+                            <h5 class="card-title">Danh sách gói tập</h5>
+                            <div class="btn btn-info mt-3 button-backend" style="height:40px;">➕ Thêm gói tập </div>
+                        </div>
+                        <!-- <p>Add lightweight datatables to your project with using the <a
                                 href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
                                 DataTables</a> library. Just add <code>.datatable</code> class name to any table you
                             wish to conver to a datatable. Check for <a
                                 href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more
-                                examples</a>.</p>
+                                examples</a>.</p> -->
 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>
-                                        <b>N</b>ame
+                                        <b>Tên gói tập</b>
                                     </th>
-                                    <th>Ext.</th>
-                                    <th>City</th>
-                                    <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Mô tả</th>
+                                    <th>Giá tiền</th>
+                                    <th>Dụng cụ</th>
+                                    <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
                                     <th>Completion</th>
                                 </tr>
                             </thead>
@@ -44,10 +50,13 @@
 
                                 @for ($i = 1; $i<=100; $i++)
                                 <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>9958</td>
-                                    <td>Curicó</td>
-                                    <td>2005/02/11</td>
+                                    <td>{{ $i }}</td>
+                                    <td>Gói trải Nghiệm</td>
+                                    <td>gym.jpg</td>
+                                    <td>Mô tả gói tập</td>
+                                    <td>100.000 VND</td>
+                                    <td>Tạ đơn, Máy chạy bộ</td>
+                                    <td>31/07/2024</td>
                                     <td>37%</td>
                                 </tr>
                                 @endfor

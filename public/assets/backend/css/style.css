@@ -1273,6 +1273,16 @@ input[placeholder]{
   font-size: 13px;
   color: #012970;
 }
+<<<<<<< HEAD
+
+.button-backend {
+  color: white;
+}
+
+.button-backend:hover {
+  color:black;
+  background-color: white;
+=======
 .note{
   color: red;
 
@@ -1286,4 +1296,5 @@ input[placeholder]{
   outline: none;
   /* margin-top: 10px; */
   border-radius: 3px;
+>>>>>>> 1d9f61d78ce55e49d23afb32b674e9b4c0a6d7b2
 }
