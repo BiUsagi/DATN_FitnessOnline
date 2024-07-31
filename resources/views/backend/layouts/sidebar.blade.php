@@ -1,3 +1,7 @@
+{{-- {{ Request::is('admin/orders*') || Request::is('admin/customer*') ? 'active' : '' }}   --}}
+{{-- Kiểm tra link để thêm class active --}}
+  
+  
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
