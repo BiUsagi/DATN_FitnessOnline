@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\PostsController;
 use App\Http\Controllers\backend\StatisticalController;
 use App\Http\Controllers\backend\SupportExercisesController;
+use App\Http\Controllers\backend\CommentController;
 
 
 
@@ -34,6 +35,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
     Route::get('/supportexercises', [SupportExercisesController::class, 'index'])->name('admin.supportexercises');
+    Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');
 });
 
 
