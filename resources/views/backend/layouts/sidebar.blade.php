@@ -57,12 +57,12 @@
         </a>
         <ul id="posts-nav" class="nav-content collapse {{ Request::is('admin/posts*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{route('admin.posts')}}" class="{{ Request::is('admin/posts*') ? 'active' : '' }}">
+            <a href="{{route('admin.posts')}}" class="{{ Request::is('admin/posts') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Danh sách bài viết</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="{{route('admin.create')}}" class="{{ Request::is('admin/posts/create') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Thêm bài viết</span>
             </a>
           </li>
