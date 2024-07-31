@@ -26,19 +26,40 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 // Back End
 //Admin
 Route::prefix('admin')->group(function () {
+
+    // dashboard
     Route::get('/', [AdminController::class, 'index'])->name('admin');
+
+    // config - cấu hình
     Route::get('/config', [ConfigController::class, 'index'])->name('admin.config');
+
+
+    // exercise - bài tập
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
+
+    // exerciseset - gói tập
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
-    Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
-    Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
+
+    // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
+
+
+    // marketing - tiếp thị
+    Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
+
+    // supportexercises - chăm sóc khách hàng 
     Route::get('/supportexercises', [SupportExercisesController::class, 'index'])->name('admin.supportexercises');
+
+    // posts - bài viết
+    Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
+
+    // comments - bình luận
     Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');
+
+    //component 
     Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
 
-
-    // order
+    // order - đơn hàng
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
     Route::get('/customer', [OrderController::class, 'customer'])->name('admin.customer');
 });
