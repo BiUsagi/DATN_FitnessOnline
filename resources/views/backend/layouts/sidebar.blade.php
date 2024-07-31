@@ -12,12 +12,12 @@
       <!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#package-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#package-nav" data-bs-toggle="collapse" href="{{route('admin.exerciseset')}}">
           <i class="bi bi-archive"></i><span>Quản lý gói tập</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="package-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.exerciseset')}}">
               <i class="bi bi-circle"></i><span>Danh sách gói tập</span>
             </a>
           </li>
@@ -35,7 +35,7 @@
         </a>
         <ul id="exercise-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.exercise')}}">
               <i class="bi bi-circle"></i><span>Danh sách bài tập</span>
             </a>
           </li>
@@ -53,7 +53,7 @@
         </a>
         <ul id="posts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.posts')}}">
               <i class="bi bi-circle"></i><span>Danh sách bài viết</span>
             </a>
           </li>
@@ -72,7 +72,7 @@
         </a>
         <ul id="comment-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.comments')}}">
               <i class="bi bi-circle"></i><span>Danh sách bình luận</span>
             </a>
           </li>
@@ -86,7 +86,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{route('admin.supportexercises')}}">
           <i class="bi bi-headset"></i><span>Chăm sóc khách hàng</span>
         </a>
       </li><!-- End hỗ trợ -->
@@ -97,13 +97,13 @@
         </a>
         <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="">
               <i class="bi bi-circle"></i><span>Quản lý nhân viên</span>
             </a>
-            <a href="components-alerts.html">
+            <a href="">
               <i class="bi bi-circle"></i><span>Quản lý khách hàng</span>
             </a>
-            <a href="components-alerts.html">
+            <a href="">
               <i class="bi bi-circle"></i><span>Kiểm duyệt hồ sơ</span>
             </a>
           </li>
@@ -116,10 +116,10 @@
         </a>
         <ul id="order-nav" class="nav-content collapse {{ Request::is('admin/order') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{ url('/admin/order') }}" class="{{ Request::is('admin/order') ? 'active' : '' }}">
+            <a href="{{route('admin.order')}}" class="{{ Request::is('admin/order') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Đơn hàng</span>
             </a>
-            <a href="components-alerts.html">
+            <a href="">
               <i class="bi bi-circle"></i><span>Khách hàng</span>
             </a>
           </li>
@@ -132,13 +132,13 @@
         </a>
         <ul id="statistical-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.statistical')}}">
               <i class="bi bi-circle"></i><span>Thống kê doanh thu</span>
             </a>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.statistical')}}">
               <i class="bi bi-circle"></i><span>Thống kê khách hàng</span>
             </a>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.statistical')}}">
               <i class="bi bi-circle"></i><span>Thống kê gói tập</span>
             </a>
           </li>
@@ -150,7 +150,7 @@
         </a>
         <ul id="interface-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="">
               <i class="bi bi-circle"></i><span>Layout</span>
             </a>
          
@@ -164,7 +164,7 @@
         </a>
         <ul id="marketing-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.marketing')}}">
               <i class="bi bi-circle"></i><span>Các ưu đãi</span>
             </a>
          
@@ -178,7 +178,7 @@
         </a>
         <ul id="configuration-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.config')}}">
               <i class="bi bi-circle"></i><span>Ngôn ngữ</span>
             </a>
           </li>
