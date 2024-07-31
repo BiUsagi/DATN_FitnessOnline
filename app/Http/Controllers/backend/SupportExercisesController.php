@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Support_Exercise;
 
 class SupportExercisesController extends Controller
 {
@@ -11,4 +12,6 @@ class SupportExercisesController extends Controller
     {
         return view('backend/supportExercises/index');
     }
+
+    
 }
