@@ -781,9 +781,11 @@ input[placeholder]{
 .sidebar-nav .nav-content a.active i {
   background-color: #4154f1;
 }
+
 /* 123 */
 .sidebar-nav .nav-item .active {
   color: #4154f1;
+  background: #f6f9ff;
 }
 
 .sidebar-nav .nav-item .active i {
