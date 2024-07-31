@@ -72,7 +72,7 @@
         </a>
         <ul id="comment-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.comments')}}">
               <i class="bi bi-circle"></i><span>Danh sách bình luận</span>
             </a>
           </li>
