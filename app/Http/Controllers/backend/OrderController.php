@@ -11,7 +11,7 @@ class OrderController extends Controller
     {
         return view('backend/order/orders');
     }
-    public function customer()
+    public function user()
     {
         return view('backend/order/customer');
     }

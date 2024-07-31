@@ -61,5 +61,9 @@ Route::prefix('admin')->group(function () {
 
     // order - đơn hàng
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
-    Route::get('/customer', [OrderController::class, 'customer'])->name('admin.customer');
+    Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
+
+    // accounts - tài khoản
+    Route::get('/staff', [OrderController::class, 'orders'])->name('admin.staff');
+    Route::get('/customer', [OrderController::class, 'orders'])->name('admin.customer');
 });
