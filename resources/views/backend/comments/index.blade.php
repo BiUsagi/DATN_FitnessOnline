@@ -32,13 +32,19 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Thanh Rin</td>
-                      <td>Gym</td>
-                      <td class="" style="">IRGC cho hay một cận vệ của ông Haniyeh cũng thiệt mạng trong vụ ám sát. Cơ quan này đang tiến hành điều tra và sẽ công bố kết quả cuối ngày hôm nay.
-
-                        Hamas xác nhận Haniyeh bị "người theo chủ nghĩa phục quốc Do Thái" ám sát ở Iran sau khi dự lễ nhậm chức của tân Tổng thống Pezeshkian, nhưng không nêu chi tiết. Thuật ngữ "người theo chủ nghĩa phục quốc Do Thái" thường được Hamas sử dụng để chỉ Israel.</td>
-                      <td>2005/02/11</td>
-                      <td><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
+                        <td>Thanh Rin</td>
+                        <td>Gym</td>
+                        <td class="" style="white-space: nowrap;
+                                        overflow: hidden;         
+                                        text-overflow: ellipsis;
+                                        max-width: 200px">
+                                            IRGC cho hay một cận vệ của ông Haniyeh cũng thiệt mạng trong vụ ám sát. Cơ quan này đang tiến hành điều tra và sẽ công bố kết quả cuối ngày hôm nay.
+                                            Hamas xác nhận Haniyeh bị "người theo chủ nghĩa phục quốc Do Thái" ám sát ở Iran sau khi dự lễ nhậm chức của tân Tổng thống Pezeshkian, nhưng không nêu chi tiết. Thuật ngữ "người theo chủ nghĩa phục quốc Do Thái" thường được Hamas sử dụng để chỉ Israel.
+                        </td>
+                        <td>2005/02/11</td>
+                        <td style=" display: flex; justify-content: center;align-items: center;">
+                            <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+                        </td>
                     </tr>
                   </tbody>
                 </table>
