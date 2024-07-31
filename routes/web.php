@@ -37,6 +37,3 @@ Route::prefix('admin')->group(function () {
     Route::get('/supportexercises', [SupportExercisesController::class, 'index'])->name('admin.supportexercises');
     Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');
 });
-
-
-
