@@ -3,7 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\ConfigController;
+use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\ExerciseController;
+use App\Http\Controllers\backend\ExerciseSetController;
+use App\Http\Controllers\backend\MarketingController;
 use App\Http\Controllers\backend\OrderController;
+use App\Http\Controllers\backend\PostsController;
+use App\Http\Controllers\backend\StatisticalController;
+use App\Http\Controllers\backend\SupportExercisesController;
 
 
 
@@ -14,8 +22,19 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 
 // Back End
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/admin/order', [OrderController::class, 'index'])->name('admin.order');
+//Admin
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/config', [ConfigController::class, 'index'])->name('admin.config');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
+    Route::get('/exercise-set', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
+    Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
+    Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
+    Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
+    Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
+    Route::get('/support-exercises', [SupportExercisesController::class, 'index'])->name('admin.supportexercises');
+});
 
 
 
