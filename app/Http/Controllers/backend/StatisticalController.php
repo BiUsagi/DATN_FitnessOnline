@@ -11,4 +11,12 @@ class StatisticalController extends Controller
     {
         return view('backend/statistical/index');
     }
+    public function customer()
+    {
+        return view('backend/statistical/customer');
+    }
+    public function package()
+    {
+        return view('backend/statistical/package');
+    }
 }
