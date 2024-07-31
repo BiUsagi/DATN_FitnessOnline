@@ -756,6 +756,17 @@ h6 {
 .sidebar-nav .nav-content a.active i {
   background-color: #4154f1;
 }
+/* 123 */
+.sidebar-nav .nav-item .active {
+  color: #4154f1;
+}
+
+.sidebar-nav .nav-item .active i {
+  color: #4154f1;
+}
+
+
+
 
 /*--------------------------------------------------------------
 # Dashboard
