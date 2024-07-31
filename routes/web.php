@@ -29,6 +29,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/config', [ConfigController::class, 'index'])->name('admin.config');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
+    Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
