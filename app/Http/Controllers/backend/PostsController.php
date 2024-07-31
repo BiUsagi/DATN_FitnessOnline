@@ -10,4 +10,7 @@ class PostsController extends Controller
     public function index(){
         return view('backend/posts/index');
     }
+    public function create(){
+        return view('backend/posts/create');
+    }
 }

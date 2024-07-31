@@ -32,6 +32,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/backend/css/style.css" rel="stylesheet">
+  <link href="assets/backend/css/customize.css" rel="stylesheet">
+  
 
 </head>
 
