@@ -166,7 +166,7 @@
         <a class="nav-link collapsed {{ Request::is('admin/marketing*') ? 'active' : '' }}" data-bs-target="#marketing-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gift"></i><span>Tiếp thị</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="marketing-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="marketing-nav" class="nav-content collapse {{ Request::is('admin/marketing*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('admin.marketing')}}" class="{{ Request::is('admin/marketing*') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Các ưu đãi</span>
