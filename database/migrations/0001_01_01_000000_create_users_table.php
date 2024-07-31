@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('image')->nullable();
             $table->text('address')->nullable();
             $table->string('password');
-            $table->unsignedInteger('phone_number')->length(10);
+            $table->text('phone_number')->nullable();
             $table->timestamps();
         });
 
