@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ url('/admin') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -116,7 +116,7 @@
         </a>
         <ul id="order-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{ url('/admin/order') }}">
               <i class="bi bi-circle"></i><span>Đơn hàng</span>
             </a>
             <a href="components-alerts.html">
