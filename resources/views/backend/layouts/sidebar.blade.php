@@ -111,12 +111,12 @@
       </li><!-- End users -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#order-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed {{ Request::is('admin/order') ? 'active' : '' }}" data-bs-target="#order-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-handbag"></i><span>Quản lý đơn hàng</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="order-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="order-nav" class="nav-content collapse {{ Request::is('admin/order') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{route('admin.order')}}">
+            <a href="{{route('admin.order')}}" class="{{ Request::is('admin/order') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Đơn hàng</span>
             </a>
             <a href="">
