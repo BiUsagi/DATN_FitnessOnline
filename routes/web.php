@@ -40,5 +40,3 @@ Route::prefix('admin')->group(function () {
     Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
 });
 
-
-
