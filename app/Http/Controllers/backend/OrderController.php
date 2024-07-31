@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function orders()
     {
-        return view('backend/order/index');
+        return view('backend/order/orders');
+    }
+    public function customer()
+    {
+        return view('backend/order/customer');
     }
 }

@@ -31,9 +31,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
-    Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
     Route::get('/supportexercises', [SupportExercisesController::class, 'index'])->name('admin.supportexercises');
     Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');
+
+
+    // order
+    Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
+    Route::get('/customer', [OrderController::class, 'customer'])->name('admin.customer');
 });
