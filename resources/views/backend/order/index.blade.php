@@ -26,7 +26,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        <b>N</b>ame
+                                        <b>Name
                                     </th>
                                     <th>Ext.</th>
                                     <th>City</th>
