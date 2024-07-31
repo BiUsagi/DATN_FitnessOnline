@@ -35,7 +35,7 @@
                         <td>Thanh Rin</td>
                         <td>Gym</td>
                         <td class="" style="white-space: nowrap;
-                                        overflow: hidden;         
+                                        overflow: hidden;
                                         text-overflow: ellipsis;
                                         max-width: 200px">
                                             IRGC cho hay một cận vệ của ông Haniyeh cũng thiệt mạng trong vụ ám sát. Cơ quan này đang tiến hành điều tra và sẽ công bố kết quả cuối ngày hôm nay.
