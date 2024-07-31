@@ -3,12 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Chăm sóc khách hàng</h1>
+        <h1>Data Tables</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
-                <!-- <li class="breadcrumb-item"></li> -->
-                <li class="breadcrumb-item active">Chăm sóc khách hàng</li>
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -19,14 +19,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Danh sách câu hỏi</h5>
+                        <h5 class="card-title">Datatables</h5>
                         
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th>
-                                        <b>N</b>ame
+                                        <b>Name
                                     </th>
                                     <th>Ext.</th>
                                     <th>City</th>
