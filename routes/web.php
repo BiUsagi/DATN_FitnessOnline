@@ -31,7 +31,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/exercise-set', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
+
+    //Bài viết
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin.create');
+
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
     Route::get('/support-exercises', [SupportExercisesController::class, 'index'])->name('admin.supportexercises');
 });

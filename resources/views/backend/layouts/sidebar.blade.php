@@ -53,12 +53,12 @@
         </a>
         <ul id="posts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('admin.posts')}}">
               <i class="bi bi-circle"></i><span>Danh sách bài viết</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="{{route('admin.create')}}">
               <i class="bi bi-circle"></i><span>Thêm bài viết</span>
             </a>
           </li>
