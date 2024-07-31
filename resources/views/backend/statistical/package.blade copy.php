@@ -1,6 +1,6 @@
 @extends('backend/layouts/app-admin')
 @section('main')
     <main id="main" class="main">
-        doanh thu
+        gói tập
     </main>
 @endsection
