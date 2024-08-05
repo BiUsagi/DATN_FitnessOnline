@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <div class="title-top d-flex justify-content-between">
                                 <h5 class="card-title text-uppercase">Danh sách bài tập</h5>
-                                <a href="#" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm bài tập</a>
+                                <a href="{{route('admin.exercise-create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm bài tập</a>
                             </div>
                             
                             <!-- Table with stripped rows -->
