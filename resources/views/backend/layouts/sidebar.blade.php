@@ -44,7 +44,7 @@
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="{{route('admin.exercise-create')}}">
               <i class="bi bi-circle"></i><span>Thêm bài tập</span>
             </a>
           </li>

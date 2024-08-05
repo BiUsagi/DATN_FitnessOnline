@@ -29,11 +29,23 @@
     display: flex;
 }
 .select2 {
-    margin-top: 10px !important;
     width: 100% !important;
 }
 .select2-selection{
     border-radius: 3px !important;
     border: 1px solid #ebeef4 !important;
     font-size: 15px !important;
+}
+.select2-container--default{
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+}
+.select2-container--default .select2-selection--single{
+    border-color: #ebedf2 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 15px;
+}
+.select2-selection__arrow{
+    padding: 15px;
 }
