@@ -1297,6 +1297,16 @@ input[placeholder]{
   /* margin-top: 10px; */
   border-radius: 3px;
 }
+.form-control-select2{
+  display: block;
+  width: 100%;
+  border: 1px solid #ebeef4;
+  padding: 5px 10px;
+  font-size: 14px;
+  outline: none;
+  /* margin-top: 10px; */
+  border-radius: 3px;
+}
 .form-control-link{
   display: block;
   width: 100%;
@@ -1309,4 +1319,7 @@ input[placeholder]{
 }
 .input-group-text{
   border-radius: 3px 0 0 3px;
+}
+.setupSelect2{
+  padding: 5px 10px;
 }
