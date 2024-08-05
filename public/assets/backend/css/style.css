@@ -272,6 +272,7 @@ h6 {
   font-size: 14px;
   font-weight: 700;
   border: 1px solid #1face1;
+  transition: all .3s ease-in-out;
 }
 .btn-customize:hover{
   color: #333;
@@ -1295,4 +1296,17 @@ input[placeholder]{
   outline: none;
   /* margin-top: 10px; */
   border-radius: 3px;
+}
+.form-control-link{
+  display: block;
+  width: 100%;
+  border: 1px solid #ebeef4;
+  padding: 5px 10px;
+  font-size: 14px;
+  outline: none;
+  /* margin-top: 10px; */
+  border-radius: 0 3px 3px 0;
+}
+.input-group-text{
+  border-radius: 3px 0 0 3px;
 }
