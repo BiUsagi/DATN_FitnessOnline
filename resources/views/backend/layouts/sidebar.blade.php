@@ -26,7 +26,7 @@
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="{{route('admin.exerciseset-create')}}">
               <i class="bi bi-circle"></i><span>Thêm gói tập</span>
             </a>
           </li>

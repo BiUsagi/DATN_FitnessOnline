@@ -21,7 +21,7 @@
                     <div class="card-body">
                             <div class="title-top d-flex justify-content-between">
                                 <h5 class="card-title text-uppercase">Danh sách gói tập</h5>
-                                <a href="#" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm bài gói tập</a>
+                                <a href="{{route('admin.exerciseset-create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm mới gói tập</a>
                             </div>
                         <!-- <p>Add lightweight datatables to your project with using the <a
                                 href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
