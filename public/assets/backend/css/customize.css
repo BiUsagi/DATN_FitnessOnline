@@ -25,6 +25,9 @@
 #cke_2_contents{
     height: 400px !important;
 }
+.input-group-customize{
+    display: flex;
+}
 .select2 {
     width: 100% !important;
 }
