@@ -17,7 +17,7 @@ class SupportExercisesController extends Controller
                 return [
                     'id' => $item->id,
                     'content' => $item->content,
-                    'name_exercise' => $item->exercise->name_exercises ?? 'N/A',
+                    'name_exercise' => $item->exercise->name_exercise ?? 'N/A',
                     'name_user' => $item->user->name ?? 'N/A',
                     'created_at' => $item->created_at,
                 ];
