@@ -11,6 +11,10 @@ class Staff extends Model
 
     protected $table = 'staff';
 
+    // Khóa chính
+    protected $primaryKey = 'id';
+
+    // Các thuộc tính
     protected $fillable = [
         'id_user',
         'name_staff',
@@ -18,7 +22,20 @@ class Staff extends Model
         'image',
         'address',
         'password',
-        'phone_number',
+        'created_at',
+        'updated_at',
+        'phone_number'
+    ];
+
+    // Ẩn mật khẩu
+    protected $hidden = [
+        'password',
+    ];
+
+    // Kiểu dữ liệu
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public function user()
@@ -30,4 +47,6 @@ class Staff extends Model
     {
         return $this->hasMany(Support_Exercise::class, 'id_staff');
     }
+
+
 }

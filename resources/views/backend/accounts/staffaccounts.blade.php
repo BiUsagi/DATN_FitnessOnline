@@ -16,35 +16,54 @@
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Datatables</h5>
+                        <div class="title-top d-flex justify-content-between">
+                            <h5 class="card-title text-uppercase">Danh sách nhân viên</h5>
+                            <a href="{{route('admin.create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm nhân viên</a>
+                        </div>
                         
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <b>N</b>ame
-                                    </th>
-                                    <th>Ext.</th>
-                                    <th>City</th>
-                                    <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                    <th>Completion</th>
+                            <thead >
+                                <tr >
+                                    <th class="text-center">STT</th>
+                                    <th class="text-center">Ảnh</th>
+                                    <th>Tên</th>
+                                    <th>Email</th>
+                                    <th data-type="date" data-format="YYYY/DD/MM">Ngày Làm</th>
+                                    <th class="text-center">Hành Động</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @for ($i = 1; $i<=100; $i++)
+                                {{-- Lặp hiện thị danh sách nhân viên--}}
+
+                                @php $stt = 1; @endphp
+
+                                @foreach ($data as $item)
                                 <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>9958</td>
-                                    <td>Curicó</td>
-                                    <td>2005/02/11</td>
-                                    <td>37%</td>
+                                    <td class="text-center">
+                                        {{ $stt++ }}
+                                    </td>
+                                    <td class="text-center"> 
+                                        @if($item->image)
+                                            <img src="{{ $item->image }}" style="max-width: 100px;">
+                                        @else
+                                            <img src="{{ url('assets/backend/img/no-image.jpg') }}" style="max-width: 70px;">
+                                        @endif
+                                    </td>
+                                    <td>{{ $item->name_staff }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->created_at }}</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-info text-white"><i class="bi bi-eye-fill"></i></button>
+                                        <button type="button" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></button>
+                                        <button type="button" class="btn btn-danger"><i class="ri-delete-bin-5-line"></i></button>
+                                    </td>
                                 </tr>
-                                @endfor
+                                @endforeach 
+
                                 
 
                             </tbody>
