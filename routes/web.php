@@ -14,6 +14,7 @@ use App\Http\Controllers\backend\StatisticalController;
 use App\Http\Controllers\backend\SupportExercisesController;
 use App\Http\Controllers\backend\CommentController;
 use App\Http\Controllers\backend\ComponentController;
+use App\Http\Controllers\backend\AccountsController;
 
 
 
@@ -37,7 +38,6 @@ Route::prefix('admin')->group(function () {
     // exercise - bài tập
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
-    Route::get('/exercise-set', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
 
@@ -70,6 +70,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
 
     // accounts - tài khoản
-    Route::get('/staff', [OrderController::class, 'orders'])->name('admin.staff');
-    Route::get('/customer', [OrderController::class, 'orders'])->name('admin.customer');
+    Route::get('/staff', [AccountsController::class, 'staffaccount'])->name('admin.staff');
+    Route::get('/customer', [AccountsController::class, 'orders'])->name('admin.customer');
 });

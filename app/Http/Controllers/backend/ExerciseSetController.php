@@ -11,4 +11,9 @@ class ExerciseSetController extends Controller
     {
         return view('backend/ExerciseSet/index');
     }
+
+    public function createExercise_set()
+    {
+        return view('backend/ExerciseSet/create');
+    }
 }
