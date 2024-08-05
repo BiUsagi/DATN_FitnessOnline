@@ -29,8 +29,9 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nội dung</th>
-                                    <th>Bài tập</th>
                                     <th>Khách hàng</th>
+                                    <th>Bài tập</th>
+                                    <th>PT</th>
                                     <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
                                 </tr>
                             </thead>
@@ -40,8 +41,9 @@
                                     <tr>
                                         <td>{{ $sp['id'] }}</td>
                                         <td>{{ $sp['content'] }}</td>
-                                        <td>{{ $sp['name_exercise'] }}</td>
                                         <td>{{ $sp['name_user'] }}</td>
+                                        <td>{{ $sp['name_exercise'] }}</td>
+                                        <td>{{ $sp['name_staff'] }}</td>
                                         <td>{{ $sp['created_at'] }}</td>
                                     </tr>
                                 @endforeach

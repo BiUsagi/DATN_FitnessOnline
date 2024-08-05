@@ -44,6 +44,7 @@ Route::prefix('admin')->group(function () {
 
     // exerciseset - gói tập
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
+    Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
