@@ -79,7 +79,7 @@
                     <div class="card">
                         <div class="card-header text-uppercase">VIDEO</div>
                             <div class="card-body">
-                                <img class="img-cover" src="assets/backend/img/no-image.jpg" alt="">
+                                <img class="img-cover" src="assets/backend/img/no-video.jpg" alt="">
                             </div>
                     </div>
 
