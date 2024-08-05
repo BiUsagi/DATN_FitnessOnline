@@ -38,7 +38,6 @@ Route::prefix('admin')->group(function () {
     // exercise - bài tập
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
-    Route::get('/exercise-set', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
 

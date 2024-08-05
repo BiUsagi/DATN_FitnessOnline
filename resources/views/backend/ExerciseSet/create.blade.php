@@ -3,12 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Quản lí bài tập</h1>
+        <h1>Quản lí gói tập</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
-                <li class="breadcrumb-item">Quản lí bài tập</li>
-                <li class="breadcrumb-item active">Thêm mới bài tập</li>
+                <li class="breadcrumb-item">Quản lí gói tập</li>
+                <li class="breadcrumb-item active">Thêm mới gói tập</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -18,7 +18,7 @@
             <div class="col-lg-9">
                 
                 <div class="card">
-                    <div class="card-header text-uppercase">Thêm mới bài tập</div>
+                    <div class="card-header text-uppercase">Thêm mới gói tập</div>
                     <div class="card-body">                
 
                         <div class="col-12">
