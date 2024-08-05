@@ -19,14 +19,14 @@
         <a class="nav-link collapsed {{ Request::is('admin/exerciseset*') ? 'active' : '' }}" data-bs-target="#package-nav" data-bs-toggle="collapse" href="{{route('admin.exerciseset')}}">
           <i class="bi bi-archive"></i><span>Quản lý gói tập</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="package-nav" class="nav-content collapse {{ Request::is('admin/exerciseset*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+        <ul id="package-nav" class="nav-content collapse {{ Request::is('admin/exerciseset') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{route('admin.exerciseset')}}" class="{{ Request::is('admin/exerciseset*') ? 'active' : '' }}">
+            <a href="{{route('admin.exerciseset')}}" class="{{ Request::is('admin/exerciseset') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Danh sách gói tập</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="{{route('admin.exerciseset-create')}}" class="{{ Request::is('admin/exerciseset-create') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Thêm gói tập</span>
             </a>
           </li>
@@ -44,7 +44,7 @@
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="{{route('admin.exercise-create')}}">
               <i class="bi bi-circle"></i><span>Thêm bài tập</span>
             </a>
           </li>
