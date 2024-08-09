@@ -33,6 +33,7 @@
   <script src="assets/backend/plugins/ckeditor/ckeditor.js"></script>
   <script src="assets/backend/library/finder.js"></script>
   <script src="assets/backend/library/select2.js"></script>
+  <script src="assets/backend/library/seo.js"></script>
 
 </body>
 

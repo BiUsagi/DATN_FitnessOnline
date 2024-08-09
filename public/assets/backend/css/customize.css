@@ -49,3 +49,7 @@
 .select2-selection__arrow{
     padding: 15px;
 }
+input[name=link]{
+    color: navy !important;
+    font-weight: 600;
+}
