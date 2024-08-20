@@ -19,31 +19,45 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Danh sách câu hỏi</h5>
-                        
+                        <div class="title-top d-flex justify-content-between">
+                            <h5 class="card-title text-uppercase">Danh sách câu hỏi</h5>
+                        </div>
+
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Nội dung</th>
-                                    <th>Bài tập</th>
                                     <th>Khách hàng</th>
+                                    <th>Bài tập</th>
+                                    <th>PT</th>
                                     <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @for ($i = 1; $i<=100; $i++)
-                                <tr>
-                                    <td>{{$i}}</td>
-                                    <td>Bài này có khó quá không</td>
-                                    <td>Tập tay</td>
-                                    <td>Phước Luân</td>
-                                    <td>2005/02/11</td>
-                                </tr>
-                                @endfor
-                                
+                                @foreach ($supportExercises as $sp)
+                                    <tr>
+                                        <td>{{ $sp['id'] }}</td>
+                                        <td>{{ $sp['content'] }}</td>
+                                        <td>{{ $sp['name_user'] }}</td>
+                                        <td>{{ $sp['name_exercise'] }}</td>
+                                        <td>{{ $sp['name_staff'] }}</td>
+                                        <td>{{ $sp['created_at'] }}</td>
+                                    </tr>
+                                @endforeach
+
+                                <!-- @for ($i = 1; $i <= 100; $i++)
+                                    <tr>
+                                        <td>{{$i}}</td>
+                                        <td>Bài này có khó quá không</td>
+                                        <td>Tập tay</td>
+                                        <td>Phước Luân</td>
+                                        <td>2005/02/11</td>
+                                    </tr>
+                                @endfor -->
+
 
                             </tbody>
                         </table>

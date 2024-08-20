@@ -13,25 +13,19 @@
         </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
-                
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">    
-                            <h5 class="card-title">Danh sách bài tập</h5>
-                                <div class="btn btn-info mt-3 button-backend" style="height:40px;"> <a href="{{ route('admin.exercise-create') }}">➕ Thêm bài tập</a></div>
-                        </div>
-                        <!-- <p>Add lightweight datatables to your project with using the <a
-                                href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
-                                DataTables</a> library. Just add <code>.datatable</code> class name to any table you
-                            wish to conver to a datatable. Check for <a
-                                href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more
-                                examples</a>.</p> -->
 
-                        <!-- Table with stripped rows -->
-                        <table class="table datatable">
+    <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="title-top d-flex justify-content-between">
+                                <h5 class="card-title text-uppercase">Danh sách bài tập</h5>
+                                <a href="{{route('admin.exercise-create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm bài tập</a>
+                            </div>
+                            
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -61,13 +55,13 @@
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->
-
+    
+                        </div>
                     </div>
+    
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
 </main><!-- End #main -->
 @endsection

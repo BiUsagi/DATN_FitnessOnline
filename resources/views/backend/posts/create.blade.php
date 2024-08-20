@@ -22,15 +22,15 @@
                             <div class="card-body">
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Tiêu đề <span class="note">(*)</span></label>
-                                    <input type="text" class="form-control-customize" id="inputNanme4">
+                                    <input type="text" class="form-control-customize" name="title" id="inputNanme4">
                                 </div>
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                    <input type="text" class="form-control-customize" id="inputNanme4">
+                                    <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Nội dung <span class="note">(*)</span></label>
-                                    <input type="text" class="form-control-customize" id="inputNanme4">
+                                    <textarea type="text" class="form-control-customize ck-editor" id="content" data_height="500"></textarea>
                                 </div>
                             </div>
                     </div>
@@ -42,13 +42,13 @@
                                     <div class="box-seo d-flex mt-3">
                                         <img class="img-seo" src="assets/backend/img/no-image.jpg" alt="">
                                         <div class="title-top-seo">
-                                            <div class="name-seo">BachhoaXANH.com</div>
-                                            <span class="url-seo">https://www.bachhoaxanh.com/...</span>
+                                            <div class="name-seo">GymFit.com</div>
+                                            <span class="url-seo">{{ config('app.url') }}</span>
                                         </div>  
                                     </div>
                                     <div class="title-seo">
-                                        <span class="title-customize mt-2">Du lịch Gia Lai: Cẩm nang du lịch và 32 địa điểm đẹp, hấp ...</span>
-                                        <p class="title-customize-small">Gia Lai là một trong những danh lam thắng cảnh tại Việt Nam. Cẩm nang du lịch Gia Lai và 32 địa điểm du lịch đẹp, hấp dẫn chi tiết nhất...</p>
+                                        <span class="title-customize mt-2 meta-title">GymFit</span>
+                                        <p class="title-customize-small meta-description">Cung cấp 1 thẻ mô tả bằng cách sửa đoạn trích dẫn bên dưới. Nếu bạn không có thẻ mô tả, Google sẽ thử tìm 1 phần thích hợp trong bài viết của bạn để hiển thị cho kết quả tìm kiếm.</p>
                                     </div>
                                     
                                 </div>
@@ -63,18 +63,17 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="label d-flex justify-content-between">
-                                        <label for="inputNanme4" class="form-label-customize">Cụm từ khóa chính</label>
+                                        <label for="inputNanme4" class="form-label-customize">Từ khóa SEO</label>
                                         <span class="form-label-customize">0 ký tự</span>
                                     </div>
                                     <input type="text" class="form-control-customize" id="inputNanme4">
                                 </div>
                                 <div class="col-12">
                                     <div class="label d-flex justify-content-between">
-                                        <label for="inputNanme4" class="form-label-customize">Thẻ mô tả</label>
+                                        <label for="inputNanme4" class="form-label-customize">Mô tả SEO</label>
                                         <span class="form-label-customize">0 ký tự</span>
                                     </div>
-                                    {{-- <template type="text" class="form-control-customize" id="inputNanme4"></template> --}}
-                                    <textarea name="" id="" class="form-control-customize" cols="20" rows="10"></textarea>
+                                    <textarea class="form-control-customize" name="description" cols="20" rows="10"></textarea>
                                 </div>
                                 
                                 <div class="col-12">
@@ -82,8 +81,12 @@
                                         <label for="inputNanme4" class="form-label-customize">Đường dẫn</label>
                                         {{-- <span class="form-label-customize">0 ký tự</span> --}}
                                     </div>
-                                    <input type="text" class="form-control-customize" id="inputNanme4">
+                                    <div class="input-group-customize mb-3">
+                                        <span class="input-group-text baseURL" id="basic-addon3" style="font-size: 14px">{{ config('app.url') }}</span>
+                                        <input type="text" class="form-control-link" name="link" id="basic-url" aria-describedby="basic-addon3" style="outline: none;">
+                                    </div>
                                 </div>
+                                
                             </div>
                     </div>
                 </div>
@@ -98,11 +101,11 @@
                     <div class="card">
                         <div class="card-header text-uppercase">Trạng thái</div>
                             <div class="card-body">
-                                {{-- <select name="" id="">
+                                <select name="" id="select2" class="form-control-select2 setupSelect2">
                                     <option value="0">Trạng thái</option>
                                     <option value="1">Công khai bài viết</option>
                                     <option value="2">Ẩn bài viết</option>
-                                </select> --}}
+                                </select>
                                 {{-- <img class="img-cover" src="assets/backend/img/no-image.jpg" alt=""> --}}
                             </div>
                     </div>

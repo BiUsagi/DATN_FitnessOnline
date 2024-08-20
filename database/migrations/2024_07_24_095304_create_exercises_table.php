@@ -18,6 +18,7 @@ class CreateExercisesTable extends Migration
                 $table->id();
                 $table->unsignedBigInteger('id_gym_package');
                 $table->string('name_exercise');
+                $table->text('description')->nullable();
                 $table->text('video_exercise')->nullable();
                 $table->timestamps();
 
@@ -25,7 +26,7 @@ class CreateExercisesTable extends Migration
             });
         }
     }
-
+    
     /**
      * Reverse the migrations.
      *
