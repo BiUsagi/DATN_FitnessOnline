@@ -16,13 +16,13 @@ class CreateExercisesTable extends Migration
         if (!Schema::hasTable('exercises')) {
             Schema::create('exercises', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('id_gym_package');
+                $table->unsignedBigInteger('gym_package_id');
                 $table->string('name_exercise');
                 $table->text('description')->nullable();
                 $table->text('video_exercise')->nullable();
                 $table->timestamps();
 
-                $table->foreign('id_gym_package')->references('id')->on('gym_packages')->onDelete('cascade');
+                $table->foreign('gym_package_id')->references('id')->on('gym_packages')->onDelete('cascade');
             });
         }
     }

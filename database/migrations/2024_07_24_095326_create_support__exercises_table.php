@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('support_exercises', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_exercise');
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_staff');
+            $table->unsignedBigInteger('exercise_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('staff_id');
             $table->text('content');
             $table->timestamps();
 
-            $table->foreign('id_exercise')->references('id')->on('exercises')->onDelete('cascade');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_staff')->references('id')->on('staff')->onDelete('cascade');
+            $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
         });
     }
 

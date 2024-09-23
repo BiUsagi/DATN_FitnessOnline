@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_staff');
+            $table->unsignedBigInteger('staff_id');
             $table->text('title');
             $table->text('content');
             $table->text('image')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_staff')->references('id')->on('staff')->onDelete('cascade');
+            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
         });
     }
 

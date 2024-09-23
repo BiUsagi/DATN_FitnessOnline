@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('gym_packages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_staff');
+            $table->unsignedBigInteger('staff_id');
             $table->string('name_package');
             $table->text('image')->nullable();
             $table->text('description');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('tool')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_staff')->references('id')->on('staff')->onDelete('cascade');
+            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
         });
     }
 

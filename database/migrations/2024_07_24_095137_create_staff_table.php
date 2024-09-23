@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->string('name_staff');
+            $table->unsignedBigInteger('user_id');
+            $table->string('staff_name');
             $table->string('email')->unique();
-            $table->text('image')->nullable();
+            $table->text('avatar')->nullable();
             $table->text('address')->nullable();
             $table->string('password');
             $table->text('phone_number')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
