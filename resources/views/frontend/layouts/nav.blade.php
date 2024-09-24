@@ -33,7 +33,7 @@
                                         <a class="nav-link" href="blog.html">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link btn" href="{{route('contact.index')}}">Contact Us</a>
+                                        <a class="nav-link btn" href="{{route('login.index')}}">Đăng nhập</a>
                                     </li>
                                 </ul>
                             </div>
