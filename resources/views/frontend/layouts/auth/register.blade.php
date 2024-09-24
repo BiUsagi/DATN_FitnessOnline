@@ -31,7 +31,7 @@
                     <input type="password" class="form-control1" placeholder="Mật khẩu">
                 </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-5">
                 <div class="d-flex">
                     <span class="input-group-text">
                         <i class="bi bi-lock"></i>
