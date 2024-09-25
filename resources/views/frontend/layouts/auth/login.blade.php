@@ -36,7 +36,7 @@
                     <input type="checkbox" class="form-check-input" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">Nhớ mật khẩu</label>
                 </div>
-                <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                <a href="#" id="btn-login1" class="forgot-password">Quên mật khẩu?</a>
             </div>
 
             <button type="submit" class="button">Đăng nhập</button>
@@ -47,8 +47,33 @@
         </div>
     </div>
 
+    <!-- <div class="overflow">
+        <div class="box1">
+            <div class="modal1">
+                12123
+            </div>
+        </div>
+
+    </div> -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script>
+        const btn = document.getElementById('btn-login');
+        const modal1 = document.querySelector('.modal1');
+        const overflow =document.querySelector('.overflow');
+        btn.addEventListener('click', function(){
+            overflow.classList.add('active1');
+        })
+        overflow.addEventListener('click', function(){
+            overflow.classList.remove('active1');
+        });
+        modal1.addEventListener('click', function(e){
+            e.stopPropagation();
+        })
 
+    
+
+    </script>
 </body>
 </html>
