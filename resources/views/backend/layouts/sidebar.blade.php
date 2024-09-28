@@ -38,11 +38,12 @@
         </li><!-- End gói tập -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed {{ Request::is('admin/exercise*') ? 'active' : '' }}"
+            <a class="nav-link collapsed {{ Request::is('admin/exercise') || Request::is('admin/exercise/create') ? 'active' : '' }}"
                 data-bs-target="#exercise-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-book-half"></i><span>Quản lý bài tập</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="exercise-nav" class="nav-content collapse {{ Request::is('admin/exercise*') ? 'show' : '' }}"
+            <ul id="exercise-nav"
+                class="nav-content collapse {{ Request::is('admin/exercise') || Request::is('admin/exercise/create') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('admin.exercise') }}"
