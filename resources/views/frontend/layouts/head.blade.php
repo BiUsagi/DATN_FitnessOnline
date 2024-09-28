@@ -34,6 +34,11 @@
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/swiper.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/app.css'>
+    <link rel="stylesheet" href="assets/frontend/css/login.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <script src="assets/frontend/js/login.js"></script>
+
 
 	<script>
 		const hasSupport = 'loading' in HTMLImageElement.prototype;

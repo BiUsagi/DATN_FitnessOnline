@@ -1,3 +1,5 @@
+<script src="assets/frontend/js/login.js"></script>
+
 <header>
         <div class="navigation-wrap start-style">
             <div class="container">
@@ -33,7 +35,7 @@
                                         <a class="nav-link" href="blog.html">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link btn" href="{{route('contact.index')}}">Contact Us</a>
+                                        <a id="btn-login" class="nav-link btn" href="#">Đăng nhập</a>
                                     </li>
                                 </ul>
                             </div>
@@ -42,4 +44,46 @@
                 </div>
             </div>
         </div>
+        <div class="overflow">
+            <div class="box1">
+                <div class="modal1">
+                    <h2>ĐĂNG NHẬP</h2>
+                    <form>
+                        <div class="mb-4">
+                            <div class="d-flex">
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control1" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input type="password" class="form-control1" placeholder="Mật khẩu">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Nhớ mật khẩu</label>
+                            </div>
+                            <a href="#" id="" class="forgot-password">Quên mật khẩu?</a>
+                        </div>
+
+                        <button type="submit" class="button">Đăng nhập</button>
+
+                    </form>
+                    <div class="register-link">
+                        Bạn chưa có tài khoản → <a href="{{route(name: 'register.index')}}">Đăng ký</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
+   
+    
+
+    
