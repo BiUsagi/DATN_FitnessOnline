@@ -27,7 +27,8 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 //Auth;
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index');;
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+;
 
 
 
@@ -78,6 +79,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
 
     // accounts - tài khoản
-    Route::get('/staff', [AccountsController::class, 'staffaccount'])->name('admin.staff');
-    Route::get('/customer', [AccountsController::class, 'orders'])->name('admin.customer');
+    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
+    Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
 });
