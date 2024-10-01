@@ -109,8 +109,8 @@
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                     <li class="dropdown-header">
-                        You have 3 new messages
-                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        Bạn có 3 tin nhắn mới
+                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Xem tất cả</span></a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
@@ -120,9 +120,9 @@
                         <a href="#">
                             <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
                             <div>
-                                <h4>Maria Hudson</h4>
-                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                <p>4 hrs. ago</p>
+                                <h4>Luân</h4>
+                                <p>Lẹ lẹ lên, không là gạch tên khỏi nhóm nha</p>
+                                <p>4 giờ trước</p>
                             </div>
                         </a>
                     </li>
@@ -134,9 +134,9 @@
                         <a href="#">
                             <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
                             <div>
-                                <h4>Anna Nelson</h4>
-                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                <p>6 hrs. ago</p>
+                                <h4>Rin</h4>
+                                <p>Chờ tí, mới ngủ dậy. Ăn cái rồi Rin gửi qua cho...</p>
+                                <p>6 giờ trước</p>
                             </div>
                         </a>
                     </li>
@@ -148,9 +148,9 @@
                         <a href="#">
                             <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
                             <div>
-                                <h4>David Muldon</h4>
-                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                <p>8 hrs. ago</p>
+                                <h4>Luân</h4>
+                                <p>Thằng Rin làm xong đóc ciu mần chưa, lâu thế. Với đừng đi trễ...</p>
+                                <p>8 giờ trước</p>
                             </div>
                         </a>
                     </li>
@@ -159,7 +159,7 @@
                     </li>
 
                     <li class="dropdown-footer">
-                        <a href="#">Show all messages</a>
+                        <a href="#">Xem tất cả tin nhắn</a>
                     </li>
 
                 </ul><!-- End Messages Dropdown Items -->
