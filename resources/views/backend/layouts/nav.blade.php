@@ -109,7 +109,7 @@
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                     <li class="dropdown-header">
-                        Bạn có 3 thông báo mới
+                        Bạn có 3 tin nhắn mới
                         <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Xem tất cả</span></a>
                     </li>
                     <li>
@@ -159,7 +159,7 @@
                     </li>
 
                     <li class="dropdown-footer">
-                        <a href="#">Show all messages</a>
+                        <a href="#">Xem tất cả tin nhắn</a>
                     </li>
 
                 </ul><!-- End Messages Dropdown Items -->
