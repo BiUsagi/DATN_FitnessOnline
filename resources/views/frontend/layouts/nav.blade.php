@@ -35,7 +35,7 @@
                                         <a class="nav-link" href="blog.html">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id="btn-login" class="nav-link btn" href="#">Đăng nhập</a>
+                                        <a id="btn-login" class="nav-link btn">Đăng nhập</a>
                                     </li>
                                 </ul>
                             </div>
@@ -50,21 +50,26 @@
             <div class="box1">
                 <div class="modal1">
                     <h2>ĐĂNG NHẬP</h2>
-                    <form method="POST" >
+                    <form method="POST" action="{{route('login.index')}}">
+                        @csrf
                         <div class="mb-4">
                             <div class="d-flex">
                                 <span class="input-group-text">
                                     <i class="bi bi-envelope"></i>
                                 </span>
-                                <input type="email" class="form-control1" placeholder="Email">
+                                <input name="email" type="email" class="form-control1" placeholder="Email">
+                                
                             </div>
+                            <div class="alert text-danger">
+                                {{$errors->first('email')}}
+                                </div>
                         </div>
                         <div class="mb-3">
                             <div class="d-flex">
                                 <span class="input-group-text">
                                     <i class="bi bi-lock"></i>
                                 </span>
-                                <input type="password" class="form-control1" placeholder="Mật khẩu">
+                                <input name="pass" type="password" class="form-control1" placeholder="Mật khẩu">
                             </div>
                         </div>
                         <div class="d-flex justify-content-between mb-4">
@@ -74,6 +79,7 @@
                             </div>
                             <a href="#" id="" class="forgot-password">Quên mật khẩu?</a>
                         </div>
+                        
 
                         <button type="submit" class="button">Đăng nhập</button>
                         
