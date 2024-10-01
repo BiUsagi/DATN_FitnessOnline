@@ -5,12 +5,18 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Staff;
+use App\Models\User;
 
 class AccountsController extends Controller
 {
-    public function staffaccount()
+    public function staff_account()
     {
         $data = Staff::all();
-        return view('backend/accounts/staffaccounts', compact('data'));
+        return view('backend/accounts/staff_accounts', compact('data'));
+    }
+    public function customer_account()
+    {
+        $data = User::all();
+        return view('backend/accounts/customer_accounts', compact('data'));
     }
 }

@@ -79,6 +79,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
 
     // accounts - tài khoản
-    Route::get('/staff', [AccountsController::class, 'staffaccount'])->name('admin.staff');
-    Route::get('/customer', [AccountsController::class, 'orders'])->name('admin.customer');
+    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
+    Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
 });
