@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('support_exercises', function (Blueprint $table) {
+        Schema::create('gym_packages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('exercise_id');
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('staff_id');
-            $table->text('content');
+            $table->string('name_package');
+            $table->text('image')->nullable();
+            $table->text('description');
+            $table->string('price');
+            $table->string('tool')->nullable();
             $table->timestamps();
 
-            $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('support__exercises');
+        Schema::dropIfExists('gym_packages');
     }
 };
