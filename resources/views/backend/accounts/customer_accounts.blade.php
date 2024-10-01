@@ -57,8 +57,10 @@
                                             </td>
                                             <td>{{ $item->email }}</td>
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-info text-white"><i
-                                                        class="bi bi-eye-fill"></i></button>
+                                                <a href="{{ route('admin.customer.info', ['id' => $item->id]) }}"
+                                                    class="btn btn-info text-white">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </a>
                                                 <button type="button" class="btn btn-warning text-white"><i
                                                         class="ri-edit-box-line"></i></button>
                                                 <button type="button" class="btn btn-danger"><i

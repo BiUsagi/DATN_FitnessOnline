@@ -19,4 +19,11 @@ class AccountsController extends Controller
         $data = User::all();
         return view('backend/accounts/customer_accounts', compact('data'));
     }
+
+    public function customer_info($id)
+    {
+        $data = User::where('id', $id)->first();
+        return view('backend/accounts/info_customer', compact('data'));
+    }
+
 }
