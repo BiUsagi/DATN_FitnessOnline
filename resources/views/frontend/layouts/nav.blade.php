@@ -44,11 +44,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- form đăng nhập -->
         <div class="overflow">
             <div class="box1">
                 <div class="modal1">
                     <h2>ĐĂNG NHẬP</h2>
-                    <form>
+                    <form method="POST" >
                         <div class="mb-4">
                             <div class="d-flex">
                                 <span class="input-group-text">
@@ -74,7 +76,7 @@
                         </div>
 
                         <button type="submit" class="button">Đăng nhập</button>
-
+                        
                     </form>
                     <div class="register-link">
                         Bạn chưa có tài khoản → <a href="{{route(name: 'register.index')}}">Đăng ký</a>
