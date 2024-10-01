@@ -43,7 +43,7 @@
                                     <th>Giá tiền</th>
                                     <th>Dụng cụ</th>
                                     <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
-                                    <th>Completion</th>
+                                    <th>PT</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,7 +57,7 @@
                                     <td>100.000 VND</td>
                                     <td>Tạ đơn, Máy chạy bộ</td>
                                     <td>31/07/2024</td>
-                                    <td>37%</td>
+                                    <td>Hữu Chiến</td>
                                 </tr>
                                 @endfor
                                 
