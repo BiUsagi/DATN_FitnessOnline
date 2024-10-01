@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                    <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100"></textarea>
+                                    <textarea type="text" class="form-control-customize"id="description" data_height="100"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Nội dung <span class="note">(*)</span></label>
