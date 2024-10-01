@@ -46,14 +46,18 @@ Route::prefix('admin')->group(function () {
 
     // exercise - bài tập
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
+    
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
-    Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
+    Route::post('/exercise/store', [ExerciseController::class, 'store'])->name('admin.exercise-store');
+    
+
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
 
 
     // exerciseset - gói tập
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
+    Route::post('/exerciseset/create',[ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
