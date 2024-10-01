@@ -12,6 +12,10 @@ class ExerciseController extends Controller
         return view('backend/Exercise/index');
     }
 
+    public function store(Request $request){
+        echo "add exercise";
+    }
+
     public function createExercise()
     {
         return view('backend/Exercise/create');

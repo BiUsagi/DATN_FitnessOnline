@@ -16,7 +16,7 @@ var HT = {};
             elementHeight = 500;
         }
         CKEDITOR.replace(elementId, {
-            height: elementHeight,
+            height: 500,
             removeButtons: '',
             entities: true,
             allowedContent: true,
