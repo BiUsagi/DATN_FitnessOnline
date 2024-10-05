@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action="#" method="post">
+        <form action="{{route('admin.exercise-store')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-lg-9">
