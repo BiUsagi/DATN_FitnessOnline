@@ -83,19 +83,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
 
-    // accounts - tài khoản
-<<<<<<< HEAD
-    Route::get('/staff', [AccountsController::class, 'staffaccount'])->name('admin.staff');
-    Route::get('/customer', [AccountsController::class, 'orders'])->name('admin.customer');
     //siles
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
     Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.create');
-=======
+
+    // accounts - tài khoản
     Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
     Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info');
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info');
     // Route::get('/editcustomer/{id}', [AccountsController::class, 'edit_customer'])->name('admin.customer.edit');
     // Route::delete('/deletecustomer/{id}', [AccountsController::class, 'delete_customer'])->name('admin.customer.delete');
->>>>>>> 2e7c50906ea6c575096e2d393ec8e10a92325b50
 });
