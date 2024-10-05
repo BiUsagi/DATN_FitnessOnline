@@ -26,8 +26,11 @@ Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 
 //Auth;
+Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
+// Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
+
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index');;
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 
 
 
@@ -84,4 +87,8 @@ Route::prefix('admin')->group(function () {
     // accounts - tài khoản
     Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
+    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info');
+    Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info');
+    // Route::get('/editcustomer/{id}', [AccountsController::class, 'edit_customer'])->name('admin.customer.edit');
+    // Route::delete('/deletecustomer/{id}', [AccountsController::class, 'delete_customer'])->name('admin.customer.delete');
 });
