@@ -8,16 +8,13 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    // function index() {
-    //     return view('frontend/layouts/auth/login');
-    // }
     function login_(Request $request){
         $request->validate([
             'email' => 'required',
             'pass' => 'required'
         ],[
-            'email.required' => 'Email không được để trống',
-            'pass.required' => 'Mật khẩu không được để trống'
+            'email.required' => 'Email không được để trống !',
+            'pass.required' => 'Mật khẩu không được để trống !'
         ]);
         
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -25,6 +22,7 @@ class LoginController extends Controller
             $pass = $_POST['pass'];
         }
         $user = User::where('email', $email)->first();
+        $pass = User::where('password', $email)->first();
  
     }
 }

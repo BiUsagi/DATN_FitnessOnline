@@ -58,11 +58,8 @@
                                     <i class="bi bi-envelope"></i>
                                 </span>
                                 <input name="email" type="email" class="form-control1" placeholder="Email">
-                                
                             </div>
-                            <div class="alert text-danger">
-                                {{$errors->first('email')}}
-                                </div>
+                            <p class="text text-danger">{{$errors->first('email')}}</p>
                         </div>
                         <div class="mb-3">
                             <div class="d-flex">
@@ -71,6 +68,7 @@
                                 </span>
                                 <input name="pass" type="password" class="form-control1" placeholder="Mật khẩu">
                             </div>
+                            <p class="text text-danger">{{$errors->first('pass')}}</p>
                         </div>
                         <div class="d-flex justify-content-between mb-4">
                             <div class="form-check">
