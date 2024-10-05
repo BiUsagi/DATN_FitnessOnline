@@ -17,8 +17,7 @@ use App\Http\Controllers\backend\SupportExercisesController;
 use App\Http\Controllers\backend\CommentController;
 use App\Http\Controllers\backend\ComponentController;
 use App\Http\Controllers\backend\AccountsController;
-
-
+use App\Http\Controllers\backend\SlidesController;
 
 //Front End
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -80,4 +79,7 @@ Route::prefix('admin')->group(function () {
     // accounts - tài khoản
     Route::get('/staff', [AccountsController::class, 'staffaccount'])->name('admin.staff');
     Route::get('/customer', [AccountsController::class, 'orders'])->name('admin.customer');
+    //siles
+    Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
+    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.create');
 });
