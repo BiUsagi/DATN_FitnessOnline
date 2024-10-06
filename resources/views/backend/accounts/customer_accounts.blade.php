@@ -48,14 +48,10 @@
                                             </td>
                                             <td>
                                                 {{-- Avatar --}}
-                                                @if ($item->avatar)
-                                                    <img src="{{ $item->avatar }}" style="width: 55px; height: 55px;"
-                                                        class="rounded-circle object-fit-cover me-2">
-                                                @else
-                                                    <img src="{{ url('assets/backend/img/no-image.jpg') }}"
-                                                        style="width: 55px; height: 55px;"
-                                                        class="rounded-circle object-fit-cover me-2">
-                                                @endif
+                                                <img src="assets/backend/img/{{ $item->avatar }}"
+                                                    style="width: 55px; height: 55px;"
+                                                    class="rounded-circle object-fit-cover me-2">
+
                                                 {{-- name --}}
                                                 {{ $item->user_name }}
 
@@ -183,8 +179,11 @@
 
                 // Cập nhật thông tin trong bảng
                 $('tr').each(function() {
-                    if ($(this).find('td:eq(0)').text().trim() == response.id) { 
-                        $(this).find('td:eq(1)').text(response.user_name);
+                    if ($(this).find('td:eq(0)').text().trim() == response.id) {
+                        $(this).find('td:eq(1)').html(`
+                <img src="assets/backend/img/${response.avatar}" style="width: 55px; height: 55px;" class="rounded-circle object-fit-cover me-2">
+                ${response.user_name}
+            `);
                         $(this).find('td:eq(2)').text(response.phone_number);
                         $(this).find('td:eq(3)').text(response.email);
                     }

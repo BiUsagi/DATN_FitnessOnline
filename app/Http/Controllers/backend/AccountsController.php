@@ -54,7 +54,7 @@ class AccountsController extends Controller
             $user->user_name = $request->user_name;
             $user->email = $request->email;
             $user->phone_number = $request->phone_number;
-            $user->address = $request->address; // Cập nhật địa chỉ nếu cần
+            $user->address = $request->address;
             $user->save();
 
             // Trả về dữ liệu người dùng đã cập nhật
