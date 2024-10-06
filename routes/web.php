@@ -46,10 +46,10 @@ Route::prefix('admin')->group(function () {
 
     // exercise - bài tập
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
-    
+
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
     Route::post('/exercise/create_', [ExerciseController::class, 'store'])->name('admin.exercise-store');
-    
+
 
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
 
@@ -57,7 +57,7 @@ Route::prefix('admin')->group(function () {
     // exerciseset - gói tập
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
-    Route::post('/exerciseset/create',[ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
+    Route::post('/exerciseset/create', [ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
@@ -92,6 +92,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
     Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info');
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info');
+    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('admin.customer.edit');
+    Route::post('/update-user', action: [AccountsController::class, 'updateUser'])->name('admin.customer.update');
     // Route::get('/editcustomer/{id}', [AccountsController::class, 'edit_customer'])->name('admin.customer.edit');
     // Route::delete('/deletecustomer/{id}', [AccountsController::class, 'delete_customer'])->name('admin.customer.delete');
 });
