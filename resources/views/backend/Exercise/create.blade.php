@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action="{{route('admin.exercise-store')}}" method="post">
+        <form action="{{route('admin.exercise-add')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-lg-9">
@@ -24,7 +24,7 @@
                         <div class="card-body">   
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Tên bài tập <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4">
+                                <input type="text" class="form-control-customize" name="exercise-name" id="inputNanme4">
                             </div>
                             
                             <div class="col-12">
@@ -33,20 +33,16 @@
                                 </div>
                                 <div class="input-group-customize mb-3">
                                     <span class="input-group-text baseURL" id="basic-addon3" style="font-size: 14px">https://www.youtube.com/watch?v=</span>
-                                    <input type="text" class="form-control-link" name="link" id="basic-url" aria-describedby="basic-addon3" style="outline: none;">
+                                    <input type="text" class="form-control-link" name="exercise-id" id="basic-url" aria-describedby="basic-addon3" style="outline: none;">
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100"></textarea>
+                                <textarea type="text" class="form-control-customize ck-editor" id="description" name="exercise-description" data_height="100"></textarea>
                             </div>
-                            
-                            <input type="submit" class="btn btn-primary mt-3" value="+ Thêm bài tập">
-
                         </div>
                     </div>
-
                     <div class="card">
                             <div class="card-header text-uppercase">BÀI TẬP VỪA THÊM</div>
                                 <div class="card-body">                   
@@ -67,18 +63,14 @@
 
                                         </tbody>
                                     </table>     
-
                                 </div>
                         </div>
-
-
                 </div>
-
                 <div class="col-lg-3">
                         <div class="card">
                                 <div class="card-header text-uppercase">Trạng thái</div>
                                 <div class="card-body">
-                                    <select name="" id="select2" class="form-control-select2 setupSelect2">
+                                    <select name="exercise-status" id="select2" class="form-control-select2 setupSelect2">
                                         <option value="0">Trạng thái</option>
                                         <option value="1">Công khai bài viết</option>
                                         <option value="2">Ẩn bài viết</option>
@@ -98,9 +90,11 @@
                                     </select>
                                 </div>
                         </div>
-                        
+                        <div class="btn-add-reset d-flex justify-content-between ms-2 me-2">
+                            <input type="submit" class="btn btn-primary mt-3" value="+ Thêm bài tập">
+                            <input type="reset" class="btn btn-secondary mt-3" value="Hoàn tác">
+                        </div>
                 </div>
-
                 </div>
             </div>
         </form>

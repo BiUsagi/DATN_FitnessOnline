@@ -49,7 +49,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
     
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
-    Route::post('/exercise/create_', [ExerciseController::class, 'store'])->name('admin.exercise-store');
+    Route::post('/exercise/create_', [ExerciseController::class, 'add'])->name('admin.exercise-add');
     
 
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
