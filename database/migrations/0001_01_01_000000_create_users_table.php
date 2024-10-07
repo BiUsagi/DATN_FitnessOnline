@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('user_name');
             $table->string('email')->unique();
-            $table->text('avatar')->nullable();
+            $table->text('avatar')->default('no-image.jpg');
             $table->text('address')->nullable();
             $table->date('birthday')->nullable();
             $table->string('password');
