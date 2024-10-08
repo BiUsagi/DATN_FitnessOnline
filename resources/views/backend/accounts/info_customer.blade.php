@@ -32,6 +32,14 @@
                                         <strong>Họ và tên:</strong> {{ $data->user_name }}
                                     </h4>
                                     <ul class="list-group list-group-flush">
+                                        {{-- Ngày Sinh --}}
+                                        <li class="list-group-item">
+                                            <strong>Ngày Sinh:</strong> {{ $data->birthday }}
+                                        </li>
+                                        <!-- SDT -->
+                                        <li class="list-group-item">
+                                            <strong>Số Điện Thoại:</strong> {{ $data->phone_number }}
+                                        </li>
                                         <!-- Email -->
                                         <li class="list-group-item">
                                             <strong>Email:</strong> {{ $data->email }}

@@ -26,7 +26,21 @@ class ExerciseSetController extends Controller
         $set->description = $_POST['mota'];
         $set->tool = $_POST['dungcu'];
         $set->staff_id = $_POST['pt'];
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
+            $filename = time().'.'.$extension;
+            $file->move('uploads/gym_package', $filename);
+            $set->image = $filename;
+        }
+
         $set->save();
         return view('backend/ExerciseSet/index');
+    }
+
+    public function update($id)
+    {
+        return view('backend/ExerciseSet/update');
     }
 }
