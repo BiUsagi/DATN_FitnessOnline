@@ -51,7 +51,12 @@
                                     <td style="vertical-align: middle;">{{$slide->email}}</td>
                                     <td style="vertical-align: middle;">{{$slide->address}}</td>
                                     <td style="vertical-align: middle;">{{$slide->phone_number}}</td>
-                                    <td style="vertical-align: middle;"><button type="button" class="btn btn-success">Sửa</button><button type="button" class="btn btn-danger">xóa</button></td>
+                                    <td class="text-center align-middle">
+                                        {{-- sua --}}
+                                        <button type="button" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></button>
+                                        <button type="button" class="btn btn-danger"><i
+                                                class="ri-delete-bin-5-line"></i></button>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
