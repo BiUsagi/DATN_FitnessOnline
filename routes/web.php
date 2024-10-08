@@ -26,6 +26,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
+Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index');
 // Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
@@ -48,7 +49,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
 
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
-    Route::post('/exercise/create_', [ExerciseController::class, 'store'])->name('admin.exercise-store');
+    Route::post('/exercise/create_', [ExerciseController::class, 'add'])->name('admin.exercise-add');
 
 
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
@@ -86,7 +87,7 @@ Route::prefix('admin')->group(function () {
     //siles
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
     Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.create');
-
+    Route::post('/slides/create', [SlidesController::class, 'create_']);
     // accounts - tài khoản
     Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');

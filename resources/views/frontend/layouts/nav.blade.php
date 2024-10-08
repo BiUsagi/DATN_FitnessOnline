@@ -46,31 +46,34 @@
         </div>
 
         <!-- form đăng nhập -->
-        <div class="overflow">
+        <div class="overflow-login" id="loginPopup">
             <div class="box1">
                 <div class="modal1">
-                    <h2>ĐĂNG NHẬP</h2>
-                    <form method="POST" action="{{route('login.index')}}">
+                <span class="x-lg" id="x-remove">
+                    <i class="bi bi-x-lg"></i>
+                </span>
+                    <h4>ĐĂNG NHẬP</h4>
+                    <form method="POST" action="{{route('login.index')}}" id="loginForm">
                         @csrf
-                        <div class="mb-4">
+                        <div class="">
                             <div class="d-flex">
                                 <span class="input-group-text">
                                     <i class="bi bi-envelope"></i>
                                 </span>
-                                <input name="email" type="email" class="form-control1" placeholder="Email">
+                                <input name="email" type="text" class="form-control1" placeholder="Email">
                             </div>
-                            <p class="text text-danger">{{$errors->first('email')}}</p>
+                            <p class="errors">{{$errors->first('email')}}</p>
                         </div>
-                        <div class="mb-3">
+                        <div class="mt-3">
                             <div class="d-flex">
                                 <span class="input-group-text">
                                     <i class="bi bi-lock"></i>
                                 </span>
                                 <input name="pass" type="password" class="form-control1" placeholder="Mật khẩu">
                             </div>
-                            <p class="text text-danger">{{$errors->first('pass')}}</p>
+                            <p class="errors">{{$errors->first('pass')}}</p>
                         </div>
-                        <div class="d-flex justify-content-between mb-4">
+                        <div class="d-flex justify-content-between mt-2 mb-3">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="rememberMe">
                                 <label class="form-check-label" for="rememberMe">Nhớ mật khẩu</label>
@@ -83,8 +86,80 @@
                         
                     </form>
                     <div class="register-link">
-                        Bạn chưa có tài khoản → <a href="{{route(name: 'register.index')}}">Đăng ký</a>
+                        <p class="text-question">Bạn chưa có tài khoản → <a id="login-rigister" class="register">Đăng ký</a></p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- form đăng ký -->
+
+        <div class="overflow-rigister" id="loginPopup">
+            <div class="box2">
+                <div class="modal2">
+                <span class="x-lg" id="x-remove">
+                    <i class="bi bi-x-lg"></i>
+                </span>
+                    <h4>ĐĂNG KÝ</h4>
+                    <form method="POST" action="{{route('rigister.index')}}" id="loginForm">
+                        @csrf
+                        <!-- họ tên -->
+                        <div class="">
+                            <div class="d-flex">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <input name="name" type="text" class="form-control1" placeholder="Họ tên">
+                            </div>
+                            <p class="errors">{{$errors->first('email')}}</p>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mt-3">
+                            <div class="d-flex">
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                                <input name="email" type="text" class="form-control1" placeholder="Email">
+                            </div>
+                            <p class="errors">{{$errors->first('email')}}</p>
+                        </div>
+
+                        <!-- mật khẩu -->
+                        <div class="mt-3">
+                            <div class="d-flex">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input name="pass" type="password" class="form-control1" placeholder="Mật khẩu">
+                            </div>
+                            <p class="errors">{{$errors->first('pass')}}</p>
+                        </div>
+                        <!-- nhập lại mật khẩu -->
+                        <div class="mt-3">
+                            <div class="d-flex">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input name="pass" type="password" class="form-control1" placeholder=" Nhập Lại Mật khẩu">
+                            </div>
+                            <p class="errors">{{$errors->first('pass')}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2 mb-3">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Nhớ mật khẩu</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="button">Đăng Ký</button>
+                        <div class="register-link">
+                        <p class="text-question">Bạn đã có tài khoản → <a href="{{route(name: 'login.index')}}" class="register">Đăng Nhập</a></p>
+                    </div>
+
+                        
+                    </form>
+                    
                 </div>
             </div>
         </div>

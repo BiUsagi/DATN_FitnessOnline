@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('exercise_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('staff_id');
-            $table->unsignedBigInteger('staff_id');
             $table->unsignedBigInteger('rep');
             $table->text('content');
             $table->timestamps();
