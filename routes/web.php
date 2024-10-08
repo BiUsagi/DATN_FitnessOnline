@@ -26,6 +26,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
+Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index');
 // Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');

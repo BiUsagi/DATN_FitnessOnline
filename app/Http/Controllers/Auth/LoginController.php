@@ -10,10 +10,11 @@ class LoginController extends Controller
 {
     function login_(Request $request){
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'pass' => 'required'
         ],[
             'email.required' => 'Email không được để trống !',
+            'email.email' => 'Email phải có @ !',
             'pass.required' => 'Mật khẩu không được để trống !'
         ]);
         
