@@ -86,7 +86,7 @@
                         
                     </form>
                     <div class="register-link">
-                        <p class="text-question">Bạn chưa có tài khoản → <a id="login-rigister" class="register">Đăng ký</a></p>
+                        <p class="text-question">Bạn chưa có tài khoản → <a id="btn-rigister" class="register">Đăng ký</a></p>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
         <div class="overflow-rigister" id="loginPopup">
             <div class="box2">
                 <div class="modal2">
-                <span class="x-lg" id="x-remove">
+                <span class="x-lg" id="x-remove2">
                     <i class="bi bi-x-lg"></i>
                 </span>
                     <h4>ĐĂNG KÝ</h4>
@@ -154,7 +154,7 @@
                         
                         <button type="submit" class="button">Đăng Ký</button>
                         <div class="register-link">
-                        <p class="text-question">Bạn đã có tài khoản → <a href="{{route(name: 'login.index')}}" class="register">Đăng Nhập</a></p>
+                        <p class="text-question">Bạn đã có tài khoản → <a id="btn-login2" class="register">Đăng Nhập</a></p>
                     </div>
 
                         

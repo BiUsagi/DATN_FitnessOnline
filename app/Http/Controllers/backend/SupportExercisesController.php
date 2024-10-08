@@ -11,15 +11,15 @@ class SupportExercisesController extends Controller
     public function index()
     {
         $supportExercises = Support_Exercise::with(['exercise', 'user', 'staff'])
-            ->select('id', 'content', 'id_exercise', 'id_user', 'id_staff', 'created_at')
+            ->select('id', 'content', 'exercise_id', 'user_id', 'staff_id', 'created_at')
             ->get()
             ->map(function ($item) {
                 return [
                     'id' => $item->id,
                     'content' => $item->content,
-                    'name_exercise' => $item->exercise->name_exercise ?? 'N/A',
-                    'name_user' => $item->user->name ?? 'N/A',
-                    'name_staff' => $item->staff->name_staff ?? 'N/A',
+                    'exercise_name' => $item->exercise->exercise_name ?? 'N/A',
+                    'user_name' => $item->user->user_name ?? 'N/A',
+                    'staff_name' => $item->staff->staff_name ?? 'N/A',
                     'created_at' => $item->created_at,
                 ];
             });

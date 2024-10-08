@@ -41,9 +41,9 @@
                                     <tr>
                                         <td>{{ $sp['id'] }}</td>
                                         <td>{{ $sp['content'] }}</td>
-                                        <td>{{ $sp['name_user'] }}</td>
-                                        <td>{{ $sp['name_exercise'] }}</td>
-                                        <td>{{ $sp['name_staff'] }}</td>
+                                        <td>{{ $sp['user_name'] }}</td>
+                                        <td>{{ $sp['exercise_name'] }}</td>
+                                        <td>{{ $sp['staff_name'] }}</td>
                                         <td>{{ $sp['created_at'] }}</td>
                                     </tr>
                                 @endforeach
