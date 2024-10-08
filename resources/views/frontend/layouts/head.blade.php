@@ -38,6 +38,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <script src="assets/frontend/js/login.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 	<script>

@@ -63,8 +63,8 @@
                                             <td class="text-center align-middle">
                                                 {{-- xem --}}
                                                 <a href="{{ route('admin.customer.info', ['id' => $item->id]) }}"
-                                                    class="btn btn-info text-white ">
-                                                    <i class="bi bi-eye-fill"></i>
+                                                    class="btn btn-info text-white">
+                                                    <i class="ri-eye-fill"></i>
                                                 </a>
                                                 {{-- sua --}}
                                                 <button type="button" class="btn btn-warning text-white"
