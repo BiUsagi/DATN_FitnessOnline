@@ -35,24 +35,59 @@
                             @foreach($slides as $index => $slide)
                                 <tr>
                                     <td style="vertical-align: middle;">{{ $index + 1 }}</td>
-                                    <td style="vertical-align: middle;">{{$slide->title}}</td>
+                                    <td style="vertical-align: middle;">{{ $slide->title }}</td>
                                     <td style="vertical-align: middle;">
                                         @if($slide->image)
-                                        <img src="{{ asset($slide->image) }}" alt="Avatar" width="70" height="70"  style="  object-fit: cover;">
-                                    @else
-                                        No Image
-                                    @endif
+                                            <img src="{{ asset($slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: cover;">
+                                        @else
+                                            No Image
+                                        @endif
                                     </td>
                                     <td class="text-center align-middle">
-                                        {{-- sua --}}
+                                        {{-- Nút sửa --}}
                                         <button type="button" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></button>
-                                                    <a href="{{route('admin.xoa',$slide->id )}}" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?');"  class="btn btn-danger"><i
-                                            class="ri-delete-bin-5-line"></i></a>
-
+                        
+                                        {{-- Nút kích hoạt modal với data-id --}}
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $slide->id }}">
+                                            <i class="ri-delete-bin-5-line"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
+                        {{-- modal --}}
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Bạn có chắc chắn muốn xóa bài viết này không?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                        <a href="#" class="btn btn-danger" id="confirmDelete">Xóa</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                var deleteModal = document.getElementById('deleteModal');
+                                var confirmDeleteButton = document.getElementById('confirmDelete');
+                        
+                                deleteModal.addEventListener('show.bs.modal', function (event) {
+                                    var button = event.relatedTarget; // Nút kích hoạt modal
+                                    var slideId = button.getAttribute('data-id'); // Lấy id từ data-id
+                        
+                                    // Tạo đường dẫn xóa từ route và gán vào nút xác nhận
+                                    var deleteUrl = '{{ route('admin.xoa', ['id' => ':id']) }}'.replace(':id', slideId);
+                                    confirmDeleteButton.setAttribute('href', deleteUrl);
+                                });
+                            });
+                        </script>                                                
                     </table>
                     <!-- End Table with stripped rows -->
 
@@ -61,6 +96,8 @@
 
         </div>
     </div>
+
+   
 </section>
 </main>
 @endsection

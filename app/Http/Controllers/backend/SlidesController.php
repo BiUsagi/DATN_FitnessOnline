@@ -37,13 +37,17 @@ class SlidesController extends Controller
         }
         // Lưu thông tin vào cơ sở dữ liệu
         $t->save(); 
-        toastr()->success('Thêm bài tập thành công!');   
+        toastr()->success('Thêm giao diện thành công!');   
         return redirect()->route('admin.slides');
     }
     //xóa
     function xoa($id){
         $t= Slides::find($id);
         $t -> delete();
+        toastr()->success('Xóa thành công!');   
         return redirect()->route('admin.slides');
+    }
+    function update($id){
+        $t=Slides::find($id);
     }
 }

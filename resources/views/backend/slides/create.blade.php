@@ -32,8 +32,8 @@
                             <div class="card-header text-uppercase">Thông tin chung</div>
                                 <div class="card-body">
                                     <div class="col-12">
-                                        <label for="inputNanme5" class="form-label-customize">Mô tả: <span class="note">(*)</span></label>
-                                        <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="title" value="{{ old('title') }}" required></textarea>
+                                        <label for="inputNanme4" class="form-label-customize">Mô tả:<span class="note">(*)</span></label>
+                                        <input type="text" class="form-control-customize"name="title" id="inputNanme4" value="{{ old('title') }}" required>
                                         @error('title')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
