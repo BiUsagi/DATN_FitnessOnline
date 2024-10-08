@@ -16,6 +16,7 @@ class SlidesController extends Controller
     public function create(){
         return view('backend/slides/create');
     }
+    //thêm
     function create_( Request $request){
         $request->validate([
             'title' => 'required',
@@ -37,7 +38,12 @@ class SlidesController extends Controller
         // Lưu thông tin vào cơ sở dữ liệu
         $t->save(); 
         toastr()->success('Thêm bài tập thành công!');   
-        return view('backend/slides/create');
+        return redirect()->route('admin.slides');
     }
-
+    //xóa
+    function xoa($id){
+        $t= Slides::find($id);
+        $t -> delete();
+        return redirect()->route('admin.slides');
+    }
 }

@@ -46,8 +46,9 @@
                                     <td class="text-center align-middle">
                                         {{-- sua --}}
                                         <button type="button" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></button>
-                                        <button type="button" class="btn btn-danger"><i
-                                                class="ri-delete-bin-5-line"></i></button>
+                                                    <a href="{{route('admin.xoa',$slide->id )}}" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?');"  class="btn btn-danger"><i
+                                            class="ri-delete-bin-5-line"></i></a>
+
                                     </td>
                                 </tr>
                             @endforeach
