@@ -25,24 +25,39 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Title</th>
-                                <th>Avatar</th>
-                                <th>Avatar</th>
-                                <th>Completion</th>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Mô tả</th>
+                                <th>Ảnh</th>
+                                <th>Email</th>
+                                <th>Địa chỉ</th>
+                                <th>SDT</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($slides as $slide)
-                            <tr>
-                                <td>{{$slide->name_user}}</td>
-                                <td>{{$slide->title}}</td>
-                                <td>{{$slide->avatar}}</td>
-                                <td>{{$slide->email}}</td>
-                                <td>{{$slide->address}}</td>
-                                <td>{{$slide->address}}</td>
-                                <td>{{$slide->address}}</td>
-                            </tr>
+                            @foreach($slides as $index => $slide)
+                                <tr>
+                                    <td style="vertical-align: middle;">{{ $index + 1 }}</td>
+                                    <td style="vertical-align: middle;">{{$slide->name_user}}</td>
+                                    <td style="vertical-align: middle;">{{$slide->title}}</td>
+                                    <td style="vertical-align: middle;">
+                                        @if($slide->avatar)
+                                        <img src="{{ asset($slide->avatar) }}" alt="Avatar" width="70" height="70"  style="  object-fit: cover;">
+                                    @else
+                                        No Image
+                                    @endif
+                                    </td>
+                                    <td style="vertical-align: middle;">{{$slide->email}}</td>
+                                    <td style="vertical-align: middle;">{{$slide->address}}</td>
+                                    <td style="vertical-align: middle;">{{$slide->phone_number}}</td>
+                                    <td class="text-center align-middle">
+                                        {{-- sua --}}
+                                        <button type="button" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></button>
+                                        <button type="button" class="btn btn-danger"><i
+                                                class="ri-delete-bin-5-line"></i></button>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
