@@ -49,9 +49,7 @@
                                             <td>
                                                 {{-- Avatar --}}
                                                 <img src="assets/backend/img/{{ $item->avatar }}"
-                                                    style="width: 55px; height: 55px;"
-                                                    class="rounded-circle object-fit-cover me-2">
-
+                                                    class="rounded-circle object-fit-cover me-2 avatar-table">
                                                 {{-- name --}}
                                                 {{ $item->user_name }}
 
