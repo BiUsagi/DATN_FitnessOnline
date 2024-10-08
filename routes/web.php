@@ -86,7 +86,7 @@ Route::prefix('admin')->group(function () {
     //siles
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
     Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.create');
-
+    Route::post('/slides/create', [SlidesController::class, 'create_']);
     // accounts - tài khoản
     Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
