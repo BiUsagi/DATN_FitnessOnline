@@ -95,6 +95,7 @@
         cursor: pointer; /* Con trỏ chuột khi di chuột qua */
         border-radius: 4px; /* Bo góc */
         transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+        width: 140px;
     }
 
     .btn-replies:hover {
