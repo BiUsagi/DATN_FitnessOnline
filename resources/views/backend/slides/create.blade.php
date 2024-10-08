@@ -32,36 +32,8 @@
                             <div class="card-header text-uppercase">Thông tin chung</div>
                                 <div class="card-body">
                                     <div class="col-12">
-                                        <label for="inputNanme4" class="form-label-customize">Tên:<span class="note">(*)</span></label>
-                                        <input type="text" class="form-control-customize" name="name_user" id="inputNanme1" value="{{ old('name_user') }}">
-                                        @error('name_user')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="inputNanme4" class="form-label-customize">Email:<span class="note">(*)</span></label>
-                                        <input type="email" class="form-control-customize" name="email" id="inputNanme2" value="{{ old('email') }}" required>
-                                        @error('email')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="inputNanme4" class="form-label-customize">Địa chỉ:<span class="note">(*)</span></label>
-                                        <input type="text" class="form-control-customize" name="address" id="inputNanme3" value="{{ old('address') }}" required>
-                                        @error('address')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="inputNanme4" class="form-label-customize">SĐT:<span class="note">(*)</span></label>
-                                        <input type="text" class="form-control-customize" name="phone_number" id="inputNanme4" value="{{ old('phone_number') }}" required>
-                                        @error('phone_number')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="inputNanme5" class="form-label-customize">Mô tả: <span class="note">(*)</span></label>
-                                        <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="title" value="{{ old('title') }}" required></textarea>
+                                        <label for="inputNanme4" class="form-label-customize">Mô tả:<span class="note">(*)</span></label>
+                                        <input type="text" class="form-control-customize"name="title" id="inputNanme4" value="{{ old('title') }}" required>
                                         @error('title')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -82,7 +54,7 @@
                                         style="cursor: pointer;" 
                                         onclick="document.getElementById('avatar-input').click();" 
                                     >
-                                    <input type="file" name="avatar" id="avatar-input" class="form-control" style="display: none;" onchange="previewImage(event)">
+                                    <input type="file" name="image" id="avatar-input" class="form-control" style="display: none;" onchange="previewImage(event)">
                                 </div>
                                 <script>
                                     function previewImage(event) {
