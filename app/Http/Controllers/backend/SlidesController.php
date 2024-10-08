@@ -54,7 +54,8 @@ class SlidesController extends Controller
         }
     
         // Lưu thông tin vào cơ sở dữ liệu
-        $t->save();    
+        $t->save(); 
+        toastr()->success('Thêm bài tập thành công!');   
         return view('backend/slides/create');
     }
 
