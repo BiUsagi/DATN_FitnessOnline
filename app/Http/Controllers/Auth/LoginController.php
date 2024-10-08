@@ -3,14 +3,27 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    // function index() {
-    //     return view('frontend/layouts/auth/login');
-    // }
-    function login_(){
-
+    function login_(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'pass' => 'required'
+        ],[
+            'email.required' => 'Email không được để trống !',
+            'email.email' => 'Email phải có @ !',
+            'pass.required' => 'Mật khẩu không được để trống !'
+        ]);
+        
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $email = $_POST['email'];
+            $pass = $_POST['pass'];
+        }
+        $user = User::where('email', $email)->first();
+        $pass = User::where('password', $email)->first();
+ 
     }
 }

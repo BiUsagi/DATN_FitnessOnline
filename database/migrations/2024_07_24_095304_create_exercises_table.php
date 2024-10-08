@@ -17,7 +17,7 @@ class CreateExercisesTable extends Migration
             Schema::create('exercises', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('gym_package_id');
-                $table->string('name_exercise');
+                $table->string('exercise_name');
                 $table->text('description')->nullable();
                 $table->text('video_exercise')->nullable();
                 $table->timestamps();

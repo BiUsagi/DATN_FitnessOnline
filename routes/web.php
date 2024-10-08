@@ -17,8 +17,7 @@ use App\Http\Controllers\backend\SupportExercisesController;
 use App\Http\Controllers\backend\CommentController;
 use App\Http\Controllers\backend\ComponentController;
 use App\Http\Controllers\backend\AccountsController;
-
-
+use App\Http\Controllers\backend\SlidesController;
 
 //Front End
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -26,8 +25,12 @@ Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 
 //Auth;
+Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
+Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index');
+// Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
+
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index');;
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 
 
 
@@ -44,8 +47,11 @@ Route::prefix('admin')->group(function () {
 
     // exercise - bài tập
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
+
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
-    Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
+    Route::post('/exercise/create_', [ExerciseController::class, 'add'])->name('admin.exercise-add');
+
+
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
 
 
@@ -53,10 +59,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     //create_goitap
     Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
+<<<<<<< HEAD
     Route::post('/exerciseset/create',[ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
     //update_goi_tap
     Route::get('/exerciseset/update', [ExerciseSetController::class, 'update'])->name('admin.exerciseset-update');
 
+=======
+    Route::post('/exerciseset/create', [ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
+>>>>>>> 134792c8376ddcc39c5dfdb25a92a4293d0a8d12
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
@@ -82,7 +92,17 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
 
+    //siles
+    Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
+    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.create');
+    Route::post('/slides/create', [SlidesController::class, 'create_']);
     // accounts - tài khoản
     Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
+    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info');
+    Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info');
+    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('admin.customer.edit');
+    Route::post('/update-user', action: [AccountsController::class, 'updateUser'])->name('admin.customer.update');
+    // Route::get('/editcustomer/{id}', [AccountsController::class, 'edit_customer'])->name('admin.customer.edit');
+    // Route::delete('/deletecustomer/{id}', [AccountsController::class, 'delete_customer'])->name('admin.customer.delete');
 });

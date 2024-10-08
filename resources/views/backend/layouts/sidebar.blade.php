@@ -172,29 +172,31 @@
                     </a>
                     <!-- <a href="{{ route('admin.statistical') }}" class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Thống kê khách hàng</span> -->
-                    </a>
-                    <a href="{{ route('admin.statistical') }}"
-                        class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Thống kê gói tập</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- End interface -->
-
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#interface-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-layout-wtf"></i><span>Giao diện</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="interface-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="components-alerts.html">
-                        <i class="bi bi-circle"></i><span>Layout</span>
-                    </a>
+            <a href="{{route('admin.statistical')}}" class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Thống kê gói tập</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End interface -->
+      <li class="nav-item">
+        <a class="nav-link collapsed {{ Request::is('admin/slides*') ? 'active' : '' }}" data-bs-target="#slides-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-wtf"></i><span>Giao diện</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="slides-nav" class="nav-content collapse {{ Request::is('admin/slides*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('admin.slides')}}" class="{{ Request::is('admin/slides') ? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Layout</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('admin.create')}}" class="{{ Request::is('admin/slides/create') ? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Thêm</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End interface -->
 
-                </li>
-            </ul>
-        </li><!-- End interface -->
 
         <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/marketing*') ? 'active' : '' }}"

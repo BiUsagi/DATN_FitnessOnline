@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                    <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100"></textarea>
+                                    <textarea type="text" class="form-control-customize"id="description" data_height="100"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Nội dung <span class="note">(*)</span></label>
@@ -94,9 +94,13 @@
                 <div class="col-lg-3">
                     <div class="card">
                         <div class="card-header text-uppercase">Ảnh đại diện</div>
-                            <div class="card-body">
-                                <img class="img-cover" src="assets/backend/img/no-image.jpg" alt="">
-                            </div>
+                            <div class="upload-img">
+                                <span class="image-target">
+                                    <img src="{{ old('image_posts', 'assets/backend/img/no-image.jpg') }}" alt="" class="upload-image img-cover">
+                                </span>
+                                <input type="hidden" name="image_posts">
+                            </div>  
+
                     </div>
                     <div class="card">
                         <div class="card-header text-uppercase">Trạng thái</div>
