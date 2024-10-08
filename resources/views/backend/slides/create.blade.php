@@ -33,7 +33,7 @@
                                 <div class="card-body">
                                     <div class="col-12">
                                         <label for="inputNanme4" class="form-label-customize">Mô tả:<span class="note">(*)</span></label>
-                                        <input type="text" class="form-control-customize"name="title" id="inputNanme4" value="{{ old('title') }}" required>
+                                        <input type="text" class="form-control-customize"name="title" id="inputNanme4" value="{{ old('title') }}">
                                         @error('title')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

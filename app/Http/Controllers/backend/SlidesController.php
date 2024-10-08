@@ -19,11 +19,12 @@ class SlidesController extends Controller
     //thêm
     function create_( Request $request){
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|regex:/^[^\d].*$/',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], 
         [
             'title.required' => 'Mô tả không được để trống.',
+            'title.regex' => 'Mô tả không được viết số đầu tiên.',
         ]);
         $t = new Slides;
         $t->title = $request->title;
