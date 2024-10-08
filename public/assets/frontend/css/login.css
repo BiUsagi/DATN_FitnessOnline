@@ -99,15 +99,21 @@ a{
 
 .overflow-login .box1 .modal1{
 	background: rgba(0, 0, 0, 0.9);
-	padding: 15px 30px 30px 30px;
+	padding: 30px;
 	width: 370px;
 	height: 450px;
 	color: white;
 	border-radius: 7%;
+	position: relative;
+	display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
 }
-.overflow-rigister .box1 .modal1{
+.overflow-rigister .box2 .modal2{
 	background: rgba(0, 0, 0, 0.9);
 	padding: 15px 30px 30px 30px;
+	position: relative;
 	width: 450px;	
 	color: white;
 	border-radius: 7%;
@@ -118,7 +124,15 @@ a{
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	animation: show .2s linear;
+	animation: show .3s linear;
+}
+
+.box2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	animation: show .3s linear;
 }
 
  /* animation */
@@ -138,7 +152,7 @@ a{
 	margin-bottom: 30px;
 	font-weight: bold;
 }
-.overflow-rigister .box1 .modal1 h4{
+.overflow-rigister .box2 .modal2 h4{
 	text-align: center;
 	margin-bottom: 30px;
 	font-weight: bold;
@@ -159,7 +173,12 @@ a{
 	justify-content: right;
 	text-align: right;
 	font-size: 30px;
+	position: absolute;
 	cursor: pointer;
+	font-size: 14px;
+	top: 5px;
+	right: 15px;
+
 }
 
 .register{
