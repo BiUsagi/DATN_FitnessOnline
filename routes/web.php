@@ -51,8 +51,12 @@ Route::prefix('admin')->group(function () {
 
     // exerciseset - gói tập
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
+    //create_goitap
     Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
     Route::post('/exerciseset/create',[ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
+    //update_goi_tap
+    Route::get('/exerciseset/update', [ExerciseSetController::class, 'update'])->name('admin.exerciseset-update');
+
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');

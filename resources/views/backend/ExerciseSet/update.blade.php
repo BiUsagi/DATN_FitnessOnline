@@ -8,7 +8,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
                 <li class="breadcrumb-item">Quản lí gói tập</li>
-                <li class="breadcrumb-item active">Thêm mới gói tập</li>
+                <li class="breadcrumb-item active">Cập nhật gói tập</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
