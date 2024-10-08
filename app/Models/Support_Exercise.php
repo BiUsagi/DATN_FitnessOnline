@@ -21,16 +21,16 @@ class   Support_Exercise extends Model
 
     public function exercise()
     {
-        return $this->belongsTo(Exercise::class, 'id_exercise');
+        return $this->belongsTo(Exercise::class, 'exercise_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function staff()
     {
-        return $this->belongsTo(Staff::class, 'id_staff');
+        return $this->belongsTo(Staff::class, 'staff_id');
     }
 }
