@@ -8,13 +8,13 @@
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item">Quản lý giao diện</li>
-                <li class="breadcrumb-item active">Thêm giao diện</li>
+                <li class="breadcrumb-item active">Update giao diện</li>
               </ol>
             </nav>
           </div><!-- End Page Title -->
 
           <section class="section">
-            <form action="{{ route('admin.update', $slide->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.slide.update', $slide->id) }}" method="POST" enctype="multipart/form-data">
                 {{-- @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -45,7 +45,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <input type="submit" class="btn btn-primary mt-3" value="Thêm">
+                                    <input type="submit" class="btn btn-primary mt-3" value="Sửa">
                                 </div>
                         </div>
                     </div>
