@@ -87,6 +87,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
 
+
+    //___________________________________ Rin Lít Đờ __________________________ FaKe ____________________________________//
     //siles
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
     Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');
