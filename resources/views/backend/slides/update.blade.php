@@ -14,7 +14,7 @@
           </div><!-- End Page Title -->
 
           <section class="section">
-            <form action="{{route('admin.create')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.update', $slide->id) }}" method="POST" enctype="multipart/form-data">
                 {{-- @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -33,7 +33,7 @@
                                 <div class="card-body">
                                     <div class="col-12">
                                         <label for="inputNanme4" class="form-label-customize">Mô tả:<span class="note">(*)</span></label>
-                                        <input type="text" class="form-control-customize"name="title" id="inputNanme4" value="{{ old('title') }}">
+                                        <input type="text" class="form-control-customize"name="title" id="inputNanme4" value="{{ old('title', $slide->title)}}">
                                         @error('title')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
