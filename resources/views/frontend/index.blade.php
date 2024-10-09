@@ -31,8 +31,8 @@
                         <div class="banner-slide">
                             <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/' . $slide->image) }}" alt="banner-slide" width="550" height="700">
                             <div class="banner-text">
-                                <h2 data-swiper-parallax="-800">{{$slide->name}}</h2>
-                                <h3 data-swiper-parallax="-1000">{{$slide->description}}</h3>
+                                <h2 data-swiper-parallax="-800">{{$slide->description}}</h2>
+                                <h3 data-swiper-parallax="-1000">{{$slide->name}}</h3>
                             </div>
                         </div>
                     </div>
