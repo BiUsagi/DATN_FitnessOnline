@@ -36,6 +36,8 @@
     <link href="assets/backend/css/customize.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+
+
     <script>
         var BASE_URL = '{{ config('app.url') }}'
     </script>
