@@ -33,9 +33,9 @@
                     <!-- password -->
                     <div class="input-box">
                         <span class="icon">
-                            <i class="bi bi-eye-fill"></i>
+                            <i class="bi bi-eye-fill" id="login-icon-password"></i>
                         </span>
-                        <input type="password" required>
+                        <input type="password" id="password-input-login" required>
                         <label>Password</label>
                     </div>
                     <!-- nhớ pass -->
@@ -76,17 +76,17 @@
                     <!-- Mật khẩu -->
                     <div class="input-box">
                         <span class="icon">
-                            <i class="bi bi-lock-fill"></i>
+                            <i class="bi bi-eye-fill" id="register-icon-password"></i>
                         </span>
-                        <input type="password" required>
+                        <input type="password" id="password-input-register" required>
                         <label>Mật khẩu</label>
                     </div>
                     <!-- Nhập lại mật khẩu -->
                     <div class="input-box">
                         <span class="icon">
-                            <i class="bi bi-lock-fill"></i>
+                            <i class="bi bi-eye-fill" id="register-icon-password2"></i>
                         </span>
-                        <input type="password" required>
+                        <input type="password" id="password-input-register2" required>
                         <label>Nhập lại mật khẩu</label>
                     </div>
                     <div class="remember-forgot">
