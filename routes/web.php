@@ -95,10 +95,14 @@ Route::prefix('admin')->group(function () {
     Route::post('/slides/create', [SlidesController::class, 'create_']);
     Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
     Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
+    Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
 
 
 
     //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
+
 
 
 

@@ -25,27 +25,29 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Mô tả</th>
-                                <th>Ảnh</th>
-                                <th>Hành động</th>
+                                <th class="text-center" >STT</th>
+                                <th class="text-center" >Name</th>
+                                <th class="text-center" >Mô tả</th>
+                                <th class="text-center" >Ảnh</th>
+                                <th class="text-center" >Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($slides as $index => $slide)
                                 <tr>
-                                    <td style="vertical-align: middle;">{{ $index + 1 }}</td>
-                                    <td style="vertical-align: middle;">{{ $slide->title }}</td>
-                                    <td style="vertical-align: middle;">
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $index + 1 }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $slide->name }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $slide->description }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">
                                         @if($slide->image)
-                                            <img src="{{ asset($slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: cover;">
+                                            <img src="{{ asset('assets/backend/img/'.$slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: cover;">
                                         @else
                                             No Image
                                         @endif
                                     </td>
                                     <td class="text-center align-middle">
                                         {{-- Nút sửa --}}
-                                        <button type="button" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></button>
+                                        <a href="{{ route('admin.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a>
                         
                                         {{-- Nút kích hoạt modal với data-id --}}
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $slide->id }}">
