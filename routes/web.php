@@ -59,7 +59,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     //create_goitap
     Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
-    Route::post('/exerciseset/create',[ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
+    Route::post('/exerciseset/create', [ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
     //update_goi_tap
     Route::get('/exerciseset/update', [ExerciseSetController::class, 'update'])->name('admin.exerciseset-update');
 
@@ -93,15 +93,20 @@ Route::prefix('admin')->group(function () {
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
     Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.create');
     Route::post('/slides/create', [SlidesController::class, 'create_']);
-    Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.xoa');
-    Route::get('/slides/update/{id}',[SlidesController::class,'update'])->name('admin.update');
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
+
+
+
+    //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
+
+
+
     // accounts - tài khoản
-    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
-    Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
-    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info');
-    Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info');
-    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('admin.customer.edit');
-    Route::post('/update-user', action: [AccountsController::class, 'updateUser'])->name('admin.customer.update');
-    // Route::get('/editcustomer/{id}', [AccountsController::class, 'edit_customer'])->name('admin.customer.edit');
-    // Route::delete('/deletecustomer/{id}', [AccountsController::class, 'delete_customer'])->name('admin.customer.delete');
+    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
+    Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
+    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info'); // Chi tiết nhân viên 
+    Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
+    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('admin.customer.edit'); // Lấy thông tin khách hàng theo id
+    Route::post('/update-user', [AccountsController::class, 'updateUser'])->name('admin.customer.update'); // Cập nhật thông tin khách hàng lên csdl
 });
