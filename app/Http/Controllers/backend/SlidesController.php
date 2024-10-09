@@ -19,22 +19,26 @@ class SlidesController extends Controller
     //thêm
     function create_( Request $request){
         $request->validate([
-            'title' => 'required|regex:/^[^\d].*$/',
+            'name' => 'required|regex:/^[^\d].*$/',
+            'description' => 'required|regex:/^[^\d].*$/',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], 
         [
-            'title.required' => 'Mô tả không được để trống.',
-            'title.regex' => 'Mô tả không được viết số đầu tiên.',
+            'name.required' => 'Mô tả không được để trống.',
+            'name.regex' => 'Mô tả không được viết số đầu tiên.',
+            'description.required' => 'Mô tả không được để trống.',
+            'description.regex' => 'Mô tả không được viết số đầu tiên.',
         ]);
         $t = new Slides;
-        $t->title = $request->title;
+        $t->name = $request->name;
+        $t->description = $request->description;
         // Xử lý upload ảnh
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $path = 'assets/backend/img/';
             $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path($path), $fileName); // Di chuyển file vào thư mục public/backend/img/
-            $t->image = $path . $fileName; // Lưu đường dẫn vào cơ sở dữ liệu
+            $t->image = $fileName; // Lưu đường dẫn vào cơ sở dữ liệu
         }
         // Lưu thông tin vào cơ sở dữ liệu
         $t->save(); 
@@ -54,22 +58,26 @@ class SlidesController extends Controller
     }
     function update_(Request $request, $id){
         $request->validate([
-            'title' => 'required|regex:/^[^\d].*$/',
+            'name' => 'required|regex:/^[^\d].*$/',
+            'description' => 'required|regex:/^[^\d].*$/',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], 
         [
-            'title.required' => 'Mô tả không được để trống.',
-            'title.regex' => 'Mô tả không được viết số đầu tiên.',
+            'name.required' => 'Tên không được để trống.',
+            'name.regex' => 'Mô tả không được viết số đầu tiên.',
+            'description.required' => 'Mô tả không được để trống.',
+            'description.regex' => 'Mô tả không được viết số đầu tiên.',
         ]);
         $t= Slides::find($id);
-        $t->title = $request->title;
+        $t->name = $request->name;
+        $t->description = $request->description;
         // Xử lý upload ảnh
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $path = 'assets/backend/img/';
             $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path($path), $fileName); // Di chuyển file vào thư mục public/backend/img/
-            $t->image = $path . $fileName; // Lưu đường dẫn vào cơ sở dữ liệu
+            $t->image = $fileName; // Lưu đường dẫn vào cơ sở dữ liệu
         }
         // Lưu thông tin vào cơ sở dữ liệu
         $t->save(); 

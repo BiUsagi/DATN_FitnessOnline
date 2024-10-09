@@ -26,6 +26,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center" >STT</th>
+                                <th class="text-center" >Name</th>
                                 <th class="text-center" >Mô tả</th>
                                 <th class="text-center" >Ảnh</th>
                                 <th class="text-center" >Hành động</th>
@@ -35,10 +36,11 @@
                             @foreach($slides as $index => $slide)
                                 <tr>
                                     <td class="text-center"  style="vertical-align: middle;">{{ $index + 1 }}</td>
-                                    <td class="text-center"  style="vertical-align: middle;">{{ $slide->title }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $slide->name }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $slide->description }}</td>
                                     <td class="text-center"  style="vertical-align: middle;">
                                         @if($slide->image)
-                                            <img src="{{ asset($slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: cover;">
+                                            <img src="{{ asset('assets/backend/img/'.$slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: cover;">
                                         @else
                                             No Image
                                         @endif
