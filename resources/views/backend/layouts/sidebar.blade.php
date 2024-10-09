@@ -186,12 +186,12 @@
         <ul id="slides-nav" class="nav-content collapse {{ Request::is('admin/slides*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('admin.slides')}}" class="{{ Request::is('admin/slides') ? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Layout</span>
+              <i class="bi bi-circle"></i><span>Danh sách giao diện</span>
             </a>
           </li>
           <li>
-            <a href="{{route('admin.create')}}" class="{{ Request::is('admin/slides/create') ? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Thêm</span>
+            <a href="{{route('admin.slide.create')}}" class="{{ Request::is('admin/slides/create') ? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Thêm giao diện</span>
             </a>
           </li>
         </ul>

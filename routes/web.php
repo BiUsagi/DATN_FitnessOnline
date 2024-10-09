@@ -25,12 +25,10 @@ Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 
 //Auth;
-Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
-Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index');
-// Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
+Route::post('/login', [LoginController::class, 'login_'])->name('login.index'); //xử lý input login;
+Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index'); //xử lý input register;
 
-Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 
 
 
@@ -91,8 +89,11 @@ Route::prefix('admin')->group(function () {
 
     //siles
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
-    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.create');
+    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');
     Route::post('/slides/create', [SlidesController::class, 'create_']);
+    Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.slide.xoa');
+    Route::get('/slides/update/{id}',[SlidesController::class,'update'])->name('admin.slide.update');
+    Route::post('/slides/update/{id}',[SlidesController::class,'update_']);
     Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
     Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
 

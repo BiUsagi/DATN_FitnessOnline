@@ -6,8 +6,8 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Quản lý bình luận</li>
-        <li class="breadcrumb-item active">Danh sách bình luận</li>
+        <li class="breadcrumb-item">Quản lý giao diện</li>
+        <li class="breadcrumb-item active">Danh sách giao diện</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -18,7 +18,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="title-top d-flex justify-content-between">
-                        <h5 class="card-title text-uppercase">Danh sách bình luận</h5>
+                        <h5 class="card-title text-uppercase">Danh sách giao diện</h5>
+                        <a href="{{route('admin.slide.create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm bài tập</a>
                     </div>
                     
                     <!-- Table with stripped rows -->
@@ -47,7 +48,7 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         {{-- Nút sửa --}}
-                                        <a href="{{ route('admin.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a>
+                                        <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a>
                         
                                         {{-- Nút kích hoạt modal với data-id --}}
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $slide->id }}">
@@ -85,7 +86,7 @@
                                     var slideId = button.getAttribute('data-id'); // Lấy id từ data-id
                         
                                     // Tạo đường dẫn xóa từ route và gán vào nút xác nhận
-                                    var deleteUrl = '{{ route('admin.xoa', ['id' => ':id']) }}'.replace(':id', slideId);
+                                    var deleteUrl = '{{ route('admin.slide.xoa', ['id' => ':id']) }}'.replace(':id', slideId);
                                     confirmDeleteButton.setAttribute('href', deleteUrl);
                                 });
                             });
