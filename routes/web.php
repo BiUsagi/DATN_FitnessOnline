@@ -91,9 +91,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
     Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');
     Route::post('/slides/create', [SlidesController::class, 'create_']);
-    Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.slide.xoa');
-    Route::get('/slides/update/{id}',[SlidesController::class,'update'])->name('admin.slide.update');
-    Route::post('/slides/update/{id}',[SlidesController::class,'update_']);
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.slide.xoa');
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.slide.update');
+    Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
     Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
     Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
 
@@ -103,7 +103,6 @@ Route::prefix('admin')->group(function () {
 
 
 
-   
     // accounts - tài khoản
     Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
