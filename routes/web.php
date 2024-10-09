@@ -25,12 +25,10 @@ Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 
 //Auth;
-Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
-Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index');
-// Route::post('/login', [LoginController::class, 'login_'])->name('login.index');
+Route::post('/login', [LoginController::class, 'login_'])->name('login.index'); //xử lý input login;
+Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index'); //xử lý input register;
 
-Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 
 
 
@@ -59,7 +57,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
     //create_goitap
     Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
-    Route::post('/exerciseset/create',[ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
+    Route::post('/exerciseset/create', [ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
     //update_goi_tap
     Route::get('/exerciseset/update', [ExerciseSetController::class, 'update'])->name('admin.exerciseset-update');
 
@@ -96,13 +94,24 @@ Route::prefix('admin')->group(function () {
     Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.slide.xoa');
     Route::get('/slides/update/{id}',[SlidesController::class,'update'])->name('admin.slide.update');
     Route::post('/slides/update/{id}',[SlidesController::class,'update_']);
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
+    Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
+
+
+
+    //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
+
+
+
+
     // accounts - tài khoản
-    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff');
-    Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');
-    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info');
-    Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info');
-    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('admin.customer.edit');
-    Route::post('/update-user', action: [AccountsController::class, 'updateUser'])->name('admin.customer.update');
-    // Route::get('/editcustomer/{id}', [AccountsController::class, 'edit_customer'])->name('admin.customer.edit');
-    // Route::delete('/deletecustomer/{id}', [AccountsController::class, 'delete_customer'])->name('admin.customer.delete');
+    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
+    Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
+    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info'); // Chi tiết nhân viên 
+    Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
+    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('admin.customer.edit'); // Lấy thông tin khách hàng theo id
+    Route::post('/update-user', [AccountsController::class, 'updateUser'])->name('admin.customer.update'); // Cập nhật thông tin khách hàng lên csdl
 });

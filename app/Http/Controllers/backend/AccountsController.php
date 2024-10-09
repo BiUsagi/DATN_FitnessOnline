@@ -39,8 +39,6 @@ class AccountsController extends Controller
     // cập nhật tài khoản
     public function updateUser(Request $request)
     {
-
-
         // Xác thực dữ liệu
         $request->validate([
             'user_name' => 'required|string',

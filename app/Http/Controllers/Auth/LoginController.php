@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    function index(){
+        return view('frontend/layouts/auth/login');
+    }
     function login_(Request $request){
         $request->validate([
             'email' => 'required|email',
