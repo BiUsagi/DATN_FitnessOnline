@@ -14,7 +14,16 @@
           </div><!-- End Page Title -->
 
           <section class="section">
-            <form action="{{route('admin.create')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.update', $slide->id) }}" method="POST" enctype="multipart/form-data">
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
             @csrf
                 <div class="row">
                     <div class="col-lg-9">
@@ -24,14 +33,14 @@
                                 <div class="card-body">
                                     <div class="col-12">
                                         <label for="inputNanme1" class="form-label-customize">Name:<span class="note">(*)</span></label>
-                                        <input type="text" class="form-control-customize"name="name" id="inputNanme1" value="{{ old('name') }}">
+                                        <input type="text" class="form-control-customize"name="name" id="inputNanme1" value="{{ $slide->name}}">
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-12">
                                         <label for="inputNanme4" class="form-label-customize">Mô tả:<span class="note">(*)</span></label>
-                                        <input type="text" class="form-control-customize"name="description" id="inputNanme4" value="{{ old('description') }}">
+                                        <input type="text" class="form-control-customize"name="description" id="inputNanme4" value="{{$slide->description}}">
                                         @error('description')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

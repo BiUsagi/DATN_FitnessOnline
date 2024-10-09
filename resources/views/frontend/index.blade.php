@@ -6,7 +6,7 @@
     <div class="banner_wrapper">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                {{-- <div class="swiper-slide">
                     <div class="banner-slide">
                         <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/slide1.png"
                             alt="banner-slide" width="900" height="666">
@@ -15,8 +15,8 @@
                             <h3 data-swiper-parallax="-1000">BODY</h3>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
+                </div> --}}
+                {{-- <div class="swiper-slide">
                     <div class="banner-slide">
                         <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/slide2.png"
                             alt="banner-slide" width="700" height="800">
@@ -25,17 +25,18 @@
                             <h3 data-swiper-parallax="-1000">Shape</h3>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/slide3.png"
-                            alt="banner-slide" width="700" height="700">
-                        <div class="banner-text">
-                            <h2 data-swiper-parallax="-800">Get Free</h2>
-                            <h3 data-swiper-parallax="-1000">Diet</h3>
+                </div> --}}
+                @foreach($slides as $index => $slide)
+                    <div class="swiper-slide">
+                        <div class="banner-slide">
+                            <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/' . $slide->image) }}" alt="banner-slide" width="550" height="700">
+                            <div class="banner-text">
+                                <h2 data-swiper-parallax="-800">{{$slide->description}}</h2>
+                                <h3 data-swiper-parallax="-1000">{{$slide->name}}</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

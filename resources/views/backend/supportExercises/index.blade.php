@@ -29,14 +29,14 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nội dung</th>
-                                    <th>Khách hàng</th>
-                                    <th>Bài tập</th>
-                                    <th>PT</th>
-                                    <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
+                                    <th>Tên người dùng</th>
+                                    <th>Tên bài tập</th>
+                                    <th>Tên nhân viên</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Phản hồi</th>
                                 </tr>
                             </thead>
                             <tbody>
-
                                 @foreach ($supportExercises as $sp)
                                     <tr>
                                         <td>{{ $sp['id'] }}</td>
@@ -45,19 +45,29 @@
                                         <td>{{ $sp['exercise_name'] }}</td>
                                         <td>{{ $sp['staff_name'] }}</td>
                                         <td>{{ $sp['created_at'] }}</td>
+                                        <td>
+                                            <button class="toggle-replies btn-replies"
+                                                data-target="replies-{{ $sp['id'] }}">Xem phản hồi</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="replies" id="replies-{{ $sp['id'] }}" style="display: none;">
+                                        <td colspan="7">
+                                            <table class="table">
+                                                @foreach ($sp['replies'] as $reply)
+                                                    <tr id="rep">
+                                                        <td>{{ $reply['id'] }}</td>
+                                                        <td>{{ $reply['content'] }}</td>
+                                                        <td>{{ $reply['user_name'] }}</td>
+                                                        <td>{{ $sp['exercise_name'] }}</td>
+                                                        <td>{{ $reply['staff_name'] }}</td>
+                                                        <td>{{ $reply['created_at'] }}</td>
+                                                        
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </td>
                                     </tr>
                                 @endforeach
-
-                                <!-- @for ($i = 1; $i <= 100; $i++)
-                                    <tr>
-                                        <td>{{$i}}</td>
-                                        <td>Bài này có khó quá không</td>
-                                        <td>Tập tay</td>
-                                        <td>Phước Luân</td>
-                                        <td>2005/02/11</td>
-                                    </tr>
-                                @endfor -->
-
 
                             </tbody>
                         </table>
@@ -72,3 +82,48 @@
 
 </main><!-- End #main -->
 @endsection
+<style>
+    .btn-replies {
+        background-color: #4CAF50; /* Màu nền xanh lá cây */
+        color: white; /* Màu chữ trắng */
+        border: none; /* Không viền */
+        padding: 8px 16px; /* Khoảng cách bên trong */
+        text-align: center; /* Căn giữa chữ */
+        text-decoration: none; /* Không gạch chân */
+        display: inline-block; /* Hiển thị như nút */
+        margin: 4px 2px; /* Khoảng cách giữa các nút */
+        cursor: pointer; /* Con trỏ chuột khi di chuột qua */
+        border-radius: 4px; /* Bo góc */
+        transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+        width: 140px;
+    }
+
+    .btn-replies:hover {
+        background-color: #45a049; /* Màu nền khi di chuột qua */
+    }
+    #rep td{
+        background-color: whitesmoke;
+        color: gray;
+        /* padding-left: 0; */
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButtons = document.querySelectorAll('.toggle-replies');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const repliesRow = document.getElementById(targetId);
+                
+                if (repliesRow.style.display === 'none') {
+                    repliesRow.style.display = 'table-row'; // Hiện phản hồi
+                    this.textContent = 'Ẩn phản hồi'; // Đổi văn bản nút
+                } else {
+                    repliesRow.style.display = 'none'; // Ẩn phản hồi
+                    this.textContent = 'Xem phản hồi'; // Đổi văn bản nút
+                }
+            });
+        });
+    });
+</script>
