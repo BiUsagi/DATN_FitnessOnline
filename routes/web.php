@@ -87,20 +87,21 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
 
+
+    //___________________________________ Rin Lít Đờ __________________________ FaKe ____________________________________//
     //siles
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
-    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.create');
+    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');
     Route::post('/slides/create', [SlidesController::class, 'create_']);
-    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
-    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
-    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
-    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.slide.xoa');
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.slide.update');
     Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
 
 
 
     //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
-
 
 
 
