@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.create') }}"
+                    <a href="{{ route('admin-post.create') }}"
                         class="{{ Request::is('admin/posts/create') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thêm bài viết</span>
                     </a>

@@ -77,7 +77,7 @@ Route::prefix('admin')->group(function () {
 
     // posts - bài viết
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
-    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin.create');
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin-post.create');
 
     // comments - bình luận
     Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');
