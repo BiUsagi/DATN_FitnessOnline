@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal1 = document.querySelector('.modal1');
     const modal2 = document.querySelector('.modal2');
     const overflowLogin = document.querySelector('.overflow-login');
-    const overflowRigiter = document.querySelector('.overflow-rigister');
+    const overflowRigiter = document.querySelector('.overflow-rigister'); //đừng xóa file này của đạt nhé;
 
     // đăng nhập
     btnLogin.addEventListener('click', function() {

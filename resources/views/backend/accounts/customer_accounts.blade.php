@@ -49,9 +49,7 @@
                                             <td>
                                                 {{-- Avatar --}}
                                                 <img src="assets/backend/img/{{ $item->avatar }}"
-                                                    style="width: 55px; height: 55px;"
-                                                    class="rounded-circle object-fit-cover me-2">
-
+                                                    class="rounded-circle object-fit-cover me-2 avatar-table">
                                                 {{-- name --}}
                                                 {{ $item->user_name }}
 
@@ -140,7 +138,7 @@
     // Function để load dữ liệu vào modal
     function editUser(userId) {
         $.ajax({
-            url: "{{ route('admin.customer.edit', '') }}" + '/' + userId, // Đường dẫn lấy dữ liệu từ API
+            url: "{{ route('admin.customer.edit', '') }}" + '/' + userId,
             type: 'GET',
             success: function(response) {
                 // Đổ dữ liệu vào các trường trong modal
@@ -155,6 +153,7 @@
                 alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
             }
         });
+
     }
 
     function updateUser() {
@@ -174,16 +173,18 @@
             success: function(response) {
                 console.log(response);
                 $('#editUserModal').modal('hide');
-                alert('Cập nhật thành công!');
-                // location.reload(); 
+                // toastr.success('Cập nhật thành công!');
+
+                // alert('Cập nhật thành công!');
+
 
                 // Cập nhật thông tin trong bảng
                 $('tr').each(function() {
                     if ($(this).find('td:eq(0)').text().trim() == response.id) {
                         $(this).find('td:eq(1)').html(`
-                <img src="assets/backend/img/${response.avatar}" style="width: 55px; height: 55px;" class="rounded-circle object-fit-cover me-2">
-                ${response.user_name}
-            `);
+                            <img src="assets/backend/img/${response.avatar}"  class="rounded-circle object-fit-cover me-2 avatar-table">
+                            ${response.user_name}
+                        `);
                         $(this).find('td:eq(2)').text(response.phone_number);
                         $(this).find('td:eq(3)').text(response.email);
                     }
@@ -191,7 +192,7 @@
             },
             error: function(error) {
                 console.log(error);
-                alert('Cập nhật thất bại. Vui lòng thử lại.');
+                // toastr.error('Cập nhật thất bại. Vui lòng thử lại.');
             }
         });
     };
