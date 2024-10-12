@@ -39,27 +39,24 @@
                                         <b>Tên gói tập</b>
                                     </th>
                                     <th>Hình ảnh</th>
-                                    <th>Mô tả</th>
-                                    <th>Giá tiền</th>
                                     <th>Dụng cụ</th>
                                     <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
                                     <th>PT</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @for ($i = 1; $i<=100; $i++)
+                                @foreach($all_package as $p)
                                 <tr>
-                                    <td>{{ $i }}</td>
-                                    <td>Gói trải Nghiệm</td>
-                                    <td>gym.jpg</td>
-                                    <td>Mô tả gói tập</td>
-                                    <td>100.000 VND</td>
-                                    <td>Tạ đơn, Máy chạy bộ</td>
-                                    <td>31/07/2024</td>
-                                    <td>Hữu Chiến</td>
+                                    <td>{{ $p->id }}</td>
+                                    <td>{{ $p->name_package }}</td>
+                                    <td><img src="{{ asset('uploads/gym_package/'.$p->image) }}" width="70px" height="70px" alt=""></td>
+                                    <td>{{ $p->tool }}</td>
+                                    <td>{{ $p->created_at->format('d-m-Y') }}</td>
+                                    <td>{{ $p->staff_id }}</td>
+                                    <td>Sửa Xóa Xem</td>
                                 </tr>
-                                @endfor
+                                @endforeach
                                 
 
                             </tbody>
