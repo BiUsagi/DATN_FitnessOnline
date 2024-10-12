@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('workout_packages_id'); // ID gói tập (FK)
             $table->timestamps();
 
-            // Khóa ngoại (foreign key) liên kết đến bảng Exercise
-            $table->foreign('exercise_id')->references('id')->on('exercise')->onDelete('cascade');
+            // Khóa ngoại (foreign key) liên kết đến bảng Exercises
+            $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade');
 
             // Khóa ngoại (foreign key) liên kết đến bảng WorkoutPackages
             $table->foreign('workout_packages_id')->references('id')->on('workout_packages')->onDelete('cascade');

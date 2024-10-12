@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('exercise', function (Blueprint $table) {
+        Schema::create('exercises', function (Blueprint $table) {
             $table->id(); // ID chính (PK)
             $table->string('exercise_name'); // Tên bài tập
             $table->text('description'); // Mô tả bài tập
@@ -26,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('exercise');
+        Schema::dropIfExists('exercises');
     }
 };
