@@ -11,19 +11,10 @@
                 <li class="breadcrumb-item active">Update giao diện</li>
               </ol>
             </nav>
-          </div><!-- End Page Title -->
-
+          </div>
+          <!-- End Page Title -->
           <section class="section">
             <form action="{{ route('admin.slide.update', $slide->id) }}" method="POST"b enctype="multipart/form-data">
-                {{-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif --}}
             @csrf
                 <div class="row">
                     <div class="col-lg-9">
@@ -71,7 +62,6 @@
                                     }
                                 </script>
                             </div>
-                        
                     </div>
                 </div>
             </form>
