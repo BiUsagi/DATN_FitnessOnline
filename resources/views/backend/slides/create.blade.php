@@ -14,24 +14,33 @@
           </div><!-- End Page Title -->
 
           <section class="section">
-            <form action="{{route('admin.slide.create')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.slide.create') }}" method="POST" enctype="multipart/form-data">
             @csrf
                 <div class="row">
                     <div class="col-lg-9">
                         {{-- Thông tin chung --}}
                         <div class="card">
                             <div class="card-header text-uppercase">Thông tin chung</div>
+
                                 <div class="card-body">
+
+                                    {{-- Thẻ input Name --}}
                                     <div class="col-12">
                                         <label for="inputNanme1" class="form-label-customize">Name:<span class="note">(*)</span></label>
                                         <input type="text" class="form-control-customize"name="name" id="inputNanme1" value="{{ old('name') }}">
+
+                                        {{-- Kiểm tra form name --}}
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
+
+                                    {{-- Thẻ input Mô tả --}}
                                     <div class="col-12">
                                         <label for="inputNanme4" class="form-label-customize">Mô tả:<span class="note">(*)</span></label>
                                         <input type="text" class="form-control-customize"name="description" id="inputNanme4" value="{{ old('description') }}">
+
+                                        {{-- Kiểm tra lỗi form mô tả --}}
                                         @error('description')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -40,6 +49,7 @@
                                 </div>
                         </div>
                     </div>
+                    {{-- Hình ảnh --}}
                     <div class="col-lg-3">
                         <div class="card">
                             <div class="card-header text-uppercase">Ảnh đại diện</div>

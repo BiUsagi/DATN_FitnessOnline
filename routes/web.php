@@ -89,15 +89,19 @@ Route::prefix('admin')->group(function () {
 
 
     //___________________________________ Rin Lít Đờ __________________________ FaKe ____________________________________//
+
+
+
     //siles
-    Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
-    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');
-    Route::post('/slides/create', [SlidesController::class, 'create_']);
-    Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.slide.xoa');
-    Route::get('/slides/update/{id}',[SlidesController::class,'update'])->name('admin.slide.update');
+    Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');//Danh sách giao diện
+
+    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');//Thêm giao diện
+    Route::post('/slides/create', [SlidesController::class, 'create_'])->name('admin.slide.create');
+
+    Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.slide.xoa');//xóa giao diện
+
+    Route::get('/slides/update/{id}',[SlidesController::class,'update'])->name('admin.slide.update');//Cập nhật giao diện
     Route::post('/slides/update/{id}',[SlidesController::class,'update_']);
-    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
-    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
 
 
 
