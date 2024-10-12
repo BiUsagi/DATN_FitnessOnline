@@ -16,47 +16,72 @@ class SlidesController extends Controller
     public function create(){
         return view('backend/slides/create');
     }
+    //thêm
     function create_( Request $request){
         $request->validate([
-            'name_user' => 'required|max:100|regex:/^[\pL\s]+$/u',
-            'title' => 'required',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => 'required|email',
-            'address' => 'required',
-            'phone_number' => [
-                'required',
-                'digits_between:10,11',
-                'regex:/^(\+84|0)(3|5|7|8|9)[0-9]{8}$/',
-            ],
+            'name' => 'required|regex:/^[^\d].*$/',
+            'description' => 'required|regex:/^[^\d].*$/',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], 
         [
-            'name_user.required' => 'Tên không được để trống.',
-            'name_user.max:255' => 'Tên không được quá 255 kí tự.',
-            'name_user.regex' => 'Tên không được ghi số.',
-            'title.required' => 'Mô tả không được để trống.',
-            'email.required' => 'Email không được để trống.',
-            
+            'name.required' => 'Mô tả không được để trống.',
+            'name.regex' => 'Mô tả không được viết số đầu tiên.',
+            'description.required' => 'Mô tả không được để trống.',
+            'description.regex' => 'Mô tả không được viết số đầu tiên.',
         ]);
         $t = new Slides;
-        $t->name_user = $request->name_user;
-        $t->title = $request->title;
-        $t->email = $request->email;
-        $t->address = $request->address;
-        $t->phone_number = $request->phone_number;
-    
+        $t->name = $request->name;
+        $t->description = $request->description;
         // Xử lý upload ảnh
-        if ($request->hasFile('avatar')) {
-            $file = $request->file('avatar');
-            $path = '';
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = 'assets/backend/img/';
             $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path($path), $fileName); // Di chuyển file vào thư mục public/backend/img/
-            $t->avatar = $path . $fileName; // Lưu đường dẫn vào cơ sở dữ liệu
+            $t->image = $fileName; // Lưu đường dẫn vào cơ sở dữ liệu
         }
-    
         // Lưu thông tin vào cơ sở dữ liệu
         $t->save(); 
-        toastr()->success('Thêm bài tập thành công!');   
-        return view('backend/slides/create');
+        toastr()->success('Thêm giao diện thành công!');   
+        return redirect()->route('admin.slides');
     }
-
+    //xóa
+    function xoa($id){
+        $t= Slides::find($id);
+        $t -> delete();
+        toastr()->success('Xóa thành công!');   
+        return redirect()->route('admin.slides');
+    }
+    function update($id){
+        $slide= Slides::find($id);
+        return view('backend/slides/update', ['slide'=>$slide]);
+    }
+    function update_(Request $request, $id){
+        $request->validate([
+            'name' => 'required|regex:/^[^\d].*$/',
+            'description' => 'required|regex:/^[^\d].*$/',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ], 
+        [
+            'name.required' => 'Tên không được để trống.',
+            'name.regex' => 'Mô tả không được viết số đầu tiên.',
+            'description.required' => 'Mô tả không được để trống.',
+            'description.regex' => 'Mô tả không được viết số đầu tiên.',
+        ]);
+        $t= Slides::find($id);
+        $t->name = $request->name;
+        $t->description = $request->description;
+        // Xử lý upload ảnh
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = 'assets/backend/img/';
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $file->move(public_path($path), $fileName); // Di chuyển file vào thư mục public/backend/img/
+            $t->image = $fileName; // Lưu đường dẫn vào cơ sở dữ liệu
+        }
+        // Lưu thông tin vào cơ sở dữ liệu
+        $t->save(); 
+        toastr()->success('Update giao diện thành công!');   
+        return redirect()->route('admin.slides');
+    }
 }
