@@ -32,6 +32,7 @@
                                         <th>Tên</th>
                                         <th>Số Điện Thoại</th>
                                         <th>Email</th>
+                                        <th>Trải Nghiệm</th>
                                         <th class="text-center">Hành Động</th>
                                     </tr>
                                 </thead>
@@ -58,6 +59,8 @@
                                             <td class="align-middle">{{ $item->phone_number }}</td>
                                             {{-- email --}}
                                             <td class=" align-middle">{{ $item->email }}</td>
+                                            {{-- Trải nghiệm --}}
+                                            <td class=" align-middle text-center">{{ $item->trial }} ngày</td>
                                             <td class="text-center align-middle">
                                                 {{-- xem --}}
                                                 <a href="{{ route('admin.customer.info', ['id' => $item->id]) }}"
