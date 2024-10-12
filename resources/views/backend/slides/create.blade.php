@@ -59,7 +59,7 @@
                                         src="assets/backend/img/no-image.jpg" 
                                         alt="Avatar" 
                                         id="avatar-image" 
-                                        style="cursor: pointer;" 
+                                        style="cursor: pointer; max-width: 100%; height: 170px; object-fit: cover;" 
                                         onclick="document.getElementById('avatar-input').click();" 
                                     >
                                     <input type="file" name="image" id="avatar-input" class="form-control" style="display: none;" onchange="previewImage(event)">
