@@ -173,7 +173,10 @@
             success: function(response) {
                 console.log(response);
                 $('#editUserModal').modal('hide');
-                alert('Cập nhật thành công!');
+                // toastr.success('Cập nhật thành công!');
+
+                // alert('Cập nhật thành công!');
+
 
                 // Cập nhật thông tin trong bảng
                 $('tr').each(function() {
@@ -189,7 +192,7 @@
             },
             error: function(error) {
                 console.log(error);
-                alert('Cập nhật thất bại. Vui lòng thử lại.');
+                // toastr.error('Cập nhật thất bại. Vui lòng thử lại.');
             }
         });
     };

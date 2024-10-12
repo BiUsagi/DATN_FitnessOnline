@@ -75,7 +75,7 @@ Route::prefix('admin')->group(function () {
 
     // posts - bài viết
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
-    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin.create');
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin-post.create');
 
     // comments - bình luận
     Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');
@@ -109,7 +109,6 @@ Route::prefix('admin')->group(function () {
 
 
 
-   
     // accounts - tài khoản
     Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
