@@ -59,9 +59,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
     Route::post('/exerciseset/create', [ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
     //update_goi_tap
-    Route::get('/exerciseset/update', [ExerciseSetController::class, 'update'])->name('admin.exerciseset-update');
-
-    Route::post('/exerciseset/create', [ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
+    Route::get('/exerciseset/update/{id}', [ExerciseSetController::class, 'update'])->name('admin.exerciseset-update');
+    Route::post('/exerciseset/update/{id}', [ExerciseSetController::class, 'update_'])->name('admin.exerciseset-update_');
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
@@ -89,15 +88,19 @@ Route::prefix('admin')->group(function () {
 
 
     //___________________________________ Rin Lít Đờ __________________________ FaKe ____________________________________//
+
+
+
     //siles
-    Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');
-    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');
-    Route::post('/slides/create', [SlidesController::class, 'create_']);
-    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.slide.xoa');
-    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.slide.update');
-    Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
-    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.xoa');
-    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.update');
+    Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');//Danh sách giao diện
+
+    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');//Thêm giao diện
+    Route::post('/slides/create', [SlidesController::class, 'create_'])->name('admin.slide.create');
+
+    Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.slide.xoa');//xóa giao diện
+
+    Route::get('/slides/update/{id}',[SlidesController::class,'update'])->name('admin.slide.update');//Cập nhật giao diện
+    Route::post('/slides/update/{id}',[SlidesController::class,'update_']);
 
 
 
