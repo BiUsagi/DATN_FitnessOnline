@@ -11,19 +11,10 @@
                 <li class="breadcrumb-item active">Update giao diện</li>
               </ol>
             </nav>
-          </div><!-- End Page Title -->
-
+          </div>
+          <!-- End Page Title -->
           <section class="section">
-            <form action="{{ route('admin.slide.update', $slide->id) }}" method="POST" enctype="multipart/form-data">
-                {{-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif --}}
+            <form action="{{ route('admin.slide.update', $slide->id) }}" method="POST"b enctype="multipart/form-data">
             @csrf
                 <div class="row">
                     <div class="col-lg-9">
@@ -52,17 +43,18 @@
                     <div class="col-lg-3">
                         <div class="card">
                             <div class="card-header text-uppercase">Ảnh đại diện</div>
-                                <div class="card-body">
-                                    <img 
-                                        class="img-cover" 
-                                        src="assets/backend/img/no-image.jpg" 
-                                        alt="Avatar" 
-                                        id="avatar-image" 
-                                        style="cursor: pointer;" 
-                                        onclick="document.getElementById('avatar-input').click();" 
-                                    >
-                                    <input type="file" name="image" id="avatar-input" class="form-control" style="display: none;" onchange="previewImage(event)">
-                                </div>
+                            <div class="card-body">
+                                <img 
+                                    class="img-cover" 
+                                    src="{{ $slide->image ? asset('assets/backend/img/' . $slide->image) : 'assets/backend/img/no-image.jpg' }}" 
+                                    alt="Avatar" 
+                                    id="avatar-image" 
+                                    style="cursor: pointer; max-width: 100%; height: 170px; object-fit: cover;" 
+                                    onclick="document.getElementById('avatar-input').click();" 
+                                >
+                                <input type="file" name="image" id="avatar-input" class="form-control" style="display: none;" onchange="previewImage(event)">
+                                <input type="hidden" name="current_image" value="{{ $slide->image }}">
+                            </div>
                                 <script>
                                     function previewImage(event) {
                                         const image = document.getElementById('avatar-image');
@@ -70,7 +62,6 @@
                                     }
                                 </script>
                             </div>
-                        
                     </div>
                 </div>
             </form>
