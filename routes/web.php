@@ -61,6 +61,9 @@ Route::prefix('admin')->group(function () {
     //update_goi_tap
     Route::get('/exerciseset/update/{id}', [ExerciseSetController::class, 'update'])->name('admin.exerciseset-update');
     Route::post('/exerciseset/update/{id}', [ExerciseSetController::class, 'update_'])->name('admin.exerciseset-update_');
+    //delete_goitap
+    Route::get('/exerciseset/delete/{id}', [ExerciseSetController::class, 'delete'])->name('admin.exerciseset-delete');
+
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');

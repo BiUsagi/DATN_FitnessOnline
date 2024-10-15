@@ -137,66 +137,69 @@
 @endsection
 
 
-<script>
-    // Function để load dữ liệu vào modal
-    function editUser(userId) {
-        $.ajax({
-            url: "{{ route('admin.customer.edit', '') }}" + '/' + userId,
-            type: 'GET',
-            success: function(response) {
-                // Đổ dữ liệu vào các trường trong modal
-                $('#userId').val(response.id);
-                $('#userName').val(response.user_name);
-                $('#userEmail').val(response.email);
-                $('#userPhone').val(response.phone_number);
-                $('#userAddress').val(response.address);
-            },
-            error: function(error) {
-                console.log(error);
-                alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
-            }
-        });
 
-    }
+@section('custom_js')
+    <script>
+        // load dữ liệu vào modal
+        function editUser(userId) {
+            $.ajax({
+                url: "{{ route('admin.customer.edit', '') }}" + '/' + userId,
+                type: 'GET',
+                success: function(response) {
+                    // Đổ dữ liệu vào các trường trong modal
+                    $('#userId').val(response.id);
+                    $('#userName').val(response.user_name);
+                    $('#userEmail').val(response.email);
+                    $('#userPhone').val(response.phone_number);
+                    $('#userAddress').val(response.address);
+                },
+                error: function(error) {
+                    console.log(error);
+                    alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                }
+            });
 
-    function updateUser() {
-        var formData = {
-            id: $('#userId').val(),
-            user_name: $('#userName').val(),
-            email: $('#userEmail').val(),
-            phone_number: $('#userPhone').val(),
-            address: $('#userAddress').val(),
-            _token: $('input[name="_token"]').val() // Thêm CSRF token vào dữ liệu
-        };
+        }
 
-        $.ajax({
-            url: "{{ route('admin.customer.update') }}", // Đường dẫn API để cập nhật dữ liệu
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-                console.log(response);
-                $('#editUserModal').modal('hide');
-                // toastr.success('Cập nhật thành công!');
+        function updateUser() {
+            var formData = {
+                id: $('#userId').val(),
+                user_name: $('#userName').val(),
+                email: $('#userEmail').val(),
+                phone_number: $('#userPhone').val(),
+                address: $('#userAddress').val(),
+                _token: $('input[name="_token"]').val() // Thêm CSRF token vào dữ liệu
+            };
 
-                // alert('Cập nhật thành công!');
+            $.ajax({
+                url: "{{ route('admin.customer.update') }}", // Đường dẫn API để cập nhật dữ liệu
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    console.log(response);
+                    $('#editUserModal').modal('hide');
+                    // toastr.success('Cập nhật thành công!');
+
+                    // alert('Cập nhật thành công!');
 
 
-                // Cập nhật thông tin trong bảng
-                $('tr').each(function() {
-                    if ($(this).find('td:eq(0)').text().trim() == response.id) {
-                        $(this).find('td:eq(1)').html(`
+                    // Cập nhật thông tin trong bảng
+                    $('tr').each(function() {
+                        if ($(this).find('td:eq(0)').text().trim() == response.id) {
+                            $(this).find('td:eq(1)').html(`
                             <img src="assets/backend/img/${response.avatar}"  class="rounded-circle object-fit-cover me-2 avatar-table">
                             ${response.user_name}
                         `);
-                        $(this).find('td:eq(2)').text(response.phone_number);
-                        $(this).find('td:eq(3)').text(response.email);
-                    }
-                });
-            },
-            error: function(error) {
-                console.log(error);
-                // toastr.error('Cập nhật thất bại. Vui lòng thử lại.');
-            }
-        });
-    };
-</script>
+                            $(this).find('td:eq(2)').text(response.phone_number);
+                            $(this).find('td:eq(3)').text(response.email);
+                        }
+                    });
+                },
+                error: function(error) {
+                    console.log(error);
+                    // toastr.error('Cập nhật thất bại. Vui lòng thử lại.');
+                }
+            });
+        };
+    </script>
+@endsection

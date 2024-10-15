@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GymPackage;
+use Illuminate\Support\Facades\File;
 
 class ExerciseSetController extends Controller
 {
@@ -55,6 +56,33 @@ class ExerciseSetController extends Controller
         $set->description = $request->input('mota');
         $set->tool = $request->input('dungcu');
         $set->staff_id = $request->input('pt');
-        $set->save();
+
+        if($request->hasFile('image')){
+            //neu co file cu thi tim va xoa 
+            $anhcu = 'uploads/gym_package/'.$set->image;
+
+            if(File::exists($anhcu)){
+                File::delete($anhcu);
+            }
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
+            $filename = time().'.'.$extension;
+            $file->move('uploads/gym_package', $filename);
+            $set->image = $filename;
+        }
+
+        $set->update();
+        toastr()->success('Cập nhật bài tập thành công!');
+        return redirect()->back();
+    }
+
+    public function delete($id)
+    {
+        $set = GymPackage::find($id);
+        $set->delete();
+
+        toastr()->success('Xóa bài tập thành công!');
+        return redirect()->back();
     }
 }
