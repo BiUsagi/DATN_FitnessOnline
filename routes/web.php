@@ -18,6 +18,8 @@ use App\Http\Controllers\backend\CommentController;
 use App\Http\Controllers\backend\ComponentController;
 use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
+use App\Http\Controllers\ApiController;
+
 
 //Front End
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -118,4 +120,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
     Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('admin.customer.edit'); // Lấy thông tin khách hàng theo id
     Route::post('/update-user', [AccountsController::class, 'updateUser'])->name('admin.customer.update'); // Cập nhật thông tin khách hàng lên csdl
+});
+
+
+Route::group(['prefix'=>'api',], function(){
+    Route::get('goitap', [ApiController::class, 'index']);   
 });
