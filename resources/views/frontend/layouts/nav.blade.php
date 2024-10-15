@@ -64,7 +64,7 @@
                                 </span>
                                 <input type="text" required>
                                 <label>Email</label>
-                                <p class="errors">123</p>
+                                {{-- <p class="errors">123</p> --}}
                             </div>
                             <!-- password -->
                             <div class="input-box">
@@ -72,7 +72,7 @@
                                     <i class="bi bi-eye-fill" id="login-icon-password"></i>
                                 </span>
                                 <input type="password" id="password-input-login" required>
-                                <p class="errors">123</p>
+                                {{-- <p class="errors">123</p> --}}
                                 <label>Password</label>
                             </div>
                             <!-- nhớ pass -->
@@ -107,7 +107,7 @@
                                     <i class="bi bi-person-fill"></i>
                                 </span>
                                 <input type="text" required>
-                                <p class="errors">123</p>
+                                {{-- <p class="errors">123</p> --}}
                                 <label>Họ và tên</label>
                             </div>
                             <!-- Email -->
@@ -116,7 +116,7 @@
                                     <i class="bi bi-envelope-fill"></i>
                                 </span>
                                 <input type="text" required>
-                                <p class="errors">123</p>
+                                {{-- <p class="errors">123</p> --}}
                                 <label>Email</label>
                             </div>
                             <!-- Mật khẩu -->
@@ -125,7 +125,7 @@
                                     <i class="bi bi-eye-fill" id="register-icon-password"></i>
                                 </span>
                                 <input type="password" id="password-input-register" required>
-                                <p class="errors">123</p>
+                                {{-- <p class="errors">123</p> --}}
                                 <label>Mật khẩu</label>
                             </div>
                             <!-- Nhập lại mật khẩu -->
@@ -134,7 +134,7 @@
                                     <i class="bi bi-eye-fill" id="register-icon-password2"></i>
                                 </span>
                                 <input type="password" id="password-input-register2" required>
-                                <p class="errors">123</p>
+                                {{-- <p class="errors">123</p> --}}
                                 <label>Nhập lại mật khẩu</label>
                             </div>
                             <div class="remember-forgot">

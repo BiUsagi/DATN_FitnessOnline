@@ -36,11 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
     btnLogin.addEventListener('click', ()=> {
         wrapperLogin.classList.add('active-wrapper-login');
         // wrapperRegister.classList.add('active-wrapper-register');
-
     });
 
     btnRegister.addEventListener('click', ()=> {
-        wrapperLogin.classList.remove('active-wrapper-login');
+        // wrapperLogin.classList.remove('active-wrapper-login');
         wrapperRegister.classList.add('active-wrapper-register');
     });
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GymPackage extends Model
+class Workout_Package extends Model
 {
     use HasFactory;
 }
