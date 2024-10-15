@@ -98,7 +98,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');//Danh sách giao diện
 
     Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');//Thêm giao diện
-    Route::post('/slides/create', [SlidesController::class, 'create_'])->name('admin.slide.create');
+    Route::post('/slides/create', [SlidesController::class, 'create_']);
 
     Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.slide.xoa');//xóa giao diện
 
