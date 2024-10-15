@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="assets/frontend/css/style.css">
+    <link rel="stylesheet" href="assets/frontend/css/style.css">
     <script src="assets/frontend/js/script.js"></script>
 </head>
+
 <body>
 
-<!-- form login register -->
-<div class="container-custom">
+    <!-- form login register -->
+    <div class="container-custom">
         <div class="wrapper">
             <span class="icon-close">
                 <a href="/"><i class="bi bi-x"></i></a>
             </span>
             <!-- đăng nhập -->
-            <div class="form-box login" id="icon-close">
+            <div class="form-box login">
                 <h2>Đăng Nhập</h2>
-                <form action="{{route('login.index')}}" method="POST">
+                <form action="{{ route('login.index') }}" method="POST">
                     <!-- email -->
                     <div class="input-box">
                         <span class="icon">
@@ -43,14 +45,14 @@
                     <!-- nhớ pass -->
                     <div class="remember-forgot">
                         <label><input type="checkbox">
-                        Nhớ mật khẩu</label>
+                            Nhớ mật khẩu</label>
                         <!-- quên mật khẩu -->
                         <a href="">Quên mật khẩu</a>
                     </div>
                     <button type="submit" class="btn">Đăng Nhập</button>
                     <div class="login-register">
                         <!-- link form đăng ký -->
-                        <p>Bạn chưa có tài khoản ? <a  class="register-link"> Đăng Ký</a></p>
+                        <p>Bạn chưa có tài khoản ? <a class="register-link"> Đăng Ký</a></p>
                     </div>
 
                 </form>
@@ -97,7 +99,7 @@
                     </div>
                     <div class="remember-forgot">
                         <label><input type="checkbox">
-                        Đồng ý với các điều khoản và điều kiện</label>
+                            Đồng ý với các điều khoản và điều kiện</label>
                     </div>
                     <button type="submit" class="btn">Đăng ký</button>
                     <div class="login-register">
@@ -109,4 +111,5 @@
         </div>
     </div>
 </body>
+
 </html>
