@@ -1,51 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const wrapperLogin = document.querySelector('.wrapper-login');
-    const wrapperRegister = document.querySelector('.wrapper-register');
-
-    //nút đăng nhập;
-    const btnLogin = document.getElementById('btn-login');
-
-    //nút đăng ký;
-    const btnRegister = document.getElementById('btn-register');
-
-    //check pass login;
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
     const passwordInputLogin = document.getElementById('password-input-login');
-
-    //check pass đăng ký;
     const passwordInputRegister = document.getElementById('password-input-register');
-
-    //check pass đăng ký nhập lại;
     const passwordInputRegister2 = document.getElementById('password-input-register2');
-
-    //ẩn pass đăng nhập;
     const loginPasswordIcon = document.getElementById('login-icon-password');
-
-    //ẩn pass đăng ký;
     const registerPasswordIcon = document.getElementById('register-icon-password');
-
-    //ẩn pass đăng ký nhập lại;
     const registerPasswordIcon2 = document.getElementById('register-icon-password2');
 
-    //close form;
-    const iconClose = document.getElementById('icon-close');
-
-    
-
-
-    btnLogin.addEventListener('click', ()=> {
-        wrapperLogin.classList.add('active-wrapper-login');
-        // wrapperRegister.classList.add('active-wrapper-register');
-
+    registerLink.addEventListener('click', ()=> {
+        wrapper.classList.add('active');
     });
 
-    btnRegister.addEventListener('click', ()=> {
-        wrapperLogin.classList.remove('active-wrapper-login');
-        wrapperRegister.classList.add('active-wrapper-register');
-    });
-
-    iconClose.addEventListener('click', ()=>{
-        wrapperLogin.classList.remove('active-wrapper-login');
+    loginLink.addEventListener('click', ()=> {
+        wrapper.classList.remove('active');
     });
 
     //hiện thị/ẩn mật khẩu đăng nhập;
