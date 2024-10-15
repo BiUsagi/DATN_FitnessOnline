@@ -7,7 +7,8 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-lg ">
                         <a class="navbar-brand" href="index.html">
-                            <img loading='lazy' src="assets/frontend/images/logo.svg" alt="logo" width="139" height="30">
+                            <img loading='lazy' src="assets/frontend/images/logo.svg" alt="logo" width="139"
+                                height="30">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -17,10 +18,10 @@
                         <div class="collapse navbar-collapse tabActive" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('index')}}">TRANG CHỦ</a>
+                                    <a class="nav-link" href="{{ route('index') }}">TRANG CHỦ</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('about.index')}}">GIỚI THIỆU</a>
+                                    <a class="nav-link" href="{{ route('about.index') }}">GIỚI THIỆU</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#courses">Courses</a>
@@ -35,7 +36,8 @@
                                     <a class="nav-link" href="blog.html">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a id="btn-login" class="nav-link btn">Đăng nhập</a>
+                                    <a href="{{ route('login.index') }}" id="btn-login" class="nav-link btn">Đăng
+                                        nhập</a>
                                 </li>
                             </ul>
                         </div>
@@ -152,7 +154,3 @@
         </div>
     </div>
 </header>
-   
-    
-
-    
