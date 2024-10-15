@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     
     public function index(){
-        $slides = Slides::all(); // Lấy tất cả dữ liệu từ bảng tin
+        $slides = Slides::orderBy('id', 'DESC')->get(); // Lấy tất cả dữ liệu từ bảng tin
         // return view('/',compact('slides'));
         return view('frontend/index',compact('slides'));
     }

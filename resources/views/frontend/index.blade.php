@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div> --}}
-                @foreach($slides as $index => $slide)
+                @foreach($slides->take(3) as $index => $slide)
                     <div class="swiper-slide">
                         <div class="banner-slide">
                             <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/' . $slide->image) }}" alt="banner-slide" width="550" height="700">

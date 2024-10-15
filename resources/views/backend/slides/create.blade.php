@@ -31,7 +31,7 @@
 
                                         {{-- Kiểm tra form name --}}
                                         @error('name')
-                                            <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-danger" style="font-family:sans-serif; font-size: 14px;">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -42,7 +42,7 @@
 
                                         {{-- Kiểm tra lỗi form mô tả --}}
                                         @error('description')
-                                            <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-danger" style="font-family:sans-serif; font-size: 14px;">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <input type="submit" class="btn btn-primary mt-3" value="Thêm">
