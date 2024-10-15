@@ -7,6 +7,7 @@ use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\Api\ApiAccountsController;
 use App\Http\Controllers\backend\ExerciseController;
 use App\Http\Controllers\backend\ExerciseSetController;
 use App\Http\Controllers\backend\MarketingController;
@@ -27,7 +28,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 
 //Auth;
-Route::post('/login', [LoginController::class, 'login_'])->name('login.index'); //xử lý input login;
+Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
 Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
@@ -102,10 +103,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');//Thêm giao diện
     Route::post('/slides/create', [SlidesController::class, 'create_']);
 
-    Route::get('/slides/xoa/{id}',[SlidesController::class,'xoa'])->name('admin.slide.xoa');//xóa giao diện
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.slide.xoa');//xóa giao diện
 
-    Route::get('/slides/update/{id}',[SlidesController::class,'update'])->name('admin.slide.update');//Cập nhật giao diện
-    Route::post('/slides/update/{id}',[SlidesController::class,'update_']);
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.slide.update');//Cập nhật giao diện
+    Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
 
 
 
@@ -118,11 +119,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
     Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info'); // Chi tiết nhân viên 
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
-    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('admin.customer.edit'); // Lấy thông tin khách hàng theo id
-    Route::post('/update-user', [AccountsController::class, 'updateUser'])->name('admin.customer.update'); // Cập nhật thông tin khách hàng lên csdl
+
 });
 
 
-Route::group(['prefix'=>'api',], function(){
-    Route::get('goitap', [ApiController::class, 'index']);   
+Route::group(['prefix' => 'api',], function () {
+    Route::get('goitap', [ApiController::class, 'index']);
+
+
+
+    // account
+    Route::get('/get-user/{id}', [ApiAccountsController::class, 'getUser'])->name('api.user');
+    Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
 });
