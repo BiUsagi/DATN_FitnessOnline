@@ -9,7 +9,7 @@ use App\Http\Controllers\backend\ConfigController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\Api\ApiAccountsController;
 use App\Http\Controllers\backend\ExerciseController;
-use App\Http\Controllers\backend\ExerciseSetController;
+// use App\Http\Controllers\backend\PackageExercisesController;
 use App\Http\Controllers\backend\MarketingController;
 use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\PostsController;
@@ -20,6 +20,7 @@ use App\Http\Controllers\backend\ComponentController;
 use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\backend\api\PackageExercisesController;
 
 
 //Front End
@@ -57,15 +58,15 @@ Route::prefix('admin')->group(function () {
 
 
     // exerciseset - gói tập
-    Route::get('/exerciseset', [ExerciseSetController::class, 'index'])->name('admin.exerciseset');
+    Route::get('/exerciseset', [PackageExercisesController::class, 'index'])->name('admin.exerciseset');
     //create_goitap
-    Route::get('/exerciseset/create', [ExerciseSetController::class, 'create'])->name('admin.exerciseset-create');
-    Route::post('/exerciseset/create', [ExerciseSetController::class, 'create_'])->name('admin.exerciseset-create_');
+    Route::get('/exerciseset/create', [PackageExercisesController::class, 'create'])->name('admin.exerciseset-create');
+    Route::post('/exerciseset/create', [PackageExercisesController::class, 'create_'])->name('admin.exerciseset-create_');
     //update_goi_tap
-    Route::get('/exerciseset/update/{id}', [ExerciseSetController::class, 'update'])->name('admin.exerciseset-update');
-    Route::post('/exerciseset/update/{id}', [ExerciseSetController::class, 'update_'])->name('admin.exerciseset-update_');
+    Route::get('/exerciseset/update/{id}', [PackageExercisesController::class, 'update'])->name('admin.exerciseset-update');
+    Route::post('/exerciseset/update/{id}', [PackageExercisesController::class, 'update_'])->name('admin.exerciseset-update_');
     //delete_goitap
-    Route::get('/exerciseset/delete/{id}', [ExerciseSetController::class, 'delete'])->name('admin.exerciseset-delete');
+    Route::get('/exerciseset/delete/{id}', [PackageExercisesController::class, 'delete'])->name('admin.exerciseset-delete');
 
 
     // statistical - thống kê
@@ -124,7 +125,7 @@ Route::prefix('admin')->group(function () {
 
 
 Route::group(['prefix' => 'api',], function () {
-    Route::get('goitap', [ApiController::class, 'index']);
+    Route::get('goitap', [PackageExercisesController::class, 'index']);
 
 
 

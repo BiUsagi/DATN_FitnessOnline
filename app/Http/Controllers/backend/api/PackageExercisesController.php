@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\backend\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Package_Exercise;
