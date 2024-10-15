@@ -26,14 +26,14 @@
                                         <label for="inputNanme1" class="form-label-customize">Name:<span class="note">(*)</span></label>
                                         <input type="text" class="form-control-customize"name="name" id="inputNanme1" value="{{ $slide->name}}">
                                         @error('name')
-                                            <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-danger" style="font-family:sans-serif; font-size: 13px;>{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-12">
                                         <label for="inputNanme4" class="form-label-customize">Mô tả:<span class="note">(*)</span></label>
                                         <input type="text" class="form-control-customize"name="description" id="inputNanme4" value="{{$slide->description}}">
                                         @error('description')
-                                            <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-danger" style="font-family:sans-serif; font-size: 13px;>{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <input type="submit" class="btn btn-primary mt-3" value="Sửa">
