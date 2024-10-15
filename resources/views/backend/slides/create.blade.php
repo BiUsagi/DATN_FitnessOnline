@@ -31,7 +31,7 @@
 
                                         {{-- Kiểm tra form name --}}
                                         @error('name')
-                                            <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-danger" style="font-family:sans-serif; font-size: 13px;">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -42,7 +42,7 @@
 
                                         {{-- Kiểm tra lỗi form mô tả --}}
                                         @error('description')
-                                            <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-danger" style="font-family:sans-serif; font-size: 13px;">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <input type="submit" class="btn btn-primary mt-3" value="Thêm">
@@ -59,7 +59,7 @@
                                         src="assets/backend/img/no-image.jpg" 
                                         alt="Avatar" 
                                         id="avatar-image" 
-                                        style="cursor: pointer;" 
+                                        style="cursor: pointer; max-width: 100%; height: 170px; object-fit: cover;" 
                                         onclick="document.getElementById('avatar-input').click();" 
                                     >
                                     <input type="file" name="image" id="avatar-input" class="form-control" style="display: none;" onchange="previewImage(event)">

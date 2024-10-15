@@ -19,7 +19,7 @@
                 <a href="/"><i class="bi bi-x"></i></a>
             </span>
             <!-- đăng nhập -->
-            <div class="form-box login">
+            <div class="form-box login" id="icon-close">
                 <h2>Đăng Nhập</h2>
                 <form action="{{route('login.index')}}" method="POST">
                     <!-- email -->
