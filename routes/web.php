@@ -28,7 +28,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 
 //Auth;
-Route::post('/login', [LoginController::class, 'login_'])->name('login.index'); //xử lý input login;
+Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
 Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
