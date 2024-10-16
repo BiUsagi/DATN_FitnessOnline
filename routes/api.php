@@ -12,7 +12,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::group(['prefix' => 'admin',], function (){
+Route::group(['prefix' => 'admin',], function () {
     //API of exercises
     Route::get('/exercises', [ExerciseController::class, 'index']);
     Route::post('/exercises', [ExerciseController::class, 'add']);
@@ -21,6 +21,6 @@ Route::group(['prefix' => 'admin',], function (){
     Route::delete('/exercises/:id', [ExerciseController::class, 'add']);
 
     // account
-    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('api.user');
-    Route::post('/update-user', [AccountsController::class, 'updateUser'])->name('api.user.update');
+    Route::get('/user/{id}', [AccountsController::class, 'show'])->name('api.user.show');
+    Route::put('/user/{id}', [AccountsController::class, 'update'])->name('api.user.update');
 });
