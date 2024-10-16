@@ -20,7 +20,6 @@ use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\ApiController;
 // use App\Http\Controllers\backend\api\PackageExercisesController;
-use App\Http\Controllers\backend\api\PackageExercisesController;
 
 
 //Front End
@@ -122,7 +121,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
 
 
-    
+
 });
 
 
