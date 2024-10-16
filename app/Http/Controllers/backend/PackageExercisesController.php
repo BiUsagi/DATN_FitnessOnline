@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class PackageExercisesController extends Controller
 {
     public function index(){
-        $data = Package_Exercise::orderBy('id', 'asc')->get();
-        return $data;
+        return view('backend/ExerciseSet/index');
     }
 }
