@@ -33,3 +33,4 @@ Route::group(['prefix' => 'admin',], function () {
 // account
 Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('api.user');
 Route::post('/update-user', [AccountsController::class, 'updateUser'])->name('api.user.update');
+});
