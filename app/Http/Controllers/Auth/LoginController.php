@@ -24,10 +24,12 @@ class LoginController extends Controller
         return redirect()->route('login.index');
     }
 
-    public function register(LoginRequest $request)
+    public function register_(LoginRequest $request)
     {
         $t = new User();
         $t->email = $request->email;
+        $t->password = $request->password;
+
 
         // Lưu thông tin vào cơ sở dữ liệu
         $t->save();   
