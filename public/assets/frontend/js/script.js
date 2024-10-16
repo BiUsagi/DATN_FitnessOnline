@@ -10,24 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const registerPasswordIcon = document.getElementById('register-icon-password');
     const registerPasswordIcon2 = document.getElementById('register-icon-password2');
 
-    //close form;
-    const iconClose = document.getElementById('icon-close');
-
-    
-
-
-    btnLogin.addEventListener('click', ()=> {
-        wrapperLogin.classList.add('active-wrapper-login');
-        // wrapperRegister.classList.add('active-wrapper-register');
-    });
-
-    btnRegister.addEventListener('click', ()=> {
-        // wrapperLogin.classList.remove('active-wrapper-login');
-        wrapperRegister.classList.add('active-wrapper-register');
-    });
-
-    iconClose.addEventListener('click', ()=>{
-        wrapperLogin.classList.remove('active-wrapper-login');
     registerLink.addEventListener('click', ()=> {
         wrapper.classList.add('active');
     });
@@ -79,4 +61,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-})
