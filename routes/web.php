@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\ExerciseController;
+use App\Http\Controllers\backend\PackageExercisesController;
 use App\Http\Controllers\backend\MarketingController;
 use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\PostsController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\backend\CommentController;
 use App\Http\Controllers\backend\ComponentController;
 use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
+use App\Http\Controllers\ApiController;
+// use App\Http\Controllers\backend\api\PackageExercisesController;
 use App\Http\Controllers\backend\api\PackageExercisesController;
 
 
@@ -122,3 +125,13 @@ Route::prefix('admin')->group(function () {
     
 });
 
+
+// Route::group(['prefix' => 'api',], function () {
+//     // Route::get('goitap', [PackageExercisesController::class, 'index']);
+
+
+
+//     // account
+//     Route::get('/get-user/{id}', [ApiAccountsController::class, 'getUser'])->name('api.user');
+//     Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
+// });
