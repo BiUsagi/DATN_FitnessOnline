@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/frontend/css/style.css">
-    <script src="assets/frontend/js/script.js"></script>
 </head>
 
 <body>
@@ -69,7 +68,7 @@
             <!-- đăng ký -->
             <div class="form-box register">
                 <h2>Đăng Ký</h2>
-                <form action="">
+                <form action=" {{ route('login_.index') }}" method="POST"">
                     <!-- Họ tên -->
                     <div class="input-box">
                         <span class="icon">
@@ -135,6 +134,10 @@
             </div>
         </div>
     </div>
+
+
+    <script src="assets/frontend/js/script.js"></script>
+
 </body>
 
 </html>
