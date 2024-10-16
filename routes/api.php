@@ -11,12 +11,15 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+
+
+
 Route::group(['prefix' => 'admin',], function () {
     Route::get('/baitap', [ExerciseController::class, 'index']);
 
-
-
-    // account
-    Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('api.user');
-    Route::post('/update-user', [AccountsController::class, 'updateUser'])->name('api.user.update');
 });
+
+
+// account
+Route::get('/get-user/{id}', [AccountsController::class, 'getUser'])->name('api.user');
+Route::post('/update-user', [AccountsController::class, 'updateUser'])->name('api.user.update');

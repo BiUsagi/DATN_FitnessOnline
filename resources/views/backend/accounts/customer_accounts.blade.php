@@ -178,8 +178,6 @@
                 success: function(response) {
                     console.log(response);
                     $('#editUserModal').modal('hide');
-                    // toastr.success('Cập nhật thành công!');
-
                     // alert('Cập nhật thành công!');
 
 
