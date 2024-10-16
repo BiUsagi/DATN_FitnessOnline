@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('staff_name');
             $table->string('email')->unique();
-            $table->text('avatar')->nullable();
+            $table->text('avatar')->nullable()->default('no-image.jpg');
             $table->text('address')->nullable();
             $table->string('password');
             $table->text('phone_number')->nullable();
