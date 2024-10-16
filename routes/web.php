@@ -7,7 +7,6 @@ use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
 use App\Http\Controllers\backend\DashboardController;
-use App\Http\Controllers\Api\ApiAccountsController;
 use App\Http\Controllers\backend\ExerciseController;
 use App\Http\Controllers\backend\PackageExercisesController;
 use App\Http\Controllers\backend\MarketingController;
@@ -21,6 +20,7 @@ use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\ApiController;
 // use App\Http\Controllers\backend\api\PackageExercisesController;
+use App\Http\Controllers\backend\api\PackageExercisesController;
 
 
 //Front End
@@ -30,7 +30,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
-Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister.index'); //xử lý input register;
+Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister_.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 
@@ -121,6 +121,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info'); // Chi tiết nhân viên 
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
 
+
+    
 });
 
 
