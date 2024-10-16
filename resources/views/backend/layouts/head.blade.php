@@ -41,6 +41,8 @@
     <script>
         var BASE_URL = '{{ config('app.url') }}'
     </script>
+
+    @yield('custom_css')
 </head>
 
 <body>

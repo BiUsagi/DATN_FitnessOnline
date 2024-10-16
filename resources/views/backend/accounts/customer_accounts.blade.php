@@ -143,7 +143,7 @@
         // load dữ liệu vào modal
         function editUser(userId) {
             $.ajax({
-                url: "{{ route('admin.customer.edit', '') }}" + '/' + userId,
+                url: "{{ route('api.user', '') }}" + '/' + userId,
                 type: 'GET',
                 success: function(response) {
                     // Đổ dữ liệu vào các trường trong modal
@@ -172,7 +172,7 @@
             };
 
             $.ajax({
-                url: "{{ route('admin.customer.update') }}", // Đường dẫn API để cập nhật dữ liệu
+                url: "{{ route('api.user.update') }}", // Đường dẫn API để cập nhật dữ liệu
                 type: 'POST',
                 data: formData,
                 success: function(response) {
