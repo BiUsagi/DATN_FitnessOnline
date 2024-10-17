@@ -15,7 +15,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_id');
             $table->string('staff_name');
             $table->string('email')->unique();
-            $table->text('avatar')->nullable()->default('no-image.jpg');
+            $table->text('avatar')->default('no-image.jpg');
+            $table->tinyInteger('gender')->nullable();
             $table->text('address')->nullable();
             $table->string('password');
             $table->text('phone_number')->nullable();
