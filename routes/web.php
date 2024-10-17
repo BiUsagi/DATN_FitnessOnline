@@ -29,7 +29,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
-Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister_.index'); //xử lý input register;
+Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 
