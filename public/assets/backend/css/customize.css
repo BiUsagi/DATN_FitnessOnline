@@ -53,3 +53,24 @@ input[name=link]{
     color: navy !important;
     font-weight: 600;
 }
+.customize-width{
+    width: 200px;
+}
+.customize-width .btn-custom{
+    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 3px;
+}
+
+.customize-width .btn-custom.primary{
+    background-color: #1576D0;
+    color: #fff;
+}
+.customize-width .btn-custom.success{
+    background-color: #39D127;
+    color: #fff;
+}
+.customize-width .btn-custom.danger{
+    background-color: #F02536;
+    color: #fff;
+}
