@@ -16,7 +16,6 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'admin',], function () {
     Route::get('/baitap', [ExerciseController::class, 'index']);
-
 });
 
 
