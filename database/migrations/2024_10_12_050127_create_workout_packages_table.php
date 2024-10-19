@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('workout_packages', function (Blueprint $table) {
             $table->id(); // ID chính (PK)
             $table->string('package_name'); // Tên gói
+            $table->text('image')->nullable(); //Hình ảnh
             $table->text('description'); // Mô tả gói
             $table->string('level'); // Cấp độ (ví dụ Beginner, Intermediate, Advanced)
             $table->decimal('price', 8, 2); // Giá gói

@@ -29,18 +29,24 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="inputNanme4" class="form-label-customize">Giá tiền gói tập <span class="note">(*)</span></label>
+                                <label for="inputNanme4" class="form-label-customize">Cấp độ <span class="note">(*)</span></label>
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="capdo">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(* Tháng)</span></label>
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="thoigian">
+                            </div>
+
+
+                            <div class="col-12">
+                                <label for="inputNanme4" class="form-label-customize">Giá tiền gói tập <span class="note">(* VND)</span></label>
                                 <input type="number" class="form-control-customize " id="inputNanme4" name="giatien">
                             </div>
                             
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
                                 <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="mota"></textarea>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="inputNanme4" class="form-label-customize">Dụng cụ<span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="dungcu">
                             </div>
 
                             <input type="submit" class="btn btn-primary mt-3" value="Thêm gói tập">

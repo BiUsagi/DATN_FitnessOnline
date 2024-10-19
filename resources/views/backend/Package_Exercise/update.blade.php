@@ -23,9 +23,19 @@
                         <div class="card-header text-uppercase">THÔNG TIN CHUNG</div>
                         <div class="card-body">                
                 
-                            <div class="col-12">
+                            <div class="col-12">    
                                 <label for="inputNanme4" class="form-label-customize">Tên gói tập <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="tengoitap" value="{{ $update_id->name_package }}">
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="tengoitap" value="{{ $update_id->package_name }}">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="inputNanme4" class="form-label-customize">Cấp độ <span class="note">(*)</span></label>
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="capdo" value="{{ $update_id->level }}">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(*)</span></label>
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="thoigian" value="{{ $update_id->duration }}">
                             </div>
 
                             <div class="col-12">
@@ -35,15 +45,11 @@
                             
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="mota">{{ $update_id->description }}</textarea>
+                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="mota">{{ $update_id->description}}</textarea>
                             </div>
 
-                            <div class="col-12">
-                                <label for="inputNanme4" class="form-label-customize">Dụng cụ<span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="dungcu" value="{{ $update_id->tool }}">
-                            </div>
 
-                            <input type="submit" class="btn btn-primary mt-3" value="Thêm gói tập">
+                            <input type="submit" class="btn btn-primary mt-3" value="Cập nhật gói tập">
 
                         </div>
                     </div>
