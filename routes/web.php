@@ -53,6 +53,12 @@ Route::prefix('admin')->group(function () {
     Route::post('/exercise/create_', [ExerciseController::class, 'add'])->name('admin.exercise-add');
 
 
+    //Package_exercise
+    Route::get('/package_exercise', [PackageExercisesController::class, 'index'])->name('admin.package_exercise');
+    Route::get('/package_exercise_detail', [PackageExercisesController::class, 'detail'])->name('admin.package_exercise_detail');
+
+
+
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
 
 
