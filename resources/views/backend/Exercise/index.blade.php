@@ -58,7 +58,7 @@
                      <tr>
 
                         <td>${item.id}</td>
-                                    <td>${item.exercise_name}</td>
+                                    <td>${item.name}</td>
                                     <td>${item.description}</td>
                                     <td>${item.duration} Phút</td>
                                     <td>gym.jpg</td>
