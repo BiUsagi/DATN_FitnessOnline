@@ -64,16 +64,17 @@
                                             <td class="text-center align-middle">
                                                 {{-- xem --}}
                                                 <a href="{{ route('admin.customer.info', ['id' => $item->id]) }}"
-                                                    class="btn btn-info text-white">
+                                                    class="btn btn-info text-white" data-bs-placement="top"
+                                                    data-bs-title="Xem Chi Tiết">
                                                     <i class="ri-eye-fill"></i>
                                                 </a>
                                                 {{-- sua --}}
                                                 <button type="button" class="btn btn-warning text-white"
                                                     data-bs-toggle="modal" data-bs-target="#editUserModal"
-                                                    onclick="editUser({{ $item->id }})"><i
-                                                        class="ri-edit-box-line"></i></button>
-                                                <button type="button" class="btn btn-danger"><i
-                                                        class="ri-delete-bin-5-line"></i></button>
+                                                    onclick="editUser({{ $item->id }})" data-bs-placement="top"
+                                                    data-bs-title="Chỉnh Sửa"><i class="ri-edit-box-line"></i></button>
+                                                <button type="button" class="btn btn-danger" data-bs-placement="top"
+                                                    data-bs-title="Hạn Chế"><i class="ri-error-warning-line"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -116,6 +117,10 @@
                                     <input type="text" class="form-control" id="userPhone" name="userPhone">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="userBirthday" class="form-label">Ngày Sinh</label>
+                                    <input type="date" class="form-control" id="userBirthday" name="userBirthday">
+                                </div>
+                                <div class="mb-3">
                                     <label for="userAddress" class="form-label">Địa Chỉ</label>
                                     <input type="text" class="form-control" id="userAddress" name="userAddress">
                                 </div>
@@ -143,13 +148,16 @@
         // load dữ liệu vào modal
         function editUser(userId) {
             $.ajax({
-                url: "{{ route('admin.customer.edit', '') }}" + '/' + userId,
+                url: "{{ route('api.user.show', '') }}" + '/' + userId,
                 type: 'GET',
                 success: function(response) {
+                    console.log(response)
+
                     // Đổ dữ liệu vào các trường trong modal
                     $('#userId').val(response.id);
                     $('#userName').val(response.user_name);
                     $('#userEmail').val(response.email);
+                    $('#userBirthday').val(response.birthday);
                     $('#userPhone').val(response.phone_number);
                     $('#userAddress').val(response.address);
                 },
@@ -162,34 +170,40 @@
         }
 
         function updateUser() {
+            // Thu thập dữ liệu từ form
             var formData = {
-                id: $('#userId').val(),
                 user_name: $('#userName').val(),
                 email: $('#userEmail').val(),
                 phone_number: $('#userPhone').val(),
+                birthday: $('#userBirthday').val(),
                 address: $('#userAddress').val(),
-                _token: $('input[name="_token"]').val() // Thêm CSRF token vào dữ liệu
+                _token: $('input[name="_token"]').val() // Thêm CSRF token
             };
 
+            // Lấy ID người dùng từ hidden input
+            var userId = $('#userId').val();
+
+            // Gửi yêu cầu AJAX
             $.ajax({
-                url: "{{ route('admin.customer.update') }}", // Đường dẫn API để cập nhật dữ liệu
-                type: 'POST',
+                url: "{{ route('api.user.update', '') }}" + '/' + userId,
+                type: 'PUT',
                 data: formData,
                 success: function(response) {
                     console.log(response);
                     $('#editUserModal').modal('hide');
-                    // toastr.success('Cập nhật thành công!');
+                    Swal.fire({
+                        title: "Thành công!",
+                        text: "Cập nhật thông tin người dùng thành công!",
+                        icon: "success"
+                    });
 
-                    // alert('Cập nhật thành công!');
-
-
-                    // Cập nhật thông tin trong bảng
+                    // Cập nhật thông tin trên bảng nếu có
                     $('tr').each(function() {
                         if ($(this).find('td:eq(0)').text().trim() == response.id) {
                             $(this).find('td:eq(1)').html(`
-                            <img src="assets/backend/img/${response.avatar}"  class="rounded-circle object-fit-cover me-2 avatar-table">
-                            ${response.user_name}
-                        `);
+                        <img src="assets/backend/img/${response.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                        ${response.user_name}
+                    `);
                             $(this).find('td:eq(2)').text(response.phone_number);
                             $(this).find('td:eq(3)').text(response.email);
                         }
@@ -197,9 +211,26 @@
                 },
                 error: function(error) {
                     console.log(error);
-                    // toastr.error('Cập nhật thất bại. Vui lòng thử lại.');
+                    Swal.fire({
+                        title: "Lỗi!",
+                        text: "Có lỗi xảy ra khi cập nhật thông tin người dùng.",
+                        icon: "error"
+                    });
                 }
             });
-        };
+        }
+
+
+        // khởi tạo tooltip để hiện thị chú thích cho nút trên bảng
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-title]'));
+            // Kết quả trả về là một NodeList .
+            //[].slice.call(...) là một kỹ thuật để chuyển đổi NodeList thành một mảng bằng cách sử dụng phương thức slice() của mảng.
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                // Phương thức map sẽ lặp qua từng phần tử trong mảng tooltipTriggerList
+                //Đối với mỗi phần tử, một đối tượng Tooltip mới từ Bootstrap sẽ được khởi tạo.
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
     </script>
 @endsection

@@ -32,7 +32,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
-Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister_.index'); //xử lý input register;
+Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 
@@ -54,6 +54,12 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
     Route::post('/exercise/create_', [ExerciseController::class, 'add'])->name('admin.exercise-add');
+
+
+    //Package_exercise
+    Route::get('/package_exercise', [PackageExercisesController::class, 'index'])->name('admin.package_exercise');
+    Route::get('/package_exercise_detail', [PackageExercisesController::class, 'detail'])->name('admin.package_exercise_detail');
+
 
 
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
@@ -124,7 +130,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
 
 
-    
+
 });
 
 

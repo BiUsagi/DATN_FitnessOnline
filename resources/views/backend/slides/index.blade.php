@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <div class="title-top d-flex justify-content-between">
                         <h5 class="card-title text-uppercase">Danh sách giao diện</h5>
-                        <a href="{{route('admin.slide.create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm bài tập</a>
+                        <a href="{{route('admin.slide.create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm giao diện</a>
                     </div>
                     
                     <!-- Table with stripped rows -->

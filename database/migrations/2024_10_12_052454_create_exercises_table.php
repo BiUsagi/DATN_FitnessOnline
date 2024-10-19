@@ -11,14 +11,18 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('exercises', function (Blueprint $table) {
-            $table->id(); // ID chính (PK)
-            $table->string('exercise_name'); // Tên bài tập
-            $table->text('description'); // Mô tả bài tập
-            $table->string('video_url'); // Đường dẫn video
-            $table->text('equipment_needed')->nullable(); // Dụng cụ cần thiết (có thể rỗng)
-            $table->integer('duration'); // Thời lượng bài tập (phút)
-            $table->timestamps();
+            $table->id();                       // Khóa chính
+            $table->foreignId('pt_id')          // Khóa ngoại liên kết đến huấn luyện viên
+                  ->constrained('staff')
+                  ->onDelete('cascade');
+            $table->string('name');             // Tên bài tập
+            $table->text('description')->nullable(); // Mô tả bài tập
+            $table->integer('sets');             // Số hiệp
+            $table->integer('reps');             // Số lần lặp lại
+            $table->string('video_url')->nullable(); // URL video hướng dẫn
+            $table->timestamps();                // Thời gian tạo và cập nhật
         });
+        
     }
 
     /**

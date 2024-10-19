@@ -25,28 +25,26 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th>
-                                    <b>N</b>ame
-                                </th>
-                                <th>Ext.</th>
-                                <th>City</th>
-                                <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                <th>Completion</th>
+                                <th class="text-center" >STT</th>
+                                <th class="text-center" >Tên</th>
+                                <th class="text-center" >ID bài viết</th>
+                                <th class="text-center" >content</th>
+                                <th class="text-center" >Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @for ($i = 1; $i<=100; $i++)
-                            <tr>
-                                <td>Unity Pugh</td>
-                                <td>9958</td>
-                                <td>Curicó</td>
-                                <td>2005/02/11</td>
-                                <td>37%</td>
-                            </tr>
-                            @endfor
-                            
-
+                            @foreach($comments as $index => $comment)
+                                <tr>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $index + 1 }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $comment->user_id }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $comment->posts_id }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $comment->content }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">
+                                        <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <!-- End Table with stripped rows -->

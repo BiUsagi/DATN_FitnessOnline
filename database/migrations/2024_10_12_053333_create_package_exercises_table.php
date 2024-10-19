@@ -11,17 +11,18 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('package_exercises', function (Blueprint $table) {
-            $table->id(); // ID chính (PK)
-            $table->unsignedBigInteger('exercise_id'); // ID bài tập (FK)
-            $table->unsignedBigInteger('workout_packages_id'); // ID gói tập (FK)
-            $table->timestamps();
-
-            // Khóa ngoại (foreign key) liên kết đến bảng Exercises
-            $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade');
-
-            // Khóa ngoại (foreign key) liên kết đến bảng WorkoutPackages
-            $table->foreign('workout_packages_id')->references('id')->on('workout_packages')->onDelete('cascade');
+            $table->id();                       // Khóa chính
+            $table->foreignId('workout_package_id') // Khóa ngoại liên kết đến gói tập
+                  ->constrained('workout_packages')
+                  ->onDelete('cascade');
+            $table->foreignId('exercise_id')    // Khóa ngoại liên kết đến bài tập
+                  ->constrained('exercises')
+                  ->onDelete('cascade');
+            $table->integer('day_number');      // Ngày thứ mấy trong lộ trình
+            $table->integer('sequence');         // Thứ tự bài tập trong ngày
+            $table->timestamps();                // Thời gian tạo và cập nhật
         });
+        
     }
 
     /**

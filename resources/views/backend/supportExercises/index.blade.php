@@ -53,17 +53,26 @@
                                     <tr class="replies" id="replies-{{ $sp['id'] }}" style="display: none;">
                                         <td colspan="7">
                                             <table class="table">
+                                                @php $i = 1; @endphp 
                                                 @foreach ($sp['replies'] as $reply)
                                                     <tr id="rep">
-                                                        <td>{{ $reply['id'] }}</td>
+                                                        <!-- <td>{{ $reply['id'] }}</td>
                                                         <td>{{ $reply['content'] }}</td>
                                                         <td>{{ $reply['user_name'] }}</td>
                                                         <td>{{ $sp['exercise_name'] }}</td>
                                                         <td>{{ $reply['staff_name'] }}</td>
-                                                        <td>{{ $reply['created_at'] }}</td>
+                                                        <td>{{ $reply['created_at'] }}</td> -->
                                                         
+                                                        <td colspan="2">{{ $reply['user_name'] }}: {{ $reply['content'] }}</td>
+                                                 
                                                     </tr>
+                                                    @php $i++; @endphp
                                                 @endforeach
+                                                
+                                                @if ($i == 1)
+                                                    <tr id="rep"><td>Không có phản hồi</td></tr>  
+                                                @endif
+
                                             </table>
                                         </td>
                                     </tr>
