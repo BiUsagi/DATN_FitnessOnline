@@ -16,15 +16,8 @@ class AccountsController extends Controller
         return response()->json($user);
     }
 
-    public function update(Request $request, $id)
+    public function update(AccountRequest $request, $id)
     {
-        $request->validate([
-            'user_name' => 'required|max:255',
-            'email' => 'required|email',
-            'phone_number' => 'required',
-            'address' => 'required',
-        ]);
-
         // Tìm người dùng theo ID
         $user = User::find($id);
 
