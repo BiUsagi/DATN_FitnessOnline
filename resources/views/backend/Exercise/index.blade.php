@@ -52,13 +52,16 @@
     <script>
         $.get('http://127.0.0.1:8000/api/admin/exercises', function(res) {
                 let data = res;                
+                console.log(res);
                 let returnData = '';
+
+                
                 data.forEach(item => {
                     returnData += `
                      <tr>
 
                         <td>${item.id}</td>
-                                    <td>${item.exercise_name}</td>
+                                    <td>${item.name}</td>
                                     <td>${item.description}</td>
                                     <td>${item.duration} Phút</td>
                                     <td>gym.jpg</td>

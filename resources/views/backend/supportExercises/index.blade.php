@@ -27,58 +27,16 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Nội dung</th>
+                                    <th class="text-center">ID</th>
                                     <th>Tên người dùng</th>
-                                    <th>Tên bài tập</th>
-                                    <th>Tên nhân viên</th>
-                                    <th>Ngày tạo</th>
-                                    <th>Phản hồi</th>
+                                    <th>Nội dung</th>
+                                    <th>Bài tập</th>
+                                    <th>PT</th>
+                                    <th>Ngày đăng</th>
+                                    <th class="text-center">Phản hồi</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($supportExercises as $sp)
-                                    <tr>
-                                        <td>{{ $sp['id'] }}</td>
-                                        <td>{{ $sp['content'] }}</td>
-                                        <td>{{ $sp['user_name'] }}</td>
-                                        <td>{{ $sp['exercise_name'] }}</td>
-                                        <td>{{ $sp['staff_name'] }}</td>
-                                        <td>{{ $sp['created_at'] }}</td>
-                                        <td>
-                                            <button class="toggle-replies btn-replies"
-                                                data-target="replies-{{ $sp['id'] }}">Xem phản hồi</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="replies" id="replies-{{ $sp['id'] }}" style="display: none;">
-                                        <td colspan="7">
-                                            <table class="table">
-                                                @php $i = 1; @endphp 
-                                                @foreach ($sp['replies'] as $reply)
-                                                    <tr id="rep">
-                                                        <!-- <td>{{ $reply['id'] }}</td>
-                                                        <td>{{ $reply['content'] }}</td>
-                                                        <td>{{ $reply['user_name'] }}</td>
-                                                        <td>{{ $sp['exercise_name'] }}</td>
-                                                        <td>{{ $reply['staff_name'] }}</td>
-                                                        <td>{{ $reply['created_at'] }}</td> -->
-                                                        
-                                                        <td colspan="2">{{ $reply['user_name'] }}: {{ $reply['content'] }}</td>
-                                                 
-                                                    </tr>
-                                                    @php $i++; @endphp
-                                                @endforeach
-                                                
-                                                @if ($i == 1)
-                                                    <tr id="rep"><td>Không có phản hồi</td></tr>  
-                                                @endif
-
-                                            </table>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                            </tbody>
+                            <tbody id="list-items"></tbody>
                         </table>
                         <!-- End Table with stripped rows -->
 
@@ -87,52 +45,151 @@
 
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop"  data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title fs-5" id="staticBackdropLabel">Modal title</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Nội dung sẽ được cập nhật ở đây -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
     </section>
 
 </main><!-- End #main -->
-@endsection
-<style>
-    .btn-replies {
-        background-color: #4CAF50; /* Màu nền xanh lá cây */
-        color: white; /* Màu chữ trắng */
-        border: none; /* Không viền */
-        padding: 8px 16px; /* Khoảng cách bên trong */
-        text-align: center; /* Căn giữa chữ */
-        text-decoration: none; /* Không gạch chân */
-        display: inline-block; /* Hiển thị như nút */
-        margin: 4px 2px; /* Khoảng cách giữa các nút */
-        cursor: pointer; /* Con trỏ chuột khi di chuột qua */
-        border-radius: 4px; /* Bo góc */
-        transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
-        width: 140px;
-    }
 
-    .btn-replies:hover {
-        background-color: #45a049; /* Màu nền khi di chuột qua */
-    }
-    #rep td{
-        background-color: whitesmoke;
-        color: gray;
-        /* padding-left: 0; */
-    }
-</style>
+
+
+
+<!-- endsection
+ section('custom_js') -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggleButtons = document.querySelectorAll('.toggle-replies');
 
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const repliesRow = document.getElementById(targetId);
+
+    $.get('http://127.0.0.1:8000/api/admin/supportexercises', function (res) {
+        let data = res;
+        // console.log(res);
+
+        let supportExercises = '';
+
+        data.forEach(sp => {
+
+            const createdAt = new Date(sp.created_at); // Chuyển đổi chuỗi thành đối tượng Date
+            const formattedDate = createdAt.toLocaleDateString('en-GB'); // Định dạng dd/mm/yyyy
+
+            supportExercises += `
+                <tr>
+                    <td class="text-center align-middle">${sp.id}</td>
+                    <td class=" align-middle">
+                        <img src="assets/backend/img/${sp.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                        ${sp.user_name}
+                    </td>
+                    <td class=" align-middle">${sp.content}</td>
+                    <td class=" align-middle">${sp.exercise_name}</td>
+                    <td class=" align-middle">${sp.staff_name}</td>
+                    <td class=" align-middle">${formattedDate}</td>
+                    <td class=" text-center align-middle">
+                        <button type="button" class="btn btn-primary toggle-replies btn-replie" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="showComment(${sp.id})">
+                            <i class="ri-eye-fill"></i>
+                        </button>
+                    </td>
+                </tr>
                 
-                if (repliesRow.style.display === 'none') {
-                    repliesRow.style.display = 'table-row'; // Hiện phản hồi
-                    this.textContent = 'Ẩn phản hồi'; // Đổi văn bản nút
-                } else {
-                    repliesRow.style.display = 'none'; // Ẩn phản hồi
-                    this.textContent = 'Xem phản hồi'; // Đổi văn bản nút
-                }
-            });
+            `;
         });
-    });
+        $('#list-items').html(supportExercises);
+
+
+    })
+
+
+
+
+
+
+
+
+    function showComment(commentId) {
+        $.ajax({
+            url: `http://127.0.0.1:8000/api/admin/supportexercises/${commentId}`, // URL API
+            type: 'GET',
+            success: function (response) {
+                console.log(response);
+
+                // Cập nhật tiêu đề modal
+                $('#staticBackdropLabel').html(`
+
+                <div class="row">
+                    <div class="col-3">
+                        <img src="assets/backend/img/${response.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                    </div>
+                    <div class="col-9">
+                        <div class="d-flex flex-column">
+                            <strong>${response.user_name}</strong>
+                            <small style="font-size: 0.8em; color: gray;"> (${new Date(response.created_at).toLocaleDateString('en-GB')}) </small>
+                        </div>
+                    </div>
+                </div>
+
+               
+                    
+                    
+                `);
+
+                // Đổ dữ liệu vào các trường trong modal
+                //response.content
+                $('.modal-body').html(`
+                    <p><strong>Nội dung:</strong> ${response.content}</p>
+                   
+
+                    <hr>
+                    <h5>Phản hồi:</h5>
+                    ${response.replies.map(reply => `
+                        <div>
+                            <p><strong>${reply.user_name}:</strong> ${reply.content}</p>
+                            <p><small>Nhân viên: ${reply.staff_name} - Ngày: ${new Date(reply.created_at).toLocaleDateString('en-GB')}</small></p>
+                        </div>
+                    `).join('')}
+                `);
+            },
+            error: function (error) {
+                console.log(error);
+                alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+            }
+        });
+    }
+
+
+
+
+
+
+
 </script>
+@endsection

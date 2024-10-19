@@ -26,7 +26,10 @@
                         </div>
                     </div>
                 </div> --}}
-                @foreach($slides->take(3) as $index => $slide)
+
+                {{-- GIAO DIỆN SLIDE --}}
+
+                @foreach($slides->take(3) as $slide)
                     <div class="swiper-slide">
                         <div class="banner-slide">
                             <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/' . $slide->image) }}" alt="banner-slide" width="550" height="700">
@@ -43,6 +46,7 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
+
     <!-- BANNER BLOCK END'S HERE -->
     <!-- ABOUT BLOCK START HERE -->
     <div class="about_wrapper default-padding">
@@ -56,14 +60,14 @@
                 <div class="col-lg-6 order-1 order-lg-2 mb-lg-0 mb-5 wow fadeInUp" data-wow-duration="1.5s">
                     <div class="about_right">
                         <div class="heading">
-                            <h2>ABOUT <span>GYMFIT</span></h2>
+                            <h2>VỀ PHÒNG TẬP <span>GYMFIT</span></h2>
                         </div>
-                        <p class="mb-3">Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non
-                            leo blandit porta. Duis purus sapien, blandit non sem quis, mollis vehicula sapien.
-                            Fusce mollis mauris vitae enim varius scelerisque id id ex. Maecenas vel iaculis purus,
-                            a ornare quam.</p>
-                        <p>Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo blandit
-                            porta. Duis purus sapien, blandit non sem quis, mollis vehicula sapien. </p>
+                        <p class="mb-3">Tập gym là một hoạt động thể dục giúp cải thiện sức khỏe và vóc dáng thông
+                                        qua các bài tập với tạ, máy tập, và các bài cardio. Việc tập gym không chỉ giúp tăng cường cơ bắp, 
+                                        đốt cháy mỡ thừa mà còn giúp nâng cao sức bền, cải thiện tinh thần, và giảm căng thẳng.</p>
+                        <p>Dù bạn muốn tăng cơ, giảm cân hay đơn giản là duy trì một lối sống lành mạnh, tập gym là một lựa chọn
+                            hiệu quả và phù hợp với mọi đối tượng. Hãy bắt đầu hành trình tập luyện để có một cơ thể khỏe mạnh
+                            và tự tin hơn mỗi ngày! </p>
                         <a href="contact-us.html" class="btn">Get Started </a>
                     </div>
                 </div>
@@ -78,15 +82,23 @@
                 <div class="col-xl-4 col-lg-12">
                     <div class="left_block">
                         <div class="heading left">
-                            <h2>Team of expert <span>Coaches</span></h2>
-                            <p>Vivamus in imperdiet libero, at dapibus eros. In varius lacinia gravida. Aenean
-                                dignissim nulla nibh.</p>
+                            <h2>Đội huấn luyện viên <span>Chuyên gia </span></h2>
+                            <p>Đội huấn luyện viên chuyên gia được mọi người lựa chọn và tin tưởng, chó kinh nghiệm nhiều năm trong ngành.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-8 col-lg-12">
                     <div class="row">
-                        <div class="col-md-4 f-0">
+                        @foreach ($PTHot->take(3) as $PT)
+                            <div class="col-md-4 f-0">
+                                <div class="team-block">
+                                    <img loading='lazy' src="{{ asset('assets/frontend/images/' . $PT->avatar) }}" alt="Coaches" width="210"
+                                        height="339">
+                                    <h3><span>{{$PT->staff_name}}</span></h3>
+                                </div>
+                            </div>
+                        @endforeach
+                        {{-- <div class="col-md-4 f-0">
                             <div class="team-block">
                                 <img loading='lazy' src="assets/frontend/images/team/1.webp" alt="Coaches" width="210"
                                     height="339">
@@ -104,9 +116,10 @@
                             <div class="team-block">
                                 <img loading='lazy' src="assets/frontend/images/team/3.webp" alt="Coaches" width="210"
                                     height="339">
-                                <h3>Devin <span>Tremson</span></h3>
-                            </div>
+                                <h3>TUẤN</h3>
+                            </div> --}}
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -282,7 +295,7 @@
                 <h3>OUR <span>Blog</span></h3>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-8 mx-auto mb-xl-0 mb-4">
+                {{-- <div class="col-lg-4 col-md-8 mx-auto mb-xl-0 mb-4">
                     <div class="card">
                         <a href="blog-details.html" aria-label="Blog 1">
                             <div class="card-img f-0">
@@ -315,8 +328,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-8 mx-auto mb-xl-0 mb-4">
+                </div> --}}
+                {{-- <div class="col-lg-4 col-md-8 mx-auto mb-xl-0 mb-4">
                     <div class="card">
                         <a href="blog-details.html" aria-label="Blog 2">
                             <div class="card-img f-0">
@@ -349,41 +362,41 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-8 mx-auto">
-                    <div class="card">
-                        <a href="blog-details.html" aria-label="Blog 3">
-                            <div class="card-img f-0">
-                                <img loading='lazy' src="assets/frontend/images/blog/blog-3.webp" alt="">
-                            </div>
-                        </a>
-                        <div class="card-body">
-                            <span>05 Aug, 2018</span>
-                            <h5 class="card-title">Vestibulum sodales, nisi et gravida cidunt, felis est auctor</h5>
-                            <p class="card-text">It’s no secret that the digital industry is booming. From exciting
-                                startups to global brands, companies are reaching out to digital agencies, responding to
-                                the new possibilities available. </p>
-                            <div class="button-sec">
-                                <a href="blog-details.html" aria-label="Blog Details">More Details</a>
-                                <div class="btn-arrow">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 279"
-                                        style="enable-background:new 0 0 500 279;" xml:space="preserve">
-                                        <style type="text/css">
-                                            .st0 {
-                                                fill: #222222;
-                                            }
-                                        </style>
-                                        <path d="M495,141.4c-1.4,1.1-3,2.1-4.3,3.4c-41.9,41.8-83.8,83.7-125.6,125.6c-1.3,1.3-2.2,3.1-3.1,4.5
-                                            c-8.1-8.1-15.2-15.1-22.4-22.4c31.8-31.7,63.7-63.6,96.6-96.4c-144,0-286.7,0-429.8,0c0-10.5,0-20.4,0-30.8c142.8,0,285.6,0,429,0
-                                            c-32.5-32.5-64.5-64.4-96.3-96.2c7.9-7.9,14.9-14.9,23-23c0.9,1.4,1.8,3.2,3.1,4.5c41.8,41.9,83.7,83.8,125.6,125.6
-                                            c1.3,1.3,2.9,2.3,4.3,3.4C495,140.2,495,140.8,495,141.4z" />
-                                    </svg>
+                </div> --}}
+                @foreach ($topPost->take(3) as $Post)
+                    <div class="col-lg-4 col-md-8 mx-auto">
+                        <div class="card">
+                            <a href="blog-details.html" aria-label="Blog 3">
+                                <div class="card-img f-0">
+                                    <img loading='lazy' src="{{ asset('assets/frontend/images/' . $Post->image) }}" alt="">
+                                </div>
+                            </a>
+                            <div class="card-body">
+                                <span>{{$Post->created_at}}</span>
+                                <h5 class="card-title">{{$Post->title}}</h5>
+                                <p class="card-text">{{$Post->description}}</p>
+                                <div class="button-sec">
+                                    <a href="blog-details.html" aria-label="Blog Details">Chi tiết</a>
+                                    <div class="btn-arrow">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 279"
+                                            style="enable-background:new 0 0 500 279;" xml:space="preserve">
+                                            <style type="text/css">
+                                                .st0 {
+                                                    fill: #222222;
+                                                }
+                                            </style>
+                                            <path d="M495,141.4c-1.4,1.1-3,2.1-4.3,3.4c-41.9,41.8-83.8,83.7-125.6,125.6c-1.3,1.3-2.2,3.1-3.1,4.5
+                                                c-8.1-8.1-15.2-15.1-22.4-22.4c31.8-31.7,63.7-63.6,96.6-96.4c-144,0-286.7,0-429.8,0c0-10.5,0-20.4,0-30.8c142.8,0,285.6,0,429,0
+                                                c-32.5-32.5-64.5-64.4-96.3-96.2c7.9-7.9,14.9-14.9,23-23c0.9,1.4,1.8,3.2,3.1,4.5c41.8,41.9,83.7,83.8,125.6,125.6
+                                                c1.3,1.3,2.9,2.3,4.3,3.4C495,140.2,495,140.8,495,141.4z" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
