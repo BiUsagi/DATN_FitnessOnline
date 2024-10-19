@@ -17,9 +17,9 @@ class Staff extends Model
     // Các thuộc tính
     protected $fillable = [
         'id_user',
-        'name_staff',
+        'name_staff_name',
         'email',
-        'image',
+        'avatar',
         'address',
         'password',
         'created_at',
