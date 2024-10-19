@@ -30,6 +30,7 @@
                                     <tr>
                                         <th class="text-center">STT</th>
                                         <th>Tên</th>
+                                        <th>Giới Tính</th>
                                         <th>Số Điện Thoại</th>
                                         <th>Email</th>
                                         <th>Trải Nghiệm</th>
@@ -43,8 +44,8 @@
                                     @php $stt = 1; @endphp
 
                                     @foreach ($data as $item)
-                                        <tr>
-                                            <td class="text-center">
+                                        <tr data-id="{{ $item->id }}">
+                                            <td class="text-center align-middle">
                                                 {{ $stt++ }}
                                             </td>
                                             <td>
@@ -53,7 +54,17 @@
                                                     class="rounded-circle object-fit-cover me-2 avatar-table">
                                                 {{-- name --}}
                                                 {{ $item->user_name }}
-
+                                            </td>
+                                            <td class="align-middle ">
+                                                @if ($item->gender == 1)
+                                                    <i class="bi bi-gender-male text-primary"></i> Nam
+                                                @elseif ($item->gender == 0)
+                                                    <i class="bi bi-gender-female text-danger"></i> Nữ
+                                                @elseif ($item->gender == 2)
+                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
+                                                @else
+                                                    <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                                @endif
                                             </td>
                                             {{-- sdt --}}
                                             <td class="align-middle">{{ $item->phone_number }}</td>
@@ -73,14 +84,13 @@
                                                     data-bs-toggle="modal" data-bs-target="#editUserModal"
                                                     onclick="editUser({{ $item->id }})" data-bs-placement="top"
                                                     data-bs-title="Chỉnh Sửa"><i class="ri-edit-box-line"></i></button>
+                                                {{-- hạn chế --}}
                                                 <button type="button" class="btn btn-danger" data-bs-placement="top"
-                                                    data-bs-title="Hạn Chế"><i class="ri-error-warning-line"></i></button>
+                                                    data-bs-title="Hạn Chế Tài Khoản Này"><i
+                                                        class="ri-error-warning-line"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
-
-
-
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
@@ -108,6 +118,15 @@
                                     <label for="userName" class="form-label">Tên</label>
                                     <input type="text" class="form-control" id="userName" name="userName">
                                 </div>
+                                <!-- giới tính -->
+                                <div class="mb-3">
+                                    <label for="userGender" class="form-label">Giới Tính</label>
+                                    <select class="form-control" id="userGender" name="userGender">
+                                        <option value="1">Nam</option>
+                                        <option value="0">Nữ</option>
+                                        <option value="2">Khác</option>
+                                    </select>
+                                </div>
                                 <div class="mb-3">
                                     <label for="userEmail" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="userEmail" name="userEmail">
@@ -125,7 +144,8 @@
                                     <input type="text" class="form-control" id="userAddress" name="userAddress">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Đóng</button>
                                     <button type="button" class="btn btn-primary" id="saveChangesBtn"
                                         onclick="updateUser()">Lưu
                                         Thay Đổi</button>
@@ -156,6 +176,7 @@
                     // Đổ dữ liệu vào các trường trong modal
                     $('#userId').val(response.id);
                     $('#userName').val(response.user_name);
+                    $('#userGender').val(response.gender);
                     $('#userEmail').val(response.email);
                     $('#userBirthday').val(response.birthday);
                     $('#userPhone').val(response.phone_number);
@@ -173,11 +194,12 @@
             // Thu thập dữ liệu từ form
             var formData = {
                 user_name: $('#userName').val(),
+                gender: $('#userGender').val(),
                 email: $('#userEmail').val(),
                 phone_number: $('#userPhone').val(),
                 birthday: $('#userBirthday').val(),
                 address: $('#userAddress').val(),
-                _token: $('input[name="_token"]').val() // Thêm CSRF token
+                _token: $('input[name="_token"]').val()
             };
 
             // Lấy ID người dùng từ hidden input
@@ -199,13 +221,41 @@
 
                     // Cập nhật thông tin trên bảng nếu có
                     $('tr').each(function() {
-                        if ($(this).find('td:eq(0)').text().trim() == response.id) {
+
+                        var rowId = $(this).data('id'); // Lấy giá trị data-id từ thẻ tr
+
+                        // Kiểm tra nếu ID của hàng trùng với response.id
+                        if (rowId == response.id) {
+
+                            // Cập nhật Avatar và tên người dùng
                             $(this).find('td:eq(1)').html(`
-                        <img src="assets/backend/img/${response.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
-                        ${response.user_name}
-                    `);
-                            $(this).find('td:eq(2)').text(response.phone_number);
-                            $(this).find('td:eq(3)').text(response.email);
+                                <img src="assets/backend/img/${response.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                                ${response.user_name}
+                            `);
+
+                            // Cập nhật giới tính với icon và màu sắc tương ứng
+                            let genderHtml = '';
+                            if (response.gender == 1) {
+                                genderHtml = '<i class="bi bi-gender-male text-primary"></i> Nam';
+                            } else if (response.gender == 0) {
+                                genderHtml = '<i class="bi bi-gender-female text-danger"></i> Nữ';
+                            } else if (response.gender == 2) {
+                                genderHtml = '<i class="bi bi-gender-trans text-warning"></i> Khác';
+                            } else {
+                                genderHtml =
+                                    '<i class="bi bi-gender-trans text-secondary"></i> Chưa xác định';
+                            }
+                            // Cập nhật giới tính
+                            $(this).find('td:eq(2)').html(genderHtml);
+
+                            // Cập nhật số điện thoại
+                            $(this).find('td:eq(3)').text(response.phone_number);
+
+                            // Cập nhật email
+                            $(this).find('td:eq(4)').text(response.email);
+
+                            // Cập nhật số ngày trải nghiệm
+                            $(this).find('td:eq(5)').text(`${response.trial} ngày`);
                         }
                     });
                 },
