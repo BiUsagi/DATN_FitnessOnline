@@ -30,7 +30,7 @@
                                     <tr>
                                         <th class="text-center">STT</th>
                                         <th>Tên</th>
-                                        <th class="text-center">Ảnh</th>
+                                        <th>Số Điện Thoại</th>
                                         <th>Email</th>
                                         <th class="text-center">Hành Động</th>
                                     </tr>
@@ -46,17 +46,16 @@
                                             <td class="text-center">
                                                 {{ $stt++ }}
                                             </td>
-                                            <td>{{ $item->staff_name }}</td>
-                                            <td class="text-center">
-                                                @if ($item->avatar)
-                                                    <img src="{{ $item->avatar }}" style="max-width: 100px;">
-                                                @else
-                                                    <img src="{{ url('assets/backend/img/no-image.jpg') }}"
-                                                        style="max-width: 70px;">
-                                                @endif
+                                            <td>
+                                                {{-- Avatar --}}
+                                                <img src="assets/backend/img/{{ $item->avatar }}"
+                                                    class="rounded-circle object-fit-cover me-2 avatar-table">
+                                                {{-- name --}}
+                                                {{ $item->staff_name }}
                                             </td>
-                                            <td>{{ $item->email }}</td>
-                                            <td class="text-center">
+                                            <td class="align-middle">{{ $item->phone_number }}</td>
+                                            <td class="align-middle">{{ $item->email }}</td>
+                                            <td class="text-center align-middle">
                                                 <button type="button" class="btn btn-info text-white"><i
                                                         class="bi bi-eye-fill"></i></button>
                                                 <button type="button" class="btn btn-warning text-white"><i

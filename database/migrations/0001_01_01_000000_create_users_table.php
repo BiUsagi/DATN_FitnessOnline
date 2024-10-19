@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->text('avatar')->default('no-image.jpg');
             $table->text('address')->nullable();
             $table->date('birthday')->nullable();
+            $table->tinyInteger('gender')->nullable();
             $table->string('password');
             $table->text('phone_number')->nullable();
             $table->integer('trial')->default('30');

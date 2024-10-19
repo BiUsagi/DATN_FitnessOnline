@@ -9,37 +9,38 @@ use App\Models\User;
 class AccountsController extends Controller
 {
     // tìm tài khoản theo id
-    public function getUser($id)
+    public function show($id)
     {
         $user = User::find($id);
         return response()->json($user);
     }
 
-    // cập nhật tài khoản
-    public function updateUser(Request $request)
+    public function update(Request $request, $id)
     {
-
-
-        // Xác thực dữ liệu
         $request->validate([
-            'user_name' => 'required|string',
+            'user_name' => 'required|max:255',
             'email' => 'required|email',
-            'phone_number' => 'required|string',
+            'phone_number' => 'required',
+            'address' => 'required',
         ]);
 
-        // Tìm người dùng theo ID và cập nhật thông tin
-        $user = User::find($request->id);
-        if ($user) {
-            $user->user_name = $request->user_name;
-            $user->email = $request->email;
-            $user->phone_number = $request->phone_number;
-            $user->address = $request->address;
-            $user->save();
+        // Tìm người dùng theo ID
+        $user = User::find($id);
 
-            // Trả về dữ liệu người dùng đã cập nhật
-            return response()->json($user);
+        // Kiểm tra xem người dùng có tồn tại không
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
         }
 
-        return response()->json(['message' => 'User not found.'], 404);
+        // Cập nhật thông tin người dùng
+        $user->user_name = $request->input('user_name');
+        $user->email = $request->input('email');
+        $user->phone_number = $request->input('phone_number');
+        $user->address = $request->input('address');
+        $user->birthday = $request->input('birthday');
+        $user->save();
+
+        // Trả về phản hồi JSON chứa thông tin người dùng sau khi cập nhật
+        return response()->json($user);
     }
 }
