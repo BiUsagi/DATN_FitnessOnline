@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\ExerciseController;
+use App\Http\Controllers\backend\WorkoutPackagesController;
 use App\Http\Controllers\backend\PackageExercisesController;
 use App\Http\Controllers\backend\MarketingController;
 use App\Http\Controllers\backend\OrderController;
@@ -19,6 +20,8 @@ use App\Http\Controllers\backend\ComponentController;
 use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\ApiController;
+
+// use App\Http\Controllers\backend\api\PackageExercisesController;
 // use App\Http\Controllers\backend\api\PackageExercisesController;
 
 
@@ -29,7 +32,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
-Route::post('/rigister', [LoginController::class, 'rigister_'])->name('rigister_.index'); //xử lý input register;
+Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 
@@ -53,19 +56,25 @@ Route::prefix('admin')->group(function () {
     Route::post('/exercise/create_', [ExerciseController::class, 'add'])->name('admin.exercise-add');
 
 
+    //Package_exercise
+    Route::get('/package_exercise', [PackageExercisesController::class, 'index'])->name('admin.package_exercise');
+    Route::get('/package_exercise_detail', [PackageExercisesController::class, 'detail'])->name('admin.package_exercise_detail');
+
+
+
     Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
 
 
     // exerciseset - gói tập
-    Route::get('/exerciseset', [PackageExercisesController::class, 'index'])->name('admin.exerciseset');
+    Route::get('/exerciseset', [WorkoutPackagesController::class, 'index'])->name('admin.exerciseset');
     //create_goitap
-    Route::get('/exerciseset/create', [PackageExercisesController::class, 'create'])->name('admin.exerciseset-create');
-    Route::post('/exerciseset/create', [PackageExercisesController::class, 'create_'])->name('admin.exerciseset-create_');
+    Route::get('/exerciseset/create', [WorkoutPackagesController::class, 'create'])->name('admin.exerciseset-create');
+    Route::post('/exerciseset/create', [WorkoutPackagesController::class, 'create_'])->name('admin.exerciseset-create_');
     //update_goi_tap
-    Route::get('/exerciseset/update/{id}', [PackageExercisesController::class, 'update'])->name('admin.exerciseset-update');
-    Route::post('/exerciseset/update/{id}', [PackageExercisesController::class, 'update_'])->name('admin.exerciseset-update_');
+    Route::get('/exerciseset/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.exerciseset-update');
+    Route::post('/exerciseset/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.exerciseset-update_');
     //delete_goitap
-    Route::get('/exerciseset/delete/{id}', [PackageExercisesController::class, 'delete'])->name('admin.exerciseset-delete');
+    Route::get('/exerciseset/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.exerciseset-delete');
 
 
     // statistical - thống kê
