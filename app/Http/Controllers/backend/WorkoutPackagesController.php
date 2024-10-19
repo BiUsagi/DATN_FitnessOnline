@@ -4,18 +4,19 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;    
 use Illuminate\Http\Request;
-use App\Models\Workout_package;
+use App\Models\Workout_Package;
+use Illuminate\Support\Facades\File;
 
 
 class WorkoutPackagesController extends Controller
 {
     public function index(){
         $all = Workout_package::orderBy('id','desc')->get();
-        return view('backend/workout_exercise/index', ['all' => $all]);
+        return view('backend/workout_package/index', ['all' => $all]);
     }
 
     public function create(){
-        return view('backend/workout_exercise/create');
+        return view('backend/workout_package/create');
     }
 
     public function create_(Request $request)
@@ -44,7 +45,7 @@ class WorkoutPackagesController extends Controller
     public function update($id)
     {   
         $update_id = Workout_package::find($id);
-        return view('backend/workout_exercise/update', ['update_id' => $update_id]);
+        return view('backend/workout_package/update', ['update_id' => $update_id]);
     }
 
     public function update_($id, Request $request)  

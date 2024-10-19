@@ -53,9 +53,23 @@
                                         <td>
                                             <img src="uploads/gym_package/{{$s->image}}" style="width:70px; height:70px" alt="">
                                         </td>
-                                        <td>{{ $s->level }}</td><td>{{ $s->created_at->format('d-m-Y') }}</td>
+                                        <td>{{ $s->level }}</td>
+                                        <td>{{ $s->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $s->staff_id }}</td>
-                                        <td>{{ $s->id }}</td>
+                                        <td>
+                                            <a href=" " class="btn btn-info text-white">
+                                                <i class="ri-eye-fill"></i>
+                                            </a>
+
+                                            <a href="{{ route('admin.exerciseset-update', ['id' => $s->id ]) }} " class="btn btn-warning text-white">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </a>
+
+                                           <button class="btn btn-danger" id="deleteButton">
+                                                 <i class="bi bi-trash3"></i>
+                                           </button>
+
+                                        </td>
                                     </tr>
                                @endforeach
                                 
@@ -71,5 +85,8 @@
         </div>
     </section>
 
+    <script>
+        
+    </script>
 </main><!-- End #main -->
 @endsection
