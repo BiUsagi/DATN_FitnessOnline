@@ -30,6 +30,7 @@
                                     <tr>
                                         <th class="text-center">STT</th>
                                         <th>Tên</th>
+                                        <th>Giới Tính</th>
                                         <th>Số Điện Thoại</th>
                                         <th>Email</th>
                                         <th>Trải Nghiệm</th>
@@ -53,7 +54,9 @@
                                                     class="rounded-circle object-fit-cover me-2 avatar-table">
                                                 {{-- name --}}
                                                 {{ $item->user_name }}
-
+                                            </td>
+                                            <td>
+                                                {{ $item->gender }}
                                             </td>
                                             {{-- sdt --}}
                                             <td class="align-middle">{{ $item->phone_number }}</td>
@@ -74,7 +77,8 @@
                                                     onclick="editUser({{ $item->id }})" data-bs-placement="top"
                                                     data-bs-title="Chỉnh Sửa"><i class="ri-edit-box-line"></i></button>
                                                 <button type="button" class="btn btn-danger" data-bs-placement="top"
-                                                    data-bs-title="Hạn Chế"><i class="ri-error-warning-line"></i></button>
+                                                    data-bs-title="Hạn Chế Tài Khoản Này"><i
+                                                        class="ri-error-warning-line"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
