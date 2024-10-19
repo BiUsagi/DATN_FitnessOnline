@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\frontend\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
 class LoginController extends Controller
 {
     function index(){
@@ -16,58 +15,46 @@ class LoginController extends Controller
     }
 
     public function login_(Request $request)
-    {
-        // Xác thực dữ liệu đầu vào
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+{
+    // Xác thực dữ liệu đầu vào
+    $validated = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        // Thực hiện xác thực
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // Đăng nhập thành công
-            return response()->json([
-                'success' => true,
-                'message' => 'Đăng nhập thành công!',
-                'redirect' => route('home'), // Đường dẫn chuyển hướng
-            ]);
-        }
+    // Tìm người dùng theo email
+    $user = User::where('email', $validated['email'])->first();
 
-        // Nếu thông tin đăng nhập không chính xác
-        return response()->json([
-            'success' => false,
-            'message' => 'Thông tin đăng nhập không chính xác.',
-        ]);
+    // Kiểm tra xem người dùng có tồn tại không và so sánh mật khẩu
+    if (!$user || !Hash::check($validated['password'], $user->password)) {
+        return response()->json(['message' => 'Thông tin đăng nhập không chính xác'], 401);
     }
 
-    public function register_(LoginRequest $request)
-    {
-        $t = new User();
-        $t->email = $request->email;
-        $t->password = $request->password;
+    // Nếu đăng nhập thành công
+    return response()->json(['message' => 'Đăng nhập thành công']);
+}
+
+public function register(Request $request)
+{
+    // Xác thực dữ liệu đầu vào
+    $validated = $request->validate([
+        'user_name' => 'required|string|max:255',
+        'email1' => 'required|email|unique:users,email',
+        'password1' => 'required|string|min:8|confirmed',
+    ]);
+
+    // Tạo người dùng mới
+    $user = User::create(attributes: [
+        'user_name' => $validated['user_name'],
+        'email' => $validated['email1'], // Đảm bảo sử dụng email1
+        'password' => bcrypt($validated['password1']), // Đảm bảo sử dụng password1
+    ]);
+
+    // Nếu đăng ký thành công
+    return response()->json(['message' => 'Đăng ký thành công'], 201);
+}
 
 
-        // Lưu thông tin vào cơ sở dữ liệu
-        $t->save();   
-        return redirect()->route('login.index');
-    }
 
-    public function register(Request $request) {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'terms' => 'accepted',
-        ]);
-    
-        // Tạo người dùng
-        $user = User::create([
-            'user_name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-        ]);
-    
-        return response()->json(['success' => true, 'message' => 'Đăng ký thành công!']);
-    }
     
 }
