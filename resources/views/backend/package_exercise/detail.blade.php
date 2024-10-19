@@ -12,6 +12,59 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">  
+                        <p class="modal-title fs-6 text-uppercase fw-bold" id="staticBackdropLabel">Ngày 1</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-add">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="#" class="fw-bold">Lựa chọn bài tập: <span class="note">(*)</span></label>
+                                    <select name="" id="" class="form-control-select2 setupSelect2">
+                                        <option value="0">Lựa chọn</option>
+                                        <option value="1">Bài tập tay</option>
+                                        <option value="2">Bài tập lưng</option>
+                                        <option value="3">Bài tập ngực</option>
+                                        <option value="4">Bài tập chân</option>
+                                        <option value="1">Bài tập tay</option>
+                                        <option value="2">Bài tập lưng</option>
+                                        <option value="3">Bài tập ngực</option>
+                                        <option value="4">Bài tập chân</option>
+                                        <option value="1">Bài tập tay</option>
+                                        <option value="2">Bài tập lưng</option>
+                                        <option value="3">Bài tập ngực</option>
+                                        <option value="4">Bài tập chân</option>
+                                    </select>
+                                  
+                                    <label for="#" class="fw-bold mt-2 mb-2">Bài tập đã chọn:</label>
+                                    <div class="show-data-select">
+                                        <p class="data-select mb-2 d-flex justify-content-between">Bài tập chân <i class="bi bi-x-circle ms-1"></i></p>
+                                        <p class="data-select mb-2 d-flex justify-content-between">Bài tập tay <i class="bi bi-x-circle ms-1"></i></p>
+                                        <p class="data-select mb-2 d-flex justify-content-between">Bài tập tay <i class="bi bi-x-circle ms-1"></i></p>
+
+                                    </div>
+                                    
+
+                                </div>
+                                <div class="col-6">
+                                    132123
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+
         <section class="section">
             <div class="row">
                 <div class="col-lg-9">
@@ -22,7 +75,7 @@
                             <div class="row list-detail-exercise">
                                 <div class="col detail-exercise">
                                     <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập ngày 1"><i class="bi bi-eye-fill"></i></a>
+                                        <a class="btn-action btn-detail" data-bs-title="Chi tiết ngày tập ngày 1" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-eye-fill"></i></a>
                                     </div>
                                     <div class="number-day">
                                         <h4>Ngày 1</h4>

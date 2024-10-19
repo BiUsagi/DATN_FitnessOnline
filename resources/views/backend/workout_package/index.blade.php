@@ -39,24 +39,39 @@
                                         <b>Tên gói tập</b>
                                     </th>
                                     <th>Hình ảnh</th>
-                                    <th>Dụng cụ</th>
+                                    <th>Cấp độ</th>
                                     <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
                                     <th>PT</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($all_package as $p)
-                                <tr>
-                                    <td>{{ $p->id }}</td>
-                                    <td>{{ $p->name_package }}</td>
-                                    <td><img src="{{ asset('uploads/gym_package/'.$p->image) }}" width="70px" height="70px" alt=""></td>
-                                    <td>{{ $p->tool }}</td>
-                                    <td>{{ $p->created_at->format('d-m-Y') }}</td>
-                                    <td>{{ $p->staff_id }}</td>
-                                    <td>Sửa Xóa Xem</td>
-                                </tr>
-                                @endforeach
+                               @foreach($all as $s)
+                                    <tr>
+                                        <td>{{ $s->id }}</td>    
+                                        <td>{{ $s->package_name }}</td>
+                                        <td>
+                                            <img src="uploads/gym_package/{{$s->image}}" style="width:70px; height:70px" alt="">
+                                        </td>
+                                        <td>{{ $s->level }}</td>
+                                        <td>{{ $s->created_at->format('d-m-Y') }}</td>
+                                        <td>{{ $s->staff_id }}</td>
+                                        <td>
+                                            <a href=" " class="btn btn-info text-white">
+                                                <i class="ri-eye-fill"></i>
+                                            </a>
+
+                                            <a href="{{ route('admin.exerciseset-update', ['id' => $s->id ]) }} " class="btn btn-warning text-white">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </a>
+
+                                           <button class="btn btn-danger" id="deleteButton">
+                                                 <i class="bi bi-trash3"></i>
+                                           </button>
+
+                                        </td>
+                                    </tr>
+                               @endforeach
                                 
 
                             </tbody>
@@ -70,5 +85,8 @@
         </div>
     </section>
 
+    <script>
+        
+    </script>
 </main><!-- End #main -->
 @endsection
