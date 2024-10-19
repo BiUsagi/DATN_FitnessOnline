@@ -16,15 +16,18 @@ class Staff extends Model
 
     // Các thuộc tính
     protected $fillable = [
-        'id_user',
-        'name_staff',
+        'user_id',
+        'staff_name',
         'email',
-        'image',
+        'avatar',
+        'gender',
+        'rating',
+        'rating_count',
         'address',
         'password',
+        'phone_number',
         'created_at',
         'updated_at',
-        'phone_number'
     ];
 
     // Ẩn mật khẩu
@@ -36,16 +39,19 @@ class Staff extends Model
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+        'gender' => 'integer',
+        'rating' => 'integer',
+        'rating_count' => 'integer'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function supportExercises()
     {
-        return $this->hasMany(Support_Exercise::class, 'id_staff');
+        return $this->hasMany(Support_Exercise::class, 'staff_id');
     }
 
 
