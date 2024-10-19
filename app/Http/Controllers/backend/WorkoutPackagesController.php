@@ -11,11 +11,11 @@ class WorkoutPackagesController extends Controller
 {
     public function index(){
         $all = Workout_package::orderBy('id','desc')->get();
-        return view('backend/Package_Exercise/index', ['all' => $all]);
+        return view('backend/workout_exercise/index', ['all' => $all]);
     }
 
     public function create(){
-        return view('backend/Package_Exercise/create');
+        return view('backend/workout_exercise/create');
     }
 
     public function create_(Request $request)
@@ -44,7 +44,7 @@ class WorkoutPackagesController extends Controller
     public function update($id)
     {   
         $update_id = Workout_package::find($id);
-        return view('backend/Package_Exercise/update', ['update_id' => $update_id]);
+        return view('backend/workout_exercise/update', ['update_id' => $update_id]);
     }
 
     public function update_($id, Request $request)  
