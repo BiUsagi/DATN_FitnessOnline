@@ -115,7 +115,7 @@
         let description = CKEDITOR.instances['description'].getData();
 
         let formData = $(this).serialize() + '&description=' + encodeURIComponent(description);
-
+        
         $.post('http://127.0.0.1:8000/api/admin/exercises', formData, function(res) {
             Swal.fire({
                 title: "Thành công!",

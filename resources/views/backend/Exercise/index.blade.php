@@ -58,19 +58,20 @@
                 
                 data.forEach(item => {
                     returnData += `
-                        <tr>
-                            <td>${item.id}</td>
-                            <td>${item.exercise_name}</td>
-                            <td>${item.description}</td>
-                            <td>${item.duration} Phút</td>
-                            <td>gym.jpg</td>
-                            <td class="customize-width">
-                                <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a> |    
-                                <a href="" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a> |    
-                                <a href="" class="btn-custom danger" ><i class="bi bi-trash"></i></a>    
-                            </td>
-                        </tr>
-                    `;
+                     <tr>
+
+                        <td>${item.id}</td>
+                                    <td>${item.name}</td>
+                                    <td>${item.description}</td>
+                                    <td>${item.duration} Phút</td>
+                                    <td>gym.jpg</td>
+                                    <td class="customize-width">
+                                        <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a> |    
+                                        <a href="" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a> |    
+                                        <a href="" class="btn-custom danger" ><i class="bi bi-trash"></i></a>    
+                                    </td>
+                                </tr>
+               `;
                 });
                 $('#list-items').html(returnData);
             }

@@ -13,15 +13,14 @@ return new class extends Migration {
         Schema::create('workout_packages', function (Blueprint $table) {
             $table->id(); // ID chính (PK)
             $table->string('package_name'); // Tên gói
+            $table->text('image')->nullable(); //Hình ảnh
             $table->text('description'); // Mô tả gói
             $table->string('level'); // Cấp độ (ví dụ Beginner, Intermediate, Advanced)
             $table->decimal('price', 8, 2); // Giá gói
-            $table->integer('duration'); // Thời lượng gói (ngày, tháng...)
+            $table->integer('duration_days'); // Thời lượng gói (ngày, tháng...)
             $table->unsignedBigInteger('staff_id'); // ID huấn luyện viên (FK)
-            $table->timestamps();
-
-            // Khóa ngoại (foreign key) liên kết đến bảng Trainer
-            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
+            $table->string('goal')->nullable(); // Mục tiêu tập luyện
+            $table->timestamps();                // Thời gian tạo và cập nhật             // Thời gian tạo và cập nhật
         });
     }
 

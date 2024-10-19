@@ -34,6 +34,7 @@ class AccountsController extends Controller
 
         // Cập nhật thông tin người dùng
         $user->user_name = $request->input('user_name');
+        $user->gender = $request->input('gender');
         $user->email = $request->input('email');
         $user->phone_number = $request->input('phone_number');
         $user->address = $request->input('address');

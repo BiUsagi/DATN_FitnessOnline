@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Workout_Package extends Model
 {
     use HasFactory;
+    protected $table = 'workout_packages';
 }
