@@ -66,7 +66,10 @@
         
         $.get('http://127.0.0.1:8000/api/admin/exercises', function(res) {
                 let data = res;                
+                console.log(res);
                 let returnData = '';
+
+                
                 data.forEach(item => {
                     returnData += `
                      <tr>

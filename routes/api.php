@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\api\PackageExercisesController;
 use App\Http\Controllers\backend\api\ExerciseController;
+use App\Http\Controllers\backend\api\SupportExercisesController;
 use App\Http\Controllers\backend\api\Workout_PackageController;
 use App\Http\Controllers\backend\api\AccountsController;
 
@@ -29,4 +30,8 @@ Route::group(['prefix' => 'admin',], function () {
     // account
     Route::get('/user/{id}', [AccountsController::class, 'show'])->name('api.user.show');
     Route::put('/user/{id}', [AccountsController::class, 'update'])->name('api.user.update');
+
+    //SupportExercises
+    Route::get('/supportexercises', [SupportExercisesController::class, 'index']);
+    Route::get('/supportexercises/{id}', [SupportExercisesController::class, 'show']);
 });

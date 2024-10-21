@@ -100,10 +100,31 @@
 
                         <div class="card">
                             <div class="card-header text-uppercase">HÌNH ẢNH</div>
-                                <div class="card-body">
+                                <!-- <div class="card-body">
                                     <img class="img-cover" src="assets/backend/img/no-image.jpg" alt="">
                                     <input class="form-control mt-3" type="file" id="formFile" name="image">
-                                </div>
+                                </div> -->
+
+                            <div class="card">
+                                <!-- <div class="card-header text-uppercase">Ảnh đại diện</div> -->
+                                    <div class="card-body">
+                                        <img 
+                                            class="img-cover" 
+                                            src="assets/backend/img/no-image.jpg" 
+                                            alt="Avatar" 
+                                            id="avatar-image" 
+                                            style="cursor: pointer; max-width: 100%; height: 170px; object-fit: cover;" 
+                                            onclick="document.getElementById('avatar-input').click();" 
+                                        >
+                                        <input type="file" name="image" id="avatar-input" class="form-control" style="display: none;" onchange="previewImage(event)">
+                                    </div>
+                                    <script>
+                                        function previewImage(event) {
+                                            const image = document.getElementById('avatar-image');
+                                            image.src = URL.createObjectURL(event.target.files[0]);
+                                        }
+                                    </script>
+                            </div>
                         </div>
 
                         <div class="card">
