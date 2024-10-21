@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\File;
 class WorkoutPackagesController extends Controller
 {
     public function index(){
-        return view('backend/workout_package/index');
+        return view('backend/workout_exercise/index');
     }
 
     public function detail(){
-        return view('backend/workout_package/detail');
+        return view('backend/workout_exercise/detail');
     }
 
     public function create(){
-        return view('backend/workout_package/create');
+        return view('backend/workout_exercise/create');
     }
 
     public function create_(Request $request)
@@ -28,9 +28,9 @@ class WorkoutPackagesController extends Controller
         $set->package_name = $request->input('tengoitap');
         $set->price = $request->input('giatien');
         $set->description = $request->input('mota');
-        // $set->staff_id = $request->input('pt');
+        $set->staff_id = $request->input('pt');
         $set->level = $request->input('capdo');
-        $set->duration_days = $request->input('thoigian');
+        $set->duration = $request->input('thoigian');
 
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -41,14 +41,14 @@ class WorkoutPackagesController extends Controller
         }
 
         $set->save();
-        // toastr()->success('Thêm bài tập thành công!');
+        toastr()->success('Thêm bài tập thành công!');
         return redirect()->back();
     }
 
     public function update($id)
     {   
         $update_id = Workout_package::find($id);
-        return view('backend/workout_package/update', ['update_id' => $update_id]);
+        return view('backend/workout_exercise/update', ['update_id' => $update_id]);
     }
 
     public function update_($id, Request $request)  
