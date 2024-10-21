@@ -39,6 +39,7 @@
 .select2-container--default{
     margin-top: 20px !important;
     margin-bottom: 10px !important;
+    z-index: 99999 !important;
 }
 .select2-container--default .select2-selection--single{
     border-color: #ebedf2 !important;
@@ -372,4 +373,25 @@ input[name=link]{
 .card .card-body .action-package-exercise a{
    font-size: 12px;
    margin-left: 10px;
+}
+
+.modal-body .form-add .row .col-6 label {
+    font-size: 14px;
+}
+.modal-body .form-add .row .col-6 .show-data-select p{
+    font-size: 13px;
+    /* background-color: #F02536; */
+    color: #1576D0;
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: 1px solid #1576D0;
+}
+
+.modal-body .form-add .row .col-6 .show-data-select .data-select{
+    margin-bottom: 10px !important;
+}
+
+.modal-body .form-add .row .col-6 .show-data-select i{
+    cursor: pointer;
+    color: #F02536;
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\backend\AccountRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -15,15 +16,8 @@ class AccountsController extends Controller
         return response()->json($user);
     }
 
-    public function update(Request $request, $id)
+    public function update(AccountRequest $request, $id)
     {
-        $request->validate([
-            'user_name' => 'required|max:255',
-            'email' => 'required|email',
-            'phone_number' => 'required',
-            'address' => 'required',
-        ]);
-
         // Tìm người dùng theo ID
         $user = User::find($id);
 

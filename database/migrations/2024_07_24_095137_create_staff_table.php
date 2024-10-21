@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->text('avatar')->default('no-image.jpg');
             $table->tinyInteger('gender')->nullable();
+            $table->date('birthday')->nullable();
             $table->tinyInteger('rating')->nullable()->default(0)->comment('Đánh giá từ 1 đến 5');
             $table->integer('rating_count')->default(0);
             $table->text('address')->nullable();
