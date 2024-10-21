@@ -14,33 +14,7 @@
             </a>
         </li>
         <!-- End Dashboard Nav -->
-        <li class="nav-item">
-            <a class="nav-link collapsed {{ Request::is('admin/route') || Request::is('admin/route/detail') ? 'active' : '' }}"
-                data-bs-target="#route-nav" data-bs-toggle="collapse" href="{{ route('admin.package_exercise') }}">
-                <i class="bi bi-calendar3"></i><span>Quản lý lộ trình tập</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="route-nav" class="nav-content collapse {{ Request::is('admin/route*') ? 'show' : '' }}"
-                data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('admin.package_exercise') }}"
-                        class="{{ Request::is('admin/route') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Danh sách lộ trình</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.exerciseset-create') }}"
-                        class="{{ Request::is('admin/route/create') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Thêm lộ trình tập</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.package_exercise_detail') }}"
-                        class="{{ Request::is('admin/route/detail') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Chi tiết lộ trình tập</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- End lộ trình tập -->
+        
 
         <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/exerciseset*') ? 'active' : '' }}"

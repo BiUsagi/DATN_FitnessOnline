@@ -47,9 +47,23 @@
                 </div>
             </div>
         </section>
+        {{-- <div class="video-container">
+            <iframe id="video-frame" width="560" height="315"
+                src="https://www.youtube.com/embed/TUQQCM9o1Ls?controls=0&modestbranding=1&rel=0&mute=1"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                style="pointer-events: none;">
+            </iframe>
+        </div>
 
-    </main><!-- End #main -->
+        <button id="play-button" class="btn-customize">Play Video</button> --}}
+        
+        </main><!-- End #main -->
     <script>
+        
         $.get('http://127.0.0.1:8000/api/admin/exercises', function(res) {
                 let data = res;                
                 let returnData = '';
@@ -61,10 +75,10 @@
                                     <td>${item.name}</td>
                                     <td>${item.description}</td>
                                     <td>${item.duration} Phút</td>
-                                    <td>gym.jpg</td>
+                                    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/TUQQCM9o1Ls?si=nzFaL6JX_ziBN4Wr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
                                     <td class="customize-width">
-                                        <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a> |    
-                                        <a href="" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a> |    
+                                        <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a>    
+                                        <a href="" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a>   
                                         <a href="" class="btn-custom danger" ><i class="bi bi-trash"></i></a>    
                                     </td>
                                 </tr>

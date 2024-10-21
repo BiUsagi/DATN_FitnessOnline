@@ -1,92 +1,71 @@
 @extends('backend/layouts/app-admin')
 @section('main')
-<main id="main" class="main">
+    <main id="main" class="main">
 
-    <div class="pagetitle">
-        <h1>Quản lí gói tập</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
-                <li class="breadcrumb-item">Quản lý gói tập</li>
-                <li class="breadcrumb-item active">Danh sách gói tập</li>
-            </ol>
-        </nav>
-    </div><!-- End Page Title -->
+        <div class="pagetitle">
+            <h1>Quản lý gói tập</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+                    <li class="breadcrumb-item">Quản lý gói tập</li>
+                    <li class="breadcrumb-item active">Danh sách gói tập của: </li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
 
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
 
-                <div class="card">
-                    <div class="card-body">
-                            <div class="title-top d-flex justify-content-between">
-                                <h5 class="card-title text-uppercase">Danh sách gói tập</h5>
-                                <a href="{{route('admin.exerciseset-create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm mới gói tập</a>
-                            </div>
-                        <!-- <p>Add lightweight datatables to your project with using the <a
-                                href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
-                                DataTables</a> library. Just add <code>.datatable</code> class name to any table you
-                            wish to conver to a datatable. Check for <a
-                                href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more
-                                examples</a>.</p> -->
-
-                        <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>
-                                        <b>Tên gói tập</b>
-                                    </th>
-                                    <th>Hình ảnh</th>
-                                    <th>Cấp độ</th>
-                                    <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
-                                    <th>PT</th>
-                                    <th>Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               @foreach($all as $s)
-                                    <tr>
-                                        <td>{{ $s->id }}</td>    
-                                        <td>{{ $s->package_name }}</td>
-                                        <td>
-                                            <img src="uploads/gym_package/{{$s->image}}" style="width:70px; height:70px" alt="">
-                                        </td>
-                                        <td>{{ $s->level }}</td>
-                                        <td>{{ $s->created_at->format('d-m-Y') }}</td>
-                                        <td>{{ $s->staff_id }}</td>
-                                        <td>
-                                            <a href=" " class="btn btn-info text-white">
-                                                <i class="ri-eye-fill"></i>
-                                            </a>
-
-                                            <a href="{{ route('admin.exerciseset-update', ['id' => $s->id ]) }} " class="btn btn-warning text-white">
-                                                <i class="bi bi-pencil-fill"></i>
-                                            </a>
-
-                                           <button class="btn btn-danger" id="deleteButton">
-                                                 <i class="bi bi-trash3"></i>
-                                           </button>
-
-                                        </td>
-                                    </tr>
-                               @endforeach
-                                
-
-                            </tbody>
-                        </table>
-                        <!-- End Table with stripped rows -->
-
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-top d-flex justify-content-between">
+                        <h5 class="card-title text-uppercase">Danh sách lộ trình tập của: </h5>
+                        <a href="{{ route('admin.exercise-create') }}" class="btn-customize"><i
+                                class="bi bi-plus-lg"></i> Thêm mới lộ trình tập</a>
+                    </div>
+                    <div class="box-list">
+                        {{-- Show data --}}
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main><!-- End #main -->
 
     <script>
-        
+        $.get('http://127.0.0.1:8000/api/admin/workout_package', function(res){
+            let data = res;
+            let returnData = '';
+            data.forEach(item =>{
+                $status = item.status ? 'Ngừng hoạt động' : 'Đang hoạt động';
+                returnData += `
+                            <div class="card-custom">
+                                <div class="card-body-custom">
+                                    <div class="image-package">
+                                        <img src="uploads/gym_package/${item.image}" alt="">
+                                        <div class="box-action">
+                                            <a href="{{ route('admin.package_exercise_detail')}}" class="btn-action detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết lộ trình"><i class="bi bi-eye-fill"></i></a>
+                                            <a href="#" class="btn-action edit" data-bs-toggle="tooltip" data-bs-title="Chỉnh sửa lộ trình"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="#" class="btn-action delete" data-bs-toggle="tooltip" data-bs-title="Xóa lộ trình"><i class="bi bi-trash"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="content-package">
+                                        <a href="#">${item.package_name}</a>
+                                        <p>Loại gói tập: ${item.level}</p>
+                                        <div class="price-status">
+                                            <p class="price">Giá: <span>$${item.price}</span></p>
+                                            <p class="status${item.status == 0 ? '-error' : ''}">${item.status == 0 ? 'Ngừng hoạt động' : 'Đang hoạt động'}</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p class="quantity"><i class="bi bi-person-fill"></i> 200 </p>
+                                            <p class="quantity"><i class="bi bi-caret-right-square-fill"></i> 200 </p>
+                                            <p class="quantity"><i class="bi bi-calendar3"></i> ${item.duration_days}d</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                `;
+            });
+            $('.box-list').html(returnData);
+        });
     </script>
-</main><!-- End #main -->
 @endsection

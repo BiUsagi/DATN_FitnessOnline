@@ -20,7 +20,8 @@ return new class extends Migration {
             $table->integer('duration_days'); // Thời lượng gói (ngày, tháng...)
             $table->unsignedBigInteger('staff_id'); // ID huấn luyện viên (FK)
             $table->string('goal')->nullable(); // Mục tiêu tập luyện
-            $table->timestamps();                // Thời gian tạo và cập nhật             // Thời gian tạo và cập nhật
+            $table->boolean('status')->default(false);
+            $table->timestamps();                // Thời gian tạo và cập nhật          
         });
     }
 
