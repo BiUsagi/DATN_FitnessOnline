@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::delete('/exercises/:id', [ExerciseController::class, 'add']);
 
     //API of workout_exercise
-    Route::get('/workout_package', [Workout_PackageController::class, 'index']);
+    Route::get('/workout_exercise', [Workout_PackageController::class, 'index']);
     Route::post('/workout_package', [Workout_PackageController::class, 'index']);  
 
 

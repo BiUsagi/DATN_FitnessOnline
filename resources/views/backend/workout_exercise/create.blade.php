@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action= "{{ route('admin.workout_exercise-create_') }}" method ="POST" enctype="multipart/form-data">
+        <form action= "{{ route('admin.workout_exercise-create_') }}" id="form-workout_exercise" method ="POST" enctype="multipart/form-data" >
             @csrf
             <div class="row">
                 <div class="col-lg-9">
@@ -46,7 +46,7 @@
                             
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="mota"></textarea>
+                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="description"></textarea>
                             </div>
 
                             <input type="submit" class="btn btn-primary mt-3" value="Thêm gói tập">
@@ -148,4 +148,27 @@
     </section>
 
 </main><!-- End #main -->
+
+<script>
+   
+    $('#form-workout_exercise').on('submit', function(e) {
+        e.preventDefault();
+
+        let description = CKEDITOR.instances['description'].getData();
+
+        let formData = $(this).serialize() + '&description=' + encodeURIComponent(description);
+        
+        $.post('http://127.0.0.1:8000/api/admin/workout_exercise', formData, function(res) {
+            Swal.fire({
+                title: "Thành công!",
+                text: "Thêm thành công bài tập!",
+                icon: "success"
+                });
+        })
+        $('#form-workout_exercise')[0].reset();
+        CKEDITOR.instances['description'].setData('');
+    });
+
+
+</script>
 @endsection
