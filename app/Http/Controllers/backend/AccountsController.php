@@ -26,8 +26,9 @@ class AccountsController extends Controller
     public function customer_info($id)
     {
         $data = User::where('id', $id)->first();
-        return view('backend/accounts/info_customer', compact('data'));
+        $age = $data->getAgeFromBirthday();
+        return view('backend/accounts/info_customer', compact('data', 'age'));
     }
 
-  
+
 }

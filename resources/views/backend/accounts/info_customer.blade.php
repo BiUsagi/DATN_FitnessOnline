@@ -33,9 +33,26 @@
                                         </div>
                                         <div class="col-8 mg-top">{{ $data->user_name }}</div>
                                         <div class="col-4 justify-content-end d-flex mg-top">
+                                            <strong>Giới tính:</strong>
+                                        </div>
+                                        <div class="col-8 mg-top">
+                                            @if ($data->gender == 1)
+                                                <i class="bi bi-gender-male text-primary"></i> Nam
+                                            @elseif ($data->gender == 0)
+                                                <i class="bi bi-gender-female text-danger"></i> Nữ
+                                            @elseif ($data->gender == 2)
+                                                <i class="bi bi-gender-trans text-warning"></i> Khác
+                                            @else
+                                                <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                            @endif
+                                        </div>
+                                        <div class="col-4 justify-content-end d-flex mg-top">
                                             <strong>Ngày sinh:</strong>
                                         </div>
-                                        <div class="col-8 mg-top">{{ $data->birthday }}</div>
+                                        <div class="col-8 mg-top">
+                                            {{ $data->birthday }}  <i class="ri-account-circle-fill"></i>
+                                            {{ $age }} tuổi
+                                        </div>
                                         <div class="col-4 justify-content-end d-flex mg-top">
                                             <strong>Email:</strong>
                                         </div>

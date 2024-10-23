@@ -5,7 +5,7 @@
     <base href="http://127.0.0.1:8000/">
     <!-- ------------- META TAG START HERE ------------- -->
     <meta charset="UTF-8" />
-    <meta name="title" content="Gymfit.com">
+    <meta name="title" content="Gymfit">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no" />
     <meta name=theme-color content="#1face1" />
@@ -35,16 +35,17 @@
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/swiper.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/app.css'>
     <link rel="stylesheet" href="assets/frontend/css/style.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
 
     <script src="assets/frontend/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-	<script>
-		const hasSupport = 'loading' in HTMLImageElement.prototype;
-		document.documentElement.className = hasSupport ? 'pass' : 'fail';
-	</script>
+    <script>
+        const hasSupport = 'loading' in HTMLImageElement.prototype;
+        document.documentElement.className = hasSupport ? 'pass' : 'fail';
+    </script>
 </head>
 
 <body>
@@ -54,7 +55,3 @@
     </div> --}}
     <!-- LOADER END HERE -->
     <!-- HEADER START HERE -->
-    
-    
-
-   
