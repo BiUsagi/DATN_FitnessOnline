@@ -171,7 +171,7 @@
                 url: "{{ route('api.user.show', '') }}" + '/' + userId,
                 type: 'GET',
                 success: function(response) {
-                    console.log(response)
+                    // console.log(response)
 
                     // Đổ dữ liệu vào các trường trong modal
                     $('#userId').val(response.id);
@@ -201,6 +201,7 @@
                 address: $('#userAddress').val(),
                 _token: $('input[name="_token"]').val()
             };
+
 
             // Lấy ID người dùng từ hidden input
             var userId = $('#userId').val();

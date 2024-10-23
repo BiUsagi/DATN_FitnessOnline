@@ -36,7 +36,6 @@ class User extends Authenticatable
     // Cấu hình kiểu dữ liệu cho các trường
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'birthday' => 'date', // định dạng kiểu ngày cho birthday
     ];
 
     public function supportExercises()
