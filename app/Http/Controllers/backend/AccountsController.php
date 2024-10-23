@@ -19,6 +19,10 @@ class AccountsController extends Controller
     public function customer_account()
     {
         $data = User::all();
+        // Tính tuổi cho từng tài khoản
+        foreach ($data as $user) {
+            $user->age = $user->getAgeFromBirthday();
+        }
         return view('backend/accounts/customer_accounts', compact('data'));
     }
 

@@ -28,8 +28,9 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">STT</th>
+                                        <th class="text-center">#</th>
                                         <th>Tên</th>
+                                        <th>Tuổi</th>
                                         <th>Giới Tính</th>
                                         <th>Số Điện Thoại</th>
                                         <th>Email</th>
@@ -55,7 +56,10 @@
                                                 {{-- name --}}
                                                 {{ $item->user_name }}
                                             </td>
-                                            <td class="align-middle ">
+                                            <td class="align-middle text-center">
+                                                {{ $item->age }}
+                                            </td>
+                                            <td class="align-middle text-center">
                                                 @if ($item->gender == 1)
                                                     <i class="bi bi-gender-male text-primary"></i> Nam
                                                 @elseif ($item->gender == 0)
@@ -75,18 +79,18 @@
                                             <td class="text-center align-middle">
                                                 {{-- xem --}}
                                                 <a href="{{ route('admin.customer.info', ['id' => $item->id]) }}"
-                                                    class="btn btn-info text-white" data-bs-placement="top"
+                                                    class="btn btn-outline-success" data-bs-placement="top"
                                                     data-bs-title="Xem Chi Tiết">
                                                     <i class="ri-eye-fill"></i>
                                                 </a>
                                                 {{-- sua --}}
-                                                <button type="button" class="btn btn-warning text-white"
+                                                <button type="button" class="btn btn-outline-primary"
                                                     data-bs-toggle="modal" data-bs-target="#editUserModal"
                                                     onclick="editUser({{ $item->id }})" data-bs-placement="top"
-                                                    data-bs-title="Chỉnh Sửa"><i class="ri-edit-box-line"></i></button>
+                                                    data-bs-title="Chỉnh Sửa"><i class="ri-edit-line"></i></button>
                                                 {{-- hạn chế --}}
-                                                <button type="button" class="btn btn-danger" data-bs-placement="top"
-                                                    data-bs-title="Hạn Chế Tài Khoản Này"><i
+                                                <button type="button" class="btn btn-outline-danger"
+                                                    data-bs-placement="top" data-bs-title="Hạn Chế Tài Khoản Này"><i
                                                         class="ri-error-warning-line"></i></button>
                                             </td>
                                         </tr>
@@ -115,7 +119,7 @@
                                 @csrf <!-- CSRF token -->
                                 <input type="hidden" id="userId" name="userId">
                                 <div class="mb-3">
-                                    <label for="userName" class="form-label">Tên</label>
+                                    <label for="userName" class="form-label">Tên <span class="note">(*)</span></label>
                                     <input type="text" class="form-control" id="userName" name="userName">
                                 </div>
                                 <!-- giới tính -->
@@ -128,7 +132,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="userEmail" class="form-label">Email</label>
+                                    <label for="userEmail" class="form-label">Email <span class="note">(*)</span></label>
                                     <input type="email" class="form-control" id="userEmail" name="userEmail">
                                 </div>
                                 <div class="mb-3">
