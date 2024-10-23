@@ -34,8 +34,8 @@
                         <div class="banner-slide">
                             <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/' . $slide->image) }}" alt="banner-slide" width="550" height="700">
                             <div class="banner-text">
-                                <h2 data-swiper-parallax="-800">{{$slide->description}}</h2>
-                                <h3 data-swiper-parallax="-1000">{{$slide->name}}</h3>
+                                <h2 data-swiper-parallax="-800"style="font-size: 40px">{{$slide->description}}</h2>
+                                <h3 data-swiper-parallax="-1000" style="font-size: 75px">{{$slide->name}}</h3>
                             </div>
                         </div>
                     </div>
@@ -466,16 +466,19 @@
         <div class="container">
             <div class="swiper gymSwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#!" class="slides" aria-label="Slide 1">
-                            <img loading='lazy' src="assets/frontend/images/post/post-1.webp" alt="Post Image" width="309"
-                                height="309">
-                            <div class="links">
-                                <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
+                    @foreach ($AllPT as $PTall)
+                        <div class="swiper-slide">
+                            <a href="#!" class="slides" aria-label="Slide 1">
+                                <img loading='lazy' src="{{ asset('assets/frontend/images/' . $PTall->avatar) }}" alt="Post Image" width="309"
+                                    height="309">
+                                <div class="links">
+                                    <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                    
+                    {{-- <div class="swiper-slide">
                         <a href="#!" class="slides" aria-label="Slide 2">
                             <img loading='lazy' src="assets/frontend/images/post/post-2.webp" alt="Post Image" width="309"
                                 height="309">
@@ -501,7 +504,7 @@
                                 <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                             </div>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
