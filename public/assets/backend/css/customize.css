@@ -39,7 +39,7 @@
 .select2-container--default{
     margin-top: 20px !important;
     margin-bottom: 10px !important;
-    z-index: 99999 !important;
+    z-index: 9999 !important;
 }
 .select2-container--default .select2-selection--single{
     border-color: #ebedf2 !important;
@@ -380,7 +380,6 @@ input[name=link]{
 }
 .modal-body .form-add .row .col-6 .show-data-select p{
     font-size: 13px;
-    /* background-color: #F02536; */
     color: #1576D0;
     padding: 5px 8px;
     border-radius: 3px;
@@ -395,3 +394,73 @@ input[name=link]{
     cursor: pointer;
     color: #F02536;
 }
+
+.modal-body .form-add .row .col-6 .show-data-select .no-selection{
+    font-size: 12px;
+    color: #333;
+    font-style: italic;
+}
+
+
+.modal-body .form-add .select-day-off{
+    margin-top: 20px;
+}
+
+.modal-body .form-add .select-day-off .day-off{
+    border: 1px solid #F02536;
+    color: #F02536;
+    padding: 6px 15px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.modal-body .form-add .select-day-off .day-off:hover{
+    background-color: #F02536;
+    color: #fff;
+}
+
+.modal-body .form-add .note-day-off{
+    font-size: 12px;
+    color: #333;
+    font-style: italic;
+}
+
+.modal-body .form-add .box-add-exercise{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day{
+    padding: 4px 8px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day.btn-add{
+    background-color: #39D127;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day.btn-add:hover{
+    background-color: #5edd50;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day.btn-reset{
+    background-color: #ddd;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day.btn-reset:hover{
+    background-color: #777;
+    color: #fff;
+}
+
+

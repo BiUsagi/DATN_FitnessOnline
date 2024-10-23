@@ -29,7 +29,7 @@ use App\Http\Controllers\ApiController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
-
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
 Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
@@ -58,7 +58,6 @@ Route::prefix('admin')->group(function () {
 
     //Package_exercise
     Route::get('/package_exercise', [PackageExercisesController::class, 'index'])->name('admin.package_exercise');
-    Route::get('/package_exercise_detail', [PackageExercisesController::class, 'detail'])->name('admin.package_exercise_detail');
 
 
 
@@ -66,15 +65,17 @@ Route::prefix('admin')->group(function () {
 
 
     // exerciseset - gói tập
-    Route::get('/exerciseset', [WorkoutPackagesController::class, 'index'])->name('admin.exerciseset');
+    Route::get('/Workout_exercise', [WorkoutPackagesController::class, 'index'])->name('admin.workout_exercise');
     //create_goitap
-    Route::get('/exerciseset/create', [WorkoutPackagesController::class, 'create'])->name('admin.exerciseset-create');
-    Route::post('/exerciseset/create', [WorkoutPackagesController::class, 'create_'])->name('admin.exerciseset-create_');
+    Route::get('/Workout_exercise/Workout_exercise_detail', [WorkoutPackagesController::class, 'detail'])->name('admin.package_exercise_detail');
+
+    Route::get('/Workout_exercise/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_exercise-create');
+    Route::post('/Workout_exercise/create', [WorkoutPackagesController::class, 'create_'])->name('admin.workout_exercise-create_');
     //update_goi_tap
-    Route::get('/exerciseset/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.exerciseset-update');
-    Route::post('/exerciseset/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.exerciseset-update_');
+    Route::get('/Workout_exercise/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_exercise-update');
+    Route::post('/Workout_exercise/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.workout_exercise-update_');
     //delete_goitap
-    Route::get('/exerciseset/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.exerciseset-delete');
+    Route::get('/Workout_exercise/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.workout_exercise-delete');
 
 
     // statistical - thống kê

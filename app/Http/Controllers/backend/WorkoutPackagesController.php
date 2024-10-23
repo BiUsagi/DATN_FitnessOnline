@@ -11,12 +11,15 @@ use Illuminate\Support\Facades\File;
 class WorkoutPackagesController extends Controller
 {
     public function index(){
-        $all = Workout_package::orderBy('id','desc')->get();
-        return view('backend/workout_package/index', ['all' => $all]);
+        return view('backend/workout_exercise/index');
+    }
+
+    public function detail(){
+        return view('backend/workout_exercise/detail');
     }
 
     public function create(){
-        return view('backend/workout_package/create');
+        return view('backend/workout_exercise/create');
     }
 
     public function create_(Request $request)
@@ -45,7 +48,7 @@ class WorkoutPackagesController extends Controller
     public function update($id)
     {   
         $update_id = Workout_package::find($id);
-        return view('backend/workout_package/update', ['update_id' => $update_id]);
+        return view('backend/workout_exercise/update', ['update_id' => $update_id]);
     }
 
     public function update_($id, Request $request)  
@@ -53,7 +56,7 @@ class WorkoutPackagesController extends Controller
         $set = Workout_package::find($id);
         $set->package_name = $request->input('tengoitap');
         $set->price = $request->input('giatien');
-        $set->description = $request->input('mota');
+        $set->description = $request->input('description');
         $set->staff_id = $request->input('pt');
         $set->level = $request->input('capdo');
         $set->duration = $request->input('thoigian');
@@ -74,7 +77,6 @@ class WorkoutPackagesController extends Controller
         }
 
         $set->update();
-        toastr()->success('Cập nhật bài tập thành công!');
         return redirect('admin/exerciseset');
     }
 
@@ -83,7 +85,6 @@ class WorkoutPackagesController extends Controller
         $set = Workout_package::find($id);
         $set->delete();
 
-        toastr()->success('Xóa bài tập thành công!');
         return redirect()->back();
     }
 }

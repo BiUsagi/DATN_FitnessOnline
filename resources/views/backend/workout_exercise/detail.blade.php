@@ -26,34 +26,36 @@
                             <div class="row">
                                 <div class="col-6">
                                     <label for="#" class="fw-bold">Lựa chọn bài tập: <span class="note">(*)</span></label>
-                                    <select name="" id="" class="form-control-select2 setupSelect2">
-                                        <option value="0">Lựa chọn</option>
+                                    <select name="" id="" class="form-control selectpicker" multiple  >
+                                        <option value="0" disabled>Lựa chọn</option>
                                         <option value="1">Bài tập tay</option>
                                         <option value="2">Bài tập lưng</option>
                                         <option value="3">Bài tập ngực</option>
                                         <option value="4">Bài tập chân</option>
-                                        <option value="1">Bài tập tay</option>
-                                        <option value="2">Bài tập lưng</option>
-                                        <option value="3">Bài tập ngực</option>
-                                        <option value="4">Bài tập chân</option>
-                                        <option value="1">Bài tập tay</option>
-                                        <option value="2">Bài tập lưng</option>
-                                        <option value="3">Bài tập ngực</option>
-                                        <option value="4">Bài tập chân</option>
+                                       
                                     </select>
                                   
                                     <label for="#" class="fw-bold mt-2 mb-2">Bài tập đã chọn:</label>
                                     <div class="show-data-select">
-                                        <p class="data-select mb-2 d-flex justify-content-between">Bài tập chân <i class="bi bi-x-circle ms-1"></i></p>
+                                        {{-- <p class="data-select mb-2 d-flex justify-content-between">Bài tập chân <i class="bi bi-x-circle ms-1"></i></p>
                                         <p class="data-select mb-2 d-flex justify-content-between">Bài tập tay <i class="bi bi-x-circle ms-1"></i></p>
-                                        <p class="data-select mb-2 d-flex justify-content-between">Bài tập tay <i class="bi bi-x-circle ms-1"></i></p>
-
+                                        <p class="data-select mb-2 d-flex justify-content-between">Bài tập tay <i class="bi bi-x-circle ms-1"></i></p> --}}
+                                        <p class="no-selection">Chưa có bài tập nào được chọn</p>
                                     </div>
                                     
 
                                 </div>
                                 <div class="col-6">
-                                    132123
+                                    <label for="#" class="fw-bold">Trạng thái:</label><br>
+                                    <div class="select-day-off">
+                                        <input type="checkbox" id="check-day-off"><label for="check-day-off"><span class="day-off">Ngày nghỉ</span></label>
+                                    </div>
+                                    <span class="note-day-off">(* không phải ngày nghỉ thì không chọn)</span>
+
+                                    <div class="box-add-exercise">
+                                        <a href="#" class="btn-in-day btn-add">Lưu</a>
+                                        <a href="#" class="btn-in-day btn-reset">Hoàn tác</a>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -485,4 +487,47 @@
         </section>
 
     </main><!-- End #main -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectElement = document.querySelector('.selectpicker');
+            const showDataSelect = document.querySelector('.show-data-select');
+            const noSelectionMessage = showDataSelect.querySelector('.no-selection');
+
+            // Lắng nghe sự kiện thay đổi trên ô select
+            selectElement.addEventListener('change', function () {
+                // Xóa các mục đã hiển thị trước đó
+                showDataSelect.innerHTML = '';
+
+                // Lấy tất cả các tùy chọn đã chọn
+                const selectedOptions = Array.from(selectElement.selectedOptions);
+
+                // Kiểm tra nếu không có lựa chọn nào thì hiển thị thông báo
+                if (selectedOptions.length === 0) {
+                    showDataSelect.innerHTML = '<p class="no-selection">Chưa có bài tập nào được chọn</p>';
+                } else {
+                    // Nếu có lựa chọn, ẩn thông báo và hiển thị các mục đã chọn
+                    selectedOptions.forEach(option => {
+                        const p = document.createElement('p');
+                        p.classList.add('data-select', 'mb-2', 'd-flex', 'justify-content-between');
+                        p.innerHTML = `${option.text} <i class="bi bi-x-circle ms-1"></i>`;
+
+                        // Thêm sự kiện để xóa khi nhấn vào icon
+                        p.querySelector('i').addEventListener('click', function () {
+                            p.remove();
+                            option.selected = false;
+
+                            // Kiểm tra lại nếu không còn lựa chọn nào thì hiển thị thông báo
+                            if (showDataSelect.children.length === 0) {
+                                showDataSelect.innerHTML = '<p class="no-selection">Chưa có bài tập nào được chọn</p>';
+                            }
+                        });
+
+                        // Thêm bài tập đã chọn vào danh sách
+                        showDataSelect.appendChild(p);
+                    });
+                }
+            });
+        });
+
+    </script>
 @endsection

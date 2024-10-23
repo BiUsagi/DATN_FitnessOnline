@@ -12,7 +12,6 @@ class SupportExercisesController extends Controller
     {
         $supportExercises = Support_Exercise::with(['exercise', 'user', 'staff', 'replies.user', 'replies.staff'])
             ->whereNull('rep')
-            ->select('id', 'content', 'exercise_id', 'user_id', 'staff_id', 'created_at')
             ->get()
             ->map(function ($item) {
                 return [
@@ -45,7 +44,6 @@ class SupportExercisesController extends Controller
     {
         $supportExercise = Support_Exercise::with(['exercise', 'user', 'staff', 'replies.user', 'replies.staff'])
             ->where('id', $id) 
-            ->select('id', 'content', 'exercise_id', 'user_id', 'staff_id', 'created_at')
             ->first(); 
 
         if ($supportExercise) {
@@ -62,8 +60,11 @@ class SupportExercisesController extends Controller
                         'id' => $reply->id,
                         'content' => $reply->content,
                         'user_name' => $reply->user->user_name ?? 'N/A', // Tên người dùng của phản hồi
+                        'user_id' => $reply->user->id ?? 'N/A', 
                         'user_avatar' => $reply->user->avatar ?? 'N/A',
                         'staff_name' => $reply->staff->staff_name ?? 'N/A', // Tên nhân viên của phản hồi
+                        'staff_avatar' => $reply->staff->avatar ?? 'N/A',
+                        'staff_userid' => $reply->staff->user_id ?? 'N/A', 
                         'created_at' => $reply->created_at,
                     ];
                 }),

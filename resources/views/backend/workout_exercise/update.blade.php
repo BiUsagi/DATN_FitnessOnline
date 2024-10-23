@@ -8,13 +8,13 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
                 <li class="breadcrumb-item">Quản lí gói tập</li>
-                <li class="breadcrumb-item active">Thêm mới gói tập</li>
+                <li class="breadcrumb-item active">Cập nhật gói tập</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action= "{{ route('admin.exerciseset-create_') }}" method ="POST" enctype="multipart/form-data">
+        <form action= "{{ route('admin.workout_exercise-update_', ['id' => $update_id->id ]) }}  " method ="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-lg-9">
@@ -23,33 +23,33 @@
                         <div class="card-header text-uppercase">THÔNG TIN CHUNG</div>
                         <div class="card-body">                
                 
-                            <div class="col-12">
+                            <div class="col-12">    
                                 <label for="inputNanme4" class="form-label-customize">Tên gói tập <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="tengoitap">
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="tengoitap" value="{{ $update_id->package_name }}">
                             </div>
 
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Cấp độ <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="capdo">
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="capdo" value="{{ $update_id->level }}">
                             </div>
 
                             <div class="col-12">
-                                <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(* Tháng)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="thoigian">
+                                <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(*)</span></label>
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="thoigian" value="{{ $update_id->duration }}">
                             </div>
 
-
                             <div class="col-12">
-                                <label for="inputNanme4" class="form-label-customize">Giá tiền gói tập <span class="note">(* VND)</span></label>
-                                <input type="number" class="form-control-customize " id="inputNanme4" name="giatien">
+                                <label for="inputNanme4" class="form-label-customize">Giá tiền gói tập <span class="note">(*)</span></label>
+                                <input type="number" class="form-control-customize " id="inputNanme4" name="giatien" value="{{ $update_id->price }}">
                             </div>
                             
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="mota"></textarea>
+                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="mota">{{ $update_id->description}}</textarea>
                             </div>
 
-                            <input type="submit" class="btn btn-primary mt-3" value="Thêm gói tập">
+
+                            <input type="submit" class="btn btn-primary mt-3" value="Cập nhật gói tập">
 
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                                         <option value="2" >PT 2</option>
                                         <option value="3">PT 3</option>
                                     </select> -->
-                                    <input type="text" name="pt">
+                                    <input type="text" name="pt" value="{{ $update_id->staff_id }}">
                                 </div>
                         </div>
                         
@@ -125,6 +125,5 @@
             </div>
         </form>
     </section>
-
 </main><!-- End #main -->
 @endsection

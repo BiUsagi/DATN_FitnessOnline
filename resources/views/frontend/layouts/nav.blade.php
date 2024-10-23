@@ -33,7 +33,7 @@
                                     <a class="nav-link" href="team.html">Team</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="blog.html">Blog</a>
+                                    <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('login.index') }}" id="btn-login" class="nav-link btn">Đăng nhập</a>
