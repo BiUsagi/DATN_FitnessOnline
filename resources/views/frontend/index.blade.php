@@ -92,7 +92,7 @@
                         @foreach ($PTHot->take(3) as $PT)
                             <div class="col-md-4 f-0">
                                 <div class="team-block">
-                                    <img loading='lazy' src="{{ asset('assets/frontend/images/' . $PT->avatar) }}" alt="Coaches" width="210"
+                                    <img loading='lazy' src="{{ asset('assets/backend/img/' . $PT->avatar) }}" alt="Coaches" width="210"
                                         height="339">
                                     <h3><span>{{$PT->staff_name}}</span></h3>
                                 </div>
@@ -240,19 +240,21 @@
                 <div class="col-xl-9 col-lg-12">
                     <div class="default-padding-bottom">
                         <div class="row">
+                            @foreach ($top_workout_packages as $top_workout_package)
                             <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                                 <div class="plan_block">
-                                    <h3>Basic Account</h3>
-                                    <h4>Only for first month</h4>
+                                    <h3>{{$top_workout_package->package_name}}</h3>
+                                    {{-- <h4>Only for first month</h4> --}}
                                     <p>
-                                        Vivamus in imperdiet libero, at dapibus eros. In varius lacinia gravida.
-                                        Aenean dignissim nulla nibh.
+                                        {{$top_workout_package->description}}
                                     </p>
-                                    <h2>$49.00</h2>
+                                    <h2>{{$top_workout_package->	price}}</h2>
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+                            @endforeach
+                            
+                            {{-- <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                                 <div class="plan_block">
                                     <h3>Standard Account</h3>
                                     <h4>Only for first month</h4>
@@ -275,7 +277,7 @@
                                     <h2>$99.00</h2>
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -368,7 +370,7 @@
                         <div class="card">
                             <a href="blog-details.html" aria-label="Blog 3">
                                 <div class="card-img f-0">
-                                    <img loading='lazy' src="{{ asset('assets/frontend/images/' . $Post->image) }}" alt="">
+                                    <img loading='lazy' src="{{ asset('assets/backend/img/' . $Post->image) }}" alt="">
                                 </div>
                             </a>
                             <div class="card-body">
@@ -469,7 +471,7 @@
                     @foreach ($AllPT as $PTall)
                         <div class="swiper-slide">
                             <a href="#!" class="slides" aria-label="Slide 1">
-                                <img loading='lazy' src="{{ asset('assets/frontend/images/' . $PTall->avatar) }}" alt="Post Image" width="309"
+                                <img loading='lazy' src="{{ asset('assets/backend/img/' . $PTall->avatar) }}" alt="Post Image" width="309"
                                     height="309">
                                 <div class="links">
                                     <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">

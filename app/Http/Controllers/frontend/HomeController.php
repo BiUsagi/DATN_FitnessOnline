@@ -7,6 +7,7 @@ use App\Models\Posts;
 use Illuminate\Http\Request;
 use App\Models\Slides;
 use App\Models\Staff;
+use App\Models\Workout_package;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
         $slides = Slides::orderBy('id', 'DESC')->get(); // Lấy tất cả dữ liệu từ bảng tin
         $PTHot = Staff::orderby('id','ASC')->get();//lấy pt có kinh nghiệm nhìu nhất
         $topPost = Posts::orderBy('id','DESC')->get();//lấy bài viết mới nhất nhất
+        $top_workout_packages = Workout_package::orderBy('id','DESC')->get();//lấy bài viết mới nhất nhất
         $AllPT = staff::all();
         // $TopPost= Posts::orderBy('id', )
         // dd($AllPT); show ra dữ liệu xem trước
@@ -23,7 +25,8 @@ class HomeController extends Controller
             'slides' =>$slides,
             'PTHot'=> $PTHot,
             'topPost'=>$topPost,
-            'AllPT'=> $AllPT
+            'AllPT'=> $AllPT,
+            'top_workout_packages'=>$top_workout_packages
         ]);
     }
     public function about(){
