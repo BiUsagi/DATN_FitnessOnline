@@ -16,12 +16,11 @@ return new class extends Migration {
             $table->string('staff_name');
             $table->string('email')->unique();
             $table->text('avatar')->default('no-image.jpg');
-            $table->tinyInteger('gender')->nullable();
+            $table->tinyInteger('gender')->default(3);
             $table->date('birthday')->nullable();
-            $table->tinyInteger('rating')->nullable()->default(0)->comment('Đánh giá từ 1 đến 5');
+            $table->decimal('rating', 3, 1)->nullable()->default(0)->comment('Đánh giá từ 1.0 đến 5.0');
             $table->integer('rating_count')->default(0);
             $table->text('address')->nullable();
-            $table->string('password');
             $table->text('phone_number')->nullable();
             $table->timestamps();
 
