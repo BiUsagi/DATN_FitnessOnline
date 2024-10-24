@@ -18,13 +18,14 @@ Route::group(['prefix' => 'admin',], function () {
     //API of exercises
     Route::get('/exercises', [ExerciseController::class, 'index']);
     Route::post('/exercises', [ExerciseController::class, 'add']);
-    Route::get('/exercises/:id', [ExerciseController::class, 'add']);
-    Route::put('/exercises/:id', [ExerciseController::class, 'add']);
-    Route::delete('/exercises/:id', [ExerciseController::class, 'add']);
+    Route::get('/exercises/{id}', [ExerciseController::class, 'add']);
+    Route::put('/exercises/{id}', [ExerciseController::class, 'add']);
+    Route::delete('/exercises/{id}', [ExerciseController::class, 'add']);
 
     //API of workout_exercise
-    Route::get('/workout_package', [Workout_PackageController::class, 'index']);
     Route::post('/workout_package', [Workout_PackageController::class, 'index']);  
+    Route::get('/workout_package', [Workout_PackageController::class, 'index']);
+    Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
 
 
     // account

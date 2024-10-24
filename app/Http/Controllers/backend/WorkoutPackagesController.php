@@ -14,8 +14,12 @@ class WorkoutPackagesController extends Controller
         return view('backend/workout_package/index');
     }
 
-    public function detail(){
-        return view('backend/workout_package/detail');
+    public function detail($id){
+        $package = Workout_Package::find($id);
+        if (!$package) {
+            return redirect()->back()->with('error', 'Không tìm thấy gói tập này!');
+        }
+        return view('backend.workout_package.detail', compact('package'));
     }
 
     public function create(){
