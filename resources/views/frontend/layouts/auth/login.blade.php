@@ -49,7 +49,7 @@
                         </span>
                         <input type="text" name="email" id="email" placeholder=" ">
                         <label>Email</label>
-                        
+                        <p class="errors" id=""></p>
                     </div>
                     <!-- password -->
                     <div class="input-box">
@@ -57,18 +57,17 @@
                             <i class="bi bi-eye-fill" id="login-icon-password"></i>
                         </span>
                         <input type="password" name="password" id="password-input-login" placeholder=" ">
-                        
                         <label>Password</label>
+                        <p class="errors"></p>
                     </div>
                     <!-- nhớ pass -->
                     <div class="remember-forgot">
-                        <label><input type="checkbox">
-                            Nhớ mật khẩu</label>
+                        
                         <a href="">Quên mật khẩu</a>
                     </div>
                     <button type="submit" class="btn">Đăng Nhập</button>
                     <div class="login-register">
-                        <p>Bạn chưa có tài khoản? <a class="register-link"> Đăng Ký</a></p>
+                        <p>Bạn chưa có tài khoản ? <a class="register-link"> Đăng Ký</a></p>
                     </div>
                     <div id="ketqua"></div>
                 </form>
@@ -85,11 +84,7 @@
                             <i class="bi bi-person-fill"></i>
                         </span>
                         <input type="text" name="user_name" id="name" placeholder=" ">
-                        <!-- <p class="errors">
-                            @error('name')
-                                {{$message}}
-                            @enderror
-                        </p> -->
+                        <p class="errors1"></p>
                         <label>Họ và tên</label>
                     </div>
                     <!-- Email -->
@@ -98,7 +93,7 @@
                             <i class="bi bi-envelope-fill"></i>
                         </span>
                         <input type="email" name="email1" id="email1" placeholder=" ">
-                        
+                        <p class="errors1"></p>
                         <label>Email</label>
                     </div>
                     <!-- Mật khẩu -->
@@ -107,7 +102,7 @@
                             <i class="bi bi-eye-fill" id="register-icon-password"></i>
                         </span>
                         <input type="password" name="password1" id="password-input-register" placeholder=" ">
-                        
+                        <p class="errors1"></p>
                         <label>Mật khẩu</label>
                     </div>
                     <!-- Nhập lại mật khẩu -->
@@ -116,21 +111,13 @@
                             <i class="bi bi-eye-fill" id="register-icon-password2"></i>
                         </span>
                         <input type="password" name="password1_confirmation" id="password-input-register2" placeholder=" ">
-                        <p class="errors">
-                            @error('password_confirmation')
-                                {{$message}}
-                            @enderror
-                        </p>
+                        <p class="errors1"></p>
                         <label>Nhập lại mật khẩu</label>
                     </div>
-                    <div class="remember-forgot">
-                        <label><input type="checkbox" name="terms"> Đồng ý với các điều khoản và điều kiện</label>
+                    <div class="login-register">
+                        <p>Bạn đã có tài khoản ? <a class="login-link"> Đăng nhập</a></p>
                     </div>
                     <button type="submit" class="btn">Đăng ký</button>
-                    <div class="login-register">
-                        <p>Bạn đã có tài khoản? <a class="login-link"> Đăng nhập</a></p>
-                    </div>
-                    
                 </form>
                 <div id="ketqua1"></div>
                 </div>
@@ -138,80 +125,78 @@
         </div>
 
 
-        <script>
-    $(document).ready(function(){
-    $("#loginForm").submit(function(event){
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+    <script>
+        $(document).ready(function(){
 
-        var email = $("#email").val();
-        var password = $("#password-input-login").val(); // Đảm bảo ID chính xác cho trường mật khẩu
-        var token = $('meta[name="csrf-token"]').attr('content');
+            $("#loginForm").submit(function(event){
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của form
 
-        $.post("{{ route('login_.index') }}", {
-            _token: token,
-            email: email,
-            password: password
-        }, function(data) {
-            $("#ketqua").html('<div class="alert alert-success">' + data.message + '</div>');
-        }).fail(function(xhr) {
-            var message = xhr.responseJSON ? xhr.responseJSON.message : 'Đã xảy ra lỗi. Vui lòng thử lại.';
-            $("#ketqua").html('<div class="alert alert-danger">' + message + '</div>');
+            var email = $("#email").val();
+            var password = $("#password-input-login").val(); // Đảm bảo ID chính xác cho trường mật khẩu
+            var token = $('meta[name="csrf-token"]').attr('content');
+
+            $.post("{{ route('login_.index') }}", {
+                _token: token,
+                email: email,
+                password: password
+            }, function(data) {
+                window.location.href = "{{ route('index') }}";
+            // Xóa các thông báo lỗi trước đó
+            $(".errors").text('');
+            $("#ketqua").html(data.message);
+            }).fail(function(xhr) {
+                // Xóa các thông báo lỗi trước đó
+                $(".errors").text('');
+                var message = xhr.responseJSON ? xhr.responseJSON.message : 'Đã xảy ra lỗi. Vui lòng thử lại.';
+                var errors = xhr.responseJSON ? xhr.responseJSON.errors : {};
+
+                // Hiển thị lỗi tổng quát
+                $(".errors").html(message);
+            });
+        });
+
+        $("#registerForm").submit(function(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+
+            var name = $("#name").val();
+            var email = $("#email1").val();
+            var password = $("#password-input-register").val();
+            var password_confirmation = $("#password-input-register2").val();
+            var token = $('meta[name="csrf-token"]').attr('content');
+
+
+            $.post("{{ route('register.index') }}", {
+                _token: token,
+                email1: email,
+                user_name: name,
+                password1: password,
+                password1_confirmation: password_confirmation
+            }, function(data) {
+                $(".errors1").html(data.message); // Hiển thị thông báo từ server
+            }).fail(function(xhr) {
+                var message;
+
+                // Kiểm tra xem xhr.responseJSON có tồn tại và chứa errors không
+                if (xhr.responseJSON && xhr.responseJSON.errors) {
+                // Xóa thông báo lỗi trước đó
+                $(".errors1").html('');
+
+                // Hiển thị lỗi cho từng trường
+                if (xhr.responseJSON.errors.user_name) {
+                    $(".errors1").append('<div>' + xhr.responseJSON.errors.name[0] + '</div>');
+                }
+                if (xhr.responseJSON.errors.email) {
+                    $(".errors1").append('<div>' + xhr.responseJSON.errors.email1[0] + '</div>');
+                }
+                if (xhr.responseJSON.errors.password1) {
+                    $(".errors1").append('<div>' + xhr.responseJSON.errors.password1[0] + '</div>');
+                }
+                } else {
+                $(".errors1").html('Đã xảy ra lỗi. Vui lòng thử lại.');
+                }
+            });
         });
     });
-
-    $("#registerForm").submit(function(event) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của form
-
-        var name = $("#name").val();
-        var email = $("#email1").val(); // Đảm bảo ID chính xác cho trường email
-        var password = $("#password-input-register").val();
-        var password_confirmation = $("#password-input-register2").val();
-        var token = $('meta[name="csrf-token"]').attr('content');
-
-        // Kiểm tra xem điều khoản có được chấp nhận không
-        if (!$('input[name="terms"]').is(':checked')) {
-            $("#ketqua1").html('<div class="alert alert-danger">Bạn phải đồng ý với các điều khoản và điều kiện.</div>');
-            return;
-        }
-
-
-        $.post("{{ route('register.index') }}", {
-            _token: token,
-            email1: email,
-            user_name: name,
-            password1: password,
-            password1_confirmation: password_confirmation
-        }, function(data) {
-            $("#ketqua1").html('<div class="alert alert-success">' + data.message + '</div>'); // Hiển thị thông báo từ server
-        }).fail(function(xhr) {
-            var message;
-
-            // Kiểm tra xem xhr.responseJSON có tồn tại và chứa errors không
-            if (xhr.responseJSON && xhr.responseJSON.errors) {
-                message = xhr.responseJSON.errors;
-            } else {
-                message = 'Đã xảy ra lỗi. Vui lòng thử lại.';
-            }
-
-            // Hiển thị thông báo lỗi
-            var errorHtml = '<div class="alert alert-danger">';
-            if (typeof message === 'string') {
-                errorHtml += message; // Nếu message là chuỗi
-            } else {
-                // Nếu message là một đối tượng, hãy nối lại các thông báo lỗi
-                $.each(message, function(key, value) {
-                    errorHtml += value.join('<br>'); // Gộp các lỗi cùng loại thành một chuỗi
-                });
-            }
-            errorHtml += '</div>';
-
-            $("#ketqua1").html(errorHtml);
-        });
-    });
-});
-
-
-
     </script>
 </body>
 

@@ -22,29 +22,17 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email:rfc,dns|unique:users,email|max:255',
-            'password' => [
-                'required',
-                'min:8',
-                'regex:/[a-z]/',
-                'regex:/[A-Z]/',
-                'regex:/[0-9]/',
-                'regex:/[@$!%*?&#]/',
-                'confirmed',
-            ],
+            'email' => 'required|email:rfc,dns|max:255',
+            'password' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required' => 'Email là bắt buộc.',
+            'email.required' => 'Bạn chưa nhập thông tin !',
             'email.email' => 'Email không hợp lệ.',
-            'email.unique' => 'Email này đã được đăng ký.',
-            'password.required' => 'Mật khẩu là bắt buộc.',
-            'password.min' => 'Mật khẩu phải có ít nhất :min ký tự.',
-            'password.regex' => 'Mật khẩu phải chứa ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.',
-            'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'password.required' => 'Bạn chưa nhập thông tin !',
         ];
     }
 }
