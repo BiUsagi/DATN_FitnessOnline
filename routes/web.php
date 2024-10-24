@@ -70,17 +70,17 @@ Route::prefix('admin')->group(function () {
 
 
     // exerciseset - gói tập
-    Route::get('/Workout_package', [WorkoutPackagesController::class, 'index'])->name('admin.workout_package');
+    Route::get('/workout_package', [WorkoutPackagesController::class, 'index'])->name('admin.workout_package');
     //create_goitap
-    Route::get('/Workout_package/Workout_package_detail/{id}', [WorkoutPackagesController::class, 'detail'])->name('admin.workout_package_detail');
+    Route::get('/workout_package/workout_package_detail/{id}', [WorkoutPackagesController::class, 'detail'])->name('admin.workout_package_detail');
 
-    Route::get('/Workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
-    Route::post('/Workout_package/create', [WorkoutPackagesController::class, 'create_'])->name('admin.workout_package-create_');
+    Route::get('/workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
+    Route::post('/workout_package/create', [WorkoutPackagesController::class, 'create_'])->name('admin.workout_package-create_');
     //update_goi_tap
-    Route::get('/Workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
-    Route::post('/Workout_package/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.workout_package-update_');
+    Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
+    Route::post('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.workout_package-update_');
     //delete_goitap
-    Route::get('/Workout_package/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.workout_package-delete');
+    Route::get('/workout_package/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.workout_package-delete');
 
 
     // statistical - thống kê
