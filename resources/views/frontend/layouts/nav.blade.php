@@ -32,7 +32,7 @@
                                     <a class="nav-link" href="team.html">BLOG</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('blog.index') }}">ĐƠN HÀNG</a>
+                                    <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
                                 </li>
                                 <li class="nav-item">
                                 @if(Auth::check())
