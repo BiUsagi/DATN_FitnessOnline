@@ -6,10 +6,10 @@
     <div class="breadcrumb_wrapper">
         <div class="container"> 
             <div class="breadcrumb_block">
-                <h1>BLOG <span>DETAILS</span></h1>
+                {{-- <h1 style="font-size: 40px" >Chi tiết<span> bài viết</span></h1> --}}
                 <div class="trackPage">
                     <a href="index.html">HOME</a>
-                    <span>Blog Details</span>
+                    <span>Chi tiết bài viết</span>
                 </div>
             </div>
         </div>
@@ -26,23 +26,18 @@
                             <div class="blog-detail">
                                 <div class="blog-desc">
                                     <div class="blog-meta">
-                                        <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>June 1st, 2022</span></div>
+                                        <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>{{$posts->created_at->diffForHumans()}}</span></div>
                                         <div class="date"><img loading='lazy' src="assets/frontend/images/icons/chat.svg"><span>5</span></div>
                                         <div class="date"><img loading='lazy' src="assets/frontend/images/icons/heart.svg"><span>123</span></div>
                                     </div>
-                                    <h2 class="blog-title">Lorem ipsum dolor sit amet</h2>
+                                    <h2 class="blog-title">{{$posts->title}}</h2>
                                    
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus congue dapibus. Nam nec nisi ac purus varius tempus. Sed ac ante mattis felis porta dignissim et non ligula. Maecenas at sem sed sapien congue mattis. Praesent vel dapibus orci. In et dolor leo.</p>
-                                    <p>Phasellus non dui urna. Nunc interdum augue sem, sed malesuada tortor placerat vel. 
-                                        Pellentesque efficitur eleifend enim eget fringilla. Proin tincidunt dui eu velit convallis lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tristique diam nisi, eget 
-                                        ultricies elit gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed viverra vulputate eros at imperdiet.</p>
-                                    
-                                    
-                                    <blockquote>         
+                                    <p> {!! nl2br(e($posts->content)) !!}</p>
+
+                                    <p>{{$posts->user->staff_name}}</p>
+                                    {{-- <blockquote>         
                                         Mattis lorem class sapien taciti inceptos at ultrices quis risus nulla rutrum tempor.
-                                    </blockquote>
-                                    <p>Sed bibendum faucibus arcu. Etiam volutpat lectus sed velit euismod, in iaculis odio posuere. Vestibulum cursus ex sed imperdiet mattis. Mauris pellentesque ex in tempor rutrum. </p>
-                                  
+                                    </blockquote>                                   --}}
                                     <div class="tags">
                                         <ul>
                                             <li>Tags:</li>
