@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('staff_id');
             $table->text('title');
+            $table->text('description');
             $table->text('content');
             $table->text('image')->nullable();
             $table->timestamps();

@@ -23,4 +23,12 @@ class Posts extends Model
         'created_at',
         'updated_at',
     ];
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'posts_id');
+    }
+    public function user()
+{
+    return $this->belongsTo(Staff::class, 'staff_id'); // 'staff_id' là cột khóa ngoại trong bảng posts
+}
 }

@@ -7,6 +7,7 @@ use App\Models\Posts;
 use Illuminate\Http\Request;
 use App\Models\Slides;
 use App\Models\Staff;
+use App\Models\Workout_package;
 
 class HomeController extends Controller
 {
@@ -14,13 +15,35 @@ class HomeController extends Controller
     public function index(){
         $slides = Slides::orderBy('id', 'DESC')->get(); // Lấy tất cả dữ liệu từ bảng tin
         $PTHot = Staff::orderby('id','ASC')->get();//lấy pt có kinh nghiệm nhìu nhất
-        $topPost = Posts::orderBy('id','DESC')->get();
-        return view('frontend/index',compact('slides','PTHot','topPost'));
+        $topPost = Posts::orderBy('id','DESC')->get();//lấy bài viết mới nhất nhất
+        $top_workout_packages = Workout_package::orderBy('id','DESC')->get();//lấy bài viết mới nhất nhất
+        $AllPT = staff::all();
+        // $TopPost= Posts::orderBy('id', )
+        // dd($AllPT); show ra dữ liệu xem trước
+        // return view('frontend/index',compact('slides','PTHot','topPost','AllPT'));
+        return view('frontend/index')->with([
+            'slides' =>$slides,
+            'PTHot'=> $PTHot,
+            'topPost'=>$topPost,
+            'AllPT'=> $AllPT,
+            'top_workout_packages'=>$top_workout_packages
+        ]);
     }
     public function about(){
         return view('frontend/about');
     }
     public function contact(){
         return view('frontend/contact');
+    }
+    public function posts(){
+        \Carbon\Carbon::setLocale('vi'); // Đặt locale cho Carbon để ngày tháng năm thành tiếng việt
+        $TopBlog = Posts::orderBy('id', 'DESC')->get(); // Lấy post theo thứ tự từ bài post mới nhát
+        return view('frontend/posts')->with([
+            'TopBlog' =>$TopBlog]);
+    }
+    public function posts_details($id){
+        \Carbon\Carbon::setLocale('vi'); 
+        $posts = Posts::findOrFail($id); // Tìm bài viết theo id
+    return view('frontend/posts-details', compact('posts'));
     }
 }

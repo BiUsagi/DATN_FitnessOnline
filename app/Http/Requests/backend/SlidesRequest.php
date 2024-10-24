@@ -22,8 +22,8 @@ class SlidesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|regex:/^[^\d].*$/|max:6',
-            'description' => 'required|regex:/^[^\d].*$/|max:8',
+            'name' => 'required|regex:/^[^\d].*$/',
+            'description' => 'required|regex:/^[^\d].*$/',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
@@ -32,10 +32,10 @@ class SlidesRequest extends FormRequest
         return [
             'name.required' => 'Tên không được để trống.',
             'name.regex' => 'Tên không được viết số đầu tiên.',
-            'name.max' => 'Tên không được quá 6 kí tự.',
+            // 'name.max' => 'Tên không được quá 6 kí tự.',
             'description.required' => 'Mô tả không được để trống.',
             'description.regex' => 'Mô tả không được viết số đầu tiên.',
-            'description.max' => 'Mô tả không được quá 8 kí tự.',
+            // 'description.max' => 'Mô tả không được quá 8 kí tự.',
         ];
     }
 }
