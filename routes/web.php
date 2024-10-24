@@ -28,7 +28,8 @@ use App\Http\Controllers\ApiController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
+Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
+Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
 Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;

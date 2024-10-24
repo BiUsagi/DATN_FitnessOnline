@@ -35,7 +35,15 @@ class HomeController extends Controller
     public function contact(){
         return view('frontend/contact');
     }
-    public function blog(){
-        return view('frontend/blog');
+    public function posts(){
+        \Carbon\Carbon::setLocale('vi'); 
+        $TopBlog = Posts::orderBy('id', 'DESC')->get(); // Lấy post theo thứ tự từ bài post mới nhát
+        return view('frontend/posts')->with([
+            'TopBlog' =>$TopBlog]);
+    }
+    public function posts_details($id){
+        \Carbon\Carbon::setLocale('vi'); 
+        $posts = Posts::findOrFail($id); // Tìm bài viết theo id
+    return view('frontend/posts-details', compact('posts'));
     }
 }
