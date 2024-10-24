@@ -13,6 +13,12 @@ class Workout_PackageController extends Controller
         return response()->json($data) ;
     }
 
+    public function workout_detail($id){
+        $details = Workout_Package::find($id);
+
+        return response()->json($details) ;
+    }
+
     public function create_(Request $request)
     {
         $set = new Workout_package;

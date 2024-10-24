@@ -3,12 +3,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Lộ trình gói: Lão luyện</h1>
+            <h1>Lộ trình gói: {{ $package->package_name }}</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
                     <li class="breadcrumb-item">Quản lí lộ trình tập</li>
-                    <li class="breadcrumb-item active">Lộ trình gói: Lão luyện</li>
+                    <li class="breadcrumb-item active">Lộ trình gói: {{ $package->package_name }}</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -75,366 +75,21 @@
                         <div class="card-header text-uppercase">Danh sách số ngày tập</div>
                         <div class="card-body">
                             <div class="row list-detail-exercise">
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a class="btn-action btn-detail" data-bs-title="Chi tiết ngày tập ngày 1" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 1</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập ngày 2"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 2</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập ngày 3"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 3</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập ngày 4"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 4</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập ngày 5"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 5</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập ngày 6"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 6</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 7</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 8</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 9</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 10</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 11</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 12</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 13</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 14</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 15</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 16</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 17</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 18</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 19</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 20</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 21</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 22</h4>
-                                    </div>
-                                    <div class="description-day">
-                                <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 23</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 24</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 25</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 26</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 27</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 28</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 5</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 29</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 4</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col detail-exercise">
-                                    <div class="overflow">
-                                        <a href="#" class="btn-action btn-detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết ngày tập"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="number-day">
-                                        <h4>Ngày 30</h4>
-                                    </div>
-                                    <div class="description-day">
-                                        <p>Số bài tập: 3</p>
-                                    </div>
-                                </div>
-
+                                @for ($i = 1; $i <= $package->duration_days; $i++)
+                                    <div class="col detail-exercise">
+                                        <div class="overflow">
+                                            <a class="btn-action btn-detail" data-day="{{ $i }}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                <i class="bi bi-eye-fill"></i>
+                                            </a>                                        
+                                        </div>
+                                        <div class="number-day">
+                                            <h4>Ngày {{ $i }}</h4>
+                                        </div>
+                                        <div class="description-day">
+                                            <p>Số bài tập: {{ random_int(1, 10) }}</p> <!-- Đây là số bài tập, bạn có thể thay đổi để lấy từ DB nếu có -->
+                                        </div>
+                                    </div>
+                                @endfor
                             </div>
                         </div>
                     </div>
@@ -445,10 +100,10 @@
                         <div class="card-header text-uppercase">Thông tin gói tập</div>
                         <div class="card-body">
                             <div class="infor-package-exercise">
-                                <p>Tên gói tập: <span>Gói tập cơ bản cho người mới</span></p>
-                                <p>Loại gói: <span>Lão luyện</span></p>
-                                <p>Giá: <span>$150</span></p>
-                                <p>Tổng số ngày: <span>30 ngày</span></p>
+                                <p>Tên gói tập: <span>{{ $package->package_name }}</span></p>
+                                <p>Loại gói: <span>{{ $package->level }}</span></p>
+                                <p>Giá: <span>${{ $package->price }}</span></p>
+                                <p>Tổng số ngày: <span>{{ $package->duration_days }}</span></p>
                                 <p>Tổng số bài tập: <span>90 bài</span></p>
                                 <p>Tổng số người sử dụng: <span>190 người</span></p>
                                 <p>Tác giả: <span>MT</span></p>
@@ -488,46 +143,72 @@
 
     </main><!-- End #main -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const selectElement = document.querySelector('.selectpicker');
-            const showDataSelect = document.querySelector('.show-data-select');
-            const noSelectionMessage = showDataSelect.querySelector('.no-selection');
+       document.addEventListener('DOMContentLoaded', function () {  
+                function getDay(){
+                           // Bắt sự kiện click vào nút mở modal
+                    const detailButtons = document.querySelectorAll('.btn-detail');
+                    const modalTitle = document.querySelector('#staticBackdropLabel');
 
-            // Lắng nghe sự kiện thay đổi trên ô select
-            selectElement.addEventListener('change', function () {
-                // Xóa các mục đã hiển thị trước đó
-                showDataSelect.innerHTML = '';
-
-                // Lấy tất cả các tùy chọn đã chọn
-                const selectedOptions = Array.from(selectElement.selectedOptions);
-
-                // Kiểm tra nếu không có lựa chọn nào thì hiển thị thông báo
-                if (selectedOptions.length === 0) {
-                    showDataSelect.innerHTML = '<p class="no-selection">Chưa có bài tập nào được chọn</p>';
-                } else {
-                    // Nếu có lựa chọn, ẩn thông báo và hiển thị các mục đã chọn
-                    selectedOptions.forEach(option => {
-                        const p = document.createElement('p');
-                        p.classList.add('data-select', 'mb-2', 'd-flex', 'justify-content-between');
-                        p.innerHTML = `${option.text} <i class="bi bi-x-circle ms-1"></i>`;
-
-                        // Thêm sự kiện để xóa khi nhấn vào icon
-                        p.querySelector('i').addEventListener('click', function () {
-                            p.remove();
-                            option.selected = false;
-
-                            // Kiểm tra lại nếu không còn lựa chọn nào thì hiển thị thông báo
-                            if (showDataSelect.children.length === 0) {
-                                showDataSelect.innerHTML = '<p class="no-selection">Chưa có bài tập nào được chọn</p>';
-                            }
+                    detailButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            // Lấy số ngày từ thuộc tính data-day
+                            const dayNumber = button.getAttribute('data-day');
+                            // Cập nhật tiêu đề của modal
+                            modalTitle.textContent = 'Ngày ' + dayNumber;
                         });
-
-                        // Thêm bài tập đã chọn vào danh sách
-                        showDataSelect.appendChild(p);
                     });
                 }
+
+                function actions() {
+                    const selectElement = document.querySelector('.selectpicker');
+                    const showDataSelect = document.querySelector('.show-data-select');
+
+                    // Lắng nghe sự kiện thay đổi trên ô select
+                    selectElement.addEventListener('change', function () {
+                        // Xóa các mục đã hiển thị trước đó
+                        showDataSelect.innerHTML = '';
+
+                        // Lấy tất cả các tùy chọn đã chọn
+                        const selectedOptions = Array.from(selectElement.selectedOptions);
+
+                        // Kiểm tra nếu không có lựa chọn nào thì hiển thị thông báo
+                        if (selectedOptions.length === 0) {
+                            showDataSelect.innerHTML = '<p class="no-selection">Chưa có bài tập nào được chọn</p>';
+                        } else {
+                            // Nếu có lựa chọn, hiển thị các mục đã chọn
+                            selectedOptions.forEach(option => {
+                                const p = document.createElement('p');
+                                p.classList.add('data-select', 'mb-2', 'd-flex', 'justify-content-between');
+                                p.innerHTML = `${option.text} <i class="bi bi-x-circle ms-1"></i>`;
+
+                                // Thêm sự kiện để xóa khi nhấn vào icon
+                                p.querySelector('i').addEventListener('click', function () {
+                                    p.remove(); // Xóa mục hiển thị
+
+                                    // Bỏ chọn bài tập trong ô select
+                                    option.selected = false;
+                                    // Kích hoạt lại sự kiện 'change' để cập nhật danh sách hiển thị
+                                    selectElement.dispatchEvent(new Event('change'));
+                                });
+
+                                // Thêm bài tập đã chọn vào danh sách
+                                showDataSelect.appendChild(p);
+                            });
+                        }
+                    });
+
+                    // Kích hoạt sự kiện thay đổi ngay từ đầu để hiển thị đúng danh sách
+                    selectElement.dispatchEvent(new Event('change'));
+                }
+
+                function main() {
+                    actions();
+                    getDay();
+                }
+
+                main();
             });
-        });
+
 
     </script>
 @endsection

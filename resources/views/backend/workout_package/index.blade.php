@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
                     <div class="title-top d-flex justify-content-between">
                         <h5 class="card-title text-uppercase">Danh sách lộ trình tập của: </h5>
-                        <a href="{{ route('admin.exercise-create') }}" class="btn-customize"><i
+                        <a href="{{ route('admin.exerciseset-create') }}" class="btn-customize"><i
                                 class="bi bi-plus-lg"></i> Thêm mới lộ trình tập</a>
                     </div>
                     <div class="box-list">
@@ -43,8 +43,8 @@
                                     <div class="image-package">
                                         <img src="uploads/gym_package/${item.image}" alt="">
                                         <div class="box-action">
-                                            <a href="{{ route('admin.package_exercise_detail')}}" class="btn-action detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết lộ trình"><i class="bi bi-eye-fill"></i></a>
-                                            <a href="#" class="btn-action edit" data-bs-toggle="tooltip" data-bs-title="Chỉnh sửa lộ trình"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="/admin/exerciseset/exerciseset_detail/${item.id}" class="btn-action detail" data-bs-toggle="tooltip" data-bs-title="Chi tiết lộ trình"><i class="bi bi-eye-fill"></i></a>
+                                            <a href="${item.id}" class="btn-action edit" data-bs-toggle="tooltip" data-bs-title="Chỉnh sửa lộ trình"><i class="bi bi-pencil-square"></i></a>
                                             <a href="#" class="btn-action delete" data-bs-toggle="tooltip" data-bs-title="Xóa lộ trình"><i class="bi bi-trash"></i></a>
                                         </div>
                                     </div>
@@ -66,6 +66,8 @@
                 `;
             });
             $('.box-list').html(returnData);
+          
         });
+
     </script>
 @endsection
