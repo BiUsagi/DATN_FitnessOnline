@@ -28,12 +28,12 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Mã giảm giá</th>
-                                    <th>Giảm giá</th>
-                                    <th>Lượt nhập</th>
-                                    <th data-type="date" data-format="YYYY/DD/MM">Thời gian sử dụng</th>
-                                    <th>Thao tác</th>
+                                    <th class="text-center align-middle">ID</th>
+                                    <th class="text-center align-middle">Mã giảm giá</th>
+                                    <th class="text-center align-middle">Giảm giá</th>
+                                    <th class="text-center align-middle">Lượt nhập</th>
+                                    <th class="text-center align-middle" data-type="date" data-format="YYYY/DD/MM">Thời hạn</th>
+                                    <th class="text-center align-middle">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody id="list-items">
@@ -143,16 +143,31 @@
 
 
         data.forEach(item => {
-            
+            const currentDate = new Date(); // Lấy ngày hiện tại
+            let dayShow = ''; // Khai báo biến dayShow
+
+            // Chuyển đổi item.start_date và item.end_date thành đối tượng Date
+            const startDate = new Date(item.start_date);
+            const endDate = new Date(item.end_date);
+
+            // Kiểm tra các điều kiện
+            if (startDate > currentDate) {
+                dayShow = 'Chưa áp dụng';
+            } else if (endDate < currentDate) {
+                dayShow = 'Hết hạn';
+            } else {
+                // Tính số ngày còn lại
+                const daysLeft = Math.ceil((endDate - currentDate) / (1000 * 60 * 60 * 24)); // Chuyển đổi thành ngày
+                dayShow = `Còn ${daysLeft} ngày`;
+            }
             returnData += `
                     <tr>
                         <td class="text-center align-middle">${item.id}</td>
                         <td class="text-center align-middle">${item.code}</td>
                         <td class="text-center align-middle">${item.sale}%</td>
                         <td class="text-center align-middle">${item.times_used}/${item.usage_limit}</td>
-                        <td class="text-center align-middle" data-type="date" data-format="YYYY/DD/MM">
-                            ${item.start_date} / ${item.end_date}</td>
-                        <td class="text-center align-middle">
+                        <td class="text-center align-middle" data-type="date" data-format="YYYY/DD/MM">${dayShow}</td>
+                        <td  class="text-center align-middle">
                             <button type="button" class="btn btn-outline-primary" data-bs-placement="top"
                                 data-bs-title="Chỉnh Sửa">
                                 <i class="ri-edit-line"></i>
