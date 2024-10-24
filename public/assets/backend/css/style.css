@@ -1351,3 +1351,23 @@ input[placeholder] {
 }
 
 /* end account admin */
+
+
+.card-img-top {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.badge {
+  font-size: 0.9rem;
+}
+
+.img-10x {
+  width: 10rem;
+  height: 10rem;
+}
+
+.fs-7 {
+  font-size: 0.9rem;
+}
