@@ -35,4 +35,6 @@ Route::group(['prefix' => 'admin',], function () {
     //SupportExercises
     Route::get('/supportexercises', [SupportExercisesController::class, 'index']);
     Route::get('/supportexercises/{id}', [SupportExercisesController::class, 'show']);
+
+    //vouchers
 });
