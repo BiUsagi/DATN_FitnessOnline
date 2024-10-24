@@ -23,13 +23,12 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|regex:/^[^\d]+$/', // Không được có ký tự số
+            'user_name' => 'required|regex:/^[^\d]+$/', // Không được có ký tự số
             'email1' => 'required|email:rfc,dns|unique:users,email|max:255', // Email phải hợp lệ và chưa tồn tại
             'password1' => [
                 'required',
                 'min:8',
                 'regex:/[a-z]/', // Phải có ít nhất một chữ cái thường
-                'regex:/[A-Z]/', // Phải có ít nhất một chữ cái hoa
                 'regex:/[0-9]/', // Phải có ít nhất một số
             ],
             'password1_confirmation' => 'required|same:password1', // Xác nhận mật khẩu
@@ -39,8 +38,8 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Bạn chưa nhập tên !',
-            'name.regex' => 'Tên không được có ký tự số.',
+            'user_name.required' => 'Bạn chưa nhập tên !',
+            'user_name.regex' => 'Tên không được có ký tự số.',
             'email1.required' => 'Bạn chưa nhập email !',
             'email1.email' => 'Email không hợp lệ.',
             'email1.unique' => 'Email này đã được đăng ký.',

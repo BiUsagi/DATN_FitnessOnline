@@ -17,7 +17,6 @@
 </head>
 
 <body>
-    <!-- form login register -->
     <div class="container-custom">
         <div class="wrapper">
             <span class="icon-close">
@@ -49,7 +48,7 @@
                         </span>
                         <input type="text" name="email" id="email" placeholder=" ">
                         <label>Email</label>
-                        <p class="errors" id=""></p>
+                        <p class="errors email-error1" id="ketqua"></p>
                     </div>
                     <!-- password -->
                     <div class="input-box">
@@ -58,20 +57,19 @@
                         </span>
                         <input type="password" name="password" id="password-input-login" placeholder=" ">
                         <label>Password</label>
-                        <p class="errors"></p>
+                        <p class="errors password-error1"></p>
                     </div>
                     <!-- nhớ pass -->
                     <div class="remember-forgot">
-                        
                         <a href="">Quên mật khẩu</a>
                     </div>
                     <button type="submit" class="btn">Đăng Nhập</button>
                     <div class="login-register">
                         <p>Bạn chưa có tài khoản ? <a class="register-link"> Đăng Ký</a></p>
                     </div>
-                    <div id="ketqua"></div>
                 </form>
             </div>
+            
             <!-- đăng ký -->
             <div class="form-box register">
                 <h2>Đăng Ký</h2>
@@ -84,7 +82,7 @@
                             <i class="bi bi-person-fill"></i>
                         </span>
                         <input type="text" name="user_name" id="name" placeholder=" ">
-                        <p class="errors1"></p>
+                        <p class="errors1 user-name-error"></p>
                         <label>Họ và tên</label>
                     </div>
                     <!-- Email -->
@@ -93,7 +91,7 @@
                             <i class="bi bi-envelope-fill"></i>
                         </span>
                         <input type="email" name="email1" id="email1" placeholder=" ">
-                        <p class="errors1"></p>
+                        <p class="errors1 email-error"></p>
                         <label>Email</label>
                     </div>
                     <!-- Mật khẩu -->
@@ -102,7 +100,7 @@
                             <i class="bi bi-eye-fill" id="register-icon-password"></i>
                         </span>
                         <input type="password" name="password1" id="password-input-register" placeholder=" ">
-                        <p class="errors1"></p>
+                        <p class="errors1 password-error"></p>
                         <label>Mật khẩu</label>
                     </div>
                     <!-- Nhập lại mật khẩu -->
@@ -111,15 +109,16 @@
                             <i class="bi bi-eye-fill" id="register-icon-password2"></i>
                         </span>
                         <input type="password" name="password1_confirmation" id="password-input-register2" placeholder=" ">
-                        <p class="errors1"></p>
+                        <p class="errors1 password-confirmation-error"></p>
                         <label>Nhập lại mật khẩu</label>
                     </div>
                     <div class="login-register">
                         <p>Bạn đã có tài khoản ? <a class="login-link"> Đăng nhập</a></p>
                     </div>
                     <button type="submit" class="btn">Đăng ký</button>
+                    <div id="ketqua1"></div>
+
                 </form>
-                <div id="ketqua1"></div>
                 </div>
             </div>
         </div>
@@ -146,12 +145,25 @@
             $("#ketqua").html(data.message);
             }).fail(function(xhr) {
                 // Xóa các thông báo lỗi trước đó
-                $(".errors").text('');
+                $(".email-error").text('');
+                $(".password-error").text('');
+                $(".errors").text(''); // Xóa lỗi tổng quát
                 var message = xhr.responseJSON ? xhr.responseJSON.message : 'Đã xảy ra lỗi. Vui lòng thử lại.';
                 var errors = xhr.responseJSON ? xhr.responseJSON.errors : {};
 
-                // Hiển thị lỗi tổng quát
-                $(".errors").html(message);
+                // Kiểm tra xem xhr.responseJSON có tồn tại và chứa errors không
+                if (xhr.responseJSON && xhr.responseJSON.errors) {
+                    var errors = xhr.responseJSON.errors;
+
+                    if (errors.email) {
+                        $(".email-error1").text(errors.email[0]);
+                    }
+                    if (errors.password) {
+                        $(".password-error1").text(errors.password[0]);
+                    }
+                } else {
+                    $("#ketqua").text(message);
+                }
             });
         });
 
@@ -172,28 +184,34 @@
                 password1: password,
                 password1_confirmation: password_confirmation
             }, function(data) {
-                $(".errors1").html(data.message); // Hiển thị thông báo từ server
+                window.location.href = "{{ route('login.index') }}";
+                $(".errors1").text('');
+                $("#ketqua1").html(data.message); // Hiển thị thông báo từ server
             }).fail(function(xhr) {
-                var message;
+                $(".errors1").text('');
+                var message = xhr.responseJSON ? xhr.responseJSON.message : 'Đã xảy ra lỗi. Vui lòng thử lại.';
+                var errors = xhr.responseJSON ? xhr.responseJSON.errors : {};
+                
 
                 // Kiểm tra xem xhr.responseJSON có tồn tại và chứa errors không
                 if (xhr.responseJSON && xhr.responseJSON.errors) {
-                // Xóa thông báo lỗi trước đó
-                $(".errors1").html('');
+                var errors = xhr.responseJSON.errors;
 
-                // Hiển thị lỗi cho từng trường
-                if (xhr.responseJSON.errors.user_name) {
-                    $(".errors1").append('<div>' + xhr.responseJSON.errors.name[0] + '</div>');
+                if (errors.user_name) {
+                    $(".user-name-error").text(errors.user_name[0]);
                 }
-                if (xhr.responseJSON.errors.email) {
-                    $(".errors1").append('<div>' + xhr.responseJSON.errors.email1[0] + '</div>');
+                if (errors.email1) {
+                    $(".email-error").text(errors.email1[0]);
                 }
-                if (xhr.responseJSON.errors.password1) {
-                    $(".errors1").append('<div>' + xhr.responseJSON.errors.password1[0] + '</div>');
+                if (errors.password1) {
+                    $(".password-error").text(errors.password1[0]);
                 }
-                } else {
-                $(".errors1").html('Đã xảy ra lỗi. Vui lòng thử lại.');
+                if (errors.password1_confirmation) {
+                    $(".password-confirmation-error").text(errors.password1_confirmation[0]);
                 }
+            } else {
+                $(".errors1").text('Đã xảy ra lỗi. Vui lòng thử lại.');
+            }
             });
         });
     });

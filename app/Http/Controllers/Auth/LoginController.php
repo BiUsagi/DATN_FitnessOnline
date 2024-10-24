@@ -4,7 +4,6 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Requests\frontend\LoginRequest;
 use App\Http\Requests\frontend\RegisterRequest;
 use Illuminate\Support\Facades\Hash;
@@ -35,18 +34,18 @@ public function register(RegisterRequest $request)
 
     // Tạo người dùng mới
     $user = User::create(attributes: [
-        'user_name' => $request['name'],
+        'user_name' => $request['user_name'],
         'email' => $request['email1'],
         'password' => bcrypt($request['password1']),
     ]);
 
     // Nếu đăng ký thành công
-    return response()->json(['message' => 'Đăng ký thành công'], 201);
+        return redirect()->route('login.index')->with('success', 'Đăng ký thành công!');
 }
 
 public function logout(){
     Auth::logout();
-    return redirect()->route('index');
+    return redirect()->route('login.index');
 }
 
 
