@@ -36,7 +36,20 @@
                                     <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('login.index') }}" id="btn-login" class="nav-link btn">Đăng nhập</a>
+                                @if(Auth::check())
+                                    <span class="nav-link btn">{{ Auth::user()->user_name }}</span> <!-- Hiển thị tên đăng nhập -->
+                                    <!-- <a href="{{ route('logout.index') }}" class="nav-link btn">Đăng xuất</a> -->
+                                    <ul class="dropdown-menu" aria-labelledby="username">
+                                        <li>
+                                            <form action="{{ route('logout.index') }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">Đăng xuất</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                @else
+                                    <a href="{{ route('login.index') }}" id="btn-login" class="nav-link btn">Đăng nhập</a> <!-- Hiển thị nút đăng nhập -->
+                                @endif
                                 </li>
                             </ul>
                         </div>

@@ -16,7 +16,7 @@ class AccountsController extends Controller
         return response()->json($user);
     }
 
-    public function update(AccountRequest $request, $id)
+    public function update(Request $request, $id)
     {
         // Tìm người dùng theo ID
         $user = User::find($id);

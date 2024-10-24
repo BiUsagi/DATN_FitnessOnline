@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -36,8 +37,18 @@ class User extends Authenticatable
     // Cấu hình kiểu dữ liệu cho các trường
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'birthday' => 'date', // định dạng kiểu ngày cho birthday
     ];
+
+    // Phương thức tính tuổi từ ngày sinh
+    public function getAgeFromBirthday()
+    {
+        // Chuyển đổi 'birthday' thành đối tượng Carbon
+        $birthDate = Carbon::parse($this->birthday);
+
+        // Tính tuổi bằng cách so sánh với ngày hiện tại
+        return $birthDate->age;
+    }
+
 
     public function supportExercises()
     {
@@ -45,6 +56,6 @@ class User extends Authenticatable
     }
     public function comments()
     {
-        return $this->hasMany(Comment::class,'user_id');
+        return $this->hasMany(Comment::class, 'user_id');
     }
 }

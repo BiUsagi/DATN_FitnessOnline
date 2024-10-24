@@ -28,26 +28,43 @@
                                 <!-- Thông tin chi tiết -->
                                 <div class="col-md-8 d-flex justify-content-center align-items-center">
                                     <div class="row">
-                                        <div class="col-4 justify-content-end d-flex mg-top">
+                                        <div class="col-4 justify-content-end d-flex ">
                                             <strong>Tên:</strong>
                                         </div>
-                                        <div class="col-8 mg-top">{{ $data->user_name }}</div>
-                                        <div class="col-4 justify-content-end d-flex mg-top">
+                                        <div class="col-8 ">{{ $data->user_name }}</div>
+                                        <div class="col-4 justify-content-end d-flex ">
+                                            <strong>Giới tính:</strong>
+                                        </div>
+                                        <div class="col-8 ">
+                                            @if ($data->gender == 1)
+                                                <i class="bi bi-gender-male text-primary"></i> Nam
+                                            @elseif ($data->gender == 0)
+                                                <i class="bi bi-gender-female text-danger"></i> Nữ
+                                            @elseif ($data->gender == 2)
+                                                <i class="bi bi-gender-trans text-warning"></i> Khác
+                                            @else
+                                                <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                            @endif
+                                        </div>
+                                        <div class="col-4 justify-content-end d-flex ">
                                             <strong>Ngày sinh:</strong>
                                         </div>
-                                        <div class="col-8 mg-top">{{ $data->birthday }}</div>
-                                        <div class="col-4 justify-content-end d-flex mg-top">
+                                        <div class="col-8 ">
+                                            {{ $data->birthday }} <i class="ri-account-circle-fill"></i>
+                                            {{ $age }} tuổi
+                                        </div>
+                                        <div class="col-4 justify-content-end d-flex ">
                                             <strong>Email:</strong>
                                         </div>
-                                        <div class="col-8 mg-top">{{ $data->email }}</div>
-                                        <div class="col-4 justify-content-end d-flex mg-top">
+                                        <div class="col-8 ">{{ $data->email }}</div>
+                                        <div class="col-4 justify-content-end d-flex ">
                                             <strong>Số điện thoại:</strong>
                                         </div>
-                                        <div class="col-8 mg-top">{{ $data->phone_number }}</div>
-                                        <div class="col-4 justify-content-end d-flex mg-top">
+                                        <div class="col-8 ">{{ $data->phone_number }}</div>
+                                        <div class="col-4 justify-content-end d-flex">
                                             <strong>Địa chỉ:</strong>
                                         </div>
-                                        <div class="col-8 mg-top">{{ $data->address }}</div>
+                                        <div class="col-8">{{ $data->address }}</div>
 
                                     </div>
                                 </div>
