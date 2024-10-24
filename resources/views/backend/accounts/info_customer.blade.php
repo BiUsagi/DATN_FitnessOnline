@@ -22,7 +22,7 @@
                             <div class="row">
                                 <!-- Avatar người dùng -->
                                 <div class="col-md-4 text-center  d-flex justify-content-center align-items-center">
-                                    <img src="https://via.placeholder.com/450" alt="User Avatar"
+                                    <img src="assets/backend/img/{{ $item->avatar }}" alt="User Avatar"
                                         class="img-fluid rounded-circle image-user-custom">
                                 </div>
                                 <!-- Thông tin chi tiết -->
