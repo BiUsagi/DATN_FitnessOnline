@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\api\PackageExercisesController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\backend\api\ExerciseController;
 use App\Http\Controllers\backend\api\SupportExercisesController;
 use App\Http\Controllers\backend\api\Workout_PackageController;
 use App\Http\Controllers\backend\api\AccountsController;
+use App\Http\Controllers\backend\api\VoucherController;
 
 
 Route::get('/user', function (Request $request) {
@@ -37,4 +39,6 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/supportexercises/{id}', [SupportExercisesController::class, 'show']);
 
     //vouchers
+    Route::get('/vouchers', [VoucherController::class, 'index']);
+
 });
