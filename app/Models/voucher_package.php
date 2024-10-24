@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class voucher_package extends Model
+class Voucher_package extends Model
 {
     //
 }
