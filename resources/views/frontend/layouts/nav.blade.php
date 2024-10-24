@@ -1,5 +1,4 @@
 <script src="assets/frontend/js/login.js"></script>
-
 <header>
     <div class="navigation-wrap start-style">
         <div class="container">
@@ -24,13 +23,13 @@
                                     <a class="nav-link" href="{{ route('about.index') }}">GIỚI THIỆU</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#courses">Courses</a>
+                                    <a class="nav-link" href="#courses">GÓI TẬP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="schedule.html">schedule</a>
+                                    <a class="nav-link" href="schedule.html">PT</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="team.html">Team</a>
+                                    <a class="nav-link" href="team.html">BLOG</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
@@ -45,6 +44,9 @@
                                                 @csrf
                                                 <button type="submit" class="dropdown-item">Đăng xuất</button>
                                             </form>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('info.index') }}">Thông tin</a>
                                         </li>
                                     </ul>
                                 @else
