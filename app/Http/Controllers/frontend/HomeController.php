@@ -36,7 +36,7 @@ class HomeController extends Controller
         return view('frontend/contact');
     }
     public function posts(){
-        \Carbon\Carbon::setLocale('vi'); 
+        \Carbon\Carbon::setLocale('vi'); // Đặt locale cho Carbon để ngày tháng năm thành tiếng việt
         $TopBlog = Posts::orderBy('id', 'DESC')->get(); // Lấy post theo thứ tự từ bài post mới nhát
         return view('frontend/posts')->with([
             'TopBlog' =>$TopBlog]);
