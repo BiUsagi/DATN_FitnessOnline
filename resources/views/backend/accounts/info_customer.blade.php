@@ -23,7 +23,7 @@
                                 <!-- Avatar người dùng -->
                                 <div class="col-md-4 text-center  d-flex justify-content-center align-items-center">
                                     <img src="assets/backend/img/{{ $data->avatar }}" alt="User Avatar"
-                                        class="img-fluid rounded-circle image-user-custom">
+                                        class="img-fluid rounded-circle image-user-custom img-cover">
                                 </div>
                                 <!-- Thông tin chi tiết -->
                                 <div class="col-md-8 d-flex justify-content-center align-items-center">
