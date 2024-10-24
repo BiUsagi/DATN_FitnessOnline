@@ -70,17 +70,17 @@ Route::prefix('admin')->group(function () {
 
 
     // exerciseset - gói tập
-    Route::get('/Workout_exercise', [WorkoutPackagesController::class, 'index'])->name('admin.workout_exercise');
+    Route::get('/Workout_package', [WorkoutPackagesController::class, 'index'])->name('admin.workout_package');
     //create_goitap
-    Route::get('/Workout_exercise/Workout_exercise_detail', [WorkoutPackagesController::class, 'detail'])->name('admin.package_exercise_detail');
+    Route::get('/Workout_package/Workout_package_detail', [WorkoutPackagesController::class, 'detail'])->name('admin.package_exercise_detail');
 
-    Route::get('/Workout_exercise/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_exercise-create');
-    Route::post('/Workout_exercise/create', [WorkoutPackagesController::class, 'create_'])->name('admin.workout_exercise-create_');
+    Route::get('/Workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
+    Route::post('/Workout_package/create', [WorkoutPackagesController::class, 'create_'])->name('admin.workout_package-create_');
     //update_goi_tap
-    Route::get('/Workout_exercise/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_exercise-update');
-    Route::post('/Workout_exercise/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.workout_exercise-update_');
+    Route::get('/Workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
+    Route::post('/Workout_package/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.workout_package-update_');
     //delete_goitap
-    Route::get('/Workout_exercise/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.workout_exercise-delete');
+    Route::get('/Workout_package/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.workout_package-delete');
 
 
     // statistical - thống kê

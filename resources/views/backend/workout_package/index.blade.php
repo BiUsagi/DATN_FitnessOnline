@@ -32,7 +32,7 @@
     </main><!-- End #main -->
 
     <script>
-        $.get('http://127.0.0.1:8000/api/admin/workout_exercise', function(res){
+        $.get('http://127.0.0.1:8000/api/admin/workout_package', function(res){
             let data = res;
             let returnData = '';
             data.forEach(item =>{
