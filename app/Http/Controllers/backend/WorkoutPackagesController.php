@@ -32,9 +32,9 @@ class WorkoutPackagesController extends Controller
         $set->package_name = $request->input('tengoitap');
         $set->price = $request->input('giatien');
         $set->description = $request->input('mota');
-        // $set->staff_id = $request->input('pt');
+        $set->staff_id = $request->input('pt');
         $set->level = $request->input('capdo');
-        $set->duration_days = $request->input('thoigian');
+        $set->duration = $request->input('thoigian');
 
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -45,7 +45,7 @@ class WorkoutPackagesController extends Controller
         }
 
         $set->save();
-        // toastr()->success('Thêm bài tập thành công!');
+        toastr()->success('Thêm bài tập thành công!');
         return redirect()->back();
     }
 
@@ -60,7 +60,7 @@ class WorkoutPackagesController extends Controller
         $set = Workout_package::find($id);
         $set->package_name = $request->input('tengoitap');
         $set->price = $request->input('giatien');
-        $set->description = $request->input('mota');
+        $set->description = $request->input('description');
         $set->staff_id = $request->input('pt');
         $set->level = $request->input('capdo');
         $set->duration = $request->input('thoigian');

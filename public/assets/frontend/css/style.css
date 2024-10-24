@@ -120,9 +120,8 @@
     background: transparent;
     border: none;
     outline: none;
-    font-size: 1em;
-    color: #1face1;
-    font-weight: 600;
+    color: #d6d6d6;
+    font-weight: 350;
     padding: 0 35px 0 5px;
 }
 
@@ -136,22 +135,19 @@
 
 .remember-forgot {
     font-size: .9em;
-    color: #1face1;
     font-weight: 500;
     margin: -15px 0 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    float: right;
 }
 
 .remember-forgot label input {
-    accent-color: #1face1;
+    accent-color: #d4d4d4 !important;
     margin-right: 3px;
 
 }
 
 .remember-forgot a {
-    color: #1face1;
+    color: #dfd8d8;
     text-decoration: none;
 }
 
@@ -185,7 +181,7 @@
 
 .login-register {
     font-size: .9em;
-    color: #1face1;
+    color: #fff;
     text-align: center;
     margin: 25px 0 10px;
 }
@@ -194,6 +190,7 @@
     color: #1face1;
     text-decoration: none;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .login-register p a:hover {
@@ -201,6 +198,22 @@
 }
 
 .errors {
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 500;
+    padding-left: 3px;
+}
+
+.errors1 {
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 500;
+    padding-left: 3px;
+}
+
+#ketqua{
     color: rgb(255, 0, 0);
     font-size: 12px;
     font-style: italic;

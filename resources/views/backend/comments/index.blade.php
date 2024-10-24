@@ -37,11 +37,11 @@
                             @foreach($comments as $index => $comment)
                                 <tr>
                                     <td class="text-center"  style="vertical-align: middle;">{{ $index + 1 }}</td>
-                                    <td class="text-center"  style="vertical-align: middle;">{{ $comment->user_id }}</td>
-                                    <td class="text-center"  style="vertical-align: middle;">{{ $comment->posts_id }}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $comment->user->user_name}}</td>
+                                    <td class="text-center"  style="vertical-align: middle;">{{ $comment->posts->title}}</td>
                                     <td class="text-center"  style="vertical-align: middle;">{{ $comment->content }}</td>
                                     <td class="text-center"  style="vertical-align: middle;">
-                                        <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a>
+                                        {{-- <a href="{{ route('admin.slide.update', $comment->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a> --}}
                                     </td>
                                 </tr>
                             @endforeach

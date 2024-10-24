@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action= "{{ route('admin.exerciseset-create_') }}" method ="POST" enctype="multipart/form-data">
+        <form action= "{{ route('admin.workout_package-create_') }}" id="form-workout_package" method ="POST" enctype="multipart/form-data" >
             @csrf
             <div class="row">
                 <div class="col-lg-9">
@@ -25,28 +25,28 @@
                 
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Tên gói tập <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="tengoitap">
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="package_name">
                             </div>
 
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Cấp độ <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="capdo">
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="level">
                             </div>
 
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(* Tháng)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="thoigian">
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="duration_days">
                             </div>
 
 
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Giá tiền gói tập <span class="note">(* VND)</span></label>
-                                <input type="number" class="form-control-customize " id="inputNanme4" name="giatien">
+                                <input type="number" class="form-control-customize " id="inputNanme4" name="price">
                             </div>
                             
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="mota"></textarea>
+                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="description"></textarea>
                             </div>
 
                             <input type="submit" class="btn btn-primary mt-3" value="Thêm gói tập">
@@ -136,7 +136,7 @@
                                         <option value="2" >PT 2</option>
                                         <option value="3">PT 3</option>
                                     </select> -->
-                                    <input type="text" name="pt">
+                                    <input type="text" name="staff_id">
                                 </div>
                         </div>
                         
@@ -148,4 +148,27 @@
     </section>
 
 </main><!-- End #main -->
+
+<script>
+   
+    $('#form-workout_package').on('submit', function(e) {
+        e.preventDefault();
+
+        let description = CKEDITOR.instances['description'].getData();
+
+        let formData = $(this).serialize() + '&description=' + encodeURIComponent(description);
+        
+        $.post('http://127.0.0.1:8000/api/admin/workout_package', formData, function(res) {
+            Swal.fire({
+                title: "Thành công!",
+                text: "Thêm thành công bài tập!",
+                icon: "success"
+                });
+        })
+        $('#form-workout_package')[0].reset();
+        CKEDITOR.instances['description'].setData('');
+    });
+
+
+</script>
 @endsection
