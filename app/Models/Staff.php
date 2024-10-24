@@ -41,7 +41,7 @@ class Staff extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'gender' => 'integer',
-        'rating' => 'integer',
+        'rating' => 'float',
         'rating_count' => 'integer'
     ];
 

@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action= "{{ route('admin.workout_package-create_') }}" id="form-workout_package" method ="POST" enctype="multipart/form-data" >
+        <form action= "#" id="form-workout_package" method ="POST" enctype="multipart/form-data" >
             @csrf
             <div class="row">
                 <div class="col-lg-9">
