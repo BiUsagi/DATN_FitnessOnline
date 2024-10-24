@@ -13,15 +13,21 @@ class Workout_PackageController extends Controller
         return response()->json($data) ;
     }
 
+    public function workout_detail($id){
+        $details = Workout_Package::find($id);
+
+        return response()->json($details) ;
+    }
+
     public function create_(Request $request)
     {
         $set = new Workout_package;
-        $set->package_name = $request->input('tengoitap');
-        $set->price = $request->input('giatien');
-        $set->description = $request->input('mota');
-        // $set->staff_id = $request->input('pt');
-        $set->level = $request->input('capdo');
-        $set->duration_days = $request->input('thoigian');
+        $set->package_name = $request->input('package_name');
+        $set->price = $request->input('price');
+        $set->description = $request->input('description');
+        $set->staff_id = $request->input('staff_id');
+        $set->level = $request->input('level');
+        $set->duration_days = $request->input('duration_days');
 
         if($request->hasFile('image')){
             $file = $request->file('image');

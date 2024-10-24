@@ -16,7 +16,7 @@
     <section class="section">
 
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-8">
 
                 <div class="card">
                     <div class="card-body">
@@ -31,19 +31,28 @@
                                     <th>ID</th>
                                     <th>Mã giảm giá</th>
                                     <th>Giảm giá</th>
-                                    <th>Số lượt nhập</th>
+                                    <th>Lượt nhập</th>
                                     <th data-type="date" data-format="YYYY/DD/MM">Thời gian sử dụng</th>
+                                    <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody id="list-items">
 
                             @for($i=0;$i<=10;$i++)
                                 <tr>
-                                    <td class="text-center">{{$i}}</td>
-                                    <td class="text-center">GIAMGIA20</td>
-                                    <td class="text-center">20%</td>
-                                    <td class="text-center">15</td>
-                                    <td class="text-center" data-type="date" data-format="YYYY/DD/MM">3/5/2020 - 13/5/2020</td>
+                                    <td class="text-center align-middle">{{$i}}</td>
+                                    <td class="text-center align-middle">GIAMGIA20</td>
+                                    <td class="text-center align-middle">20%</td>
+                                    <td class="text-center align-middle">7/15</td>
+                                    <td class="text-center align-middle" data-type="date" data-format="YYYY/DD/MM">3/5/2020 - 13/5/2020</td>
+                                    <td class="text-center align-middle">
+                                        <button type="button" class="btn btn-outline-primary" data-bs-placement="top" data-bs-title="Chỉnh Sửa">
+                                            <i class="ri-edit-line"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-danger" data-bs-placement="top" data-bs-title="Xóa">
+                                            <i class="bx bx-trash"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             @endfor
                                 
@@ -57,7 +66,7 @@
 
 
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <form id="form-exercise" method="post">
                     @csrf
                     <div class="card pb-2">
@@ -121,27 +130,38 @@
 
 </main><!-- End #main -->
 
-<!-- <script>
+<script>
    
-    $('#form-exercise').on('submit', function(e) {
-        e.preventDefault();
+    // $('#form-exercise').on('submit', function(e) {
+    //     e.preventDefault();
 
-        let description = CKEDITOR.instances['description'].getData();
+    //     let description = CKEDITOR.instances['description'].getData();
 
-        let formData = $(this).serialize() + '&description=' + encodeURIComponent(description);
+    //     let formData = $(this).serialize() + '&description=' + encodeURIComponent(description);
         
-        $.post('http://127.0.0.1:8000/api/admin/exercises', formData, function(res) {
-            Swal.fire({
-                title: "Thành công!",
-                text: "Thêm thành công bài tập!",
-                icon: "success"
-                });
-        })
-        $('#form-exercise')[0].reset();
-        CKEDITOR.instances['description'].setData('');
-    });
+    //     $.post('http://127.0.0.1:8000/api/admin/exercises', formData, function(res) {
+    //         Swal.fire({
+    //             title: "Thành công!",
+    //             text: "Thêm thành công bài tập!",
+    //             icon: "success"
+    //             });
+    //     })
+    //     $('#form-exercise')[0].reset();
+    //     CKEDITOR.instances['description'].setData('');
+    // });
+
+    document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-title]'));
+            // Kết quả trả về là một NodeList .
+            //[].slice.call(...) là một kỹ thuật để chuyển đổi NodeList thành một mảng bằng cách sử dụng phương thức slice() của mảng.
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                // Phương thức map sẽ lặp qua từng phần tử trong mảng tooltipTriggerList
+                //Đối với mỗi phần tử, một đối tượng Tooltip mới từ Bootstrap sẽ được khởi tạo.
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
 
 
-</script> -->
+</script>
 
 @endsection

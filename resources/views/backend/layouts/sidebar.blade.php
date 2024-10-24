@@ -17,21 +17,21 @@
 
 
         <li class="nav-item">
-            <a class="nav-link collapsed {{ Request::is('admin/Workout_exercise*') ? 'active' : '' }}"
-                data-bs-target="#package-nav" data-bs-toggle="collapse" href="{{ route('admin.workout_exercise') }}">
+            <a class="nav-link collapsed {{ Request::is('admin/Workout_package*') ? 'active' : '' }}"
+                data-bs-target="#package-nav" data-bs-toggle="collapse" href="{{ route('admin.workout_package') }}">
                 <i class="bi bi-archive"></i><span>Quản lý gói tập</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="package-nav" class="nav-content collapse {{ Request::is('admin/Workout_exercise*') ? 'show' : '' }}"
+            <ul id="package-nav" class="nav-content collapse {{ Request::is('admin/Workout_package*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('admin.workout_exercise') }}"
-                        class="{{ Request::is('admin/Workout_exercise') ? 'active' : '' }}">
+                    <a href="{{ route('admin.workout_package') }}"
+                        class="{{ Request::is('admin/Workout_package') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Danh sách gói tập</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.workout_exercise-create') }}"
-                        class="{{ Request::is('admin/Workout_exercise/create') ? 'active' : '' }}">
+                    <a href="{{ route('admin.workout_package-create') }}"
+                        class="{{ Request::is('admin/Workout_package/create') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thêm gói tập</span>
                     </a>
                 </li>
