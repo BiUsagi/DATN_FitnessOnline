@@ -34,6 +34,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/swiper.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/app.css'>
+    <link rel="stylesheet" href="assets/frontend/css/info.css">
     <link rel="stylesheet" href="assets/frontend/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
         rel="stylesheet">
