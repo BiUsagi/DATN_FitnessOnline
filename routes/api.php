@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin',], function () {
 
     //API of workout_exercise
     Route::get('/workout_exercise', [Workout_PackageController::class, 'index']);
-    Route::post('/workout_package', [Workout_PackageController::class, 'index']);  
+    Route::post('/workout_exercise/create', [Workout_PackageController::class, 'create_']);  
 
 
     // account
