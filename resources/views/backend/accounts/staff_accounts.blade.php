@@ -1,7 +1,6 @@
 @extends('backend/layouts/app-admin')
 @section('main')
     <main id="main" class="main">
-
         <div class="pagetitle">
             <h1>Danh sách nhân viên</h1>
             <nav>
@@ -24,59 +23,87 @@
                                     Thêm nhân viên</a> --}}
                             </div>
 
-                            <!-- Table with stripped rows -->
-                            <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">STT</th>
-                                        <th>Tên</th>
-                                        <th>Số Điện Thoại</th>
-                                        <th>Email</th>
-                                        <th class="text-center">Hành Động</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            <div class="row gx-4">
+                                @foreach ($data as $item)
+                                    <div class="col-xxl-3 col-sm-6">
+                                        <div class="border pb-3 pe-3 ps-3 rounded-2 text-center mb-4">
+                                            <img src="assets/backend/img/{{ $item->avatar }}"
+                                                class="img-10x rounded-pill img-cover" alt="Gym Dashboard">
+                                            <h5>{{ $item->staff_name }}</h5>
+                                            <h6>
+                                                @if ($item->gender == 1)
+                                                    <i class="bi bi-gender-male text-primary"></i> Nam
+                                                @elseif ($item->gender == 0)
+                                                    <i class="bi bi-gender-female text-danger"></i> Nữ
+                                                @elseif ($item->gender == 2)
+                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
+                                                @else
+                                                    <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                                @endif
+                                            </h6>
+                                            <ul class="list-group mb-3 fs-7">
 
-                                    {{-- Lặp hiện thị danh sách nhân viên --}}
+                                                <li class="list-group-item d-flex justify-content-between align-items-center"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Số lượng khóa học">
+                                                    Khóa Học
+                                                    <span class="badge border border-success text-success">3</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Số lượng học viên">
+                                                    Số Học Viên
+                                                    <span class="badge border border-danger text-danger">180</span>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center "
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Thời gian tham gia">
+                                                    Hoạt Động
+                                                    <span
+                                                        class="badge border border-primary text-primary ">{{ $item->getActiveDuration() }}</span>
+                                                </li>
+                                            </ul>
+                                            <div class="d-grid mb-3">
+                                                <a href="trainer-profile.html" class="btn btn-primary">Xem Chi Tiết</a>
+                                            </div>
+                                            <!-- Rating -->
+                                            <div class="mt-3">
+                                                <span class="text-warning">
+                                                    @php
+                                                        // tính số sao
+                                                        $fullStars = floor($item->rating); // full sao
+                                                        $halfStar = $item->rating - $fullStars >= 0.5 ? 1 : 0; //nửa sao
+                                                    @endphp
 
-                                    @php $stt = 1; @endphp
+                                                    <!-- Hiển thị full sao -->
+                                                    @for ($i = 1; $i <= $fullStars; $i++)
+                                                        <i class="bi bi-star-fill"></i>
+                                                    @endfor
 
-                                    @foreach ($data as $item)
-                                        <tr>
-                                            <td class="text-center">
-                                                {{ $stt++ }}
-                                            </td>
-                                            <td>
-                                                {{-- Avatar --}}
-                                                <img src="assets/backend/img/{{ $item->avatar }}"
-                                                    class="rounded-circle object-fit-cover me-2 avatar-table">
-                                                {{-- name --}}
-                                                {{ $item->staff_name }}
-                                            </td>
-                                            <td class="align-middle">{{ $item->phone_number }}</td>
-                                            <td class="align-middle">{{ $item->email }}</td>
-                                            <td class="text-center align-middle">
-                                                <button type="button" class="btn btn-info text-white"><i
-                                                        class="bi bi-eye-fill"></i></button>
-                                                <button type="button" class="btn btn-warning text-white"><i
-                                                        class="ri-edit-box-line"></i></button>
-                                                <button type="button" class="btn btn-danger"><i
-                                                        class="ri-delete-bin-5-line"></i></button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                    <!-- Hiển thị nửa sao -->
+                                                    @if ($halfStar)
+                                                        <i class="bi bi-star-half"></i>
+                                                    @endif
+
+                                                    <!-- Hiển thị sao trống cho đến tối đa 5 sao -->
+                                                    @for ($i = $fullStars + $halfStar; $i < 5; $i++)
+                                                        <i class="bi bi-star"></i>
+                                                    @endfor
+
+                                                </span>
+                                                <span class="ms-2">
+                                                    <small class="text-secondary">({{ $item->rating_count }} bình
+                                                        chọn)</small>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
 
 
-
-                                </tbody>
-                            </table>
-                            <!-- End Table with stripped rows -->
+                            </div>
 
                         </div>
                     </div>
-
-                </div>
-            </div>
         </section>
 
     </main><!-- End #main -->
