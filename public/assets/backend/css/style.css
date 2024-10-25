@@ -1350,6 +1350,10 @@ input[placeholder] {
   height: 55px;
 }
 
+.img-banner-custom {
+  height: 15rem;
+}
+
 /* end account admin */
 
 

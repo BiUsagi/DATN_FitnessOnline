@@ -18,7 +18,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
+                    
                     <div class="inner-content">
+                        
                         <div class="single-blog-post">
                             <div class="blog-image">
                                 <img loading='lazy' src="{{ asset('assets/backend/img/' . $posts->image) }}" alt="blog_detail_img.webp">
@@ -31,9 +33,7 @@
                                         <div class="date"><img loading='lazy' src="assets/frontend/images/icons/heart.svg"><span>123</span></div>
                                     </div>
                                     <h2 class="blog-title">{{$posts->title}}</h2>
-                                   
-                                    <p> {!! nl2br(e($posts->content)) !!}</p>
-
+                                    <p>{{$posts->content}}</p>
                                     <p>{{$posts->user->staff_name}}</p>
                                     {{-- <blockquote>         
                                         Mattis lorem class sapien taciti inceptos at ultrices quis risus nulla rutrum tempor.
@@ -57,7 +57,7 @@
                         </div>
                         <div class="comment-box default-padding">
                             <div class="section-title">
-                                <h2>Comments</h2>
+                                <h2 style="font-size: 30px" >Comments</h2>
                             </div>
 
                             <div>
