@@ -29,9 +29,6 @@
                                     <a class="nav-link" href="schedule.html">PT</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="team.html">BLOG</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
                                 </li>
                                 <li class="nav-item">

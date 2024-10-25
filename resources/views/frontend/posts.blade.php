@@ -6,9 +6,9 @@
         <div class="breadcrumb_wrapper">
             <div class="container">
                 <div class="breadcrumb_block">
-                    <h1>OUR <span>Blog</span></h1>
+                    <h1><span>Blog</span></h1>
                     <div class="trackPage">
-                        <a href="index.html">HOME</a>
+                        <a href="{{ route('index') }}">Trang chủ</a>
                         <span>Blog</span>
                     </div>
                 </div>
@@ -20,6 +20,8 @@
                 <div class="row justify-content-center ">
                     <div class="col-lg-8">
                         <div class="inner-content">
+
+                            {{-- Show bài viết --}}
 
                             @foreach ($TopBlog as $TopBlogs)
                                 <div class="single-blog-post">
@@ -41,7 +43,7 @@
                                         
                                             <div class="tags">
                                                 <ul>
-                                                    <li><a href="blog-details.html">Read More</a>
+                                                    <li><a href="{{ route('posts-details.index', $TopBlogs->id) }}">Read More</a>
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                             viewBox="0 0 500 279" style="enable-background:new 0 0 500 279;" xml:space="preserve">
                                                         <style type="text/css">
@@ -65,6 +67,8 @@
                                     </div>
                                 </div>
                             @endforeach 
+
+                            {{-- end Show bài viết --}}
 
                             {{-- <div class="single-blog-post">
                                 <div class="blog-image">
