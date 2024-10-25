@@ -82,7 +82,8 @@
                             <div class="row justify-content-center d-flex">
                                 <div class="col-md-4 col-xxl-3 col-sm-6">
                                     <div class="card p-0">
-                                        <img src="https://via.placeholder.com/500" class="card-img-top" alt="...">
+                                        <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
+                                            alt="...">
                                         <div class="card-body pt-3 row">
                                             <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
                                             <div class="card-text col-12">Thời gian: 3 tháng</div>
@@ -92,7 +93,8 @@
                                 </div>
                                 <div class="col-md-4 col-xxl-3 col-sm-6">
                                     <div class="card p-0">
-                                        <img src="https://via.placeholder.com/450" class="card-img-top" alt="...">
+                                        <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
+                                            alt="...">
                                         <div class="card-body pt-3 row">
                                             <h5 class="card-title col-12">Tập tay anh Rin</h5>
                                             <div class="card-text col-12">Thời gian: 6 tháng</div>
@@ -102,7 +104,8 @@
                                 </div>
                                 <div class="col-md-4 col-xxl-3 col-sm-6">
                                     <div class="card  p-0">
-                                        <img src="https://via.placeholder.com/450" class="card-img-top" alt="...">
+                                        <img src="assets/backend/img/z5744025567765_d84710b48e5ca2efa1db72137f826b60.jpg"
+                                            class="img-cover img-banner-custom" alt="...">
                                         <div class="card-body pt-3 row">
                                             <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
                                             <div class="card-text col-12">Thời gian: 3 tháng</div>
@@ -112,7 +115,8 @@
                                 </div>
                                 <div class="col-md-4 col-xxl-3 col-sm-6">
                                     <div class="card  p-0">
-                                        <img src="https://via.placeholder.com/450" class="card-img-top" alt="...">
+                                        <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
+                                            alt="...">
                                         <div class="card-body pt-3 row">
                                             <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
                                             <div class="card-text col-12">Thời gian: 3 tháng</div>

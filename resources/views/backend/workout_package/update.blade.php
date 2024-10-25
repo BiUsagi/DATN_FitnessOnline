@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action= "{{ route('admin.workout_exercise-update_', ['id' => $update_id->id ]) }}  " method ="POST" enctype="multipart/form-data">
+        <form action= "{{ route('admin.workout_package-update_', ['id' => $update_id->id ]) }}  " method ="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-lg-9">
