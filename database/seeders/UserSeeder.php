@@ -14,6 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+
+
         DB::table('users')->insert([
             [
                 'user_name' => 'Trương Bá Sơn',
@@ -29,7 +31,7 @@ class UserSeeder extends Seeder
             [
                 'user_name' => 'Nguyễn Văn Luân',
                 'email' => 'nguyenb@example.com',
-                'avatar' => 'dat.jpg',
+                'avatar' => 'luan.jpg',
                 'address' => '456 Đường DEF, Hà Nội',
                 'birthday' => '1998-07-23',
                 'gender' => 0, // Nữ
@@ -40,7 +42,7 @@ class UserSeeder extends Seeder
             [
                 'user_name' => 'Phạm Đạt',
                 'email' => 'phamdat@example.com',
-                'avatar' => 'new-1.jpg',
+                'avatar' => 'messages-3.jpg',
                 'address' => '789 Đường XYZ, Đà Nẵng',
                 'birthday' => '1995-04-12',
                 'gender' => 2, // Khác

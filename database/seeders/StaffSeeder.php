@@ -12,6 +12,7 @@ class StaffSeeder extends Seeder
      */
     public function run(): void
     {
+
         DB::table('staff')->insert([
             [
                 'user_id' => 1,
@@ -43,7 +44,7 @@ class StaffSeeder extends Seeder
                 'user_id' => 3,
                 'staff_name' => 'Phạm Văn Đạt',
                 'email' => 'staffssc@example.com',
-                'avatar' => 'dat.jpg',
+                'avatar' => 'messages-3.jpg',
                 'gender' => 3,
                 'birthday' => '1992-07-19',
                 'rating' => 4.0,
@@ -54,9 +55,9 @@ class StaffSeeder extends Seeder
             ],
             [
                 'user_id' => 4,
-                'staff_name' => 'Trần Thị Luân',
+                'staff_name' => 'Nguyễn Văn Rin',
                 'email' => 'staffsb@example.com',
-                'avatar' => 'luan.jpg',
+                'avatar' => 'dat.jpg',
                 'gender' => 0, // Nữ
                 'birthday' => '1985-11-23',
                 'rating' => 4.2,
@@ -67,9 +68,9 @@ class StaffSeeder extends Seeder
             ],
             [
                 'user_id' => 5,
-                'staff_name' => 'Phạm Văn Đạt',
+                'staff_name' => 'Phạm Chiến',
                 'email' => 'staffcc@example.com',
-                'avatar' => 'dat.jpg',
+                'avatar' => '7CC84950-B263-4389-B934-E77F86954053.JPG',
                 'gender' => 3, // Giới tính khác (theo thiết lập mặc định)
                 'birthday' => '1992-07-19',
                 'rating' => 4.0,
@@ -80,9 +81,9 @@ class StaffSeeder extends Seeder
             ],
             [
                 'user_id' => 6,
-                'staff_name' => 'Trần Thị Luân',
+                'staff_name' => 'Phạm Tuấn',
                 'email' => 'staffba@example.com',
-                'avatar' => 'luan.jpg',
+                'avatar' => 'post 2.jpg',
                 'gender' => 0, // Nữ
                 'birthday' => '1985-11-23',
                 'rating' => 2.6,
