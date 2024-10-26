@@ -41,6 +41,10 @@ Route::group(['prefix' => 'admin',], function () {
 
     //vouchers
     Route::get('/vouchers', [VoucherController::class, 'index']);
+    Route::get('/vouchers/{id}', [VoucherController::class, 'show']);
+    Route::post('/vouchers', [VoucherController::class, 'add']);
+    Route::delete('/vouchers/{id}', [VoucherController::class, 'delete']);
+    Route::put('/vouchers/{id}', [VoucherController::class, 'update']);
 
     //Comment
     // Route::get('/comments', [CommentController::class, 'getCommentsAjax'])->name('api.comments.index');
