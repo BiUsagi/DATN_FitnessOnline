@@ -12,10 +12,6 @@ class CommentController extends Controller
 {
     public function index()
     {
-        // $comments = Comment::all();
-        // Lấy tất cả dữ liệu từ bảng tin
-        // $comments = Comment::with('user')->orderBy('id', 'DESC')->get();
-        $comments = Comment::with(['user', 'posts'])->orderBy('id', 'DESC')->get();
-        return view('backend/comments/index',compact('comments'));
+        return view('backend/comments/index');
     }
 }

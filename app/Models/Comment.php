@@ -16,13 +16,25 @@ class Comment extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['user_id','posts_id', 'rep','report','content'];
-    //liên kết bản user
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    
+    public function posts() {
+        return $this->belongsTo(Posts::class, 'posts_id');
     }
-    public function posts()
-    {
-        return $this->belongsTo(Posts::class);
+
+    // Quan hệ với bảng User (người dùng)
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
     }
+    // Mối quan hệ hasMany với chính nó để lấy phản hồi
+    public function rep()
+    {
+        return $this->hasMany(Comment::class, 'rep'); // 'rep' là khóa ngoại tham chiếu đến ID của bình luận cha
+    }
+
+    // Mối quan hệ belongsTo với chính nó (Bình luận có thể là trả lời của bình luận khác)
+    public function parentComment()
+    {
+        return $this->belongsTo(Comment::class, 'rep'); // 'rep' là khóa ngoại tham chiếu đến ID của bình luận cha
+    }
+    
 }
