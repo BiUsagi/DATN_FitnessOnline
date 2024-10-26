@@ -121,7 +121,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
 
     //comments
-    Route::get('/comments', [CommentController::class, 'index'])->name('admin.slides');//Danh sách giao diện
+    Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');//Danh sách giao diện
     
     //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
 

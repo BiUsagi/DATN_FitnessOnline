@@ -87,7 +87,7 @@
                                         <div class="content-box">
                                             <h3>Carl Lira</h3>
                                             <p class="timing">18 August 2022, 10:00AM</p>
-                                            <div class="reply_btn"><a href="{{ route('login_.index') }}" class="reply">Vui lòng đăng nhập để trả lời</a></div>
+                                            <div class="reply_btn"><a id="login-comments" class="reply">Vui lòng đăng nhập để trả lời</a></div>
                                             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
                                         </div>
                                     </div>
@@ -132,7 +132,7 @@
                                             <div class="content-box">
                                                 <h3>Greta Cramer</h3>
                                                 <p class="timing">19 August 2022, 10:00AM</p>
-                                                <div class="reply_btn"><a href="{{ route('login_.index') }}" class="reply">Vui lòng đăng nhập để trả lời</a></div>
+                                                <div class="reply_btn"><a id="login-comments" class="reply">Vui lòng đăng nhập để trả lời</a></div>
                                                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
                                             </div>
                                         </div>
@@ -208,7 +208,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group mb-0 text-center text-md-start pb-0">
-                                                <a href="{{ route('login_.index') }}" class="btn">Vui lòng đăng nhập</a>
+                                                <a id="login-comments" class="btn">Vui lòng đăng nhập</a>
                                             </div>
                                         </div>
                                     </div>                                   
@@ -323,6 +323,14 @@
             </div>
         </div>
     </div>
+    <script>
+        $("#login-comments").click(function() {
+        var currentUrl = window.location.href;
+    
+        // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
+        window.location.href = "/login?redirect_url=" + encodeURIComponent(currentUrl);
+    });
+    </script>
 </section>
 @endsection
 @section('js')
