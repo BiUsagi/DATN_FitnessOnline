@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Staff extends Model
 {
@@ -40,9 +41,20 @@ class Staff extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'gender' => 'integer',
-        'rating' => 'integer',
+        'rating' => 'float',
         'rating_count' => 'integer'
     ];
+
+    // Tính thời gian họạt động
+    public function getActiveDuration()
+    {
+        $createdAt = $this->created_at;
+        $now = Carbon::now();
+        return $createdAt->diffForHumans($now, true); // Chỉ trả về khoảng thời gian mà không có từ ngữ
+    }
+
+
+    // Tính số lượng học viên
 
     public function user()
     {
@@ -52,6 +64,11 @@ class Staff extends Model
     public function supportExercises()
     {
         return $this->hasMany(Support_Exercise::class, 'staff_id');
+    }
+
+    public function workoutPackages()
+    {
+        return $this->hasMany(Workout_Package::class, 'staff_id');
     }
 
 
