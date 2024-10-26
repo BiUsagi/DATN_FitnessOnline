@@ -97,9 +97,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
     Route::get('/posts/create', [PostsController::class, 'create'])->name('admin-post.create');
 
-    // comments - bình luận
-    Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');
-
     //component 
     Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
 
@@ -123,8 +120,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.slide.update');//Cập nhật giao diện
     Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
 
-
-
+    //comments
+    Route::get('/comments', [CommentController::class, 'index'])->name('admin.slides');//Danh sách giao diện
+    
     //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
 
 
