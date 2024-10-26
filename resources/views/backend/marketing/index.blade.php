@@ -118,6 +118,7 @@
 
 
                 </form>
+
             </div>
         </div>
 
@@ -207,7 +208,7 @@
     function load() {
         $.get('http://127.0.0.1:8000/api/admin/vouchers', function (res) {
             let data = res;
-            console.log(res);
+            // console.log(res);
             let returnData = '';
 
 
@@ -262,20 +263,66 @@
     }
 
 
+    // $('#addvoucher').on('submit', function (ev) {
+    //     ev.preventDefault();
+    //     let addform = $(this).serialize();
+    //     // alert(addform);
+    //     $.post('http://127.0.0.1:8000/api/admin/vouchers', addform, function (re) {
+    //         Swal.fire({
+    //             title: "Thành công!",
+    //             text: "Thêm Voucher thành công!",
+    //             icon: "success"
+    //         });
+    //     });
+    //     $('#addvoucher')[0].reset();
+    //     load();
+    // })
+
+
+    //add
     $('#addvoucher').on('submit', function (ev) {
         ev.preventDefault();
-        let addform = $(this).serialize();
-        // alert(addform);
-        $.post('http://127.0.0.1:8000/api/admin/vouchers', addform, function (re) {
-            Swal.fire({
-                title: "Thành công!",
-                text: "Thêm Voucher thành công!",
-                icon: "success"
-            });
+        let form = $(this);  // Lấy đối tượng form
+        let addform = form.serialize(); // Lấy dữ liệu form
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/admin/vouchers', // URL API
+            type: 'POST',
+            data: addform,
+            success: function (response) {
+                Swal.fire({
+                    title: "Thành công!",
+                    text: "Thêm Voucher thành công!",
+                    icon: "success"
+                });
+                $('#addvoucher')[0].reset();  // Reset form sau khi thêm thành công
+                load();  // Tải lại danh sách vouchers
+            },
+            error: function (xhr) {
+                if (xhr.status === 422) {
+                    // Xóa các lỗi trước đó
+                    $('.text-danger').remove();
+
+                    // Lấy các lỗi từ phản hồi
+                    let errors = xhr.responseJSON.errors;
+
+                    // Hiển thị từng lỗi dưới các trường nhập liệu
+                    for (let field in errors) {
+                        let input = form.find(`[name="${field}"]`);
+                        let errorMessage = `<div class="text-danger">${errors[field][0]}</div>`;
+                        input.after(errorMessage);
+                    }
+                } else {
+                    Swal.fire({
+                        title: "Lỗi!",
+                        text: "Có lỗi xảy ra, vui lòng thử lại.",
+                        icon: "error"
+                    });
+                }
+            }
         });
-        $('#addvoucher')[0].reset();
-        load();
-    })
+    });
+
 
 
     //delete
@@ -299,45 +346,57 @@
     $('#editform').on('submit', function (ev) {
         ev.preventDefault();
         let form = $(this).serialize();
-        let formArray = $(this).serializeArray(); // Chuyển đổi dữ liệu biểu mẫu thành mảng đối tượng
-
-        // Tìm đối tượng với name là 'id_modal'
+        let formArray = $(this).serializeArray();
         let idModal = formArray.find(item => item.name === 'id_modal');
-
+        // console.log(form)
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/admin/vouchers/' + idModal.value, // Thêm idModal vào URL
-            type: 'PUT', // Đặt loại yêu cầu là PUT
-            data: form, // Gửi dữ liệu
-            success: function (re) {
+            url: 'http://127.0.0.1:8000/api/admin/vouchers/' + idModal.value,
+            type: 'PUT', 
+            data: form, 
+            success: function (response) {
                 Swal.fire({
                     title: "Thành công!",
                     text: "Cập nhật Voucher thành công!",
                     icon: "success"
                 });
+                loadModal(idModal.value);
+                load(); 
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                Swal.fire({
-                    title: "Lỗi!",
-                    text: "Có lỗi xảy ra: " + errorThrown,
-                    icon: "error"
-                });
+            error: function (xhr) {
+                console.log(xhr.responseJSON); // Kiểm tra phản hồi từ server
+                if (xhr.status === 422) {
+                    $('.text-danger').remove();
+                    // Lấy các lỗi từ phản hồi
+                    let errors = xhr.responseJSON.errors;
+                    // Hiển thị từng lỗi dưới các trường nhập liệu
+                    for (let field in errors) {
+                        let input = $(`[name="${field}"]`);
+                        let errorMessage = `<div class="text-danger">${errors[field][0]}</div>`;
+                        input.after(errorMessage);
+                    }
+                } else {
+                    Swal.fire({
+                        title: "Lỗi!",
+                        text: "Có lỗi xảy ra, vui lòng thử lại.",
+                        icon: "error"
+                    });
+                }
             }
-        });;
+        });
+    });
 
-        loadModal(idModal.value);
-        load();
-    })
 
 
     //modal
     $(document).on('click', '.btn-edit', function () {
         let id = $(this).attr('value');
         loadModal(id);
+        loadModal(id);
     })
 
     //loadmodal
-    function loadModal(i){
+    function loadModal(i) {
         $.get('http://127.0.0.1:8000/api/admin/vouchers/' + i, function (res) {
             let voucherId = res;
             // Cập nhật tiêu đề modal
@@ -347,7 +406,7 @@
             $('#sale_modal').val(res.sale);
             $('#usage_limit_modal').val(res.usage_limit);
             $('#startday_modal').val(res.start_date);
-            $('#enđay_modal').val(res.end_date);
+            $('#endday_modal').val(res.end_date);
         });
     }
 

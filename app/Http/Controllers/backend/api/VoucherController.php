@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\backend\VoucherRequest;
 use App\Models\voucher;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class VoucherController extends Controller
         return response()->json($voucher);
     }
 
-    public function add(Request $request){
+    public function add(VoucherRequest $request){
         $vouchers = new voucher();
         $vouchers->code = $request->input('code');
         $vouchers->sale = $request->input('sale');
@@ -35,7 +36,7 @@ class VoucherController extends Controller
         return response()->json($voucher);
     }
 
-    public function update($id, Request $request){
+    public function update($id, VoucherRequest $request){
         $vouchers = voucher::find($id);
         $vouchers->code = $request->input('code_modal');
         $vouchers->sale = $request->input('sale_modal');
