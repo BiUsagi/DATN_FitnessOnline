@@ -313,9 +313,10 @@
                         input.after(errorMessage);
                     }
                 } else {
+                    $('.text-danger').remove();
                     Swal.fire({
                         title: "Lỗi!",
-                        text: "Có lỗi xảy ra, vui lòng thử lại.",
+                        text: "Mã đã tồn tại.",
                         icon: "error"
                     });
                 }
