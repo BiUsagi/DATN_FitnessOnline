@@ -92,7 +92,7 @@
             <ul id="comment-nav" class="nav-content collapse {{ Request::is('admin/comments*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('api.admin.comments') }}"
+                    <a href="{{ route('admin.comments') }}"
                         class="{{ Request::is('admin/comments*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Danh sách bình luận</span>
                     </a>
