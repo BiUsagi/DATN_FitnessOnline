@@ -53,6 +53,9 @@ class Staff extends Model
         return $createdAt->diffForHumans($now, true); // Chỉ trả về khoảng thời gian mà không có từ ngữ
     }
 
+
+    // Tính số lượng học viên
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -61,6 +64,11 @@ class Staff extends Model
     public function supportExercises()
     {
         return $this->hasMany(Support_Exercise::class, 'staff_id');
+    }
+
+    public function workoutPackages()
+    {
+        return $this->hasMany(Workout_Package::class, 'staff_id');
     }
 
 
