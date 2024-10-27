@@ -102,7 +102,6 @@
                 video.style.width = '100%';
                 video.src = URL.createObjectURL(file);
                 
-                // Thay thế hình ảnh bằng video
                 previewElement.replaceWith(video);
             } else {
                 previewElement.src = URL.createObjectURL(file);
