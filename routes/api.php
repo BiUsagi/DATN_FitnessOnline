@@ -26,8 +26,9 @@ Route::group(['prefix' => 'admin',], function () {
     Route::delete('/exercises/{id}', [ExerciseController::class, 'add']);
 
     //API of workout_exercise
-    Route::post('/workout_package', [Workout_PackageController::class, 'create_']);
     Route::get('/workout_package', [Workout_PackageController::class, 'index']);
+    Route::post('/workout_package', [Workout_PackageController::class, 'create_']);
+    Route::put('/workout_package/{id}', [Workout_PackageController::class, 'update_']);
     Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
 
 
