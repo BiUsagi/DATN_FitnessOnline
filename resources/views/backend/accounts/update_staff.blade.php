@@ -50,7 +50,6 @@
                                         <option value="1">Nam</option>
                                         <option value="0">Nữ</option>
                                         <option value="2">Khác</option>
-                                        <option value="3">Không xác định</option>
                                     </select>
                                 </div>
                                 <div class="col-12">

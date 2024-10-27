@@ -35,10 +35,8 @@
                                                     <i class="bi bi-gender-male text-primary"></i> Nam
                                                 @elseif ($item->gender == 0)
                                                     <i class="bi bi-gender-female text-danger"></i> Nữ
-                                                @elseif ($item->gender == 2)
-                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
                                                 @else
-                                                    <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
                                                 @endif
                                             </h6>
                                             <ul class="list-group mb-3 fs-7">

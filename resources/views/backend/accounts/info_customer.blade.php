@@ -40,10 +40,8 @@
                                                 <i class="bi bi-gender-male text-primary"></i> Nam
                                             @elseif ($data->gender == 0)
                                                 <i class="bi bi-gender-female text-danger"></i> Nữ
-                                            @elseif ($data->gender == 2)
-                                                <i class="bi bi-gender-trans text-warning"></i> Khác
                                             @else
-                                                <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                                <i class="bi bi-gender-trans text-warning"></i> Khác
                                             @endif
                                         </div>
                                         <div class="col-4 justify-content-end d-flex ">

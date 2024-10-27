@@ -19,7 +19,7 @@ class AccountRequest extends FormRequest
     {
         return [
             'user_name' => 'required|string|max:255',
-            'userGender' => 'required|in:0,1,2,3', // 0: Nữ, 1: Nam, 2: Khác, 3: Không xác định
+            'userGender' => 'required|in:0,1,2', // 0: Nữ, 1: Nam, 2: Khác
             'userEmail' => 'required|email|max:255',
             'userPhone' => 'required|regex:/^(\+84|0)[0-9]{9}$/',
             'userBirthday' => 'required|date',
