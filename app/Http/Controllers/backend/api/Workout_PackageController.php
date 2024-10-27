@@ -27,6 +27,7 @@ class Workout_PackageController extends Controller
         $set->description = $request->input('description');
         // $set->staff_id = $request->input('staff_id');
         $set->level = $request->input('level');
+        $set->special_level = $request->input('special_level');
         $set->status = $request->input('status');
         $set->duration_days = $request->input('duration_days');
         $set->status = $request->input('status');

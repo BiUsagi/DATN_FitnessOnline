@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->text('image')->nullable(); //Hình ảnh
             $table->text('description'); // Mô tả gói
             $table->string('level'); // Cấp độ (ví dụ Beginner, Intermediate, Advanced)
+            $table->string('special_level'); // Cấp độ (ví dụ Beginner, Intermediate, Advanced)
             $table->integer('price'); // Giá gói
             $table->integer('duration_days'); // Thời lượng gói (ngày, tháng...)
             $table->unsignedBigInteger('staff_id'); // ID huấn luyện viên (FK)

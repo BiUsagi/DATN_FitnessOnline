@@ -30,15 +30,15 @@
                                         name="package_name">
                                 </div>
 
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Cấp độ <span
                                             class="note">(*)</span></label>
                                     <input type="text" class="form-control-customize " id="inputNanme4" name="level">
-                                </div>
+                                </div> -->
 
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(*
-                                            Tháng)</span></label>
+                                            Ngày)</span></label>
                                     <input type="text" class="form-control-customize " id="inputNanme4"
                                         name="duration_days">
                                 </div>
@@ -64,7 +64,7 @@
                     </div>
 
                 <div class="col-lg-3">
-                        <div class="card">
+                        <!-- <div class="card">
                                 <div class="card-header text-uppercase">Trạng thái</div>
                                 <div class="card-body">
                                     <select name="" id="select2" class="form-control-select2 setupSelect2">
@@ -74,7 +74,7 @@
                                     </select>
                                         {{-- <img class="img-cover" src="assets/backend/img/no-image.jpg" alt=""> --}}
                                 </div>  
-                        </div>
+                        </div> -->
 
                         <div class="card">
                             <div class="card-header text-uppercase">HÌNH ẢNH</div>
@@ -138,21 +138,35 @@
         $('#form-workout_package').on('submit', function(e) {
             e.preventDefault();
 
-        let description = CKEDITOR.instances['description'].getData();
+            let formData = new FormData(this);
+            let description = CKEDITOR.instances['description'].getData();
+            formData.append('description', description);
 
-        let formData = $(this).serialize() + '&description=' + encodeURIComponent(description);
-        
-        $.post('http://127.0.0.1:8000/api/admin/workout_package', formData, function(res) {
-            Swal.fire({
-                title: "Thành công!",
-                text: "Thêm thành công bài tập!",
-                icon: "success"
-                });
-        })
-        $('#form-workout_package')[0].reset();
-        CKEDITOR.instances['description'].setData('');
-    });
-
-
-</script>
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/admin/workout_package',
+                type: 'POST',
+                data: formData,
+                contentType: false, 
+                processData: false, 
+                success: function(res) {
+                    Swal.fire({
+                        title: "Thành công!",
+                        text: "Thêm thành công bài tập!",
+                        icon: "success"
+                    });
+                    $('#form-workout_package')[0].reset();
+                    CKEDITOR.instances['description'].setData('');
+                    $('#avatar-image').attr('src',
+                    'assets/backend/img/no-image.jpg');
+                },
+                error: function(err) {
+                    Swal.fire({
+                        title: "Lỗi!",
+                        text: "Có lỗi xảy ra khi thêm bài tập!",
+                        icon: "error"
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
