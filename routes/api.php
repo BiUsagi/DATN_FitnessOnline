@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\api\SupportExercisesController;
 use App\Http\Controllers\backend\api\Workout_PackageController;
 use App\Http\Controllers\backend\api\AccountsController;
 use App\Http\Controllers\backend\api\VoucherController;
+use App\Http\Controllers\backend\api\CommentController;
 
 
 Route::get('/user', function (Request $request) {
@@ -25,14 +26,16 @@ Route::group(['prefix' => 'admin',], function () {
     Route::delete('/exercises/{id}', [ExerciseController::class, 'add']);
 
     //API of workout_exercise
-    Route::post('/workout_package', [Workout_PackageController::class, 'create_']);  
+    Route::post('/workout_package', [Workout_PackageController::class, 'create_']);
     Route::get('/workout_package', [Workout_PackageController::class, 'index']);
     Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
 
 
     // account
-    Route::get('/user/{id}', [AccountsController::class, 'show'])->name('api.user.show');
-    Route::put('/user/{id}', [AccountsController::class, 'update'])->name('api.user.update');
+    Route::get('/user/{id}', [AccountsController::class, 'showU'])->name('api.user.show');
+    Route::put('/user/{id}', [AccountsController::class, 'updateU'])->name('api.user.update');
+    Route::get('/staff/{id}', [AccountsController::class, 'showS'])->name('api.staff.show');
+    Route::put('/staff/{id}', [AccountsController::class, 'updateS'])->name('api.staff.update');
 
     //SupportExercises
     Route::get('/supportexercises', [SupportExercisesController::class, 'index']);
@@ -44,5 +47,11 @@ Route::group(['prefix' => 'admin',], function () {
     Route::post('/vouchers', [VoucherController::class, 'add']);
     Route::delete('/vouchers/{id}', [VoucherController::class, 'delete']);
     Route::put('/vouchers/{id}', [VoucherController::class, 'update']);
+
+    //Comment
+    // Route::get('/comments', [CommentController::class, 'getCommentsAjax'])->name('api.comments.index');
+    Route::get('/comments', [CommentController::class, 'index'])->name('api.admin.comments');
+
+
 
 });

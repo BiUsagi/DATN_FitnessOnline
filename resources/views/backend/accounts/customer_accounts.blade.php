@@ -216,7 +216,6 @@
                 type: 'PUT',
                 data: formData,
                 success: function(response) {
-                    console.log(response);
                     $('#editUserModal').modal('hide');
                     Swal.fire({
                         title: "Thành công!",

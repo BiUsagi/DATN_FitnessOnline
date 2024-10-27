@@ -30,7 +30,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
-Route::get('/info', [InfoController::class, 'info'])->name('info.index');
+Route::get('/info', [InfoController::class, 'info'])->name('info.index'); //thông tin cá nhân
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 //Auth;
@@ -75,12 +75,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/workout_package/workout_package_detail/{id}', [WorkoutPackagesController::class, 'detail'])->name('admin.workout_package_detail');
 
     Route::get('/workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
-    // Route::post('/workout_package/create', [WorkoutPackagesController::class, 'create_'])->name('admin.workout_package-create_');
-    //update_goi_tap
-    Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
-    Route::post('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.workout_package-update_');
-    //delete_goitap
-    Route::get('/workout_package/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.workout_package-delete');
+    
+    
 
 
     // statistical - thống kê
@@ -96,9 +92,6 @@ Route::prefix('admin')->group(function () {
     // posts - bài viết
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
     Route::get('/posts/create', [PostsController::class, 'create'])->name('admin-post.create');
-
-    // comments - bình luận
-    Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');
 
     //component 
     Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
@@ -123,20 +116,20 @@ Route::prefix('admin')->group(function () {
     Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.slide.update');//Cập nhật giao diện
     Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
 
-
-
+    //comments
+    Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');//Danh sách giao diện
+    
     //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
 
 
 
     // accounts - tài khoản
-    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
-    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info'); // Chi tiết nhân viên 
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
 
-
-
+    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
+    Route::get('/staffinfo/{id}', [AccountsController::class, 'staff_info'])->name('admin.staff.info');// Chi tiết nhân viên
+    Route::get('/staffupdate/{id}', [AccountsController::class, 'staff_update'])->name('admin.staff.update'); //Cập nhật nhân viên
 });
 
 

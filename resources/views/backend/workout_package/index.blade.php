@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
                     <div class="title-top d-flex justify-content-between">
                         <h5 class="card-title text-uppercase">Danh sách lộ trình tập của: </h5>
-                        <a href="{{ route('admin.workout_package') }}" class="btn-customize"><i
+                        <a href="{{ route('admin.workout_package-create') }}" class="btn-customize"><i
                                 class="bi bi-plus-lg"></i> Thêm mới lộ trình tập</a>
                     </div>
                     <div class="box-list">

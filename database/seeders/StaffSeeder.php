@@ -21,6 +21,7 @@ class StaffSeeder extends Seeder
                 'avatar' => 'profile-img.jpg', // Avatar mặc định
                 'gender' => 1, // Nam
                 'birthday' => '1990-05-12',
+                'introduction' => 'Là một huấn luyện viên mới trong ngành với dưới 10 năm kinh nghiệm. Cam kết sẽ cố gắng đem lại trải nghiệm tuyệt vời đi kèm với hiệu quả tuyệt đối cho từng học viên.',
                 'rating' => 4.5,
                 'rating_count' => 150,
                 'address' => '123 Đường ABC, TP HCM',
@@ -34,6 +35,7 @@ class StaffSeeder extends Seeder
                 'avatar' => 'luan.jpg',
                 'gender' => 0, // Nữ
                 'birthday' => '1985-11-23',
+                'introduction' => 'Là một huấn luyện viên mới trong ngành với dưới 10 năm kinh nghiệm. Cam kết sẽ cố gắng đem lại trải nghiệm tuyệt vời đi kèm với hiệu quả tuyệt đối cho từng học viên.',
                 'rating' => 3.8,
                 'rating_count' => 75,
                 'address' => '456 Đường DEF, Hà Nội',
@@ -47,6 +49,7 @@ class StaffSeeder extends Seeder
                 'avatar' => 'messages-3.jpg',
                 'gender' => 3,
                 'birthday' => '1992-07-19',
+                'introduction' => 'Là một huấn luyện viên mới trong ngành với dưới 10 năm kinh nghiệm. Cam kết sẽ cố gắng đem lại trải nghiệm tuyệt vời đi kèm với hiệu quả tuyệt đối cho từng học viên.',
                 'rating' => 4.0,
                 'rating_count' => 100,
                 'address' => '789 Đường GHI, Đà Nẵng',
@@ -60,6 +63,7 @@ class StaffSeeder extends Seeder
                 'avatar' => 'dat.jpg',
                 'gender' => 0, // Nữ
                 'birthday' => '1985-11-23',
+                'introduction' => 'Là một huấn luyện viên mới trong ngành với dưới 10 năm kinh nghiệm. Cam kết sẽ cố gắng đem lại trải nghiệm tuyệt vời đi kèm với hiệu quả tuyệt đối cho từng học viên.',
                 'rating' => 4.2,
                 'rating_count' => 175,
                 'address' => '456 Đường DEF, Hà Nội',
@@ -73,6 +77,7 @@ class StaffSeeder extends Seeder
                 'avatar' => '7CC84950-B263-4389-B934-E77F86954053.JPG',
                 'gender' => 3, // Giới tính khác (theo thiết lập mặc định)
                 'birthday' => '1992-07-19',
+                'introduction' => 'Là một huấn luyện viên mới trong ngành với dưới 10 năm kinh nghiệm. Cam kết sẽ cố gắng đem lại trải nghiệm tuyệt vời đi kèm với hiệu quả tuyệt đối cho từng học viên.',
                 'rating' => 4.0,
                 'rating_count' => 100,
                 'address' => '789 Đường GHI, Đà Nẵng',
@@ -86,6 +91,7 @@ class StaffSeeder extends Seeder
                 'avatar' => 'post 2.jpg',
                 'gender' => 0, // Nữ
                 'birthday' => '1985-11-23',
+                'introduction' => 'Là một huấn luyện viên mới trong ngành với dưới 10 năm kinh nghiệm. Cam kết sẽ cố gắng đem lại trải nghiệm tuyệt vời đi kèm với hiệu quả tuyệt đối cho từng học viên.',
                 'rating' => 2.6,
                 'rating_count' => 715,
                 'address' => '456 Đường DEF, Hà Nội',

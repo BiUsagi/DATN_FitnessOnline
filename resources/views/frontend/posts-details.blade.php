@@ -55,90 +55,170 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+
+                        {{-- COMMENT --}}
+
                         <div class="comment-box default-padding">
                             <div class="section-title">
                                 <h2 style="font-size: 30px" >Comments</h2>
                             </div>
 
                             <div>
-                                <div class="single-comment-box">
-                                    <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/frontend/images/blog/user1.webp" alt="">
-                                    </div>
-                                    <div class="content-box">
-                                        <h3>Carl Lira</h3>
-                                        <p class="timing">18 August 2022, 10:00AM</p>
-                                        <div class="reply_btn"><a href="#!" class="reply"> Reply</a></div>
-                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
-                                    </div>
-                                </div>
-                                <div class="reply-box">
+
+                                {{-- BÌNH LUẬN CHA --}}
+                                @if (Auth::guard('web')->check())
                                     <div class="single-comment-box">
-                                        <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/frontend/images/blog/user2.webp" alt="">
+                                        <div class="img-box"> <img loading='lazy' class="img-fluid" src="https://upload.wikimedia.org/wikipedia/vi/b/b0/Avatar-Teaser-Poster.jpg" alt="">
                                         </div>
                                         <div class="content-box">
-                                            <h3>Greta Cramer</h3>
-                                            <p class="timing">19 August 2022, 10:00AM</p>
-                                            <div class="reply_btn"><a href="#!" class="reply"> Reply</a></div>
+                                            <h3>Carl Lira</h3>
+                                            <p class="timing">18 August 2022, 10:00AM</p>
+                                            <div class="reply_btn"><a href="#!" class="reply"> Trả lời</a></div>
                                             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="single-comment-box">
-                                    <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/frontend/images/blog/user1.webp" alt="">
+                                @else
+                                    <div class="single-comment-box">
+                                        <div class="img-box"> <img loading='lazy' class="img-fluid" src="https://upload.wikimedia.org/wikipedia/vi/b/b0/Avatar-Teaser-Poster.jpg" alt="">
+                                        </div>
+                                        <div class="content-box">
+                                            <h3>Carl Lira</h3>
+                                            <p class="timing">18 August 2022, 10:00AM</p>
+                                            <div class="reply_btn"><a id="login-comments" class="reply">Vui lòng đăng nhập để trả lời</a></div>
+                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
+                                        </div>
                                     </div>
-                                    <div class="content-box">
-                                        <h3>John Doe</h3>
-                                        <p class="timing">20 August 2022, 10:00AM</p>
-                                        <div class="reply_btn"><a href="#!" class="reply"> Reply</a></div>
-                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
-                                    </div>
+                                @endif
+
+
+
+                                {{-- FORM TRẢ LỜI BÌNH LUẬN CON --}}
+                                <div class="form-box"  style="display: none" >
+                                    <form action="" method="POST" class="contact-form">
+                                                <div class="form-group comments">
+                                                    <input type="hidden" value="{{$posts->id}}" name="posts_id">
+                                                    <textarea class="form-control" id="comments" name="comments" placeholder="Nhập nội dung*" rows="4" required></textarea>
+                                                </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group mb-0 text-center text-md-start pb-0">
+                                                    <button type="submit" name="submit" id="submit" class="btn">Gửi bình luận</button>
+                                                </div>
+                                            </div>
+                                    </form>
                                 </div>
+
+                                {{-- BÌNH LUẬN CON --}}
+                                @if (Auth::guard('web')->check())
+                                    <div class="reply-box">
+                                        <div class="single-comment-box">
+                                            <div class="img-box"> <img loading='lazy' class="img-fluid" src="https://upload.wikimedia.org/wikipedia/vi/b/b0/Avatar-Teaser-Poster.jpg" alt="">
+                                            </div>
+                                            <div class="content-box">
+                                                <h3>Greta Cramer</h3>
+                                                <p class="timing">19 August 2022, 10:00AM</p>
+                                                <div class="reply_btn"><a href="#!" class="reply"> Trả lời</a></div>
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="reply-box">
+                                        <div class="single-comment-box">
+                                            <div class="img-box"> <img loading='lazy' class="img-fluid" src="https://upload.wikimedia.org/wikipedia/vi/b/b0/Avatar-Teaser-Poster.jpg" alt="">
+                                            </div>
+                                            <div class="content-box">
+                                                <h3>Greta Cramer</h3>
+                                                <p class="timing">19 August 2022, 10:00AM</p>
+                                                <div class="reply_btn"><a id="login-comments" class="reply">Vui lòng đăng nhập để trả lời</a></div>
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
-                        <div class="form-box">
-                            <div class="heading">
-                                <h2>Leave a <span>Comment</span></h2>
-                            </div>
-                            <form action="" method="POST" class="contact-form">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <input class="form-control" id="name" name="name" placeholder="Name*" type="text" required>
-                                            <span class="alert-error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <input class="form-control" id="email" name="email" placeholder="Email*" type="email" required>
-                                            <span class="alert-error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <input class="form-control" id="phone" name="phone" placeholder="Phone No.*" type="number" required>
-                                            <span class="alert-error"></span>
-                                        </div>
-                                    </div>
+
+
+                        {{-- END COMMENT --}}
+
+
+                        {{-- FORM BÌNH LUẬN --}}
+                        @if (Auth::guard('web')->check())
+                            
+                            <div class="form-box">
+                                <div class="heading">
+                                    <h2>Leave a <span>Comment</span></h2>
                                 </div>
-                                <div class="col-md-12">
+                                <form action="" method="POST" class="contact-form">
                                     <div class="row">
-                                        <div class="form-group comments">
-                                            <textarea class="form-control" id="comments" name="comments" placeholder="Message*" rows="4" required></textarea>
+                                        {{-- <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input class="form-control" id="name" name="name" placeholder="Name*" type="text" required>
+                                                <span class="alert-error"></span>
+                                            </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input class="form-control" id="email" name="email" placeholder="Email*" type="email" required>
+                                                <span class="alert-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input class="form-control" id="phone" name="phone" placeholder="Phone No.*" type="number" required>
+                                                <span class="alert-error"></span>
+                                            </div>
+                                        </div> --}}
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group mb-0 text-center text-md-start pb-0">
-                                            <button type="submit" name="submit" id="submit" class="btn">Post Now</button>
+                                        <div class="row">
+                                            <div class="form-group comments">
+                                                <input type="hidden" value="{{$posts->id}}" name="posts_id">
+                                                <textarea class="form-control" id="comments" name="comments" placeholder="Nhập nội dung*" rows="4" required></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>                                   
-                                <div class="col-md-12 alert-notification">
-                                    <div id="message" class="alert-msg"></div>
-                                </div>
-                            </form>
-                        </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-0 text-center text-md-start pb-0">
+                                                <button type="submit" name="submit" id="submit" class="btn">Gửi bình luận</button>
+                                            </div>
+                                        </div>
+                                    </div>                                   
+                                    <div class="col-md-12 alert-notification">
+                                        <div id="message" class="alert-msg"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        @else
+
+                            <div class="form-box">
+                                <form class="contact-form">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="form-group comments">
+                                                <input type="text" class="form-control" id="comments" name="comments" placeholder="Nhập nội dung (*)"required disabled>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-0 text-center text-md-start pb-0">
+                                                <a id="login-comments" class="btn">Vui lòng đăng nhập</a>
+                                            </div>
+                                        </div>
+                                    </div>                                   
+                                    <div class="col-md-12 alert-notification">
+                                        <div id="message" class="alert-msg"></div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-9">
@@ -243,5 +323,37 @@
             </div>
         </div>
     </div>
+    <script>
+        $("#login-comments").click(function() {
+        var currentUrl = window.location.href;
+    
+        // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
+        window.location.href = "/login?redirect_url=" + encodeURIComponent(currentUrl);
+    });
+    </script>
 </section>
+@endsection
+@section('js')
+    {{-- <script>
+        $(#btn-login).click(function(ev){
+            ev.preventDefaul();
+            var _csrf = '{{crsf_token()}}';
+            var _loginUrl = '{{route("login.index")}}'
+            var email=$('#email').val();
+            var password = $('#password-input-login').val();
+            $.ajax({
+                url:_loginUrl,
+                type: 'POST',
+                data;{
+                    email :email;
+                    password :password;
+                    _token:_csrf
+                },
+                success:function(res){
+                    console.log(res);
+                }
+            })
+            console.log(eemail,ppassword,_csrf);
+        })
+    </script> --}}
 @endsection

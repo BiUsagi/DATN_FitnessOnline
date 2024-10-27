@@ -32,7 +32,7 @@
                                         <th>ID</th>
                                         <th>Tên bài tập</th>
                                         <th>Mô tả</th>
-                                        <th>Thời gian tập</th>
+                                        <th>Trạng thái</th>
                                         <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
                                         <th></th>
                                     </tr>
@@ -47,19 +47,6 @@
                 </div>
             </div>
         </section>
-        {{-- <div class="video-container">
-            <iframe id="video-frame" width="560" height="315"
-                src="https://www.youtube.com/embed/TUQQCM9o1Ls?controls=0&modestbranding=1&rel=0&mute=1"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-                style="pointer-events: none;">
-            </iframe>
-        </div>
-
-        <button id="play-button" class="btn-customize">Play Video</button> --}}
         
         </main><!-- End #main -->
     <script>
