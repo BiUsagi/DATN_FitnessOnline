@@ -30,6 +30,12 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/workout_package', [Workout_PackageController::class, 'index']);
     Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
 
+    //get exercise from package_exercise
+    Route::get('get_exercise',[Workout_PackageController::class, 'get_exercises']);
+    Route::post('workout_package/{id}/day/{day}/exercises', [PackageExercisesController::class, 'saveExercises']);
+    Route::get('workout_package/{packageId}/day/{dayNumber}/exercises', [Workout_PackageController::class, 'getExercisesForDay']);
+    Route::get('/api/admin/workout_package/{id}/days', [Workout_PackageController::class, 'getDaysWithExerciseCount']);
+
 
     // account
     Route::get('/user/{id}', [AccountsController::class, 'showU'])->name('api.user.show');

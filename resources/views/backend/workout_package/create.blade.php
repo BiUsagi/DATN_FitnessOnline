@@ -139,7 +139,7 @@
                 success: function(res) {
                     Swal.fire({
                         title: "Thành công!",
-                        text: "Thêm thành công bài tập!",
+                        text: "Thêm thành công gói tập!",
                         icon: "success"
                     });
                     $('#form-workout_package')[0].reset();
@@ -150,7 +150,7 @@
                 error: function(err) {
                     Swal.fire({
                         title: "Lỗi!",
-                        text: "Có lỗi xảy ra khi thêm bài tập!",
+                        text: "Có lỗi xảy ra khi thêm gói tập!",
                         icon: "error"
                     });
                 }

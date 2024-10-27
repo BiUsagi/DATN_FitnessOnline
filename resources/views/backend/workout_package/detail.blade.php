@@ -14,41 +14,36 @@
         </div><!-- End Page Title -->
 
         <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">  
+                    <div class="modal-header">
                         <p class="modal-title fs-6 text-uppercase fw-bold" id="staticBackdropLabel">Ngày 1</p>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="form-add">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="#" class="fw-bold">Lựa chọn bài tập: <span class="note">(*)</span></label>
-                                    <select name="" id="" class="form-control selectpicker" multiple  >
-                                        <option value="0" disabled>Lựa chọn</option>
-                                        <option value="1">Bài tập tay</option>
-                                        <option value="2">Bài tập lưng</option>
-                                        <option value="3">Bài tập ngực</option>
-                                        <option value="4">Bài tập chân</option>
-                                       
+                                    <label for="#" class="fw-bold">Lựa chọn bài tập: <span
+                                            class="note">(*)</span></label>
+                                    <select name="" id="list-excercise" class="form-control selectpicker" multiple>
+
                                     </select>
-                                  
+
                                     <label for="#" class="fw-bold mt-2 mb-2">Bài tập đã chọn:</label>
                                     <div class="show-data-select">
-                                        {{-- <p class="data-select mb-2 d-flex justify-content-between">Bài tập chân <i class="bi bi-x-circle ms-1"></i></p>
-                                        <p class="data-select mb-2 d-flex justify-content-between">Bài tập tay <i class="bi bi-x-circle ms-1"></i></p>
-                                        <p class="data-select mb-2 d-flex justify-content-between">Bài tập tay <i class="bi bi-x-circle ms-1"></i></p> --}}
                                         <p class="no-selection">Chưa có bài tập nào được chọn</p>
                                     </div>
-                                    
+
 
                                 </div>
                                 <div class="col-6">
                                     <label for="#" class="fw-bold">Trạng thái:</label><br>
                                     <div class="select-day-off">
-                                        <input type="checkbox" id="check-day-off"><label for="check-day-off"><span class="day-off">Ngày nghỉ</span></label>
+                                        <input type="checkbox" id="check-day-off"><label for="check-day-off"><span
+                                                class="day-off">Ngày nghỉ</span></label>
                                     </div>
                                     <span class="note-day-off">(* không phải ngày nghỉ thì không chọn)</span>
 
@@ -58,10 +53,10 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
-                
+
                 </div>
             </div>
         </div>
@@ -78,16 +73,16 @@
                                 @for ($i = 1; $i <= $package->duration_days; $i++)
                                     <div class="col detail-exercise">
                                         <div class="overflow">
-                                            <a class="btn-action btn-detail" data-day="{{ $i }}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            <a class="btn-action btn-detail" data-day="{{ $i }}"
+                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                 <i class="bi bi-eye-fill"></i>
-                                            </a>                                        
+                                            </a>
                                         </div>
                                         <div class="number-day">
-                                            <h4>Ngày {{ $i }}</h4>
+                                            <h4>Ngày</h4>
+                                            <h4 class="fs-3">{{ $i }}</h4>
                                         </div>
-                                        <div class="description-day">
-                                            <p>Số bài tập: {{ random_int(1, 10) }}</p> <!-- Đây là số bài tập, bạn có thể thay đổi để lấy từ DB nếu có -->
-                                        </div>
+
                                     </div>
                                 @endfor
                             </div>
@@ -143,72 +138,159 @@
 
     </main><!-- End #main -->
     <script>
-       document.addEventListener('DOMContentLoaded', function () {  
-                function getDay(){
-                           // Bắt sự kiện click vào nút mở modal
-                    const detailButtons = document.querySelectorAll('.btn-detail');
-                    const modalTitle = document.querySelector('#staticBackdropLabel');
+        function getExercise() {
+            $.get('http://127.0.0.1:8000/api/admin/get_exercise', function(res) {
+                let data = res;
+                let returnData = '';
+                data.forEach(item => {
+                    returnData += `
+                                    <option value="${item.id}">${item.name}</option>
+                            `;
+                });
+                $('#list-excercise').html(returnData);
+            })
+        }
+        const packageId = {{ $package->id }};
 
-                    detailButtons.forEach(button => {
-                        button.addEventListener('click', function () {
-                            // Lấy số ngày từ thuộc tính data-day
-                            const dayNumber = button.getAttribute('data-day');
-                            // Cập nhật tiêu đề của modal
-                            modalTitle.textContent = 'Ngày ' + dayNumber;
-                        });
+        function saveExercise() {
+            document.querySelector('.btn-add').addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedExercises = Array.from(document.querySelector('#list-excercise').selectedOptions)
+                    .map(option => ({
+                        id: option.value
+                    }));
+                // const isDayOff = document.querySelector('#check-day-off').checked;
+                const day = document.querySelector('#staticBackdropLabel').textContent.split(' ')[1];
+
+                // Gửi yêu cầu lưu
+                $.post(`http://127.0.0.1:8000/api/admin/workout_package/${packageId}/day/${day}/exercises`, {
+                    exercises: selectedExercises,
+                    // is_day_off: isDayOff
+                }, function(response) {
+                    Swal.fire({
+                        title: "Thành công!",
+                        text: "Thêm thành công!",
+                        icon: "success"
                     });
-                }
+                });
+            });
+        }
 
-                function actions() {
-                    const selectElement = document.querySelector('.selectpicker');
-                    const showDataSelect = document.querySelector('.show-data-select');
+        function getDay() {
+            const detailButtons = document.querySelectorAll('.btn-detail');
+            const modalTitle = document.querySelector('#staticBackdropLabel');
 
-                    // Lắng nghe sự kiện thay đổi trên ô select
-                    selectElement.addEventListener('change', function () {
-                        // Xóa các mục đã hiển thị trước đó
-                        showDataSelect.innerHTML = '';
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const dayNumber = button.getAttribute('data-day'); // Lấy số ngày từ thuộc tính data-day
+                    modalTitle.textContent = 'Ngày ' + dayNumber;
 
-                        // Lấy tất cả các tùy chọn đã chọn
-                        const selectedOptions = Array.from(selectElement.selectedOptions);
+                    // Gọi API để lấy danh sách bài tập cho ngày đã chọn
+                    $.get(`http://127.0.0.1:8000/api/admin/workout_package/${packageId}/day/${dayNumber}/exercises`,
+                        function(res) {
+                            const showDataSelect = $(
+                                '.show-data-select'); // Lưu trữ đối tượng chứa danh sách bài tập
+                            showDataSelect.empty(); // Xóa nội dung trước đó
 
-                        // Kiểm tra nếu không có lựa chọn nào thì hiển thị thông báo
-                        if (selectedOptions.length === 0) {
-                            showDataSelect.innerHTML = '<p class="no-selection">Chưa có bài tập nào được chọn</p>';
-                        } else {
-                            // Nếu có lựa chọn, hiển thị các mục đã chọn
-                            selectedOptions.forEach(option => {
-                                const p = document.createElement('p');
-                                p.classList.add('data-select', 'mb-2', 'd-flex', 'justify-content-between');
-                                p.innerHTML = `${option.text} <i class="bi bi-x-circle ms-1"></i>`;
+                            if (res.length > 0) {
+                                res.forEach(item => {
+                                    const exerciseItem = $(`
+                                <p class="data-select d-flex justify-content-between">
+                                    ${item.exercise.name}
+                                    <i class="bi bi-x-circle ms-1 remove-exercise" data-id="${item.id}"></i>
+                                </p>
+                            `);
 
-                                // Thêm sự kiện để xóa khi nhấn vào icon
-                                p.querySelector('i').addEventListener('click', function () {
-                                    p.remove(); // Xóa mục hiển thị
+                                    // Thêm sự kiện xóa cho biểu tượng xóa
+                                    exerciseItem.find('.remove-exercise').on('click',
+                                        function() {
+                                            // Xóa mục hiển thị
+                                            exerciseItem.remove();
 
-                                    // Bỏ chọn bài tập trong ô select
-                                    option.selected = false;
-                                    // Kích hoạt lại sự kiện 'change' để cập nhật danh sách hiển thị
-                                    selectElement.dispatchEvent(new Event('change'));
+                                            // Thực hiện thêm bất kỳ logic nào khác cần thiết
+                                            // Ví dụ: Nếu bạn cần xóa bài tập từ server, gọi API để thực hiện việc đó ở đây.
+                                            console.log('Bài tập đã được xóa:', item
+                                                .exercise.name);
+                                        });
+
+                                    // Thêm bài tập đã chọn vào danh sách
+                                    showDataSelect.append(exerciseItem);
                                 });
+                            } else {
+                                showDataSelect.html(
+                                    '<p class="no-selection">Chưa có bài tập nào được chọn</p>');
+                            }
+                        });
+                });
+            });
+        }
 
-                                // Thêm bài tập đã chọn vào danh sách
-                                showDataSelect.appendChild(p);
-                            });
-                        }
+
+        function actions() {
+            const selectElement = document.querySelector('.selectpicker');
+            const showDataSelect = document.querySelector('.show-data-select');
+            const dayOffCheckbox = document.querySelector('#check-day-off');
+
+            // Lắng nghe sự kiện thay đổi trên ô select
+            selectElement.addEventListener('change', function() {
+                // Xóa các mục đã hiển thị trước đó
+                showDataSelect.innerHTML = '';
+
+                // Lấy tất cả các tùy chọn đã chọn
+                const selectedOptions = Array.from(selectElement.selectedOptions);
+
+                // Kiểm tra nếu không có lựa chọn nào thì hiển thị thông báo
+                if (selectedOptions.length === 0) {
+                    showDataSelect.innerHTML = '<p class="no-selection">Chưa có bài tập nào được chọn</p>';
+                } else {
+                    // Nếu có lựa chọn, hiển thị các mục đã chọn
+                    selectedOptions.forEach(option => {
+                        const p = document.createElement('p');
+                        p.classList.add('data-select', 'mb-2', 'd-flex', 'justify-content-between');
+                        p.innerHTML = `${option.text} <i class="bi bi-x-circle ms-1"></i>`;
+
+                        // Thêm sự kiện để xóa khi nhấn vào icon
+                        p.querySelector('i').addEventListener('click', function() {
+                            p.remove(); // Xóa mục hiển thị
+
+                            // Bỏ chọn bài tập trong ô select
+                            option.selected = false;
+                            // Kích hoạt lại sự kiện 'change' để cập nhật danh sách hiển thị
+                            selectElement.dispatchEvent(new Event('change'));
+                        });
+
+                        // Thêm bài tập đã chọn vào danh sách
+                        showDataSelect.appendChild(p);
                     });
-
-                    // Kích hoạt sự kiện thay đổi ngay từ đầu để hiển thị đúng danh sách
-                    selectElement.dispatchEvent(new Event('change'));
                 }
-
-                function main() {
-                    actions();
-                    getDay();
-                }
-
-                main();
             });
 
+            // Lắng nghe sự kiện cho checkbox "Ngày nghỉ"
+            dayOffCheckbox.addEventListener('change', function() {
+                if (dayOffCheckbox.checked) {
+                    // Nếu ngày nghỉ được chọn, bỏ chọn tất cả bài tập
+                    Array.from(selectElement.options).forEach(option => {
+                        option.selected = false; // Bỏ chọn bài tập
+                    });
+                    showDataSelect.innerHTML =
+                    '<p class="no-selection">Chưa có bài tập nào được chọn</p>'; // Cập nhật thông báo
+                }
+                // Cập nhật lại danh sách bài tập
+                selectElement.dispatchEvent(new Event('change'));
+            });
 
+            // Kích hoạt sự kiện thay đổi ngay từ đầu để hiển thị đúng danh sách
+            selectElement.dispatchEvent(new Event('change'));
+        }
+
+
+        function main() {
+            actions();
+            getDay();
+            getExercise();
+            saveExercise();
+        }
+
+        main();
     </script>
 @endsection

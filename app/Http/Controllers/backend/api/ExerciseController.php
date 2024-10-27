@@ -22,7 +22,7 @@ class ExerciseController extends Controller
         $exercise->status = $request->input('exercise-status');
         if($request->hasFile('video_url')){
             $file = $request->file('video_url');
-            $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
+            $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
             $file->move('uploads/video_exercise', $filename);
             $exercise->video_url = $filename;
