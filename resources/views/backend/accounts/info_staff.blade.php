@@ -73,17 +73,17 @@
                                     </div>
                                 </div>
                                 <div class="col-xxl-2 col-sm-4">
-                                    <!-- Khóa Học -->
+                                    <!-- Gói Tập -->
                                     <div class="border rounded-2 p-2">
                                         <div class="d-flex flex-column align-items-center">
                                             <div class="icon-box lg bg-danger-subtle rounded-5 mb-2 no-shadow">
                                                 <i class="ri-dashboard-line fs-4 text-danger"></i>
                                             </div>
                                             <h1 class="text-danger">{{ $data->getCourseCount() }}</h1>
-                                            <h6>Khóa Học</h6>
+                                            <h6>Gói Tập</h6>
                                         </div>
                                     </div>
-                                    <!-- Khóa Học end -->
+                                    <!--Gói Tập end -->
                                 </div>
                                 <div class="col-xxl-2 col-sm-4">
                                     <!-- Học Viên -->
@@ -133,7 +133,7 @@
                         <div class="col-sm-12">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5 class="card-title">Khóa Học</h5>
+                                    <h5 class="card-title">Gói Tập</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row justify-content-center d-flex">

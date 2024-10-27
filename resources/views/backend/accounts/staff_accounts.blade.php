@@ -46,7 +46,7 @@
                                                 <li class="list-group-item d-flex justify-content-between align-items-center"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Số lượng khóa học">
-                                                    Khóa Học
+                                                    Gói Tập
                                                     <span class="badge border border-success text-success">
                                                         {{ $item->getCourseCount() }}
                                                     </span>

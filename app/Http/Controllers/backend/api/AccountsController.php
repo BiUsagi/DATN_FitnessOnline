@@ -64,18 +64,21 @@ class AccountsController extends Controller
 
 
         if ($request->hasFile('avatar')) {
-            // if ($staff->avatar && $staff->avatar !== 'no-image.jpg') {
-            //     Storage::delete('assets/backend/img/accounts/' . $staff->avatar);
-            // }
 
-            // Lưu hình ảnh mới
-            // $avatarPath = $request->file('avatar')->store('assets/backend/img/accounts/');
-            // $staff->avatar = basename($avatarPath);
+            // Đường dẫn đến thư mục ảnh
+            $imagePath = 'assets/backend/img/accounts/';
+
+            // Kiểm tra và xóa ảnh cũ
+            if ($staff->avatar && file_exists(public_path($imagePath . $staff->avatar))) {
+                unlink(public_path($imagePath . $staff->avatar));
+            }
+
+
             $file = $request->file('avatar');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
             $file->move('assets/backend/img/accounts', $filename);
-            $staff->image = $filename;
+            $staff->avatar = $filename;
         }
 
 

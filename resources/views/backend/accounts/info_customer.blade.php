@@ -77,7 +77,7 @@
                         <div class="card-body pt-4">
 
                             <h4 class="mb-3">
-                                <strong>Khóa học đã tham gia:</strong>
+                                <strong>Gói tập đã tham gia:</strong>
                             </h4>
                             <div class="row justify-content-center d-flex">
                                 <div class="col-md-4 col-xxl-3 col-sm-6">

@@ -162,7 +162,7 @@
         // $('#form-update-staff').on('submit', function(e) {
         //     e.preventDefault();
 
-        //     // let avatarFile = $('#avatar-input')[0].files[0];
+        //     let avatarFile = $('#avatar-input')[0].files[0];
         //     let formData = $(this).serialize();
         //     let staffId = $('#inputId').val();
 
@@ -197,11 +197,12 @@
             e.preventDefault();
 
             let formData = new FormData(this);
+            formData.append('_method', 'PUT');
             let staffId = $('#inputId').val();
-            // console.log('Dữ liệu gửi lên:', Object.fromEntries(formData));
+
             $.ajax({
                 url: "{{ route('api.staff.update', '') }}" + '/' + staffId,
-                type: 'PUT',
+                type: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
