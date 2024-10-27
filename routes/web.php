@@ -75,12 +75,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/workout_package/workout_package_detail/{id}', [WorkoutPackagesController::class, 'detail'])->name('admin.workout_package_detail');
 
     Route::get('/workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
-    // Route::post('/workout_package/create', [WorkoutPackagesController::class, 'create_'])->name('admin.workout_package-create_');
-    //update_goi_tap
-    Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
-    Route::post('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.workout_package-update_');
-    //delete_goitap
-    Route::get('/workout_package/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.workout_package-delete');
+    
+    
 
 
     // statistical - thống kê

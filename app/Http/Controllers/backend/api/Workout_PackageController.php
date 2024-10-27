@@ -28,6 +28,8 @@ class Workout_PackageController extends Controller
         $set->staff_id = $request->input('staff_id');
         $set->level = $request->input('level');
         $set->duration_days = $request->input('duration_days');
+        $set->status = $request->input('status');
+
 
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -41,17 +43,4 @@ class Workout_PackageController extends Controller
         return response()->json($set);
       
     }
-
-    // public function add(Request $request){
-    //     $exercise = new Exercise();
-    //     $exercise->exercise_name = $request->input('exercise_name');
-    //     $exercise->description = $request->input('description');
-    //     $exercise->video_url = $request->input('exercise_id');
-    //     $exercise->equipment_needed = $request->input('equipment_needed');
-    //     $exercise->duration = $request->input('duration');
-
-    //     $exercise->save();
-
-    //     return response()->json($exercise);
-    // }
 }

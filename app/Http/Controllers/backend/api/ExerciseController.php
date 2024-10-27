@@ -16,10 +16,17 @@ class ExerciseController extends Controller
     public function add(Request $request){
         $exercise = new Exercise();
         $exercise->name = $request->input('exercise_name');
+        $exercise->sets = $request->input('sets');
+        $exercise->reps = $request->input('reps');
         $exercise->description = $request->input('description');
-        $exercise->video_url = $request->input('exercise_id');
-        // $exercise->equipment_needed = $request->input('equipment_needed');
-        // $exercise->duration = $request->input('duration');
+        $exercise->status = $request->input('exercise-status');
+        if($request->hasFile('video_url')){
+            $file = $request->file('video_url');
+            $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
+            $filename = time().'.'.$extension;
+            $file->move('uploads/video_exercise', $filename);
+            $exercise->video_url = $filename;
+        }
 
         $exercise->save();
 

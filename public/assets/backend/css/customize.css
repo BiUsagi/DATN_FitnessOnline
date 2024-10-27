@@ -39,7 +39,7 @@
 .select2-container--default{
     margin-top: 20px !important;
     margin-bottom: 10px !important;
-    z-index: 9999 !important;
+    /* z-index: 9999 !important; */
 }
 .select2-container--default .select2-selection--single{
     border-color: #ebedf2 !important;

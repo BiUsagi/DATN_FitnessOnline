@@ -32,4 +32,11 @@ class Workout_Package extends Model
     {
         return $this->belongsTo(Staff::class, 'staff_id');
     }
+
+    public function exercises()
+    {
+        return $this->belongsToMany(Exercise::class, 'package_exercises')
+                    ->withPivot('day_number', 'sequence', 'is_day_off')
+                    ->withTimestamps();
+    }
 }
