@@ -22,7 +22,7 @@
                             <div class="row">
                                 <!-- Avatar người dùng -->
                                 <div class="col-md-4 text-center  d-flex justify-content-center align-items-center">
-                                    <img src="assets/backend/img/{{ $data->avatar }}" alt="User Avatar"
+                                    <img src="assets/backend/img/accounts/{{ $data->avatar }}" alt="User Avatar"
                                         class="img-fluid rounded-circle image-user-custom img-cover">
                                 </div>
                                 <!-- Thông tin chi tiết -->
@@ -40,10 +40,8 @@
                                                 <i class="bi bi-gender-male text-primary"></i> Nam
                                             @elseif ($data->gender == 0)
                                                 <i class="bi bi-gender-female text-danger"></i> Nữ
-                                            @elseif ($data->gender == 2)
-                                                <i class="bi bi-gender-trans text-warning"></i> Khác
                                             @else
-                                                <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                                <i class="bi bi-gender-trans text-warning"></i> Khác
                                             @endif
                                         </div>
                                         <div class="col-4 justify-content-end d-flex ">
@@ -77,7 +75,7 @@
                         <div class="card-body pt-4">
 
                             <h4 class="mb-3">
-                                <strong>Khóa học đã tham gia:</strong>
+                                <strong>Gói tập đã tham gia:</strong>
                             </h4>
                             <div class="row justify-content-center d-flex">
                                 <div class="col-md-4 col-xxl-3 col-sm-6">
