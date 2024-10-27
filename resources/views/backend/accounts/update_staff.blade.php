@@ -87,10 +87,10 @@
                         <div class="card">
                             <div class="card-header text-uppercase">HÌNH ẢNH</div>
                             <div class="card">
-                                <div class="card-body">
-                                    <img class="img-cover" src="assets/backend/img/accounts/no-image.jpg" alt="Avatar"
-                                        id="avatar-image"
-                                        style="cursor: pointer; max-width: 100%; height: 170px; object-fit: cover;"
+                                <div class="card-body card-body-custom-staff d-flex justify-content-center mt-3">
+                                    <img class="img-update-custom rounded-circle"
+                                        src="assets/backend/img/accounts/no-image.jpg" alt="Avatar" id="avatar-image"
+                                        style="cursor: pointer;  object-fit: cover;"
                                         onclick="document.getElementById('avatar-input').click();">
                                     <input type="file" name="avatar" id="avatar-input" class="form-control"
                                         style="display: none;" onchange="previewImage(event)">
@@ -105,7 +105,6 @@
 
                         </div>
                         <input type="submit" class="btn btn-primary w-100" value="Lưu thông tin">
-
 
                     </div>
                 </div>
@@ -142,7 +141,7 @@
                     $('#inputPhone').val(response.phone_number);
                     $('#inputAddress').val(response.address);
                     $('#inputDescription').text(response.introduction);
-                    $('#avatar-image').attr('src', 'assets/backend/img/accounts' + response.avatar);
+                    $('#avatar-image').attr('src', 'assets/backend/img/accounts/' + response.avatar);
                 },
                 error: function(error) {
                     console.log(error);
@@ -213,6 +212,8 @@
                         icon: "success"
                     }).then(() => {
                         window.location.href = "{{ route('admin.staff') }}";
+                        // window.location.href = "{{ route('admin.staff.info', '') }}" + '/' +
+                        //     response.staffId;
                     });
                 },
                 error: function(error) {

@@ -48,15 +48,10 @@ class AccountsController extends Controller
         return response()->json($staff);
     }
 
-    public function updateS(Request $request, $id)
+    public function updateS($id, Request $request)
     {
-        Log::info($request->all());
 
         $staff = Staff::find($id);
-
-        if (!$staff) {
-            return response()->json(['message' => 'Không tìm thấy nhân viên.'], 404);
-        }
 
         // Cập nhật thông tin người dùng
         $staff->staff_name = $request->input('staff_name');
@@ -68,16 +63,19 @@ class AccountsController extends Controller
         $staff->introduction = $request->input('description');
 
 
-        // Kiểm tra và lưu hình ảnh
         if ($request->hasFile('avatar')) {
-            // Xóa hình ảnh cũ nếu có
-            if ($staff->avatar && $staff->avatar !== 'no-image.jpg') {
-                Storage::delete('assets/backend/img/' . $staff->avatar);
-            }
+            // if ($staff->avatar && $staff->avatar !== 'no-image.jpg') {
+            //     Storage::delete('assets/backend/img/accounts/' . $staff->avatar);
+            // }
 
             // Lưu hình ảnh mới
-            $avatarPath = $request->file('avatar')->store('assets/backend/img/');
-            $staff->avatar = basename($avatarPath);
+            // $avatarPath = $request->file('avatar')->store('assets/backend/img/accounts/');
+            // $staff->avatar = basename($avatarPath);
+            $file = $request->file('avatar');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('assets/backend/img/accounts', $filename);
+            $staff->image = $filename;
         }
 
 
