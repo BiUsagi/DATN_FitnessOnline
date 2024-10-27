@@ -47,23 +47,37 @@
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Số lượng khóa học">
                                                     Khóa Học
-                                                    <span class="badge border border-success text-success">3</span>
+                                                    <span class="badge border border-success text-success">
+                                                        {{ $item->getCourseCount() }}
+                                                    </span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Số lượng học viên">
                                                     Số Học Viên
-                                                    <span class="badge border border-danger text-danger">180</span>
+                                                    <span class="badge border border-danger text-danger">
+                                                        {{ $item->getStudentCount() }}
+                                                    </span>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center "
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Thời gian tham gia">
                                                     Hoạt Động
-                                                    <span
-                                                        class="badge border border-primary text-primary ">{{ $item->getActiveDuration() }}</span>
+                                                    <span class="badge border border-primary text-primary ">
+                                                        {{ $item->getActiveDuration() }}
+                                                    </span>
                                                 </li>
                                             </ul>
-                                            <div class="d-grid mb-3">
-                                                <a href="trainer-profile.html" class="btn btn-primary">Xem Chi Tiết</a>
+                                            <div class="row d-flex justify-content-around">
+                                                {{-- xem --}}
+                                                <a href="{{ route('admin.staff.info', ['id' => $item->id]) }}"
+                                                    class="btn btn-success col-5" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" data-bs-title="Xem Chi Tiết"><i
+                                                        class="ri-eye-fill"></i></a>
+                                                {{-- sua --}}
+                                                <a href="{{ route('admin.staff.update', ['id' => $item->id]) }}"
+                                                    class="btn btn-primary col-5" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" data-bs-title="Chỉnh Sửa"><i
+                                                        class="ri-edit-line"></i></a>
                                             </div>
                                             <!-- Rating -->
                                             <div class="mt-3">

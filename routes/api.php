@@ -25,14 +25,16 @@ Route::group(['prefix' => 'admin',], function () {
     Route::delete('/exercises/{id}', [ExerciseController::class, 'add']);
 
     //API of workout_exercise
-    Route::post('/workout_package', [Workout_PackageController::class, 'create_']);  
+    Route::post('/workout_package', [Workout_PackageController::class, 'create_']);
     Route::get('/workout_package', [Workout_PackageController::class, 'index']);
     Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
 
 
     // account
-    Route::get('/user/{id}', [AccountsController::class, 'show'])->name('api.user.show');
-    Route::put('/user/{id}', [AccountsController::class, 'update'])->name('api.user.update');
+    Route::get('/user/{id}', [AccountsController::class, 'showU'])->name('api.user.show');
+    Route::put('/user/{id}', [AccountsController::class, 'updateU'])->name('api.user.update');
+    Route::get('/staff/{id}', [AccountsController::class, 'showS'])->name('api.staff.show');
+    Route::put('/staff/{id}', [AccountsController::class, 'updateS'])->name('api.staff.update');
 
     //SupportExercises
     Route::get('/supportexercises', [SupportExercisesController::class, 'index']);
