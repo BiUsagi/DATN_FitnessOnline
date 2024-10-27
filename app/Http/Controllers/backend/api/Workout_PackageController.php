@@ -25,8 +25,9 @@ class Workout_PackageController extends Controller
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');
         $set->description = $request->input('description');
-        $set->staff_id = $request->input('staff_id');
+        // $set->staff_id = $request->input('staff_id');
         $set->level = $request->input('level');
+        $set->status = $request->input('status');
         $set->duration_days = $request->input('duration_days');
 
         if($request->hasFile('image')){

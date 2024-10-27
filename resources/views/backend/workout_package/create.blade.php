@@ -89,7 +89,7 @@
                         <div class="card">
                                 <div class="card-header text-uppercase">Trạng thái</div>
                                 <div class="card-body">
-                                    <select name="" id="select2" class="form-control-select2 setupSelect2">
+                                    <select name="status" id="select2" class="form-control-select2 setupSelect2">
                                         <option value="0">Trạng thái</option>
                                         <option value="1">Công khai bài viết</option>
                                         <option value="2">Ẩn bài viết</option>
@@ -168,6 +168,8 @@
         $('#form-workout_package')[0].reset();
         CKEDITOR.instances['description'].setData('');
     });
+
+   
 
 
 </script>
