@@ -113,14 +113,11 @@
     $('#form-exercise').on('submit', function(e) {
         e.preventDefault();
 
-        // Tạo một đối tượng FormData mới
         let formData = new FormData(this);
 
-        // Lấy dữ liệu CKEditor và thêm vào FormData
         let description = CKEDITOR.instances['description'].getData();
         formData.append('description', description);
 
-        // Lấy file video đã chọn từ input và thêm vào FormData
         const videoFile = document.getElementById('video-input').files[0];
         if (videoFile) {
             formData.append('video_url', videoFile);
@@ -130,8 +127,8 @@
             url: 'http://127.0.0.1:8000/api/admin/exercises',
             type: 'POST',
             data: formData,
-            contentType: false, // Để `false` vì đây là FormData
-            processData: false, // Để `false` vì đây là FormData
+            contentType: false, 
+            processData: false, 
             success: function(res) {
                 Swal.fire({
                     title: "Thành công!",
