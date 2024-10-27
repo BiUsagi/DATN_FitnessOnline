@@ -88,7 +88,7 @@
                             <div class="card-header text-uppercase">HÌNH ẢNH</div>
                             <div class="card">
                                 <div class="card-body">
-                                    <img class="img-cover" src="assets/backend/img/no-image.jpg" alt="Avatar"
+                                    <img class="img-cover" src="assets/backend/img/accounts/no-image.jpg" alt="Avatar"
                                         id="avatar-image"
                                         style="cursor: pointer; max-width: 100%; height: 170px; object-fit: cover;"
                                         onclick="document.getElementById('avatar-input').click();">
@@ -142,7 +142,7 @@
                     $('#inputPhone').val(response.phone_number);
                     $('#inputAddress').val(response.address);
                     $('#inputDescription').text(response.introduction);
-                    $('#avatar-image').attr('src', 'assets/backend/img/' + response.avatar);
+                    $('#avatar-image').attr('src', 'assets/backend/img/accounts' + response.avatar);
                 },
                 error: function(error) {
                     console.log(error);

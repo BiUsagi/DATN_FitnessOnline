@@ -27,7 +27,7 @@
                                 @foreach ($data as $item)
                                     <div class="col-xxl-3 col-sm-6">
                                         <div class="border pb-3 pe-3 ps-3 rounded-2 text-center mb-4">
-                                            <img src="assets/backend/img/{{ $item->avatar }}"
+                                            <img src="assets/backend/img/accounts/{{ $item->avatar }}"
                                                 class="img-10x rounded-pill img-cover" alt="Gym Dashboard">
                                             <h5>{{ $item->staff_name }}</h5>
                                             <h6>
