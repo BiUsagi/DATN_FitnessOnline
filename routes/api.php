@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\api\SupportExercisesController;
 use App\Http\Controllers\backend\api\Workout_PackageController;
 use App\Http\Controllers\backend\api\AccountsController;
 use App\Http\Controllers\backend\api\VoucherController;
+use App\Http\Controllers\backend\api\CommentController;
 
 
 Route::get('/user', function (Request $request) {
@@ -46,5 +47,11 @@ Route::group(['prefix' => 'admin',], function () {
     Route::post('/vouchers', [VoucherController::class, 'add']);
     Route::delete('/vouchers/{id}', [VoucherController::class, 'delete']);
     Route::put('/vouchers/{id}', [VoucherController::class, 'update']);
+
+    //Comment
+    // Route::get('/comments', [CommentController::class, 'getCommentsAjax'])->name('api.comments.index');
+    Route::get('/comments', [CommentController::class, 'index'])->name('api.admin.comments');
+
+
 
 });

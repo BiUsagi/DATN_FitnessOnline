@@ -17,7 +17,7 @@ class SupportExercisesController extends Controller
                 return [
                     'id' => $item->id,
                     'content' => $item->content,
-                    'exercise_name' => $item->exercise->exercise_name ?? 'N/A',
+                    'exercise_name' => $item->exercise->name ?? 'N/A',
                     'user_name' => $item->user->user_name ?? 'N/A',
                     'user_avatar' => $item->user->avatar ?? 'N/A',
                     'staff_name' => $item->staff->staff_name ?? 'N/A',
@@ -29,7 +29,7 @@ class SupportExercisesController extends Controller
                             'user_name' => $reply->user->user_name ?? 'N/A', // Tên người dùng của phản hồi
                             'user_avata' => $reply->user->avatar ?? 'N/A',
                             'staff_name' => $reply->staff->staff_name ?? 'N/A', // Tên nhân viên của phản hồi
-                            'exercise_name' => $reply->exercise->exercise_name ?? 'N/A', // Tên nhân viên của phản hồi
+                            'exercise_name' => $reply->exercise->name ?? 'N/A', // Tên nhân viên của phản hồi
                             'created_at' => $reply->created_at,
                         ];
                     }),

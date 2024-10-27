@@ -368,7 +368,7 @@
                 @foreach ($topPost->take(3) as $Post)
                     <div class="col-lg-4 col-md-8 mx-auto">
                         <div class="card">
-                            <a href="blog-details.html" aria-label="Blog 3">
+                            <a href="{{ route('posts-details.index', $Post->id) }}" aria-label="Blog 3">
                                 <div class="card-img f-0">
                                     <img loading='lazy' src="{{ asset('assets/backend/img/' . $Post->image) }}" alt="">
                                 </div>
@@ -378,7 +378,7 @@
                                 <h5 class="card-title">{{$Post->title}}</h5>
                                 <p class="card-text">{{$Post->description}}</p>
                                 <div class="button-sec">
-                                    <a href="blog-details.html" aria-label="Blog Details">Chi tiết</a>
+                                    <a href="{{ route('posts-details.index', $Post->id) }}" aria-label="Blog Details">Chi tiết</a>
                                     <div class="btn-arrow">
                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 279"

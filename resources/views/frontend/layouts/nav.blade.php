@@ -47,7 +47,7 @@
                                         </li>
                                     </ul>
                                 @else
-                                    <a href="{{ route('login.index') }}" id="btn-login" class="nav-link btn">Đăng nhập</a> <!-- Hiển thị nút đăng nhập -->
+                                    <a  id="btn-login" class="nav-link btn">Đăng nhập</a> <!-- Hiển thị nút đăng nhập -->
                                 @endif
                                 </li>
                             </ul>
@@ -57,6 +57,14 @@
             </div>
         </div>
     </div>
+    <script>
+    $("#btn-login").click(function() {
+    var currentUrl = window.location.href;
 
-    
+    // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
+    window.location.href = "/login?redirect_url=" + encodeURIComponent(currentUrl);
+});
+</script>
 </header>
+
+

@@ -40,6 +40,8 @@
                 <form id="loginForm" action="{{ route('login_.index') }}" method="POST">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="redirect_url" value="{{ request()->query('redirect_url') }}">
+
 
                     <!-- email -->
                     <div class="input-box">
@@ -67,6 +69,7 @@
                     <div class="login-register">
                         <p>Bạn chưa có tài khoản ? <a class="register-link"> Đăng Ký</a></p>
                     </div>
+                    
                 </form>
             </div>
             
@@ -133,13 +136,25 @@
             var email = $("#email").val();
             var password = $("#password-input-login").val(); // Đảm bảo ID chính xác cho trường mật khẩu
             var token = $('meta[name="csrf-token"]').attr('content');
+            var currentUrl = $("input[name='redirect_url']").val();
+
+            console.log('Current URL:', currentUrl);
 
             $.post("{{ route('login_.index') }}", {
                 _token: token,
                 email: email,
-                password: password
+                password: password,
+                redirect_url: currentUrl // Gửi URL hiện tại
             }, function(data) {
-                window.location.href = "{{ route('index') }}";
+                // window.location.href = "";
+                if (data.success) {
+                // Điều hướng người dùng về trang ban đầu
+                window.location.href = data.redirect_url;
+                } else {
+                    // Xử lý thông báo lỗi nếu có
+                    $("#ketqua").text(data.message);
+                }
+
             // Xóa các thông báo lỗi trước đó
             $(".errors").text('');
             $("#ketqua").html(data.message);
