@@ -35,8 +35,37 @@ class Workout_PackageController extends Controller
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');
         $set->description = $request->input('description');
-        $set->staff_id = $request->input('staff_id');
+        // $set->staff_id = $request->input('staff_id');
         $set->level = $request->input('level');
+        $set->special_level = $request->input('special_level');
+        $set->status = $request->input('status');
+        $set->duration_days = $request->input('duration_days');
+        $set->status = $request->input('status');
+
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
+            $filename = time().'.'.$extension;
+            $file->move('uploads/gym_package', $filename);
+            $set->image = $filename;
+        }
+
+        $set->save();
+        return response()->json($set);
+      
+    }
+
+    public function update_($id,Request $request)
+    {
+        $set = Workout_package::find($id);
+        $set->package_name = $request->input('package_name');
+        $set->price = $request->input('price');
+        $set->description = $request->input('description');
+        // $set->staff_id = $request->input('staff_id');
+        $set->level = $request->input('level');
+        $set->special_level = $request->input('special_level');
+        $set->status = $request->input('status');
         $set->duration_days = $request->input('duration_days');
         $set->status = $request->input('status');
 

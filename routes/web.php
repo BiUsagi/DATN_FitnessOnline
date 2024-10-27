@@ -71,10 +71,12 @@ Route::prefix('admin')->group(function () {
 
     // exerciseset - gói tập
     Route::get('/workout_package', [WorkoutPackagesController::class, 'index'])->name('admin.workout_package');
-    //create_goitap
+    // chi tiết gói tập
     Route::get('/workout_package/workout_package_detail/{id}', [WorkoutPackagesController::class, 'detail'])->name('admin.workout_package_detail');
-
+    //create_goitap
     Route::get('/workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
+    //update_goitap
+    Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
     
     
 

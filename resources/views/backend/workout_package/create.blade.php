@@ -30,15 +30,15 @@
                                         name="package_name">
                                 </div>
 
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Cấp độ <span
                                             class="note">(*)</span></label>
                                     <input type="text" class="form-control-customize " id="inputNanme4" name="level">
-                                </div>
+                                </div> -->
 
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(*
-                                            Tháng)</span></label>
+                                            Ngày)</span></label>
                                     <input type="text" class="form-control-customize " id="inputNanme4"
                                         name="duration_days">
                                 </div>
@@ -63,7 +63,19 @@
 
                     </div>
 
-                    <div class="col-lg-3">
+                <div class="col-lg-3">
+                        <!-- <div class="card">
+                                <div class="card-header text-uppercase">Trạng thái</div>
+                                <div class="card-body">
+                                    <select name="" id="select2" class="form-control-select2 setupSelect2">
+                                        <option value="0">Trạng thái</option>
+                                        <option value="1">Công khai bài viết</option>
+                                        <option value="2">Ẩn bài viết</option>
+                                    </select>
+                                        {{-- <img class="img-cover" src="assets/backend/img/no-image.jpg" alt=""> --}}
+                                </div>  
+                        </div> -->
+
                         <div class="card">
                             <div class="card-header text-uppercase">HÌNH ẢNH</div>
                             <img class="img-cover" src="assets/backend/img/no-image.jpg" alt="Avatar" id="avatar-image"

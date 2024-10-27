@@ -47,7 +47,7 @@ class StaffSeeder extends Seeder
                 'staff_name' => 'Phạm Văn Đạt',
                 'email' => 'staffssc@example.com',
                 'avatar' => 'messages-3.jpg',
-                'gender' => 3,
+                'gender' => 2,
                 'birthday' => '1992-07-19',
                 'introduction' => 'Là một huấn luyện viên mới trong ngành với dưới 10 năm kinh nghiệm. Cam kết sẽ cố gắng đem lại trải nghiệm tuyệt vời đi kèm với hiệu quả tuyệt đối cho từng học viên.',
                 'rating' => 4.0,
@@ -75,7 +75,7 @@ class StaffSeeder extends Seeder
                 'staff_name' => 'Phạm Chiến',
                 'email' => 'staffcc@example.com',
                 'avatar' => '7CC84950-B263-4389-B934-E77F86954053.JPG',
-                'gender' => 3, // Giới tính khác (theo thiết lập mặc định)
+                'gender' => 1, // Giới tính khác (theo thiết lập mặc định)
                 'birthday' => '1992-07-19',
                 'introduction' => 'Là một huấn luyện viên mới trong ngành với dưới 10 năm kinh nghiệm. Cam kết sẽ cố gắng đem lại trải nghiệm tuyệt vời đi kèm với hiệu quả tuyệt đối cho từng học viên.',
                 'rating' => 4.0,

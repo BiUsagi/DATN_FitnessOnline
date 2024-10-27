@@ -27,7 +27,7 @@
                                 @foreach ($data as $item)
                                     <div class="col-xxl-3 col-sm-6">
                                         <div class="border pb-3 pe-3 ps-3 rounded-2 text-center mb-4">
-                                            <img src="assets/backend/img/{{ $item->avatar }}"
+                                            <img src="assets/backend/img/accounts/{{ $item->avatar }}"
                                                 class="img-10x rounded-pill img-cover" alt="Gym Dashboard">
                                             <h5>{{ $item->staff_name }}</h5>
                                             <h6>
@@ -35,10 +35,8 @@
                                                     <i class="bi bi-gender-male text-primary"></i> Nam
                                                 @elseif ($item->gender == 0)
                                                     <i class="bi bi-gender-female text-danger"></i> Nữ
-                                                @elseif ($item->gender == 2)
-                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
                                                 @else
-                                                    <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
                                                 @endif
                                             </h6>
                                             <ul class="list-group mb-3 fs-7">
@@ -46,7 +44,7 @@
                                                 <li class="list-group-item d-flex justify-content-between align-items-center"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Số lượng khóa học">
-                                                    Khóa Học
+                                                    Gói Tập
                                                     <span class="badge border border-success text-success">
                                                         {{ $item->getCourseCount() }}
                                                     </span>
