@@ -313,9 +313,10 @@
                         input.after(errorMessage);
                     }
                 } else {
+                    $('.text-danger').remove();
                     Swal.fire({
                         title: "Lỗi!",
-                        text: "Có lỗi xảy ra, vui lòng thử lại.",
+                        text: "Mã đã tồn tại.",
                         icon: "error"
                     });
                 }
@@ -329,15 +330,27 @@
     $(document).on('click', '.btn-delete', function () {
         let id = $(this).attr('value');
         let data = { _token: '{{csrf_token()}}', _method: 'delete' };
-        if (confirm('Bạn có chắc chắn muốn xóa không?')) {
-            $.post('http://127.0.0.1:8000/api/admin/vouchers/' + id, data, function (re) {
-                Swal.fire({
-                    title: "Thành công!",
-                    text: "Xóa thành công!",
-                    icon: "success"
+        Swal.fire({
+            title: 'Bạn có chắc chắn muốn xóa không?',
+            text: "Hành động này không thể hoàn tác!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post('http://127.0.0.1:8000/api/admin/vouchers/' + id, data, function (re) {
+                    Swal.fire({
+                        title: "Thành công!",
+                        text: "Xóa thành công!",
+                        icon: "success"
+                    });
                 });
-            });
-        }
+            }
+        });
+
         load();
     })
 
@@ -352,8 +365,8 @@
 
         $.ajax({
             url: 'http://127.0.0.1:8000/api/admin/vouchers/' + idModal.value,
-            type: 'PUT', 
-            data: form, 
+            type: 'PUT',
+            data: form,
             success: function (response) {
                 Swal.fire({
                     title: "Thành công!",
@@ -361,7 +374,7 @@
                     icon: "success"
                 });
                 loadModal(idModal.value);
-                load(); 
+                load();
             },
             error: function (xhr) {
                 console.log(xhr.responseJSON); // Kiểm tra phản hồi từ server

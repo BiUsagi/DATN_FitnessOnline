@@ -22,6 +22,7 @@ class Staff extends Model
         'email',
         'avatar',
         'gender',
+        'introduction',
         'rating',
         'rating_count',
         'address',
@@ -45,16 +46,38 @@ class Staff extends Model
         'rating_count' => 'integer'
     ];
 
+
+    // Phương thức tính tuổi từ ngày sinh
+    public function getAgeFromBirthday()
+    {
+        $birthDate = Carbon::parse($this->birthday);
+        return $birthDate->age;
+    }
+
+
     // Tính thời gian họạt động
     public function getActiveDuration()
     {
         $createdAt = $this->created_at;
         $now = Carbon::now();
-        return $createdAt->diffForHumans($now, true); // Chỉ trả về khoảng thời gian mà không có từ ngữ
+        return $createdAt->diffForHumans($now, true);
+    }
+
+    // Tính số lượng học viên 
+    public function getStudentCount()
+    {
+        return $this->workoutPackages->sum(function ($package) {
+            return $package->getStudentCount();
+        });
+    }
+
+    // Tính số lượng khóa học
+    public function getCourseCount()
+    {
+        return $this->workoutPackages()->count();
     }
 
 
-    // Tính số lượng học viên
 
     public function user()
     {

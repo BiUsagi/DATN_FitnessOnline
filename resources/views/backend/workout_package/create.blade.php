@@ -113,16 +113,6 @@
                             </div>
                         </div>
                         
-
-                    
-
-                        {{-- <div class="card">
-                            <div class="card-header text-uppercase">CHỌN PT</div>
-                            <div class="card-body">
-                                <input type="text" name="staff_id">
-                            </div>
-                        </div> --}}
-
                     </div>
 
                 </div>
@@ -144,8 +134,8 @@
                 url: 'http://127.0.0.1:8000/api/admin/workout_package',
                 type: 'POST',
                 data: formData,
-                contentType: false, // cần thiết để gửi dữ liệu dạng multipart/form-data
-                processData: false, // ngăn jQuery xử lý dữ liệu (vì ta cần gửi dạng FormData)
+                contentType: false, 
+                processData: false, 
                 success: function(res) {
                     Swal.fire({
                         title: "Thành công!",
@@ -155,7 +145,7 @@
                     $('#form-workout_package')[0].reset();
                     CKEDITOR.instances['description'].setData('');
                     $('#avatar-image').attr('src',
-                    'assets/backend/img/no-image.jpg'); // reset lại hình ảnh
+                    'assets/backend/img/no-image.jpg');
                 },
                 error: function(err) {
                     Swal.fire({

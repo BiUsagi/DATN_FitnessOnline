@@ -124,13 +124,12 @@ Route::prefix('admin')->group(function () {
 
 
     // accounts - tài khoản
-    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
-    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info'); // Chi tiết nhân viên 
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
 
-
-
+    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
+    Route::get('/staffinfo/{id}', [AccountsController::class, 'staff_info'])->name('admin.staff.info');// Chi tiết nhân viên
+    Route::get('/staffupdate/{id}', [AccountsController::class, 'staff_update'])->name('admin.staff.update'); //Cập nhật nhân viên
 });
 
 
