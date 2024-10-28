@@ -171,7 +171,7 @@
 
             $.ajax({
                 url: 'http://127.0.0.1:8000/api/admin/workout_package',
-                type: 'PUT',
+                type: 'POST',
                 data: formData,
                 contentType: false, 
                 processData: false, 
