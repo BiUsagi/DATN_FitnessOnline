@@ -71,7 +71,7 @@
 <!-- endsection
  section('custom_js') -->
 <script>
-    //SHOW BÌNH LUẬN CHA
+    //Show bình luận cha 
     $.get ('http://127.0.0.1:8000/api/admin/comments', function (res) {
         let data = res;
         console.log(res);
@@ -197,3 +197,50 @@ function deleteComment(id) {
     }
 </style>
 @endsection
+{{-- function deleteComment(id) {
+    // Sử dụng SweetAlert để xác nhận xóa
+    Swal.fire({
+        title: 'Bạn có chắc chắn muốn xóa bình luận này?',
+        text: "Hành động này không thể hoàn tác!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Xóa',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let data = { _token: '{{ csrf_token() }}', _method: 'delete' }; // Thêm CSRF token
+
+            $.ajax({
+                url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
+                type: 'DELETE',
+                data: data,
+                success: function (response) {
+                    // Hiển thị thông báo thành công
+                    Swal.fire({
+                        title: 'Thành công!',
+                        text: 'Xóa bình luận thành công!',
+                        icon: 'success'
+                    });
+
+                    // Xóa dòng bình luận trong bảng mà không cần tải lại trang
+                    $(`#list-items tr`).each(function() {
+                        if ($(this).find('td:first').text() == id) {
+                            $(this).remove(); // Loại bỏ dòng bình luận khỏi bảng
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'Có lỗi xảy ra!',
+                        text: 'Vui lòng thử lại sau.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+    });
+}
+--}}
