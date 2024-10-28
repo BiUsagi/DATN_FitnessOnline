@@ -47,8 +47,10 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         {{-- Nút sửa --}}
-                                        <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a>
-                        
+                                        {{-- <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a> --}}
+                                        <button type="button" class="btn btn-warning text-white" onclick="update({{ $slide->id }})">
+                                            <i class="ri-edit-box-line"></i>
+                                        </button>
                                         {{-- Nút kích hoạt modal với data-id --}}
                                         <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $slide->id }})">
                                             <i class="ri-delete-bin-5-line"></i>
@@ -56,6 +58,8 @@
                                     </td>
                                 </tr>
                                 <script>
+
+                                    // THÔNG BÁO NÚT XÓA
                                     function confirmDelete(slideId) {
                                         Swal.fire({
                                             title: 'Bạn có chắc chắn muốn xóa không?',
@@ -64,18 +68,33 @@
                                             showCancelButton: true,
                                             confirmButtonColor: '#3085d6',
                                             cancelButtonColor: '#d33',
-                                            confirmButtonText: 'xóa!',
+                                            confirmButtonText: 'Xóa!',
                                             cancelButtonText: 'Hủy'
                                         }).then((result) => {
                                             if (result.isConfirmed) {
                                                 // Nếu xác nhận, chuyển hướng đến trang xóa
-                                                window.location.href = "{{ url('admin/slides/xoa/') }}/" + slideId, function(re){
-                                                    Swal.fire({
-                                                    title: "Thành công!",
-                                                    text: "Xóa thành công!",
-                                                    icon: "success"
-                                                });
-                                                }
+                                                window.location.href = "{{ url('admin/slides/xoa/') }}/" + slideId;
+                                                
+                                            }
+                                        });
+                                    }
+
+
+                                    // THÔNG BÁO NÚT SỬA
+                                    function update(slideId) {
+                                        Swal.fire({
+                                            title: 'Bạn có chắc chắn muốn sửa không?',
+                                            text: "Hành động này không thể hoàn tác!",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'Sửa!',
+                                            cancelButtonText: 'Hủy'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                // Nếu xác nhận, chuyển hướng đến trang xóa
+                                                window.location.href = "{{ url('admin/slides/update/') }}/" + slideId;
                                             }
                                         });
                                     }

@@ -173,22 +173,46 @@
 
 // Thêm hàm xóa bình luận
 function deleteComment(id) {
-    if (confirm('Bạn có chắc chắn muốn xóa bình luận này?')) {
-        $.ajax({
-            url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
-            type: 'DELETE',
-            success: function (response) {
-                // Xử lý thành công (có thể xóa dòng bình luận trong bảng)
-                alert('Xóa bình luận thành công!');
-                location.reload(); // Tải lại trang để cập nhật danh sách bình luận
-            },
-            error: function (error) {
-                console.log(error);
-                alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
-            }
-        });
-    }
+    // Hiển thị hộp thoại xác nhận bằng SweetAlert2
+    Swal.fire({
+        title: 'Bạn có chắc chắn muốn xóa bình luận này?',
+        text: "Hành động này không thể hoàn tác!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Có, xóa!',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Nếu người dùng xác nhận xóa
+            $.ajax({
+                url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
+                type: 'DELETE',
+                success: function (response) {
+                    // Xử lý thành công
+                    Swal.fire({
+                        title: 'Thành công!',
+                        text: 'Xóa bình luận thành công!',
+                        icon: 'success'
+                    }).then(() => {
+                        // Tải lại trang để cập nhật danh sách bình luận
+                        location.reload();
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'Có lỗi xảy ra!',
+                        text: 'Vui lòng thử lại sau.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+    });
 }
+
 </script>
 
 <style>
