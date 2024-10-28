@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('posts_id');
-            $table->integer('rep')->default(0);
+            $table->integer('rep')->nullable();
             $table->integer('report')->default(0)->nullable();
             $table->text('content');
             $table->timestamps();
