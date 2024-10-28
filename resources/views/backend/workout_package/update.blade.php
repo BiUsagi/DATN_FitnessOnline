@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-        <form action= "{{ route('admin.workout_package-update_', ['id' => $update_id->id ]) }}  " method ="POST" enctype="multipart/form-data">
+        <form action= "" method ="POST" id="form-workout_package_update" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-lg-9">
@@ -29,17 +29,12 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="inputNanme4" class="form-label-customize">Cấp độ <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="capdo" value="{{ $update_id->level }}">
+                                <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(* Ngày)</span></label>
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="thoigian" value="{{ $update_id->duration_days }}">
                             </div>
 
                             <div class="col-12">
-                                <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="thoigian" value="{{ $update_id->duration }}">
-                            </div>
-
-                            <div class="col-12">
-                                <label for="inputNanme4" class="form-label-customize">Giá tiền gói tập <span class="note">(*)</span></label>
+                                <label for="inputNanme4" class="form-label-customize">Giá tiền gói tập <span class="note">(* VND)</span></label>
                                 <input type="number" class="form-control-customize " id="inputNanme4" name="giatien" value="{{ $update_id->price }}">
                             </div>
                             
@@ -86,37 +81,76 @@
                 </div>
 
                 <div class="col-lg-3">
-                        <div class="card">
-                                <div class="card-header text-uppercase">Trạng thái</div>
-                                <div class="card-body">
-                                    <select name="" id="select2" class="form-control-select2 setupSelect2">
-                                        <option value="0">Trạng thái</option>
-                                        <option value="1">Công khai bài viết</option>
-                                        <option value="2">Ẩn bài viết</option>
-                                    </select>
-                                        {{-- <img class="img-cover" src="assets/backend/img/no-image.jpg" alt=""> --}}
-                                </div>  
-                        </div>
-
-                        <div class="card">
+                <div class="card">
                             <div class="card-header text-uppercase">HÌNH ẢNH</div>
-                                <div class="card-body">
-                                    <img class="img-cover" src="assets/backend/img/no-image.jpg" alt="">
-                                    <input class="form-control mt-3" type="file" id="formFile" name="image">
-                                </div>
+                            <img class="img-cover" src="uploads/gym_package/{{ $update_id->image }}" alt="Avatar" id="avatar-image"
+                                onclick="document.getElementById('avatar-input').click();">
+                            <input type="file" name="image" id="avatar-input" class="form-control"
+                                style="display: none;" onchange="previewImage(event)">
+                        </div>
+                        <script>
+                            function previewImage(event) {
+                                const image = document.getElementById('avatar-image');
+                                image.src = URL.createObjectURL(event.target.files[0]);
+                            }
+                        </script>
+
+
+                        <div class="card">
+                            <div class="card-header text-uppercase">Trạng thái</div>
+                            <div class="card-body">
+                                <select name="status" id="select2" class="form-control-select2 setupSelect2">
+                                    @if ( $update_id->status  == 0)
+                                        <option value="{{$update_id->status}}">Ẩn bài viết</option>
+                                    @elseif ( $update_id->status  == 1)
+                                    <option value="{{$update_id->status}}">Công khai bài viết</option>
+                                    @else
+                                        <option value="0">--Chọn--</option>
+                                    @endif
+                                    <option value="0">Ẩn bài viết</option>
+                                    <option value="1">Công khai bài viết</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="card">
-                            <div class="card-header text-uppercase">CHỌN PT</div>
-                                <div class="card-body">
-                                    <!-- <select class="form-control-customize setupSelect2" aria-label="Default select example">
-                                        <option selected name="pt">--PT--</option>
-                                        <option value="1" >PT 1</option>
-                                        <option value="2" >PT 2</option>
-                                        <option value="3">PT 3</option>
-                                    </select> -->
-                                    <input type="text" name="pt" value="{{ $update_id->staff_id }}">
-                                </div>
+                            <div class="card-header text-uppercase">Cấp độ</div>
+                            <div class="card-body">
+                                <select name="level" id="level" class="form-control-select2 setupSelect2">\
+                                    @if ( $update_id->level  == 'beginner')
+                                        <option value="{{$update_id->level}}">Người Mới Bắt Đầu</option>
+                                    @elseif ( $update_id->level  == 'intermediate')
+                                        <option value="{{$update_id->level}}">Trung Cấp</option>
+                                    @elseif ( $update_id->level  == 'advanced')
+                                        <option value="{{$update_id->level}}">Nâng Cao</option>
+                                    @else
+                                        <option value="0">Chọn cấp độ</option>
+                                    @endif
+                                    <option value="beginner">Người Mới Bắt Đầu</option>
+                                    <option value="intermediate">Trung Cấp</option>
+                                    <option value="advanced">Nâng Cao</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header text-uppercase">Cấp độ đặc biệt</div>
+                            <div class="card-body">
+                                <select name="special_level" id="special_level" class="form-control-select2 setupSelect2">
+                                    @if ( $update_id->special_level  == 'cutting')
+                                        <option value="{{$update_id->special_level }}">Giảm cân</option>
+                                    @elseif ( $update_id->level  == 'bulking')
+                                        <option value="{{$update_id->special_level }}">Tăng cơ</option>
+                                    @elseif ( $update_id->level  == 'endurance')
+                                        <option value="{{$update_id->special_level }}">Thể lực và sức bền</option>
+                                    @else
+                                        <option value="0">Chọn cấp độ</option>
+                                    @endif
+                                    <option value="cutting">Giảm cân</option>
+                                    <option value="bulking">Tăng cơ</option>
+                                    <option value="endurance">Thể lực và sức bền</option>
+                                </select>
+                            </div>
                         </div>
                         
                 </div>
@@ -126,4 +160,40 @@
         </form>
     </section>
 </main><!-- End #main -->
+
+<script>
+        $('#form-workout_package_update').on('submit', function(e) {
+            e.preventDefault();
+
+            let formData = new FormData(this);
+            let description = CKEDITOR.instances['description'].getData();
+            formData.append('description', description);
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/admin/workout_package',
+                type: 'PUT',
+                data: formData,
+                contentType: false, 
+                processData: false, 
+                success: function(res) {
+                    Swal.fire({
+                        title: "Thành công!",
+                        text: "Cập nhật gói tập thành công!",
+                        icon: "success"
+                    });
+                    $('#form-workout_package')[0].reset();
+                    CKEDITOR.instances['description'].setData('');
+                    $('#avatar-image').attr('src',
+                    'assets/backend/img/no-image.jpg');
+                },
+                error: function(err) {
+                    Swal.fire({
+                        title: "Lỗi!",
+                        text: "Có lỗi xảy ra khi cập nhật gói tập!",
+                        icon: "error"
+                    });
+                }
+            });
+        });
+</script>
 @endsection

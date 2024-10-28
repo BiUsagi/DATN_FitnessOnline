@@ -20,6 +20,7 @@ return new class extends Migration {
                   ->onDelete('cascade');
             $table->integer('day_number');      // Ngày thứ mấy trong lộ trình
             $table->integer('sequence');         // Thứ tự bài tập trong ngày
+            $table->boolean('is_day_off')->default(false); // Trạng thái ngày nghỉ
             $table->timestamps();                // Thời gian tạo và cập nhật
         });
         

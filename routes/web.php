@@ -71,16 +71,14 @@ Route::prefix('admin')->group(function () {
 
     // exerciseset - gói tập
     Route::get('/workout_package', [WorkoutPackagesController::class, 'index'])->name('admin.workout_package');
-    //create_goitap
+    // chi tiết gói tập
     Route::get('/workout_package/workout_package_detail/{id}', [WorkoutPackagesController::class, 'detail'])->name('admin.workout_package_detail');
-
+    //create_goitap
     Route::get('/workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
-    // Route::post('/workout_package/create', [WorkoutPackagesController::class, 'create_'])->name('admin.workout_package-create_');
-    //update_goi_tap
+    //update_goitap
     Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
-    Route::post('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update_'])->name('admin.workout_package-update_');
-    //delete_goitap
-    Route::get('/workout_package/delete/{id}', [WorkoutPackagesController::class, 'delete'])->name('admin.workout_package-delete');
+    
+    
 
 
     // statistical - thống kê
@@ -128,13 +126,12 @@ Route::prefix('admin')->group(function () {
 
 
     // accounts - tài khoản
-    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
     Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
-    Route::get('/staffinfo', [AccountsController::class, 'staff_info'])->name('admin.staff.info'); // Chi tiết nhân viên 
     Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
 
-
-
+    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
+    Route::get('/staffinfo/{id}', [AccountsController::class, 'staff_info'])->name('admin.staff.info');// Chi tiết nhân viên
+    Route::get('/staffupdate/{id}', [AccountsController::class, 'staff_update'])->name('admin.staff.update'); //Cập nhật nhân viên
 });
 
 

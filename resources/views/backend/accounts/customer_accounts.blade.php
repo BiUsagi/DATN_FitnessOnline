@@ -51,7 +51,7 @@
                                             </td>
                                             <td>
                                                 {{-- Avatar --}}
-                                                <img src="assets/backend/img/{{ $item->avatar }}"
+                                                <img src="assets/backend/img/accounts/{{ $item->avatar }}"
                                                     class="rounded-circle object-fit-cover me-2 avatar-table">
                                                 {{-- name --}}
                                                 {{ $item->user_name }}
@@ -216,7 +216,6 @@
                 type: 'PUT',
                 data: formData,
                 success: function(response) {
-                    console.log(response);
                     $('#editUserModal').modal('hide');
                     Swal.fire({
                         title: "Thành công!",
@@ -234,7 +233,7 @@
 
                             // Cập nhật Avatar và tên người dùng
                             $(this).find('td:eq(1)').html(`
-                                <img src="assets/backend/img/${response.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                                <img src="assets/backend/img/accounts/${response.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
                                 ${response.user_name}
                             `);
 

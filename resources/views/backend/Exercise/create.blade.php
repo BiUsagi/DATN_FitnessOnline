@@ -27,44 +27,32 @@
                                 <input type="text" class="form-control-customize" name="exercise_name" id="exercise_name">
                             </div>
                             
-                            <div class="col-12">
-                                <div class="label d-flex justify-content-between">
-                                    <label for="exercise_id" class="form-label-customize">Video ID <span class="note">(*)</span></label>
+                            <div class="col-12 d-flex justify-content-between">
+                                <div class="col-5">
+                                    <div class="label d-flex justify-content-between">
+                                        <label for="exercise_id" class="form-label-customize">Sets <span class="note">(* Số lần lặp lại của một động tác)</span></label>
+                                    </div>
+                                    <div class="input-group-customize mb-3">
+                                        <input type="text" class="form-control-link" name="sets" id="sets" aria-describedby="basic-addon3" style="outline: none;">
+                                    </div>
                                 </div>
-                                <div class="input-group-customize mb-3">
-                                    <span class="input-group-text baseURL" id="basic-addon3" style="font-size: 14px">https://www.youtube.com/watch?v=</span>
-                                    <input type="text" class="form-control-link" name="exercise_id" id="exercise_id" aria-describedby="basic-addon3" style="outline: none;">
+                                <div class="col-5">
+                                    <div class="label d-flex justify-content-between">
+                                        <label for="exercise_id" class="form-label-customize">Reps <span class="note">(* Số lượt tập của một bài)</span></label>
+                                    </div>
+                                    <div class="input-group-customize mb-3">
+                                        <input type="text" class="form-control-link" name="reps" id="reps" aria-describedby="basic-addon3" style="outline: none;">
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <label for="description" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize ck-editor" id="description" name="description" data_height="100">
+                                <input type="text" class="form-control-customize ck-editor" id="description" name="description" data_height="500">
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                            <div class="card-header text-uppercase">BÀI TẬP VỪA THÊM</div>
-                                <div class="card-body">                   
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Tên bài tập</th>
-                                            </tr>
-                                        </thead>
-                                        @for( $i=1; $i<=5; $i++)
-                                            <tr>
-                                                <td>{{$i}}</td>
-                                                <td>Bài tập số {{$i}} </td>
-                                            </tr>
-                                        @endfor
-                                        <tbody>
-
-                                        </tbody>
-                                    </table>     
-                                </div>
-                        </div>
+                    
                 </div>
                 <div class="col-lg-3">
                         <div class="card">
@@ -75,25 +63,19 @@
                                         <option value="1">Công khai bài viết</option>
                                         <option value="2">Ẩn bài viết</option>
                                     </select>
-                                        {{-- <img class="img-cover" src="assets/backend/img/no-image.jpg" alt=""> --}}
                                 </div>  
                         </div>
 
                         <div class="card">
-                            <div class="card-header text-uppercase">Dụng cụ</div>
-                                <div class="card-body mt-4">
-                                    <input type="text" class="form-control-customize" id="equipment_needed" name="equipment_needed" data_height="100">
-                                    <label for="exercise_name" class="form-label-customize">Không có dụng cụ thì để trống <span class="note">(*)</span></label>
-                                </div>
+                            <div class="card-header text-uppercase">Video bài tập</div>
+                            
+                            <!-- Ban đầu hiển thị hình ảnh -->
+                            <img id="media-preview" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById('video-input').click();">
+                            
+                            <!-- Input để chọn video -->
+                            <input type="file" name="video_url" id="video-input" class="form-control" style="display: none;" accept="video/*" onchange="previewMedia(event)">
                         </div>
-
-                        <div class="card">
-                            <div class="card-header text-uppercase">Thời gian tập</div>
-                                <div class="card-body mt-4">
-                                    <input type="text" class="form-control-customize" id="duration" name="duration" data_height="100">
-                                    <label for="exercise_name" class="form-label-customize">Nhập theo số phút<span class="note">(*)</span></label>
-                                </div>
-                        </div>
+                        
 
                         <div class="btn-add-reset d-flex justify-content-between ms-2 me-2">
                             <input type="submit" class="btn btn-primary mt-3 btn-add-exercise" value="+ Thêm bài tập">
@@ -108,23 +90,56 @@
 </main><!-- End #main -->
 
 <script>
-   
+         function previewMedia(event) {
+        const file = event.target.files[0];
+        const previewElement = document.getElementById('media-preview');
+
+        if (file) {
+            if (file.type.startsWith('video/')) {
+                const video = document.createElement('video');
+                video.id = 'media-preview';
+                video.controls = true;
+                video.style.width = '100%';
+                video.src = URL.createObjectURL(file);
+                
+                previewElement.replaceWith(video);
+            } else {
+                previewElement.src = URL.createObjectURL(file);
+            }
+        }
+    }
+
     $('#form-exercise').on('submit', function(e) {
         e.preventDefault();
 
-        let description = CKEDITOR.instances['description'].getData();
+        let formData = new FormData(this);
 
-        let formData = $(this).serialize() + '&description=' + encodeURIComponent(description);
-        
-        $.post('http://127.0.0.1:8000/api/admin/exercises', formData, function(res) {
-            Swal.fire({
-                title: "Thành công!",
-                text: "Thêm thành công bài tập!",
-                icon: "success"
+        let description = CKEDITOR.instances['description'].getData();
+        formData.append('description', description);
+
+        const videoFile = document.getElementById('video-input').files[0];
+        if (videoFile) {
+            formData.append('video_url', videoFile);
+        }
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/admin/exercises',
+            type: 'POST',
+            data: formData,
+            contentType: false, 
+            processData: false, 
+            success: function(res) {
+                Swal.fire({
+                    title: "Thành công!",
+                    text: "Thêm thành công bài tập!",
+                    icon: "success"
                 });
-        })
-        $('#form-exercise')[0].reset();
-        CKEDITOR.instances['description'].setData('');
+
+                $('#form-exercise')[0].reset();
+                CKEDITOR.instances['description'].setData('');
+                $('#media-preview').replaceWith('<img id="media-preview" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById(\'video-input\').click();">');
+            }
+        });
     });
 
 

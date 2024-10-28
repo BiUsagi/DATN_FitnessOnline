@@ -1354,6 +1354,44 @@ input[placeholder] {
   height: 15rem;
 }
 
+
+.staff-avatar-custom {
+  width: 10rem;
+  object-fit: cover;
+  height: 10rem;
+}
+
+.custom-font-unit {
+  font-size: 1rem;
+}
+
+
+#loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  /* Đảm bảo loader nằm trên cùng */
+}
+
+
+.textarea-custom {
+  height: 15rem;
+}
+
+
+.img-update-custom {
+  height: 13rem;
+  width: 13rem;
+  object-fit: cover;
+}
+
+.card-body-custom-staff {
+  height: 15rem;
+}
+
+
 /* end account admin */
 
 

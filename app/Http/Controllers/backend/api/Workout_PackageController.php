@@ -4,19 +4,29 @@ namespace App\Http\Controllers\backend\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Workout_Package;
+use App\Models\Exercise;
+use App\Models\Package_Exercise;
 use Illuminate\Http\Request;
 
 class Workout_PackageController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $data = Workout_Package::orderBy('id', 'asc')->get();
-        return response()->json($data) ;
+        return response()->json($data);
     }
 
-    public function workout_detail($id){
+    public function get_exercises()
+    {
+        $data = Exercise::orderBy('id', 'asc')->select('id', 'name')->get();
+        return response()->json($data);
+    }
+
+    public function workout_detail($id)
+    {
         $details = Workout_Package::find($id);
 
-        return response()->json($details) ;
+        return response()->json($details);
     }
 
     public function create_(Request $request)
@@ -25,9 +35,13 @@ class Workout_PackageController extends Controller
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');
         $set->description = $request->input('description');
-        $set->staff_id = $request->input('staff_id');
+        // $set->staff_id = $request->input('staff_id');
         $set->level = $request->input('level');
+        $set->special_level = $request->input('special_level');
+        $set->status = $request->input('status');
         $set->duration_days = $request->input('duration_days');
+        $set->status = $request->input('status');
+
 
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -42,16 +56,63 @@ class Workout_PackageController extends Controller
       
     }
 
-    // public function add(Request $request){
-    //     $exercise = new Exercise();
-    //     $exercise->exercise_name = $request->input('exercise_name');
-    //     $exercise->description = $request->input('description');
-    //     $exercise->video_url = $request->input('exercise_id');
-    //     $exercise->equipment_needed = $request->input('equipment_needed');
-    //     $exercise->duration = $request->input('duration');
+    public function update_($id,Request $request)
+    {
+        $set = Workout_package::find($id);
+        $set->package_name = $request->input('package_name');
+        $set->price = $request->input('price');
+        $set->description = $request->input('description');
+        // $set->staff_id = $request->input('staff_id');
+        $set->level = $request->input('level');
+        $set->special_level = $request->input('special_level');
+        $set->status = $request->input('status');
+        $set->duration_days = $request->input('duration_days');
+        $set->status = $request->input('status');
 
-    //     $exercise->save();
 
-    //     return response()->json($exercise);
-    // }
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/gym_package', $filename);
+            $set->image = $filename;
+        }
+
+        $set->save();
+        return response()->json($set);
+    }
+
+    public function getExercisesForDay($packageId, $dayNumber)
+    {
+        // Lấy các bài tập cho gói và ngày cụ thể
+        $exercises = Package_Exercise::where('workout_package_id', $packageId)
+            ->where('day_number', $dayNumber)
+            ->get();
+        $result = $exercises->map(function ($item) {
+            return [
+                'id' => $item->exercise_id,
+                'name' => $item->exercise->name, // Lấy tên bài tập từ mối quan hệ
+                'sequence' => $item->sequence,
+            ];
+        });
+        return response()->json($exercises);
+    }
+
+    public function getDaysWithExerciseCount($id)
+    {
+        $package = Workout_package::with('exercises')->find($id);
+        $days = [];
+
+        for ($i = 1; $i <= $package->duration_days; $i++) {
+            $count = $package->exercises()->where('day', $i)->count();
+            $days[] = [
+                'day' => $i,
+                'exercise_count' => $count,
+            ];
+        }
+
+        return response()->json($days);
+    }
+
+
 }

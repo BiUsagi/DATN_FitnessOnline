@@ -27,7 +27,7 @@
                                 @foreach ($data as $item)
                                     <div class="col-xxl-3 col-sm-6">
                                         <div class="border pb-3 pe-3 ps-3 rounded-2 text-center mb-4">
-                                            <img src="assets/backend/img/{{ $item->avatar }}"
+                                            <img src="assets/backend/img/accounts/{{ $item->avatar }}"
                                                 class="img-10x rounded-pill img-cover" alt="Gym Dashboard">
                                             <h5>{{ $item->staff_name }}</h5>
                                             <h6>
@@ -35,10 +35,8 @@
                                                     <i class="bi bi-gender-male text-primary"></i> Nam
                                                 @elseif ($item->gender == 0)
                                                     <i class="bi bi-gender-female text-danger"></i> Nữ
-                                                @elseif ($item->gender == 2)
-                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
                                                 @else
-                                                    <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
                                                 @endif
                                             </h6>
                                             <ul class="list-group mb-3 fs-7">
@@ -46,24 +44,38 @@
                                                 <li class="list-group-item d-flex justify-content-between align-items-center"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Số lượng khóa học">
-                                                    Khóa Học
-                                                    <span class="badge border border-success text-success">3</span>
+                                                    Gói Tập
+                                                    <span class="badge border border-success text-success">
+                                                        {{ $item->getCourseCount() }}
+                                                    </span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Số lượng học viên">
                                                     Số Học Viên
-                                                    <span class="badge border border-danger text-danger">180</span>
+                                                    <span class="badge border border-danger text-danger">
+                                                        {{ $item->getStudentCount() }}
+                                                    </span>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center "
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Thời gian tham gia">
                                                     Hoạt Động
-                                                    <span
-                                                        class="badge border border-primary text-primary ">{{ $item->getActiveDuration() }}</span>
+                                                    <span class="badge border border-primary text-primary ">
+                                                        {{ $item->getActiveDuration() }}
+                                                    </span>
                                                 </li>
                                             </ul>
-                                            <div class="d-grid mb-3">
-                                                <a href="trainer-profile.html" class="btn btn-primary">Xem Chi Tiết</a>
+                                            <div class="row d-flex justify-content-around">
+                                                {{-- xem --}}
+                                                <a href="{{ route('admin.staff.info', ['id' => $item->id]) }}"
+                                                    class="btn btn-success col-5" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" data-bs-title="Xem Chi Tiết"><i
+                                                        class="ri-eye-fill"></i></a>
+                                                {{-- sua --}}
+                                                <a href="{{ route('admin.staff.update', ['id' => $item->id]) }}"
+                                                    class="btn btn-primary col-5" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" data-bs-title="Chỉnh Sửa"><i
+                                                        class="ri-edit-line"></i></a>
                                             </div>
                                             <!-- Rating -->
                                             <div class="mt-3">

@@ -18,7 +18,8 @@ return new class extends Migration {
             $table->text('avatar')->default('no-image.jpg');
             $table->tinyInteger('gender')->default(3);
             $table->date('birthday')->nullable();
-            $table->decimal('rating', 3, 1)->nullable()->default(0)->comment('Đánh giá từ 1.0 đến 5.0');
+            $table->text('introduction')->nullable()->comment('Phần giới thiệu về nhân viên');
+            $table->decimal('rating', 2, 1)->nullable()->default(0)->comment('Đánh giá từ 1.0 đến 5.0');
             $table->integer('rating_count')->default(0);
             $table->text('address')->nullable();
             $table->text('phone_number')->nullable();

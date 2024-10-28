@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Staff;
 use App\Models\User;
 
+
 class AccountsController extends Controller
 {
     // trang nhân viên
@@ -15,6 +16,21 @@ class AccountsController extends Controller
         $data = Staff::all();
         return view('backend/accounts/staff_accounts', compact('data'));
     }
+    public function staff_info($id)
+    {
+        $data = Staff::where('id', $id)->first();
+        $age = $data->getAgeFromBirthday();
+
+        return view('backend/accounts/info_staff', compact('data', 'age'));
+    }
+    public function staff_update($id)
+    {
+        $staffId = $id;
+        return view('backend/accounts/update_staff', compact('staffId'));
+    }
+
+
+
     // trang tài khoản
     public function customer_account()
     {

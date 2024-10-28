@@ -23,6 +23,13 @@ class Workout_Package extends Model
         'status',
     ];
 
+    // Hàm lấy số lượng học viên dựa trên bảng order
+    public function getStudentCount()
+    {
+        return $this->orders()->count();
+    }
+
+
     public function orders()
     {
         return $this->hasMany(Order::class, 'workout_package_id');
@@ -31,5 +38,12 @@ class Workout_Package extends Model
     public function staff()
     {
         return $this->belongsTo(Staff::class, 'staff_id');
+    }
+
+    public function exercises()
+    {
+        return $this->belongsToMany(Exercise::class, 'package_exercises')
+                    ->withPivot('day_number', 'sequence', 'is_day_off')
+                    ->withTimestamps();
     }
 }
