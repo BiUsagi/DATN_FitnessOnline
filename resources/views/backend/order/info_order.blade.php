@@ -31,7 +31,7 @@
                                         <p class="mb-2">
                                             Đơn hàng số. - <span class="text-danger"> #{{ $data->id }}</span>
                                         </p>
-                                        <p class="mb-2"><span id="currentMonth"></span>2024</p>
+                                        <p class="mb-2"><span id="currentMonth"></span>{{ $data->created_at }}</p>
                                         <span class="badge bg-success">Thành Công</span>
                                     </div>
                                 </div>
