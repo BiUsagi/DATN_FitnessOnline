@@ -83,6 +83,7 @@ Route::prefix('admin')->group(function () {
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
+    Route::get('/package', [StatisticalController::class, 'package'])->name('admin.package');
 
 
     // marketing - tiếp thị

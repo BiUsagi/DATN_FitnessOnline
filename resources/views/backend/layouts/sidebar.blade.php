@@ -171,11 +171,8 @@
                         class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thống kê doanh thu</span>
                     </a>
-                    <!-- <a href="{{ route('admin.statistical') }}" class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Thống kê khách hàng</span> -->
-                    </a>
-                    <a href="{{ route('admin.statistical') }}"
-                        class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.package') }}"
+                        class="{{ Request::is('admin/package*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thống kê gói tập</span>
                     </a>
                 </li>
