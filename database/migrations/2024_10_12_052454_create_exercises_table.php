@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->id();                       // Khóa chính
             $table->foreignId('pt_id')          // Khóa ngoại liên kết đến huấn luyện viên
                   ->constrained('staff')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade')
+                  ->nullable();
             $table->string('name');             // Tên bài tập
             $table->text('description')->nullable(); // Mô tả bài tập
             $table->integer('sets');             // Số hiệp

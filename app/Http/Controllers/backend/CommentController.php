@@ -14,4 +14,8 @@ class CommentController extends Controller
     {
         return view('backend/comments/index');
     }
+    public function ReportedComments()
+    {
+        return view('backend/comments/list-report');
+    }
 }

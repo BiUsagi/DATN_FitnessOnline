@@ -40,4 +40,8 @@ class WorkoutPackagesController extends Controller
 
         return redirect()->back();
     }
+
+    public function workout_hub(){
+        return view('backend/workout_hub/index');
+    }
 }

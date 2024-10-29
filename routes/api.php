@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/workout_package', [Workout_PackageController::class, 'index']);
     Route::post('/workout_package', [Workout_PackageController::class, 'create_']);
     Route::post('/workout_package/{id}', [Workout_PackageController::class, 'update_']);
+    Route::delete('/workout_package/{id}', [Workout_PackageController::class, 'delete']);
     Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
 
     //get exercise from package_exercise
@@ -59,6 +60,8 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/comments', [CommentController::class, 'index'])->name('api.admin.comments');
     Route::get('/comments/{id}', [CommentController::class, 'show']);
     Route::delete('/comments/{id}', [CommentController::class, 'delete']);
+    Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments');
+
 
 
 
