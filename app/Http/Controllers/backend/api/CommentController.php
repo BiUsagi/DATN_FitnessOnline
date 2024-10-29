@@ -17,6 +17,7 @@ class CommentController extends Controller
     {
         $comments = Comment::with('user','posts')
         ->whereNull('rep')
+        ->where('report', false)
         ->get()
         ->map(function ($comment) {
             return [
@@ -90,7 +91,7 @@ class CommentController extends Controller
     public function ReportedComments()
     {
         // Giả sử 'reported' là một cột boolean trong bảng comments
-        $reportedComments = Comment::where('report', true)
+        $reportedComments = Comment::where('report', !null)
         ->get()
         ->map(function ($comment) {
             return [

@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('exercise_id'); // Khóa ngoại đến bảng exercises
             $table->unsignedBigInteger('user_id'); // Khóa ngoại đến bảng users
             $table->unsignedBigInteger('staff_id'); // Khóa ngoại đến bảng staff
-            $table->unsignedInteger('rep');
+            $table->integer('rep')->nullable();
             $table->text('content');
             $table->timestamps();
 

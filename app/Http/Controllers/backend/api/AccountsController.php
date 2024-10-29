@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\backend\api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\backend\AccountRequest;
+use App\Http\Requests\backend\CustomerRequest;
 use App\Models\Staff;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class AccountsController extends Controller
         return response()->json($user);
     }
 
-    public function updateU(Request $request, $id)
+    public function updateU(CustomerRequest $request, $id)
     {
         // Tìm người dùng theo ID
         $user = User::find($id);
