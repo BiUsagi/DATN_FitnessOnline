@@ -25,22 +25,22 @@
                 
                             <div class="col-12">    
                                 <label for="inputNanme4" class="form-label-customize">Tên gói tập <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="tengoitap" value="{{ $update_id->package_name }}">
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="package_name" value="{{ $update_id->package_name }}">
                             </div>
 
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(* Ngày)</span></label>
-                                <input type="text" class="form-control-customize " id="inputNanme4" name="thoigian" value="{{ $update_id->duration_days }}">
+                                <input type="text" class="form-control-customize " id="inputNanme4" name="duration_days" value="{{ $update_id->duration_days }}">
                             </div>
 
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Giá tiền gói tập <span class="note">(* VND)</span></label>
-                                <input type="number" class="form-control-customize " id="inputNanme4" name="giatien" value="{{ $update_id->price }}">
+                                <input type="number" class="form-control-customize " id="inputNanme4" name="price" value="{{ $update_id->price }}">
                             </div>
                             
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
-                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="mota">{{ $update_id->description}}</textarea>
+                                <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="description">{{ $update_id->description}}</textarea>
                             </div>
 
 
@@ -170,7 +170,7 @@
             formData.append('description', description);
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/admin/workout_package',
+                url: 'http://127.0.0.1:8000/api/admin/workout_package/{{$update_id->id}}',
                 type: 'POST',
                 data: formData,
                 contentType: false, 
