@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="title-top d-flex justify-content-between">
-                            <h5 class="card-title text-uppercase">Danh sách câu hỏi</h5>
+                            <h5 class="card-title text-uppercase">Danh sách bình luận</h5>
                         </div>
 
                         <!-- Table with stripped rows -->
@@ -33,6 +33,7 @@
                                     <th>Blog</th>
                                     <th>Ngày đăng</th>
                                     <th class="text-center">Chi tiết</th>
+                                    <th></th>
                                 </tr>
 
                             </thead>
@@ -72,7 +73,9 @@
  section('custom_js') -->
 <script>
     //Show bình luận cha 
-    $.get ('http://127.0.0.1:8000/api/admin/comments', function (res) {
+    reload();
+    function reload(){
+        $.get ('http://127.0.0.1:8000/api/admin/comments', function (res) {
         let data = res;
         console.log(res);
 
@@ -108,6 +111,7 @@
         });
         $('#list-items').html(comments);
     })
+    }
 
 
     // SHOW BÌNH LUẬN CON
@@ -189,25 +193,20 @@ function deleteComment(id) {
             $.ajax({
                 url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
                 type: 'DELETE',
+                
+                
                 success: function (response) {
                     // Xử lý thành công
                     Swal.fire({
                         title: 'Thành công!',
                         text: 'Xóa bình luận thành công!',
                         icon: 'success'
-                    }).then(() => {
-                        // Tải lại trang để cập nhật danh sách bình luận
-                        location.reload();
-                    });
+
+                    })
+                reload();
+                    
                 },
-                error: function (error) {
-                    console.log(error);
-                    Swal.fire({
-                        title: 'Có lỗi xảy ra!',
-                        text: 'Vui lòng thử lại sau.',
-                        icon: 'error'
-                    });
-                }
+
             });
         }
     });

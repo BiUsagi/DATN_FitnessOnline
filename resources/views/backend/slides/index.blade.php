@@ -47,10 +47,10 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         {{-- Nút sửa --}}
-                                        {{-- <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a> --}}
-                                        <button type="button" class="btn btn-warning text-white" onclick="update({{ $slide->id }})">
+                                        <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a>
+                                        {{-- <button type="button" class="btn btn-warning text-white" onclick="update({{ $slide->id }})">
                                             <i class="ri-edit-box-line"></i>
-                                        </button>
+                                        </button> --}}
                                         {{-- Nút kích hoạt modal với data-id --}}
                                         <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $slide->id }})">
                                             <i class="ri-delete-bin-5-line"></i>
@@ -72,29 +72,13 @@
                                             cancelButtonText: 'Hủy'
                                         }).then((result) => {
                                             if (result.isConfirmed) {
+                                                Swal.fire({
+                                                title: "Thành công!",
+                                                text: "Xóa thành công!",
+                                                icon: "success"
+                                            });
                                                 // Nếu xác nhận, chuyển hướng đến trang xóa
                                                 window.location.href = "{{ url('admin/slides/xoa/') }}/" + slideId;
-                                                
-                                            }
-                                        });
-                                    }
-
-
-                                    // THÔNG BÁO NÚT SỬA
-                                    function update(slideId) {
-                                        Swal.fire({
-                                            title: 'Bạn có chắc chắn muốn sửa không?',
-                                            text: "Hành động này không thể hoàn tác!",
-                                            icon: 'warning',
-                                            showCancelButton: true,
-                                            confirmButtonColor: '#3085d6',
-                                            cancelButtonColor: '#d33',
-                                            confirmButtonText: 'Sửa!',
-                                            cancelButtonText: 'Hủy'
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                // Nếu xác nhận, chuyển hướng đến trang xóa
-                                                window.location.href = "{{ url('admin/slides/update/') }}/" + slideId;
                                             }
                                         });
                                     }
@@ -114,4 +98,3 @@
 </section>
 </main>
 @endsection
-{{-- <a href="{{ route('admin.slide.xoa', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a> --}}
