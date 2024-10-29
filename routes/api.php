@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\api\Workout_PackageController;
 use App\Http\Controllers\backend\api\AccountsController;
 use App\Http\Controllers\backend\api\VoucherController;
 use App\Http\Controllers\backend\api\CommentController;
+use App\Http\Controllers\backend\api\PostController;
 
 
 Route::get('/user', function (Request $request) {
@@ -62,5 +63,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::delete('/comments/{id}', [CommentController::class, 'delete']);
 
 
-
+    //Post
+    Route::get('/post', [PostController::class, 'index']);
+    Route::post('/post', [PostController::class, 'create_']);
 });
