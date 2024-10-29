@@ -15,6 +15,13 @@
         </li>
         <!-- End Dashboard Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed {{ Request::is('admin/supportexercises*') ? 'active' : '' }}"
+                href="{{ route('admin.supportexercises') }} ">
+                <i class="bi bi-headset"></i><span>Chăm sóc khách hàng</span>
+            </a>
+        </li><!-- End hỗ trợ -->
+
 
         <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/workout_package*') ? 'active' : '' }}"
@@ -106,12 +113,7 @@
         </li><!-- End bình luận -->
 
 
-        <li class="nav-item">
-            <a class="nav-link collapsed {{ Request::is('admin/supportexercises*') ? 'active' : '' }}"
-                href="{{ route('admin.supportexercises') }} ">
-                <i class="bi bi-headset"></i><span>Chăm sóc khách hàng</span>
-            </a>
-        </li><!-- End hỗ trợ -->
+        
 
         <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/staff*') || Request::is('admin/customer*') ? 'active' : '' }}"
