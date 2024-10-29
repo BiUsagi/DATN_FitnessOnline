@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\api\Workout_PackageController;
 use App\Http\Controllers\backend\api\AccountsController;
 use App\Http\Controllers\backend\api\VoucherController;
 use App\Http\Controllers\backend\api\CommentController;
+use App\Http\Controllers\backend\api\PostController;
 use App\Http\Controllers\Backend\api\Workout_hubController;
 
 
@@ -70,5 +71,7 @@ Route::group(['prefix' => 'admin',], function () {
 
 
 
-
+    //Post
+    Route::get('/post', [PostController::class, 'index']);
+    Route::post('/post', [PostController::class, 'create_']);
 });

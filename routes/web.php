@@ -99,7 +99,7 @@ Route::prefix('admin')->group(function () {
 
     // posts - bài viết
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
-    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin-post.create');
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin.post-create');
 
     //component 
     Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
