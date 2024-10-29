@@ -120,6 +120,8 @@ Route::prefix('admin')->group(function () {
 
     //comments
     Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');//Danh sách giao diện
+    Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments');
+
     
     //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
 

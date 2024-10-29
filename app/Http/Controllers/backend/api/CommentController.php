@@ -87,5 +87,22 @@ class CommentController extends Controller
     return response()->json(['message' => 'Bình luận không tồn tại.'], 404);
 }
 
-    
+    public function ReportedComments()
+    {
+        // Giả sử 'reported' là một cột boolean trong bảng comments
+        $reportedComments = Comment::where('report', true)
+        ->get()
+        ->map(function ($comment) {
+            return [
+                'id' => $comment->id,
+                'content' => $comment->content,
+                'user_name' => $comment->user->user_name ?? 'N/A',
+                'avatar' => $comment->user->avatar ?? 'N/A',
+                'title'=> $comment->posts->title ?? 'N/A' ,
+                'created_at' => $comment->created_at,
+            ];
+        });
+        return response()->json($reportedComments);
+    }
+
 }
