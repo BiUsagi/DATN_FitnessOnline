@@ -35,4 +35,5 @@ class Order extends Model
     {
         return $this->user ? $this->user->user_name : 'N/A';
     }
+
 }

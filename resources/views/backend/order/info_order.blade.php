@@ -32,15 +32,13 @@
                                             Đơn hàng số. - <span class="text-danger"> #{{ $data->id }}</span>
                                         </p>
                                         <p class="mb-2"><span id="currentMonth"></span>2024</p>
-                                        <span class="badge bg-success">Paid</span>
+                                        <span class="badge bg-success">Thành Công</span>
                                     </div>
                                 </div>
                                 <div class="col-12 mb-5"></div>
                             </div>
                             <!-- Row end -->
-
-                            <!-- Row start -->
-                            <div class="row justify-content-between">
+                            {{-- <div class="row justify-content-between">
                                 <div class="col-lg-6 col-12">
                                     <h6 class="fw-semibold">Employee Details :</h6>
                                     <p class="m-0">
@@ -61,8 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3"></div>
-                            </div>
-                            <!-- Row end -->
+                            </div> --}}
 
                             <!-- Row start -->
                             <div class="row">
@@ -72,49 +69,43 @@
                                             <table class="table m-0 ">
                                                 <thead>
                                                     <tr>
-                                                        <th>Details</th>
-                                                        <th>No. Of Working Days</th>
-                                                        <th>Basic</th>
-                                                        <th>HRA</th>
-                                                        <th>Bonus</th>
-                                                        <th>Tax</th>
+                                                        <th>Gói Tập</th>
+                                                        {{-- <th>Nhân Viên</th> --}}
+                                                        <th>Khách Hàng</th>
+                                                        <th>Giá Tiền</th>
+                                                        <th>Giảm Giá</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
                                                         <td>
                                                             <p>
-                                                                Salary details in detail.
+                                                                {{ $data->getWorkoutPackageName() }}
                                                             </p>
                                                         </td>
-                                                        <td>25</td>
+                                                        <td>{{ $data->getUserName() }}</td>
                                                         <td>
-                                                            <h6>$5000</h6>
+                                                            <h6>{{ $data->price }}</h6>
                                                         </td>
+
                                                         <td>
-                                                            <h6>$2000</h6>
-                                                        </td>
-                                                        <td>
-                                                            <h6>$500</h6>
-                                                        </td>
-                                                        <td>
-                                                            <h6>$300</h6>
+                                                            <h6>0</h6>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="4">&nbsp;</td>
+                                                        <td colspan="2">&nbsp;</td>
                                                         <td>
-                                                            <p>Subtotal</p>
-                                                            <p>Deductions</p>
-                                                            <h5 class="text-primary">Earnings</h5>
+                                                            <p>Tồng Thu</p>
+                                                            <p>Giảm Giá</p>
+                                                            <h5 class="text-primary">Thanh Toán</h5>
                                                         </td>
                                                         <td>
-                                                            <p>$7800.00</p>
-                                                            <p>$300.00</p>
-                                                            <h5 class="text-primary">$7500.00</h5>
+                                                            <p>{{ $data->price }}</p>
+                                                            <p>0</p>
+                                                            <h5 class="text-primary">{{ $data->price }}</h5>
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    {{-- <tr>
                                                         <td colspan="6">
                                                             <h6 class="text-info">Importannt Note:</h6>
                                                             <p class="small m-0">
@@ -128,7 +119,7 @@
                                                                 so just ask!
                                                             </p>
                                                         </td>
-                                                    </tr>
+                                                    </tr> --}}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -138,14 +129,14 @@
                             <!-- Row end -->
 
                             <!-- Row start -->
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-sm-12 col-12">
                                     <div class="d-flex justify-content-end gap-2">
                                         <button class="btn btn-outline-secondary">
-                                            Download
+                                            Tải xuống
                                         </button>
                                         <button class="btn btn-primary">
-                                            Print
+                                            In ra
                                         </button>
                                     </div>
                                 </div>
