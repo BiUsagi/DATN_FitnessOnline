@@ -79,12 +79,18 @@ header .header-block{
     justify-content: space-between;
     border-bottom: 1px solid #dedfe0;
     color: #333;
+    cursor: pointer;
+}
+#main #sidebar .list-days .box-day.active-box-day {
+    background-color: #1face1 !important;
+    color: #333 !important;
 }
 
 #main #sidebar .list-days .box-day:hover{
     background-color: #1face1;
     color: #333;
 }
+
 
 #main #sidebar .list-days .box-day .info p{
     font-size: 17px;
@@ -243,6 +249,13 @@ header .header-block{
     color: #fff;
     transform: scale(1); 
     transition: all 0.2s linear;
+}
+
+#main #content .list-exercise .box-exercise .img-exercise video{
+    width: 250px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 #main #content .list-exercise .box-exercise .img-exercise img{
@@ -487,4 +500,11 @@ video {
 .container .modal .col-right .btn-action .btn:hover{
     background-color: #333;
     color: #fff;
+}
+
+.no-data{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    font-style: italic;
 }
