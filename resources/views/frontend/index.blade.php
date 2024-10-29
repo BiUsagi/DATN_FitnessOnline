@@ -32,7 +32,7 @@
                 @foreach($slides->take(3) as $slide)
                     <div class="swiper-slide">
                         <div class="banner-slide">
-                            <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/' . $slide->image) }}" alt="banner-slide" width="550" height="700">
+                            <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/' . $slide->image) }}" alt="banner-slide" height="600">
                             <div class="banner-text">
                                 <h2 data-swiper-parallax="-800"style="font-size: 40px">{{$slide->description}}</h2>
                                 <h3 data-swiper-parallax="-1000" style="font-size: 75px">{{$slide->name}}</h3>

@@ -71,7 +71,7 @@
                 <tr>
                     <td class="text-center align-middle">${sp.id}</td>
                     <td class="align-middle">
-                        <img src="assets/backend/img/${sp.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                        <img src="assets/backend/img/accounts/${sp.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
                         ${sp.user_name}
                     </td>
                     <td class="align-middle text-truncate" style="max-width: 300px;">${sp.content}</td>
