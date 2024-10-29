@@ -183,9 +183,9 @@ function deleteComment(id) {
         text: "Hành động này không thể hoàn tác!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Có, xóa!',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Xóa!',
         cancelButtonText: 'Hủy'
     }).then((result) => {
         if (result.isConfirmed) {

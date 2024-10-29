@@ -2,7 +2,7 @@
 @section('main')
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Quản lý bài viết</h1>
+    <h1>Quản lý giao diện </h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -47,7 +47,7 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         {{-- Nút sửa --}}
-                                        <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white"><i class="ri-edit-box-line"></i></a>
+                                        <a href="{{ route('admin.slide.update', $slide->id) }}" class="btn btn-warning text-white "><i class="ri-edit-box-line"></i></a>
                                         {{-- <button type="button" class="btn btn-warning text-white" onclick="update({{ $slide->id }})">
                                             <i class="ri-edit-box-line"></i>
                                         </button> --}}
@@ -66,9 +66,9 @@
                                             text: "Hành động này không thể hoàn tác!",
                                             icon: 'warning',
                                             showCancelButton: true,
-                                            confirmButtonColor: '#3085d6',
-                                            cancelButtonColor: '#d33',
-                                            confirmButtonText: 'Xóa!',
+                                            confirmButtonColor: '#d33',
+                                            cancelButtonColor: '#3085d6',
+                                            confirmButtonText: 'Xóa',
                                             cancelButtonText: 'Hủy'
                                         }).then((result) => {
                                             if (result.isConfirmed) {

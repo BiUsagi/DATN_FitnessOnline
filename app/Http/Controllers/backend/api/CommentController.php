@@ -17,7 +17,7 @@ class CommentController extends Controller
     {
         $comments = Comment::with('user','posts')
         ->whereNull('rep')
-        ->where('report', false)
+        ->where('report', null)
         ->get()
         ->map(function ($comment) {
             return [
