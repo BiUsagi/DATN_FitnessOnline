@@ -27,6 +27,7 @@ class ExerciseController extends Controller
             $file->move('uploads/video_exercise', $filename);
             $exercise->video_url = $filename;
         }
+        
 
         $exercise->save();
 

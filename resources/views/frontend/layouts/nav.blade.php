@@ -33,23 +33,30 @@
                                 </li>
                                 <li class="nav-item">
                                 @if(Auth::check())
-                                    <span class="nav-link btn">{{ Auth::user()->user_name }}</span> <!-- Hiển thị tên đăng nhập -->
+                              
+                                    <span class="nav-link btn">
+                                    {{ Auth::user()->user_name }}</span> <!-- Hiển thị tên đăng nhập -->
                                     <!-- <a href="{{ route('logout.index') }}" class="nav-link btn">Đăng xuất</a> -->
                                     <ul class="dropdown-menu" aria-labelledby="username">
-                                        <li>
-                                            <form action="{{ route('logout.index') }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                <button type="submit" class="dropdown-item">Đăng xuất</button>
-                                            </form>
+                                        <li class="text-center">
+                                            <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle w-25 ">
                                         </li>
                                         <li>
-                                            <a href="{{ route('info.index') }}">Thông tin</a>
+                                            <a href="{{ route('info.index') }}" class="dropdown-item text-white">Thông tin</a>
+                                        </li>
+                                        <li>
+                                            <form action="{{ route('logout.index') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item text-white">Đăng xuất</button>
+                                            </form>
                                         </li>
                                     </ul>
                                 @else
-                                    <a  id="btn-login" class="nav-link btn">Đăng nhập</a> <!-- Hiển thị nút đăng nhập -->
+                                    <a  id="btn-login" class="nav-link btn">Đăng nhập</a> 
                                 @endif
                                 </li>
+                         
+              
                             </ul>
                         </div>
                     </nav>
@@ -57,6 +64,7 @@
             </div>
         </div>
     </div>
+    
     <script>
     $("#btn-login").click(function() {
     var currentUrl = window.location.href;

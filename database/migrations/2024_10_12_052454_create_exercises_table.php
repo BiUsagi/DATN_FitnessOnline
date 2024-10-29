@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->integer('sets');             // Số hiệp
             $table->integer('reps');             // Số lần lặp lại
             $table->string('video_url')->nullable(); // URL video hướng dẫn
+            $table->string('video_url_second')->nullable(); // URL video hướng dẫn
             $table->integer('status')->default(0);
             $table->timestamps();                // Thời gian tạo và cập nhật
         });
