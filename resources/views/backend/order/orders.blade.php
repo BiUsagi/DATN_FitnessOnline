@@ -1,62 +1,67 @@
 @extends('backend/layouts/app-admin')
 @section('main')
-<main id="main" class="main">
+    <main id="main" class="main">
 
-    <div class="pagetitle">
-        <h1>Data Tables</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active">Data</li>
-            </ol>
-        </nav>
-    </div><!-- End Page Title -->
+        <div class="pagetitle">
+            <h1>Đơn Hàng</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item">Đơn hàng</li>
+                    <li class="breadcrumb-item active">Danh sách đơn hàng</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
 
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
 
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Datatables</h5>
-                        
-                        <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <b>N</b>ame
-                                    </th>
-                                    <th>Ext.</th>
-                                    <th>City</th>
-                                    <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                    <th>Completion</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title mt-3">Danh Sách Đơn Hàng</h5>
 
-                                @for ($i = 1; $i<=100; $i++)
-                                <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>9958</td>
-                                    <td>Curicó</td>
-                                    <td>2005/02/11</td>
-                                    <td>37%</td>
-                                </tr>
-                                @endfor
-                                
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Gói Tập</th>
+                                        <th>Khách Hàng</th>
+                                        <th>Giá Tiền (VND)</th>
+                                        <th data-type="date text-center">Ngày Mua</th>
+                                        <th class=" text-center">Hành Động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                            </tbody>
-                        </table>
-                        <!-- End Table with stripped rows -->
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            <td class="align-middle">{{ $item->id }}</td>
+                                            <td class="align-middle">{{ $item->getWorkoutPackageName() }}</td>
+                                            <td class="align-middle">{{ $item->getUserName() }}</td>
+                                            <td class="align-middle">{{ $item->price }}</td>
+                                            <td class="align-middle">{{ $item->created_at }}</td>
+                                            <td class="align-middle text-center">
+                                                <a href="{{ route('admin.info.orders', ['id' => $item->id]) }}"
+                                                    class="btn btn-outline-success" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" data-bs-title="Xem Chi Tiết">
+                                                    <i class="ri-eye-fill"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+
+                        </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-</main><!-- End #main -->
+    </main><!-- End #main -->
 @endsection

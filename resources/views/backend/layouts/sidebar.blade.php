@@ -149,10 +149,10 @@
                         class="{{ Request::is('admin/orders*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Đơn hàng</span>
                     </a>
-                    <a href="{{ route('admin.userorder') }}"
+                    {{-- <a href="{{ route('admin.userorder') }}"
                         class="{{ Request::is('admin/userorder*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Khách hàng</span>
-                    </a>
+                    </a> --}}
                 </li>
             </ul>
         </li><!-- End order -->
