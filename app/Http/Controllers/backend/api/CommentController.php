@@ -69,23 +69,40 @@ class CommentController extends Controller
 
     // XÓA BÌNH LUẬN
     public function delete($id) 
-    {
-        $comment = Comment::find($id);
-        
-        if ($comment) {
-            // Xóa bình luận con nếu có
-            foreach ($comment->replies as $reply) {
-                $reply->delete();
-            }
-            
-            // Xóa bình luận cha
-            $comment->delete();
-
-            return response()->json(['message' => 'Xóa bình luận thành công.'], 200);
+{
+    $comment = Comment::with('replies')->find($id);
+    
+    if ($comment) {
+        // Xóa bình luận con nếu có
+        foreach ($comment->replies as $reply) {
+            $reply->delete();
         }
+        
+        // Xóa bình luận cha
+        $comment->delete();
 
-        return response()->json(['message' => 'Bình luận không tồn tại.'], 404);
+        return response()->json(['message' => 'Xóa bình luận thành công.'], 200);
     }
 
-    
+    return response()->json(['message' => 'Bình luận không tồn tại.'], 404);
+}
+
+    public function ReportedComments()
+    {
+        // Giả sử 'reported' là một cột boolean trong bảng comments
+        $reportedComments = Comment::where('report', true)
+        ->get()
+        ->map(function ($comment) {
+            return [
+                'id' => $comment->id,
+                'content' => $comment->content,
+                'user_name' => $comment->user->user_name ?? 'N/A',
+                'avatar' => $comment->user->avatar ?? 'N/A',
+                'title'=> $comment->posts->title ?? 'N/A' ,
+                'created_at' => $comment->created_at,
+            ];
+        });
+        return response()->json($reportedComments);
+    }
+
 }

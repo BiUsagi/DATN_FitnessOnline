@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="components-accordion.html">
+                    <a href="{{ route('api.admin.report-comments') }}">
                         <i class="bi bi-circle"></i><span>Danh sách đen</span>
                     </a>
                 </li>

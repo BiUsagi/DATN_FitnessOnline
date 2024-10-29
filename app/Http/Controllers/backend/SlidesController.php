@@ -66,7 +66,7 @@ class SlidesController extends Controller
     function xoa($id){
         $t= Slides::find($id);
         $t -> delete();
-        toastr()->success('Xóa thành công!');   
+        // toastr()->success('Xóa thành công!');   
         return redirect()->route('admin.slides');
     }
     function update($id){
