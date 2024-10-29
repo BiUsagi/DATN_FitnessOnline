@@ -39,8 +39,12 @@
                                         <li class="text-center">
                                             <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle w-25 ">
                                         </li>
-                                        <p class="name">{{ Auth::user()->user_name }}</p>
+                                        <p class="name mb-0">{{ Auth::user()->user_name }}</p>
+                                        <p class="text-center text-bg-info"><i id="money"></i><i> đồng</i> </p>
                                         <hr>
+                                        <li class="text">
+                                            <a href="{{ route('wallets.addmoney') }}" class="dropdown-item text-white">Nạp tiền</a>
+                                        </li>
                                         <li class="text">
                                             <a href="{{ route('info.index') }}" class="dropdown-item text-white">Thông Tin Tài Khoản</a>
                                         </li>
@@ -71,6 +75,16 @@
 
     // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
         window.location.href = "/login?redirect_url=" + encodeURIComponent(currentUrl);
+    });
+
+
+    var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
+
+    $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function (res) {
+        let data = res;
+        var formattedBalance = data.balance.toLocaleString('vi-VN'); // Định dạng theo ngôn ngữ Việt Nam
+        $('#money').html(formattedBalance);
+
     });
     </script>
     

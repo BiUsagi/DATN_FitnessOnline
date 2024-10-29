@@ -3,6 +3,8 @@
 use App\Models\voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+//backend
 use App\Http\Controllers\backend\api\PackageExercisesController;
 use App\Http\Controllers\backend\api\ExerciseController;
 use App\Http\Controllers\backend\api\SupportExercisesController;
@@ -12,6 +14,10 @@ use App\Http\Controllers\backend\api\VoucherController;
 use App\Http\Controllers\backend\api\CommentController;
 use App\Http\Controllers\backend\api\PostController;
 use App\Http\Controllers\Backend\api\Workout_hubController;
+
+
+//frontend
+use App\Http\Controllers\frontend\api\WalletsController;
 
 
 
@@ -74,4 +80,17 @@ Route::group(['prefix' => 'admin',], function () {
     //Post
     Route::get('/post', [PostController::class, 'index']);
     Route::post('/post', [PostController::class, 'create_']);
+
+
+
+
+
+ 
+
+
+});
+
+
+Route::group(['prefix' => 'web',], function () {
+    Route::get('/wallets/{id}', [WalletsController::class, 'index']);
 });

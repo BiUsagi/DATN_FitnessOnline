@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\WalletsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\InfoController;
 use App\Http\Controllers\backend\AdminController;
@@ -39,6 +40,8 @@ Route::post('/register', [LoginController::class, 'register'])->name('register.i
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
+Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.addmoney'); //link nạp tiền
+
 
 
 
