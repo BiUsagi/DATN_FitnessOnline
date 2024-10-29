@@ -15,7 +15,6 @@ class Order extends Model
         'price',
     ];
 
-
     public function workoutPackage()
     {
         return $this->belongsTo(Workout_Package::class, "workout_package_id");
@@ -25,4 +24,16 @@ class Order extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    // Hàm lấy tên khóa học
+    public function getWorkoutPackageName()
+    {
+        return $this->workoutPackage ? $this->workoutPackage->package_name : 'N/A';
+    }
+
+    // Hàm lấy tên khách hàng
+    public function getUserName()
+    {
+        return $this->user ? $this->user->user_name : 'N/A';
+    }
+
 }

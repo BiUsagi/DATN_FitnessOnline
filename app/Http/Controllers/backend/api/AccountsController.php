@@ -19,7 +19,7 @@ class AccountsController extends Controller
         return response()->json($user);
     }
 
-    public function updateU(CustomerRequest $request, $id)
+    public function updateU(Request $request, $id)
     {
         // Tìm người dùng theo ID
         $user = User::find($id);

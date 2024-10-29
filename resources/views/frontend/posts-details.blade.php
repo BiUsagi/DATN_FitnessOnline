@@ -28,7 +28,7 @@
                             <div class="blog-detail">
                                 <div class="blog-desc">
                                     <div class="blog-meta">
-                                        <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>{{$posts->created_at->diffForHumans()}}</span></div>
+                                        <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>{{$posts->created_at}}</span></div>
                                         <div class="date"><img loading='lazy' src="assets/frontend/images/icons/chat.svg"><span>5</span></div>
                                         <div class="date"><img loading='lazy' src="assets/frontend/images/icons/heart.svg"><span>123</span></div>
                                     </div>

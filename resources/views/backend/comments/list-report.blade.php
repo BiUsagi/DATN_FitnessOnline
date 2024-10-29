@@ -3,12 +3,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Quản lí bình luận</h1>
+        <h1>Quản lí bình luận report</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
                 <!-- <li class="breadcrumb-item"></li> -->
-                <li class="breadcrumb-item active">Quản lí bình luận</li>
+                <li class="breadcrumb-item active">Quản lí bình luận Report</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="title-top d-flex justify-content-between">
-                            <h5 class="card-title text-uppercase">Danh sách câu hỏi</h5>
+                            <h5 class="card-title text-uppercase">Danh sách trả lời report</h5>
                         </div>
 
                         <!-- Table with stripped rows -->
@@ -71,7 +71,7 @@
                 <tr>
                     <td class="text-center align-middle">${sp.id}</td>
                     <td class="align-middle">
-                        <img src="assets/backend/img/${sp.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                        <img src="assets/backend/img/accounts/${sp.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
                         ${sp.user_name}
                     </td>
                     <td class="align-middle text-truncate" style="max-width: 300px;">${sp.content}</td>
@@ -96,9 +96,9 @@ function deleteComment(id) {
         text: "Hành động này không thể hoàn tác!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Có, xóa!',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Xóa!',
         cancelButtonText: 'Hủy'
     }).then((result) => {
         if (result.isConfirmed) {

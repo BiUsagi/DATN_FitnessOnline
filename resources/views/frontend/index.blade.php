@@ -32,7 +32,7 @@
                 @foreach($slides->take(3) as $slide)
                     <div class="swiper-slide">
                         <div class="banner-slide">
-                            <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/' . $slide->image) }}" alt="banner-slide" width="550" height="700">
+                            <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/accounts/' . $slide->image) }}" alt="banner-slide" height="600">
                             <div class="banner-text">
                                 <h2 data-swiper-parallax="-800"style="font-size: 40px">{{$slide->description}}</h2>
                                 <h3 data-swiper-parallax="-1000" style="font-size: 75px">{{$slide->name}}</h3>
@@ -92,7 +92,7 @@
                         @foreach ($PTHot->take(3) as $PT)
                             <div class="col-md-4 f-0">
                                 <div class="team-block">
-                                    <img loading='lazy' src="{{ asset('assets/backend/img/' . $PT->avatar) }}" alt="Coaches" width="210"
+                                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PT->avatar) }}" alt="Coaches" width="210"
                                         height="339">
                                     <h3><span>{{$PT->staff_name}}</span></h3>
                                 </div>
@@ -246,7 +246,7 @@
                                     <h3>{{$top_workout_package->package_name}}</h3>
                                     {{-- <h4>Only for first month</h4> --}}
                                     <p>
-                                        {{$top_workout_package->description}}
+                                        {!!$top_workout_package->description!!}
                                     </p>
                                     <h2>{{$top_workout_package->	price}}</h2>
                                     <a href="contact-us.html" class="btn">Buy Now</a>
@@ -471,7 +471,7 @@
                     @foreach ($AllPT as $PTall)
                         <div class="swiper-slide">
                             <a href="#!" class="slides" aria-label="Slide 1">
-                                <img loading='lazy' src="{{ asset('assets/backend/img/' . $PTall->avatar) }}" alt="Post Image" width="309"
+                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" width="309"
                                     height="309">
                                 <div class="links">
                                     <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">

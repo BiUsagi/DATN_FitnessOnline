@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
-class voucher_package extends Model
+class Voucher_package extends Model
 {
 
     use HasFactory;

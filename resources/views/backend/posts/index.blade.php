@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <div class="title-top d-flex justify-content-between">
                                 <h5 class="card-title text-uppercase">Danh sách bài viết</h5>
-                                <a href="{{route('admin.create')}}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm bài viết</a>
+                                <a href="{{ route('admin.post-create') }}" class="btn-customize"><i class="bi bi-plus-lg"></i> Thêm bài viết</a>
                             </div>
                             
                             <!-- Table with stripped rows -->
@@ -28,26 +28,18 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            <b>N</b>ame
+                                            ID
                                         </th>
-                                        <th>Ext.</th>
-                                        <th>City</th>
-                                        <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                        <th>Completion</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tóm tắt</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Nội dung</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-    
-                                    @for ($i = 1; $i<=100; $i++)
-                                    <tr>
-                                        <td>Unity Pugh</td>
-                                        <td>9958</td>
-                                        <td>Curicó</td>
-                                        <td>2005/02/11</td>
-                                        <td>37%</td>
-                                    </tr>
-                                    @endfor
-                                    
+                              
+                                <tbody class="show-data">
+                                  
     
                                 </tbody>
                             </table>
@@ -61,4 +53,36 @@
         </section>
 
     </main>
+    <script>
+        $.get('http://127.0.0.1:8000/api/admin/post', function(res){
+            let data = res;
+            let returnData = '';
+            data.forEach(item =>{
+            returnData += `
+            <tr>
+                <th scope="row">${item.id}</th>
+                <td>${item.title}</td>
+                <td>${item.description}</td>
+                <td>${item.image}</td>
+                <td>content</td>
+                <td>
+                <a class="btn btn-outline-success" data-bs-placement="top" 
+                data-bs-title="Xem Chi Tiết">
+                    <i class="ri-eye-fill"></i>
+                </a>
+                <a class="btn btn-outline-primary" data-bs-placement="top" 
+                data-bs-title="Xem Chi Tiết">
+                    <i class="ri-edit-line"></i>
+                </a>
+                <a class="btn btn-outline-danger" data-bs-placement="top" 
+                data-bs-title="Xem Chi Tiết">
+                    <i class="ri-error-warning-line"></i>
+                </a>
+                </td>
+            </tr>
+             `;
+            });
+            $('.show-data').html(returnData);
+        });
+    </script>
 @endsection

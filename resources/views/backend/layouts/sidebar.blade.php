@@ -15,6 +15,13 @@
         </li>
         <!-- End Dashboard Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed {{ Request::is('admin/supportexercises*') ? 'active' : '' }}"
+                href="{{ route('admin.supportexercises') }} ">
+                <i class="bi bi-headset"></i><span>Chăm sóc khách hàng</span>
+            </a>
+        </li><!-- End hỗ trợ -->
+
 
         <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/workout_package*') ? 'active' : '' }}"
@@ -75,7 +82,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin-post.create') }}"
+                    <a href="{{ route('admin.post-create') }}"
                         class="{{ Request::is('admin/posts/create') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thêm bài viết</span>
                     </a>
@@ -106,12 +113,7 @@
         </li><!-- End bình luận -->
 
 
-        <li class="nav-item">
-            <a class="nav-link collapsed {{ Request::is('admin/supportexercises*') ? 'active' : '' }}"
-                href="{{ route('admin.supportexercises') }} ">
-                <i class="bi bi-headset"></i><span>Chăm sóc khách hàng</span>
-            </a>
-        </li><!-- End hỗ trợ -->
+        
 
         <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/staff*') || Request::is('admin/customer*') ? 'active' : '' }}"
@@ -149,10 +151,10 @@
                         class="{{ Request::is('admin/orders*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Đơn hàng</span>
                     </a>
-                    <a href="{{ route('admin.userorder') }}"
+                    {{-- <a href="{{ route('admin.userorder') }}"
                         class="{{ Request::is('admin/userorder*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Khách hàng</span>
-                    </a>
+                    </a> --}}
                 </li>
             </ul>
         </li><!-- End order -->

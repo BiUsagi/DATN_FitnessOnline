@@ -80,8 +80,10 @@ Route::prefix('admin')->group(function () {
 
 
     Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
-    
-    
+    //view workout_exercise
+    Route::get('/workout_hub/{id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
+
+
 
 
     // statistical - thống kê
@@ -97,14 +99,12 @@ Route::prefix('admin')->group(function () {
 
     // posts - bài viết
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
-    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin-post.create');
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin.post-create');
 
     //component 
     Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
 
-    // order - đơn hàng
-    Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
-    Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
+
 
 
     //___________________________________ Rin Lít Đờ __________________________ FaKe ____________________________________//
@@ -126,7 +126,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');//Danh sách giao diện
     Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments');
 
-    
+
     //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
 
 
@@ -138,6 +138,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
     Route::get('/staffinfo/{id}', [AccountsController::class, 'staff_info'])->name('admin.staff.info');// Chi tiết nhân viên
     Route::get('/staffupdate/{id}', [AccountsController::class, 'staff_update'])->name('admin.staff.update'); //Cập nhật nhân viên
+
+    // order - đơn hàng
+    Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
+    Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders');
+    Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
+
 });
 
 

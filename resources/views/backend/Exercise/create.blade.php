@@ -76,6 +76,7 @@
                             <input type="file" name="video_url" id="video-input" class="form-control" style="display: none;" accept="video/*" onchange="previewMedia(event)">
                         </div>
                         
+                        
 
                         <div class="btn-add-reset d-flex justify-content-between ms-2 me-2">
                             <input type="submit" class="btn btn-primary mt-3 btn-add-exercise" value="+ Thêm bài tập">
