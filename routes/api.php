@@ -26,9 +26,17 @@ Route::group(['prefix' => 'admin',], function () {
     Route::delete('/exercises/{id}', [ExerciseController::class, 'add']);
 
     //API of workout_exercise
-    Route::post('/workout_package', [Workout_PackageController::class, 'create_']);
     Route::get('/workout_package', [Workout_PackageController::class, 'index']);
+    Route::post('/workout_package', [Workout_PackageController::class, 'create_']);
+    Route::post('/workout_package/{id}', [Workout_PackageController::class, 'update_']);
+    Route::delete('/workout_package/{id}', [Workout_PackageController::class, 'delete']);
     Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
+
+    //get exercise from package_exercise
+    Route::get('get_exercise',[Workout_PackageController::class, 'get_exercises']);
+    Route::post('workout_package/{id}/day/{day}/exercises', [PackageExercisesController::class, 'saveExercises']);
+    Route::get('workout_package/{packageId}/day/{dayNumber}/exercises', [Workout_PackageController::class, 'getExercisesForDay']);
+    Route::get('/api/admin/workout_package/{id}/days', [Workout_PackageController::class, 'getDaysWithExerciseCount']);
 
 
     // account
@@ -49,8 +57,11 @@ Route::group(['prefix' => 'admin',], function () {
     Route::put('/vouchers/{id}', [VoucherController::class, 'update']);
 
     //Comment
-    // Route::get('/comments', [CommentController::class, 'getCommentsAjax'])->name('api.comments.index');
     Route::get('/comments', [CommentController::class, 'index'])->name('api.admin.comments');
+    Route::get('/comments/{id}', [CommentController::class, 'show']);
+    Route::delete('/comments/{id}', [CommentController::class, 'delete']);
+    Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments');
+
 
 
 

@@ -5,24 +5,104 @@ namespace App\Http\Controllers\backend\api;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use App\Models\Post;
 class CommentController extends Controller
 {
+
+
+
+    // SHOW BÌNH LUẬN CHA
     public function index()
     {
-        $comments = Comment::with('user','posts') // Load thông tin user cho mỗi bình luận
+        $comments = Comment::with('user','posts')
+        ->whereNull('rep')
         ->get()
         ->map(function ($comment) {
             return [
                 'id' => $comment->id,
                 'content' => $comment->content,
-                'user_name' => $comment->user->user_name ?? 'N/A', // Lấy tên người dùng
-                'avatar' => $comment->user->avatar ?? 'N/A', // Lấy avatar người dùng
+                'user_name' => $comment->user->user_name ?? 'N/A',
+                'avatar' => $comment->user->avatar ?? 'N/A',
                 'title'=> $comment->posts->title ?? 'N/A' ,
                 'created_at' => $comment->created_at,
             ];
         });
-
     return response()->json($comments);
     }
+
+
+    
+    // SHOW BÌNH LUẬN CON
+    public function show($id)
+    {
+
+        $comment = Comment::with(['user', 'posts', 'replies.user', 'replies.replies.user'])->find($id);
+        // Lấy các phản hồi của bình luận chính
+        $replies = Comment::with('user')
+            ->where('rep', $id)
+            ->get()
+            ->map(function ($reply) {
+                return [
+                    'id' => $reply->id,
+                    'content' => $reply->content,
+                    'user_name' => $reply->user->user_name ?? 'N/A',
+                    'avatar' => $reply->user->avatar ?? 'N/A',
+                    'created_at' => $reply->created_at,
+                ];
+            });
+
+        // Kết hợp dữ liệu bình luận chính và các phản hồi
+        $result = [
+            'id' => $comment->id,
+            'content' => $comment->content,
+            'title' => $comment->posts->title ?? 'N/A',
+            'user_name' => $comment->user->user_name ?? 'N/A',
+            'user_avatar' => $comment->user->avatar ?? 'N/A',
+            'created_at' => $comment->created_at,
+            'rep' => $replies,
+        ];
+
+        return response()->json($result);
+    }
+
+
+    // XÓA BÌNH LUẬN
+    public function delete($id) 
+{
+    $comment = Comment::with('replies')->find($id);
+    
+    if ($comment) {
+        // Xóa bình luận con nếu có
+        foreach ($comment->replies as $reply) {
+            $reply->delete();
+        }
+        
+        // Xóa bình luận cha
+        $comment->delete();
+
+        return response()->json(['message' => 'Xóa bình luận thành công.'], 200);
+    }
+
+    return response()->json(['message' => 'Bình luận không tồn tại.'], 404);
+}
+
+    public function ReportedComments()
+    {
+        // Giả sử 'reported' là một cột boolean trong bảng comments
+        $reportedComments = Comment::where('report', true)
+        ->get()
+        ->map(function ($comment) {
+            return [
+                'id' => $comment->id,
+                'content' => $comment->content,
+                'user_name' => $comment->user->user_name ?? 'N/A',
+                'avatar' => $comment->user->avatar ?? 'N/A',
+                'title'=> $comment->posts->title ?? 'N/A' ,
+                'created_at' => $comment->created_at,
+            ];
+        });
+        return response()->json($reportedComments);
+    }
+
 }

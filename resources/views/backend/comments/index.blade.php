@@ -46,16 +46,6 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -74,23 +64,14 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
     </section>
-
 </main><!-- End #main -->
-
-
 
 
 <!-- endsection
  section('custom_js') -->
 <script>
-
-
+    //Show bình luận cha 
     $.get ('http://127.0.0.1:8000/api/admin/comments', function (res) {
         let data = res;
         console.log(res);
@@ -116,6 +97,9 @@
                         <button type="button" class="btn btn-info text-white toggle-replies btn-replie" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="showComment(${sp.id})">
                             <i class="ri-eye-fill"></i>
                         </button>
+                        <button type="button" class="btn btn-danger" onclick="deleteComment(${sp.id})">
+                            <i class="ri-delete-bin-5-fill"></i>
+                        </button>
                     </td>
                 </tr>
 
@@ -123,27 +107,19 @@
             `;
         });
         $('#list-items').html(comments);
-
-
     })
 
 
+    // SHOW BÌNH LUẬN CON
+    function showComment(id) {
+    $.ajax({
+        url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
+        type: 'GET',
+        success: function (response) {
+            // console.log(response);
 
-
-
-
-
-
-    function showComment(commentId) {
-        $.ajax({
-            url: `http://127.0.0.1:8000/api/admin/supportexercises/${commentId}`, // URL API
-            type: 'GET',
-            success: function (response) {
-                console.log(response);
-
-                // Cập nhật tiêu đề modal
-                $('#staticBackdropLabel').html(`
-
+            // Cập nhật tiêu đề modal
+            $('#staticBackdropLabel').html(`
                 <div class="row">
                     <div class="col-3">
                         <img src="assets/backend/img/${response.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table me-5">
@@ -155,62 +131,87 @@
                         </div>
                     </div>
                 </div>
+            `);
 
-               
-                    
-                    
-                `);
+            // Đổ dữ liệu vào các trường trong modal
+            $('.modal-body').html(`
+                <div class="text-justify"><strong>Nội dung:</strong><p class="text-justify-custom">${response.content}</p></div>
 
-                // Đổ dữ liệu vào các trường trong modal
-                //response.content
-                $('.modal-body').html(`
-                    <div class="text-justify"><strong>Nội dung:</strong><p class="text-justify-custom"> ${response.content}</p></div>
+                <div class="row">
+                    <div class="col-5"> <strong> Bài viết: </strong> ${response.title}</div>
+                    <div class="col-4"> <strong> Người dùng: </strong> ${response.user_name}</div>
+                    <div class="col-3"> <strong> Phản hồi: </strong> ${response.rep.length}</div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-5"> <strong> Bài tập: </strong> ${response.exercise_name}</div>
-                        <div class="col-4"> <strong> PT: </strong> ${response.staff_name}</div>
-                        <div class="col-3"> <strong> Phản hồi: </strong> ${response.replies.length}</div>
-                    </div>
-
-                    <hr>
-
-                 
-                    ${response.replies.map(reply => `
-                        <div class="d-flex">
-                            <img src="assets/backend/img/${reply.user_id == reply.staff_userid ? reply.staff_avatar : reply.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
-                            <div class="ms-3">
-                                ${reply.user_id == reply.staff_userid
-                                    ? '<span class="badge border border-primary text-primary mb-3">Hướng dẫn viên</span>'
-                                    : '<span class="badge border border-success text-success text-primary mb-3">Người dùng</span>'
-                                }
-                                <h6><strong>${reply.user_id == reply.staff_userid ? reply.staff_name : reply.user_name}</strong></h6>
-                                <p style="font-size: 0.8em; color: gray;" class="mb-2 text-justify-custom">${reply.content}</p>
-                            </div>
+                <hr>
+                ${response.rep.map(reply => `
+                    <div class="d-flex">
+                        <img src="assets/backend/img/${reply.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                        <div class="ms-3">
+                            <h6><strong>${reply.user_name}</strong></h6>
+                            <p style="font-size: 0.8em; color: gray;" class="mb-2 text-justify-custom">${reply.content}</p>
                         </div>
-                    `).join('<br>')}
+                        <div class="mt-2 ms-auto">
+                            <button type="button" class="btn btn-danger" onclick="deleteComment(${reply.id})">
+                                <i class="ri-delete-bin-5-fill"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('<br>')}
 
-                    ${response.replies.length == 0 ? 'Không có phản hồi nào.' : ''}
-
-                `);
-            },
-            error: function (error) {
-                console.log(error);
-                alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
-            }
-        });
-    }
-
-
-
-
-
-
-
+                ${response.rep.length === 0 ? 'Không có phản hồi nào.' : ''}
+            `);
+        },
+        error: function (error) {
+            console.log(error);
+            alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+        }
+    });
+}
 
 
 
-
-
+// Thêm hàm xóa bình luận
+function deleteComment(id) {
+    // Hiển thị hộp thoại xác nhận bằng SweetAlert2
+    Swal.fire({
+        title: 'Bạn có chắc chắn muốn xóa bình luận này?',
+        text: "Hành động này không thể hoàn tác!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Có, xóa!',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Nếu người dùng xác nhận xóa
+            $.ajax({
+                url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
+                type: 'DELETE',
+                success: function (response) {
+                    // Xử lý thành công
+                    Swal.fire({
+                        title: 'Thành công!',
+                        text: 'Xóa bình luận thành công!',
+                        icon: 'success'
+                    }).then(() => {
+                        // Tải lại trang để cập nhật danh sách bình luận
+                        location.reload();
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'Có lỗi xảy ra!',
+                        text: 'Vui lòng thử lại sau.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+    });
+}
 
 </script>
 
@@ -220,3 +221,50 @@
     }
 </style>
 @endsection
+{{-- function deleteComment(id) {
+    // Sử dụng SweetAlert để xác nhận xóa
+    Swal.fire({
+        title: 'Bạn có chắc chắn muốn xóa bình luận này?',
+        text: "Hành động này không thể hoàn tác!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Xóa',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let data = { _token: '{{ csrf_token() }}', _method: 'delete' }; // Thêm CSRF token
+
+            $.ajax({
+                url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
+                type: 'DELETE',
+                data: data,
+                success: function (response) {
+                    // Hiển thị thông báo thành công
+                    Swal.fire({
+                        title: 'Thành công!',
+                        text: 'Xóa bình luận thành công!',
+                        icon: 'success'
+                    });
+
+                    // Xóa dòng bình luận trong bảng mà không cần tải lại trang
+                    $(`#list-items tr`).each(function() {
+                        if ($(this).find('td:first').text() == id) {
+                            $(this).remove(); // Loại bỏ dòng bình luận khỏi bảng
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'Có lỗi xảy ra!',
+                        text: 'Vui lòng thử lại sau.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+    });
+}
+--}}

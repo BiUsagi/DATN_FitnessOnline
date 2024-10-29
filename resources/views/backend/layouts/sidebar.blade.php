@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="components-accordion.html">
+                    <a href="{{ route('api.admin.report-comments') }}">
                         <i class="bi bi-circle"></i><span>Danh sách đen</span>
                     </a>
                 </li>
@@ -176,6 +176,9 @@
         {{-- </a>
                     <a href="{{ route('admin.statistical') }}"
                         class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
+                    </a>
+                    <a href="{{ route('admin.package') }}"
+                        class="{{ Request::is('admin/package*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thống kê gói tập</span>
                     </a>
                 </li>
