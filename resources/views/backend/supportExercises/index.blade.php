@@ -148,7 +148,7 @@
 
                 <div class="row">
                     <div class="col-3">
-                        <img src="assets/backend/img/${response.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table me-5">
+                        <img src="assets/backend/img/accounts/${response.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table me-5">
                     </div>
                     <div class="col-9">
                         <div class="d-flex flex-column">
@@ -179,7 +179,7 @@
                  
                     ${response.replies.map(reply => `
                         <div class="d-flex">
-                            <img src="assets/backend/img/${reply.user_id == reply.staff_userid ? reply.staff_avatar : reply.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                            <img src="assets/backend/img/accounts/${reply.user_id == reply.staff_userid ? reply.staff_avatar : reply.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table col-12">
                             <div class="ms-3">
                                 ${reply.user_id == reply.staff_userid
                                     ? '<span class="badge border border-primary text-primary mb-3">Hướng dẫn viên</span>'
