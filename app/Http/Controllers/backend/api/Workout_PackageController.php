@@ -82,6 +82,13 @@ class Workout_PackageController extends Controller
         return response()->json($set);
     }
 
+    public function delete(Request $request, $id)
+    {
+        $set = Workout_Package::find($id);
+        $set->delete();
+        return response()->json($set);
+    }
+
     public function getExercisesForDay($packageId, $dayNumber)
     {
         // Lấy các bài tập cho gói và ngày cụ thể
