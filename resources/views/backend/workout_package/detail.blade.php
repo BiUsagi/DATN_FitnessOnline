@@ -92,7 +92,7 @@
 
                 <div class="col-lg-3">
                     <div class="card card-btn-view">
-                        <a href="{{route('admin.workout_hub')}}" class="view-exercise"> <i class="bi bi-eye-fill"></i> Xem trước gói tập</a>
+                        <a href="{{route('admin.workout_hub', $package->id)}}" class="view-exercise"> <i class="bi bi-eye-fill"></i> Xem trước gói tập</a>
                     </div>
 
                     <div class="card">

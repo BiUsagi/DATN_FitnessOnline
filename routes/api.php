@@ -10,6 +10,8 @@ use App\Http\Controllers\backend\api\Workout_PackageController;
 use App\Http\Controllers\backend\api\AccountsController;
 use App\Http\Controllers\backend\api\VoucherController;
 use App\Http\Controllers\backend\api\CommentController;
+use App\Http\Controllers\Backend\api\Workout_hubController;
+
 
 
 Route::get('/user', function (Request $request) {
@@ -37,6 +39,10 @@ Route::group(['prefix' => 'admin',], function () {
     Route::post('workout_package/{id}/day/{day}/exercises', [PackageExercisesController::class, 'saveExercises']);
     Route::get('workout_package/{packageId}/day/{dayNumber}/exercises', [Workout_PackageController::class, 'getExercisesForDay']);
     Route::get('/api/admin/workout_package/{id}/days', [Workout_PackageController::class, 'getDaysWithExerciseCount']);
+
+    //run view workout_hub
+    Route::get('/workout_hub/{id}/day/{dayDetail}', [Workout_hubController::class, 'getDayExercises']);
+
 
 
     // account

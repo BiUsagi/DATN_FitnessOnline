@@ -19,7 +19,7 @@ class Package_Exercise extends Model
     ];
     public function workoutPackage()
     {
-        return $this->belongsTo(Workout_Package::class);
+        return $this->belongsTo(Workout_Package::class ,'workout_package_id');
     }
 
     // Liên kết đến exercise

@@ -41,7 +41,11 @@ class WorkoutPackagesController extends Controller
         return redirect()->back();
     }
 
-    public function workout_hub(){
-        return view('backend/workout_hub/index');
+    public function workout_hub($id){
+        $package = Workout_Package::find($id);
+        if (!$package) {
+            return redirect()->back()->with('error', 'Không tìm thấy gói tập này!');
+        }
+        return view('backend/workout_hub/index', compact('package'));
     }
 }
