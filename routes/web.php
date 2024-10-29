@@ -77,6 +77,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
     //update_goitap
     Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
+
+
+    Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
     
     
 
