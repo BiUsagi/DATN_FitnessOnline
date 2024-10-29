@@ -24,15 +24,12 @@ class LoginController extends Controller
             return response()->json(['message' => 'Thông tin đăng nhập không chính xác'], 401);
         }
         Auth::login($user);
-        $redirectUrl = $request->input('redirect_url', route('index'));
-
+        $redirectUrl = $request->input('redirect_url') ?? route('index');
+        
         return response()->json([
             'success' => true,
             'redirect_url' => $redirectUrl
         ]);
-
-        // Nếu đăng nhập thành công
-        // return redirect()->route('index')->with('success', 'Đăng nhập thành công!');
     }
     
 

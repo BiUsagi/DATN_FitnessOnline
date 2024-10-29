@@ -34,20 +34,20 @@
                                 <li class="nav-item">
                                 @if(Auth::check())
                               
-                                    <span class="nav-link btn">
-                                    {{ Auth::user()->user_name }}</span> <!-- Hiển thị tên đăng nhập -->
-                                    <!-- <a href="{{ route('logout.index') }}" class="nav-link btn">Đăng xuất</a> -->
+                                    <span class="nav-link btn">Tài Khoản</span> <!-- Hiển thị tên đăng nhập -->
                                     <ul class="dropdown-menu" aria-labelledby="username">
                                         <li class="text-center">
                                             <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle w-25 ">
                                         </li>
-                                        <li>
-                                            <a href="{{ route('info.index') }}" class="dropdown-item text-white">Thông tin</a>
+                                        <p class="name">{{ Auth::user()->user_name }}</p>
+                                        <hr>
+                                        <li class="text">
+                                            <a href="{{ route('info.index') }}" class="dropdown-item text-white">Thông Tin Tài Khoản</a>
                                         </li>
-                                        <li>
+                                        <li class="text">
                                             <form action="{{ route('logout.index') }}" method="POST">
                                                 @csrf
-                                                <button type="submit" class="dropdown-item text-white">Đăng xuất</button>
+                                                <button type="submit" class="dropdown-item text-white">Đăng Xuất</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -70,9 +70,10 @@
     var currentUrl = window.location.href;
 
     // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
-    window.location.href = "/login?redirect_url=" + encodeURIComponent(currentUrl);
-});
-</script>
+        window.location.href = "/login?redirect_url=" + encodeURIComponent(currentUrl);
+    });
+    </script>
+    
 </header>
 
 
