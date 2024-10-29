@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <div class="title-top d-flex justify-content-between">
                                 <h5 class="card-title text-uppercase">Danh sách người dùng</h5>
-                                {{-- <a href="{{ route('admin.create') }}" class="btn-customize"><i class="bi bi-plus-lg"></i>
+                                {{-- <a href="{{ route('admin.post-create') }}" class="btn-customize"><i class="bi bi-plus-lg"></i>
                                     Thêm nhân viên</a> --}}
                             </div>
 
