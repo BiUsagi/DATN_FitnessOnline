@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="components-accordion.html">
+                    <a href="{{ route('api.admin.report-comments') }}">
                         <i class="bi bi-circle"></i><span>Danh sách đen</span>
                     </a>
                 </li>
@@ -149,16 +149,16 @@
                         class="{{ Request::is('admin/orders*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Đơn hàng</span>
                     </a>
-                    <a href="{{ route('admin.userorder') }}"
+                    {{-- <a href="{{ route('admin.userorder') }}"
                         class="{{ Request::is('admin/userorder*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Khách hàng</span>
-                    </a>
+                    </a> --}}
                 </li>
             </ul>
         </li><!-- End order -->
 
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/statistical*') ? 'active' : '' }}"
                 data-bs-target="#statistical-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>Thống kê</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -170,17 +170,20 @@
                     <a href="{{ route('admin.statistical') }}"
                         class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thống kê doanh thu</span>
-                    </a>
-                    <!-- <a href="{{ route('admin.statistical') }}" class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
+                    </a> --}}
+        <!-- <a href="{{ route('admin.statistical') }}" class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Thống kê khách hàng</span> -->
-                    </a>
+        {{-- </a>
                     <a href="{{ route('admin.statistical') }}"
                         class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
+                    </a>
+                    <a href="{{ route('admin.package') }}"
+                        class="{{ Request::is('admin/package*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thống kê gói tập</span>
                     </a>
                 </li>
             </ul>
-        </li><!-- End interface -->
+        </li><!-- End interface --> --}}
         <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/slides*') ? 'active' : '' }}"
                 data-bs-target="#slides-nav" data-bs-toggle="collapse" href="#">
@@ -220,7 +223,7 @@
             </ul>
         </li><!-- End marketing -->
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link collapsed {{ Request::is('admin/config*') ? 'active' : '' }}"
                 data-bs-target="#configuration-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-gear"></i><span>Cấu hình</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -234,7 +237,7 @@
                     </a>
                 </li>
             </ul>
-        </li><!-- End cấu hình -->
+        </li><!-- End cấu hình --> --}}
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#">

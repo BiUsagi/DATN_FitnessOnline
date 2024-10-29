@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="title-top d-flex justify-content-between">
-                            <h5 class="card-title text-uppercase">Danh sách câu hỏi</h5>
+                            <h5 class="card-title text-uppercase">Danh sách bình luận</h5>
                         </div>
 
                         <!-- Table with stripped rows -->
@@ -33,6 +33,7 @@
                                     <th>Blog</th>
                                     <th>Ngày đăng</th>
                                     <th class="text-center">Chi tiết</th>
+                                    <th></th>
                                 </tr>
 
                             </thead>
@@ -72,7 +73,9 @@
  section('custom_js') -->
 <script>
     //Show bình luận cha 
-    $.get ('http://127.0.0.1:8000/api/admin/comments', function (res) {
+    reload();
+    function reload(){
+        $.get ('http://127.0.0.1:8000/api/admin/comments', function (res) {
         let data = res;
         console.log(res);
 
@@ -87,7 +90,7 @@
                 <tr>
                     <td class="text-center align-middle">${sp.id}</td>
                     <td class="align-middle">
-                        <img src="assets/backend/img/${sp.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                        <img src="assets/backend/img/accounts/${sp.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
                         ${sp.user_name}
                     </td>
                     <td class="align-middle text-truncate" style="max-width: 300px;">${sp.content}</td>
@@ -108,6 +111,7 @@
         });
         $('#list-items').html(comments);
     })
+    }
 
 
     // SHOW BÌNH LUẬN CON
@@ -122,7 +126,7 @@
             $('#staticBackdropLabel').html(`
                 <div class="row">
                     <div class="col-3">
-                        <img src="assets/backend/img/${response.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table me-5">
+                        <img src="assets/backend/img/accounts/${response.user_avatar}" class="rounded-circle object-fit-cover me-2 avatar-table me-5">
                     </div>
                     <div class="col-9">
                         <div class="d-flex flex-column">
@@ -146,7 +150,7 @@
                 <hr>
                 ${response.rep.map(reply => `
                     <div class="d-flex">
-                        <img src="assets/backend/img/${reply.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
+                        <img src="assets/backend/img/accounts/${reply.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
                         <div class="ms-3">
                             <h6><strong>${reply.user_name}</strong></h6>
                             <p style="font-size: 0.8em; color: gray;" class="mb-2 text-justify-custom">${reply.content}</p>
@@ -179,9 +183,9 @@ function deleteComment(id) {
         text: "Hành động này không thể hoàn tác!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Có, xóa!',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Xóa!',
         cancelButtonText: 'Hủy'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -189,25 +193,20 @@ function deleteComment(id) {
             $.ajax({
                 url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
                 type: 'DELETE',
+                
+                
                 success: function (response) {
                     // Xử lý thành công
                     Swal.fire({
                         title: 'Thành công!',
                         text: 'Xóa bình luận thành công!',
                         icon: 'success'
-                    }).then(() => {
-                        // Tải lại trang để cập nhật danh sách bình luận
-                        location.reload();
-                    });
+
+                    })
+                reload();
+                    
                 },
-                error: function (error) {
-                    console.log(error);
-                    Swal.fire({
-                        title: 'Có lỗi xảy ra!',
-                        text: 'Vui lòng thử lại sau.',
-                        icon: 'error'
-                    });
-                }
+
             });
         }
     });

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\backend\api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\backend\AccountRequest;
+use App\Http\Requests\backend\CustomerRequest;
 use App\Models\Staff;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;

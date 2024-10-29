@@ -45,7 +45,7 @@
                                             <span class="text-danger" style="font-family:sans-serif; font-size: 13px;">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <input type="submit" class="btn btn-primary mt-3" value="Thêm">
+                                    <input type="submit" class="btn btn-primary mt-3" value="Thêm" onclick="create()">
                                 </div>
                         </div>
                     </div>
@@ -71,7 +71,17 @@
                                     }
                                 </script>
                             </div>
-                        
+                            <script>
+                                // THÔNG BÁO NÚT thêm
+                                function create(slideId) {
+                                    Swal.fire({
+                                                title: "Thành công!",
+                                                text: "Thêm thành công!",
+                                                icon: "success"
+                                            });
+                                                window.location.href = "{{ url('admin/slides/create/') }}/" + slideId;
+                                            }
+                            </script>
                     </div>
                 </div>
             </form>

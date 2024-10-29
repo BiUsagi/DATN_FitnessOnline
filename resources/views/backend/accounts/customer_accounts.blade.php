@@ -124,7 +124,8 @@
                                 </div>
                                 <!-- giới tính -->
                                 <div class="mb-3">
-                                    <label for="userGender" class="form-label">Giới Tính</label>
+                                    <label for="userGender" class="form-label">Giới Tính <span
+                                            class="note">(*)</span></label>
                                     <select class="form-control" id="userGender" name="userGender">
                                         <option value="1">Nam</option>
                                         <option value="0">Nữ</option>
@@ -136,15 +137,18 @@
                                     <input type="email" class="form-control" id="userEmail" name="userEmail">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="userPhone" class="form-label">Số Điện Thoại</label>
+                                    <label for="userPhone" class="form-label">Số Điện Thoại <span
+                                            class="note">(*)</span></label>
                                     <input type="text" class="form-control" id="userPhone" name="userPhone">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="userBirthday" class="form-label">Ngày Sinh</label>
+                                    <label for="userBirthday" class="form-label">Ngày Sinh <span
+                                            class="note">(*)</span></label>
                                     <input type="date" class="form-control" id="userBirthday" name="userBirthday">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="userAddress" class="form-label">Địa Chỉ</label>
+                                    <label for="userAddress" class="form-label">Địa Chỉ <span
+                                            class="note">(*)</span></label>
                                     <input type="text" class="form-control" id="userAddress" name="userAddress">
                                 </div>
                                 <div class="modal-footer">
@@ -160,7 +164,10 @@
                 </div>
             </div>
 
+
+
         </section>
+
 
     </main><!-- End #main -->
 @endsection

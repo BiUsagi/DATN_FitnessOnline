@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('special_level'); // Cấp độ (ví dụ Beginner, Intermediate, Advanced)
             $table->integer('price'); // Giá gói
             $table->integer('duration_days'); // Thời lượng gói (ngày, tháng...)
-            $table->unsignedBigInteger('staff_id'); // ID huấn luyện viên (FK)
+            $table->unsignedBigInteger('staff_id')->nullable(); // ID huấn luyện viên (FK)
             $table->string('goal')->nullable(); // Mục tiêu tập luyện
             $table->boolean('status')->default(false);
             $table->timestamps();                // Thời gian tạo và cập nhật          

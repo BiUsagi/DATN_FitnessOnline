@@ -36,7 +36,7 @@
                                             <span class="text-danger" style="font-family:sans-serif; font-size: 13px;">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <input type="submit" class="btn btn-primary mt-3" value="Sửa">
+                                    <input type="submit" class="btn btn-primary mt-3" value="Sửa" onclick="update({{ $slide->id }})">
                                 </div>
                         </div>
                     </div>
@@ -59,6 +59,14 @@
                                     function previewImage(event) {
                                         const image = document.getElementById('avatar-image');
                                         image.src = URL.createObjectURL(event.target.files[0]);
+                                    }
+                                    // THÔNG BÁO NÚT SỬA
+                                    function update(slideId) {
+                                        Swal.fire({
+                                                title: "Thành công!",
+                                                text: "Sửa thành công!",
+                                                // icon: "success"
+                                            })
                                     }
                                 </script>
                             </div>

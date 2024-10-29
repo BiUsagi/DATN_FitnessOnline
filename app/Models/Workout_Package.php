@@ -42,7 +42,7 @@ class Workout_Package extends Model
 
     public function exercises()
     {
-        return $this->belongsToMany(Exercise::class, 'package_exercises')
+        return $this->belongsToMany(Exercise::class, 'package_exercises', 'workout_package_id', 'exercise_id')
                     ->withPivot('day_number', 'sequence', 'is_day_off')
                     ->withTimestamps();
     }
