@@ -16,7 +16,7 @@ class Slides extends Model
     protected $fillable = ['name','description', 'image'];
     public static function uploadImage($file)
     {
-        $path = 'assets/backend/img/';
+        $path = 'assets/backend/img/accounts/';
         $fileName = $file->getClientOriginalName();
         
         // Kiểm tra nếu file đã tồn tại trong thư mục
