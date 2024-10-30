@@ -90,10 +90,9 @@
                 let data = res;
                 var formattedBalance = data.balance.toLocaleString('vi-VN'); // Định dạng theo ngôn ngữ Việt Nam
                 $('#money').html(formattedBalance);
-
             });
         @endif
 
-        
+
     </script>
 </header>

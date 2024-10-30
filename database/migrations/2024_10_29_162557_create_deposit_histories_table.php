@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('deposit_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('wallet_id')->constrained('wallets')->onDelete('cascade'); // Liên kết với bảng wallets
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->decimal('amount', 15, 2); // Số tiền nạp
             $table->timestamp('deposited_at'); // Thời gian nạp
             $table->string('description')->nullable(); // Nội dung giao dịch
