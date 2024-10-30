@@ -7,8 +7,8 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Quản lý bài viết</li>
-                <li class="breadcrumb-item active">Danh sách bài viết</li>
+                <li class="breadcrumb-item">Quản lý giao dịch</li>
+                <li class="breadcrumb-item active">Duyệt hóa đơn</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -19,9 +19,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="title-top d-flex justify-content-between">
-                            <h5 class="card-title text-uppercase">Danh sách bài viết</h5>
-                            <a href="{{ route('admin.post-create') }}" class="btn-customize"><i
-                                    class="bi bi-plus-lg"></i> Thêm bài viết</a>
+                            <h5 class="card-title text-uppercase">Danh sách cần duyệt</h5>
+                            <a href="{{ route('admin.post-create') }}" class="btn-customize">Tất cả giao dịch</a>
                         </div>
 
                         <!-- Table with stripped rows -->
