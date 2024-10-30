@@ -11,7 +11,7 @@ class Deposit_histories extends Model
     use HasFactory;
 
     protected $table = 'deposit_histories'; // Chỉ định tên bảng
-    protected $fillable = ['wallet_id', 'amount', 'deposited_at', 'transaction_id', 'description'];
+    protected $fillable = ['wallet_id', 'amount', 'deposited_at', 'transaction_id', 'description', 'user_id'];
 
     public function wallet()
     {

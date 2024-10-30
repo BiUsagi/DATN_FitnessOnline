@@ -95,6 +95,6 @@ Route::group(['prefix' => 'web',], function () {
 
     //wallets
     Route::get('/wallets/{id}', [WalletsController::class, 'index']);
-    Route::get('/formadd', [WalletsController::class, 'formadd']);
-    Route::get('/billqr', [WalletsController::class, 'billqr']);
+    Route::post('/requestbill', [WalletsController::class, 'requestbill']);
+
 });
