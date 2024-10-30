@@ -32,35 +32,39 @@
                                     <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                @if(Auth::check())
-                              
-                                    <span class="nav-link btn">Tài Khoản</span> <!-- Hiển thị tên đăng nhập -->
-                                    <ul class="dropdown-menu" aria-labelledby="username">
-                                        <li class="text-center">
-                                            <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle w-25 ">
-                                        </li>
-                                        <p class="name mb-0">{{ Auth::user()->user_name }}</p>
-                                        <p class="text-center text-bg-info"><i id="money"></i><i> đồng</i> </p>
-                                        <hr>
-                                        <li class="text">
-                                            <a href="{{ route('wallets.addmoney') }}" class="dropdown-item text-white">Nạp tiền</a>
-                                        </li>
-                                        <li class="text">
-                                            <a href="{{ route('info.index') }}" class="dropdown-item text-white">Thông Tin Tài Khoản</a>
-                                        </li>
-                                        <li class="text">
-                                            <form action="{{ route('logout.index') }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="dropdown-item text-white">Đăng Xuất</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                @else
-                                    <a  id="btn-login" class="nav-link btn">Đăng nhập</a> 
-                                @endif
+                                    @if(Auth::check())
+
+                                        <span class="nav-link btn">Tài Khoản</span> <!-- Hiển thị tên đăng nhập -->
+                                        <ul class="dropdown-menu" aria-labelledby="username">
+                                            <li class="text-center">
+                                                <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile"
+                                                    class="rounded-circle w-25 ">
+                                            </li>
+                                            <p class="name mb-0">{{ Auth::user()->user_name }}</p>
+                                            <p class="text-center text-bg-info"><i id="money"></i><i> đồng</i> </p>
+                                            <hr>
+                                            <li class="text">
+                                                <a href="{{ route('wallets.addmoney') }}"
+                                                    class="dropdown-item text-white">Nạp tiền</a>
+                                            </li>
+                                            <li class="text">
+                                                <a href="{{ route('info.index') }}" class="dropdown-item text-white">Thông
+                                                    Tin Tài Khoản</a>
+                                            </li>
+                                            <li class="text">
+                                                <form action="{{ route('logout.index') }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item text-white">Đăng
+                                                        Xuất</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    @else
+                                        <a id="btn-login" class="nav-link btn">Đăng nhập</a>
+                                    @endif
                                 </li>
-                         
-              
+
+
                             </ul>
                         </div>
                     </nav>
@@ -68,26 +72,28 @@
             </div>
         </div>
     </div>
-    
+
     <script>
-    $("#btn-login").click(function() {
-    var currentUrl = window.location.href;
+        $("#btn-login").click(function () {
+            var currentUrl = window.location.href;
 
-    // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
-        window.location.href = "/login?redirect_url=" + encodeURIComponent(currentUrl);
-    });
+            // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
+            window.location.href = "/login?redirect_url=" + encodeURIComponent(currentUrl);
+        });
 
 
-    var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
-    $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function (res) {
-        let data = res;
-        var formattedBalance = data.balance.toLocaleString('vi-VN'); // Định dạng theo ngôn ngữ Việt Nam
-        $('#money').html(formattedBalance);
+        @if (Auth::check())
+            var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
-    });
+            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function (res) {
+                let data = res;
+                var formattedBalance = data.balance.toLocaleString('vi-VN'); // Định dạng theo ngôn ngữ Việt Nam
+                $('#money').html(formattedBalance);
+
+            });
+        @endif
+
+        
     </script>
-    
 </header>
-
-
