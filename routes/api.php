@@ -14,6 +14,9 @@ use App\Http\Controllers\backend\api\VoucherController;
 use App\Http\Controllers\backend\api\CommentController;
 use App\Http\Controllers\backend\api\PostController;
 use App\Http\Controllers\Backend\api\Workout_hubController;
+use App\Http\Controllers\backend\api\WalletController;
+use App\Http\Controllers\backend\api\DepositHistoriesController;
+
 
 
 //frontend
@@ -42,7 +45,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
 
     //get exercise from package_exercise
-    Route::get('get_exercise',[Workout_PackageController::class, 'get_exercises']);
+    Route::get('get_exercise', [Workout_PackageController::class, 'get_exercises']);
     Route::post('workout_package/{id}/day/{day}/exercises', [PackageExercisesController::class, 'saveExercises']);
     Route::get('workout_package/{packageId}/day/{dayNumber}/exercises', [Workout_PackageController::class, 'getExercisesForDay']);
     Route::get('/api/admin/workout_package/{id}/days', [Workout_PackageController::class, 'getDaysWithExerciseCount']);
@@ -82,10 +85,13 @@ Route::group(['prefix' => 'admin',], function () {
     Route::post('/post', [PostController::class, 'create_']);
 
 
+    //DepositHistories
+    Route::get('/deposithistories', [DepositHistoriesController::class, 'index']);
+    Route::put('/tickstatus/{id}', [DepositHistoriesController::class, 'tickstatus']);
 
-
-
- 
+    //wallets
+    Route::get('/wallet/{id}', [WalletController::class, 'wallet']);
+    Route::put('/wallet/{id}/{dong}', [WalletController::class, 'addmoney']);
 
 
 });

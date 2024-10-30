@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\WalletsController;
+use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\InfoController;
 use App\Http\Controllers\backend\AdminController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\backend\CommentController;
 use App\Http\Controllers\backend\ComponentController;
 use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
+use App\Http\Controllers\backend\DepositHistoriesController;
 use App\Http\Controllers\ApiController;
 
 // use App\Http\Controllers\backend\api\PackageExercisesController;
@@ -106,6 +108,11 @@ Route::prefix('admin')->group(function () {
 
     //component 
     Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
+
+
+    // wallets
+    Route::get('/deposithistories', [DepositHistoriesController::class, 'index'])->name('admin.addmoney');
+    Route::get('/deposithistories/list', [DepositHistoriesController::class, 'list'])->name('admin.listmoney');
 
 
 

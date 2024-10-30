@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('deposited_at'); // Thời gian nạp
             $table->string('description')->nullable(); // Nội dung giao dịch
             $table->string('transaction_id')->nullable(); // Mã giao dịch
+            $table->tinyInteger('status')->default(0)->comment('0: chờ xử lí, 1 đã thanh toán, 2 hủy');
             $table->timestamps();
         });
     }
