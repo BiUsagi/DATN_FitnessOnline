@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
 
                     <div class="card">
-                        <div class="card-body mt-3">
+                        <div id="invoice" class=" card-body mt-3">
                             <!-- Row start -->
                             <div class="row">
                                 <div class="col-xxl-3 col-sm-3 col-12">
@@ -49,7 +49,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Gói Tập</th>
-                                                        {{-- <th>Nhân Viên</th> --}}
                                                         <th>Khách Hàng</th>
                                                         <th>Giá Tiền (VND)</th>
                                                         <th>Giảm Giá</th>
@@ -59,6 +58,7 @@
                                                     <tr>
                                                         <td>
                                                             <p>
+                                                                #{{ $data->workout_package_id }} -
                                                                 {{ $data->getWorkoutPackageName() }}
                                                             </p>
                                                         </td>
@@ -124,4 +124,65 @@
         </section>
 
     </main><!-- End #main -->
+@endsection
+
+
+@section('custom_js')
+    <!-- jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <!-- html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        // Tải xuống
+        document.querySelector('.btn-outline-secondary').addEventListener('click', function() {
+            // Lấy phần hóa đơn
+            const invoice = document.getElementById('invoice');
+
+            // Sử dụng html2canvas để chụp màn hình nội dung
+            html2canvas(invoice).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const {
+                    jsPDF
+                } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+
+                const imgWidth = 190; // Độ rộng hình ảnh
+                const pageHeight = pdf.internal.pageSize.height;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 10;
+
+                pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save(`Đơn Hàng_{{ $data->id }}.pdf`);
+            });
+        });
+    </script>
+
+
+    <script>
+        // In
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            const printContent = document.getElementById('invoice').innerHTML;
+            const originalContent = document.body.innerHTML;
+
+            // Đổi nội dung của body thành chỉ phần hóa đơn
+            document.body.innerHTML = printContent;
+
+            // Kích hoạt chức năng in
+            window.print();
+
+            // Khôi phục lại nội dung ban đầu của body
+            document.body.innerHTML = originalContent;
+        });
+    </script>
 @endsection

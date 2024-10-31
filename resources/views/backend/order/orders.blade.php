@@ -40,7 +40,7 @@
                                             <td class="align-middle">{{ $item->id }}</td>
                                             <td class="align-middle">{{ $item->getWorkoutPackageName() }}</td>
                                             <td class="align-middle">{{ $item->getUserName() }}</td>
-                                            <td class="align-middle">{{ $item->price }}</td>
+                                            <td class="align-middle">{{ number_format($item->price, 0, ',', '.') }}</td>
                                             <td class="align-middle">{{ $item->created_at }}</td>
                                             <td class="align-middle text-center">
                                                 <a href="{{ route('admin.info.orders', ['id' => $item->id]) }}"
