@@ -3,6 +3,8 @@
 use App\Models\voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+//backend
 use App\Http\Controllers\backend\api\PackageExercisesController;
 use App\Http\Controllers\backend\api\ExerciseController;
 use App\Http\Controllers\backend\api\SupportExercisesController;
@@ -12,6 +14,13 @@ use App\Http\Controllers\backend\api\VoucherController;
 use App\Http\Controllers\backend\api\CommentController;
 use App\Http\Controllers\backend\api\PostController;
 use App\Http\Controllers\Backend\api\Workout_hubController;
+use App\Http\Controllers\backend\api\WalletController;
+use App\Http\Controllers\backend\api\DepositHistoriesController;
+
+
+
+//frontend
+use App\Http\Controllers\frontend\api\WalletsController;
 
 
 
@@ -36,7 +45,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/workout_package/{id}', [Workout_PackageController::class, 'workout_detail'])->name('workout_package-detail');
 
     //get exercise from package_exercise
-    Route::get('get_exercise',[Workout_PackageController::class, 'get_exercises']);
+    Route::get('get_exercise', [Workout_PackageController::class, 'get_exercises']);
     Route::post('workout_package/{id}/day/{day}/exercises', [PackageExercisesController::class, 'saveExercises']);
     Route::get('workout_package/{packageId}/day/{dayNumber}/exercises', [Workout_PackageController::class, 'getExercisesForDay']);
     Route::get('/api/admin/workout_package/{id}/days', [Workout_PackageController::class, 'getDaysWithExerciseCount']);
@@ -74,4 +83,24 @@ Route::group(['prefix' => 'admin',], function () {
     //Post
     Route::get('/post', [PostController::class, 'index']);
     Route::post('/post', [PostController::class, 'create_']);
+
+
+    //DepositHistories
+    Route::get('/deposithistories', [DepositHistoriesController::class, 'index']);
+    Route::put('/tickstatus/{id}', [DepositHistoriesController::class, 'tickstatus']);
+
+    //wallets
+    Route::get('/wallet/{id}', [WalletController::class, 'wallet']);
+    Route::put('/wallet/{id}/{dong}', [WalletController::class, 'addmoney']);
+
+
+});
+
+
+Route::group(['prefix' => 'web',], function () {
+
+    //wallets
+    Route::get('/wallets/{id}', [WalletsController::class, 'index']);
+    Route::post('/requestbill', [WalletsController::class, 'requestbill']);
+
 });

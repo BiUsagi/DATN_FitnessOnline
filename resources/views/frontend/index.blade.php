@@ -246,7 +246,7 @@
                                     <h3>{{$top_workout_package->package_name}}</h3>
                                     {{-- <h4>Only for first month</h4> --}}
                                     <p>
-                                        {{$top_workout_package->description}}
+                                        {!!$top_workout_package->description!!}
                                     </p>
                                     <h2>{{$top_workout_package->	price}}</h2>
                                     <a href="contact-us.html" class="btn">Buy Now</a>

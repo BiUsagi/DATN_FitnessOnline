@@ -2,17 +2,29 @@
 
 
 .dropdown-menu {
-    display: none;
+    display: none
 }
 
 .nav-item:hover .dropdown-menu {
     display: block;
-    margin-top: 12rem;
-    background-color: #3E3E3E;
+    margin-top: 16.5rem;
+    right: 0;
+    background-color: #5d5d5d;
+    width: 200px;
 }
 
 .dropdown-item:hover {
-    background-color: none;
-    
+    background-color: #1face1; 
 }
+
+.text{
+    font-size: 13px;
+}
+
+.name{
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+
 

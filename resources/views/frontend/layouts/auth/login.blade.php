@@ -138,7 +138,7 @@
             var token = $('meta[name="csrf-token"]').attr('content');
             var currentUrl = $("input[name='redirect_url']").val();
 
-            console.log('Current URL:', currentUrl);
+            // console.log('Current URL:', currentUrl);
 
             $.post("{{ route('login_.index') }}", {
                 _token: token,
@@ -149,7 +149,9 @@
                 // window.location.href = "";
                 if (data.success) {
                 // Điều hướng người dùng về trang ban đầu
-                window.location.href = data.redirect_url;
+                // window.location.href = data.redirect_url;
+                console.log('Current URL:', currentUrl);
+
                 } else {
                     // Xử lý thông báo lỗi nếu có
                     $("#ketqua").text(data.message);
