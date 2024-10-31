@@ -149,10 +149,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/staffinfo/{id}', [AccountsController::class, 'staff_info'])->name('admin.staff.info');// Chi tiết nhân viên
     Route::get('/staffupdate/{id}', [AccountsController::class, 'staff_update'])->name('admin.staff.update'); //Cập nhật nhân viên
 
+    Route::get('/application', [AccountsController::class, 'application'])->name('admin.application'); //Danh sách đơn đăng ký
+    Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info'); //Chi tiết đơn đăng ký
+
     // order - đơn hàng
-    Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
-    Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders');
+    Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders'); //Danh sách đơn hàng
+    Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders'); // Chi tiết đơn hàng
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
+
+
 
 });
 

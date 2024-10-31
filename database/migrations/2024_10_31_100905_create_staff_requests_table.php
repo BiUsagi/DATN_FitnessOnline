@@ -14,13 +14,13 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('new_name')->nullable();
-            $table->string('new_email')->nullable();
+            $table->string('new_email')->unique();
             $table->text('new_avatar')->nullable();
             $table->text('new_address')->nullable();
             $table->text('new_phone_number')->nullable();
             $table->text('certificate')->nullable();
-            $table->tinyInteger('status');
-            $table->timestamp('approved_at');
+            $table->tinyInteger('status')->default(0)->comment('0 - Chờ duyệt, 1 - Đã duyệt, 2 - Bị từ chối');
+            $table->timestamp('approved_at')->nullable()->comment('Thời gian phê duyệt yêu cầu');
             $table->timestamps();
 
             // Khóa ngoại

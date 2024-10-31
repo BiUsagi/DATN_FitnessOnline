@@ -83,6 +83,72 @@ class UserSeeder extends Seeder
                 'phone_number' => '0912345678',
                 'created_at' => now(),
             ],
+            [
+                'user_name' => 'Nguyễn Văn Rin',
+                'email' => 'rin123@example.com',
+                'avatar' => 'dat.jpg',
+                'address' => '456 Đường DEF, Hà Nội',
+                'birthday' => '2004-07-23',
+                'gender' => 0, // Nữ
+                'password' => Hash::make('password456'),
+                'phone_number' => '0987654321',
+                'created_at' => now(),
+            ],
+            [
+                'user_name' => 'Phạm Chiến',
+                'email' => 'phamc123@example.com',
+                'avatar' => '7CC84950-B263-4389-B934-E77F86954053.JPG',
+                'address' => '789 Đường XYZ, Đà Nẵng',
+                'birthday' => '2012-04-12',
+                'gender' => 2, // Khác
+                'password' => Hash::make('password789'),
+                'phone_number' => '0912345678',
+                'created_at' => now(),
+            ],
+            [
+                'user_name' => 'Phạm Tuấn',
+                'email' => 'tuan123@example.com',
+                'avatar' => 'post 2.jpg',
+                'address' => '789 Đường XYZ, Đà Nẵng',
+                'birthday' => '2012-04-12',
+                'gender' => 2, // Khác
+                'password' => Hash::make('password789'),
+                'phone_number' => '0912345678',
+                'created_at' => now(),
+            ],
+            [
+                'user_name' => 'Nguyễn Văn Rin',
+                'email' => 'rin123123@example.com',
+                'avatar' => 'dat.jpg',
+                'address' => '456 Đường DEF, Hà Nội',
+                'birthday' => '2004-07-23',
+                'gender' => 0, // Nữ
+                'password' => Hash::make('password456'),
+                'phone_number' => '0987654321',
+                'created_at' => now(),
+            ],
+            [
+                'user_name' => 'Phạm Chiến',
+                'email' => 'phamc1231312@example.com',
+                'avatar' => '7CC84950-B263-4389-B934-E77F86954053.JPG',
+                'address' => '789 Đường XYZ, Đà Nẵng',
+                'birthday' => '2012-04-12',
+                'gender' => 2, // Khác
+                'password' => Hash::make('password789'),
+                'phone_number' => '0912345678',
+                'created_at' => now(),
+            ],
+            [
+                'user_name' => 'Phạm Tuấn',
+                'email' => 'tuan1231231@example.com',
+                'avatar' => 'post 2.jpg',
+                'address' => '789 Đường XYZ, Đà Nẵng',
+                'birthday' => '2012-04-12',
+                'gender' => 2, // Khác
+                'password' => Hash::make('password789'),
+                'phone_number' => '0912345678',
+                'created_at' => now(),
+            ],
         ]);
     }
 }

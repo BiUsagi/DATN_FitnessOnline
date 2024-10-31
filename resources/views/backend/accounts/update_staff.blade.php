@@ -158,40 +158,6 @@
 
 
     <script>
-        // $('#form-update-staff').on('submit', function(e) {
-        //     e.preventDefault();
-
-        //     let avatarFile = $('#avatar-input')[0].files[0];
-        //     let formData = $(this).serialize();
-        //     let staffId = $('#inputId').val();
-
-
-        //     $.ajax({
-        //         url: "{{ route('api.staff.update', '') }}" + '/' + staffId,
-        //         type: 'PUT',
-        //         data: formData,
-        //         success: function(response) {
-        //             Swal.fire({
-        //                 title: "Thành công!",
-        //                 text: "Cập nhật thông tin người dùng thành công!",
-        //                 icon: "success"
-        //             }).then(() => {
-        //                 window.location.href = "{{ route('admin.staff') }}";
-        //             });
-
-        //         },
-        //         error: function(error) {
-        //             console.log(error);
-        //             Swal.fire({
-        //                 title: "Lỗi!",
-        //                 text: "Có lỗi xảy ra khi cập nhật thông tin nhân viên.",
-        //                 icon: "error"
-        //             });
-        //         }
-        //     });
-
-        // });
-
         $('#form-update-staff').on('submit', function(e) {
             e.preventDefault();
 
@@ -208,12 +174,11 @@
                 success: function(response) {
                     Swal.fire({
                         title: "Thành công!",
-                        text: "Cập nhật thông tin người dùng thành công!",
+                        text: "Cập nhật thông tin nhân viên thành công!",
                         icon: "success"
                     }).then(() => {
-                        window.location.href = "{{ route('admin.staff') }}";
-                        // window.location.href = "{{ route('admin.staff.info', '') }}" + '/' +
-                        //     response.staffId;
+                        window.location.href = "{{ route('admin.staff.info', '') }}" + '/' +
+                            staffId;
                     });
                 },
                 error: function(error) {

@@ -38,7 +38,7 @@
                                                 <i class="bi bi-gender-trans text-warning"></i> Khác
                                             @endif
                                         </h6>
-                                        <h6>{{ $age }} tuổi</h6>
+                                        <h6>{{ $data->getAgeFromBirthday() }} tuổi</h6>
                                         <h6> Hoạt động: {{ $data->getActiveDuration() }}</h6>
                                         <h6>
                                             <span class="text-warning">

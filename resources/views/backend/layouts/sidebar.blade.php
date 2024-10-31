@@ -36,7 +36,7 @@
             </ul>
         </li><!-- End yeu cau nap tien -->
 
-        
+
 
 
         <li class="nav-item">
@@ -129,15 +129,15 @@
         </li><!-- End bình luận -->
 
 
-        
+
 
         <li class="nav-item">
-            <a class="nav-link collapsed {{ Request::is('admin/staff*') || Request::is('admin/customer*') ? 'active' : '' }}"
+            <a class="nav-link collapsed {{ Request::is('admin/staff*') || Request::is('admin/customer*') || Request::is('admin/application*') ? 'active' : '' }}"
                 data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-person"></i><span>Quản lý tài khoản</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="users-nav"
-                class="nav-content collapse {{ Request::is('admin/staff*') || Request::is('admin/customer*') ? 'show' : '' }}"
+                class="nav-content collapse {{ Request::is('admin/staff*') || Request::is('admin/customer*') || Request::is('admin/application*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('admin.staff') }}" class="{{ Request::is('admin/staff*') ? 'active' : '' }}">
@@ -147,7 +147,8 @@
                         class="{{ Request::is('admin/customer*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Quản lý khách hàng</span>
                     </a>
-                    <a href="components-alerts.html">
+                    <a href="{{ route('admin.application') }}"
+                        class="{{ Request::is('admin/application*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Kiểm duyệt hồ sơ</span>
                     </a>
                 </li>

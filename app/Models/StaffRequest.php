@@ -30,4 +30,11 @@ class StaffRequest extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
+    // Hàm lấy tên người dùng
+    public function getUserName()
+    {
+        return $this->user ? $this->user->user_name : 'N/A';
+    }
 }
