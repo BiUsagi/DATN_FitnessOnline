@@ -38,28 +38,7 @@
                                 <div class="col-12 mb-5"></div>
                             </div>
                             <!-- Row end -->
-                            {{-- <div class="row justify-content-between">
-                                <div class="col-lg-6 col-12">
-                                    <h6 class="fw-semibold">Employee Details :</h6>
-                                    <p class="m-0">
-                                        Dr. Hamspire Jordan,<br>
-                                        Surgeon,<br>
-                                        8900 Gilsion Ave,<br>
-                                        San Francisco, California(CA), 66700
-                                    </p>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="text-end">
-                                        <h6 class="fw-semibold">Hospital Address :</h6>
-                                        <p class="text-end m-0">
-                                            Workout LTD, 76890 St. <br>
-                                            5000 thomos Street, Suite 980<br>
-                                            Huntsville, Alabama, 87890
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-12 mb-3"></div>
-                            </div> --}}
+
 
                             <!-- Row start -->
                             <div class="row">
@@ -72,7 +51,7 @@
                                                         <th>Gói Tập</th>
                                                         {{-- <th>Nhân Viên</th> --}}
                                                         <th>Khách Hàng</th>
-                                                        <th>Giá Tiền</th>
+                                                        <th>Giá Tiền (VND)</th>
                                                         <th>Giảm Giá</th>
                                                     </tr>
                                                 </thead>
@@ -85,7 +64,7 @@
                                                         </td>
                                                         <td>{{ $data->getUserName() }}</td>
                                                         <td>
-                                                            <h6>{{ $data->price }}</h6>
+                                                            <h6> {{ number_format($data->price, 0, ',', '.') }}</h6>
                                                         </td>
 
                                                         <td>
@@ -100,26 +79,21 @@
                                                             <h5 class="text-primary">Thanh Toán</h5>
                                                         </td>
                                                         <td>
-                                                            <p>{{ $data->price }}</p>
+                                                            <p> {{ number_format($data->price, 0, ',', '.') }}</p>
                                                             <p>0</p>
-                                                            <h5 class="text-primary">{{ $data->price }}</h5>
+                                                            <h5 class="text-primary">
+                                                                {{ number_format($data->price, 0, ',', '.') }}</h5>
                                                         </td>
                                                     </tr>
-                                                    {{-- <tr>
+                                                    <tr>
                                                         <td colspan="6">
-                                                            <h6 class="text-info">Importannt Note:</h6>
+                                                            <h6 class="note">Note:</h6>
                                                             <p class="small m-0">
-                                                                We really appreciate your business and
-                                                                if
-                                                                there’s anything else we can do, please
-                                                                let us know! Also, should you need us to
-                                                                add VAT or anything else to this order,
-                                                                it’s super easy since this is a
-                                                                template,
-                                                                so just ask!
+                                                                Nếu có bất kỳ điều gì khác chúng tôi có thể làm, vui lòng
+                                                                cho chúng tôi biết!
                                                             </p>
                                                         </td>
-                                                    </tr> --}}
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
