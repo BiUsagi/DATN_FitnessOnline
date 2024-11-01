@@ -92,8 +92,11 @@
                         @foreach ($PTHot->take(3) as $PT)
                             <div class="col-md-4 f-0">
                                 <div class="team-block">
-                                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PT->avatar) }}" alt="Coaches" width="210"
-                                        height="339">
+                                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PT->avatar) }}" alt="Coaches"
+                                         style="  
+                                                
+                                                object-fit: cover;     
+                                                object-position: center; ">
                                     <h3><span>{{$PT->staff_name}}</span></h3>
                                 </div>
                             </div>
@@ -248,7 +251,7 @@
                                     <p>
                                         {!!$top_workout_package->description!!}
                                     </p>
-                                    <h2>{{$top_workout_package->	price}}</h2>
+                                    <h2>{{$top_workout_package->price}}</h2>
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
                             </div>
@@ -471,8 +474,7 @@
                     @foreach ($AllPT as $PTall)
                         <div class="swiper-slide">
                             <a href="#!" class="slides" aria-label="Slide 1">
-                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" width="309"
-                                    height="309">
+                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="height:400 !important;object-fit: cover !important;object-position: center!important">
                                 <div class="links">
                                     <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                                 </div>
