@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class, 'user_id');
     }
+
+    public function staffRequests()
+    {
+        return $this->hasMany(StaffRequest::class, 'user_id');
+    }
 }

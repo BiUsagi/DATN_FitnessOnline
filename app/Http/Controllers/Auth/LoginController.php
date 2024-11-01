@@ -4,6 +4,7 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Http\Requests\frontend\LoginRequest;
 use App\Http\Requests\frontend\RegisterRequest;
 use Illuminate\Support\Facades\Hash;
@@ -24,31 +25,35 @@ class LoginController extends Controller
             return response()->json(['message' => 'Thông tin đăng nhập không chính xác'], 401);
         }
         Auth::login($user);
-        $redirectUrl = $request->input('redirect_url', route('index'));
-
+        $redirectUrl = $request->input('redirect_url') ?? route('index');
+        
         return response()->json([
             'success' => true,
             'redirect_url' => $redirectUrl
         ]);
-
-        // Nếu đăng nhập thành công
-        // return redirect()->route('index')->with('success', 'Đăng nhập thành công!');
     }
     
 
-public function register(RegisterRequest $request)
-{
-
-    // Tạo người dùng mới
-    $user = User::create(attributes: [
-        'user_name' => $request['user_name'],
-        'email' => $request['email1'],
-        'password' => bcrypt($request['password1']),
-    ]);
-
-    // Nếu đăng ký thành công
+    public function register(RegisterRequest $request)
+    {
+        // Tạo người dùng mới
+        $user = User::create([
+            'user_name' => $request['user_name'],
+            'email' => $request['email1'],
+            'password' => bcrypt($request['password1']),
+        ]);
+    
+        // Tạo ví cho người dùng vừa đăng ký
+        $wallet = new Wallet();
+        $wallet->user_id = $user->id; // Lấy ID người dùng vừa tạo
+        $wallet->balance = 0.00; // Số dư mặc định
+        $wallet->currency = 'VND'; // Đơn vị tiền tệ mặc định
+        $wallet->save();
+    
+        // Nếu đăng ký thành công
         return redirect()->route('login.index')->with('success', 'Đăng ký thành công!');
-}
+    }
+    
 
 public function logout(){
     Auth::logout();

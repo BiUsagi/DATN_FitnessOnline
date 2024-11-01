@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\StaffRequest;
 use Illuminate\Http\Request;
 use App\Models\Staff;
 use App\Models\User;
-
 
 class AccountsController extends Controller
 {
@@ -19,9 +19,7 @@ class AccountsController extends Controller
     public function staff_info($id)
     {
         $data = Staff::where('id', $id)->first();
-        $age = $data->getAgeFromBirthday();
-
-        return view('backend/accounts/info_staff', compact('data', 'age'));
+        return view('backend/accounts/info_staff', compact('data'));
     }
     public function staff_update($id)
     {
@@ -51,4 +49,16 @@ class AccountsController extends Controller
     }
 
 
+
+    // Trang đơn đăng ký
+    public function application()
+    {
+        $data = StaffRequest::all();
+        return view('backend/accounts/staff_requests', compact('data'));
+    }
+    public function application_info($id)
+    {
+        $data = StaffRequest::where('id', $id)->first();
+        return view('backend/accounts/info_staff_requests', compact('data'));
+    }
 }
