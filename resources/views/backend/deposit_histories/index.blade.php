@@ -125,6 +125,7 @@
                     }
                 });
                 load();
+                loadsidebar();
 
                 Swal.fire({
                     title: "Thành công!",
@@ -148,6 +149,7 @@
             data: {},
             success: function (response) {
                 load();
+                loadsidebar();
 
                 Swal.fire({
                     title: "Thành công!",
