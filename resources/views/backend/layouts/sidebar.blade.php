@@ -19,7 +19,10 @@
             <a class="nav-link collapsed {{ Request::is('admin/deposithistories*') ? 'active' : '' }}"
                 data-bs-target="#deposithistories-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i>
-                <span class="me-3">Quản lý giao dịch</span>
+                <span class="position-relative">
+                    Quản lý giao dịch
+                    <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-danger custom-badge request-money"></span>
+                </span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="deposithistories-nav"
@@ -28,12 +31,9 @@
                 <li>
                     <a href="{{ route('admin.addmoney') }}"
                         class="{{ Request::is('admin/deposithistories') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span class="me-3 position-relative">Yêu cầu nạp &nbsp; &nbsp;
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-danger custom-badge">
-                                99+
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
+                        <i class="bi bi-circle"></i><span class="position-relative">
+                            Yêu cầu nạp
+                            <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-danger custom-badge request-money"></span>
                         </span>
                     </a>
                 </li>
@@ -278,3 +278,12 @@
     </ul>
 
 </aside><!-- End Sidebar-->
+
+
+<script>
+    $.get('http://127.0.0.1:8000/api/admin/deposithistories', function (res) {
+            let count = res.length;
+            console.log(count)
+            $('.request-money').html(count);
+        });
+</script>

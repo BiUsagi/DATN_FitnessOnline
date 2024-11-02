@@ -483,3 +483,9 @@ input[name=link]{
     background-color: #5edd50;
 
 }
+
+.custom-badge{
+    font-size: 12px;
+    margin-left: 0.3rem;
+    /* margin-top: 0.3rem; */
+}
