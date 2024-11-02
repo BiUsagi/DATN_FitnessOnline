@@ -16,20 +16,22 @@
         <!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed {{ Request::is('admin/comments*') ? 'active' : '' }}"
-                data-bs-target="#comment-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed {{ Request::is('admin/deposithistories*') ? 'active' : '' }}"
+                data-bs-target="#deposithistories-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>Quản lý giao dịch</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="comment-nav" class="nav-content collapse {{ Request::is('admin/comments*') ? 'show' : '' }}"
+            <ul id="deposithistories-nav"
+                class="nav-content collapse {{ Request::is('admin/deposithistories*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('admin.addmoney') }}"
-                        class="{{ Request::is('admin/comments*') ? 'active' : '' }}">
+                        class="{{ Request::is('admin/deposithistories') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Duyệt hóa đơn</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.listmoney') }}">
+                    <a href="{{ route('admin.listmoney') }}"
+                        class="{{ Request::is('admin/deposithistories/list') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Danh sách nạp</span>
                     </a>
                 </li>

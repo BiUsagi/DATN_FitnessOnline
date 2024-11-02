@@ -160,14 +160,3 @@ Route::prefix('admin')->group(function () {
 
 
 });
-
-
-// Route::group(['prefix' => 'api',], function () {
-//     // Route::get('goitap', [PackageExercisesController::class, 'index']);
-
-
-
-//     // account
-//     Route::get('/get-user/{id}', [ApiAccountsController::class, 'getUser'])->name('api.user');
-//     Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
-// });
