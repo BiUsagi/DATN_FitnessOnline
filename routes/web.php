@@ -151,6 +151,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/application', [AccountsController::class, 'application'])->name('admin.application'); //Danh sách đơn đăng ký
     Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info'); //Chi tiết đơn đăng ký
+  
 
     // order - đơn hàng
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders'); //Danh sách đơn hàng

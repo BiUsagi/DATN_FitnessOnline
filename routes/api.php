@@ -60,6 +60,8 @@ Route::group(['prefix' => 'admin',], function () {
     Route::put('/user/{id}', [AccountsController::class, 'updateU'])->name('api.user.update');
     Route::get('/staff/{id}', [AccountsController::class, 'showS'])->name('api.staff.show');
     Route::put('/staff/{id}', [AccountsController::class, 'updateS'])->name('api.staff.update');
+    Route::post('/application/{id}/approve', [AccountsController::class, 'approve'])->name('api.staffrequests.approve');
+    Route::post('/application/{id}/reject', [AccountsController::class, 'reject'])->name('api.staffrequests.reject');
 
     //SupportExercises
     Route::get('/supportexercises', [SupportExercisesController::class, 'index']);
