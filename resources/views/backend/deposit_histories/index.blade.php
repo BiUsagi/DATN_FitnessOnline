@@ -80,10 +80,10 @@
                 <td class="text-center">${formattedDate}</td>
                 <td class="text-center align-middle">
                     {{-- duyet --}}
-                    <button type="button" class="btn btn-success" data-bs-placement="top" data-bs-title="Duyệt thanh toán" id="stickstatus" data-id="${item.id}" data-amount="${item.amount}">
+                    <button type="button" class="btn btn-success" data-bs-placement="top" data-bs-title="Duyệt thanh toán" id="status1" data-id="${item.id}" data-amount="${item.amount}">
                     <i class="bx bx-check-double"></i></button>
                     {{-- huy --}}
-                    <button type="button" class="btn btn-danger" data-bs-placement="top" data-bs-title="Hủy">
+                    <button type="button" class="btn btn-danger" data-bs-placement="top" data-bs-title="Hủy" id="status2" data-id="${item.id}">
                     <i class="ri-close-circle-line"></i></button>
                 </td>
             </tr>
@@ -94,23 +94,19 @@
     }
 
 
-    $(document).on('click', '#stickstatus', function () {
+    $(document).on('click', '#status1', function () {
         var id = $(this).data('id');
         var amount = $(this).data('amount');
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id,
-            type: 'PUT', // Sử dụng PUT ở đây
-            data: {
-                // Dữ liệu bạn muốn gửi, nếu cần
-            },
+            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id +'/' + 1,
+            type: 'PUT',
+            data: {},
             success: function (response) {
                 $.ajax({
                     url: 'http://127.0.0.1:8000/api/admin/wallet/' + id + '/' + amount,
-                    type: 'PUT', // Sử dụng PUT ở đây
-                    data: {
-                        // Dữ liệu bạn muốn gửi, nếu cần
-                    },
+                    type: 'PUT',
+                    data: {},
                     error: function (xhr) {
                         console.log(xhr);
                     }
@@ -120,6 +116,29 @@
                 Swal.fire({
                     title: "Thành công!",
                     text: "Duyệt thành công!",
+                    icon: "success"
+                });
+            },
+            error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    });
+
+    $(document).on('click', '#status2', function () {
+        var id = $(this).data('id');
+        var amount = $(this).data('amount');
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id +'/' + 2,
+            type: 'PUT',
+            data: {},
+            success: function (response) {
+                load();
+
+                Swal.fire({
+                    title: "Thành công!",
+                    text: "Hủy thành công!",
                     icon: "success"
                 });
             },
