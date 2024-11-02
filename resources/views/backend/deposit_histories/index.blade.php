@@ -3,7 +3,7 @@
 @section('main')
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Quản lý bài viết</h1>
+        <h1>Quản lý giao dịch</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -20,16 +20,16 @@
                     <div class="card-body">
                         <div class="title-top d-flex justify-content-between">
                             <h5 class="card-title text-uppercase">Danh sách cần duyệt</h5>
-                            <a href="{{ route('admin.post-create') }}" class="btn-customize">Tất cả giao dịch</a>
+                            <a href="{{ route('admin.listmoney') }}" class="btn-customize">Xem lịch sử</a>
                         </div>
 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th class="text-center">ID</th>
+                                    <th class="text-center">STT</th>
+                                    <th class="text-center">Giá</th>
                                     <th>Tên</th>
-                                    <th>Mệnh giá</th>
                                     <th>Nội dung</th>
                                     <th class="text-center">Mã giao dịch</th>
                                     <th class="text-center">Thời gian</th>
@@ -60,6 +60,7 @@
         $.get('http://127.0.0.1:8000/api/admin/deposithistories', function (res) {
             let data = res;
             let returnData = '';
+            let index = 1;
             data.forEach(item => {
                 let date = new Date(item.deposited_at);
                 let formattedDate = date.toLocaleString('vi-VN', {
@@ -70,11 +71,21 @@
                     year: 'numeric'
                 });
 
+                let amountClass =
+                    item.amount == 10000 ? 'money-10k' :
+                    item.amount == 20000 ? 'money-20k' :
+                    item.amount == 50000 ? 'money-50k' :
+                    item.amount == 100000 ? 'money-100k' :
+                    item.amount == 200000 ? 'money-200k' :
+                    item.amount == 500000 ? 'money-500k' :
+                    item.amount == 1000000 ? 'money-1tr' :
+                    item.amount == 2000000 ? 'money-2tr' : '';
+
                 returnData += `
-            <tr>
-                <td class="text-center">${item.id}</td>
+            <tr class="align-middle">
+                <td class="text-center text-black-50">${index}</td>
+                <td class="text-center" id="${amountClass}"><strong>${parseInt(item.amount).toLocaleString('vi-VN')}</strong></td>
                 <td>${item.user_name}</td>
-                <td>${parseInt(item.amount).toLocaleString('vi-VN')} vnđ</td>
                 <td>${item.description}</td>
                 <td class="text-center">${item.transaction_id}</td>
                 <td class="text-center">${formattedDate}</td>
@@ -88,6 +99,8 @@
                 </td>
             </tr>
              `;
+
+             index++;
             });
             $('.show-data').html(returnData);
         });

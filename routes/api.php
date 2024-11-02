@@ -87,6 +87,7 @@ Route::group(['prefix' => 'admin',], function () {
 
     //DepositHistories
     Route::get('/deposithistories', [DepositHistoriesController::class, 'index']);
+    Route::get('/deposithistories/list', [DepositHistoriesController::class, 'list']);
     Route::put('/tickstatus/{id}/{i}', [DepositHistoriesController::class, 'tickstatus']);
 
     //wallets
