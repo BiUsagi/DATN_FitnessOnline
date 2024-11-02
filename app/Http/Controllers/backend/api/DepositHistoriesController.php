@@ -30,10 +30,15 @@ class DepositHistoriesController extends Controller
         return response()->json($data);
     }
 
-    public function tickstatus($id)
+    public function tickstatus($id, $i)
     {
         $data = Deposit_histories::where('id', $id)->first();
-        $data->status = 1;
+        if($i == 1 || $i == 2){
+            $data->status = $i;
+        }else{
+            $data->status = 0;
+        }
+        
         $data->save();
     }
 
