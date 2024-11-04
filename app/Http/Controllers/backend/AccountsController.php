@@ -53,12 +53,17 @@ class AccountsController extends Controller
     // Trang đơn đăng ký
     public function application()
     {
-        $data = StaffRequest::all();
+        $data = StaffRequest::orderBy('status', 'asc')->get();
         return view('backend/accounts/staff_requests', compact('data'));
     }
     public function application_info($id)
     {
-        $data = StaffRequest::where('id', $id)->first();
-        return view('backend/accounts/info_staff_requests', compact('data'));
+        $staff = StaffRequest::where('id', $id)->first();
+        $user = User::where('id', $staff->user_id)->first();
+        return view('backend/accounts/info_staff_requests', compact('staff', 'user'));
     }
+
+
+
+
 }

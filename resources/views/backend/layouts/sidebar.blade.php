@@ -1,4 +1,4 @@
-{{-- {{ Request::is('admin/orders*') || Request::is('admin/customer*') ? 'active' : '' }}   --}}
+{{-- {{ Request::is('admin/orders*') || Request::is('admin/customer*') ? 'active' : '' }} --}}
 {{-- Kiểm tra link để thêm class active --}}
 
 
@@ -8,7 +8,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/admin') }}">
+            <a class="nav-link collapsed {{ Request::is('admin') ? 'active' : '' }}" href="{{ url('/admin') }}">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
@@ -16,21 +16,31 @@
         <!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed {{ Request::is('admin/comments*') ? 'active' : '' }}"
-                data-bs-target="#comment-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-bar-chart"></i><span>Quản lý giao dịch</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed {{ Request::is('admin/deposithistories*') ? 'active' : '' }}"
+                data-bs-target="#deposithistories-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bar-chart"></i>
+                <span class="position-relative">
+                    Quản lý giao dịch
+                    <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-danger custom-badge request-money"></span>
+                </span>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="comment-nav" class="nav-content collapse {{ Request::is('admin/comments*') ? 'show' : '' }}"
+            <ul id="deposithistories-nav"
+                class="nav-content collapse {{ Request::is('admin/deposithistories*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('admin.addmoney') }}"
-                        class="{{ Request::is('admin/comments*') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Duyệt hóa đơn</span>
+                        class="{{ Request::is('admin/deposithistories') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span class="position-relative">
+                            Yêu cầu nạp
+                            <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-danger custom-badge request-money"></span>
+                        </span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.listmoney') }}">
-                        <i class="bi bi-circle"></i><span>Danh sách nạp</span>
+                    <a href="{{ route('admin.listmoney') }}"
+                        class="{{ Request::is('admin/deposithistories/list') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Lịch sử nạp</span>
                     </a>
                 </li>
             </ul>
@@ -70,8 +80,7 @@
                 class="nav-content collapse {{ Request::is('admin/exercise') || Request::is('admin/exercise/create') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('admin.exercise') }}"
-                        class="{{ Request::is('admin/exercise') ? 'active' : '' }}">
+                    <a href="{{ route('admin.exercise') }}" class="{{ Request::is('admin/exercise') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Danh sách bài tập</span>
                     </a>
                 </li>
@@ -164,8 +173,7 @@
                 class="nav-content collapse {{ Request::is('admin/orders*') || Request::is('admin/userorder*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('admin.orders') }}"
-                        class="{{ Request::is('admin/orders*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.orders') }}" class="{{ Request::is('admin/orders*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Đơn hàng</span>
                     </a>
                     {{-- <a href="{{ route('admin.userorder') }}"
@@ -182,22 +190,20 @@
                 data-bs-target="#statistical-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>Thống kê</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="statistical-nav"
-                class="nav-content collapse {{ Request::is('admin/statistical*') ? 'show' : '' }}"
+            <ul id="statistical-nav" class="nav-content collapse {{ Request::is('admin/statistical*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('admin.statistical') }}"
                         class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thống kê doanh thu</span>
                     </a> --}}
-        <!-- <a href="{{ route('admin.statistical') }}" class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
+                    <!-- <a href="{{ route('admin.statistical') }}" class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Thống kê khách hàng</span> -->
-        {{-- </a>
+                    {{-- </a>
                     <a href="{{ route('admin.statistical') }}"
                         class="{{ Request::is('admin/statistical*') ? 'active' : '' }}">
                     </a>
-                    <a href="{{ route('admin.package') }}"
-                        class="{{ Request::is('admin/package*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.package') }}" class="{{ Request::is('admin/package*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Thống kê gói tập</span>
                     </a>
                 </li>
@@ -257,8 +263,7 @@
             <ul id="configuration-nav" class="nav-content collapse {{ Request::is('admin/config*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('admin.config') }}"
-                        class="{{ Request::is('admin/config*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.config') }}" class="{{ Request::is('admin/config*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Ngôn ngữ</span>
                     </a>
                 </li>

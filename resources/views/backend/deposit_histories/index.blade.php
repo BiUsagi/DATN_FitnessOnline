@@ -3,7 +3,7 @@
 @section('main')
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Quản lý bài viết</h1>
+        <h1>Quản lý giao dịch</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -20,16 +20,16 @@
                     <div class="card-body">
                         <div class="title-top d-flex justify-content-between">
                             <h5 class="card-title text-uppercase">Danh sách cần duyệt</h5>
-                            <a href="{{ route('admin.post-create') }}" class="btn-customize">Tất cả giao dịch</a>
+                            <a href="{{ route('admin.listmoney') }}" class="btn-customize">Xem lịch sử</a>
                         </div>
 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th class="text-center">ID</th>
+                                    <th class="text-center">STT</th>
+                                    <th class="text-center">Giá</th>
                                     <th>Tên</th>
-                                    <th>Mệnh giá</th>
                                     <th>Nội dung</th>
                                     <th class="text-center">Mã giao dịch</th>
                                     <th class="text-center">Thời gian</th>
@@ -60,6 +60,7 @@
         $.get('http://127.0.0.1:8000/api/admin/deposithistories', function (res) {
             let data = res;
             let returnData = '';
+            let index = 1;
             data.forEach(item => {
                 let date = new Date(item.deposited_at);
                 let formattedDate = date.toLocaleString('vi-VN', {
@@ -70,56 +71,89 @@
                     year: 'numeric'
                 });
 
+                let amountClass =
+                    item.amount == 10000 ? 'money-10k' :
+                    item.amount == 20000 ? 'money-20k' :
+                    item.amount == 50000 ? 'money-50k' :
+                    item.amount == 100000 ? 'money-100k' :
+                    item.amount == 200000 ? 'money-200k' :
+                    item.amount == 500000 ? 'money-500k' :
+                    item.amount == 1000000 ? 'money-1tr' :
+                    item.amount == 2000000 ? 'money-2tr' : '';
+
                 returnData += `
-            <tr>
-                <td class="text-center">${item.id}</td>
+            <tr class="align-middle">
+                <td class="text-center text-black-50">${index}</td>
+                <td class="text-center" id="${amountClass}"><strong>${parseInt(item.amount).toLocaleString('vi-VN')}</strong></td>
                 <td>${item.user_name}</td>
-                <td>${parseInt(item.amount).toLocaleString('vi-VN')} vnđ</td>
                 <td>${item.description}</td>
                 <td class="text-center">${item.transaction_id}</td>
                 <td class="text-center">${formattedDate}</td>
                 <td class="text-center align-middle">
                     {{-- duyet --}}
-                    <button type="button" class="btn btn-success" data-bs-placement="top" data-bs-title="Duyệt thanh toán" id="stickstatus" data-id="${item.id}" data-amount="${item.amount}">
+                    <button type="button" class="btn btn-success" data-bs-placement="top" data-bs-title="Duyệt thanh toán" id="status1" data-id="${item.id}" data-amount="${item.amount}">
                     <i class="bx bx-check-double"></i></button>
                     {{-- huy --}}
-                    <button type="button" class="btn btn-danger" data-bs-placement="top" data-bs-title="Hủy">
+                    <button type="button" class="btn btn-danger" data-bs-placement="top" data-bs-title="Hủy" id="status2" data-id="${item.id}">
                     <i class="ri-close-circle-line"></i></button>
                 </td>
             </tr>
              `;
+
+             index++;
             });
             $('.show-data').html(returnData);
         });
     }
 
 
-    $(document).on('click', '#stickstatus', function () {
+    $(document).on('click', '#status1', function () {
         var id = $(this).data('id');
         var amount = $(this).data('amount');
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id,
-            type: 'PUT', // Sử dụng PUT ở đây
-            data: {
-                // Dữ liệu bạn muốn gửi, nếu cần
-            },
+            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id +'/' + 1,
+            type: 'PUT',
+            data: {},
             success: function (response) {
                 $.ajax({
                     url: 'http://127.0.0.1:8000/api/admin/wallet/' + id + '/' + amount,
-                    type: 'PUT', // Sử dụng PUT ở đây
-                    data: {
-                        // Dữ liệu bạn muốn gửi, nếu cần
-                    },
+                    type: 'PUT',
+                    data: {},
                     error: function (xhr) {
                         console.log(xhr);
                     }
                 });
                 load();
+                loadsidebar();
 
                 Swal.fire({
                     title: "Thành công!",
                     text: "Duyệt thành công!",
+                    icon: "success"
+                });
+            },
+            error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    });
+
+    $(document).on('click', '#status2', function () {
+        var id = $(this).data('id');
+        var amount = $(this).data('amount');
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id +'/' + 2,
+            type: 'PUT',
+            data: {},
+            success: function (response) {
+                load();
+                loadsidebar();
+
+                Swal.fire({
+                    title: "Thành công!",
+                    text: "Hủy thành công!",
                     icon: "success"
                 });
             },

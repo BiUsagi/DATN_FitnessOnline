@@ -14,6 +14,10 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <!-- money style -->
+    <link rel="stylesheet" href="assets/frontend/css/money.css">
+
+
     <!-- Favicons -->
     <link href="assets/backend/img/favicon.png" rel="icon">
     <link href="assets/backend/img/apple-touch-icon.png" rel="apple-touch-icon">

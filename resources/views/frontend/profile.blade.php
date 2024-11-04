@@ -2,7 +2,7 @@
 
 @section('main')
 
-    
+
 
 
 @endsection

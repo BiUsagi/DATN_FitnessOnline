@@ -5,9 +5,9 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class InfoController extends Controller
+class ProfileController extends Controller
 {
-    public function info(){
-        return view('frontend/info');
+    public function profile(){
+        return view('frontend/profile');
     }
 }

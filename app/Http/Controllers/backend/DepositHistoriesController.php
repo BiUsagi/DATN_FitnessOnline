@@ -12,6 +12,6 @@ class DepositHistoriesController extends Controller
     }
 
     public function list(){
-        
+        return view('backend/deposit_histories/list');
     }
 }
