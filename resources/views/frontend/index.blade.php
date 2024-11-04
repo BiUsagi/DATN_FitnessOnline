@@ -34,8 +34,8 @@
                         <div class="banner-slide">
                             <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/accounts/' . $slide->image) }}" alt="banner-slide" height="600">
                             <div class="banner-text">
-                                <h2 data-swiper-parallax="-800"style="font-size: 40px">{{$slide->description}}</h2>
-                                <h3 data-swiper-parallax="-1000" style="font-size: 75px">{{$slide->name}}</h3>
+                                <h2 data-swiper-parallax="-800"style="font-size: 50px"> {{$slide->name}}</h2>
+                                <h3 data-swiper-parallax="-1000" style="font-size: 40px">{{$slide->description}}</h3>
                             </div>
                         </div>
                     </div>
