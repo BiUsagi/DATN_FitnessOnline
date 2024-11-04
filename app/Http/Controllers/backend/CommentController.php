@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Posts;
+use Illuminate\Support\Facades\Auth;
+
 
 class CommentController extends Controller
 {
@@ -18,4 +20,6 @@ class CommentController extends Controller
     {
         return view('backend/comments/list-report');
     }
+    
+    
 }

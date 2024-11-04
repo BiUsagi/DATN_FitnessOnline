@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\frontend;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use App\Models\Slides;
 use App\Models\Staff;
+use App\Models\User;
 use App\Models\Workout_package;
 
 class HomeController extends Controller
@@ -42,6 +43,7 @@ class HomeController extends Controller
     }
     public function posts_details($id){
         $posts = Posts::findOrFail($id); // Tìm bài viết theo id
-    return view('frontend/posts-details', compact('posts'));
+        $showUser = Auth::user();
+    return view('frontend/posts-details', compact('posts','showUser'));
     }
 }
