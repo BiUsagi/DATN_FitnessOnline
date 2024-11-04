@@ -1,18 +1,8 @@
 @extends('frontend/layouts/app-user')
 
 @section('main')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chỉnh Sửa Thông Tin</title>
-    <style>
-       
-        
-    </style>
-</head>
-<body>
+
+    <div class="containerr">
     <div class="form-container">
         <h2 class="form-header">Chỉnh Sửa Thông Tin</h2>
         <div class="form-group avatar-upload">
@@ -49,34 +39,9 @@
                 <label for="other">Khác</label>
             </div>
         </div>
-        <div class="form-group">
-            <label for="province">Tỉnh</label>
-            <select id="province" name="province">
-                <option value="">Chọn tỉnh</option>
-                <option value="1">Hà Nội</option>
-                <option value="2">Hồ Chí Minh</option>
-                <!-- Thêm các tỉnh khác -->
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="district">Huyện</label>
-            <select id="district" name="district">
-                <option value="">Chọn huyện</option>
-                <!-- Huyện sẽ được điền tự động dựa trên tỉnh -->
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="ward">Xã</label>
-            <select id="ward" name="ward">
-                <option value="">Chọn xã</option>
-                <!-- Xã sẽ được điền tự động dựa trên huyện -->
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="village">Thôn/Xóm</label>
-            <input type="text" id="village" name="village" placeholder="Nhập thôn/xóm">
-        </div>
+        
         <button type="submit" class="submit-btn">Cập Nhật Thông Tin</button>
+    </div>
     </div>
 
     <script>
@@ -104,8 +69,8 @@
             // Code để cập nhật danh sách xã dựa trên huyện đã chọn
         });
     </script>
-</body>
-</html>
+
+
 
 
 @endsection
