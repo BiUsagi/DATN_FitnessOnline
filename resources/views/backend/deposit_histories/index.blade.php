@@ -123,7 +123,7 @@
                 const notificationData = {
                     user_id: user_id,
                     message: "Bạn đã nạp thành công " + formattedAmount + " vnd.",
-                    type: 1,  // Hoặc category bạn đã định nghĩa
+                    type: 1, 
                     link: ""  // Nếu không cần thiết, có thể bỏ qua hoặc để chuỗi rỗng
                 };
 
