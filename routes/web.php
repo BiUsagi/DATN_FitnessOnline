@@ -35,13 +35,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
-<<<<<<< HEAD
-Route::get('/info', [InfoController::class, 'info'])->name('info.index'); //thông tin cá nhân
-
-//Bài blog
-=======
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
->>>>>>> 93eae9cc1b82f393080455671bb5db5cd8388131
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 
@@ -172,7 +166,6 @@ Route::prefix('admin')->group(function () {
 
 
 });
-<<<<<<< HEAD
 
 
 // Route::group(['prefix' => 'api',], function () {
@@ -191,5 +184,3 @@ Route::group(['prefix'=>'ajax'], function(){
     // route::post('/comment/{posts->id}',[CommentsController::class,'comment'])->name('ajax.comment');
     
 });
-=======
->>>>>>> 93eae9cc1b82f393080455671bb5db5cd8388131
