@@ -38,7 +38,7 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
-
+Route::get('/trainers', [HomeController::class, 'trainers'])->name('trainers.index');
 
 
 //Auth;
@@ -156,7 +156,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/application', [AccountsController::class, 'application'])->name('admin.application'); //Danh sách đơn đăng ký
     Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info'); //Chi tiết đơn đăng ký
-  
+
 
     // order - đơn hàng
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders'); //Danh sách đơn hàng
@@ -178,9 +178,9 @@ Route::prefix('admin')->group(function () {
 //     Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
 // });
 
-Route::group(['prefix'=>'ajax'], function(){
-    route::post('/login',[AjaxloginController::class,'login'])->name('ajax.login');
-    route::get('/logout',[AjaxloginController::class,'logout'])->name('ajax.logout');
+Route::group(['prefix' => 'ajax'], function () {
+    route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
+    route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     // route::post('/comment/{posts->id}',[CommentsController::class,'comment'])->name('ajax.comment');
-    
+
 });

@@ -1,5 +1,5 @@
 /* css form login */
-body{
+body {
     background-image: url('/assets/frontend/images/background-gym.jpg');
 }
 
@@ -216,7 +216,7 @@ body{
     padding-left: 3px;
 }
 
-#ketqua{
+#ketqua {
     color: rgb(255, 0, 0);
     font-size: 12px;
     font-style: italic;
@@ -224,7 +224,139 @@ body{
     padding-left: 3px;
 }
 
-.nav-link .btn{
+.nav-link .btn {
     display: flex;
     align-items: center;
 }
+
+
+
+
+/* trainers */
+
+.trainer_section.expert .expert-details {
+    margin-bottom: 65px;
+    position: relative;
+    display: block;
+    text-align: center;
+    line-height: 0;
+    padding: 0 0;
+    overflow: hidden;
+    padding-bottom: 55px
+}
+
+.trainer_section.expert .expert-details:hover .content {
+    bottom: 0
+}
+
+.trainer_section.expert .expert-details .content {
+    text-align: center;
+    background-color: #292929;
+    padding: 15px 0;
+    overflow: hidden;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    position: absolute;
+    width: 90%;
+    bottom: -45px;
+    left: 0;
+    right: 0;
+    margin: auto
+}
+
+.trainer_section.expert .expert-details .content h2 {
+    margin-bottom: 15px
+}
+
+.trainer_section.expert .expert-details .icon_block {
+    margin-bottom: 0px
+}
+
+.trainer_section.expert .expert-details .icon_block .icon {
+    margin: 0 7px;
+    background: -webkit-gradient(linear, right top, left top, from(rgb(39, 153, 195)), color-stop(31%, rgb(39, 153, 195)), to(rgb(39, 153, 195)));
+    background: linear-gradient(270deg, rgb(39, 153, 195)0%, rgb(39, 153, 195) 31%, rgb(39, 153, 195)100%);
+    width: 25px;
+    height: 25px;
+    padding: 4px
+}
+
+.expert {
+    background: #212225;
+}
+
+.expert h3 {
+    margin-bottom: 50px
+}
+
+.expert .expert-details {
+    position: relative;
+    display: block;
+    text-align: center;
+    line-height: 0;
+    padding: 0 20px;
+    z-index: 1
+}
+
+@media(max-width: 991px) {
+    .expert .expert-details {
+        margin-bottom: 30px
+    }
+}
+
+@media(max-width: 767px) {
+    .expert .expert-details {
+        max-width: 300px;
+        margin: 0 auto 30px
+    }
+}
+
+.expert .expert-details .exp_img {
+    max-height: 290px;
+    min-height: 290px
+}
+
+.expert .expert-details::after {
+    content: "";
+    position: absolute;
+    background-color: #1d1e20;
+    width: 100%;
+    height: 85%;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease
+}
+
+.expert .expert-details:hover {
+    cursor: pointer
+}
+
+.expert .expert-details:hover::after {
+    background: -webkit-gradient(linear, left top, left bottom, from(#1FACE1), to(#1FACE1));
+    background: linear-gradient(180deg, #1FACE1 0%, #148F77 100%);
+}
+
+.expert .content {
+    text-align: center;
+    background-color: #292929;
+    padding: 15px 0
+}
+
+.expert .content span {
+    font-size: 12px;
+    color: #fff;
+    line-height: 2;
+    text-transform: uppercase
+}
+
+.expert .content h2 {
+    font-size: 18px;
+    color: #1FACE1
+}
+
+/* end trainers */
