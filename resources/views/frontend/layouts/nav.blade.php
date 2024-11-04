@@ -33,22 +33,20 @@
                                 </li>
                                 <li class="nav-item">
                                     @if(Auth::check())
-
-                                        <span class="nav-link btn">Tài Khoản</span> <!-- Hiển thị tên đăng nhập -->
+                                        
+                                        <span class=" nav-link account">
+                                        <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile"
+                                        class="rounded-circle">&nbsp;
+                                        {{ Auth::user()->user_name }}</span> <!-- Hiển thị tên đăng nhập -->
                                         <ul class="dropdown-menu" aria-labelledby="username">
-                                            <li class="text-center">
-                                                <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile"
-                                                    class="rounded-circle w-25 ">
-                                            </li>
-                                            <p class="name mb-0">{{ Auth::user()->user_name }}</p>
-                                            <p class="text-center text-bg-info"><i id="money"></i><i> đồng</i> </p>
+                                            <p class="text-center text-white"><i class="bi bi-wallet-fill"></i>&nbsp;<i id="money"></i> <i class="underline">đ</i> </p>
                                             <hr>
                                             <li class="text">
                                                 <a href="{{ route('wallets.addmoney') }}"
-                                                    class="dropdown-item text-white">Nạp tiền</a>
+                                                    class="dropdown-item text-white">Nạp Tiền</a>
                                             </li>
                                             <li class="text">
-                                                <a href="{{ route('info.index') }}" class="dropdown-item text-white">Thông
+                                                <a href="{{ route('profile.index') }}" class="dropdown-item text-white">Thông
                                                     Tin Tài Khoản</a>
                                             </li>
                                             <li class="text">

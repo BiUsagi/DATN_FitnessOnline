@@ -5,7 +5,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\WalletsController;
 use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\frontend\InfoController;
+use App\Http\Controllers\frontend\ProfileController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
 use App\Http\Controllers\backend\DashboardController;
@@ -23,6 +23,8 @@ use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\backend\DepositHistoriesController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\frontend\AjaxloginController;
+use App\Http\Controllers\frontend\CommentsController;
 
 // use App\Http\Controllers\backend\api\PackageExercisesController;
 // use App\Http\Controllers\backend\api\PackageExercisesController;
@@ -33,9 +35,12 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
-Route::get('/info', [InfoController::class, 'info'])->name('info.index'); //thông tin cá nhân
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
+
+
+
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
 Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
@@ -160,4 +165,22 @@ Route::prefix('admin')->group(function () {
 
 
 
+});
+
+
+// Route::group(['prefix' => 'api',], function () {
+//     // Route::get('goitap', [PackageExercisesController::class, 'index']);
+
+
+
+//     // account
+//     Route::get('/get-user/{id}', [ApiAccountsController::class, 'getUser'])->name('api.user');
+//     Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
+// });
+
+Route::group(['prefix'=>'ajax'], function(){
+    route::post('/login',[AjaxloginController::class,'login'])->name('ajax.login');
+    route::get('/logout',[AjaxloginController::class,'logout'])->name('ajax.logout');
+    // route::post('/comment/{posts->id}',[CommentsController::class,'comment'])->name('ajax.comment');
+    
 });

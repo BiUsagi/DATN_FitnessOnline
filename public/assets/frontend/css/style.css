@@ -1,4 +1,4 @@
-/* css form login */
+
 
 .container-custom {
     background-image: url('/assets/frontend/images/background-gym.jpg');
@@ -219,4 +219,9 @@
     font-style: italic;
     font-weight: 500;
     padding-left: 3px;
+}
+
+.nav-link .btn{
+    display: flex;
+    align-items: center;
 }
