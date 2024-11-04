@@ -1,10 +1,7 @@
-/* css form login */
-body{
-    background-image: url('/assets/frontend/images/background-gym.jpg');
-}
+
 
 .container-custom {
-
+    background-image: url('/assets/frontend/images/background-gym.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     display: flex;

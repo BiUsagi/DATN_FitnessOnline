@@ -1,24 +1,24 @@
-  /* body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(120deg, #4e54c8, #8f94fb);
-        } */
+  .containerr {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    
+}
  
  .form-container {
-        background-color: #fff;
+        background-color: #dbd9d9;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         max-width: 1200px;
         width: 90%;
-        display: flex;
-        justify-content: center;
+        /* display: flex;
         flex-wrap: wrap;
-        align-items: center;
+        align-items: center; */
     }
     .form-header {
         width: 100%;
