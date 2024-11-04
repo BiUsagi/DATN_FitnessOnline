@@ -31,5 +31,9 @@ class NotificationController extends Controller
             'data' => $notification
         ]);
     }
+
+    public function index($id){
+        
+    }
     
 }
