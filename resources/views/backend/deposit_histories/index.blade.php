@@ -73,13 +73,13 @@
 
                 let amountClass =
                     item.amount == 10000 ? 'money-10k' :
-                    item.amount == 20000 ? 'money-20k' :
-                    item.amount == 50000 ? 'money-50k' :
-                    item.amount == 100000 ? 'money-100k' :
-                    item.amount == 200000 ? 'money-200k' :
-                    item.amount == 500000 ? 'money-500k' :
-                    item.amount == 1000000 ? 'money-1tr' :
-                    item.amount == 2000000 ? 'money-2tr' : '';
+                        item.amount == 20000 ? 'money-20k' :
+                            item.amount == 50000 ? 'money-50k' :
+                                item.amount == 100000 ? 'money-100k' :
+                                    item.amount == 200000 ? 'money-200k' :
+                                        item.amount == 500000 ? 'money-500k' :
+                                            item.amount == 1000000 ? 'money-1tr' :
+                                                item.amount == 2000000 ? 'money-2tr' : '';
 
                 returnData += `
             <tr class="align-middle">
@@ -90,32 +90,54 @@
                 <td class="text-center">${item.transaction_id}</td>
                 <td class="text-center">${formattedDate}</td>
                 <td class="text-center align-middle">
-                    {{-- duyet --}}
-                    <button type="button" class="btn btn-success" data-bs-placement="top" data-bs-title="Duyệt thanh toán" id="status1" data-id="${item.id}" data-amount="${item.amount}">
+                    <button type="button" class="btn btn-success" data-bs-placement="top" data-bs-title="Duyệt thanh toán" id="status1" data-id="${item.id}" data-amount="${item.amount}" data-user_id="${item.user_id}">
                     <i class="bx bx-check-double"></i></button>
-                    {{-- huy --}}
                     <button type="button" class="btn btn-danger" data-bs-placement="top" data-bs-title="Hủy" id="status2" data-id="${item.id}">
                     <i class="ri-close-circle-line"></i></button>
                 </td>
             </tr>
              `;
 
-             index++;
+                index++;
             });
             $('.show-data').html(returnData);
         });
     }
 
 
+    //duyet
     $(document).on('click', '#status1', function () {
         var id = $(this).data('id');
         var amount = $(this).data('amount');
+        var user_id = $(this).data('user_id');
+        var formattedAmount = new Intl.NumberFormat('vi-VN').format(amount);
+
+
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id +'/' + 1,
+            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id + '/' + 1,
             type: 'PUT',
             data: {},
             success: function (response) {
+
+                const notificationData = {
+                    user_id: user_id,
+                    message: "Bạn đã nạp thành công " + formattedAmount + " vnd.",
+                    type: 1,  // Hoặc category bạn đã định nghĩa
+                    link: ""  // Nếu không cần thiết, có thể bỏ qua hoặc để chuỗi rỗng
+                };
+
+                //them thong bao
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/web/add-notification',
+                    method: 'POST',
+                    data: JSON.stringify(notificationData), // Chuyển đổi dữ liệu thành chuỗi JSON
+                    contentType: 'application/json',        // Định dạng nội dung là JSON
+                    dataType: 'json',                       // Kiểu dữ liệu mong đợi trả về
+                });
+
+
+                //them tien vao vi
                 $.ajax({
                     url: 'http://127.0.0.1:8000/api/admin/wallet/' + id + '/' + amount,
                     type: 'PUT',
@@ -139,12 +161,14 @@
         });
     });
 
+
+    //huy
     $(document).on('click', '#status2', function () {
         var id = $(this).data('id');
         var amount = $(this).data('amount');
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id +'/' + 2,
+            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id + '/' + 2,
             type: 'PUT',
             data: {},
             success: function (response) {
