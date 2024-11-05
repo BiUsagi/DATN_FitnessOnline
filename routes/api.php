@@ -114,5 +114,6 @@ Route::group(['prefix' => 'web',], function () {
     //pay
     Route::get('/getvoucher/{text?}', [PayController::class, 'getVoucher']);
     Route::get('/getvouchercode/{code}', [PayController::class, 'getVoucherCode']);
+    Route::post('/pay', [PayController::class, 'pay']);
 
 });

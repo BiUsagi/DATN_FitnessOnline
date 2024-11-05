@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Notification;
 use App\Models\Voucher;
 use App\Models\Order;
+use App\Models\Wallet;
 use App\Models\Voucher_package;
 use Carbon\Carbon;
 
@@ -47,16 +48,34 @@ class PayController extends Controller
 
     public function pay(Request $request)
     {
-        // Tạo bản ghi mới
+        $user_id = $request['user_id'];
+        $workout_package_id = $request['workout_package_id'];
+        $original_price = $request['original_price'];
+        $purchase_price = $request['purchase_price'];
+        $voucher_id = $request['voucher_id'];
+
         $record = Order::create([
-            'user_id' => $request['user_id'],
-            'workout_package_id' => $request['workout_package_id'],
-            'original_price' => $request['original_price'],
-            'purchase_price' => $request['purchase_price'],
-            'voucher_id' => $request['voucher_id'], // Có thể null
+            'user_id' => $user_id,
+            'workout_package_id' => $workout_package_id,
+            'original_price' => $original_price,
+            'purchase_price' => $purchase_price,
+            'voucher_id' => $voucher_id, // Có thể null
         ]);
 
-        // Trả về phản hồi
-        return response()->json($record, 201); // Trả về mã 201 (Created)
+        if ($request->has('voucher_id') && $request->filled('voucher_id')) {
+            $voucherP = Voucher_package::create([
+                'workout_package_id' => $workout_package_id,
+                'user_id' => $user_id,
+                'voucher_id' => $voucher_id,
+            ]);
+        }
+
+        $wallet = Wallet::where('user_id',$user_id)->first();
+        $wallet->balance -= $purchase_price;
+        $wallet->save();
+
+
+
+        return response()->json();
     }
 }

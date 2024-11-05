@@ -316,6 +316,7 @@
     $(document).on('click', '.voucher-infor', function () {
         let code = $(this).attr('data-code');
         $('#autotext').val(code);
+        loadVoucher();
     });
 
 
@@ -350,11 +351,11 @@
         let payform = form.serialize(); // Lấy dữ liệu form
         console.log(payform);
 
-        // $.ajax({
-        //     url: 'http://127.0.0.1:8000/api/admin/vouchers', // URL API
-        //     type: 'POST',
-        //     data: payform,
-        // })
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/web/pay', // URL API
+            type: 'POST',
+            data: payform,
+        })
     });
 
 
