@@ -39,41 +39,25 @@
                                 <li><a href="contact-us.html" class="text">Contact Us</a></li>
                             </ul>
                         </div>
-                        <div class="col-xl-2 col-lg-3 d-lg-flex justify-content-xl-start justify-content-lg-start">
-                            <div class="footer-links">
-                                <h2 class="footer-title mob" data-bs-target="#links" data-bs-toggle="collapse">
-                                    Links
-                                    <div class="footer-toggler">
-                                    </div>
-                                </h2>
-                                <ul id="links" class="collapse foot-mob" data-bs-parent="#foot-accordion">
-                                    <li><a href="{{ route('index') }}"class="text">Home</a></li>
-                                    <li><a href="{{ route('about.index') }}" class="text">About Us</a></li>
-                                    <li><a href="#courses" class="text">Courses</a></li>
-                                    <li><a href="schedule.html" class="text">Schedule</a></li>
-                                    <li><a href="{{ route('posts.index') }}"class="text">Blog</a></li>
-                                    <li><a href="contact-us.html" class="text">Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div
-                            class="col-xl-3 col-lg-5 d-lg-flex justify-content-xl-start d-none justify-content-lg-center">
-                            <div class="footer-links">
-                                <h2 class="footer-title">
-                                    Recent Post
-                                </h2>
-                                <div class="recent-posts">
-                                    {{-- @isset($topPost)
-                                        @foreach ($topPost->take(3) as $Post)
-                                            <div class="post">
-                                                <img loading='lazy' src="{{ asset('assets/backend/img/' . $Post->image) }}" alt="post" class="post-img">
-                                                <a href={{ route('posts-details.index', $Post->id) }}>
-                                                    <p class="post-content">{{$Post->title}}</p>
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    @endisset --}}
-                                    <div class="post">
+                    </div>
+                    <div class="col-xl-3 col-lg-5 d-lg-flex justify-content-xl-start d-none justify-content-lg-center">
+                        <div class="footer-links">
+                            <h2 class="footer-title">
+                                Recent Post
+                            </h2>
+                            <div class="recent-posts">
+                                @isset($topPost)
+                                    @foreach ($topPost->take(3) as $Post)
+                                        <div class="post">
+                                            <img loading='lazy' src="{{ asset('assets/backend/img/' . $Post->image) }}"
+                                                alt="post" class="post-img">
+                                            <a href={{ route('posts-details.index', $Post->id) }}>
+                                                <p class="post-content">{{ $Post->title }}</p>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                @endisset
+                                {{-- <div class="post">
                                         <img loading='lazy' src="assets/frontend/images/blog/blog-2.webp" alt="post" class="post-img">
                                         <a href="blog-details.html">
                                             <p class="post-content">Etiam venenatis nisl in orci posuere ultricies.</p>
@@ -84,7 +68,15 @@
                                         <a href="blog-details.html">
                                             <p class="post-content">Etiam venenatis nisl in orci posuere ultricies.</p>
                                         </a>
-                                    </div>
+                                    </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 d-lg-flex justify-content-xl-end justify-content-lg-end">
+                        <div class="footer-links">
+                            <h2 class="footer-title mob" data-bs-target="#contactus" data-bs-toggle="collapse">
+                                Get In Touch
+                                <div class="footer-toggler">
                                 </div>
                             </h2>
                             <ul id="contactus" class="collapse foot-mob" data-bs-parent="#foot-accordion">
