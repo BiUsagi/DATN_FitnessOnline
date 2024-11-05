@@ -1,0 +1,105 @@
+@extends('frontend/layouts/app-user')
+
+
+@section('main')
+<section>
+    <!-- BREADCRUMS SECTION START HERE -->
+    <div class="breadcrumb_wrapper">
+        <div class="container">
+            <div class="breadcrumb_block">
+                <h1>Gói tập của <span>MINHTUAN</span></h1>
+                <div class="trackPage">
+                    <a href="/">HOME</a>
+                    <span>Gói tập của MINHTUAN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BREADCRUMS SECTION END HERE -->
+    <div class="default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 order-2 order-lg-1">
+                    
+                        <div class="sidebar-workout">
+                            <div class="title">
+                                <h3>Danh mục</h3>
+                            </div>
+                            <div class="list-category">
+                                <a href="#!">Tất cả gói tập <p>3</p></a>
+                                <a href="#!">Gói tập đang thực hiện <p>1</p></a>
+                                <a href="#!">Gói tập đã hoàn thành <p>2</p></a>
+                                <a href="#!">Gói tập yêu thích <p>2</p></a>
+                            </div>
+                            <div class="search-workout">
+                                <input type="text" placeholder="Tìm kiếm...">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="filter-status">
+                                <p class="title-filter">Lọc theo trạng thái</p>
+                                <div class="filter-completed">
+                                    <input type="radio" name="filter" id="completed">
+                                    <label for="completed">Đã hoàn thành</label>
+                                </div>
+                                <div class="filter-doing">
+                                    <input type="radio" name="filter" id="doing">
+                                    <label for="doing">Đang thực hiện</label>
+                                </div>
+                            </div>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-9 order-1 order-lg-2 mb-lg-0 mb-5 wow fadeInUp" data-wow-duration="1.5s">
+                    <div class="about_right">
+                        <div class="section">
+                            <div class="box-list">
+                                @foreach ($workouts as $workout)
+                                    <div class="card-custom">
+                                        <div class="card-body-custom">
+                                            <div class="image-package">
+                                                <img src="{{ asset('uploads/gym_package/'. $workout->workoutPackage->image)}}" alt="">
+                                                <div class="box-action">
+                                                    <a href="{{route('workout_hub')}}"><i class="fa-regular fa-circle-play"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="content-package">
+                                                <a href="#">{{$workout->workoutPackage->package_name}}</a>
+                                                <p>Loại gói tập: {{$workout->workoutPackage->level}}</p>
+                                                <div class="price-status">
+                                                    <span class="price">Tác giả: <a href="#!">{{$workout->workoutPackage->staff->staff_name}}</a></span>
+                                                    <p class="status">Đã hoàn thành</p>
+                                                </div>
+                                                <div class="duration">
+                                                    <div class="progress-bar-customize">
+                                                        <div class="progress-customize" style="width: 100%"></div>
+                                                    </div>
+                                                    <div class="box-feedback">
+                                                        <p>Hoàn thành 100%</p>
+                                                        <div class="feedback">
+                                                            <div class="star">
+                                                                <i class="fa-solid fa-star"></i>
+                                                                <i class="fa-solid fa-star"></i>
+                                                                <i class="fa-solid fa-star"></i>
+                                                                <i class="fa-solid fa-star"></i>
+                                                                <i class="fa-solid fa-star-half-stroke"></i>
+                                                            </div>
+                                                            <p>Đưa ra xếp hạng</p>
+                                                        </div>
+                                                    </div>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+@endsection

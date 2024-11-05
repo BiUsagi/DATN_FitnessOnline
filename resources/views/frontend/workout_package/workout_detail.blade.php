@@ -23,7 +23,7 @@
         <div class="input-hidden">
             <input type="hidden" name="user_id" id="user_id">
             <input type="hidden" name="voucher_id" id="voucher_id">
-            <input type="hidden" name="workout_package_id" value="{{ $package->id }}">
+            <input type="hidden" name="workout_package_id" id="workout_package_id" value="{{ $package->id }}">
             <input type="hidden" name="original_price" id="original_price" value="{{ $package->price }}">
             <input type="hidden" name="purchase_price" id="purchase_price" value="{{ $package->price }}">
         </div>
@@ -279,11 +279,39 @@
 </section>
 <script>
 
+    loadButton();
+    function loadButton() {
+        @if (Auth::check())
+            var userId = @json(Auth::user()->id);
+            $('#user_id').val(userId);
+            var workout_package_id = $('#workout_package_id').val();
+
+            $.get('http://127.0.0.1:8000/api/web/checkorder', { workout_package_id: workout_package_id, user_id: userId }, function (res) {
+                let order = res;
+                console.log('res: ' + order);
+
+                if (order == null || Object.keys(order).length === 0) {
+                    $('#button-pay').html(
+                        '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
+                    )
+                } else {
+                    $('#button-pay').html(
+                        '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Xem</button>'
+                    )
+                }
+            })
+        @else
+            $('#button-pay').html('<a href="#1" class="by-now">Đăng nhập để mua gói</a href="#1">')
+        @endif
+    }
+
+
+
     //load
     loadVoucher();
     function loadVoucher() {
         const autotext = document.getElementById('autotext').value;
-        $.get('http://127.0.0.1:8000/api/web/getvoucher/' + autotext, function (res) {
+        $.get('http://127.0.0.1:8000/api/web/getvoucher', { text: autotext, user_id: userId }, function (res) {
             let voucher = res;
             let returnData = '';
             // console.log(voucher);
@@ -324,8 +352,14 @@
     $(document).on('click', '#button-addon2', function () {
         const codeSubmit = $('#autotext').val();
         // alert(codeSubmit);
-        $.get('http://127.0.0.1:8000/api/web/getvouchercode/' + codeSubmit, function (res) {
+        $.get('http://127.0.0.1:8000/api/web/getvouchercode', { code: codeSubmit, user_id: userId }, function (res) {
             let data = res
+
+            // Kiểm tra xem có thông báo lỗi không
+            if (res.message) {
+                document.getElementById('displayText').innerHTML = res.message;
+                return; // Dừng thực hiện nếu có lỗi
+            }
 
             let original_price = $('#original_price').val();
 
@@ -350,31 +384,26 @@
         let form = $(this);  // Lấy đối tượng form
         let payform = form.serialize(); // Lấy dữ liệu form
         console.log(payform);
-
         $.ajax({
             url: 'http://127.0.0.1:8000/api/web/pay', // URL API
             type: 'POST',
             data: payform,
-        })
+            success: function (res) {
+                // Kiểm tra nếu có lỗi trong phản hồi
+                if (res.error) {
+                    document.getElementById('displayText').innerHTML = res.error;
+                } else {
+                    loadButton();
+                    alert('Mua thành công.');
+                    location.reload(); // Tải lại trang
+                }
+            },
+            error: function (xhr, status, error) {
+                // Xử lý lỗi nếu có
+                document.getElementById('displayText').innerHTML = 'Số dư không đủ.';
+            }
+        });
     });
-
-
-
-
-
-
-
-
-    @if (Auth::check())
-        var userId = @json(Auth::user()->id);
-        $('#user_id').val(userId);
-
-        $('#button-pay').html(
-            '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
-        )
-    @else
-        $('#button-pay').html('<a href="#1" class="by-now">Đăng nhập để mua gói</a href="#1">')
-    @endif
 
 
 </script>

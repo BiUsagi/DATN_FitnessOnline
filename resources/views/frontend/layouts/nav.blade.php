@@ -51,6 +51,10 @@
                                                     Tin Tài Khoản</a>
                                             </li>
                                             <li class="text">
+                                                <a href="{{ route('workout_bought', Auth::user()->id) }}"
+                                                    class="dropdown-item text-white">Gói tập của tôi</a>
+                                            </li>
+                                            <li class="text">
                                                 <form action="{{ route('logout.index') }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="dropdown-item text-white">Đăng

@@ -22,7 +22,10 @@ return new class extends Migration {
             $table->unsignedBigInteger('staff_id')->nullable(); // ID huấn luyện viên (FK)
             $table->string('goal')->nullable(); // Mục tiêu tập luyện
             $table->boolean('status')->default(false);
-            $table->timestamps();                // Thời gian tạo và cập nhật          
+            $table->timestamps();                // Thời gian tạo và cập nhật
+            
+            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
+            
         });
     }
 

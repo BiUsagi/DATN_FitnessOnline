@@ -112,8 +112,9 @@ Route::group(['prefix' => 'web',], function () {
     Route::post('/add-notification', [NotificationController::class, 'add']);
 
     //pay
-    Route::get('/getvoucher/{text?}', [PayController::class, 'getVoucher']);
-    Route::get('/getvouchercode/{code}', [PayController::class, 'getVoucherCode']);
+    Route::get('/getvoucher', [PayController::class, 'getVoucher']);
+    Route::get('/getvouchercode', [PayController::class, 'getVoucherCode']);
     Route::post('/pay', [PayController::class, 'pay']);
+    Route::get('/checkorder', [PayController::class, 'checkorder']);
 
 });
