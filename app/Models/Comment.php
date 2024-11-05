@@ -22,13 +22,14 @@ class Comment extends Model
     }
     // Quan hệ với bảng User (người dùng)
     public function user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    
     // Thiết lập quan hệ đệ quy để lấy các phản hồi cấp con
     // Quan hệ với các phản hồi (con của bình luận hiện tại)
     public function replies()
     {
-        return $this->hasMany(Comment::class, 'rep');
+        return $this->hasMany(Comment::class, 'rep','id');
     }
 
     // Quan hệ với bình luận cha (nếu có)
@@ -36,4 +37,8 @@ class Comment extends Model
     {
         return $this->belongsTo(Comment::class, 'rep');
     }
+
+
+
 }
+ 

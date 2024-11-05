@@ -9,32 +9,30 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 class CommentsController extends Controller
 {
-    // public function comment(Request $req){
-    //     $user_id = Auth::guard('web')->user()->id;
-    //     $validator = Validator::make($req->all(),[
-    //         'comments' => 'required',
-    //     ],[
-    //         'comments.required'=>'Bình luận không được để trống', 
-    //     ]);
-    //     if ($validator->passes()){
-    //         $data = [
-    //             'user_id'  =>  $user_id,
-    //             'posts_id' => $posts_id,
-    //             'content'  =>  $req->$content,
+    public function comment($posts_id, Request $req){
+        $user_id = Auth::guard('web')->user()->id;
+        $validator = Validator::make($req->all(),[
+            'content' => 'required',
+        ],[
+            'content.required'=>'Bình luận không được để trống', 
+        ]);
+        if ($validator->passes()){
+            $data = [
+                'user_id'  =>  $user_id,
+                'posts_id' => $posts_id,
+                'content'  =>  $req->content
+                
+            ];
+            
+            if ($Comment= Comment::create($data)){
+                $Comments = Comment::where(['posts_id' => $posts_id, 'rep' => 0])->orderBy('id','DESC')->get();
+                return view('frontend.posts.list-comment',compact('Comments'));
 
-    //         ];
-    //         if ($check_login){
-    //             if (Auth::guard('web')->user()->status ==0){
-    //                 return response()->json(['error'=>['tài khoản của bạn chưa xác thực']]);
-    //             }
-
-    //             return response()->json(['data'=>Auth::guard('web')->user()]);
-
-    //         }
-    //     }
+            }
+        }
         
         
-    //     return response()->json(['error'=>$validator->errors()->first()]);
-    // }
-    
+        return response()->json(['error'=>$validator->errors()->first()]);
+    }
+     
 }
