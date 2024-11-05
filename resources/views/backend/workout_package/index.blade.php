@@ -8,7 +8,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
                     <li class="breadcrumb-item">Quản lý gói tập</li>
-                    <li class="breadcrumb-item active">Danh sách gói tập của: </li>
+                    <li class="breadcrumb-item active">Danh sách gói tập của: {{Auth::user()->user_name}}</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-top d-flex justify-content-between">
-                        <h5 class="card-title text-uppercase">Danh sách lộ trình tập của: </h5>
+                        <h5 class="card-title text-uppercase">Danh sách lộ trình tập của: {{Auth::user()->user_name}}</h5>
                         <a href="{{ route('admin.workout_package-create') }}" class="btn-customize"><i
                                 class="bi bi-plus-lg"></i> Thêm mới lộ trình tập</a>
                     </div>

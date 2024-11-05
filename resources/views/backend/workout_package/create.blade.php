@@ -55,7 +55,7 @@
                                             class="note">(*)</span></label>
                                     <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="description"></textarea>
                                 </div>
-
+                                <input type="hidden" name="staff_id" value="{{ Auth::id() }}">
                                 <input type="submit" class="btn btn-primary mt-3" value="Thêm gói tập">
 
                             </div>

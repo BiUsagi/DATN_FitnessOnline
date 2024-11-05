@@ -7,10 +7,10 @@
     <div class="breadcrumb_wrapper">
         <div class="container">
             <div class="breadcrumb_block">
-                <h1>Gói tập của <span>MINHTUAN</span></h1>
+                <h1>Gói tập của <span>{{ Auth::user()->user_name }}</span></h1>
                 <div class="trackPage">
                     <a href="/">HOME</a>
-                    <span>Gói tập của MINHTUAN</span>
+                    <span>Gói tập của {{ Auth::user()->user_name }}</span>
                 </div>
             </div>
         </div>

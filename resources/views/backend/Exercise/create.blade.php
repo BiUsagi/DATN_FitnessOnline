@@ -79,6 +79,7 @@
                         
 
                         <div class="btn-add-reset d-flex justify-content-between ms-2 me-2">
+                            <input type="hidden" name="pt_id" value="{{ Auth::id() }}">
                             <input type="submit" class="btn btn-primary mt-3 btn-add-exercise" value="+ Thêm bài tập">
                             <input type="reset" class="btn btn-secondary mt-3" value="Hoàn tác">
                         </div>

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class Workout_packageController extends Controller
 {
     public function workout_detail($id){
-        $package = Workout_Package::find($id);
+        $package = Workout_Package::with('staff')->find($id);
         if (!$package) {
             return redirect()->back()->with('error', 'Không tìm thấy gói tập này!');
         }

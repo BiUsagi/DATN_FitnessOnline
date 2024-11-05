@@ -7,6 +7,8 @@ use App\Models\Workout_Package;
 use App\Models\Exercise;
 use App\Models\Package_Exercise;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class Workout_PackageController extends Controller
 {
@@ -35,7 +37,7 @@ class Workout_PackageController extends Controller
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');
         $set->description = $request->input('description');
-        // $set->staff_id = $request->input('staff_id');
+        $set->staff_id = $request->input('staff_id');
         $set->level = $request->input('level');
         $set->special_level = $request->input('special_level');
         $set->status = $request->input('status');
@@ -62,7 +64,7 @@ class Workout_PackageController extends Controller
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');
         $set->description = $request->input('description');
-        // $set->staff_id = $request->input('staff_id');
+        $set->staff_id = $request->input('staff_id');
         $set->level = $request->input('level');
         $set->special_level = $request->input('special_level');
         $set->status = $request->input('status');
