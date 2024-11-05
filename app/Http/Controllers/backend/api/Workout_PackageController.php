@@ -31,6 +31,11 @@ class Workout_PackageController extends Controller
 
     public function create_(Request $request)
     {
+        $request->validate([
+            'package_name' => 'required|string|max:255',
+            // ... các quy tắc khác
+        ]);
+        
         $set = new Workout_package;
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');

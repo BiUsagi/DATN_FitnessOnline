@@ -17,4 +17,11 @@ class ExerciseController extends Controller
     {
         return view('backend/Exercise/create');
     }
+
+    public function updateExercise($id)
+    {
+        $ex = Exercise::find($id);
+
+        return view('backend/Exercise/update', ['ex' => $ex]);
+    }
 }

@@ -20,6 +20,7 @@ class CommentsController extends Controller
             $data = [
                 'user_id'  =>  $user_id,
                 'posts_id' => $posts_id,
+                'rep' => $req->rep ? $req->rep : 0,
                 'content'  =>  $req->content
                 
             ];
