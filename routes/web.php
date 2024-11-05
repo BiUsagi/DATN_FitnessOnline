@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\WalletsController;
+use App\Http\Controllers\frontend\Workout_packageController;
 use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\ProfileController;
@@ -39,6 +40,9 @@ Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.ind
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 
+
+//workout package
+Route::get('/workout_detail/{id}', [Workout_packageController::class, 'workout_detail'])->name('workout_detail');
 
 
 //Auth;
@@ -92,6 +96,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
     //view workout_exercise
     Route::get('/workout_hub/{id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
+    // Route::get('/workout_hub/{id}/day/{day_id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub.detail');
 
 
 
@@ -156,7 +161,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/application', [AccountsController::class, 'application'])->name('admin.application'); //Danh sách đơn đăng ký
     Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info'); //Chi tiết đơn đăng ký
-  
+
 
     // order - đơn hàng
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders'); //Danh sách đơn hàng

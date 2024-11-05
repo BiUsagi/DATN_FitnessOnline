@@ -12,38 +12,51 @@ use App\Models\Workout_package;
 
 class HomeController extends Controller
 {
-    
-    public function index(){
+
+    public function index()
+    {
         $slides = Slides::orderBy('id', 'DESC')->get(); // Lấy tất cả dữ liệu từ bảng tin
-        $PTHot = Staff::orderby('id','ASC')->get();//lấy pt có kinh nghiệm nhìu nhất
-        $topPost = Posts::orderBy('id','DESC')->get();//lấy bài viết mới nhất nhất
-        $top_workout_packages = Workout_package::orderBy('id','DESC')->get();//lấy bài viết mới nhất nhất
+        $PTHot = Staff::orderby('id', 'ASC')->get();//lấy pt có kinh nghiệm nhìu nhất
+        $topPost = Posts::orderBy('id', 'DESC')->get();//lấy bài viết mới nhất nhất
+        $top_workout_packages = Workout_package::orderBy('id', 'DESC')->get();//lấy bài viết mới nhất nhất
         $AllPT = staff::all();
         // $TopPost= Posts::orderBy('id', )
         // dd($AllPT); show ra dữ liệu xem trước
         // return view('frontend/index',compact('slides','PTHot','topPost','AllPT'));
         return view('frontend/index')->with([
-            'slides' =>$slides,
-            'PTHot'=> $PTHot,
-            'topPost'=>$topPost,
-            'AllPT'=> $AllPT,
-            'top_workout_packages'=>$top_workout_packages
+            'slides' => $slides,
+            'PTHot' => $PTHot,
+            'topPost' => $topPost,
+            'AllPT' => $AllPT,
+            'top_workout_packages' => $top_workout_packages
         ]);
     }
-    public function about(){
+    public function about()
+    {
         return view('frontend/about');
     }
-    public function contact(){
+    public function contact()
+    {
         return view('frontend/contact');
     }
-    public function posts(){
+    public function posts()
+    {
         $TopBlog = Posts::orderBy('id', 'DESC')->get(); // Lấy post theo thứ tự từ bài post mới nhát
-        return view('frontend/posts/posts')->with([
-            'TopBlog' =>$TopBlog]);
+return view('frontend/posts/posts')->with([
+            'TopBlog' =>$TopBlog]
+        );
     }
-    public function posts_details( $id ){
+    public function posts_details($id)
+    {
         $posts = Posts::findOrFail($id); // Tìm bài viết theo id
         $showUser = Auth::user();
-    return view('frontend/posts/posts-details', compact('posts','showUser'));
+        return view('frontend/posts/posts-details', compact('posts','showUser'));
+    }
+
+    public function trainers()
+    {
+        $data = Staff::all();
+        return view('frontend/trainers', compact('data'));
     }
 }
+

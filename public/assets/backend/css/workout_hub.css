@@ -411,7 +411,9 @@ header .header-block{
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    border-radius: 5px;
+    
 }
 
 .container .modal .col-left .overflow-col-left .btn-start-exercise{
@@ -452,6 +454,7 @@ header .header-block{
 
 video {
     width: 100%;
+    border-radius: 5px;
 }
 
 .container .modal .col-right .content-training p{
