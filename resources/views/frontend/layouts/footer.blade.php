@@ -41,7 +41,7 @@
                                     Recent Post
                                 </h2>
                                 <div class="recent-posts">
-                                    @isset($topPost)
+                                    {{-- @isset($topPost)
                                         @foreach ($topPost->take(3) as $Post)
                                             <div class="post">
                                                 <img loading='lazy' src="{{ asset('assets/backend/img/' . $Post->image) }}" alt="post" class="post-img">
@@ -50,8 +50,8 @@
                                                 </a>
                                             </div>
                                         @endforeach
-                                    @endisset
-                                    {{-- <div class="post">
+                                    @endisset --}}
+                                    <div class="post">
                                         <img loading='lazy' src="assets/frontend/images/blog/blog-2.webp" alt="post" class="post-img">
                                         <a href="blog-details.html">
                                             <p class="post-content">Etiam venenatis nisl in orci posuere ultricies.</p>
@@ -62,7 +62,7 @@
                                         <a href="blog-details.html">
                                             <p class="post-content">Etiam venenatis nisl in orci posuere ultricies.</p>
                                         </a>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
