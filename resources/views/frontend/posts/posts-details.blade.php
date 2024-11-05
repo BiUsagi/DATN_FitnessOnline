@@ -127,77 +127,7 @@
                             </div>
 
                             <div id="comment">
-
-                                @foreach ($posts->Comments as $item)
-
-                                    @if (Auth::guard('web')->check())
-                                    <div class="single-comment-box">
-                                        <div class="img-box">
-                                            <img loading='lazy' class="img-fluid" src="{{ asset('assets/backend/img/' . $item->user->avatar)}}" alt="">
-                                        </div>
-                                        <div class="content-box">
-                                            <h3>{{$item->user->user_name}}</h3>
-                                            <p>{{$item->content}}</p>
-                                            <p class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</p>
-                                            <div class="reply_btn">
-                                                <a href="#!" class="reply">Trả lời</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @else
-                                    <div class="single-comment-box">
-                                        <div class="img-box">
-                                            <img loading='lazy' class="img-fluid" src="{{ asset('assets/backend/img/' . $item->user->avatar)}}" alt="">
-                                        </div>
-                                        <div class="content-box">
-                                            <h3>{{$item->user->user_name}}</h3>
-                                            <p>{{$item->content}}</p>
-                                            <p class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</p>
-                                            <div class="reply_btn">
-                                                <a class="reply" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Trả lời</a>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                {{-- END VIEW COMMENT CHA --}}
-
-
-                                {{-- VIEW COMMENT CON --}}
-                                @foreach ($item->replies as $con)
-                                    @if (Auth::guard('web')->check())
-                                        <div class="reply-box">
-                                            <div class="single-comment-box">
-                                                <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/images/blog/user2.webp" alt="">
-                                                </div>
-                                                <div class="content-box">
-                                                    <h3>{{$con->user->name_user}}</h3>
-                                                    <p class="timing">19 August 2022, 10:00AM</p    >
-                                                    <div class="reply_btn"><a href="#!" class="reply">Trả lời</a></div>
-                                                    <div class="reply_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a>Trả lời</a></div>
-                                                    <p>{{$con->content}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @else
-                                    <div class="reply-box">
-                                        <div class="single-comment-box">
-                                            <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/images/blog/user2.webp" alt="">
-                                            </div>
-                                            <div class="content-box">
-                                                <h3>{{$con->user->name_user}}</h3>
-                                                <p class="timing">19 August 2022, 10:00AM</p    >
-                                                <div class="reply_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a class="reply">Trả lời</a></div>
-                                                {{-- <div class="reply_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a>Trả lời</a></div> --}}
-                                                <p>{{$con->content}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                @endforeach
-                                @endforeach
-                                {{-- END VIEW COMMENT CON --}}
-                               
+                               @include('frontend.posts.list-comment',['Comments'=>$posts->Comments])
                             </div>
 
 

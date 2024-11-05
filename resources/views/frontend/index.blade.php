@@ -161,7 +161,7 @@
     </div>
     <!-- FEATURE BLOCK END'S HERE -->
     <!-- PRICING BLOCK START HERE -->
-    <div class="pricing_wrapper default-padding-top">
+    {{-- <div class="pricing_wrapper default-padding-top">
         <div class="container">
             <div class="heading left">
                 <h3>Our <span>Pricing</span></h3>
@@ -174,7 +174,7 @@
                             <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                                 <div class="plan_block">
                                     <h3>{{$top_workout_package->package_name}}</h3>
-                                    {{-- <h4>Only for first month</h4> --}}
+                                    
                                     <p>
                                         {!!$top_workout_package->description!!}
                                     </p>
@@ -182,7 +182,7 @@
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
                             </div>
-                            @endforeach
+                            @endforeach --}}
                             
                             {{-- <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                                 <div class="plan_block">
@@ -208,7 +208,7 @@
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
                             </div> --}}
-                        </div>
+                        {{-- </div>
                     </div>
                 </div>
                 <div class="col-md-3 d-xl-block d-none">
@@ -218,7 +218,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- PRICING BLOCK END'S HERE -->
     <!-- OUR BLOG START HERE -->
     <div class="blog_wrapper default-padding">

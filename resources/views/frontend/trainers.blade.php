@@ -7,7 +7,7 @@
         <div class="breadcrumb_wrapper">
             <div class="container">
                 <div class="breadcrumb_block">
-                    <h1>Train<span>ers</span></h1>
+                    <h1>HUẤN LUYỆN<span> VIÊN</span></h1>
                     <div class="trackPage">
                         <a href="index.html">HOME</a>
                         <span>Trainers</span>
@@ -20,7 +20,7 @@
         <section class="expert trainer_section section-wrapper">
             <div class="container">
                 <div class="heading text-center p-5">
-                    <h3>Professional <span>Trainers</span></h3>
+                    <h3>Huấn luyện viên <span>chuyên nghiệp</span></h3>
                 </div>
                 <div class="row justify-content-center">
 
@@ -107,54 +107,42 @@
                     @endforeach
 
 
-                    {{-- <div class="pagination p1 d-flex justify-content-center">
-                        <ul>
-                            <a href="#" class="text-white">
-                                <li>
-                                    < </li>
-                            </a>
-                            <a class="is-active text-white" href="#">
-                                <li>1</li>
-                            </a>
-                            <a href="#" class="text-white">
-                                <li>2</li>
-                            </a>
-                            <a href="#" class="text-white">
-                                <li>3</li>
-                            </a>
-                            <a href="#" class="text-white">
-                                <li>4</li>
-                            </a>
-                            <a href="#" class="text-white">
-                                <li>5</li>
-                            </a>
-                            <a href="#" class="text-white">
-                                <li>6</li>
-                            </a>
-                            <a href="#" class="text-white">
-                                <li>></li>
-                            </a>
-                        </ul>
-                    </div> --}}
-
-
+                    {{-- phân trang --}}
                     <div class="pagination-container d-flex justify-content-center">
                         <ul class="pagination">
-                            <li class="pagination-item--wide first"> <a class="pagination-link--wide  text-white"
-                                    href="#">
-                                    < Previous</a>
-                            </li>
-                            <li class="pagination-item first-number"> <a class="pagination-link text-white"
-                                    href="#">1</a> </li>
-                            <li class="pagination-item"> <a class="pagination-link text-white" href="#">2</a> </li>
-                            <li class="pagination-item is-active"> <a class="pagination-link text-white"
-                                    href="#">3</a> </li>
-                            <li class="pagination-item"> <a class="pagination-link text-white" href="#">4</a> </li>
-                            <li class="pagination-item"> <a class="pagination-link text-white" href="#">5</a> </li>
-                            <li class="pagination-item--wide last"> <a class="pagination-link--wide  text-white"
-                                    href="#">Next ></a> </li>
-                        </ul>
+                            {{-- Nút Previous --}}
+                            @if ($data->onFirstPage())
+                                <li class="pagination-item--wide first">
+                                    <a class="pagination-link--wide text-secondary disabled" href="#">&lt;
+                                        Trước</a>
+                                </li>
+                            @else
+                                <li class="pagination-item--wide first">
+                                    <a class="pagination-link--wide text-white" href="{{ $data->previousPageUrl() }}">&lt;
+                                        Trước</a>
+                                </li>
+                            @endif
+                            <li class="pagination-item first-number"></li>
+                            {{-- Danh sách các trang --}}
+                            @foreach ($data->getUrlRange(1, $data->lastPage()) as $page => $url)
+                                <li class="pagination-item {{ $page == $data->currentPage() ? 'is-active' : '' }}">
+                                    <a class="pagination-link text-white" href="{{ $url }}">{{ $page }}</a>
+                                </li>
+                            @endforeach
 
+                            {{-- Nút Next --}}
+                            @if ($data->hasMorePages())
+                                <li class="pagination-item--wide last">
+                                    <a class="pagination-link--wide text-white" href="{{ $data->nextPageUrl() }}">Tiếp
+                                        &gt;</a>
+                                </li>
+                            @else
+                                <li class="pagination-item--wide last">
+                                    <a class="pagination-link--wide text-secondary disabled" href="#">Tiếp
+                                        &gt;</a>
+                                </li>
+                            @endif
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -57,7 +57,7 @@ class HomeController extends Controller
 
     public function trainers()
     {
-        $data = Staff::all()->paginate(2);
+        $data = Staff::paginate(8);
         return view('frontend/trainers', compact('data'));
     }
 }
