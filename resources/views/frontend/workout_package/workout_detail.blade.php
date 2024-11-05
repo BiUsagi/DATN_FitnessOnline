@@ -374,8 +374,6 @@
             $('#purchase_price').val(rounded_discounted_price);
             $('#voucher_id').val(data.id);
 
-
-
             document.getElementById('displayText').innerHTML = 'Đã áp dụng mã ưu đãi.';
         });
     });
@@ -386,26 +384,26 @@
         let form = $(this);  // Lấy đối tượng form
         let payform = form.serialize(); // Lấy dữ liệu form
         console.log(payform);
-
         $.ajax({
             url: 'http://127.0.0.1:8000/api/web/pay', // URL API
             type: 'POST',
             data: payform,
-        })
-        loadButton();
-
-        location.reload();
-        alert('Mua thành công.');
+            success: function (res) {
+                // Kiểm tra nếu có lỗi trong phản hồi
+                if (res.error) {
+                    document.getElementById('displayText').innerHTML = res.error;
+                } else {
+                    loadButton();
+                    alert('Mua thành công.');
+                    location.reload(); // Tải lại trang
+                }
+            },
+            error: function (xhr, status, error) {
+                // Xử lý lỗi nếu có
+                document.getElementById('displayText').innerHTML = 'Số dư không đủ.';
+            }
+        });
     });
-
-
-
-
-
-
-
-
-
 
 
 </script>

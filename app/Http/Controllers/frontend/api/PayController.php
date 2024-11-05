@@ -69,7 +69,7 @@ class PayController extends Controller
         // Nếu voucher hợp lệ và chưa được sử dụng
         return response()->json($voucher);
     }
- 
+
 
 
     public function pay(Request $request)
@@ -80,36 +80,46 @@ class PayController extends Controller
         $purchase_price = $request['purchase_price'];
         $voucher_id = $request['voucher_id'];
 
-        $record = Order::create([
-            'user_id' => $user_id,
-            'workout_package_id' => $workout_package_id,
-            'original_price' => $original_price,
-            'purchase_price' => $purchase_price,
-            'voucher_id' => $voucher_id, // Có thể null
-        ]);
-
-        if ($request->has('voucher_id') && $request->filled('voucher_id')) {
-            $voucherP = Voucher_package::create([
-                'workout_package_id' => $workout_package_id,
-                'user_id' => $user_id,
-                'voucher_id' => $voucher_id,
-            ]);
-        }
-
         $wallet = Wallet::where('user_id', $user_id)->first();
-        $wallet->balance -= $purchase_price;
-        $wallet->save();
+        if ($wallet->balance < $purchase_price) {
+            return response()->json(['error' => 'Số dư trong ví không đủ để thực hiện giao dịch.'], 400);
+        } else {
 
+            $record = Order::create([
+                'user_id' => $user_id,
+                'workout_package_id' => $workout_package_id,
+                'original_price' => $original_price,
+                'purchase_price' => $purchase_price,
+                'voucher_id' => $voucher_id, // Có thể null
+            ]);
 
+            if ($request->has('voucher_id') && $request->filled('voucher_id')) {
+                $voucherP = Voucher_package::create([
+                    'workout_package_id' => $workout_package_id,
+                    'user_id' => $user_id,
+                    'voucher_id' => $voucher_id,
+                ]);
+            }
 
-        return response()->json();
+            $wallet = Wallet::where('user_id', $user_id)->first();
+            $wallet->balance -= $purchase_price;
+            $wallet->save();
+        }
     }
 
 
-    public function checkorder(request $request){
+    public function checkorder(request $request)
+    {
         $user_id = $request['user_id'];
         $workout_package_id = $request['workout_package_id'];
         $data = Order::where('user_id', $user_id)->where('workout_package_id', $workout_package_id)->first();
         return response()->json($data);
+    }
+
+    public function checkwallet(request $request)
+    {
+        $user_id = $request['user_id'];
+        $wallet = Wallet::where('user_id', $user_id)->first();
+        return response()->json($wallet);
     }
 }
