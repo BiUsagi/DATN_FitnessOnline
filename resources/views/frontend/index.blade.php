@@ -34,8 +34,8 @@
                         <div class="banner-slide">
                             <img loading='lazy' data-swiper-parallax="-700" src="{{ asset('assets/backend/img/accounts/' . $slide->image) }}" alt="banner-slide" height="600">
                             <div class="banner-text">
-                                <h2 data-swiper-parallax="-800"style="font-size: 40px">{{$slide->description}}</h2>
-                                <h3 data-swiper-parallax="-1000" style="font-size: 75px">{{$slide->name}}</h3>
+                                <h2 data-swiper-parallax="-800"style="font-size: 50px"> {{$slide->name}}</h2>
+                                <h3 data-swiper-parallax="-1000" style="font-size: 40px">{{$slide->description}}</h3>
                             </div>
                         </div>
                     </div>
@@ -133,100 +133,27 @@
     <div class="features_wrapper default-padding" id="courses">
         <div class="container">
             <div class="heading text-center light">
-                <h3>Our <span>Courses</span></h3>
+                <h3>Các khóa học <span>của chúng tôi</span></h3>
             </div>
             <div class="swiper Courses_swiper">
                 <div class="swiper-wrapper">
+                    @foreach ($top_workout_packages as $item)
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="assets/frontend/images/icons/courses-1.svg" alt="icons" width="60"
-                                height="60">
-                            <span>GYM</span>
-                            <h2>Kettlebells Course</h2>
-                            <p>Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo blandit
-                                porta. </p>
+                            <img loading='lazy' src="{{ asset('uploads/gym_package/' . $item->image) }}" class="img-cover" alt="icons">
+                            <span>{{$item->special_level}}</span>
+                            <h2>{{$item->package_name}}</h2>
+                            <p>{!! nl2br(strip_tags($item->description)) !!}</p>
+                            <p>Giá: <span class="d-inline-block fw-bold fs-5">{{number_format($item->price, 0, ',', '.')}} VNĐ</span></p>
                             <div class="button-sec">
-                                <a href="#!">Read More</a>
+                                <a href="{{ route('workout_detail', $item->id) }}">Xem ngay</a>
                                 <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
                                         width="25" height="14"></a>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="feature-list">
-                            <img loading='lazy' src="assets/frontend/images/icons/courses-2.svg" alt="icons" width="60"
-                                height="60">
-                            <span>GYM</span>
-                            <h2>Weight Lifting</h2>
-                            <p>Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo blandit
-                                porta. </p>
-                            <div class="button-sec">
-                                <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
-                                        width="25" height="14"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="feature-list">
-                            <img loading='lazy' src="assets/frontend/images/icons/courses-3.svg" alt="icons" width="60"
-                                height="60">
-                            <span>GYM</span>
-                            <h2>Running</h2>
-                            <p>Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo blandit
-                                porta. </p>
-                            <div class="button-sec">
-                                <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
-                                        width="25" height="14"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="feature-list">
-                            <img loading='lazy' src="assets/frontend/images/icons/courses-4.svg" alt="icons" width="60"
-                                height="60">
-                            <span>GYM</span>
-                            <h2>Meditation</h2>
-                            <p>Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo blandit
-                                porta. </p>
-                            <div class="button-sec">
-                                <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
-                                        width="25" height="14"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="feature-list">
-                            <img loading='lazy' src="assets/frontend/images/icons/courses-5.svg" alt="icons" width="60"
-                                height="60">
-                            <span>GYM</span>
-                            <h2>Body Building</h2>
-                            <p>Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo blandit
-                                porta. </p>
-                            <div class="button-sec">
-                                <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
-                                        width="25" height="14"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="feature-list">
-                            <img loading='lazy' src="assets/frontend/images/icons/courses-6.svg" alt="icons" width="60"
-                                height="60">
-                            <span>GYM</span>
-                            <h2>Cardio Exercises</h2>
-                            <p>Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo blandit
-                                porta. </p>
-                            <div class="button-sec">
-                                <a href="#!">Read More</a>
-                                <a href="#!"><img loading='lazy' src="assets/frontend/images/icons/btn-arrow.svg" alt="icon"
-                                        width="25" height="14"></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -234,7 +161,7 @@
     </div>
     <!-- FEATURE BLOCK END'S HERE -->
     <!-- PRICING BLOCK START HERE -->
-    <div class="pricing_wrapper default-padding-top">
+    {{-- <div class="pricing_wrapper default-padding-top">
         <div class="container">
             <div class="heading left">
                 <h3>Our <span>Pricing</span></h3>
@@ -247,7 +174,7 @@
                             <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                                 <div class="plan_block">
                                     <h3>{{$top_workout_package->package_name}}</h3>
-                                    {{-- <h4>Only for first month</h4> --}}
+                                    
                                     <p>
                                         {!!$top_workout_package->description!!}
                                     </p>
@@ -255,7 +182,7 @@
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
                             </div>
-                            @endforeach
+                            @endforeach --}}
                             
                             {{-- <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                                 <div class="plan_block">
@@ -281,7 +208,7 @@
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
                             </div> --}}
-                        </div>
+                        {{-- </div>
                     </div>
                 </div>
                 <div class="col-md-3 d-xl-block d-none">
@@ -291,7 +218,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- PRICING BLOCK END'S HERE -->
     <!-- OUR BLOG START HERE -->
     <div class="blog_wrapper default-padding">

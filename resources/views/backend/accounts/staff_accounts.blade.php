@@ -102,10 +102,7 @@
                                                     @endfor
 
                                                 </span>
-                                                <span class="ms-2">
-                                                    <small class="text-secondary">({{ $item->rating_count }} bình
-                                                        chọn)</small>
-                                                </span>
+
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +112,13 @@
                             </div>
 
                         </div>
+
                     </div>
+
+                </div>
+
+
+            </div>
         </section>
 
     </main><!-- End #main -->

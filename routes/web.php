@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\WalletsController;
+use App\Http\Controllers\frontend\Workout_packageController;
 use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\ProfileController;
@@ -23,6 +24,8 @@ use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\backend\DepositHistoriesController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\frontend\AjaxloginController;
+use App\Http\Controllers\frontend\CommentsController;
 
 // use App\Http\Controllers\backend\api\PackageExercisesController;
 // use App\Http\Controllers\backend\api\PackageExercisesController;
@@ -36,6 +39,15 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
+Route::get('/trainers', [HomeController::class, 'trainers'])->name('trainers.index'); //các post
+
+
+//workout package
+Route::get('/workout_detail/{id}', [Workout_packageController::class, 'workout_detail'])->name('workout_detail');
+Route::get('/workout_bought/{user_id}', [Workout_packageController::class, 'workout_bought'])->name('workout_bought');
+Route::get('/workout_hub', [Workout_packageController::class, 'workout_hub'])->name('workout_hub');
+
+
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
 Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
@@ -87,6 +99,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
     //view workout_exercise
     Route::get('/workout_hub/{id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
+    // Route::get('/workout_hub/{id}/day/{day_id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub.detail');
 
 
 
@@ -152,7 +165,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/application', [AccountsController::class, 'application'])->name('admin.application'); //Danh sách đơn đăng ký
     Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info'); //Chi tiết đơn đăng ký
-  
+
 
     // order - đơn hàng
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders'); //Danh sách đơn hàng
@@ -160,5 +173,23 @@ Route::prefix('admin')->group(function () {
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
 
 
+
+});
+
+
+// Route::group(['prefix' => 'api',], function () {
+//     // Route::get('goitap', [PackageExercisesController::class, 'index']);
+
+
+
+//     // account
+//     Route::get('/get-user/{id}', [ApiAccountsController::class, 'getUser'])->name('api.user');
+//     Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
+// });
+
+Route::group(['prefix' => 'ajax'], function () {
+    route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
+    route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
+    route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
 
 });

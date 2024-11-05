@@ -107,27 +107,7 @@
                     </div>
                     <div class="content-training">
                         <div class="content">
-                            <b>Bước 1: Bắt đầu từ tư thế chuẩn bị</b>
-                            <p>Nằm sấp xuống sàn, duỗi thẳng chân về phía sau và để hai bàn chân rộng bằng hông.</p>
-                            <p>Đặt hai tay trên sàn, rộng hơn vai một chút. Đặt tay sao cho ngón cái hướng vào trong và các ngón tay còn lại hướng thẳng lên phía trước.</p>
-                            <p>Dùng mũi chân làm điểm tựa và nâng cơ thể lên, giữ cho lưng, hông và chân tạo thành một đường thẳng.</p>
-    
-                            <b>Bước 2: Thực hiện động tác hạ người xuống</b>
-                            <p>Hít vào và từ từ hạ thấp cơ thể xuống sàn bằng cách gập khuỷu tay.</p>
-                            <p>Giữ khuỷu tay chếch ra một góc khoảng 45 độ so với thân người để tránh gây áp lực quá lớn lên vai.</p>
-                            <p>Hạ thấp người đến khi ngực gần chạm sàn hoặc khuỷu tay tạo thành một góc 90 độ.</p>
-    
-                            <b>Bước 3: Đẩy người lên trở lại</b>
-                            <p>Thở ra, dùng lực từ cơ ngực và cơ tay để đẩy cơ thể lên trở về vị trí ban đầu.</p>
-                            <p>Giữ cơ thể thẳng khi đẩy lên và không để hông bị võng xuống hoặc nâng lên quá cao.</p>
-    
-                            <b class="warning">(*) Một số lưu ý:</b>
-                            <b>Tư thế đúng:</b>
-                            <p>Đảm bảo cơ thể luôn giữ thẳng từ đầu đến gót chân để tránh chấn thương lưng.</p>
-                            <b>Hít thở đúng cách:</b>
-                            <p>Hít vào khi hạ xuống và thở ra khi đẩy lên.</p>
-                            <b>Tốc độ thực hiện:</b>
-                            <p>Không nên thực hiện quá nhanh, tập trung vào việc kiểm soát động tác.</p>
+                            {{-- Show hướng dẫn tập --}}
                         </div>
                         
                         <div class="btn-action">
@@ -169,7 +149,7 @@
                                 </div>
                                 <div class="img-exercise">
                                     <video>
-                                        <source src="/uploads/video_exercise/${item.video_url}" type="video/mp4">
+                                        <source src="/uploads/video_exercise/${item.video_url}" type="video/mp4" class="video-exercise" data-videoId=${item.name}>
                                     </video>
                                     <div class="action-start">
                                         <a data-start="${item.id}" class="play-button" data-id="${item.id}"><i class="fa-solid fa-play"></i></a>
@@ -195,6 +175,10 @@
                 const actionStart = document.querySelectorAll('.action-start a');
                 actionStart.forEach(item => {
                     item.addEventListener('click', function() {
+                        const videoExercise = document.querySelector('.video-exercise');
+                        const videoId = videoExercise.getAttribute('data-videoId');
+                        console.log(videoId);
+                        
                         const exerciseId = this.getAttribute('data-id');
                         const exercise = data.find(ex => ex.id == exerciseId);
                         const overflow = document.querySelector('.overflow');
@@ -204,6 +188,8 @@
                         const videoSrc = `/uploads/video_exercise/${exercise.video_url}`;
                         const videoElement = document.querySelector('.show-video .video-container video');
                         const sourceElement = videoElement.querySelector('source');
+
+                        const description = document.querySelector('.content').innerHTML = exercise.description;
 
                         sourceElement.src = videoSrc;
                         videoElement.load();

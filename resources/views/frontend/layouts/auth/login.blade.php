@@ -150,6 +150,8 @@
                 if (data.success) {
                 // Điều hướng người dùng về trang ban đầu
                 window.location.href = data.redirect_url;
+                console.log('Current URL:', currentUrl);
+
                 } else {
                     // Xử lý thông báo lỗi nếu có
                     $("#ketqua").text(data.message);

@@ -23,7 +23,8 @@ class DepositHistoriesController extends Controller
                     'transaction_id' => $deposit->transaction_id,
                     'description' => $deposit->description,
                     'status' => $deposit->status,
-                    'user_name' => $deposit->user->user_name ?? null, // Lấy tên người dùng nếu có
+                    'user_name' => $deposit->user->user_name ?? null,
+                    'user_id' => $deposit->user->id,
                 ];
             });
 

@@ -50,7 +50,7 @@ class Workout_PackageController extends Controller
 
         if($request->hasFile('image')){
             $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
+            $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
             $file->move('uploads/gym_package', $filename);
             $set->image = $filename;
@@ -96,14 +96,13 @@ class Workout_PackageController extends Controller
 
     public function getExercisesForDay($packageId, $dayNumber)
     {
-        // Lấy các bài tập cho gói và ngày cụ thể
         $exercises = Package_Exercise::where('workout_package_id', $packageId)
             ->where('day_number', $dayNumber)
             ->get();
         $result = $exercises->map(function ($item) {
             return [
                 'id' => $item->exercise_id,
-                'name' => $item->exercise->name, // Lấy tên bài tập từ mối quan hệ
+                'name' => $item->exercise->name,
                 'sequence' => $item->sequence,
             ];
         });
