@@ -42,20 +42,22 @@ class HomeController extends Controller
     public function posts()
     {
         $TopBlog = Posts::orderBy('id', 'DESC')->get(); // Lấy post theo thứ tự từ bài post mới nhát
-return view('frontend/posts/posts')->with([
-            'TopBlog' =>$TopBlog]
+        return view('frontend/posts/posts')->with(
+            [
+                'TopBlog' => $TopBlog
+            ]
         );
     }
     public function posts_details($id)
     {
         $posts = Posts::findOrFail($id); // Tìm bài viết theo id
         $showUser = Auth::user();
-        return view('frontend/posts/posts-details', compact('posts','showUser'));
+        return view('frontend/posts/posts-details', compact('posts', 'showUser'));
     }
 
     public function trainers()
     {
-        $data = Staff::all();
+        $data = Staff::all()->paginate(2);
         return view('frontend/trainers', compact('data'));
     }
 }
