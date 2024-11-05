@@ -39,6 +39,7 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
+Route::get('/trainers', [HomeController::class, 'trainers'])->name('trainers.index'); //các post
 
 
 //workout package
@@ -183,9 +184,9 @@ Route::prefix('admin')->group(function () {
 //     Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
 // });
 
-Route::group(['prefix'=>'ajax'], function(){
-    route::post('/login',[AjaxloginController::class,'login'])->name('ajax.login');
-    route::get('/logout',[AjaxloginController::class,'logout'])->name('ajax.logout');
-    route::post('/comment/{id}',[CommentsController::class,'comment'])->name('ajax.comment');
-    
+Route::group(['prefix' => 'ajax'], function () {
+    route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
+    route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
+    route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
+
 });
