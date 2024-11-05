@@ -54,7 +54,6 @@
     <!-- css -->
     <link rel='stylesheet' href='assets/frontend/css/bell.css'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     
 
 
