@@ -97,28 +97,7 @@
     @endif
 
 
-    {{-- FORM TRẢ LỜI BÌNH LUẬN --}}
-        <form action="" method="POST" class="formRep form-rep-{{$item->id}}" style="display: none">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="form-group comments">
-                        <textarea class="form-control" name="comments" placeholder="Message*" rows="4" id="comment-con-{{$item->id}}"></textarea>
-                        <small id="comment-error" style="color:aliceblue"></small>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group mb-0 text-center text-md-start pb-0">
-                        <button type="button" data-id="{{$item->id}}" class="btn btn-primary btn-send-rep"  class="btn">Gửi bình luận</button>
-                        
-                    </div>
-                </div>
-            </div>                                   
-            <div class="col-md-12 alert-notification">
-                <div id="message" class="alert-msg"></div>
-            </div>
-        </form>
+    
     {{-- END VIEW COMMENT CHA --}}
 
 
@@ -155,6 +134,28 @@
         </div>
     @endif
     @endforeach
+    {{-- FORM TRẢ LỜI BÌNH LUẬN --}}
+    <form action="" method="POST" class="formRep form-rep-{{$item->id}}" style="display: none">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="form-group comments">
+                    <textarea class="form-control" name="comments" placeholder="Message*" rows="4" id="comment-con-{{$item->id}}"></textarea>
+                    <small id="comment-error" style="color:aliceblue"></small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group mb-0 text-center text-md-start pb-0">
+                    <button type="button" data-id="{{$item->id}}" class="btn btn-primary btn-send-rep"  class="btn">Gửi bình luận</button>
+                    
+                </div>
+            </div>
+        </div>                                   
+        <div class="col-md-12 alert-notification">
+            <div id="message" class="alert-msg"></div>
+        </div>
+    </form>
 @endforeach
 
     {{-- END VIEW COMMENT CON --}}

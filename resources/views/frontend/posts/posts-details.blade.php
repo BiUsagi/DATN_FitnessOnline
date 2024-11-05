@@ -388,8 +388,15 @@
         var form_rep = '.form-rep-' +id; 
         var contentRep = $(comment_rep_id).val();
         $('.formRep').slideUp();
-        $(form_rep).slideDown();
-    });
+        $('.contact-form').slideDown(); // Luôn hiện form bình luận chính
+
+        // Kiểm tra xem form trả lời hiện tại có đang mở không
+        if (!$(form_rep).is(':visible')) {
+            // Nếu không mở thì hiện form trả lời
+            $(form_rep).slideDown();
+            $('.contact-form').slideUp(); // Ẩn form bình luận chính
+        }
+});
     
     $(document).on('click', '.btn-send-rep',function(ev){
         ev.preventDefault();
@@ -415,6 +422,8 @@
                     $('#comment-content').val('');
                     $('#comment').html(res);
                     console.log(res);
+                    $('.contact-form').slideDown(); // Hiện lại form bình luận chính
+                    $('.formRep').slideUp();
                 }
             }
         })
