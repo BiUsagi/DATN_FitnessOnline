@@ -152,15 +152,16 @@ body {
 .default-padding .container .row .col-4 .by-now{
     background-color: #1face1;
     color: #fff;
-    padding: 2px 15px;
+    padding: 6px 15px;
     width: 200px;
     display: flex;
     justify-content: center;
-    font-size: 13px;
+    font-size: 14px;
     border-radius: 25px;
     text-transform: uppercase;
     transition: all .2s ease-in-out;
     border: 1px solid #1face1;
+    text-decoration: none;
 }
 
 .default-padding .container .row .col-4 .by-now:hover{
