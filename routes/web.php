@@ -181,6 +181,6 @@ Route::prefix('admin')->group(function () {
 Route::group(['prefix'=>'ajax'], function(){
     route::post('/login',[AjaxloginController::class,'login'])->name('ajax.login');
     route::get('/logout',[AjaxloginController::class,'logout'])->name('ajax.logout');
-    // route::post('/comment/{posts->id}',[CommentsController::class,'comment'])->name('ajax.comment');
+    route::post('/comment/{id}',[CommentsController::class,'comment'])->name('ajax.comment');
     
 });
