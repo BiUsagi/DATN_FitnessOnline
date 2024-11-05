@@ -26,7 +26,7 @@
                                     <a class="nav-link" href="#courses">GÓI TẬP</a>
                                 </li>
                                 <li class="nav-item">
-                                    {{-- <a class="nav-link" href="{{ route('trainers.index') }}">Trainers</a> --}}
+                                    <a class="nav-link" href="#!">Trainers</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
@@ -49,6 +49,10 @@
                                                 <a href="{{ route('profile.index') }}"
                                                     class="dropdown-item text-white">Thông
                                                     Tin Tài Khoản</a>
+                                            </li>
+                                            <li class="text">
+                                                <a href="{{ route('workout_bought', Auth::user()->id) }}"
+                                                    class="dropdown-item text-white">Gói tập của tôi</a>
                                             </li>
                                             <li class="text">
                                                 <form action="{{ route('logout.index') }}" method="POST">

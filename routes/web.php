@@ -43,6 +43,8 @@ Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details']
 
 //workout package
 Route::get('/workout_detail/{id}', [Workout_packageController::class, 'workout_detail'])->name('workout_detail');
+Route::get('/workout_bought/{user_id}', [Workout_packageController::class, 'workout_bought'])->name('workout_bought');
+Route::get('/workout_hub', [Workout_packageController::class, 'workout_hub'])->name('workout_hub');
 
 
 //Auth;

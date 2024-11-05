@@ -36,6 +36,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/app.css'>
     <link rel="stylesheet" href="assets/frontend/css/profile.css">
     <link rel="stylesheet" href="assets/frontend/css/style.css">
+    <link rel="stylesheet" href="assets/frontend/css/workout_bought.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
