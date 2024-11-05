@@ -3,71 +3,6 @@
 
 @section('main')
 <section>
-<style>
-    .single-comment-box {
-        display: flex;
-        align-items: flex-start;
-        padding: 15px;
-        border-bottom: 1px solid #444;
-        margin-bottom: 10px;
-        color: #fff;
-    }
-
-    .img-box {
-        margin-right: 15px;
-        width: 70px;  /* Tăng chiều rộng của hộp chứa */
-        height: 70px; /* Tăng chiều cao của hộp chứa */
-        overflow: hidden; 
-        border-radius: 50%; /* Hình tròn */
-    }
-
-    .img-box img {
-        width: 100%;          /* Chiếm 100% chiều rộng của phần tử cha */
-        height: 100%;         /* Chiếm 100% chiều cao của phần tử cha */
-        object-fit: contain;  /* Đảm bảo hình ảnh được thu nhỏ để vừa khung mà không bị cắt */
-        display: block;       /* Đảm bảo không có khoảng cách dưới hình ảnh */
-    }
-
-    .content-box {
-        flex: 1;
-    }
-
-    .content-box h3 {
-        font-size: 16px;
-        color: #00aaff;
-        margin: 0;
-    }
-
-    .timing {
-        font-size: 12px;
-        color: #aaa;
-        margin-top: 5px;
-    }
-
-    .content-box p {
-        margin: 10px 0;
-        line-height: 1.5;
-    }
-
-    .reply_btn {
-        margin-top: 5px;
-    }
-
-    .reply {
-        display: inline-block;
-        padding: 5px 10px;
-        font-size: 14px;
-        color: #fff;
-        background-color: #00aaff;
-        border-radius: 4px;
-        text-decoration: none;
-        transition: background-color 0.3s;
-    }
-
-    .reply:hover {
-        background-color: #0077cc;
-    }
-</style>
     <div class="breadcrumb_wrapper">
         <div class="container"> 
             <div class="breadcrumb_block">
@@ -121,9 +56,9 @@
 
 
 
-                        <div class="comment-box default-padding">
+                        <div class="comment-box default-padding" style="padding-bottom: 20px">
                             <div class="section-title">
-                                <h2>Comments</h2>
+                                <h3 style="color: white">Comments (10)</h3>
                             </div>
 
                             <div id="comment">
@@ -137,32 +72,18 @@
 
                         {{-- FORM BÌNH LUẬN --}}
                         @if (Auth::guard('web')->check())
-                        <div class="form-box">
-                            {{-- <div class="heading">
-                                <h2>Leave a <span>Comment</span></h2>
-                            </div> --}}
+                       
                             <form action="" method="POST" class="contact-form">
                                 <div class="col-md-12">
-                                    <div class="row">
                                         <div class="form-group comments">
-                                            <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="4"></textarea>
+                                            <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
                                             <small id="comment-error" style="color:aliceblue"></small>
+                                            <div class="col-md-1" style="float: right;">
+                                                <button type="button" class="css-button" id="btn-comments">Gửi</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-0 text-center text-md-start pb-0">
-                                            <button type="button" class="btn btn-primary" id="btn-comments" class="btn">Gửi bình luận</button>
-                                            
-                                        </div>
-                                    </div>
-                                </div>                                   
-                                <div class="col-md-12 alert-notification">
-                                    <div id="message" class="alert-msg"></div>
-                                </div>
+                                </div>                                
                             </form>
-                        </div>
                         @else
                         <div class="form-box">
                             {{-- <div class="heading">
@@ -383,13 +304,24 @@
     $(document).on('click', '.btn-rep',function(ev){
         ev.preventDefault();
         let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
+        // Lấy ID và phần tử textarea của bình luận cần trả lời
         var id = $(this).data('id');
         var comment_rep_id = '#comment-con-' +id;
         var form_rep = '.form-rep-' +id; 
         var contentRep = $(comment_rep_id).val();
         $('.formRep').slideUp();
-        $(form_rep).slideDown();
-    });
+        $('.contact-form').slideDown(); // Luôn hiện form bình luận chính
+
+        // Kiểm tra xem form trả lời hiện tại có đang mở không
+        if (!$(form_rep).is(':visible')) {
+            // Nếu không mở thì hiện form trả lời
+            $(form_rep).slideDown();
+            $('.contact-form').slideUp(); // Ẩn form bình luận chính
+        }
+        var userName = $(this).data('username');  // Lấy tên người dùng từ data-username
+        $(comment_rep_id).val('@' + userName + ' ' + contentRep);  // Thêm @tên người dùng vào đầu nội dung bình luận
+
+});
     
     $(document).on('click', '.btn-send-rep',function(ev){
         ev.preventDefault();
@@ -415,10 +347,41 @@
                     $('#comment-content').val('');
                     $('#comment').html(res);
                     console.log(res);
+                    $('.contact-form').slideDown(); // Hiện lại form bình luận chính
+                    $('.formRep').slideUp();
                 }
             }
         })
     });
+    //Report
+        $('.report-comment').on('click', function(ev) {
+        ev.preventDefault();
+        var $this = $(this);  // Lưu tham chiếu đúng của nút bấm
+        var commentId = $this.data('id');  // Lấy ID của comment được báo cáo
+
+        $.ajax({
+            url: '{{ route("comment.report") }}',
+            method: 'POST',
+            data: {
+                id: commentId,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                if(response.success) {
+                    // Cập nhật giao diện: thay đổi nội dung nút bấm
+                    $this.text("Đã báo cáo").css("color", "gray");
+                    // Nếu muốn thông báo thành công, có thể thêm một alert hoặc thông báo trên giao diện:
+                    alert("Bình luận đã được báo cáo.");
+                } else {
+                    alert("Đã có lỗi xảy ra khi báo cáo bình luận.");
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Có lỗi xảy ra khi báo cáo bình luận.");
+            }
+        });
+    });
+
 </script>
 @endsection
 

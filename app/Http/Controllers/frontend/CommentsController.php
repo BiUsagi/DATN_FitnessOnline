@@ -35,5 +35,27 @@ class CommentsController extends Controller
         
         return response()->json(['error'=>$validator->errors()->first()]);
     }
-     
+
+
+   public function reportComment(Request $request)
+{
+    $comment = Comment::find($request->id);
+
+    if ($comment) {
+        // Xử lý báo cáo
+        $comment->report = $comment->report + 1; // hoặc thay đổi trạng thái báo cáo
+        $comment->save();
+
+        return response()->json(['success' => true, 'message' => 'Bình luận đã được báo cáo.']);
+    } else {
+        // Không tìm thấy bình luận
+        return response()->json(['success' => false, 'message' => 'Không tìm thấy bình luận.']);
+    }
+}
+
+    public function __construct()
+    {
+        $this->middleware('auth'); // Bảo vệ các route yêu cầu đăng nhập
+    }
+
 }

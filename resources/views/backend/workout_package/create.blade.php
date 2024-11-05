@@ -26,8 +26,11 @@
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Tên gói tập <span
                                             class="note">(*)</span></label>
-                                    <input type="text" class="form-control-customize " id="inputNanme4"
+                                    <input type="text" class="form-control-customize " id="inputNanme4" value="{{ old('package_name') }}"
                                         name="package_name">
+                                    @error('package_name')
+                                        <span class="badge badge-danger">{{ $message }}</span>
+                                    @enderror 
                                 </div>
 
                                 <!-- <div class="col-12">
@@ -64,17 +67,6 @@
                     </div>
 
                 <div class="col-lg-3">
-                        <!-- <div class="card">
-                                <div class="card-header text-uppercase">Trạng thái</div>
-                                <div class="card-body">
-                                    <select name="" id="select2" class="form-control-select2 setupSelect2">
-                                        <option value="0">Trạng thái</option>
-                                        <option value="1">Công khai bài viết</option>
-                                        <option value="2">Ẩn bài viết</option>
-                                    </select>
-                                        {{-- <img class="img-cover" src="assets/backend/img/no-image.jpg" alt=""> --}}
-                                </div>  
-                        </div> -->
 
                         <div class="card">
                             <div class="card-header text-uppercase">HÌNH ẢNH</div>
@@ -106,9 +98,9 @@
                             <div class="card-body">
                                 <select name="level" id="level" class="form-control-select2 setupSelect2">
                                     <option value="0">Chọn cấp độ</option>
-                                    <option value="beginner">Người Mới Bắt Đầu</option>
-                                    <option value="intermediate">Trung Cấp</option>
-                                    <option value="advanced">Nâng Cao</option>
+                                    <option value="Người Mới Bắt Đầu">Người Mới Bắt Đầu</option>
+                                    <option value="Trung Cấp">Trung Cấp</option>
+                                    <option value="Nâng Cao">Nâng Cao</option>
                                 </select>
                             </div>
                         </div>
@@ -118,9 +110,9 @@
                             <div class="card-body">
                                 <select name="special_level" id="special_level" class="form-control-select2 setupSelect2">
                                     <option value="0">Chọn cấp độ</option>
-                                    <option value="cutting">Giảm cân</option>
-                                    <option value="bulking">Tăng cơ</option>
-                                    <option value="endurance">Thể lực và sức bền</option>
+                                    <option value="Giảm cân">Giảm cân</option>
+                                    <option value="Tăng cơ">Tăng cơ</option>
+                                    <option value="Thể lực và sức bền">Thể lực và sức bền</option>
                                 </select>
                             </div>
                         </div>

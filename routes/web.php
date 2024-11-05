@@ -73,9 +73,9 @@ Route::prefix('admin')->group(function () {
 
     // exercise - bài tập
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
-
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
-    Route::post('/exercise/create_', [ExerciseController::class, 'add'])->name('admin.exercise-add');
+    Route::get('/exercise/update/{id}', [ExerciseController::class, 'updateExercise'])->name('admin.exercise-update');
+    
 
 
     //Package_exercise
@@ -118,6 +118,7 @@ Route::prefix('admin')->group(function () {
     // posts - bài viết
     Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
     Route::get('/posts/create', [PostsController::class, 'create'])->name('admin.post-create');
+    Route::get('/posts/update/{id}', [PostsController::class, 'update'])->name('admin.posts-update');
 
     //component 
     Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
@@ -190,5 +191,7 @@ Route::group(['prefix' => 'ajax'], function () {
     route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
     route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
+    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('comment.report');
+
 
 });

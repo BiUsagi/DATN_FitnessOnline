@@ -295,8 +295,9 @@
                         '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
                     )
                 } else {
+                    //xem 
                     $('#button-pay').html(
-                        '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Xem</button>'
+                        '<button type="button" class="by-now">Xem</button>'
                     )
                 }
             })
