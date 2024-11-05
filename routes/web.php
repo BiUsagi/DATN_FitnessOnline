@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\WalletsController;
+use App\Http\Controllers\frontend\Workout_packageController;
 use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\InfoController;
@@ -36,6 +37,12 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 Route::get('/info', [InfoController::class, 'info'])->name('info.index'); //thông tin cá nhân
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
+
+
+//workout package
+Route::get('/workout_detail/{id}', [Workout_packageController::class, 'workout_detail'])->name('workout_detail');
+
+
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
 Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
@@ -87,6 +94,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
     //view workout_exercise
     Route::get('/workout_hub/{id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
+    // Route::get('/workout_hub/{id}/day/{day_id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub.detail');
 
 
 
