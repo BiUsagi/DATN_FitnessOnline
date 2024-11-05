@@ -5,9 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class InfoController extends Controller
+class PostsController extends Controller
 {
-    public function info(){
-        return view('frontend/info');
-    }
+    //
 }

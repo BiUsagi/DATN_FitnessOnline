@@ -34,7 +34,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/swiper.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/app.css'>
-    <link rel="stylesheet" href="assets/frontend/css/info.css">
+    <link rel="stylesheet" href="assets/frontend/css/profile.css">
     <link rel="stylesheet" href="assets/frontend/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
         rel="stylesheet">
@@ -42,6 +42,25 @@
     <link rel="stylesheet" href="assets/frontend/css/customize.css">
     <script src="assets/frontend/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- Favicons -->
+    <link href="assets/backend/img/favicon.png" rel="icon">
+    <link href="assets/backend/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <!-- css -->
+    <link rel='stylesheet' href='assets/frontend/css/bell.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+
+
+
+
+    
 
 
     <script>

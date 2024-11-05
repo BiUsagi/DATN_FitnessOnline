@@ -278,12 +278,3 @@
     </ul>
 
 </aside><!-- End Sidebar-->
-
-
-<script>
-    $.get('http://127.0.0.1:8000/api/admin/deposithistories', function (res) {
-            let count = res.length;
-            console.log(count)
-            $('.request-money').html(count);
-        });
-</script>

@@ -34,6 +34,7 @@
 <script src="assets/backend/library/finder.js"></script>
 <script src="assets/backend/library/select2.js"></script>
 <script src="assets/backend/library/seo.js"></script>
+<script src="assets/backend/js/sidebar.js"></script>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

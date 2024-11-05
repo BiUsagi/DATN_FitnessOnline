@@ -33,7 +33,7 @@
                                     <th>Blog</th>
                                     <th>Ngày đăng</th>
                                     <th class="text-center">Chi tiết</th>
-                                    <th></th>
+                                    {{-- <th></th> --}}
                                 </tr>
 
                             </thead>
@@ -85,7 +85,9 @@
                 </tr>
             `;
         });
+        console.log(comments);
         $('#list-items').html(comments);
+    
     });
     }
 
@@ -114,7 +116,8 @@ function deleteComment(id) {
                         icon: 'success'
                     });
                     load();
-                    
+                   
+
                 },
                 error: function (error) {
                     console.log(error);

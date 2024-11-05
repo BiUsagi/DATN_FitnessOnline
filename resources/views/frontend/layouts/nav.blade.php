@@ -26,29 +26,28 @@
                                     <a class="nav-link" href="#courses">GÓI TẬP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="schedule.html">PT</a>
+                                    <a class="nav-link" href="{{ route('trainers.index') }}">Trainers</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    @if(Auth::check())
-
-                                        <span class="nav-link btn">Tài Khoản</span> <!-- Hiển thị tên đăng nhập -->
+                                    @if (Auth::check())
+                                        <span class=" nav-link account">
+                                            <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile"
+                                                class="rounded-circle">&nbsp;
+                                            {{ Auth::user()->user_name }}</span> <!-- Hiển thị tên đăng nhập -->
                                         <ul class="dropdown-menu" aria-labelledby="username">
-                                            <li class="text-center">
-                                                <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile"
-                                                    class="rounded-circle w-25 ">
-                                            </li>
-                                            <p class="name mb-0">{{ Auth::user()->user_name }}</p>
-                                            <p class="text-center text-bg-info"><i id="money"></i><i> đồng</i> </p>
+                                            <p class="text-center text-white"><i class="bi bi-wallet-fill"></i>&nbsp;<i
+                                                    id="money"></i> <i class="underline">đ</i> </p>
                                             <hr>
                                             <li class="text">
                                                 <a href="{{ route('wallets.addmoney') }}"
-                                                    class="dropdown-item text-white">Nạp tiền</a>
+                                                    class="dropdown-item text-white">Nạp Tiền</a>
                                             </li>
                                             <li class="text">
-                                                <a href="{{ route('info.index') }}" class="dropdown-item text-white">Thông
+                                                <a href="{{ route('profile.index') }}"
+                                                    class="dropdown-item text-white">Thông
                                                     Tin Tài Khoản</a>
                                             </li>
                                             <li class="text">
@@ -74,7 +73,7 @@
     </div>
 
     <script>
-        $("#btn-login").click(function () {
+        $("#btn-login").click(function() {
             var currentUrl = window.location.href;
 
             // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
@@ -86,13 +85,11 @@
         @if (Auth::check())
             var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
-            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function (res) {
+            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function(res) {
                 let data = res;
                 var formattedBalance = data.balance.toLocaleString('vi-VN'); // Định dạng theo ngôn ngữ Việt Nam
                 $('#money').html(formattedBalance);
             });
         @endif
-
-
     </script>
 </header>
