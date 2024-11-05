@@ -14,4 +14,9 @@ class PostsController extends Controller
     public function create(){
         return view('backend/posts/create');
     }
+    public function update($id){
+        $post = Posts::find($id);
+
+        return view('backend/posts/update', ['post' => $post]);
+    }
 }

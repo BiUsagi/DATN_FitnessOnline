@@ -33,4 +33,34 @@ class ExerciseController extends Controller
 
         return response()->json($exercise);
     }
+
+    public function update(Request $request, $id){
+        $exercise = Exercise::find($id);
+        $exercise->name = $request->input('exercise_name');
+        $exercise->sets = $request->input('sets');
+        $exercise->reps = $request->input('reps');
+        $exercise->description = $request->input('description');
+        $exercise->status = $request->input('exercise-status');
+        
+        if($request->hasFile('video_url')){
+            $file = $request->file('video_url');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/video_exercise', $filename);
+            $exercise->video_url = $filename;
+        }
+        
+
+        $exercise->save();
+
+        return response()->json($exercise);
+    }
+
+    public function delete(Request $request, $id) 
+    {   
+        $ex = Exercise::find($id);
+        $ex->delete();
+
+        return response()->json($ex);
+    }
 }

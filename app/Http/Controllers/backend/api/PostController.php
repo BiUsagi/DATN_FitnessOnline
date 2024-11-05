@@ -32,4 +32,32 @@ class PostController extends Controller
 
         return response()->json($post);
     }
+
+    public function update_(Request $request, $id){
+        $post = Posts::find($id);
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->description = $request->input('description');
+
+       
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
+            $filename = time().'.'.$extension;
+            $file->move('uploads/post_image', $filename);
+            $post->image = $filename;
+        }
+
+        $post->save();
+
+        return response()->json($post);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $post = Posts::find($id);
+        $post->delete();
+
+        return response()->json($post);
+    }
 }

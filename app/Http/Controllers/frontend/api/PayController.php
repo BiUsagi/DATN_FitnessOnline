@@ -104,6 +104,8 @@ class PayController extends Controller
             $wallet = Wallet::where('user_id', $user_id)->first();
             $wallet->balance -= $purchase_price;
             $wallet->save();
+
+            return redirect()->back()->with('success', 'Mua thành công!');
         }
     }
 
