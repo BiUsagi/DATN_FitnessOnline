@@ -497,4 +497,18 @@ body {
     cursor: default;
 }
 
+
+.iconbox-custom {
+    margin: 7px;
+    background: linear-gradient(270deg, #1FACE1 0%, #1caee3 50%, #1fc7ff 100%);
+    width: 25px;
+    height: 25px;
+    padding: 4px 6px;
+    font-size: 13px;
+}
+
+.trainer_section.expert .expert-details .icon_block .icon-cus {
+    height: 25px;
+}
+
 /* end trainers */
