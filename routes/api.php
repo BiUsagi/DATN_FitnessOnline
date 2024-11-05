@@ -33,9 +33,9 @@ Route::group(['prefix' => 'admin',], function () {
     //API of exercises
     Route::get('/exercises', [ExerciseController::class, 'index']);
     Route::post('/exercises', [ExerciseController::class, 'add']);
-    Route::get('/exercises/{id}', [ExerciseController::class, 'add']);
-    Route::put('/exercises/{id}', [ExerciseController::class, 'add']);
-    Route::delete('/exercises/{id}', [ExerciseController::class, 'add']);
+    // Route::get('/exercises/{id}', [ExerciseController::class, 'add']);
+    Route::post('/exercises/{id}', [ExerciseController::class, 'update']);
+    Route::delete('/exercises/{id}', [ExerciseController::class, 'delete']);
 
     //API of workout_exercise
     Route::get('/workout_package', [Workout_PackageController::class, 'index']);
@@ -85,6 +85,8 @@ Route::group(['prefix' => 'admin',], function () {
     //Post
     Route::get('/post', [PostController::class, 'index']);
     Route::post('/post', [PostController::class, 'create_']);
+    Route::post('/post/{id}', [PostController::class, 'update_']);
+    Route::delete('/post/{id}', [PostController::class, 'delete'] );
 
 
     //DepositHistories

@@ -52,7 +52,7 @@
                                         <a href="#">${item.package_name}</a>
                                         <p>Loại gói tập: ${item.level}</p>
                                         <div class="price-status">
-                                            <p class="price">Giá: <span>$${item.price}</span></p>
+                                            <p class="price">Giá: <span>${item.price} VND</span></p>
                                             <p class="status${item.status == 0 ? '-error' : ''}">${item.status == 0 ? 'Ngừng hoạt động' : 'Đang hoạt động'}</p>
                                         </div>
                                         <div class="duration">
@@ -69,53 +69,54 @@
           
         });
 
-    $(document).ready(function() {
-    // Xử lý click cho nút xóa (delete-button)
-    $('.delete-button').click(function(event) {
-      event.preventDefault(); // Ngăn chặn hành vi mặc định của link
 
-      let confirmation = confirm('Bạn có chắc chắn muốn xóa gói tập này không?');
-      if (confirmation) {
-        let button = $(this); // Lấy nút delete được click
+        $(document).ready(function() {
+        // Xử lý click cho nút xóa (delete-button)
+        $('.delete-button').click(function(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của link
 
-        // Lấy ID của sản phẩm cần xóa từ data-id của nút (nếu có)
-        let packageId = button.data('id');
-        if (!packageId) {
-          console.error('Không tìm thấy ID sản phẩm!');
-          return;
-        }
+            Swal.fire({
+            title: 'Bạn có chắc chắn muốn xóa gói tập này không?',
+            text: "Hành động này không thể khôi phục!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                // Nếu người dùng  xác nhận, thực hiện xóa
+                let button = $(this);
+                let packageId = button.data('id');
 
-        // Gửi yêu cầu DELETE đến server
-        fetch(`/api/admin/workout_package/${packageId}`, {
-          method: 'DELETE',
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-        })
-        .then(response => response.json())
-        .then(data => {
-          // khi xóa thành công
-          Swal.fire({
-            title: "Thành công!",
-            text: "Xóa gói tập thành công!",
-            icon: "success"
-            });
-          // Xóa element của sản phẩm khỏi giao diện
-          button.closest('.card-custom').remove();
-        })
-        .catch(error => {
-          // Xử lý khi xóa thất bại
-          Swal.fire({
-            title: "Lỗi!",
-            text: "Có lỗi xảy ra khi xóa gói tập!",
-            icon: "error"
-             });
+                fetch(`/api/admin/workout_package/${packageId}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+                })
+                .then(response => response.json())
+                .then(data => {
+                Swal.fire(
+                    'Đã xóa!',
+                    'Gói tập đã được xóa thành công.',
+                    'success'
+                )
+                button.closest('.card-custom').remove();
+                })
+                .catch(error => {
+                Swal.fire(
+                    'Lỗi!',
+                    'Có lỗi xảy ra khi xóa gói tập.',
+                    'error'
+                )
+                });
+            }
+            })
         });
-      }
-    });
+        });
 
-    // ... code xử lý các nút khác (detail, edit)
-  });
     </script>
 
 @endsection
