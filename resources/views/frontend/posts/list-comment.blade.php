@@ -134,7 +134,7 @@
                     <p class="timing">{{  $con->created_at->locale('vi')->diffForHumans() }}</p    >
                     <p>{{$con->content}}</p>
                     <div class="reply_btn">
-                        <a href="" class="reply btn-rep" data-id="{{$con->id}}">Trả lời</a>
+                        <a href="" class="reply btn-rep" data-id="{{$item->id}}">Trả lời</a>
                     </div>
                 </div>
             </div>
