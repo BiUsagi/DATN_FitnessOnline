@@ -26,7 +26,7 @@
                                     <a class="nav-link" href="#courses">GÓI TẬP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('trainers.index') }}">Trainers</a>
+                                    <a class="nav-link " href="{{ route('trainers.index') }}">Trainers</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
