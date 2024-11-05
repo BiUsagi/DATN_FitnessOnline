@@ -14,11 +14,14 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('workout_package_id');
-            $table->string('price');
+            $table->string('original_price'); // Giá gốc
+            $table->string('purchase_price'); // Giá mua cuối cùng sau khi giảm giá
+            $table->unsignedBigInteger('voucher_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('workout_package_id')->references('id')->on('workout_packages')->onDelete('cascade');
+            $table->foreign('voucher_id')->references('id')->on('vouchers')->onDelete('set null');
         });
     }
 
