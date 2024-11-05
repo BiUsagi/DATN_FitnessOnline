@@ -15,6 +15,9 @@ return new class extends Migration {
             $table->foreignId('voucher_id')                    // Khóa ngoại liên kết với bảng vouchers
                 ->constrained('vouchers')
                 ->onDelete('cascade');                      // Xóa khi xóa voucher
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->foreignId('workout_package_id')                // Khóa ngoại liên kết với bảng workout_packages
                 ->constrained('workout_packages')
                 ->onDelete('cascade');                      // Xóa khi xóa gói tập

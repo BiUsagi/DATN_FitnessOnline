@@ -64,3 +64,6 @@
 .btn-custom:hover {
     background: linear-gradient(135deg, #137A9F, #0B4E64);
 }
+#modal-right{
+    background-color: whitesmoke;
+}
