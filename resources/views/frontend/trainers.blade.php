@@ -7,7 +7,7 @@
         <div class="breadcrumb_wrapper">
             <div class="container">
                 <div class="breadcrumb_block">
-                    <h1>Train<span>ers</span></h1>
+                    <h1>HUẤN LUYỆN<span> VIÊN</span></h1>
                     <div class="trackPage">
                         <a href="index.html">HOME</a>
                         <span>Trainers</span>
@@ -20,7 +20,7 @@
         <section class="expert trainer_section section-wrapper">
             <div class="container">
                 <div class="heading text-center p-5">
-                    <h3>Professional <span>Trainers</span></h3>
+                    <h3>Huấn luyện viên <span>chuyên nghiệp</span></h3>
                 </div>
                 <div class="row justify-content-center">
 
@@ -114,12 +114,12 @@
                             @if ($data->onFirstPage())
                                 <li class="pagination-item--wide first">
                                     <a class="pagination-link--wide text-secondary disabled" href="#">&lt;
-                                        Previous</a>
+                                        Trước</a>
                                 </li>
                             @else
                                 <li class="pagination-item--wide first">
                                     <a class="pagination-link--wide text-white" href="{{ $data->previousPageUrl() }}">&lt;
-                                        Previous</a>
+                                        Trước</a>
                                 </li>
                             @endif
                             <li class="pagination-item first-number"></li>
@@ -133,12 +133,12 @@
                             {{-- Nút Next --}}
                             @if ($data->hasMorePages())
                                 <li class="pagination-item--wide last">
-                                    <a class="pagination-link--wide text-white" href="{{ $data->nextPageUrl() }}">Next
+                                    <a class="pagination-link--wide text-white" href="{{ $data->nextPageUrl() }}">Tiếp
                                         &gt;</a>
                                 </li>
                             @else
                                 <li class="pagination-item--wide last">
-                                    <a class="pagination-link--wide text-secondary disabled" href="#">Next
+                                    <a class="pagination-link--wide text-secondary disabled" href="#">Tiếp
                                         &gt;</a>
                                 </li>
                             @endif
