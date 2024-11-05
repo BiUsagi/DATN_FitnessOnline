@@ -76,7 +76,7 @@
                 <p>{{$item->content}}</p>
                 <p class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</p>
                 <div class="reply_btn">
-                    <a href="#!" class="reply">Trả lời</a>
+                    <a href="" class="reply btn-rep" data-id="{{$item->id}}">Trả lời</a>
                 </div>
             </div>
         </div>
@@ -98,16 +98,11 @@
 
 
     {{-- FORM TRẢ LỜI BÌNH LUẬN --}}
-    <div class="form-box">
-        {{-- <div class="heading">
-            <h2>Leave a <span>Comment</span></h2>
-        </div> --}}
-        <form action="" method="POST" class="contact-form">
+        <form action="" method="POST" class="form-rep-{{$item->id}}">
             <div class="col-md-12">
                 <div class="row">
                     <div class="form-group comments">
-                        <input type="hidden" name="posts_id" id="" value="{{$posts->id}}">
-                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="4"></textarea>
+                        <textarea class="form-control" name="comments" placeholder="Message*" rows="4"></textarea>
                         <small id="comment-error" style="color:aliceblue"></small>
                     </div>
                 </div>
@@ -115,7 +110,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group mb-0 text-center text-md-start pb-0">
-                        <button type="button" class="btn btn-primary" id="btn-comments" class="btn">Gửi bình luận</button>
+                        <button type="button" class="btn btn-primary"  class="btn">Gửi bình luận</button>
                         
                     </div>
                 </div>
@@ -124,7 +119,6 @@
                 <div id="message" class="alert-msg"></div>
             </div>
         </form>
-    </div>
     {{-- END VIEW COMMENT CHA --}}
 
 
@@ -161,4 +155,5 @@
     @endif
     @endforeach
 @endforeach
+
     {{-- END VIEW COMMENT CON --}}

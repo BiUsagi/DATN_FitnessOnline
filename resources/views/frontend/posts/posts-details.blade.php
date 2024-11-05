@@ -145,7 +145,6 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="form-group comments">
-                                            <input type="hidden" name="posts_id" id="" value="{{$posts->id}}">
                                             <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="4"></textarea>
                                             <small id="comment-error" style="color:aliceblue"></small>
                                         </div>
