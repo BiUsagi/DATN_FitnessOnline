@@ -95,6 +95,36 @@
             </div>
         </div>
     @endif
+
+
+    {{-- FORM TRẢ LỜI BÌNH LUẬN --}}
+    <div class="form-box">
+        {{-- <div class="heading">
+            <h2>Leave a <span>Comment</span></h2>
+        </div> --}}
+        <form action="" method="POST" class="contact-form">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="form-group comments">
+                        <input type="hidden" name="posts_id" id="" value="{{$posts->id}}">
+                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="4"></textarea>
+                        <small id="comment-error" style="color:aliceblue"></small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group mb-0 text-center text-md-start pb-0">
+                        <button type="button" class="btn btn-primary" id="btn-comments" class="btn">Gửi bình luận</button>
+                        
+                    </div>
+                </div>
+            </div>                                   
+            <div class="col-md-12 alert-notification">
+                <div id="message" class="alert-msg"></div>
+            </div>
+        </form>
+    </div>
     {{-- END VIEW COMMENT CHA --}}
 
 
