@@ -3,6 +3,71 @@
 
 @section('main')
 <section>
+<style>
+    .single-comment-box {
+        display: flex;
+        align-items: flex-start;
+        padding: 15px;
+        border-bottom: 1px solid #444;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .img-box {
+        margin-right: 15px;
+        width: 70px;  /* Tăng chiều rộng của hộp chứa */
+        height: 70px; /* Tăng chiều cao của hộp chứa */
+        overflow: hidden; 
+        border-radius: 50%; /* Hình tròn */
+    }
+
+    .img-box img {
+        width: 100%;          /* Chiếm 100% chiều rộng của phần tử cha */
+        height: 100%;         /* Chiếm 100% chiều cao của phần tử cha */
+        object-fit: contain;  /* Đảm bảo hình ảnh được thu nhỏ để vừa khung mà không bị cắt */
+        display: block;       /* Đảm bảo không có khoảng cách dưới hình ảnh */
+    }
+
+    .content-box {
+        flex: 1;
+    }
+
+    .content-box h3 {
+        font-size: 16px;
+        color: #00aaff;
+        margin: 0;
+    }
+
+    .timing {
+        font-size: 12px;
+        color: #aaa;
+        margin-top: 5px;
+    }
+
+    .content-box p {
+        margin: 10px 0;
+        line-height: 1.5;
+    }
+
+    .reply_btn {
+        margin-top: 5px;
+    }
+
+    .reply {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: #fff;
+        background-color: #00aaff;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .reply:hover {
+        background-color: #0077cc;
+    }
+</style>
     <div class="breadcrumb_wrapper">
         <div class="container"> 
             <div class="breadcrumb_block">
@@ -61,67 +126,11 @@
                                 <h2>Comments</h2>
                             </div>
 
-                            <div>
-
-
-
-                                {{-- VIEW COMMENT CHA --}}
-                                @if (Auth::guard('web')->check())
-                                    <div class="single-comment-box">
-                                        <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/images/blog/user1.webp" alt="">
-                                        </div>
-                                        <div class="content-box">
-                                            <h3>Carl Lira</h3>
-                                            <p class="timing">18 August 2022, 10:00AM</p>
-                                            <div class="reply_btn"><a href="#!" class="reply">Trả lời</a></div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="single-comment-box">
-                                        <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/images/blog/user1.webp" alt="">
-                                        </div>
-                                        <div class="content-box">
-                                            <h3>Carl Lira</h3>
-                                            <p class="timing">18 August 2022, 10:00AM</p>
-                                            <div class="reply_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a>Trả lời</a></div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
-                                        </div>
-                                    </div>
-                                @endif
-                                {{-- END VIEW COMMENT CHA --}}
-
-
-                                {{-- VIEW COMMENT CON --}}
-                                @if (Auth::guard('web')->check())
-                                    <div class="reply-box">
-                                        <div class="single-comment-box">
-                                            <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/images/blog/user2.webp" alt="">
-                                            </div>
-                                            <div class="content-box">
-                                                <h3>Greta Cramer</h3>
-                                                <p class="timing">19 August 2022, 10:00AM</p    >
-                                                <div class="reply_btn"><a href="#!" class="reply">Trả lời</a></div>
-                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-                                <div class="reply-box">
-                                    <div class="single-comment-box">
-                                        <div class="img-box"> <img loading='lazy' class="img-fluid" src="assets/images/blog/user2.webp" alt="">
-                                        </div>
-                                        <div class="content-box">
-                                            <h3>Greta Cramer</h3>
-                                            <p class="timing">19 August 2022, 10:00AM</p    >
-                                                <div class="reply_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a>Trả lời</a></div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium explicabo.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                {{-- END VIEW COMMENT CON --}}
+                            <div id="comment">
+                               @include('frontend.posts.list-comment',['Comments'=>$posts->Comments])
                             </div>
+
+
                         </div>
 
 
@@ -136,8 +145,8 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="form-group comments">
-                                            <input type="hidden" name="posts_id" id="" value="{{$posts->id}}">
                                             <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="4"></textarea>
+                                            <small id="comment-error" style="color:aliceblue"></small>
                                         </div>
                                     </div>
                                 </div>
@@ -313,7 +322,6 @@
         </div>
 </section>
 <script>
-    var _csrf='{{csrf_token()}}';
     // $('#ajaxlogin').click(function(ev){
     //     ev.preventDefault();
     //     var _loginUrl = '{{route("ajax.login")}}'
@@ -361,6 +369,33 @@
                 }
             });
         });
+    });
+
+
+    //     //SUBMIT BÌNH LUẬN
+    $('#btn-comments').click(function(ev) {
+        ev.preventDefault();
+        let content = $('#comment-content').val();
+        let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
+        
+        $.ajax({
+            url:_commentUrl,
+            type : 'POST',
+            data:{
+                content: content,
+                _token: '{{ csrf_token() }}' // cần token CSRF
+            },
+            success: function (res){
+                if (res.error){
+                    $('#comment-error').html(res.error)
+                }else{
+                    $('#comment-error').html('');
+                    $('#comment-content').val('');
+                    $('#comment').html(res);
+                    console.log(res);
+                }
+            }
+        })
     });
 
 </script>

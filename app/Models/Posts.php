@@ -26,11 +26,11 @@ class Posts extends Model
         'updated_at',
     ];
     public function comments() {
-        return $this->hasMany(Comment::class, 'posts_id');
+        return $this->hasMany(Comment::class, 'posts_id','id')->where('rep', 0)->orderBy('created_at', 'DESC');
     }
     public function user()
     {
         return $this->belongsTo(Staff::class, 'staff_id'); // 'staff_id' là cột khóa ngoại trong bảng posts
     }
-    
+
 }

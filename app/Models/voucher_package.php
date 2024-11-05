@@ -13,24 +13,26 @@ class Voucher_package extends Model
     protected $table = 'voucher_packages';
 
     protected $fillable = [
-        'voucher_id',      // Khóa ngoại liên kết đến voucher
-        'gym_package_id',  // Khóa ngoại liên kết đến gói tập
+        'voucher_id',     
+        'workout_package_id', 
+        'user_id',  
     ];
 
-    /**
-     * Mối quan hệ ngược lại với Voucher
-     */
+   
     public function voucher()
     {
         return $this->belongsTo(Voucher::class); // Một voucher package thuộc về một voucher
     }
 
-    /**
-     * Mối quan hệ với Workout_Package
-     */
+   
     public function Workout_Package()
     {
         return $this->belongsTo(Workout_Package::class); // Một voucher package thuộc về một gói tập
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class); // Một voucher package thuộc về một người dùng
     }
     
 }

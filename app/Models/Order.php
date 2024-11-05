@@ -13,7 +13,9 @@ class Order extends Model
         'id',
         'user_id',
         'workout_package_id',
-        'price',
+        'original_price',
+        'purchase_price',
+        'voucher_id',
     ];
 
     public function workoutPackage()

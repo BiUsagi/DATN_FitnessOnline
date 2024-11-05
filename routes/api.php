@@ -22,6 +22,7 @@ use App\Http\Controllers\backend\api\DepositHistoriesController;
 //frontend
 use App\Http\Controllers\frontend\api\WalletsController;
 use App\Http\Controllers\frontend\api\NotificationController;
+use App\Http\Controllers\frontend\api\PayController;
 
 
 
@@ -109,5 +110,11 @@ Route::group(['prefix' => 'web',], function () {
 
     //Notification
     Route::post('/add-notification', [NotificationController::class, 'add']);
+
+    //pay
+    Route::get('/getvoucher', [PayController::class, 'getVoucher']);
+    Route::get('/getvouchercode', [PayController::class, 'getVoucherCode']);
+    Route::post('/pay', [PayController::class, 'pay']);
+    Route::get('/checkorder', [PayController::class, 'checkorder']);
 
 });
