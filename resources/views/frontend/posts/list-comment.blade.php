@@ -98,11 +98,11 @@
 
 
     {{-- FORM TRẢ LỜI BÌNH LUẬN --}}
-        <form action="" method="POST" class="form-rep-{{$item->id}}">
+        <form action="" method="POST" class="formRep form-rep-{{$item->id}}" style="display: none">
             <div class="col-md-12">
                 <div class="row">
                     <div class="form-group comments">
-                        <textarea class="form-control" name="comments" placeholder="Message*" rows="4"></textarea>
+                        <textarea class="form-control" name="comments" placeholder="Message*" rows="4" id="comment-con-{{$item->id}}"></textarea>
                         <small id="comment-error" style="color:aliceblue"></small>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group mb-0 text-center text-md-start pb-0">
-                        <button type="button" class="btn btn-primary"  class="btn">Gửi bình luận</button>
+                        <button type="button" data-id="{{$item->id}}" class="btn btn-primary btn-send-rep"  class="btn">Gửi bình luận</button>
                         
                     </div>
                 </div>
@@ -131,10 +131,11 @@
                 </div>
                 <div class="content-box">
                     <h3>{{$con->user->name_user}}</h3>
-                    <p class="timing">19 August 2022, 10:00AM</p    >
-                    <div class="reply_btn"><a href="#!" class="reply">Trả lời</a></div>
-                    <div class="reply_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a>Trả lời</a></div>
+                    <p class="timing">{{  $con->created_at->locale('vi')->diffForHumans() }}</p    >
                     <p>{{$con->content}}</p>
+                    <div class="reply_btn">
+                        <a href="" class="reply btn-rep" data-id="{{$con->id}}">Trả lời</a>
+                    </div>
                 </div>
             </div>
         </div>

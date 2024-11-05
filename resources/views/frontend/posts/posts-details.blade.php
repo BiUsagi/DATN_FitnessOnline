@@ -322,26 +322,6 @@
         </div>
 </section>
 <script>
-    // $('#ajaxlogin').click(function(ev){
-    //     ev.preventDefault();
-    //     var _loginUrl = '{{route("ajax.login")}}'
-    //     var email = $('#email').val();
-    //     var password = $('#password').val();
-
-    //     $.ajax({
-    //         url:_loginUrl,
-    //         type :'POST',
-    //         data :{
-    //             email: email,
-    //             password: password,
-    //             _token: _csrf
-    //         },
-    //         success: function(res){
-    //             console.log(res);
-    //         }
-    //     });
-
-    // })
     $(document).ready(function() {
         $('#ajaxlogin').click(function() {
             var email = $('#email').val();
@@ -372,7 +352,7 @@
     });
 
 
-    //     //SUBMIT BÌNH LUẬN
+    //SUBMIT BÌNH LUẬN
     $('#btn-comments').click(function(ev) {
         ev.preventDefault();
         let content = $('#comment-content').val();
@@ -398,6 +378,47 @@
         })
     });
 
+
+    // TRẢ LỜI BÌNH LUẬN
+    $(document).on('click', '.btn-rep',function(ev){
+        ev.preventDefault();
+        let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
+        var id = $(this).data('id');
+        var comment_rep_id = '#comment-con-' +id;
+        var form_rep = '.form-rep-' +id; 
+        var contentRep = $(comment_rep_id).val();
+        $('.formRep').slideUp();
+        $(form_rep).slideDown();
+    });
+    
+    $(document).on('click', '.btn-send-rep',function(ev){
+        ev.preventDefault();
+        var id = $(this).data('id');
+        var comment_rep_id = '#comment-con-' +id;
+        var form_rep = '.form-rep-' +id; 
+        var contentRep = $(comment_rep_id).val();
+        var _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
+        
+        $.ajax({
+            url:_commentUrl,
+            type : 'POST',
+            data:{
+                content:  contentRep,
+                rep: id,
+                _token: '{{ csrf_token() }}' // cần token CSRF
+            },
+            success: function (res){
+                if (res.error){
+                    $('#comment-error').html(res.error)
+                }else{
+                    $('#comment-error').html('');
+                    $('#comment-content').val('');
+                    $('#comment').html(res);
+                    console.log(res);
+                }
+            }
+        })
+    });
 </script>
 @endsection
 
