@@ -41,11 +41,17 @@ class WorkoutPackagesController extends Controller
         return redirect()->back();
     }
 
-    public function workout_hub($id){
-        $package = Workout_Package::find($id);
+    public function workout_hub($id) {
+        $package = Workout_Package::with('userPackageProgress')->find($id);
+    
         if (!$package) {
             return redirect()->back()->with('error', 'Không tìm thấy gói tập này!');
         }
-        return view('backend/workout_hub/index', compact('package'));
+    
+        $userProgress = $package->userPackageProgress->keyBy('current_day'); 
+        $currentDay = $userProgress->max('current_day'); 
+    
+        return view('backend.workout_hub.index', compact('package', 'userProgress', 'currentDay'));
     }
+    
 }

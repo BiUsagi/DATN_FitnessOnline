@@ -155,18 +155,20 @@
                             <div class="sidebar-item recent-post text-left">
                                 <div class="sidebar-info">
                                     <ul>
-                                        <li>
-                                            <div class="thumb"> 
-                                                <a href="#!"><img loading='lazy' src="assets/frontend/images/blog/article-1.webp" alt="post-1.webp"></a>
-                                            </div>
-                                            <div class="info">
-                                                <a href="#!">Contrary to popular belief,  It is the</a>
-                                                <div class="meta-title">
-                                                    <span class="post-date">05 Jan, 2022</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
+                                        @foreach ($onlyBlog->take(3) as $only)
+                                                <li>
+                                                    <div class="thumb"> 
+                                                        <a href="#!"><img loading='lazy' src="{{ asset('assets/backend/img/' . $only->image) }}" alt="post-1.webp"></a>
+                                                    </div>
+                                                    <div class="info">
+                                                        <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
+                                                        <div class="meta-title">
+                                                            <span class="post-date">{{$only->created_at}}</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        {{-- <li>
                                             <div class="thumb"> 
                                                 <a href="#!"><img loading='lazy' src="assets/frontend/images/blog/article-2.webp" alt="post-1.webp"></a>
                                             </div>
@@ -187,7 +189,7 @@
                                                     <span class="post-date">05 Jan, 2022</span>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>

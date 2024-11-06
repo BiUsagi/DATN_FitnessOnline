@@ -54,6 +54,9 @@ Route::group(['prefix' => 'admin',], function () {
 
     //run view workout_hub
     Route::get('/workout_hub/{id}/day/{dayDetail}', [Workout_hubController::class, 'getDayExercises']);
+    // Route lấy tiến độ của người dùng
+
+    Route::post('/workout_hub/{id}/save-progress', [Workout_PackageController::class, 'saveProgress']);
 
 
 
