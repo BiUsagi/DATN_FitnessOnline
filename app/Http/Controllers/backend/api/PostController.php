@@ -18,6 +18,7 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->description = $request->input('description');
+        $post->staff_id = $request->input('staff_id');
 
        
         if($request->hasFile('image')){
@@ -38,6 +39,7 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->description = $request->input('description');
+        $post->staff_id = $request->input('staff_id');
 
        
         if($request->hasFile('image')){
