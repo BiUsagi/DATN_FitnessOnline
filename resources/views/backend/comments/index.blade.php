@@ -156,12 +156,12 @@
                             <p style="font-size: 0.8em; color: gray;" class="mb-2 text-justify-custom">${reply.content}</p>
                         </div>
                         <div class="mt-2 ms-auto">
-                            <button type="button" class="btn btn-danger" onclick="deleteComment(${reply.id})">
+                            <button type="button" class="btn btn-danger" data-id="${reply.id}" onclick="deleteComment(${reply.id})">
                                 <i class="ri-delete-bin-5-fill"></i>
                             </button>
                         </div>
                     </div>
-                `).join('<br>')}
+                `).join('<br>')}    
 
                 ${response.rep.length === 0 ? 'Không có phản hồi nào.' : ''}
             `);
@@ -176,6 +176,7 @@
 
 
 // Thêm hàm xóa bình luận
+
 function deleteComment(id) {
     // Hiển thị hộp thoại xác nhận bằng SweetAlert2
     Swal.fire({
@@ -193,20 +194,37 @@ function deleteComment(id) {
             $.ajax({
                 url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
                 type: 'DELETE',
-                
-                
                 success: function (response) {
                     // Xử lý thành công
                     Swal.fire({
                         title: 'Thành công!',
                         text: 'Xóa bình luận thành công!',
                         icon: 'success'
+                    });
 
-                    })
-                reload();
-                    
+                    // Cập nhật lại bảng bình luận
+                    reload();
+
+                    // Cập nhật lại nội dung trong modal sau khi xóa bình luận con
+                    // Kiểm tra tất cả các bình luận trong modal
+                    $('#staticBackdrop').on('shown.bs.modal', function () {
+                        // Tìm và xóa bình luận con trong modal
+                        $(`#staticBackdrop .modal-body .d-flex`).each(function () {
+                            const replyId = $(this).find('button').data('id');
+                            if (replyId === id) {
+                                $(this).remove(); // Xóa bình luận con khỏi modal
+                            }
+                        });
+                    });
                 },
-
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'Có lỗi xảy ra!',
+                        text: 'Vui lòng thử lại sau.',
+                        icon: 'error'
+                    });
+                }
             });
         }
     });

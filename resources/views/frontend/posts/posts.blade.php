@@ -155,7 +155,7 @@
                                 </div>
                             </div> --}}
                         </div>
-                        <nav aria-label="Page navigation example">
+                        {{-- <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
                               <li class="page-item">
                                 <a class="page-link arrow" href="#!" aria-label="Previous">
@@ -173,7 +173,44 @@
                                 </a>
                               </li>
                             </ul>
-                        </nav>
+                        </nav> --}}
+                        {{-- phân trang --}}
+                    <div class="pagination-container d-flex justify-content-center">
+                        <ul class="pagination">
+                            {{-- Nút Previous --}}
+                            @if ($TopBlog->onFirstPage())
+                                <li class="pagination-item--wide first">
+                                    <a class="pagination-link--wide text-secondary disabled" href="#">&lt;
+                                        Trước</a>
+                                </li>
+                            @else
+                                <li class="pagination-item--wide first">
+                                    <a class="pagination-link--wide text-white" href="{{ $data->previousPageUrl() }}">&lt;
+                                        Trước</a>
+                                </li>
+                            @endif
+                            <li class="pagination-item first-number"></li>
+                            {{-- Danh sách các trang --}}
+                            @foreach ($TopBlog->getUrlRange(1, $TopBlog->lastPage()) as $page => $url)
+                                <li class="pagination-item {{ $page == $TopBlog->currentPage() ? 'is-active' : '' }}">
+                                    <a class="pagination-link text-white" href="{{ $url }}">{{ $page }}</a>
+                                </li>
+                            @endforeach
+
+                            {{-- Nút Next --}}
+                            @if ($TopBlog->hasMorePages())
+                                <li class="pagination-item--wide last">
+                                    <a class="pagination-link--wide text-white" href="{{ $TopBlog->nextPageUrl() }}">Tiếp
+                                        &gt;</a>
+                                </li>
+                            @else
+                                <li class="pagination-item--wide last">
+                                    <a class="pagination-link--wide text-secondary disabled" href="#">Tiếp
+                                        &gt;</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
                     </div>
                     <div class="col-lg-4 col-md-9">
                         <div class="sidebar">
@@ -215,18 +252,20 @@
                                 <div class="sidebar-item recent-post text-left">
                                     <div class="sidebar-info">
                                         <ul>
-                                            <li>
-                                                <div class="thumb"> 
-                                                    <a href="#!"><img loading='lazy' src="assets/frontend/images/blog/article-1.webp" alt="post-1.webp"></a>
-                                                </div>
-                                                <div class="info">
-                                                    <a href="#!">Contrary to popular belief,  It is the</a>
-                                                    <div class="meta-title">
-                                                        <span class="post-date">05 Jan, 2022</span>
+                                            @foreach ($onlyBlog->take(3) as $only)
+                                                <li>
+                                                    <div class="thumb"> 
+                                                        <a href="#!"><img loading='lazy' src="{{ asset('assets/backend/img/' . $only->image) }}" alt="post-1.webp"></a>
                                                     </div>
-                                                </div>
-                                            </li>
-                                            <li>
+                                                    <div class="info">
+                                                        <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
+                                                        <div class="meta-title">
+                                                            <span class="post-date">{{$only->created_at}}</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                            {{-- <li>
                                                 <div class="thumb"> 
                                                     <a href="#!"><img loading='lazy' src="assets/frontend/images/blog/article-2.webp" alt="post-1.webp"></a>
                                                 </div>
@@ -247,7 +286,7 @@
                                                         <span class="post-date">05 Jan, 2022</span>
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </div>
                                 </div>

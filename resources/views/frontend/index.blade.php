@@ -83,7 +83,7 @@
                     <div class="left_block">
                         <div class="heading left">
                             <h2>Đội huấn luyện viên <span>Chuyên gia </span></h2>
-                            <p>Đội huấn luyện viên chuyên gia được mọi người lựa chọn và tin tưởng, chó kinh nghiệm nhiều năm trong ngành.</p>
+                            <p>Đội huấn luyện viên chuyên gia được mọi người lựa chọn và tin tưởng, cho kinh nghiệm nhiều năm trong ngành.</p>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
     <div class="features_wrapper default-padding" id="courses">
         <div class="container">
             <div class="heading text-center light">
-                <h3>Các khóa học <span>của chúng tôi</span></h3>
+                <h3>Các khóa học <span style="color: white">của chúng tôi</span></h3>
             </div>
             <div class="swiper Courses_swiper">
                 <div class="swiper-wrapper">

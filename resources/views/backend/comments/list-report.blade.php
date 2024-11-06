@@ -33,7 +33,7 @@
                                     <th>Blog</th>
                                     <th>Ngày đăng</th>
                                     <th class="text-center">Chi tiết</th>
-                                    {{-- <th></th> --}}
+                                    <th></th>
                                 </tr>
 
                             </thead>
