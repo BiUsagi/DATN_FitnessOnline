@@ -40,6 +40,8 @@ Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.ind
 Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 Route::get('/trainers', [HomeController::class, 'trainers'])->name('trainers.index'); //các post
+Route::get('/staffrequest', [ProfileController::class, 'staff_request'])->name('staff_request.index');
+
 
 
 //workout package
@@ -75,7 +77,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
     Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
     Route::get('/exercise/update/{id}', [ExerciseController::class, 'updateExercise'])->name('admin.exercise-update');
-    
+
 
 
     //Package_exercise
