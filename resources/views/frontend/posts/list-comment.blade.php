@@ -211,7 +211,7 @@
                     <strong class="css-name"><span>@</span>{{$con->user->user_name}}</strong><span class="timing"> {{ $con->created_at->locale('vi')->diffForHumans() }}</span>
                 <div class="comment-text">{{$con->content}}</div>
                 <div class="comment-actions">
-                    <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button btn-rep" data-id="{{$item->id}}" >Phản hồi</span> <span class="reply-button report-comment"  style="color: red" data-id="{{$item->id}}">Report</span>
+                    <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button btn-rep" data-id="{{$item->id}}" data-username="{{$item->user->user_name}}">Phản hồi</span> <span class="reply-button report-comment"  style="color: red" data-id="{{$item->id}}">Report</span>
                 </div>
             </div>
         </div>
@@ -224,7 +224,7 @@
         </div>
         <div class="content-box">
                 <strong class="css-name"><span>@</span>{{$con->user->user_name}}</strong><span class="timing"> {{ $con->created_at->locale('vi')->diffForHumans() }}</span>
-            <div class="comment-text">{{$item->content}}</div>
+            <div class="comment-text">{{$con->content}}</div>
             <div class="comment-actions">
                 <span class="reply-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Phản hồi</span>
             </div>

@@ -58,7 +58,7 @@
 
                         <div class="comment-box default-padding" style="padding-bottom: 20px">
                             <div class="section-title">
-                                <h3 style="color: white">Comments (10)</h3>
+                                <h3 style="color: white">Comments (*)</h3>
                             </div>
 
                             <div id="comment">
