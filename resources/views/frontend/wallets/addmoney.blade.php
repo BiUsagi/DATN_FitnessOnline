@@ -111,8 +111,8 @@
                             <div class="card">
                                 <div class="card-header text-uppercase">Bước 2: xác nhận</div>
                                 <div class="row g-0">
-                                    <div class="col-md-6 col-lg-4 text-center">
-                                        <img src="assets/frontend/images/qr/qr2.jpg" class="img-fluid mx-auto my-3"
+                                    <div class="col-md-6 col-lg-4 text-center position-relative">
+                                        <img src="assets/frontend/images/qr/qr2.jpg" class="img-fluid mx-auto my-3 img-qr"
                                             alt="QR Code">
                                     </div>
                                     <div class="col-md-6 col-lg-8 p-3">

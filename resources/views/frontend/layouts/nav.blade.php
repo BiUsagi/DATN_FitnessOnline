@@ -54,6 +54,14 @@
                                                 <a href="{{ route('workout_bought', Auth::user()->id) }}"
                                                     class="dropdown-item text-white">Gói tập của tôi</a>
                                             </li>
+                                            @if (Auth::user()->role === 1)
+                                                <li class="text">
+                                                    <a href="{{ route('admin') }}"
+                                                        class="dropdown-item text-white">Trang quản trị</a>
+                                                </li>
+                                            @else
+                                                
+                                            @endif
                                             <li class="text">
                                                 <form action="{{ route('logout.index') }}" method="POST">
                                                     @csrf

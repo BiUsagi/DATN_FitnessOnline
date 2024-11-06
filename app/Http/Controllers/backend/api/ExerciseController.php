@@ -19,6 +19,7 @@ class ExerciseController extends Controller
         $exercise->sets = $request->input('sets');
         $exercise->reps = $request->input('reps');
         $exercise->description = $request->input('description');
+        $exercise->pt_id = $request->input('pt_id');
         $exercise->status = $request->input('exercise-status');
         if($request->hasFile('video_url')){
             $file = $request->file('video_url');
