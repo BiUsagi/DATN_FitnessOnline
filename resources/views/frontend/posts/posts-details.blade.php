@@ -33,7 +33,7 @@
                                         <div class="date"><img loading='lazy' src="assets/frontend/images/icons/heart.svg"><span>123</span></div>
                                     </div>
                                     <h2 class="blog-title">{{$posts->title}}</h2>
-                                    <p>{{$posts->content}}</p>
+                                    <p>{!!$posts->content!!}</p>
                                     <p>{{$posts->user->staff_name}}</p>
                                     <div class="tags">
                                         <ul>
