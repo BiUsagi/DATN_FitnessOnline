@@ -45,5 +45,8 @@ hr{
     margin-right: 10px;
     color: #fff;
 }
+a{
+    text-decoration: none !important;
+}
 
 
