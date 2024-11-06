@@ -23,7 +23,7 @@
                         
                         <div class="single-blog-post">
                             <div class="blog-image">
-                                <img loading='lazy' src="{{ asset('assets/backend/img/' . $posts->image) }}" alt="blog_detail_img.webp">
+                                <img loading='lazy' src="{{ asset('uploads/post_image/' . $posts->image) }}" alt="blog_detail_img.webp">
                             </div>
                             <div class="blog-detail">
                                 <div class="blog-desc">
