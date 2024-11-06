@@ -43,7 +43,7 @@ class CommentsController extends Controller
 
     if ($comment) {
         // Xử lý báo cáo
-        $comment->report = $comment->report + 1; // hoặc thay đổi trạng thái báo cáo
+        $comment->report = $comment->report = 1; // hoặc thay đổi trạng thái báo cáo
         $comment->save();
 
         return response()->json(['success' => true, 'message' => 'Bình luận đã được báo cáo.']);
