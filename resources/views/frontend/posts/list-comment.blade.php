@@ -171,7 +171,7 @@
                 <strong class="css-name"><span>@</span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
                 <div class="comment-text">{{$item->content}}</div>
                 <div class="comment-actions">
-                    <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button btn-rep" data-id="{{$item->id}}" >Phản hồi</span> 
+                    <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button btn-rep" data-id="{{$item->id}}" data-username="{{$item->user->user_name}}">Phản hồi</span> 
                      <span class="reply-button report-comment" style="color: red" data-id="{{$item->id}}">Report</span>
                 </div>
             </div>

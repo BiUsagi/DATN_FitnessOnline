@@ -304,6 +304,7 @@
     $(document).on('click', '.btn-rep',function(ev){
         ev.preventDefault();
         let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
+        // Lấy ID và phần tử textarea của bình luận cần trả lời
         var id = $(this).data('id');
         var comment_rep_id = '#comment-con-' +id;
         var form_rep = '.form-rep-' +id; 
@@ -317,6 +318,9 @@
             $(form_rep).slideDown();
             $('.contact-form').slideUp(); // Ẩn form bình luận chính
         }
+        var userName = $(this).data('username');  // Lấy tên người dùng từ data-username
+        $(comment_rep_id).val('@' + userName + ' ' + contentRep);  // Thêm @tên người dùng vào đầu nội dung bình luận
+
 });
     
     $(document).on('click', '.btn-send-rep',function(ev){
