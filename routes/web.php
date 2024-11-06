@@ -45,8 +45,6 @@ Route::get('/trainers', [HomeController::class, 'trainers'])->name('trainers.ind
 //workout package
 Route::get('/workout_detail/{id}', [Workout_packageController::class, 'workout_detail'])->name('workout_detail');
 Route::get('/workout_bought/{user_id}', [Workout_packageController::class, 'workout_bought'])->name('workout_bought');
-Route::get('/workout_hub', [Workout_packageController::class, 'workout_hub'])->name('workout_hub');
-
 
 //Auth;
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;

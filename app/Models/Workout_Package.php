@@ -40,9 +40,10 @@ class Workout_Package extends Model
         return $this->belongsTo(Staff::class, 'staff_id');
     }
 
-    // public function userPackageProgress(){
-    //     return $this->belongsTo(user_package_progress::class, '');
-    // }
+    public function userPackageProgress()
+    {
+        return $this->hasMany(user_package_progress::class, 'workout_package_id');
+    }
 
     public function exercises()
     {

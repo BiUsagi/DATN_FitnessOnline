@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Workout_Package;
 use App\Models\Exercise;
 use App\Models\Package_Exercise;
+use App\Models\user_package_progress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +38,7 @@ class Workout_PackageController extends Controller
             'package_name' => 'required|string|max:255',
             // ... các quy tắc khác
         ]);
-        
+
         $set = new Workout_package;
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');
@@ -50,20 +51,20 @@ class Workout_PackageController extends Controller
         $set->status = $request->input('status');
 
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
+            $filename = time() . '.' . $extension;
             $file->move('uploads/gym_package', $filename);
             $set->image = $filename;
         }
 
         $set->save();
         return response()->json($set);
-      
+
     }
 
-    public function update_($id,Request $request)
+    public function update_($id, Request $request)
     {
         $set = Workout_package::find($id);
         $set->package_name = $request->input('package_name');
@@ -126,6 +127,44 @@ class Workout_PackageController extends Controller
 
         return response()->json($days);
     }
+    public function saveProgress(Request $request)
+    {
+        $packageId = $request->input('package_id');
+        $currentDay = $request->input('current_day');
+        $currentExerciseId = $request->input('current_exercise_id');
+        $user_id = $request->input('user_id');
+
+        // Update the current day's progress as completed
+        user_package_progress::updateOrCreate(
+            [
+                'user_id' => $user_id,
+                'workout_package_id' => $packageId,
+                'current_day' => $currentDay,
+                
+            ],
+            [
+                'current_exercise_id' => $currentExerciseId,
+                'is_completed' => true,
+            ]
+        );
+
+        // Unlock the next day
+        $nextDay = $currentDay + 1;
+        user_package_progress::updateOrCreate(
+            [
+                'user_id' => $user_id,
+                'workout_package_id' => $packageId,
+                'current_day' => $nextDay,
+            ],
+            [
+                'current_exercise_id' => $currentExerciseId, 
+                'is_completed' => true,
+            ]
+        );
+
+        return response()->json(['status' => 'success']);
+    }
+
 
 
 }

@@ -59,7 +59,7 @@
                                             <div class="image-package">
                                                 <img src="{{ asset('uploads/gym_package/'. $workout->workoutPackage->image)}}" alt="">
                                                 <div class="box-action">
-                                                    <a href="{{route('workout_hub')}}"><i class="fa-regular fa-circle-play"></i></a>
+                                                    <a href="{{route('admin.workout_hub', $workout->workoutPackage->id)}}"><i class="fa-regular fa-circle-play"></i></a>
                                                 </div>
                                             </div>
                                             <div class="content-package">
@@ -71,10 +71,10 @@
                                                 </div>
                                                 <div class="duration">
                                                     <div class="progress-bar-customize">
-                                                        <div class="progress-customize" style="width: 100%"></div>
+                                                        <div class="progress-customize" style="width: 0%"></div>
                                                     </div>
                                                     <div class="box-feedback">
-                                                        <p>Hoàn thành 100%</p>
+                                                        <p>Hoàn thành 0%</p>
                                                         <div class="feedback">
                                                             <div class="star">
                                                                 <i class="fa-solid fa-star"></i>

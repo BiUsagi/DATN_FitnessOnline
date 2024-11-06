@@ -21,7 +21,4 @@ class Workout_packageController extends Controller
         $workouts = Order::where('user_id', $user_id)->with('workoutPackage.staff')->get();
         return view('frontend/workout_package/workout_bought', compact( 'workouts'));
     }
-    public function workout_hub(){
-        return view('frontend/workout_package/workout_hub');
-    }
 }
