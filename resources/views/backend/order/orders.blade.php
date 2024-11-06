@@ -28,8 +28,8 @@
                                         <th>#</th>
                                         <th>Gói Tập</th>
                                         <th>Khách Hàng</th>
-                                        <th>Giá Tiền (VND)</th>
-                                        <th data-type="date text-center">Ngày Mua</th>
+                                        <th class="text-center">Thanh Toán (VND)</th>
+                                        <th data-type="date " class="text-center">Ngày Mua</th>
                                         <th class=" text-center">Hành Động</th>
                                     </tr>
                                 </thead>
@@ -40,8 +40,10 @@
                                             <td class="align-middle">{{ $item->id }}</td>
                                             <td class="align-middle">{{ $item->getWorkoutPackageName() }}</td>
                                             <td class="align-middle">{{ $item->getUserName() }}</td>
-                                            <td class="align-middle">{{ number_format($item->price, 0, ',', '.') }}</td>
-                                            <td class="align-middle">{{ $item->created_at }}</td>
+                                            <td class="align-middle text-center">
+                                                {{ number_format($item->purchase_price, 0, ',', '.') }}
+                                            </td>
+                                            <td class="align-middle text-center">{{ $item->created_at }}</td>
                                             <td class="align-middle text-center">
                                                 <a href="{{ route('admin.info.orders', ['id' => $item->id]) }}"
                                                     class="btn btn-outline-success" data-bs-toggle="tooltip"
