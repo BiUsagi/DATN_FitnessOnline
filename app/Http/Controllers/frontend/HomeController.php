@@ -31,6 +31,15 @@ class HomeController extends Controller
             'top_workout_packages' => $top_workout_packages
         ]);
     }
+    // public function footer()
+    // {
+    //     $topPost = Posts::orderBy('id', 'DESC')->get();
+    //     return view('frontend/layouts/footer')->with([
+      
+    //         'topPost' => $topPost
+            
+    // ]);
+    // }
     public function about()
     {
         return view('frontend/about');
@@ -39,22 +48,6 @@ class HomeController extends Controller
     {
         return view('frontend/contact');
     }
-    public function posts()
-    {
-        $TopBlog = Posts::orderBy('id', 'DESC')->get(); // Lấy post theo thứ tự từ bài post mới nhát
-        return view('frontend/posts/posts')->with(
-            [
-                'TopBlog' => $TopBlog
-            ]
-        );
-    }
-    public function posts_details($id)
-    {
-        $posts = Posts::findOrFail($id); // Tìm bài viết theo id
-        $showUser = Auth::user();
-        return view('frontend/posts/posts-details', compact('posts', 'showUser'));
-    }
-
     public function trainers()
     {
         $data = Staff::paginate(8);

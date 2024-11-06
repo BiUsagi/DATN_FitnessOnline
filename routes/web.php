@@ -26,6 +26,8 @@ use App\Http\Controllers\backend\DepositHistoriesController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\frontend\AjaxloginController;
 use App\Http\Controllers\frontend\CommentsController;
+use App\Http\Controllers\frontend\PostController;
+
 
 // use App\Http\Controllers\backend\api\PackageExercisesController;
 // use App\Http\Controllers\backend\api\PackageExercisesController;
@@ -36,9 +38,11 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
+// Route::get('/footer', [HomeController::class, 'footer'])->name('footer.index');
+
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
-Route::get('/posts', [HomeController::class, 'posts'])->name('posts.index'); //các post
-Route::get('/posts/posts-details/{id}', [HomeController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
+Route::get('/posts', [PostController::class, 'posts'])->name('posts.index'); //các post
+Route::get('/posts/posts-details/{id}', [PostController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 Route::get('/trainers', [HomeController::class, 'trainers'])->name('trainers.index'); //các post
 
 
