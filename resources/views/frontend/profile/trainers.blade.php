@@ -29,8 +29,9 @@
                         {{-- trainer --}}
                         <div class="col-12 col-md-6 col-lg-3">
                             <div class="expert-details ">
-                                <img loading='lazy' src="assets/backend/img/accounts/{{ $item->avatar }}" class="exp_img"
-                                    alt="">
+                                <a href="{{ route('info.trainer', ['id' => $item->id]) }}"><img loading='lazy'
+                                        src="assets/backend/img/accounts/{{ $item->avatar }}" class="exp_img"
+                                        alt=""></a>
                                 <div class="content">
                                     <span class="text-warning">
                                         @php
