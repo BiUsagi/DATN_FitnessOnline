@@ -8,9 +8,9 @@
                             <a href="index.html" class="website-logo"><img loading='lazy'
                                     src="assets/frontend/images/footer-logo.svg" alt="logo" width="140"
                                     height="30"></a>
-                            <p class="web-about">ligula sed porta cursus, lectus ligula interdum tortor, vitae
-                                tempor leo
-                                eros lobortis ante. Integer semper, metus in tincidunt euismod.</p>
+                            <p class="web-about">Tập gym là một hoạt động thể dục giúp cải thiện sức khỏe và vóc dáng 
+                                thông qua các bài tập với tạ, máy tập, và các bài cardio. Việc tập gym không chỉ giúp tăng cường cơ bắp, 
+                                đốt cháy mỡ thừa mà còn giúp nâng cao sức bền, cải thiện tinh thần, và giảm căng thẳng.</p>
                             <div class="social-icon">
                                 <a href="#!" aria-label="Facebook"><img loading='lazy'
                                         src="assets/frontend/images/icons/facebook.svg" alt="Facebook Icon"></a>
@@ -31,12 +31,11 @@
                                 </div>
                             </h2>
                             <ul id="links" class="collapse foot-mob" data-bs-parent="#foot-accordion">
-                                <li><a href="{{ route('index') }}"class="text">Home</a></li>
-                                <li><a href="{{ route('about.index') }}" class="text">About Us</a></li>
-                                <li><a href="#courses" class="text">Courses</a></li>
-                                <li><a href="schedule.html" class="text">Schedule</a></li>
-                                <li><a href="{{ route('posts.index') }}"class="text">Blog</a></li>
-                                <li><a href="contact-us.html" class="text">Contact Us</a></li>
+                                <li><a href="{{ route('index') }}"class="text-footer">Trang chủ</a></li>
+                                <li><a href="{{ route('about.index') }}" class="text-footer">Giới thiệu</a></li>
+                                <li><a href="#courses" class="text-footer">Gói tập</a></li>
+                                <li><a href="{{ route('trainers.index') }}" class="text-footer">Trainers</a></li>
+                                <li><a href="{{ route('posts.index') }}"class="text-footer">Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
                     <div class="col-xl-3 col-lg-4 d-lg-flex justify-content-xl-end justify-content-lg-end">
                         <div class="footer-links">
                             <h2 class="footer-title mob" data-bs-target="#contactus" data-bs-toggle="collapse">
-                                Get In Touch
+                                Liên hệ
                                 <div class="footer-toggler">
                                 </div>
                             </h2>
@@ -84,17 +83,17 @@
                                     <img loading='lazy' src="assets/frontend/images/icons/foot-call.svg" alt="call"
                                         class="support-icon">
                                     <div class="details">
-                                        <p class="text"><a href="tel:+123-1234-123">123-1234-123</a></p>
-                                        <p class="text"><a href="tel:+003-1234-123">003-1234-123</a></p>
+                                        <p class="text-footer"><a href="tel:+123-1234-123">123-1234-123</a></p>
+                                        <p class="text-footer"><a href="tel:+003-1234-123">003-1234-123</a></p>
                                     </div>
                                 </div>
                                 <div class="contacts">
                                     <img loading='lazy' src="assets/frontend/images/icons/foot-mail.svg" alt="mail"
                                         class="support-icon">
                                     <div class="details">
-                                        <p class="text"><a
+                                        <p class="text-footer"><a
                                                 href="mailto:fitness@yourdomain.com">fitness@yourdomain.com</a></p>
-                                        <p class="text"><a href="mailto:fc@yourdomain.com">fc@yourdomain.com</a></p>
+                                        <p class="text-footer"><a href="mailto:fc@yourdomain.com">fc@yourdomain.com</a></p>
                                     </div>
                                 </div>
                                 <div class="contacts">
@@ -126,7 +125,7 @@
     </div>
     <div class="copy-right">
         <div class="container">
-            <p class="copy-content">© 2022 <a class="web-name" href="#!">GYMFIT</a>. All rights reserved.
+            <p class="copy-content">© 2024 <a class="web-name" href="#!">GYMFIT</a>. Mọi quyền được bảo lưu.
             </p>
         </div>
     </div>
