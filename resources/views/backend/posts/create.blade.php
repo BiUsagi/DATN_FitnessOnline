@@ -22,6 +22,8 @@
                         <div class="card">
                             <div class="card-header text-uppercase">Thông tin chung</div>
                                 <div class="card-body">
+                                    <input type="hidden" name="staff_id" id="staff_id">
+
                                     <div class="col-12">
                                         <label for="inputNanme4" class="form-label-customize">Tiêu đề <span class="note">(*)</span></label>
                                         <input type="text" class="form-control-customize" name="title" id="inputNanme4">
@@ -110,5 +112,10 @@
                 }
             });
         });
+
+        @if (Auth::check())
+            var userId = @json(Auth::user()->id);
+            $('#staff_id').val(userId);
+        @endif
     </script>
 @endsection

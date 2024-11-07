@@ -133,7 +133,7 @@
     <div class="features_wrapper default-padding" id="courses">
         <div class="container">
             <div class="heading text-center light">
-                <h3>Các khóa học <span style="color: white">của chúng tôi</span></h3>
+                <h3>Các khóa học <span>của chúng tôi</span></h3>
             </div>
             <div class="swiper Courses_swiper">
                 <div class="swiper-wrapper">
@@ -300,7 +300,7 @@
                         <div class="card">
                             <a href="{{ route('posts-details.index', $Post->id) }}" aria-label="Blog 3">
                                 <div class="card-img f-0">
-                                    <img loading='lazy' src="{{ asset('assets/backend/img/' . $Post->image) }}" alt="">
+                                    <img loading='lazy' src="{{ asset('uploads/post_image/' . $Post->image) }}" alt="">
                                 </div>
                             </a>
                             <div class="card-body">

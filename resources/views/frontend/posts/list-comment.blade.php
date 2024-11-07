@@ -165,7 +165,7 @@
     @if (Auth::guard('web')->check())
         <div class="single-comment-box">
             <div class="css-img">
-                <img loading='lazy' src="{{ asset('assets/backend/img/' . $item->user->avatar)}}" alt="">
+                <img loading='lazy' src="{{ asset('assets/backend/img/accounts' . $item->user->avatar)}}" alt="">
             </div>
             <div class="content-box">
                 <strong class="css-name"><span>@</span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
@@ -204,7 +204,7 @@
         <div class="reply-box">
             <div class="single-comment-box">
                 <div class="css-img">
-                    <img loading='lazy' src="{{ asset('assets/backend/img/' . $con->user->avatar)}}" alt="">
+                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts' . $con->user->avatar)}}" alt="">
                 </div>
             </div>
             <div class="content-box">
@@ -219,7 +219,7 @@
     <div class="reply-box">
         <div class="single-comment-box">
             <div class="css-img">
-                <img loading='lazy' src="{{ asset('assets/backend/img/' . $con->user->avatar)}}" alt="">
+                <img loading='lazy' src="{{ asset('assets/backend/img/accounts' . $con->user->avatar)}}" alt="">
             </div>
         </div>
         <div class="content-box">
