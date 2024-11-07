@@ -123,7 +123,7 @@
                                     src="assets/frontend/images/icons/google-plus.svg" alt="Google Plus Icon"></a>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </div>
@@ -142,7 +142,7 @@
 <script src='assets/frontend/js/swiper.js'></script>
 <script src='assets/frontend/js/main.js'></script>
 
-@yield('custom_js');
+@yield('custom_js')
 </body>
 
 </html>
