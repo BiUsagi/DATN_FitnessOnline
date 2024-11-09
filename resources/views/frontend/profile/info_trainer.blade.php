@@ -251,7 +251,10 @@
 
             <!-- Đánh giá -->
             <div class="col-md-4">
-                <h4 class="dark-color">Đánh giá</h4>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="dark-color">Đánh giá</h4>
+                    <span class="badge text-bg-primary p-2">0</span>
+                </div>
                 <hr>
                 <p>Nội dung đánh giá sẽ ở đây...</p>
             </div>

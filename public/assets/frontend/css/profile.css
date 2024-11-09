@@ -300,27 +300,8 @@
   }
 
 
-  .students-list {
-      max-height: 26rem;
-      overflow-y: scroll;
-      margin-top: 10px;
-  }
 
 
-
-  /* Ẩn thanh cuộn */
-  .students-list::-webkit-scrollbar {
-      width: 0px;
-      height: 0px;
-  }
-
-  .students-list::-webkit-scrollbar-track {
-      background: transparent;
-  }
-
-  .students-list::-webkit-scrollbar-thumb {
-      background: transparent;
-  }
 
   .student-item {
       display: flex;
@@ -380,7 +361,7 @@
   }
 
   .blog_con_inner .time_box i {
-      color: #6ec061;
+      color: #1face1;
       font-size: 16px;
   }
 
@@ -414,8 +395,46 @@
       padding-right: 10px;
   }
 
-  .container-trainer-custom::-webkit-scrollbar {
+  .students-list {
+      max-height: 26rem;
+      overflow-y: scroll;
+      margin-top: 10px;
+  }
+
+  /* .container-trainer-custom::-webkit-scrollbar {
       display: none;
+  } */
+
+  .container-trainer-custom::-webkit-scrollbar,
+  .students-list::-webkit-scrollbar {
+      width: 8px;
+  }
+
+  .container-trainer-custom::-webkit-scrollbar-track,
+  .students-list::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 5px;
+  }
+
+  .container-trainer-custom::-webkit-scrollbar-thumb,
+  .students-list::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 5px;
+      border: 2px solid #f1f1f1;
+  }
+
+  .container-trainer-custom::-webkit-scrollbar-thumb:hover,
+  .students-list::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+  }
+
+  @supports (scrollbar-color: #888 #f1f1f1) {
+
+      .container-trainer-custom,
+      .students-list {
+          scrollbar-color: #1face1 #e8f9ff;
+          scrollbar-width: thin;
+      }
   }
 
   .blog_page_box,
@@ -473,7 +492,7 @@
   }
 
   .time_box i {
-      color: #6ec061;
+      color: #1face1;
       font-size: 18px;
   }
 
