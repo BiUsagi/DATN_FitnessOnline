@@ -24,7 +24,7 @@
             </div>
             <div class="block-right">
                 <div class="duration">
-                    <p>Thời lượng</p>
+                    <p>{{ Auth::user()->user_name }}</p>
                 </div>
             </div>
         </div>
@@ -32,33 +32,51 @@
     <div id="main">
         <div id="content">
             <div class="title-day">
-                <h2 class="day-number">Ngày 1</h2>
-                <p class="line"></p>
-                <div class="categories">
-                    <div class="level">
-                        <i class="fa-solid fa-cloud-bolt"></i>
-                        <h3>Mức độ</h3>
-                        <p>{{ $package->level }}</p>
+                <div class="box-left">
+                    <h2 class="day-number">Ngày 1</h2>
+                    <p class="line"></p>
+                    <div class="categories">
+                        <div class="level-infor">
+                            <p>Mức độ: </p>
+                            <span>Lão luyện</span>
+                        </div>
+                        <div class="level-infor">
+                            <p>Số bài tập: </p>
+                            <span>3 bài</span>
+                        </div>
+                        <div class="level-infor">
+                            <p>Thời lượng: </p>
+                            <span>40 phút 10 giây</span>
+                        </div>
                     </div>
-                    <div class="level">
-                        <i class="fa-solid fa-dumbbell"></i>
-                        <h3>Bài tập</h3>
-                        <p>8</p>
+                    <p class="notification"><span>Lưu ý (*): </span>Bạn phải xem hết tất cả video trong ngày sau đó quay
+                        lại toàn bộ các động tác và up video lên để tôi xem bạn đã tập đúng kỹ thuật chưa rồi sau đó mới
+                        được qua ngày tiếp theo nhé!</p>
+                </div>
+                <div class="line-title"></div>
+                <div class="box-right">
+                    <div class="overlay-upload">
+                        <i class="fa-solid fa-lock"></i>
+                        <p>(*) Xem hết bài tập để có thể nộp bài nhé!</p>
                     </div>
-                    <div class="level">
-                        <i class="fa-solid fa-trophy"></i>
-                        <h3>Bài tập</h3>
-                        <p>{{ $package->special_level }}</p>
-                    </div>
-                    <div class="level">
-                        <i class="fa-solid fa-stopwatch"></i>
-                        <h3>Thời lượng</h3>
-                        <p>33:15</p>
+                    <i class="fa-solid fa-cloud-arrow-up" id="upload-exercise"></i>
+                    <div class="description">
+                        <p>Nộp bài tập</p>
+                        <span>(*) Click và biểu tưởng để chuyển đến khu vực nộp bài</span>
                     </div>
                 </div>
+
             </div>
             <div class="list-exercise">
                 {{-- render bài tập --}}
+                {{-- <div class="default-layout">
+                    <div class="avatar-pt">
+                        <img src="assets/backend/img/4.jpg" alt="">
+                    </div>
+                    <p>Chào mừng bạn đến với gói tập của</p>
+                    <h2>{{ Auth::user()->user_name }}</h2>
+
+                </div> --}}
             </div>
         </div>
         <div id="sidebar">
@@ -126,7 +144,7 @@
                                 <p><i class="fa-solid fa-chevron-left"></i> Bài trước</p>
                             </div>
                             <div class="btn btn-next">
-                                <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                 <p>Bài tiếp theo <i class="fa-solid fa-chevron-right"></i></p>
                             </div>
                         </div>
@@ -136,9 +154,155 @@
             </div>
         </div>
     </div>
+    <div class="overflow-upload">
+        <div class="container-upload">
+            <div class="modal-upload">
+                <div class="close-modal-upload">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="box-upload">
+                    <div class="button-upload" id="buttonUpload">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <div class="description">
+                            <p>Chọn video để tải lên</p>
+                            <span>Hoặc kéo thả vào đây</span>
+                            <a id="chooseVideoButton">Chọn video</a>
+                        </div>
+                        <input type="file" id="videoInput" accept="video/*" style="display: none;">
+
+                    </div>
+                    <div class="show-video-upload" id="showVideoUpload">
+                        <div class="container-video">
+                            <video id="videoPlayer" controls width="100%"></video>
+                        </div>
+                        <div class="write-description">
+                            <p class="name-video" id="videoName"></p>
+                            <p class="duration-video"><span>Thời lượng: </span><span id="videoDuration">2 phút 8
+                                    giây</span></p>
+                            <div class="load-video">
+                                <div class="load-left">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <p>Đã tải lên</p>
+                                </div>
+                                <div class="load-right">
+                                    <p id="uploadProgress">0%</p>
+                                </div>
+                            </div>
+                            <div class="line-load-video">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+
+                            <div class="description-video">
+                                <label for="#">Mô tả</label>
+                                <textarea></textarea>
+                            </div>
+                            <div class="line"></div>
+
+                            <div class="button-upload-video">
+                                <a href="#!" class="button upload">Đăng</a>
+                                <a class="button cancel">Hủy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="notes">
+                    <div class="note">
+                        <i class="fa-regular fa-file-video"></i>
+                        <div class="memo">
+                            <p>Định dạng tập tin</p>
+                            <span>Đề xuất: “.mp4”. Có hỗ trợ các định dạng chính khác.</span>
+                        </div>
+                    </div>
+                    <div class="note">
+                        <i class="fa-solid fa-video"></i>
+                        <div class="memo">
+                            <p>Dung lượng và thời lượng</p>
+                            <span>Giữ video từ 1-5 phút, đủ thể hiện động tác.</span>
+                        </div>
+                    </div>
+                    <div class="note">
+                        <i class="fa-solid fa-photo-film"></i>
+                        <div class="memo">
+                            <p>Chất lượng tốt</p>
+                            <span>Đảm bảo video rõ nét, tránh rung lắc.</span>
+                        </div>
+                    </div>
+                    <div class="note">
+                        <i class="fa-solid fa-file-shield"></i>
+                        <div class="memo">
+                            <p>Bảo mật</p>
+                            <span>Hạn chế lộ thông tin cá nhân và xin phép nếu có người khác xuất hiện.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/backend/js/workout_hub.js"></script>
     <script>
+        const chooseVideoButton = document.getElementById("chooseVideoButton");
+        const videoInput = document.getElementById("videoInput");
+        const buttonUpload = document.getElementById("buttonUpload");
+        const showVideoUpload = document.getElementById("showVideoUpload");
+        const videoPlayer = document.getElementById("videoPlayer");
+        const videoName = document.getElementById("videoName");
+        const buttonCancel = document.querySelector(".button-upload-video .cancel");
+        const videoDuration = document.getElementById("videoDuration");
+        const uploadProgress = document.getElementById("uploadProgress");
+        const progressBar = document.getElementById("progressBar");
+        const closeModalButton = document.querySelector(".close-modal-upload");
+        const overflowUpload = document.querySelector(".overflow-upload");
+        const uploadExercise = document.getElementById("upload-exercise");
+
+        uploadExercise.addEventListener("click", function() {
+            overflowUpload.style.display = "block";
+        });
+
+        chooseVideoButton.addEventListener("click", () => {
+            videoInput.click();
+        });
+
+        videoInput.addEventListener("change", () => {
+            const file = videoInput.files[0];
+            if (file) {
+                videoName.textContent = file.name;
+
+                videoPlayer.src = URL.createObjectURL(file);
+
+                buttonUpload.style.display = "none";
+                showVideoUpload.style.display = "grid";
+            }
+        });
+        videoPlayer.addEventListener("loadedmetadata", () => {
+            const durationInSeconds = Math.floor(videoPlayer.duration);
+            const minutes = Math.floor(durationInSeconds / 60);
+            const seconds = durationInSeconds % 60;
+            videoDuration.textContent = `${minutes} phút ${seconds} giây`;
+        });
+        let progress = 0;
+        const uploadInterval = setInterval(() => {
+            if (progress < 100) {
+                progress += 10; // Giả lập mỗi bước tăng 10%
+                uploadProgress.textContent = `${progress}%`;
+                progressBar.style.width = `${progress}%`;
+            } else {
+                clearInterval(uploadInterval);
+            }
+        }, 300); // 
+        buttonCancel.addEventListener('click', () => {
+            buttonUpload.style.display = "flex";
+            showVideoUpload.style.display = "none";
+        });
+        closeModalButton.addEventListener("click", function() {
+            overflowUpload.style.display = "none";
+        });
+
+
+
         const packageId = {{ $package->id }};
         const boxList = document.querySelectorAll('.box-day');
         const day = document.querySelector('.day-number');
@@ -184,6 +348,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="line"></div>
                 `;
                     });
                 }
@@ -218,6 +383,7 @@
                 });
             });
         }
+
         function completeCurrentDay() {
             $.post(`/api/admin/workout_hub/${packageId}/save-progress`, {
                 package_id: packageId,
@@ -225,13 +391,15 @@
                 _token: '{{ csrf_token() }}'
             }, function(response) {
                 if (response.status === 'success') {
-                    enableNextDay(); 
+                    enableNextDay();
                 }
             });
         }
+
         function goToNextExercise() {
             currentExerciseIndex++;
             completedExercises++;
+
             if (completedExercises >= exercisesData.length) {
                 completedExercises = 0;
                 completeCurrentDay();
@@ -241,21 +409,23 @@
             }
         }
 
+        function goToPrevExercise() {
+            currentExerciseIndex--;
+            if (currentExerciseIndex < 0) {
+                currentExerciseIndex = 0;
+            }
+            loadExerciseByIndex(currentExerciseIndex);
+        }
+
         function enableNextDay() {
             completedDays++;
             if (completedDays <= boxList.length) {
                 const nextDayBox = document.querySelector(`.box-day[data-day="${completedDays}"]`);
-                nextDayBox.classList.remove('is-blocking'); 
-                nextDayBox.querySelector('.chevron i').classList.replace('fa-lock', 'fa-book'); // Thay đổi icon
+                if (nextDayBox && !nextDayBox.classList.contains('is-blocking')) {
+                    nextDayBox.classList.remove('is-blocking');
+                    nextDayBox.querySelector('.chevron i').classList.replace('fa-lock', 'fa-book');
+                }
             }
-        }
-
-        function goToPrevExercise() {
-            currentExerciseIndex--;
-            if (currentExerciseIndex <= 0) {
-                currentExerciseIndex = 0;
-            }
-            loadExerciseByIndex(currentExerciseIndex);
         }
 
         function loadExerciseByIndex(index) {
@@ -275,21 +445,62 @@
         const prevButton = document.querySelector('.btn-prev');
         prevButton.addEventListener('click', goToPrevExercise);
 
+        function updateURL(dayNumber) {
+            const url = new URL(window.location);
+            url.searchParams.set('day', dayNumber); 
+            history.pushState({}, '', url);
+        }
+
+        function getDayFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('day');
+        }
 
         boxList.forEach(item => {
             item.addEventListener('click', function() {
                 if (!item.classList.contains('is-blocking')) {
                     boxList.forEach(box => box.classList.remove('active-box-day'));
+
                     item.classList.add('active-box-day');
+
                     const dayNumber = item.getAttribute('data-day');
                     day.textContent = 'Ngày ' + dayNumber;
+
                     loadExercises(dayNumber);
+
+                    updateURL(dayNumber);
+
                     currentDay = dayNumber;
-                    currentExerciseIndex = 0; 
-                    completedExercises = 0; 
+                    currentExerciseIndex = 0;
+                    completedExercises = 0;
                 }
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const dayFromURL = getDayFromURL(); 
+            if (dayFromURL) {
+                const dayBox = document.querySelector(`.box-day[data-day="${dayFromURL}"]`);
+                if (dayBox) {
+                    dayBox.classList.add('active-box-day'); 
+                    day.textContent = 'Ngày ' + dayFromURL;
+                    loadExercises(dayFromURL); 
+                    currentDay = dayFromURL;
+                    currentExerciseIndex = 0;
+                    completedExercises = 0;
+                }
+            } else {
+                const firstBoxDay = document.querySelector('.box-day:first-child');
+                if (firstBoxDay) {
+                    firstBoxDay.classList.add('active-box-day');
+                    day.textContent = 'Ngày 1'; 
+                    loadExercises(1);
+                    currentDay = 1;
+                }
+            }
+        });
+
+
 
         document.addEventListener('DOMContentLoaded', function() {
             const firstBoxDay = document.querySelector('.box-day:first-child');
@@ -310,12 +521,12 @@
 
                 if (!boxDay.classList.contains('is-blocking')) {
                     chevron.querySelector('.fa-lock').style.display = 'none';
-                    chevron.querySelector('.fa-book').style.display = 'block'; 
-                    chevron.querySelector('p').style.display = 'block'; 
+                    chevron.querySelector('.fa-book').style.display = 'block';
+                    chevron.querySelector('p').style.display = 'block';
                 }
             });
         });
     </script>
 </body>
 
-</html>     
+</html>
