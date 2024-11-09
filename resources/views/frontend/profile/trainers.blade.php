@@ -9,7 +9,7 @@
                 <div class="breadcrumb_block">
                     <h1>HUẤN LUYỆN<span> VIÊN</span></h1>
                     <div class="trackPage">
-                        <a href="index.html">HOME</a>
+                        <a href="{{ route('index') }}">Trang Chủ</a>
                         <span>Trainers</span>
                     </div>
                 </div>
@@ -29,8 +29,9 @@
                         {{-- trainer --}}
                         <div class="col-12 col-md-6 col-lg-3">
                             <div class="expert-details ">
-                                <img loading='lazy' src="assets/backend/img/accounts/{{ $item->avatar }}" class="exp_img"
-                                    alt="">
+                                <a href="{{ route('info.trainer', ['id' => $item->id]) }}"><img loading='lazy'
+                                        src="assets/backend/img/accounts/{{ $item->avatar }}" class="exp_img"
+                                        alt=""></a>
                                 <div class="content">
                                     <span class="text-warning">
                                         @php
@@ -55,7 +56,9 @@
                                         @endfor
 
                                     </span>
-                                    <h2>{{ $item->staff_name }}</h2>
+                                    <a href="{{ route('info.trainer', ['id' => $item->id]) }}">
+                                        <h2>{{ $item->staff_name }}</h2>
+                                    </a>
                                     <div class="icon_block d-flex align-items-center justify-content-center">
                                         <div class="icon-cus"></div>
                                         <a href="#" class="disabled">
@@ -101,7 +104,8 @@
                             {{-- Danh sách các trang --}}
                             @foreach ($data->getUrlRange(1, $data->lastPage()) as $page => $url)
                                 <li class="pagination-item {{ $page == $data->currentPage() ? 'is-active' : '' }}">
-                                    <a class="pagination-link text-white" href="{{ $url }}">{{ $page }}</a>
+                                    <a class="pagination-link text-white"
+                                        href="{{ $url }}">{{ $page }}</a>
                                 </li>
                             @endforeach
 

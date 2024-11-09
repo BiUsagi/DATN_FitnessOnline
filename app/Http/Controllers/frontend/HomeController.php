@@ -48,10 +48,6 @@ class HomeController extends Controller
     {
         return view('frontend/contact');
     }
-    public function trainers()
-    {
-        $data = Staff::paginate(8);
-        return view('frontend/trainers', compact('data'));
-    }
+  
 }
 

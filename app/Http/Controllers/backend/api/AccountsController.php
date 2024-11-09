@@ -113,6 +113,7 @@ class AccountsController extends Controller
         $staff->introduction = $staffRequest->introduction;
         $staff->address = $staffRequest->new_address;
         $staff->phone_number = $staffRequest->new_phone_number;
+        $staff->created_at = now();
         $staff->save();
 
         return response()->json(['success' => true, 'message' => 'Yêu cầu đã được phê duyệt.']);
