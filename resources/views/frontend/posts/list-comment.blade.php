@@ -158,37 +158,88 @@
         font-size: 12px;
     }
 }
+    /* CSS NÚT BA CHẤM */
+    .options-menu {
+        position: absolute;
+        top: 5px;
+        right: 20px;
+    }
 
+    .three-dots {
+        cursor: pointer;
+        font-size: 18px;
+        color: #888;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #444;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        min-width: 120px; /* Chiều rộng của menu */
+        z-index: 100;
+    }
+
+    .menu-item {
+        padding: 8px 15px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #f0f0f0;
+        transition: all 0.3s ease;
+        display: block;
+        width: 100%; /* Để mục menu chiếm toàn bộ chiều rộng */
+        box-sizing: border-box;
+    }
+
+    .menu-item:hover {
+        background-color: #555;
+        color: #ffffff;
+        font-weight: bold;
+        border-left: 3px solid #3498db;
+        padding-left: 12px;
+        width: calc(100% - 3px); /* Đảm bảo nó vừa với menu khi có border */
+    }
 </style>
 @foreach ($Comments as $item)
 
     @if (Auth::guard('web')->check())
         <div class="single-comment-box">
             <div class="css-img">
-                <img loading='lazy' src="{{ asset('assets/backend/img/accounts' . $item->user->avatar)}}" alt="">
+                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $item->user->avatar)}}" alt="">
             </div>
             <div class="content-box">
                 <strong class="css-name"><span>@</span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
+                <div class="options-menu">
+                    <span class="three-dots" onclick="toggleMenu()" style="color: white">⋮</span>
+                    <div class="menu" id="menu">
+                        <span class="menu-item edit-comment" data-id="{{$item->id}}" data-content="{{$item->content}}">Sửa</span>
+                        <span class="menu-item">Xóa</span>
+                    </div>
+                </div>
                 <div class="comment-text">{{$item->content}}</div>
                 <div class="comment-actions">
                     <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button btn-rep" data-id="{{$item->id}}" data-username="{{$item->user->user_name}}">Phản hồi</span> 
-                     <span class="reply-button report-comment" style="color: red" data-id="{{$item->id}}">Report</span>
+                    <span class="reply-button report-comment" style="color: red" data-id="{{$item->id}}">Report</span>
                 </div>
             </div>
         </div>
     @else
     <div class="single-comment-box">
         <div class="css-img">
-            <img loading='lazy' src="{{ asset('assets/backend/img/' . $item->user->avatar)}}" alt="">
+            <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $item->user->avatar)}}" alt="">
         </div>
         <div class="content-box">
             <strong class="css-name"><span>@</span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
-            {{-- <p>{{$item->content}}</p>
-            <a href="" class="btn-rep" data-id="{{$item->id}}">Trả lời</a> --}}
             <div class="comment-text">{{$item->content}}</div>
             <div class="comment-actions">
-                <span class="reply-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Phản hồi</span>
+                <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Phản hồi</span>
+                <span class="reply-button" style="color: red"data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Report</span>
             </div>
+            
         </div>
     </div>
     @endif
@@ -204,7 +255,7 @@
         <div class="reply-box">
             <div class="single-comment-box">
                 <div class="css-img">
-                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts' . $con->user->avatar)}}" alt="">
+                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $con->user->avatar)}}" alt="">
                 </div>
             </div>
             <div class="content-box">
@@ -219,7 +270,7 @@
     <div class="reply-box">
         <div class="single-comment-box">
             <div class="css-img">
-                <img loading='lazy' src="{{ asset('assets/backend/img/accounts' . $con->user->avatar)}}" alt="">
+                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $con->user->avatar)}}" alt="">
             </div>
         </div>
         <div class="content-box">
@@ -238,7 +289,6 @@
             <div class="">
                 <div class="form-group comments">
                     <textarea class="form-control" name="comments" placeholder="Message*" rows="1" id="comment-con-{{$item->id}}"></textarea>
-                    <small id="comment-error" style="color:aliceblue"></small>
                     <div class="col-md-1" style="float: right;">
                         <button type="button" data-id="{{$item->id}}" class="css-button btn-send-rep">Gửi</button> 
                     </div>
@@ -248,4 +298,24 @@
     </form>
 @endforeach
 
-    {{-- END VIEW COMMENT CON --}}
+{{-- END VIEW COMMENT CON --}}
+
+
+
+<script>
+
+    // JS NÚT BA CHẤM XÓA SỬA
+    function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "none" || menu.style.display === "" ? "block" : "none";
+}
+
+// Đóng menu khi nhấp ra ngoài
+document.addEventListener("click", function (event) {
+    const menu = document.getElementById("menu");
+    const threeDots = document.querySelector(".three-dots");
+    if (menu && !menu.contains(event.target) && !threeDots.contains(event.target)) {
+        menu.style.display = "none";
+    }
+});
+</script>

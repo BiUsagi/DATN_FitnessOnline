@@ -46,7 +46,7 @@
                             <div class="card-body">
                                 <img 
                                     class="img-cover" 
-                                    src="{{ $slide->image ? asset('assets/backend/img/' . $slide->image) : 'assets/backend/img/no-image.jpg' }}" 
+                                    src="{{ $slide->image ? asset('assets/backend/img/accounts/' . $slide->image) : 'assets/backend/img/no-image.jpg' }}" 
                                     alt="Avatar" 
                                     id="avatar-image" 
                                     style="cursor: pointer; max-width: 100%; height: 170px; object-fit: cover;" 

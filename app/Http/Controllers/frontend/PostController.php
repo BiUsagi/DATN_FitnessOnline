@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function posts()
     {
-        $TopBlog = Posts::orderBy('id', 'DESC')->paginate(5); // Lấy post theo thứ tự từ bài post mới nhát
+        $TopBlog = Posts::orderBy('id', 'DESC')->paginate(3); // Lấy post theo thứ tự từ bài post mới nhát
         $onlyBlog = Posts::orderBy('id', 'DESC')->get();
         return view('frontend/posts/posts')->with(
             [
