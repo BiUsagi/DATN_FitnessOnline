@@ -91,4 +91,34 @@ class AccountsController extends Controller
         return response()->json(['success' => true, 'message' => 'Vai trò đã được gán cho user.']);
     }
 
+
+
+
+    public function approve($id)
+    {
+        $staffRequest = StaffRequest::findOrFail($id);
+        $staffRequest->status = 1;
+        $staffRequest->approved_at = now();
+        $staffRequest->save();
+
+
+        // Chuyển dữ liệu từ staff_requests sang bảng staff
+        $staff = new Staff();
+        $staff->user_id = $staffRequest->user_id;
+        $staff->staff_name = $staffRequest->new_name ?? $staffRequest->user->user_name;
+        $staff->email = $staffRequest->new_email;
+        $staff->avatar = $staffRequest->new_avatar ?? $staffRequest->user->avatar;
+        $staff->gender = $staffRequest->user->gender;
+        $staff->birthday = $staffRequest->user->birthday;
+        $staff->introduction = $staffRequest->introduction;
+        $staff->address = $staffRequest->new_address;
+        $staff->phone_number = $staffRequest->new_phone_number;
+        $staff->created_at = now();
+        $staff->save();
+
+
+        $staff->assignRole('staff');
+
+        return redirect()->route('admin.application');
+    }
 }
