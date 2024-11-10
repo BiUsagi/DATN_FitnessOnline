@@ -32,7 +32,7 @@
                                     <div class="blog-detail">
                                         <div class="blog-desc">
                                             <div class="blog-meta">
-                                                <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>{{$TopBlogs->created_at}}</span></div>
+                                                <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>{{$TopBlogs->created_at->locale('vi')->diffForHumans()}}</span></div>
                                                 <div class="date"><img loading='lazy' src="assets/frontend/images/icons/chat.svg"><span>5</span></div>
                                                 <div class="date"><img loading='lazy' src="assets/frontend/images/icons/heart.svg"><span>123</span></div>
                                             </div>
@@ -43,7 +43,7 @@
                                         
                                             <div class="tags">
                                                 <ul>
-                                                    <li><a href="{{ route('posts-details.index', $TopBlogs->id) }}">Read More</a>
+                                                    <li><a href="{{ route('posts-details.index', $TopBlogs->id) }}">Chi tiết</a>
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                             viewBox="0 0 500 279" style="enable-background:new 0 0 500 279;" xml:space="preserve">
                                                         <style type="text/css">
@@ -185,7 +185,7 @@
                                 </li>
                             @else
                                 <li class="pagination-item--wide first">
-                                    <a class="pagination-link--wide text-white" href="{{ $data->previousPageUrl() }}">&lt;
+                                    <a class="pagination-link--wide text-white" href="{{ $TopBlog->previousPageUrl() }}">&lt;
                                         Trước</a>
                                 </li>
                             @endif
@@ -216,7 +216,7 @@
                         <div class="sidebar">
                             <div class="widget search-widget">
                                 <div class="heading">
-                                    <h5>Search</h5>
+                                    <h5>Tìm kiếm</h5>
                                 </div>
                                 <div class="sidebar-item search">
                                     <form class="input-search">
@@ -224,8 +224,31 @@
                                         <button class="btn-search" type="submit"><img loading='lazy' src="assets/frontend/images/search-btn.svg" alt="icon"></button>
                                     </form>
                                 </div>
+                                <div class="widget recentpost-widget">
+                                    <div class="heading">
+                                    </div>
+                                    <div class="sidebar-item recent-post text-left">
+                                        <div class="sidebar-info">
+                                            <ul>
+                                                @foreach ($onlyBlog->take(3) as $only)
+                                                    <li>
+                                                        <div class="thumb"> 
+                                                            <a href="#!"><img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp"></a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
+                                                            <div class="meta-title">
+                                                                <span class="post-date">{{$only->created_at->locale('vi')->diffForHumans()}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widget categories-widget">
+                            {{-- <div class="widget categories-widget">
                                 <div class="heading">
                                     <h5>Categories</h5>
                                 </div>
@@ -244,10 +267,10 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="widget recentpost-widget">
                                 <div class="heading">
-                                    <h5>Recent Posts</h5>
+                                    <h5>Blog liên quan</h5>
                                 </div>
                                 <div class="sidebar-item recent-post text-left">
                                     <div class="sidebar-info">
@@ -260,7 +283,7 @@
                                                     <div class="info">
                                                         <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
                                                         <div class="meta-title">
-                                                            <span class="post-date">{{$only->created_at}}</span>
+                                                            <span class="post-date">{{$only->created_at->locale('vi')->diffForHumans()}}</span>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -291,7 +314,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget tags-widget">
+                            {{-- <div class="widget tags-widget">
                                 <div class="heading">
                                     <h5>Tags</h5>
                                 </div>
@@ -310,7 +333,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

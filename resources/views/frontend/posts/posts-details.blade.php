@@ -1,6 +1,5 @@
 @extends('frontend/layouts/app-user')
 
-
 @section('main')
 <section>
     <div class="breadcrumb_wrapper">
@@ -23,12 +22,12 @@
                         
                         <div class="single-blog-post">
                             <div class="blog-image">
-                                <img loading='lazy' src="{{ asset('uploads/post_image/' . $posts->image) }}" alt="blog_detail_img.webp">
+                                <img loading='lazy' src="{{ asset('uploads/post_image/' . $posts->image) }}" alt="blog_detail_img.webp" style="width:90%">
                             </div>
                             <div class="blog-detail">
                                 <div class="blog-desc">
                                     <div class="blog-meta">
-                                        <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>{{$posts->created_at}}</span></div>
+                                        <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>{{$posts->created_at->locale('vi')->diffForHumans()}}</span></div>
                                         <div class="date"><img loading='lazy' src="assets/frontend/images/icons/chat.svg"><span>5</span></div>
                                         <div class="date"><img loading='lazy' src="assets/frontend/images/icons/heart.svg"><span>123</span></div>
                                     </div>
@@ -85,29 +84,17 @@
                                 </div>                                
                             </form>
                         @else
-                        <div class="form-box">
-                            {{-- <div class="heading">
-                                <h2>Leave a <span>Comment</span></h2>
-                            </div> --}}
-                            <form class="contact-form">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="form-group comments">
-                                            <textarea class="form-control" placeholder="Message*" rows="4"></textarea>
+                        <form action="" method="POST" class="contact-form">
+                            <div class="col-md-12">
+                                    <div class="form-group comments">
+                                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
+                                        <small id="comment-error" style="color:aliceblue"></small>
+                                        <div class="col-md-1" style="float: right;">
+                                            <button type="button" class="css-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Gửi</button>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-0 text-center text-md-start pb-0">
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                Gửi bình luận
-                                            </button>
-                                        </div> 
-                                    </div>
-                                </div>                                   
-                            </form>
-                        </div>
+                            </div>                                
+                        </form>
                         @endif
                         {{-- END FORM BÌNH LUẬN --}}
 
@@ -158,38 +145,17 @@
                                         @foreach ($onlyBlog->take(3) as $only)
                                                 <li>
                                                     <div class="thumb"> 
-                                                        <a href="#!"><img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp"></a>
+                                                        <a href="{{ route('posts-details.index', $only->id) }}" class="title-link">><img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp" style="width:70px; height:50px; object-fit: cover;" ></a>
                                                     </div>
                                                     <div class="info">
                                                         <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
                                                         <div class="meta-title">
-                                                            <span class="post-date">{{$only->created_at}}</span>
+                                                            <span class="post-date">{{$only->created_at->locale('vi')->diffForHumans()}}</span>
                                                         </div>
                                                     </div>
                                                 </li>
                                             @endforeach
-                                        {{-- <li>
-                                            <div class="thumb"> 
-                                                <a href="#!"><img loading='lazy' src="assets/frontend/images/blog/article-2.webp" alt="post-1.webp"></a>
-                                            </div>
-                                            <div class="info">
-                                                <a href="#!">Contrary to popular belief,  It is the</a>
-                                                <div class="meta-title">
-                                                    <span class="post-date">05 Jan, 2022</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="thumb"> 
-                                                <a href="#!"><img loading='lazy' src="assets/frontend/images/blog/article-3.webp" alt="post-1.webp"></a>
-                                            </div>
-                                            <div class="info">
-                                                <a href="#!">Contrary to popular belief,  It is the</a>
-                                                <div class="meta-title">
-                                                    <span class="post-date">05 Jan, 2022</span>
-                                                </div>
-                                            </div>
-                                        </li> --}}
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -383,6 +349,7 @@
             }
         });
     });
+
 
 </script>
 @endsection

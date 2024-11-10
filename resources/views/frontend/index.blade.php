@@ -91,12 +91,8 @@
                     <div class="row">
                         @foreach ($PTHot->take(3) as $PT)
                             <div class="col-md-4 f-0">
-                                <div class="team-block">
-                                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PT->avatar) }}" alt="Coaches"
-                                         style="  
-                                                
-                                                object-fit: cover;     
-                                                object-position: center; ">
+                                <div class="team-block"  style=" width: 100%;max-width: 100%;height: 100%;  display: flex;align-items: center;justify-content: center;">
+                                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PT->avatar) }}" alt="Coaches">
                                     <h3><span>{{$PT->staff_name}}</span></h3>
                                 </div>
                             </div>
@@ -140,7 +136,7 @@
                     @foreach ($top_workout_packages as $item)
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="{{ asset('uploads/gym_package/' . $item->image) }}" class="img-cover" alt="icons"  style="object-fit: contain;">
+                            <img loading='lazy' src="{{ asset('uploads/gym_package/' . $item->image) }}" class="img-cover" alt="icons"  style="object-fit: cover;">
                             <span>{{$item->special_level}}</span>
                             <h2>{{$item->package_name}}</h2>
                             <p>{!! nl2br(strip_tags($item->description)) !!}</p>
@@ -232,11 +228,11 @@
                         <div class="card">
                             <a href="{{ route('posts-details.index', $Post->id) }}" aria-label="Blog 3">
                                 <div class="card-img f-0" style=" width: 100%;max-width: 100%;height: 270px;  display: flex;align-items: center;justify-content: center;">
-                                    <img loading='lazy' src="{{ asset('uploads/post_image/' . $Post->image) }}" alt="" style="object-fit: contain;">
+                                    <img loading='lazy' src="{{ asset('uploads/post_image/' . $Post->image) }}" alt="" style="object-fit: cover;">
                                 </div>
                             </a>
                             <div class="card-body">
-                                <span>{{$Post->created_at}}</span>
+                                <span>{{$Post->created_at->locale('vi')->diffForHumans()}}</span>
                                 <h5 class="card-title">{{$Post->title}}</h5>
                                 <p class="card-text">{{$Post->description}}</p>
                                 <div class="button-sec">
@@ -327,13 +323,17 @@
     <!-- GET IT TOUCH END HERE -->
     <!-- GYM SLIDER START HERE -->
     <div class="post_wrapper default-padding">
+        <div class="heading text-center" style="margin-bottom: 20px">
+            <h3>Huấn <span>luyện viên</span></h3>
+        </div>
         <div class="container">
             <div class="swiper gymSwiper">
+
                 <div class="swiper-wrapper">
                     @foreach ($AllPT as $PTall)
                         <div class="swiper-slide">
-                            <a href="#!" class="slides" aria-label="Slide 1">
-                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="height:400 !important;object-fit: cover !important;object-position: center!important">
+                            <a href="#!" class="slides" aria-label="Slide 1" style="object-fit: cover; width:250px; height:300px">
+                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="object-fit: cover;width:250px; height:300px">
                                 <div class="links">
                                     <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                                 </div>
