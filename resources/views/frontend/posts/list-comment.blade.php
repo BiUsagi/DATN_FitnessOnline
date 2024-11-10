@@ -214,11 +214,13 @@
             <div class="content-box">
                 <strong class="css-name"><span>@</span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
                 <div class="options-menu">
+                    @if ($item->user_id === Auth::id())
                     <span class="three-dots" onclick="toggleMenu()" style="color: white">⋮</span>
-                    <div class="menu" id="menu">
-                        <span class="menu-item edit-comment" data-id="{{$item->id}}" data-content="{{$item->content}}">Sửa</span>
-                        <span class="menu-item">Xóa</span>
-                    </div>
+                        <div class="menu" id="menu">
+                            <span class="menu-item edit-comment" data-id="{{$item->id}}" data-content="{{$item->content}}">Sửa</span>
+                            <span class="menu-item delete-comment" data-id="{{$item->id}}">Xóa</span>
+                        </div>
+                    @endif
                 </div>
                 <div class="comment-text">{{$item->content}}</div>
                 <div class="comment-actions">
@@ -234,6 +236,15 @@
         </div>
         <div class="content-box">
             <strong class="css-name"><span>@</span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
+            <div class="options-menu">
+                @if ($item->user_id === Auth::id())
+                <span class="three-dots" onclick="toggleMenu()" style="color: white">⋮</span>
+                    <div class="menu" id="menu">
+                        <span class="menu-item edit-comment" data-id="{{$item->id}}" data-content="{{$item->content}}">Sửa</span>
+                        <span class="menu-item delete-comment" data-id="{{$item->id}}">Xóa</span>
+                    </div>
+                @endif
+            </div>
             <div class="comment-text">{{$item->content}}</div>
             <div class="comment-actions">
                 <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Phản hồi</span>

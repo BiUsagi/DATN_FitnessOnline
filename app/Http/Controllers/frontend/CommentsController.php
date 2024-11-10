@@ -5,8 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comment;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 class CommentsController extends Controller
 {
     public function comment($posts_id, Request $req){
@@ -57,5 +57,5 @@ class CommentsController extends Controller
     {
         $this->middleware('auth'); // Bảo vệ các route yêu cầu đăng nhập
     }
-
+    // Xóa bình luận
 }
