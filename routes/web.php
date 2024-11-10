@@ -62,10 +62,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //
 Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.addmoney'); //link nạp tiền
 
 
-// 403 - truy cập bị từ chối
-Route::get('/access-denied', function () {
-    return view('errors.access-denied');
-})->name('access-denied');
 
 // Back End
 //Admin
