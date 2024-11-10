@@ -7,34 +7,35 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     // Tên bảng
     protected $table = 'users';
 
     // Các trường có thể điền được
     protected $fillable = [
-        'user_name',    // tên người dùng
-        'email',        // email
-        'avatar',       // avatar
-        'address',      // địa chỉ
-        'birthday',     // ngày sinh
-        'gender',       // giới tính
-        'password',     // mật khẩu
-        'phone_number', // số điện thoại
+        'user_name',
+        'email',
+        'avatar',
+        'address',
+        'birthday',
+        'gender',
+        'password',
+        'phone_number',
         'trial',        // số ngày dùng thử
     ];
 
-    // Các trường cần ẩn khi trả về JSON
+
     protected $hidden = [
-        'password', // ẩn mật khẩu
-        'remember_token', // token nhớ phiên đăng nhập
+        'password',
+        'remember_token',
     ];
 
-    // Cấu hình kiểu dữ liệu cho các trường
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -42,10 +43,7 @@ class User extends Authenticatable
     // Phương thức tính tuổi từ ngày sinh
     public function getAgeFromBirthday()
     {
-        // Chuyển đổi 'birthday' thành đối tượng Carbon
         $birthDate = Carbon::parse($this->birthday);
-
-        // Tính tuổi bằng cách so sánh với ngày hiện tại
         return $birthDate->age;
     }
 
@@ -66,5 +64,33 @@ class User extends Authenticatable
     public function staffRequests()
     {
         return $this->hasMany(StaffRequest::class, 'user_id');
+    }
+
+
+
+    /**
+     * Gán vai trò cho người dùng 
+     */
+    public function assignRoleBasedOnField($userId)
+    {
+        // Tìm user theo ID
+        $user = User::findOrFail($userId);
+
+        // Kiểm tra giá trị của `role` và gán vai trò tương ứng
+        switch ($user->role_012) {
+            case 0:
+                $user->assignRole('customer');
+                break;
+            case 1:
+                $user->assignRole('staff');
+                break;
+            case 2:
+                $user->assignRole('admin');
+                break;
+            default:
+                return response()->json(['success' => false, 'message' => 'Vai trò không hợp lệ.']);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Vai trò đã được gán cho user.']);
     }
 }

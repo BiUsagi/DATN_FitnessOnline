@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->text('phone_number')->nullable();
             $table->integer('trial')->default('30');
             $table->tinyInteger('status')->nullable()->comment('1 - block, 0 - bình thường, 2 - Khác');
-            $table->integer('role')->default('0');
+            $table->integer('role_012')->default('0')->comment('1 - pt, 0 - user, 2 - admin');
             $table->timestamps();
         });
 

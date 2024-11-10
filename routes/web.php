@@ -62,71 +62,69 @@ Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //
 Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.addmoney'); //link nạp tiền
 
 
-
-
+// 403 - truy cập bị từ chối
+Route::get('/access-denied', function () {
+    return view('errors.access-denied');
+})->name('access-denied');
 
 // Back End
 //Admin
 Route::prefix('admin')->group(function () {
 
     // dashboard
-    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/', [AdminController::class, 'index'])->name('admin')->middleware('can:access_dashboard');
 
     // config - cấu hình
-    Route::get('/config', [ConfigController::class, 'index'])->name('admin.config');
+    Route::get('/config', [ConfigController::class, 'index'])->name('admin.config')->middleware('can:manage_config');
 
 
     // exercise - bài tập
-    Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise');
-    Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create');
-    Route::get('/exercise/update/{id}', [ExerciseController::class, 'updateExercise'])->name('admin.exercise-update');
+    Route::get('/exercise', [ExerciseController::class, 'index'])->name('admin.exercise')->middleware('can:manage_exercises');
+    Route::get('/exercise/create', [ExerciseController::class, 'createExercise'])->name('admin.exercise-create')->middleware('can:manage_exercises');
+    Route::get('/exercise/update/{id}', [ExerciseController::class, 'updateExercise'])->name('admin.exercise-update')->middleware('can:manage_exercises');
 
 
 
     //Package_exercise
-    Route::get('/package_exercise', [PackageExercisesController::class, 'index'])->name('admin.package_exercise');
-
-
-
-    Route::get('/order', [OrderController::class, 'index'])->name('admin.order');
+    //Route::get('/package_exercise', [PackageExercisesController::class, 'index'])->name('admin.package_exercise');
 
 
     // exerciseset - gói tập
-    Route::get('/workout_package', [WorkoutPackagesController::class, 'index'])->name('admin.workout_package');
+    Route::get('/workout_package', [WorkoutPackagesController::class, 'index'])->name('admin.workout_package')->middleware('can:manage_workout_packages');
     // chi tiết gói tập
-    Route::get('/workout_package/workout_package_detail/{id}', [WorkoutPackagesController::class, 'detail'])->name('admin.workout_package_detail');
+    Route::get('/workout_package/workout_package_detail/{id}', [WorkoutPackagesController::class, 'detail'])->name('admin.workout_package_detail')->middleware('can:manage_workout_packages');
     //create_goitap
-    Route::get('/workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create');
+    Route::get('/workout_package/create', [WorkoutPackagesController::class, 'create'])->name('admin.workout_package-create')->middleware('can:manage_workout_packages');
     //update_goitap
-    Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update');
+    Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update')->middleware('can:manage_workout_packages');
 
 
-    Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
+    Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
     //view workout_exercise
-    Route::get('/workout_hub/{id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub');
+    Route::get('/workout_hub/{id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
     // Route::get('/workout_hub/{id}/day/{day_id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub.detail');
 
 
 
 
     // statistical - thống kê
-    Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical');
-    Route::get('/package', [StatisticalController::class, 'package'])->name('admin.package');
+    Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical')->middleware('can:manage_statistical');
+    Route::get('/package', [StatisticalController::class, 'package'])->name('admin.package')->middleware('can:manage_statistical');
 
 
     // marketing - tiếp thị
-    Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing');
+    Route::get('/marketing', [MarketingController::class, 'index'])->name('admin.marketing')->middleware('can:manage_marketing');
 
     // supportexercises - chăm sóc khách hàng 
-    Route::get('/supportexercises', [SupportExercisesController::class, 'index'])->name('admin.supportexercises');
+    Route::get('/supportexercises', [SupportExercisesController::class, 'index'])->name('admin.supportexercises')->middleware('can:customer_support');
 
     // posts - bài viết
-    Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts');
-    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin.post-create');
-    Route::get('/posts/update/{id}', [PostsController::class, 'update'])->name('admin.posts-update');
+    Route::get('/posts', [PostsController::class, 'index'])->name('admin.posts')->middleware('can:manage_posts');
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('admin.post-create')->middleware('can:manage_posts');
+    Route::get('/posts/update/{id}', [PostsController::class, 'update'])->name('admin.posts-update')->middleware('can:manage_posts');
 
     //component 
-    Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
+    // Route::get('/component', [ComponentController::class, 'index'])->name('admin.component');
 
 
     // wallets
@@ -141,19 +139,19 @@ Route::prefix('admin')->group(function () {
 
 
     //siles
-    Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides');//Danh sách giao diện
+    Route::get('/slides', [SlidesController::class, 'index'])->name('admin.slides')->middleware('can:manage_slides');//Danh sách giao diện
 
-    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create');//Thêm giao diện
-    Route::post('/slides/create', [SlidesController::class, 'create_']);
+    Route::get('/slides/create', [SlidesController::class, 'create'])->name('admin.slide.create')->middleware('can:manage_slides');//Thêm giao diện
+    Route::post('/slides/create', [SlidesController::class, 'create_'])->middleware('can:manage_slides');
 
-    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.slide.xoa');//xóa giao diện
+    Route::get('/slides/xoa/{id}', [SlidesController::class, 'xoa'])->name('admin.slide.xoa')->middleware('can:manage_slides');//xóa giao diện
 
-    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.slide.update');//Cập nhật giao diện
-    Route::post('/slides/update/{id}', [SlidesController::class, 'update_']);
+    Route::get('/slides/update/{id}', [SlidesController::class, 'update'])->name('admin.slide.update')->middleware('can:manage_slides');//Cập nhật giao diện
+    Route::post('/slides/update/{id}', [SlidesController::class, 'update_'])->middleware('can:manage_slides');
 
     //comments
-    Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments');//Danh sách giao diện
-    Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments');
+    Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments')->middleware('can:manage_component');//Danh sách giao diện
+    Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments')->middleware('can:manage_component');
 
 
     //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
@@ -161,21 +159,23 @@ Route::prefix('admin')->group(function () {
 
 
     // accounts - tài khoản
-    Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer');  // Danh sách khách hàng
-    Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info'); // Chi tiết khách hàng
+    Route::get('/customer', [AccountsController::class, 'customer_account'])->name('admin.customer')->middleware('can:manage_accounts');  // Danh sách khách hàng
+    Route::get('/customerinfo/{id}', [AccountsController::class, 'customer_info'])->name('admin.customer.info')->middleware('can:manage_accounts'); // Chi tiết khách hàng
 
-    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff'); //Danh sách nhân viên
-    Route::get('/staffinfo/{id}', [AccountsController::class, 'staff_info'])->name('admin.staff.info');// Chi tiết nhân viên
-    Route::get('/staffupdate/{id}', [AccountsController::class, 'staff_update'])->name('admin.staff.update'); //Cập nhật nhân viên
+    Route::get('/staff', [AccountsController::class, 'staff_account'])->name('admin.staff')->middleware('can:manage_accounts'); //Danh sách nhân viên
+    Route::get('/staffinfo/{id}', [AccountsController::class, 'staff_info'])->name('admin.staff.info')->middleware('can:manage_accounts');// Chi tiết nhân viên
+    Route::get('/staffupdate/{id}', [AccountsController::class, 'staff_update'])->name('admin.staff.update')->middleware('can:manage_accounts'); //Cập nhật nhân viên
 
-    Route::get('/application', [AccountsController::class, 'application'])->name('admin.application'); //Danh sách đơn đăng ký
-    Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info'); //Chi tiết đơn đăng ký
+    Route::get('/application', [AccountsController::class, 'application'])->name('admin.application')->middleware('can:manage_accounts'); //Danh sách đơn đăng ký
+    Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info')->middleware('can:manage_accounts'); //Chi tiết đơn đăng ký
 
+
+    Route::get('/assign-role/{userId}', [AccountsController::class, 'assignRoleBasedOnField']);
 
     // order - đơn hàng
-    Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders'); //Danh sách đơn hàng
-    Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders'); // Chi tiết đơn hàng
-    Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder');
+    Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders')->middleware('can:manage_order'); //Danh sách đơn hàng
+    Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders')->middleware('can:manage_order'); // Chi tiết đơn hàng
+    Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder')->middleware('can:manage_order');
 
 
 

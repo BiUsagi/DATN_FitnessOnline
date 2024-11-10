@@ -7,7 +7,7 @@ use App\Models\StaffRequest;
 use Illuminate\Http\Request;
 use App\Models\Staff;
 use App\Models\User;
-
+use Spatie\Permission\Models\Role;
 class AccountsController extends Controller
 {
     // trang nhân viên
@@ -65,5 +65,30 @@ class AccountsController extends Controller
 
 
 
+    /**
+     * Gán vai trò cho người dùng 
+     */
+    public function assignRoleBasedOnField($userId)
+    {
+        // Tìm user theo ID
+        $user = User::findOrFail($userId);
+
+        // Kiểm tra giá trị của `role` và gán vai trò tương ứng
+        switch ($user->role_012) {
+            case 0:
+                $user->assignRole('customer');
+                break;
+            case 1:
+                $user->assignRole('staff');
+                break;
+            case 2:
+                $user->assignRole('admin');
+                break;
+            default:
+                return response()->json(['success' => false, 'message' => 'Vai trò không hợp lệ.']);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Vai trò đã được gán cho user.']);
+    }
 
 }
