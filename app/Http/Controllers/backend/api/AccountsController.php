@@ -116,6 +116,9 @@ class AccountsController extends Controller
         $staff->created_at = now();
         $staff->save();
 
+
+        $staff->assignRole('staff');
+
         return response()->json(['success' => true, 'message' => 'Yêu cầu đã được phê duyệt.']);
     }
 
