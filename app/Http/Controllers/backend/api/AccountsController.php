@@ -120,6 +120,8 @@ class AccountsController extends Controller
 
         $user = User::findOrFail($staffRequest->user_id);
         // $user->assignRole(['staff'], 'web');
+        $user->role_012 = 1;
+        $user->save();
         $user->assignRole(['staff']);
 
         return response()->json(['success' => true, 'message' => 'Yêu cầu đã được phê duyệt.']);
