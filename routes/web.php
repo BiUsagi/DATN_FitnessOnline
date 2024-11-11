@@ -164,7 +164,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/application', [AccountsController::class, 'application'])->name('admin.application')->middleware('can:manage_accounts'); //Danh sách đơn đăng ký
     Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info')->middleware('can:manage_accounts'); //Chi tiết đơn đăng ký
-
+    Route::post('/approve/{id}', [AccountsController::class, 'approve'])->name('admin.staff.approve')->middleware('can:manage_accounts');
 
     Route::get('/assign-role/{userId}', [AccountsController::class, 'assignRoleBasedOnField']);
 
