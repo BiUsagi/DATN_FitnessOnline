@@ -45,7 +45,7 @@ Route::get('/posts', [PostController::class, 'posts'])->name('posts.index'); //c
 Route::get('/posts/posts-details/{id}', [PostController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 Route::get('/trainers', [ProfileController::class, 'trainers'])->name('trainers.index');
 Route::get('/trainer/{id}', [ProfileController::class, 'info_trainer'])->name('info.trainer');
-Route::get('/staffrequest', [ProfileController::class, 'staff_request'])->name('staff_request.index');
+Route::get('/staffrequest', [ProfileController::class, 'staff_request'])->name('staff_request.index');// đăng kí staff
 
 
 
