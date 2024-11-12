@@ -64,7 +64,7 @@
 
                         <td>${item.id}</td>
                                     <td>${item.name}</td>
-                                    <td>${item.description}</td>
+                                    <td>${item.name}</td>
                                     <td>${item.sets}</td>
                                     <td>${item.reps}</td>
                                     <td class="customize-width">

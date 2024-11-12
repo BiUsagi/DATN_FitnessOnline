@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\WalletsController;
 use App\Http\Controllers\frontend\Workout_packageController;
-use App\Http\Controllers\backend\WalletController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\ProfileController;
+use App\Http\Controllers\frontend\AjaxloginController;
+use App\Http\Controllers\frontend\CommentsController;
+use App\Http\Controllers\frontend\PostController;
+use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
 use App\Http\Controllers\backend\DashboardController;
@@ -24,9 +27,6 @@ use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\backend\DepositHistoriesController;
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\frontend\AjaxloginController;
-use App\Http\Controllers\frontend\CommentsController;
-use App\Http\Controllers\frontend\PostController;
 
 
 // use App\Http\Controllers\backend\api\PackageExercisesController;
@@ -61,6 +61,11 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout.index')
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.addmoney'); //link nạp tiền
 
+Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
+//view workout_exercise
+Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
+
+Route::get('/list_submit_exercise', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
 
 
 // Back End
@@ -95,9 +100,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update')->middleware('can:manage_workout_packages');
 
 
-    Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
-    //view workout_exercise
-    Route::get('/workout_hub/{id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
+    Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
+    
     // Route::get('/workout_hub/{id}/day/{day_id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub.detail');
 
 
