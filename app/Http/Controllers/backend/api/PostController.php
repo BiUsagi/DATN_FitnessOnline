@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend\api;
 use App\Http\Controllers\Controller;
 use App\Models\Posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class PostController extends Controller
 {
@@ -22,6 +24,12 @@ class PostController extends Controller
 
        
         if($request->hasFile('image')){
+
+            $old_image = 'uploads/post_image'.$post->image;
+            if(file::exists($old_image)){
+                file::delete($old_image);
+            }
+
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
             $filename = time().'.'.$extension;

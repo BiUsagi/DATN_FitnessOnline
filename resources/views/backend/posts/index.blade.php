@@ -39,9 +39,31 @@
                                 </thead>
                               
                                 <tbody class="show-data">
-                                  
-    
+                                    @foreach($post as $p)
+                                    <tr>
+                                        <th scope="row">{{ $p->id }}</th>
+                                        <td>{{ $p->title }}</td>
+                                        <td>{{ $p->description }}</td>
+                                        <td>{{ $p->image }}</td>
+                                        <td>{{ $p->content }}</td>
+                                        <td>
+                                        <a class="btn btn-outline-success" data-bs-placement="top" 
+                                        data-bs-title="Xem Chi Tiết">
+                                            <i class="ri-eye-fill"></i>
+                                        </a>
+                                        <a href="admin/posts/update/{{ $p->id }}" class="btn btn-outline-primary" data-bs-placement="top" 
+                                        data-bs-title="Xem Chi Tiết">
+                                            <i class="ri-edit-line"></i>
+                                        </a>
+                                        <a class="btn btn-outline-danger delete-post" data-bs-placement="top" data-id="{{ $p->id }}"
+                                        data-bs-title="Xem Chi Tiết">
+                                            <i class="ri-error-warning-line"></i>
+                                        </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
+
                             </table>
                             <!-- End Table with stripped rows -->
     
@@ -54,36 +76,36 @@
 
     </main>
     <script>
-        $.get('http://127.0.0.1:8000/api/admin/post', function(res){
-            let data = res;
-            let returnData = '';
-            data.forEach(item =>{
-            returnData += `
-            <tr>
-                <th scope="row">${item.id}</th>
-                <td>${item.title}</td>
-                <td>${item.description}</td>
-                <td>${item.image}</td>
-                <td>content</td>
-                <td>
-                <a class="btn btn-outline-success" data-bs-placement="top" 
-                data-bs-title="Xem Chi Tiết">
-                    <i class="ri-eye-fill"></i>
-                </a>
-                <a href="admin/posts/update/${item.id}" class="btn btn-outline-primary" data-bs-placement="top" 
-                data-bs-title="Xem Chi Tiết">
-                    <i class="ri-edit-line"></i>
-                </a>
-                <a class="btn btn-outline-danger delete-post" data-bs-placement="top" data-id="${item.id}"
-                data-bs-title="Xem Chi Tiết">
-                    <i class="ri-error-warning-line"></i>
-                </a>
-                </td>
-            </tr>
-             `;
-            });
-            $('.show-data').html(returnData);
-        });
+        // $.get('http://127.0.0.1:8000/api/admin/post', function(res){
+        //     let data = res;
+        //     let returnData = '';
+        //     data.forEach(item =>{
+        //     returnData += `
+        //     <tr>
+        //         <th scope="row">${item.id}</th>
+        //         <td>${item.title}</td>
+        //         <td>${item.description}</td>
+        //         <td>${item.image}</td>
+        //         <td>content</td>
+        //         <td>
+        //         <a class="btn btn-outline-success" data-bs-placement="top" 
+        //         data-bs-title="Xem Chi Tiết">
+        //             <i class="ri-eye-fill"></i>
+        //         </a>
+        //         <a href="admin/posts/update/${item.id}" class="btn btn-outline-primary" data-bs-placement="top" 
+        //         data-bs-title="Xem Chi Tiết">
+        //             <i class="ri-edit-line"></i>
+        //         </a>
+        //         <a class="btn btn-outline-danger delete-post" data-bs-placement="top" data-id="${item.id}"
+        //         data-bs-title="Xem Chi Tiết">
+        //             <i class="ri-error-warning-line"></i>
+        //         </a>
+        //         </td>
+        //     </tr>
+        //      `;
+        //     });
+        //     $('.show-data').html(returnData);
+        // });
 
     // $(document).ready(function() {
     // // Xử lý click cho nút xóa (delete-button)
