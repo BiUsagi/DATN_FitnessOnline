@@ -45,7 +45,7 @@ Route::get('/posts', [PostController::class, 'posts'])->name('posts.index'); //c
 Route::get('/posts/posts-details/{id}', [PostController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 Route::get('/trainers', [ProfileController::class, 'trainers'])->name('trainers.index');
 Route::get('/trainer/{id}', [ProfileController::class, 'info_trainer'])->name('info.trainer');
-Route::get('/staffrequest', [ProfileController::class, 'staff_request'])->name('staff_request.index');
+Route::get('/staffrequest', [ProfileController::class, 'staff_request'])->name('staff_request.index');// đăng kí staff
 
 
 
@@ -168,7 +168,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/application', [AccountsController::class, 'application'])->name('admin.application')->middleware('can:manage_accounts'); //Danh sách đơn đăng ký
     Route::get('/application/{id}', [AccountsController::class, 'application_info'])->name('admin.application.info')->middleware('can:manage_accounts'); //Chi tiết đơn đăng ký
-
+    Route::post('/approve/{id}', [AccountsController::class, 'approve'])->name('admin.staff.approve')->middleware('can:manage_accounts');
 
     Route::get('/assign-role/{userId}', [AccountsController::class, 'assignRoleBasedOnField']);
 
@@ -197,7 +197,6 @@ Route::group(['prefix' => 'ajax'], function () {
     route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
     Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('comment.report');
-    Route::post('/ajax/comment/update/{id}', [CommentController::class, 'updateComment'])->name('ajax.comment.update');
-    Route::post('/ajax/comment/delete', [CommentController::class, 'deleteComment'])->name('ajax.comment.delete');
-
+    Route::patch('/ajax/comment/update/{id}', [CommentsController::class, 'update'])->name('comments.update');
+    Route::post('/ajax/comment/delete/{id}', [CommentsController::class, 'destroy'])->name('comments.destroy');
 });

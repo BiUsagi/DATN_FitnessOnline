@@ -350,7 +350,6 @@
         });
     });
 
-
 </script>
 @endsection
 

@@ -15,6 +15,7 @@ class User extends Authenticatable
 
     // Tên bảng
     protected $table = 'users';
+    protected $guard_name = 'web';
 
     // Các trường có thể điền được
     protected $fillable = [
