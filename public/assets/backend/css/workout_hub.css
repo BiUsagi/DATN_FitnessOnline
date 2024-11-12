@@ -1,7 +1,6 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
 }
 body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -274,6 +273,27 @@ header .header-block{
     font-size: 28px;
     text-transform: uppercase;
     color: #333;
+}
+
+#main #content .title-day .box-left .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main #content .title-day .box-left .title .exercised{
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #1face1;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+}
+
+#main #content .title-day .box-left .title .exercised:hover{
+    background-color: #1295c5;
 }
 
 #main #content .title-day .line{
@@ -834,6 +854,7 @@ video {
 .button-upload-video .button.upload{
     background-color: #1face1;
     color: #fff;
+    border: none;
 }
 
 .container-upload .modal-upload .box-upload .show-video-upload .write-description
@@ -941,4 +962,118 @@ video {
 
 .list-exercise .default-layout p{
     text-transform: uppercase;
+}
+
+.categories .level-infor .box-status{
+    background-color: #00c39b;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.categories .level-infor .box-status:hover{
+    background-color: #029e7f;
+    cursor: pointer;
+}
+
+.categories .level-infor .scoring{
+    background-color: #00c39b;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.categories .level-infor .scoring:hover{
+    background-color: #029e7f;
+    cursor: pointer;
+}
+
+.categories .level-infor .text-submit-exercise{
+    font-size: 16px !important;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.list-exercise .feedback-of-pt{
+    background: #212225; 
+    color: #fff; 
+    padding: 8px 12px;
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
+    max-width: 200px;
+    font-size: 20px;
+}
+.list-exercise .contact-of-pt{
+    background: #212225; 
+    color: #fff; 
+    padding: 8px 12px;
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
+    font-size: 20px;
+    max-width: 270px;
+
+}
+
+.list-exercise .content-feedback{
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.list-exercise .content-feedback i{
+    font-size: 24px;
+}
+
+.list-exercise .content-feedback p{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.list-exercise .box-contact{
+    display: flex;
+    gap: 30px;
+    /* margin-bottom: 40px; */
+}
+
+.list-exercise .box-contact .img-pt{
+    width: 160px;
+    height: 200px;
+}
+
+.list-exercise .box-contact .img-pt img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-bottom: 3px solid #ddd;
+}
+
+.list-exercise .box-contact .infor{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.list-exercise .box-contact .contact{
+    display: flex;
+    gap: 10px;
+}
+
+.list-exercise .box-contact .contact i{
+    font-size: 24px;
+}
+
+.list-exercise .box-contact .contact.phone-number i{
+    color: #029e7f;
+}
+
+.list-exercise .box-contact .contact.facebook i{
+    color: #1295c5;
+}
+
+.list-exercise .box-contact .contact p{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.made-with p{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
 }

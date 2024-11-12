@@ -21,4 +21,22 @@ class Workout_packageController extends Controller
         $workouts = Order::where('user_id', $user_id)->with('workoutPackage.staff')->get();
         return view('frontend/workout_package/workout_bought', compact( 'workouts'));
     }
+
+    public function workout_hub($id) {
+        $package = Workout_Package::with('userPackageProgress')->find($id);
+    
+        if (!$package) {
+            return redirect()->back()->with('error', 'Không tìm thấy gói tập này!');
+        }
+    
+        // $userProgress = $package->userPackageProgress->keyBy('current_day'); 
+        // $currentDay = $userProgress->max('current_day'); 
+    
+        return view('frontend.workout_hub.index', compact('package'));
+    }
+
+    public function submit_exercise(){
+        
+        return view('frontend.submit_exercise.index');
+    }
 }

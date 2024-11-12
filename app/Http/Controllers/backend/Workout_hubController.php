@@ -7,5 +7,5 @@ use Illuminate\Http\Request;
 
 class Workout_hubController extends Controller
 {
-    //
+    
 }
