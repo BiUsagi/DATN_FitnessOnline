@@ -128,11 +128,16 @@ header .header-block{
     border-left: 4px solid #f7f8fa !important;
 
 }
+#main #sidebar .list-days .box-day.success{
+    color: #00c39b !important;
+    border-left: 4px solid #00c39b !important;
+}
 #main #sidebar .list-days .box-day.active-box-day {
     background-color: rgba(117, 204, 236, 0.07) !important ;
     color: #1face1 !important;
     border-left: 4px solid #1face1 !important;
 }
+
 
 #main #sidebar .list-days .box-day:hover{
     background-color: #ebebeb;

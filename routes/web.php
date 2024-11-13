@@ -63,9 +63,9 @@ Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.a
 
 Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
 //view workout_exercise
-Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
+Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub');
 
-Route::get('/list_submit_exercise', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
+Route::get('/workout_id/{workout_id}/user/{user_id}', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
 
 
 // Back End
