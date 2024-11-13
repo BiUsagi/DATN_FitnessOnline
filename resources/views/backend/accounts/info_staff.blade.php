@@ -1,4 +1,19 @@
 @extends('backend/layouts/app-admin')
+
+@section('custom_css')
+    <style>
+        .text-clamp {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            /* Giới hạn hiển thị 3 dòng */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+        }
+    </style>
+@endsection
+
 @section('main')
     <main id="main" class="main">
         <div class="pagetitle">
@@ -135,50 +150,27 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row justify-content-center d-flex">
-                                        <div class=" col-sm-6">
-                                            <div class="card p-0">
-                                                <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
-                                                    alt="...">
-                                                <div class="card-body pt-3 row">
-                                                    <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
-                                                    <div class="card-text col-12">Thời gian: 3 tháng</div>
-                                                    <div class="card-text col-12">Còn lại: 24 ngày</div>
+                                        @foreach ($workout_packages as $item)
+                                            <div class=" col-sm-6">
+                                                <div class="card p-0">
+                                                    <a href="{{ route('workout_detail', $item->id) }}"><img
+                                                            src="{{ asset('uploads/gym_package/' . $item->image) }}"
+                                                            class="img-cover img-banner-custom" alt="..."></a>
+                                                    <div class="card-body  row">
+                                                        <span class="mb-1">{{ $item->special_level }}</span>
+                                                        <h5 class="card-title col-12"><a
+                                                                href="{{ route('workout_detail', $item->id) }}">{{ $item->package_name }}</a>
+                                                        </h5>
+                                                        <div class="card-text col-12">
+                                                            <p class="text-clamp">{!! nl2br(strip_tags($item->description)) !!}</p>
+                                                        </div>
+                                                        <div class="card-text col-12"><span
+                                                                class="d-inline-block fw-bold fs-5">{{ number_format($item->price, 0, ',', '.') }}
+                                                                VNĐ</span></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class=" col-sm-6">
-                                            <div class="card p-0">
-                                                <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
-                                                    alt="...">
-                                                <div class="card-body pt-3 row">
-                                                    <h5 class="card-title col-12">Tập tay anh Rin</h5>
-                                                    <div class="card-text col-12">Thời gian: 6 tháng</div>
-                                                    <div class="card-text col-12">Còn lại: 24 ngày</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" col-sm-6">
-                                            <div class="card  p-0">
-                                                <img src="assets/backend/img/z5744025567765_d84710b48e5ca2efa1db72137f826b60.jpg"
-                                                    class="img-cover img-banner-custom" alt="...">
-                                                <div class="card-body pt-3 row">
-                                                    <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
-                                                    <div class="card-text col-12">Thời gian: 3 tháng</div>
-                                                    <div class="card-text col-12">Đã hoàn thành</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" col-sm-6">
-                                            <div class="card  p-0">
-                                                <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
-                                                    alt="...">
-                                                <div class="card-body pt-3 row">
-                                                    <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
-                                                    <div class="card-text col-12">Thời gian: 3 tháng</div>
-                                                    <div class="card-text col-12">Đã hoàn thành</div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -223,6 +215,8 @@
                                     <h6>{{ $data->birthday }}</h6>
                                     <h6><strong>Địa chỉ:</strong></h6>
                                     <h6>{{ $data->address }}</h6>
+                                    <h6><strong>Facebook:</strong></h6>
+                                    <h6><a href="{{ $data->facebook }}" target="_blank">{{ $data->facebook }}</a> </h6>
                                 </div>
                             </div>
                         </div>
