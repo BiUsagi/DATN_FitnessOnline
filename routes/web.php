@@ -176,6 +176,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders')->middleware('can:manage_order'); //Danh sách đơn hàng
     Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders')->middleware('can:manage_order'); // Chi tiết đơn hàng
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder')->middleware('can:manage_order');
+    Route::get('/customer_manage', [OrderController::class, 'customer_manage'])->name('admin.orders.customer_manage')->middleware('can:manage_order'); //Danh sách khách hàng
+    Route::get('/customer_days', [OrderController::class, 'customer_days'])->name('admin.orders.customer_days')->middleware('can:manage_order'); //Danh sách khách hàng
+
 
 
 

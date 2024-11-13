@@ -116,6 +116,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.orders.customer_manage') }}"
+                            class="{{ Request::is('admin/res_client/create') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Danh Sách khách hàng</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.exercise-create') }}"
                             class="{{ Request::is('admin/res_client/create') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Thêm bài tập</span>
