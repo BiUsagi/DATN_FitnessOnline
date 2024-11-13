@@ -51,7 +51,7 @@
                                                         <th>Gói Tập</th>
                                                         <th>Khách Hàng</th>
                                                         <th>Giá Tiền (VND)</th>
-                                                        <th>Giảm Giá</th>
+                                                        <th>Giảm Giá (VND)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -64,11 +64,12 @@
                                                         </td>
                                                         <td>{{ $data->getUserName() }}</td>
                                                         <td>
-                                                            <h6> {{ number_format($data->price, 0, ',', '.') }}</h6>
+                                                            <h6> {{ number_format($data->original_price, 0, ',', '.') }}
+                                                            </h6>
                                                         </td>
 
                                                         <td>
-                                                            <h6>0</h6>
+                                                            <h6>{{ number_format($data->purchase_price, 0, ',', '.') }}</h6>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -79,19 +80,23 @@
                                                             <h5 class="text-primary">Thanh Toán</h5>
                                                         </td>
                                                         <td>
-                                                            <p> {{ number_format($data->price, 0, ',', '.') }}</p>
-                                                            <p>0</p>
+                                                            <p> {{ number_format($data->original_price, 0, ',', '.') }}
+                                                            </p>
+                                                            <p>{{ number_format($data->original_price - $data->purchase_price, 0, ',', '.') }}
+                                                            </p>
                                                             <h5 class="text-primary">
-                                                                {{ number_format($data->price, 0, ',', '.') }}</h5>
+                                                                {{ number_format($data->purchase_price, 0, ',', '.') }} VND
+                                                            </h5>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="6">
-                                                            <h6 class="note">Note:</h6>
+                                                            <h6 class="note">Chú Thích:</h6>
                                                             <p class="small m-0">
                                                                 Nếu có bất kỳ điều gì khác chúng tôi có thể làm, vui lòng
                                                                 cho chúng tôi biết!
                                                             </p>
+                                                            <p class="small m-0">Email: gymfit@gmail.com</p>
                                                         </td>
                                                     </tr>
                                                 </tbody>

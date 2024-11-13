@@ -22,6 +22,9 @@
                     <div class="card">
                         <div class="card-header text-uppercase">THÔNG TIN CHUNG</div>
                         <div class="card-body">   
+
+                            <input type="hidden" name="pt_id" value="{{ $pt_id->id }}">
+
                             <div class="col-12">
                                 <label for="exercise_name" class="form-label-customize">Tên bài tập <span class="note">(*)</span></label>
                                 <input type="text" class="form-control-customize" name="exercise_name" id="exercise_name">

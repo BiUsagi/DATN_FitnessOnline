@@ -18,8 +18,7 @@ class WalletController extends Controller
     
     public function addmoney($id, $dong)
     {
-
-        $his = Deposit_histories::find($id)->first();
+        $his = Deposit_histories::find($id);
 
         // Kiểm tra xem $dong có phải là số nguyên dương không
         if (!is_numeric($dong) || $dong <= 0) {

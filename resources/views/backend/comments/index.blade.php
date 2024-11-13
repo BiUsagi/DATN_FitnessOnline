@@ -115,6 +115,7 @@
 
 
     // SHOW BÌNH LUẬN CON
+ 
     function showComment(id) {
     $.ajax({
         url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
@@ -156,12 +157,12 @@
                             <p style="font-size: 0.8em; color: gray;" class="mb-2 text-justify-custom">${reply.content}</p>
                         </div>
                         <div class="mt-2 ms-auto">
-                            <button type="button" class="btn btn-danger" onclick="deleteComment(${reply.id})">
+                            <button type="button" class="btn btn-danger" data-id="${reply.id}" onclick="deleteComment(${reply.id})">
                                 <i class="ri-delete-bin-5-fill"></i>
                             </button>
                         </div>
                     </div>
-                `).join('<br>')}
+                `).join('<br>')}    
 
                 ${response.rep.length === 0 ? 'Không có phản hồi nào.' : ''}
             `);
@@ -176,8 +177,8 @@
 
 
 // Thêm hàm xóa bình luận
+
 function deleteComment(id) {
-    // Hiển thị hộp thoại xác nhận bằng SweetAlert2
     Swal.fire({
         title: 'Bạn có chắc chắn muốn xóa bình luận này?',
         text: "Hành động này không thể hoàn tác!",
@@ -189,28 +190,54 @@ function deleteComment(id) {
         cancelButtonText: 'Hủy'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Nếu người dùng xác nhận xóa
             $.ajax({
                 url: `http://127.0.0.1:8000/api/admin/comments/${id}`,
                 type: 'DELETE',
-                
-                
                 success: function (response) {
-                    // Xử lý thành công
                     Swal.fire({
                         title: 'Thành công!',
                         text: 'Xóa bình luận thành công!',
                         icon: 'success'
+                    });
 
-                    })
-                reload();
-                    
+                    // Xóa bình luận cha hoặc bình luận con khỏi bảng hiển thị
+                    $(`#list-items tr`).each(function() {
+                        if ($(this).find('td:first').text() == id) {
+                            $(this).remove();
+                        }
+                    });
+
+                    // Kiểm tra và xóa bình luận con trong modal nếu đang mở
+                    const modalIsOpen = $('#staticBackdrop').hasClass('show');
+                    if (modalIsOpen) {
+                        $(`#staticBackdrop .modal-body .d-flex`).each(function () {
+                            const replyId = $(this).find('button').data('id');
+                            if (replyId === id) {
+                                $(this).remove(); // Xóa bình luận con khỏi modal
+                            }
+                        });
+
+                        // Nếu modal vẫn đang mở, làm mới nội dung bằng cách gọi lại showComment()
+                        const parentId = $('#staticBackdrop').data('commentId'); // Lấy id của bình luận cha từ thuộc tính dữ liệu
+                        if (parentId) {
+                            showComment(parentId);
+                        }
+                    }
                 },
-
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'Có lỗi xảy ra!',
+                        text: 'Vui lòng thử lại sau.',
+                        icon: 'error'
+                    });
+                }
             });
         }
     });
 }
+
+
 
 </script>
 

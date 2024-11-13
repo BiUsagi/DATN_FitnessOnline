@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class AccountsController extends Controller
 {
@@ -105,7 +107,7 @@ class AccountsController extends Controller
         // Chuyển dữ liệu từ staff_requests sang bảng staff
         $staff = new Staff();
         $staff->user_id = $staffRequest->user_id;
-        $staff->staff_name = $staffRequest->new_name;
+        $staff->staff_name = $staffRequest->new_name ?? $staffRequest->user->user_name;
         $staff->email = $staffRequest->new_email;
         $staff->avatar = $staffRequest->new_avatar ?? $staffRequest->user->avatar;
         $staff->gender = $staffRequest->user->gender;
@@ -113,7 +115,14 @@ class AccountsController extends Controller
         $staff->introduction = $staffRequest->introduction;
         $staff->address = $staffRequest->new_address;
         $staff->phone_number = $staffRequest->new_phone_number;
+        $staff->created_at = now();
         $staff->save();
+
+        $user = User::findOrFail($staffRequest->user_id);
+        // $user->assignRole(['staff'], 'web');
+        $user->role_012 = 1;
+        $user->save();
+        $user->assignRole(['staff']);
 
         return response()->json(['success' => true, 'message' => 'Yêu cầu đã được phê duyệt.']);
     }

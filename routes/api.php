@@ -16,12 +16,16 @@ use App\Http\Controllers\backend\api\PostController;
 use App\Http\Controllers\Backend\api\Workout_hubController;
 use App\Http\Controllers\backend\api\WalletController;
 use App\Http\Controllers\backend\api\DepositHistoriesController;
+use App\Models\User;
+
 
 
 
 //frontend
 use App\Http\Controllers\frontend\api\WalletsController;
 use App\Http\Controllers\frontend\api\NotificationController;
+use App\Http\Controllers\frontend\api\PayController;
+use App\Http\Controllers\frontend\api\UserVideoController;
 
 
 
@@ -30,13 +34,16 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
+//User Upload
+Route::post('/video_user', [UserVideoController::class, 'store']);
+
 Route::group(['prefix' => 'admin',], function () {
     //API of exercises
     Route::get('/exercises', [ExerciseController::class, 'index']);
     Route::post('/exercises', [ExerciseController::class, 'add']);
-    Route::get('/exercises/{id}', [ExerciseController::class, 'add']);
-    Route::put('/exercises/{id}', [ExerciseController::class, 'add']);
-    Route::delete('/exercises/{id}', [ExerciseController::class, 'add']);
+    // Route::get('/exercises/{id}', [ExerciseController::class, 'add']);
+    Route::post('/exercises/{id}', [ExerciseController::class, 'update']);
+    Route::delete('/exercises/{id}', [ExerciseController::class, 'delete']);
 
     //API of workout_exercise
     Route::get('/workout_package', [Workout_PackageController::class, 'index']);
@@ -53,6 +60,9 @@ Route::group(['prefix' => 'admin',], function () {
 
     //run view workout_hub
     Route::get('/workout_hub/{id}/day/{dayDetail}', [Workout_hubController::class, 'getDayExercises']);
+    // Route lấy tiến độ của người dùng
+
+    Route::post('/workout_hub/{id}/save-progress', [Workout_PackageController::class, 'saveProgress']);
 
 
 
@@ -86,6 +96,8 @@ Route::group(['prefix' => 'admin',], function () {
     //Post
     Route::get('/post', [PostController::class, 'index']);
     Route::post('/post', [PostController::class, 'create_']);
+    Route::post('/post/{id}', [PostController::class, 'update_']);
+    Route::delete('/post/{id}', [PostController::class, 'delete'] );
 
 
     //DepositHistories
@@ -109,5 +121,11 @@ Route::group(['prefix' => 'web',], function () {
 
     //Notification
     Route::post('/add-notification', [NotificationController::class, 'add']);
+
+    //pay
+    Route::get('/getvoucher', [PayController::class, 'getVoucher']);
+    Route::get('/getvouchercode', [PayController::class, 'getVoucherCode']);
+    Route::post('/pay', [PayController::class, 'pay']);
+    Route::get('/checkorder', [PayController::class, 'checkorder']);
 
 });

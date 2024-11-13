@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Comment Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #181818;
+            color: #ffffff;
+        }
+        .comment-section {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            padding: 10px;
+        }
+        .comment-box {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .comment-box img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .comment-content {
+            flex-grow: 1;
+        }
+        .comment-text {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            word-wrap: break-word; /* Để chữ không tràn ra ngoài */
+        }
+        .comment-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .reply-button {
+            color: #0d6efd;
+            cursor: pointer;
+        }
+        .like-count, .reply-count {
+            color: #aaaaaa;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .comment-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .comment-box img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        .single-line-textarea {
+    border: none; /* Loại bỏ tất cả viền mặc định */
+    border-bottom: 2px solid #ccc; /* Chỉ thêm đường viền dưới */
+    padding: 8px 0;
+    width: 100%; /* Để textarea rộng 100% */
+    outline: none; /* Loại bỏ viền outline khi focus */
+    resize: none; /* Loại bỏ khả năng thay đổi kích thước */
+    transition: border-color 0.3s; /* Hiệu ứng chuyển màu khi focus */
+}
+
+.single-line-textarea:focus {
+    border-bottom-color: #007bff; /* Thay đổi màu đường kẻ dưới khi focus */
+}
+
+    </style>
+</head>
+<body>
+
+<div class="comment-section">
+    <h5>165 bình luận</h5>
+    <div class="form-group">
+        <label for="single-line-textarea">Nội dung</label>
+        <textarea id="single-line-textarea" class="single-line-textarea" placeholder="Nhập nội dung"></textarea>
+    </div>
+    <!-- Example of a comment -->
+    <div class="comment-box">
+        <img src="https://via.placeholder.com/40" alt="User Avatar">
+        <div class="comment-content">
+            <strong>@a-HoHoangLong</strong> <span class="text-muted">6 tháng trước</span>
+            <div class="comment-text">lời bài hát thằng điên</div>
+            <div class="comment-actions">
+                <span class="reply-button">Phản hồi</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reply to comment -->
+    <div class="comment-box ms-5">
+        <img src="https://via.placeholder.com/40" alt="User Avatar">
+        <div class="comment-content">
+            <strong>@trucanh1011</strong> <span class="text-muted">7 tháng trước</span>
+            <div class="comment-text">thề luôn vừa nghe nhạc vừa học hiệu quả cực lun yyyyy mà nhạc còn suyy nx^^</div>
+            <div class="comment-actions">
+                <span class="like-count">10 thích</span>
+                <span class="reply-button">Phản hồi</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

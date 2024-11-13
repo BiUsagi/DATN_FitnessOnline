@@ -32,12 +32,28 @@
                                         <th>ID</th>
                                         <th>Tên bài tập</th>
                                         <th>Mô tả</th>
-                                        <th>Trạng thái</th>
-                                        <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th>
+                                        <th>Số set</th>
+                                        <th>Số rep</th>
+                                        <!-- <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th> -->
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody id="list-items"></tbody>
+                                <tbody id="list-items">
+                                    @foreach($data as $ex)
+                                        <tr>
+                                            <td>{{ $ex->id }}</td>
+                                            <td>{{ $ex->name }}</td>
+                                            <td>{{ $ex->description }}</td>
+                                            <td>{{ $ex->sets }}</td>
+                                            <td>{{ $ex->reps }}</td>
+                                            <td class="customize-width">
+                                                <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a>    
+                                                <a href="admin/exercise/update/{{ $ex->id }}" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a>   
+                                                <a href="" class="btn-custom danger delete-exercise" data-id="{{ $ex->id }}" ><i class="bi bi-trash"></i></a>    
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
 
@@ -51,31 +67,77 @@
         </main><!-- End #main -->
     <script>
         
-        $.get('http://127.0.0.1:8000/api/admin/exercises', function(res) {
-                let data = res;                
-                console.log(res);
-                let returnData = '';
+        // $.get('http://127.0.0.1:8000/api/admin/exercises', function(res) {
+        //         let data = res;                
+        //         console.log(res);
+        //         let returnData = '';
 
                 
-                data.forEach(item => {
-                    returnData += `
-                     <tr>
+        //         data.forEach(item => {
+        //             returnData += `
+        //              <tr>
+        //                 <td>${item.id}</td>
+        //                 <td>${item.name}</td>
+        //                 <td>${item.description}</td>
+        //                 <td>${item.sets}</td>
+        //                 <td>${item.reps}</td>
+        //                 <td class="customize-width">
+        //                     <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a>    
+        //                     <a href="admin/exercise/update/${item.id}" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a>   
+        //                     <a href="" class="btn-custom danger delete-exercise" data-id="${item.id}" ><i class="bi bi-trash"></i></a>    
+        //                 </td>
+        //             </tr>
+        //        `;
+        //         });
+        //         $('#list-items').html(returnData);
+        //     }
+        // )
 
-                        <td>${item.id}</td>
-                                    <td>${item.name}</td>
-                                    <td>${item.description}</td>
-                                    <td>${item.duration} Phút</td>
-                                    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/TUQQCM9o1Ls?si=nzFaL6JX_ziBN4Wr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
-                                    <td class="customize-width">
-                                        <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a>    
-                                        <a href="" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a>   
-                                        <a href="" class="btn-custom danger" ><i class="bi bi-trash"></i></a>    
-                                    </td>
-                                </tr>
-               `;
+        $(document).ready(function() {
+        // Xử lý click cho nút xóa (delete-button)
+        $('.delete-exercise').click(function(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của link
+
+            Swal.fire({
+            title: 'Bạn có chắc chắn muốn xóa bài viết này không?',
+            text: "Hành động này không thể khôi phục!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                // Nếu người dùng  xác nhận, thực hiện xóa
+                let button = $(this);
+                let postId = button.data('id');
+
+                fetch(`/api/admin/exercises/${postId}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+                })
+                .then(response => response.json())
+                .then(data => {
+                Swal.fire(
+                    'Đã xóa!',
+                    'Bài viết đã được xóa thành công.',
+                    'success'
+                )
+                button.closest('tr').remove();
+                })
+                .catch(error => {
+                Swal.fire(
+                    'Lỗi!',
+                    'Có lỗi xảy ra khi xóa bài viết.',
+                    'error'
+                )
                 });
-                $('#list-items').html(returnData);
             }
-        )
+            })
+        });
+        });
     </script>
 @endsection

@@ -6,15 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Models\Workout_Package;
 use App\Models\Exercise;
 use App\Models\Package_Exercise;
+use App\Models\user_package_progress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
+
 
 class Workout_PackageController extends Controller
 {
-    public function index()
-    {
-        $data = Workout_Package::orderBy('id', 'asc')->get();
-        return response()->json($data);
-    }
+    // public function index()
+    // {   
+    //     $user = Auth::user();
+    //     if($user->role_012 === 2) {
+    //         $data = Workout_Package::orderBy('id', 'asc')->get();
+    //     }else {
+    //         $data = Workout_Package::where('staff_id',$user->id)->get();
+    //     }    
+        
+    //     $data = Workout_Package::orderBy('id', 'asc')->get();
+
+    //     return response()->json($user);
+    // }
 
     public function get_exercises()
     {
@@ -31,38 +44,16 @@ class Workout_PackageController extends Controller
 
     public function create_(Request $request)
     {
+        $request->validate([
+            'package_name' => 'required|string|max:255',
+            // ... các quy tắc khác
+        ]);
+
         $set = new Workout_package;
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');
         $set->description = $request->input('description');
-        // $set->staff_id = $request->input('staff_id');
-        $set->level = $request->input('level');
-        $set->special_level = $request->input('special_level');
-        $set->status = $request->input('status');
-        $set->duration_days = $request->input('duration_days');
-        $set->status = $request->input('status');
-
-
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $file->move('uploads/gym_package', $filename);
-            $set->image = $filename;
-        }
-
-        $set->save();
-        return response()->json($set);
-      
-    }
-
-    public function update_($id,Request $request)
-    {
-        $set = Workout_package::find($id);
-        $set->package_name = $request->input('package_name');
-        $set->price = $request->input('price');
-        $set->description = $request->input('description');
-        // $set->staff_id = $request->input('staff_id');
+        $set->staff_id = $request->input('staff_id');
         $set->level = $request->input('level');
         $set->special_level = $request->input('special_level');
         $set->status = $request->input('status');
@@ -71,6 +62,39 @@ class Workout_PackageController extends Controller
 
 
         if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/gym_package', $filename);
+            $set->image = $filename;
+        }
+
+        $set->save();
+        return response()->json($set);
+
+    }
+
+    public function update_($id, Request $request)
+    {
+        $set = Workout_package::find($id);
+        $set->package_name = $request->input('package_name');
+        $set->price = $request->input('price');
+        $set->description = $request->input('description');
+        $set->staff_id = $request->input('staff_id');
+        $set->level = $request->input('level');
+        $set->special_level = $request->input('special_level');
+        $set->status = $request->input('status');
+        $set->duration_days = $request->input('duration_days');
+        $set->status = $request->input('status');
+
+
+        if ($request->hasFile('image')) {
+
+            $old_image = 'uploads/gym_package'.$set->image;
+            if(file::exists($old_image)){
+                file::delete($old_image);
+            }
+
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
@@ -119,6 +143,44 @@ class Workout_PackageController extends Controller
 
         return response()->json($days);
     }
+    public function saveProgress(Request $request)
+    {
+        $packageId = $request->input('package_id');
+        $currentDay = $request->input('current_day');
+        $currentExerciseId = $request->input('current_exercise_id');
+        $user_id = $request->input('user_id');
+
+        // Update the current day's progress as completed
+        user_package_progress::updateOrCreate(
+            [
+                'user_id' => $user_id,
+                'workout_package_id' => $packageId,
+                'current_day' => $currentDay,
+                
+            ],
+            [
+                'current_exercise_id' => $currentExerciseId,
+                'is_completed' => true,
+            ]
+        );
+
+        // Unlock the next day
+        $nextDay = $currentDay + 1;
+        user_package_progress::updateOrCreate(
+            [
+                'user_id' => $user_id,
+                'workout_package_id' => $packageId,
+                'current_day' => $nextDay,
+            ],
+            [
+                'current_exercise_id' => $currentExerciseId, 
+                'is_completed' => true,
+            ]
+        );
+
+        return response()->json(['status' => 'success']);
+    }
+
 
 
 }

@@ -40,7 +40,7 @@
                                     <td class="text-center"  style="vertical-align: middle;">{{ $slide->description }}</td>
                                     <td class="text-center"  style="vertical-align: middle;">
                                         @if($slide->image)
-                                            <img src="{{ asset('assets/backend/img/'.$slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: cover;">
+                                            <img src="{{ asset('assets/backend/img/accounts/'.$slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: cover;">
                                         @else
                                             No Image
                                         @endif

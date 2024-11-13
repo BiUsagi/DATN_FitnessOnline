@@ -83,7 +83,7 @@
                     <div class="left_block">
                         <div class="heading left">
                             <h2>Đội huấn luyện viên <span>Chuyên gia </span></h2>
-                            <p>Đội huấn luyện viên chuyên gia được mọi người lựa chọn và tin tưởng, chó kinh nghiệm nhiều năm trong ngành.</p>
+                            <p>Đội huấn luyện viên chuyên gia được mọi người lựa chọn và tin tưởng, cho kinh nghiệm nhiều năm trong ngành.</p>
                         </div>
                     </div>
                 </div>
@@ -91,12 +91,8 @@
                     <div class="row">
                         @foreach ($PTHot->take(3) as $PT)
                             <div class="col-md-4 f-0">
-                                <div class="team-block">
-                                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PT->avatar) }}" alt="Coaches"
-                                         style="  
-                                                
-                                                object-fit: cover;     
-                                                object-position: center; ">
+                                <div class="team-block"  style=" width: 100%;max-width: 100%;height: 100%;  display: flex;align-items: center;justify-content: center;">
+                                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PT->avatar) }}" alt="Coaches">
                                     <h3><span>{{$PT->staff_name}}</span></h3>
                                 </div>
                             </div>
@@ -140,7 +136,7 @@
                     @foreach ($top_workout_packages as $item)
                     <div class="swiper-slide">
                         <div class="feature-list">
-                            <img loading='lazy' src="{{ asset('uploads/gym_package/' . $item->image) }}" class="img-cover" alt="icons">
+                            <img loading='lazy' src="{{ asset('uploads/gym_package/' . $item->image) }}" class="img-cover" alt="icons"  style="object-fit: cover;">
                             <span>{{$item->special_level}}</span>
                             <h2>{{$item->package_name}}</h2>
                             <p>{!! nl2br(strip_tags($item->description)) !!}</p>
@@ -161,7 +157,7 @@
     </div>
     <!-- FEATURE BLOCK END'S HERE -->
     <!-- PRICING BLOCK START HERE -->
-    <div class="pricing_wrapper default-padding-top">
+    {{-- <div class="pricing_wrapper default-padding-top">
         <div class="container">
             <div class="heading left">
                 <h3>Our <span>Pricing</span></h3>
@@ -174,7 +170,7 @@
                             <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                                 <div class="plan_block">
                                     <h3>{{$top_workout_package->package_name}}</h3>
-                                    {{-- <h4>Only for first month</h4> --}}
+                                    
                                     <p>
                                         {!!$top_workout_package->description!!}
                                     </p>
@@ -182,7 +178,7 @@
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
                             </div>
-                            @endforeach
+                            @endforeach --}}
                             
                             {{-- <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                                 <div class="plan_block">
@@ -208,7 +204,7 @@
                                     <a href="contact-us.html" class="btn">Buy Now</a>
                                 </div>
                             </div> --}}
-                        </div>
+                        {{-- </div>
                     </div>
                 </div>
                 <div class="col-md-3 d-xl-block d-none">
@@ -218,7 +214,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- PRICING BLOCK END'S HERE -->
     <!-- OUR BLOG START HERE -->
     <div class="blog_wrapper default-padding">
@@ -227,84 +223,16 @@
                 <h3>OUR <span>Blog</span></h3>
             </div>
             <div class="row">
-                {{-- <div class="col-lg-4 col-md-8 mx-auto mb-xl-0 mb-4">
-                    <div class="card">
-                        <a href="blog-details.html" aria-label="Blog 1">
-                            <div class="card-img f-0">
-                                <img loading='lazy' src="assets/frontend/images/blog/blog-1.webp" alt="">
-                            </div>
-                        </a>
-                        <div class="card-body">
-                            <span>05 Aug, 2018</span>
-                            <h5 class="card-title">Vestibulum sodales, nisi et gravida cidunt, felis est auctor</h5>
-                            <p class="card-text">It’s no secret that the digital industry is booming. From exciting
-                                startups to global brands, companies are reaching out to digital agencies, responding to
-                                the new possibilities available. </p>
-                            <div class="button-sec">
-                                <a href="blog-details.html" aria-label="Blog Details">More Details</a>
-                                <div class="btn-arrow">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 279"
-                                        style="enable-background:new 0 0 500 279;" xml:space="preserve">
-                                        <style type="text/css">
-                                            .st0 {
-                                                fill: #222222;
-                                            }
-                                        </style>
-                                        <path d="M495,141.4c-1.4,1.1-3,2.1-4.3,3.4c-41.9,41.8-83.8,83.7-125.6,125.6c-1.3,1.3-2.2,3.1-3.1,4.5
-                                            c-8.1-8.1-15.2-15.1-22.4-22.4c31.8-31.7,63.7-63.6,96.6-96.4c-144,0-286.7,0-429.8,0c0-10.5,0-20.4,0-30.8c142.8,0,285.6,0,429,0
-                                            c-32.5-32.5-64.5-64.4-96.3-96.2c7.9-7.9,14.9-14.9,23-23c0.9,1.4,1.8,3.2,3.1,4.5c41.8,41.9,83.7,83.8,125.6,125.6
-                                            c1.3,1.3,2.9,2.3,4.3,3.4C495,140.2,495,140.8,495,141.4z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="col-lg-4 col-md-8 mx-auto mb-xl-0 mb-4">
-                    <div class="card">
-                        <a href="blog-details.html" aria-label="Blog 2">
-                            <div class="card-img f-0">
-                                <img loading='lazy' src="assets/frontend/images/blog/blog-2.webp" alt="">
-                            </div>
-                        </a>
-                        <div class="card-body">
-                            <span>05 Aug, 2018</span>
-                            <h5 class="card-title">Vestibulum sodales, nisi et gravida cidunt, felis est auctor</h5>
-                            <p class="card-text">It’s no secret that the digital industry is booming. From exciting
-                                startups to global brands, companies are reaching out to digital agencies, responding to
-                                the new possibilities available. </p>
-                            <div class="button-sec">
-                                <a href="blog-details.html" aria-label="Blog Details">More Details</a>
-                                <div class="btn-arrow">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 279"
-                                        style="enable-background:new 0 0 500 279;" xml:space="preserve">
-                                        <style type="text/css">
-                                            .st0 {
-                                                fill: #222222;
-                                            }
-                                        </style>
-                                        <path d="M495,141.4c-1.4,1.1-3,2.1-4.3,3.4c-41.9,41.8-83.8,83.7-125.6,125.6c-1.3,1.3-2.2,3.1-3.1,4.5
-                                            c-8.1-8.1-15.2-15.1-22.4-22.4c31.8-31.7,63.7-63.6,96.6-96.4c-144,0-286.7,0-429.8,0c0-10.5,0-20.4,0-30.8c142.8,0,285.6,0,429,0
-                                            c-32.5-32.5-64.5-64.4-96.3-96.2c7.9-7.9,14.9-14.9,23-23c0.9,1.4,1.8,3.2,3.1,4.5c41.8,41.9,83.7,83.8,125.6,125.6
-                                            c1.3,1.3,2.9,2.3,4.3,3.4C495,140.2,495,140.8,495,141.4z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 @foreach ($topPost->take(3) as $Post)
                     <div class="col-lg-4 col-md-8 mx-auto">
                         <div class="card">
                             <a href="{{ route('posts-details.index', $Post->id) }}" aria-label="Blog 3">
-                                <div class="card-img f-0">
-                                    <img loading='lazy' src="{{ asset('assets/backend/img/' . $Post->image) }}" alt="">
+                                <div class="card-img f-0" style=" width: 100%;max-width: 100%;height: 270px;  display: flex;align-items: center;justify-content: center;">
+                                    <img loading='lazy' src="{{ asset('uploads/post_image/' . $Post->image) }}" alt="" style="object-fit: cover;">
                                 </div>
                             </a>
-                            <div class="card-body">
-                                <span>{{$Post->created_at}}</span>
+                            <div class="card-body"  style="border: 1px solid #1FACE1">
+                                <span>{{$Post->created_at->locale('vi')->diffForHumans()}}</span>
                                 <h5 class="card-title">{{$Post->title}}</h5>
                                 <p class="card-text">{{$Post->description}}</p>
                                 <div class="button-sec">
@@ -395,13 +323,17 @@
     <!-- GET IT TOUCH END HERE -->
     <!-- GYM SLIDER START HERE -->
     <div class="post_wrapper default-padding">
+        <div class="heading text-center" style="margin-bottom: 20px">
+            <h3>Huấn <span>luyện viên</span></h3>
+        </div>
         <div class="container">
             <div class="swiper gymSwiper">
+
                 <div class="swiper-wrapper">
                     @foreach ($AllPT as $PTall)
                         <div class="swiper-slide">
-                            <a href="#!" class="slides" aria-label="Slide 1">
-                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="height:400 !important;object-fit: cover !important;object-position: center!important">
+                            <a href="#!" class="slides" aria-label="Slide 1" style="object-fit: cover; width:250px; height:300px">
+                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="object-fit:contain ;width:auto; height:280px">
                                 <div class="links">
                                     <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                                 </div>

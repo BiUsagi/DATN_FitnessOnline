@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
-
+use Spatie\Permission\Traits\HasRoles;
 class Staff extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
 
     protected $table = 'staff';
 
@@ -22,6 +22,7 @@ class Staff extends Model
         'email',
         'avatar',
         'gender',
+        'birthday',
         'introduction',
         'rating',
         'rating_count',
@@ -58,6 +59,7 @@ class Staff extends Model
     // Tính thời gian họạt động
     public function getActiveDuration()
     {
+        Carbon::setLocale('vi');
         $createdAt = $this->created_at;
         $now = Carbon::now();
         return $createdAt->diffForHumans($now, true);
@@ -77,7 +79,19 @@ class Staff extends Model
         return $this->workoutPackages()->count();
     }
 
+    // lấy tất cả học viên
+    public function getStudentsByStaff($staffId)
+    {
+        $staff = Staff::with(['workoutPackages.orders.user'])->find($staffId);
 
+        $students = collect();
+        foreach ($staff->workoutPackages as $package) {
+            foreach ($package->orders as $order) {
+                $students->push($order->user);
+            }
+        }
+        return $students;
+    }
 
     public function user()
     {

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-lg ">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{ route('index') }}">
                             <img loading='lazy' src="assets/frontend/images/logo.svg" alt="logo" width="139"
                                 height="30">
                         </a>
@@ -26,7 +26,7 @@
                                     <a class="nav-link" href="#courses">GÓI TẬP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Trainers</a>
+                                    <a class="nav-link " href="{{ route('trainers.index') }}">Trainers</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
@@ -50,6 +50,18 @@
                                                     class="dropdown-item text-white">Thông
                                                     Tin Tài Khoản</a>
                                             </li>
+                                            <li class="text">
+                                                <a href="{{ route('workout_bought', Auth::user()->id) }}"
+                                                    class="dropdown-item text-white">Gói tập của tôi</a>
+                                            </li>
+                                            @if (Auth::user()->role === 1)
+                                                <li class="text">
+                                                    <a href="{{ route('admin') }}"
+                                                        class="dropdown-item text-white">Trang quản trị</a>
+                                                </li>
+                                            @else
+                                                
+                                            @endif
                                             <li class="text">
                                                 <form action="{{ route('logout.index') }}" method="POST">
                                                     @csrf
