@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ $package->package_name }}</title>
     <link rel="stylesheet" href="assets/backend/css/workout_hub.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -33,7 +33,10 @@
         <div id="content">
             <div class="title-day">
                 <div class="box-left">
-                    <h2 class="day-number">Ngày 1</h2>
+                    <div class="title">
+                        <h2 class="day-number">Ngày 1</h2>
+                        <a href="{{  route('submit_exercise') }}" class="exercised"><i class="fa-solid fa-list"></i> Các bài tập đã nộp</a>
+                    </div>
                     <p class="line"></p>
                     <div class="categories">
                         <div class="level-infor">
@@ -50,7 +53,7 @@
                         </div>
                     </div>
                     <p class="notification"><span>Lưu ý (*): </span>Bạn phải xem hết tất cả video trong ngày sau đó quay
-                        lại toàn bộ các động tác và up video lên để tôi xem bạn đã tập đúng kỹ thuật chưa rồi sau đó mới
+                        lại toàn bộ các động tác theo thứ tự và up video lên để tôi xem bạn đã tập đúng kỹ thuật chưa rồi sau đó mới
                         được qua ngày tiếp theo nhé!</p>
                 </div>
                 <div class="line-title"></div>
@@ -62,7 +65,7 @@
                     <i class="fa-solid fa-cloud-arrow-up" id="upload-exercise"></i>
                     <div class="description">
                         <p>Nộp bài tập</p>
-                        <span>(*) Click và biểu tưởng để chuyển đến khu vực nộp bài</span>
+                        <span>(*) Click và biểu tưởng để chuyển đến khu vực nộp bài cho ngày hôm nay</span>
                     </div>
                 </div>
 
@@ -77,6 +80,10 @@
                     <h2>{{ Auth::user()->user_name }}</h2>
 
                 </div> --}}
+              
+                <div class="made-with">
+                    <p>Made with <i class="fa-solid fa-dumbbell"></i> · Powered by GymFitness</p>
+                </div>
             </div>
         </div>
         <div id="sidebar">
@@ -140,13 +147,13 @@
                         </div>
 
                         <div class="btn-action">
-                            <div class="btn btn-prev">
+                            {{-- <div class="btn btn-prev">
                                 <p><i class="fa-solid fa-chevron-left"></i> Bài trước</p>
-                            </div>
-                            <div class="btn btn-next">
+                            </div> --}}
+                            {{-- <div class="btn btn-next">
                                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                 <p>Bài tiếp theo <i class="fa-solid fa-chevron-right"></i></p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -155,93 +162,98 @@
         </div>
     </div>
     <div class="overflow-upload">
-        <div class="container-upload">
-            <div class="modal-upload">
-                <div class="close-modal-upload">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <div class="box-upload">
-                    <div class="button-upload" id="buttonUpload">
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                        <div class="description">
-                            <p>Chọn video để tải lên</p>
-                            <span>Hoặc kéo thả vào đây</span>
-                            <a id="chooseVideoButton">Chọn video</a>
-                        </div>
-                        <input type="file" id="videoInput" accept="video/*" style="display: none;">
-
+        <form id="video_user_upload" method="post">
+            @csrf
+            <div class="container-upload">
+                <div class="modal-upload">
+                    <div class="close-modal-upload">
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
-                    <div class="show-video-upload" id="showVideoUpload">
-                        <div class="container-video">
-                            <video id="videoPlayer" controls width="100%"></video>
+                    <div class="box-upload">
+                        <div class="button-upload" id="buttonUpload">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <div class="description">
+                                <p>Chọn video để tải lên</p>
+                                <span>Hoặc kéo thả vào đây</span>
+                                <a id="chooseVideoButton">Chọn video</a>
+                            </div>
+                            <input type="file" id="videoInput" name="video_path" accept="video/*" style="display: none;">
+    
                         </div>
-                        <div class="write-description">
-                            <p class="name-video" id="videoName"></p>
-                            <p class="duration-video"><span>Thời lượng: </span><span id="videoDuration">2 phút 8
-                                    giây</span></p>
-                            <div class="load-video">
-                                <div class="load-left">
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <p>Đã tải lên</p>
+                        <div class="show-video-upload" id="showVideoUpload">
+                            <div class="container-video">
+                                <video id="videoPlayer" controls width="100%"></video>
+                            </div>
+                            <div class="write-description">
+                                <p class="name-video" id="videoName"></p>
+                                <p class="duration-video"><span>Thời lượng: </span><span id="videoDuration">2 phút 8
+                                        giây</span></p>
+                                <div class="load-video">
+                                    <div class="load-left">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <p>Đã tải lên</p>
+                                    </div>
+                                    <div class="load-right">
+                                        <p id="uploadProgress">0%</p>
+                                    </div>
                                 </div>
-                                <div class="load-right">
-                                    <p id="uploadProgress">0%</p>
+                                <div class="line-load-video">
+                                    <div class="progress-bar" id="progressBar"></div>
+                                </div>
+    
+                                <div class="description-video">
+                                    <label for="#">Mô tả</label>
+                                    <textarea name="description" placeholder="Nhập mô tả..."></textarea>
+                                </div>
+                                <div class="line"></div>
+    
+                                <div class="button-upload-video">
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                    <input type="submit" class="button upload" value="Đăng">
+                                    <a class="button cancel">Hủy</a>
                                 </div>
                             </div>
-                            <div class="line-load-video">
-                                <div class="progress-bar" id="progressBar"></div>
-                            </div>
-
-                            <div class="description-video">
-                                <label for="#">Mô tả</label>
-                                <textarea></textarea>
-                            </div>
-                            <div class="line"></div>
-
-                            <div class="button-upload-video">
-                                <a href="#!" class="button upload">Đăng</a>
-                                <a class="button cancel">Hủy</a>
+                        </div>
+                    </div>
+                    <div class="notes">
+                        <div class="note">
+                            <i class="fa-regular fa-file-video"></i>
+                            <div class="memo">
+                                <p>Định dạng tập tin</p>
+                                <span>Đề xuất: “.mp4”. Có hỗ trợ các định dạng chính khác.</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="notes">
-                    <div class="note">
-                        <i class="fa-regular fa-file-video"></i>
-                        <div class="memo">
-                            <p>Định dạng tập tin</p>
-                            <span>Đề xuất: “.mp4”. Có hỗ trợ các định dạng chính khác.</span>
+                        <div class="note">
+                            <i class="fa-solid fa-video"></i>
+                            <div class="memo">
+                                <p>Dung lượng và thời lượng</p>
+                                <span>Giữ video từ 1-5 phút, đủ thể hiện động tác.</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="note">
-                        <i class="fa-solid fa-video"></i>
-                        <div class="memo">
-                            <p>Dung lượng và thời lượng</p>
-                            <span>Giữ video từ 1-5 phút, đủ thể hiện động tác.</span>
+                        <div class="note">
+                            <i class="fa-solid fa-photo-film"></i>
+                            <div class="memo">
+                                <p>Chất lượng tốt</p>
+                                <span>Đảm bảo video rõ nét, tránh rung lắc.</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="note">
-                        <i class="fa-solid fa-photo-film"></i>
-                        <div class="memo">
-                            <p>Chất lượng tốt</p>
-                            <span>Đảm bảo video rõ nét, tránh rung lắc.</span>
+                        <div class="note">
+                            <i class="fa-solid fa-file-shield"></i>
+                            <div class="memo">
+                                <p>Bảo mật</p>
+                                <span>Hạn chế lộ thông tin cá nhân và xin phép nếu có người khác xuất hiện.</span>
+                            </div>
                         </div>
+    
                     </div>
-                    <div class="note">
-                        <i class="fa-solid fa-file-shield"></i>
-                        <div class="memo">
-                            <p>Bảo mật</p>
-                            <span>Hạn chế lộ thông tin cá nhân và xin phép nếu có người khác xuất hiện.</span>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.3/dist/sweetalert2.all.min.js"></script>
     <script src="assets/backend/js/workout_hub.js"></script>
     <script>
         const chooseVideoButton = document.getElementById("chooseVideoButton");
@@ -286,13 +298,13 @@
         let progress = 0;
         const uploadInterval = setInterval(() => {
             if (progress < 100) {
-                progress += 10; // Giả lập mỗi bước tăng 10%
+                progress += 10;
                 uploadProgress.textContent = `${progress}%`;
                 progressBar.style.width = `${progress}%`;
             } else {
                 clearInterval(uploadInterval);
             }
-        }, 300); // 
+        }, 300); 
         buttonCancel.addEventListener('click', () => {
             buttonUpload.style.display = "flex";
             showVideoUpload.style.display = "none";
@@ -300,8 +312,6 @@
         closeModalButton.addEventListener("click", function() {
             overflowUpload.style.display = "none";
         });
-
-
 
         const packageId = {{ $package->id }};
         const boxList = document.querySelectorAll('.box-day');
@@ -313,15 +323,15 @@
         let exercisesData = [];
 
         function loadExercises(dayNumber) {
-            $.get(`http://127.0.0.1:8000/api/admin/workout_hub/${packageId}/day/${dayNumber}`, function(res) {
-                exercisesData = res;
-                let returnData = '';
-                if (exercisesData.length === 0) {
-                    returnData = `<p class="no-data">Hiện tại chưa có bài tập nào được thêm vào</p>`;
-                } else {
-                    exercisesData.forEach(item => {
-                        returnData += `
-                    <div class="box-exercise">
+    $.get(`http://127.0.0.1:8000/api/admin/workout_hub/${packageId}/day/${dayNumber}`, function(res) {
+        exercisesData = res;
+        let returnData = '';
+        if (exercisesData.length === 0) {
+            returnData = `<p class="no-data">Hiện tại chưa có bài tập nào được thêm vào</p>`;
+        } else {
+            exercisesData.forEach((item, index) => {
+                returnData += 
+                    `<div class="box-exercise">
                         <div class="action">
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
@@ -329,11 +339,13 @@
                             <p><span>${item.pivot.sequence}</span> <i class="fa-solid fa-dumbbell"></i></p>
                         </div>
                         <div class="img-exercise">
-                            <video>
-                                <source src="/uploads/video_exercise/${item.video_url}" type="video/mp4" class="video-exercise" data-videoId=${item.name}>
+                            <video class="video-exercise">
+                                <source src="/uploads/video_exercise/${item.video_url}" type="video/mp4" data-videoId="${item.name}">
                             </video>
                             <div class="action-start">
-                                <a data-start="${item.id}" class="play-button" data-id="${item.id}"><i class="fa-solid fa-play"></i></a>
+                                <a data-id="${item.id}">
+                                    <i class="fa-solid fa-play"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="infor-exercise">
@@ -348,9 +360,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="line"></div>
-                `;
-                    });
+                    <div class="line"></div>`;
+            });
                 }
                 document.querySelector('.list-exercise').innerHTML = returnData;
 
@@ -384,47 +395,58 @@
             });
         }
 
-        function completeCurrentDay() {
-            $.post(`/api/admin/workout_hub/${packageId}/save-progress`, {
-                package_id: packageId,
-                current_day: currentDay,
-                _token: '{{ csrf_token() }}'
-            }, function(response) {
-                if (response.status === 'success') {
-                    enableNextDay();
+        function upLoadVideoUser(){
+            $('#video_user_upload').on('submit', function(e){
+                e.preventDefault();
+
+                let formData = new FormData(this);
+                const videoFile = document.getElementById('videoInput').files[0];
+                if (videoFile) {
+                    formData.append('video_path', videoFile);
                 }
-            });
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/video_user',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false, 
+                    processData: false, 
+                    success: function(res) {
+                        Swal.fire({
+                            title: "Thành công!",
+                            text: "Nộp bài thành công!",
+                            icon: "success"
+                        });
+                        buttonUpload.style.display = "flex"; 
+                        showVideoUpload.style.display = "none";
+                    },
+                    error: function(err) {
+                    Swal.fire({
+                        title: "Lỗi!",
+                        text: "Có lỗi xảy ra khi nộp bài tập!",
+                        icon: "error"
+                    });
+                }
+                });
+            })
         }
+        upLoadVideoUser()
 
         function goToNextExercise() {
-            currentExerciseIndex++;
-            completedExercises++;
-
-            if (completedExercises >= exercisesData.length) {
-                completedExercises = 0;
-                completeCurrentDay();
-                enableNextDay();
-            } else {
+            if (currentExerciseIndex < exercisesData.length - 1) {
+                currentExerciseIndex++;
+                completedExercises++;
                 loadExerciseByIndex(currentExerciseIndex);
+            } else {
+                completedExercises = 0;
+                currentExerciseIndex = 0;
+          
             }
         }
 
         function goToPrevExercise() {
-            currentExerciseIndex--;
-            if (currentExerciseIndex < 0) {
-                currentExerciseIndex = 0;
-            }
-            loadExerciseByIndex(currentExerciseIndex);
-        }
-
-        function enableNextDay() {
-            completedDays++;
-            if (completedDays <= boxList.length) {
-                const nextDayBox = document.querySelector(`.box-day[data-day="${completedDays}"]`);
-                if (nextDayBox && !nextDayBox.classList.contains('is-blocking')) {
-                    nextDayBox.classList.remove('is-blocking');
-                    nextDayBox.querySelector('.chevron i').classList.replace('fa-lock', 'fa-book');
-                }
+            if (currentExerciseIndex > 0) {
+                currentExerciseIndex--;
+                loadExerciseByIndex(currentExerciseIndex);
             }
         }
 
@@ -439,11 +461,6 @@
             sourceElement.src = videoSrc;
             videoElement.load();
         }
-
-        const nextButton = document.querySelector('.btn-next');
-        nextButton.addEventListener('click', goToNextExercise);
-        const prevButton = document.querySelector('.btn-prev');
-        prevButton.addEventListener('click', goToPrevExercise);
 
         function updateURL(dayNumber) {
             const url = new URL(window.location);
@@ -477,6 +494,7 @@
             });
         });
 
+
         document.addEventListener('DOMContentLoaded', function() {
             const dayFromURL = getDayFromURL(); 
             if (dayFromURL) {
@@ -498,11 +516,6 @@
                     currentDay = 1;
                 }
             }
-        });
-
-
-
-        document.addEventListener('DOMContentLoaded', function() {
             const firstBoxDay = document.querySelector('.box-day:first-child');
             const firstPackage = document.querySelector('.package:first-child');
 

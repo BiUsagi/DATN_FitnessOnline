@@ -22,7 +22,9 @@
                         <div class="card">
                             <div class="card-header text-uppercase">THÔNG TIN CHUNG</div>
                             <div class="card-body">
-
+    
+                                <input type="hidden" name="staff_id" value="{{ $pt_id->id }}">
+                            
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Tên gói tập <span
                                             class="note">(*)</span></label>
@@ -32,12 +34,6 @@
                                         <span class="badge badge-danger">{{ $message }}</span>
                                     @enderror 
                                 </div>
-
-                                <!-- <div class="col-12">
-                                    <label for="inputNanme4" class="form-label-customize">Cấp độ <span
-                                            class="note">(*)</span></label>
-                                    <input type="text" class="form-control-customize " id="inputNanme4" name="level">
-                                </div> -->
 
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(*
@@ -58,7 +54,7 @@
                                             class="note">(*)</span></label>
                                     <textarea type="text" class="form-control-customize ck-editor"id="description" data_height="100" name="description"></textarea>
                                 </div>
-                                <input type="hidden" name="staff_id" value="{{ Auth::id() }}">
+
                                 <input type="submit" class="btn btn-primary mt-3" value="Thêm gói tập">
 
                             </div>

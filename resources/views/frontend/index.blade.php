@@ -231,7 +231,7 @@
                                     <img loading='lazy' src="{{ asset('uploads/post_image/' . $Post->image) }}" alt="" style="object-fit: cover;">
                                 </div>
                             </a>
-                            <div class="card-body">
+                            <div class="card-body"  style="border: 1px solid #1FACE1">
                                 <span>{{$Post->created_at->locale('vi')->diffForHumans()}}</span>
                                 <h5 class="card-title">{{$Post->title}}</h5>
                                 <p class="card-text">{{$Post->description}}</p>
@@ -333,7 +333,7 @@
                     @foreach ($AllPT as $PTall)
                         <div class="swiper-slide">
                             <a href="#!" class="slides" aria-label="Slide 1" style="object-fit: cover; width:250px; height:300px">
-                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="object-fit: cover;width:250px; height:300px">
+                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="object-fit:contain ;width:auto; height:280px">
                                 <div class="links">
                                     <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                                 </div>

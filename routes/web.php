@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\WalletsController;
 use App\Http\Controllers\frontend\Workout_packageController;
-use App\Http\Controllers\backend\WalletController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\frontend\ProfileController;
+use App\Http\Controllers\frontend\AjaxloginController;
+use App\Http\Controllers\frontend\CommentsController;
+use App\Http\Controllers\frontend\PostController;
+use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
 use App\Http\Controllers\backend\DashboardController;
@@ -24,9 +27,6 @@ use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\backend\DepositHistoriesController;
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\frontend\AjaxloginController;
-use App\Http\Controllers\frontend\CommentsController;
-use App\Http\Controllers\frontend\PostController;
 
 
 // use App\Http\Controllers\backend\api\PackageExercisesController;
@@ -61,6 +61,11 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout.index')
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.addmoney'); //link nạp tiền
 
+Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
+//view workout_exercise
+Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
+
+Route::get('/list_submit_exercise', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
 
 
 // Back End
@@ -95,9 +100,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/workout_package/update/{id}', [WorkoutPackagesController::class, 'update'])->name('admin.workout_package-update')->middleware('can:manage_workout_packages');
 
 
-    Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
-    //view workout_exercise
-    Route::get('/workout_hub/{id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
+    Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
+    
     // Route::get('/workout_hub/{id}/day/{day_id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub.detail');
 
 
@@ -187,12 +191,15 @@ Route::prefix('admin')->group(function () {
 //     Route::get('/get-user/{id}', [ApiAccountsController::class, 'getUser'])->name('api.user');
 //     Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
 // });
-
+// COMMENT AJAX
 Route::group(['prefix' => 'ajax'], function () {
     route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
     route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
     Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('comment.report');
-    Route::patch('/ajax/comment/update/{id}', [CommentsController::class, 'update'])->name('comments.update');
-    Route::post('/ajax/comment/delete/{id}', [CommentsController::class, 'destroy'])->name('comments.destroy');
+    Route::put('/comment/{id}', [CommentsController::class, 'updateComment'])->name('ajax.comment.update');
+    Route::delete('/comment/{id}', [CommentsController::class, 'deleteComment'])->name('ajax.comment.delete');
+    Route::put('/comment/reply/{id}', [CommentsController::class, 'updateReply'])->name('comment.reply.update');
+    Route::delete('/comment/reply/{id}', [CommentsController::class, 'deleteReply'])->name('comment.reply.delete');
+
 });

@@ -16,6 +16,8 @@ use App\Http\Controllers\backend\api\PostController;
 use App\Http\Controllers\Backend\api\Workout_hubController;
 use App\Http\Controllers\backend\api\WalletController;
 use App\Http\Controllers\backend\api\DepositHistoriesController;
+use App\Models\User;
+
 
 
 
@@ -23,6 +25,7 @@ use App\Http\Controllers\backend\api\DepositHistoriesController;
 use App\Http\Controllers\frontend\api\WalletsController;
 use App\Http\Controllers\frontend\api\NotificationController;
 use App\Http\Controllers\frontend\api\PayController;
+use App\Http\Controllers\frontend\api\UserVideoController;
 
 
 
@@ -30,6 +33,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+
+//User Upload
+Route::post('/video_user', [UserVideoController::class, 'store']);
 
 Route::group(['prefix' => 'admin',], function () {
     //API of exercises

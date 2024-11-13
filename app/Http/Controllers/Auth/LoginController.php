@@ -29,8 +29,13 @@ class LoginController extends Controller
         Auth::login($user);
         $redirectUrl = $request->input('redirect_url') ?? route('index');
 
+        // Tạo token khi người dùng đăng nhập thành công
+        $token = $user->createToken('AdminAPI')->plainTextToken;
+        
+        // Trả về token cùng thông tin người dùng
         return response()->json([
             'success' => true,
+            'token' => $token,
             'redirect_url' => $redirectUrl
         ]);
     }
