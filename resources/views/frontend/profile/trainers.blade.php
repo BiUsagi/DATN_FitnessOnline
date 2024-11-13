@@ -61,14 +61,8 @@
                                     </a>
                                     <div class="icon_block d-flex align-items-center justify-content-center">
                                         <div class="icon-cus"></div>
-                                        <a href="#" class="disabled">
-                                            @if ($item->gender == 1)
-                                                <i class="bi bi-gender-male text-white iconbox-custom"></i>
-                                            @elseif ($item->gender == 0)
-                                                <i class="bi bi-gender-female text-white iconbox-custom"></i>
-                                            @else
-                                                <i class="bi bi-gender-trans text-white iconbox-custom"></i>
-                                            @endif
+                                        <a href="{{ $item->facebook }}" class="" target="blank">
+                                            <i class="bi bi-facebook text-white iconbox-custom"></i>
                                         </a>
                                         <a onclick="copyToClipboard('{{ $item->phone_number }}')"
                                             title="Sao chép số điện thoại">

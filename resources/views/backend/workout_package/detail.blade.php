@@ -154,8 +154,8 @@
                 $('#list-excercise').html(returnData);
             })
         }
-        const packageId = {{ $package->id }};
-
+        const packageId = {{ $package->id }}
+        const ptId = {{ Auth::user()->id }}
         function saveExercise() {
             document.querySelector('.btn-add').addEventListener('click', function(e) {
                 e.preventDefault();
@@ -169,7 +169,7 @@
                 // Gửi yêu cầu lưu
                 $.post(`http://127.0.0.1:8000/api/admin/workout_package/${packageId}/day/${day}/exercises`, {
                     exercises: selectedExercises,
-                    // is_day_off: isDayOff
+                    pt_id: ptId
                 }, function(response) {
                     Swal.fire({
                         title: "Thành công!",

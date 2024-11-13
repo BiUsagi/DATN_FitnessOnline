@@ -64,9 +64,9 @@ Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.a
 
 Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
 //view workout_exercise
-Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
+Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub');
 
-Route::get('/list_submit_exercise', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
+Route::get('/workout_id/{workout_id}/user/{user_id}', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
 
 //vnpay
 Route::get('/thanhtoan', [VNPayController::class, 'index'])->name('thanhtoan1');
@@ -181,6 +181,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders')->middleware('can:manage_order'); //Danh sách đơn hàng
     Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders')->middleware('can:manage_order'); // Chi tiết đơn hàng
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder')->middleware('can:manage_order');
+    Route::get('/customer_manage', [OrderController::class, 'customer_manage'])->name('admin.orders.customer_manage'); //Danh sách khách hàng
+    Route::get('/customer_days', [OrderController::class, 'customer_days'])->name('admin.orders.customer_days'); //Danh sách khách hàng
+
 
 
 
@@ -196,12 +199,15 @@ Route::prefix('admin')->group(function () {
 //     Route::get('/get-user/{id}', [ApiAccountsController::class, 'getUser'])->name('api.user');
 //     Route::post('/update-user', [ApiAccountsController::class, 'updateUser'])->name('api.user.update');
 // });
-
+// COMMENT AJAX
 Route::group(['prefix' => 'ajax'], function () {
     route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
     route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
     Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('comment.report');
-    Route::patch('/ajax/comment/update/{id}', [CommentsController::class, 'update'])->name('comments.update');
-    Route::post('/ajax/comment/delete/{id}', [CommentsController::class, 'destroy'])->name('comments.destroy');
+    Route::put('/comment/{id}', [CommentsController::class, 'updateComment'])->name('ajax.comment.update');
+    Route::delete('/comment/{id}', [CommentsController::class, 'deleteComment'])->name('ajax.comment.delete');
+    Route::put('/comment/reply/{id}', [CommentsController::class, 'updateReply'])->name('comment.reply.update');
+    Route::delete('/comment/reply/{id}', [CommentsController::class, 'deleteReply'])->name('comment.reply.delete');
+
 });

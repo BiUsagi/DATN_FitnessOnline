@@ -25,4 +25,14 @@ class OrderController extends Controller
         return view('backend/order/customer');
     }
 
+    public function customer_manage()
+    {   
+        $list_customer = Order::with(['user','workoutPackage'])->get();
+        return view('backend/order/customer_manage',['list_customer' => $list_customer]);
+    }
+
+    public function customer_days()
+    {
+        return view('backend/order/customer_days');
+    }
 }

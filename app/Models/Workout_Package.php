@@ -42,13 +42,14 @@ class Workout_Package extends Model
 
     public function userPackageProgress()
     {
-        return $this->hasMany(user_package_progress::class, 'workout_package_id');
+        return $this->hasMany(user_package_progress::class, 'workout_package_id')
+                    ->where('user_id', auth()->id());
     }
 
     public function exercises()
     {
         return $this->belongsToMany(Exercise::class, 'package_exercises', 'workout_package_id', 'exercise_id')
-            ->withPivot('day_number', 'sequence', 'is_day_off')
+            ->withPivot('id' ,'day_number', 'sequence', 'is_day_off')
             ->withTimestamps();
     }
 }

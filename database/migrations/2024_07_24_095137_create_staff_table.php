@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('staff_name');
             $table->string('email')->unique();
             $table->text('avatar')->default('no-image.jpg');
+            $table->text('facebook')->nullable();
             $table->tinyInteger('gender')->default(3);
             $table->date('birthday')->nullable();
             $table->text('introduction')->nullable()->comment('Phần giới thiệu về nhân viên');
