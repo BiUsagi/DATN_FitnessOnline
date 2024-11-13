@@ -41,7 +41,7 @@
                             <h3>Thông Tin <span>Cá Nhân</span></h3>
                         </div>
 
-                        <div class="card">
+                        <form id="applyForm" class="card">
                             <p class="text-secondary text-center pt-3 fst-italic"> *Chọn ô <span class="note">*Không
                                     Đổi*</span> hoặc
                                 <span class="note">bỏ
@@ -57,14 +57,15 @@
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="floatingName"
                                                 placeholder="name@example.com" />
-                                            <label for="floatingName">Email address</label>
+                                            <label for="floatingName">{{ $data->user_name }}</label>
                                         </div>
                                     </div>
 
                                     <div class="col-md-2">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="checkboxTenNhanVien"
-                                                value="option1">
+                                                value="option1"
+                                                onclick="toggleInput('floatingName', 'checkboxTenNhanVien')">
                                             <label class="form-check-label" for="checkboxTenNhanVien">Không Đổi</label>
                                         </div>
                                     </div>
@@ -79,13 +80,13 @@
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control" id="floatingEmail"
                                                 placeholder="name@example.com" />
-                                            <label for="floatingEmail">Email</label>
+                                            <label for="floatingEmail">{{ $data->email }}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="checkboxEmail"
-                                                value="option1">
+                                                value="option1" onclick="toggleInput('floatingEmail', 'checkboxEmail')">
                                             <label class="form-check-label" for="checkboxEmail">Không Đổi</label>
                                         </div>
                                     </div>
@@ -97,16 +98,16 @@
                                         <h6 class="mb-0">Ảnh Đại Diện</h6>
                                     </div>
                                     <div class="col-md-7 pe-5">
-                                        <img class="img-cover img-staff-custom" src="assets/backend/img/no-image.jpg"
-                                            alt="Avatar" id="avatar-image"
-                                            onclick="document.getElementById('avatar-input').click();">
+                                        <img class="img-cover img-staff-custom"
+                                            src="assets/backend/img/accounts/{{ $data->avatar }}" alt="Avatar"
+                                            id="avatar-image" onclick="document.getElementById('avatar-input').click();">
                                         <input type="file" name="image" id="avatar-input" class="form-control"
                                             style="display: none;" onchange="previewImage(event)">
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="checkboxAvatar"
-                                                value="option1">
+                                                value="option1" onclick="toggleInput('avatar-input', 'checkboxAvatar')">
                                             <label class="form-check-label" for="checkboxAvatar">Không Đổi</label>
                                         </div>
                                     </div>
@@ -121,13 +122,14 @@
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="floatingPhone"
                                                 placeholder="name@example.com" />
-                                            <label for="floatingPhone">Số Điện Thoại</label>
+                                            <label for="floatingPhone">{{ $data->phone_number }}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="checkboxSoDienThoai"
-                                                value="option1">
+                                                value="option1"
+                                                onclick="toggleInput('floatingPhone', 'checkboxSoDienThoai')">
                                             <label class="form-check-label" for="checkboxSoDienThoai">Không Đổi</label>
                                         </div>
                                     </div>
@@ -142,13 +144,14 @@
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="floatingAddress"
                                                 placeholder="name@example.com" />
-                                            <label for="floatingAddress">Số Điện Thoại</label>
+                                            <label for="floatingAddress">{{ $data->address }}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="checkboxDiaChi"
-                                                value="option1">
+                                                value="option1"
+                                                onclick="toggleInput('floatingAddress', 'checkboxDiaChi')">
                                             <label class="form-check-label" for="checkboxDiaChi">Không Đổi</label>
                                         </div>
                                     </div>
@@ -160,7 +163,7 @@
                                         <h6 class="mb-0">Giới Thiệu</h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <textarea class="form-control" style="min-height: 10rem;" placeholder="Message sent to the employer"></textarea>
+                                        <textarea class="form-control" style="min-height: 10rem;" placeholder="Giới thiệu 1 chút về bản thân..."></textarea>
                                     </div>
                                 </div>
                                 <hr class="mx-n3">
@@ -182,7 +185,7 @@
                                     <button type="submit" class="btn btn-primary ">Gửi Hồ Sơ</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
 
                     </div>
                 </div>
@@ -198,5 +201,22 @@
             const image = document.getElementById('avatar-image');
             image.src = URL.createObjectURL(event.target.files[0]);
         }
+    </script>
+
+    <script>
+        function toggleInput(inputId, checkboxId) {
+            const inputElement = document.getElementById(inputId);
+            const checkboxElement = document.getElementById(checkboxId);
+            // Kiểm tra nếu checkbox được chọn
+            inputElement.disabled = checkboxElement.checked;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleInput('floatingName', 'checkboxTenNhanVien');
+            toggleInput('floatingEmail', 'checkboxEmail');
+            toggleInput('avatar-input', 'checkboxAvatar');
+            toggleInput('floatingPhone', 'checkboxSoDienThoai');
+            toggleInput('floatingAddress', 'checkboxDiaChi');
+        });
     </script>
 @endsection

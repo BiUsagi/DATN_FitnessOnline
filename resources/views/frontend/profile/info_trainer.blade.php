@@ -1,6 +1,7 @@
 @extends('frontend/layouts/app-user')
 
 
+
 @section('main')
     <!-- BREADCRUMB START HERE -->
     <div class="breadcrumb_wrapper">
@@ -47,96 +48,101 @@
                                         @endif
                                     </p>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="media">
-                                    <label>E-mail</label>
-                                    <p>{{ $data->email }}</p>
+                                    <label>Facebook</label>
+                                    <p "><a href="{{ $data->facebook }}" class="text-secondary"
+                                                target="blank">{{ $data->facebook }}</a></p>
+                                    </div>
                                 </div>
-                                <div class="media">
-                                    <label>Di Động</label>
-                                    <p>{{ $data->phone_number }}</p>
-                                </div>
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>E-mail</label>
+                                        <p>{{ $data->email }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Di Động</label>
+                                        <p>{{ $data->phone_number }}</p>
+                                    </div>
 
-                                <div class="media">
-                                    <label>Địa Chỉ</label>
-                                    <p>{{ $data->address }}</p>
+                                    <div class="media">
+                                        <label>Địa Chỉ</label>
+                                        <p>{{ $data->address }}</p>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="about-avatar-custom">
+                            <img src="assets/backend/img/accounts/{{ $data->avatar }}" title="" alt="">
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="about-avatar-custom">
-                        <img src="assets/backend/img/accounts/{{ $data->avatar }}" title="" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="counter-custom">
-                <div class="row">
-                    <div class="col-6 col-lg-3">
-                        <div class="count-data text-center">
-                            <h6 class="count h2" data-to="500" data-speed="500">{{ $data->getActiveDuration() }}</h6>
-                            <p class="m-0px font-w-600">Hoạt Động</p>
+                <div class="counter-custom">
+                    <div class="row">
+                        <div class="col-6 col-lg-3">
+                            <div class="count-data text-center">
+                                <h6 class="count h2" data-to="500" data-speed="500">{{ $data->getActiveDuration() }}</h6>
+                                <p class="m-0px font-w-600">Hoạt Động</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6 col-lg-3">
-                        <div class="count-data text-center">
-                            <h6 class="count h2" data-to="150" data-speed="150">{{ $data->getCourseCount() }}</h6>
-                            <p class="m-0px font-w-600">Khóa Học</p>
+                        <div class="col-6 col-lg-3">
+                            <div class="count-data text-center">
+                                <h6 class="count h2" data-to="150" data-speed="150">{{ $data->getCourseCount() }}</h6>
+                                <p class="m-0px font-w-600">Khóa Học</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6 col-lg-3">
-                        <div class="count-data text-center">
-                            <h6 class="count h2" data-to="850" data-speed="850">{{ $data->getStudentCount() }}</h6>
-                            <p class="m-0px font-w-600">Học Viên</p>
+                        <div class="col-6 col-lg-3">
+                            <div class="count-data text-center">
+                                <h6 class="count h2" data-to="850" data-speed="850">{{ $data->getStudentCount() }}</h6>
+                                <p class="m-0px font-w-600">Học Viên</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6 col-lg-3">
-                        <div class="count-data text-center">
-                            <h6 class="count h2" data-to="190" data-speed="190">
-                                <span class="text-warning">
-                                    @php
-                                        // tính số sao
-                                        $fullStars = floor($data->rating); // full sao
-                                        $halfStar = $data->rating - $fullStars >= 0.5 ? 1 : 0; //nửa sao
-                                    @endphp
+                        <div class="col-6 col-lg-3">
+                            <div class="count-data text-center">
+                                <h6 class="count h2" data-to="190" data-speed="190">
+                                    <span class="text-warning">
+                                        @php
+                                            // tính số sao
+                                            $fullStars = floor($data->rating); // full sao
+                                            $halfStar = $data->rating - $fullStars >= 0.5 ? 1 : 0; //nửa sao
+                                        @endphp
 
-                                    <!-- Hiển thị full sao -->
-                                    @for ($i = 1; $i <= $fullStars; $i++)
+                                        <!-- Hiển thị full sao -->
+                                         @for ($i=1; $i <=$fullStars; $i++)
                                         <i class="bi bi-star-fill"></i>
-                                    @endfor
+                                        @endfor
 
-                                    <!-- Hiển thị nửa sao -->
-                                    @if ($halfStar)
-                                        <i class="bi bi-star-half"></i>
-                                    @endif
+                                        <!-- Hiển thị nửa sao -->
+                                        @if ($halfStar)
+                                            <i class="bi bi-star-half"></i>
+                                        @endif
 
-                                    <!-- Hiển thị sao trống cho đến tối đa 5 sao -->
-                                    @for ($i = $fullStars + $halfStar; $i < 5; $i++)
-                                        <i class="bi bi-star"></i>
-                                    @endfor
+                                        <!-- Hiển thị sao trống cho đến tối đa 5 sao -->
+                                        @for ($i = $fullStars + $halfStar; $i < 5; $i++)
+                                            <i class="bi bi-star"></i>
+                                        @endfor
 
-                                </span>
-                            </h6>
-                            <p class="m-0px font-w-600">
-                                <span class="ms-2">
-                                    <small class="text-secondary">({{ $data->rating }} / 5)
-                                        ({{ $data->rating_count }} bình chọn)</small>
-                                </span>
-                            </p>
+                                        </span>
+                                        </h6>
+                                    <p class="m-0px font-w-600">
+                                        <span class="ms-2">
+                                            <small class="text-secondary">({{ $data->rating }} / 5)
+                                                ({{ $data->rating_count }} bình chọn)</small>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
 
 
     <div class="container mb-5 pb-3">
         <div class="row">
             <!-- Gói tập -->
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="dark-color">Khóa Học</h4>
                     <span class="badge text-bg-primary p-2">{{ $data->getCourseCount() }}</span>
@@ -176,7 +182,7 @@
             </div>
 
             <!-- Học viên -->
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="dark-color">Học viên</h4>
                     <span class="badge text-bg-primary p-2">{{ $data->getStudentCount() }}</span>
@@ -277,8 +283,12 @@
                 prevEl: '.courses-swiper-custom-button-prev',
             },
             breakpoints: {
-                768: {
+                100: {
                     slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 2,
                     spaceBetween: 10,
                 },
                 1024: {

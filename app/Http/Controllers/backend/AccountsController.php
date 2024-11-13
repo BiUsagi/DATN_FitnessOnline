@@ -7,6 +7,7 @@ use App\Models\StaffRequest;
 use Illuminate\Http\Request;
 use App\Models\Staff;
 use App\Models\User;
+use App\Models\Workout_Package;
 use Spatie\Permission\Models\Role;
 class AccountsController extends Controller
 {
@@ -19,7 +20,8 @@ class AccountsController extends Controller
     public function staff_info($id)
     {
         $data = Staff::where('id', $id)->first();
-        return view('backend/accounts/info_staff', compact('data'));
+        $workout_packages = Workout_Package::where('staff_id', $id)->get();
+        return view('backend/accounts/info_staff', compact('data', 'workout_packages'));
     }
     public function staff_update($id)
     {
