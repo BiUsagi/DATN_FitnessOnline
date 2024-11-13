@@ -35,7 +35,9 @@
                 <div class="box-left">
                     <div class="title">
                         <h2 class="day-number">Ngày 1</h2>
-                        <a href="{{  route('submit_exercise') }}" class="exercised"><i class="fa-solid fa-list"></i> Các bài tập đã nộp</a>
+                        <a href="{{ route('submit_exercise', ['workout_id' => $package->id, 'user_id' => Auth::user()->id]) }}" class="exercised">
+                            <i class="fa-solid fa-list"></i> Các bài tập đã nộp
+                        </a>
                     </div>
                     <p class="line"></p>
                     <div class="categories">
@@ -53,7 +55,8 @@
                         </div>
                     </div>
                     <p class="notification"><span>Lưu ý (*): </span>Bạn phải xem hết tất cả video trong ngày sau đó quay
-                        lại toàn bộ các động tác theo thứ tự và up video lên để tôi xem bạn đã tập đúng kỹ thuật chưa rồi sau đó mới
+                        lại toàn bộ các động tác theo thứ tự và up video lên để tôi xem bạn đã tập đúng kỹ thuật chưa
+                        rồi sau đó mới
                         được qua ngày tiếp theo nhé!</p>
                 </div>
                 <div class="line-title"></div>
@@ -80,7 +83,7 @@
                     <h2>{{ Auth::user()->user_name }}</h2>
 
                 </div> --}}
-              
+
                 <div class="made-with">
                     <p>Made with <i class="fa-solid fa-dumbbell"></i> · Powered by GymFitness</p>
                 </div>
@@ -177,8 +180,9 @@
                                 <span>Hoặc kéo thả vào đây</span>
                                 <a id="chooseVideoButton">Chọn video</a>
                             </div>
-                            <input type="file" id="videoInput" name="video_path" accept="video/*" style="display: none;">
-    
+                            <input type="file" id="videoInput" name="video_path" accept="video/*"
+                                style="display: none;">
+
                         </div>
                         <div class="show-video-upload" id="showVideoUpload">
                             <div class="container-video">
@@ -200,13 +204,13 @@
                                 <div class="line-load-video">
                                     <div class="progress-bar" id="progressBar"></div>
                                 </div>
-    
+
                                 <div class="description-video">
                                     <label for="#">Mô tả</label>
                                     <textarea name="description" placeholder="Nhập mô tả..."></textarea>
                                 </div>
                                 <div class="line"></div>
-    
+
                                 <div class="button-upload-video">
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <input type="submit" class="button upload" value="Đăng">
@@ -244,7 +248,7 @@
                                 <span>Hạn chế lộ thông tin cá nhân và xin phép nếu có người khác xuất hiện.</span>
                             </div>
                         </div>
-    
+
                     </div>
                 </div>
             </div>
@@ -304,7 +308,7 @@
             } else {
                 clearInterval(uploadInterval);
             }
-        }, 300); 
+        }, 300);
         buttonCancel.addEventListener('click', () => {
             buttonUpload.style.display = "flex";
             showVideoUpload.style.display = "none";
@@ -323,15 +327,15 @@
         let exercisesData = [];
 
         function loadExercises(dayNumber) {
-    $.get(`http://127.0.0.1:8000/api/admin/workout_hub/${packageId}/day/${dayNumber}`, function(res) {
-        exercisesData = res;
-        let returnData = '';
-        if (exercisesData.length === 0) {
-            returnData = `<p class="no-data">Hiện tại chưa có bài tập nào được thêm vào</p>`;
-        } else {
-            exercisesData.forEach((item, index) => {
-                returnData += 
-                    `<div class="box-exercise">
+            $.get(`http://127.0.0.1:8000/api/admin/workout_hub/${packageId}/day/${dayNumber}`, function(res) {
+                exercisesData = res;
+                let returnData = '';
+                if (exercisesData.length === 0) {
+                    returnData = `<p class="no-data">Hiện tại chưa có bài tập nào được thêm vào</p>`;
+                } else {
+                    exercisesData.forEach((item, index) => {
+                        returnData +=
+                            ` <div class="box-exercise">
                         <div class="action">
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
@@ -361,7 +365,7 @@
                         </div>
                     </div>
                     <div class="line"></div>`;
-            });
+                    });
                 }
                 document.querySelector('.list-exercise').innerHTML = returnData;
 
@@ -395,8 +399,8 @@
             });
         }
 
-        function upLoadVideoUser(){
-            $('#video_user_upload').on('submit', function(e){
+        function upLoadVideoUser() {
+            $('#video_user_upload').on('submit', function(e) {
                 e.preventDefault();
 
                 let formData = new FormData(this);
@@ -404,28 +408,34 @@
                 if (videoFile) {
                     formData.append('video_path', videoFile);
                 }
+                const urlParams = new URLSearchParams(window.location.search);
+                const workoutHub = window.location.pathname.split("/").pop();
+                const day = urlParams.get('day');
+
+                formData.append('workout_package_id', workoutHub);
+                formData.append('day_number', day);
                 $.ajax({
                     url: 'http://127.0.0.1:8000/api/video_user',
                     type: 'POST',
                     data: formData,
-                    contentType: false, 
-                    processData: false, 
+                    contentType: false,
+                    processData: false,
                     success: function(res) {
                         Swal.fire({
                             title: "Thành công!",
                             text: "Nộp bài thành công!",
                             icon: "success"
                         });
-                        buttonUpload.style.display = "flex"; 
+                        buttonUpload.style.display = "flex";
                         showVideoUpload.style.display = "none";
                     },
                     error: function(err) {
-                    Swal.fire({
-                        title: "Lỗi!",
-                        text: "Có lỗi xảy ra khi nộp bài tập!",
-                        icon: "error"
-                    });
-                }
+                        Swal.fire({
+                            title: "Lỗi!",
+                            text: "Có lỗi xảy ra khi nộp bài tập!",
+                            icon: "error"
+                        });
+                    }
                 });
             })
         }
@@ -439,7 +449,7 @@
             } else {
                 completedExercises = 0;
                 currentExerciseIndex = 0;
-          
+
             }
         }
 
@@ -464,7 +474,7 @@
 
         function updateURL(dayNumber) {
             const url = new URL(window.location);
-            url.searchParams.set('day', dayNumber); 
+            url.searchParams.set('day', dayNumber);
             history.pushState({}, '', url);
         }
 
@@ -496,13 +506,13 @@
 
 
         document.addEventListener('DOMContentLoaded', function() {
-            const dayFromURL = getDayFromURL(); 
+            const dayFromURL = getDayFromURL();
             if (dayFromURL) {
                 const dayBox = document.querySelector(`.box-day[data-day="${dayFromURL}"]`);
                 if (dayBox) {
-                    dayBox.classList.add('active-box-day'); 
+                    dayBox.classList.add('active-box-day');
                     day.textContent = 'Ngày ' + dayFromURL;
-                    loadExercises(dayFromURL); 
+                    loadExercises(dayFromURL);
                     currentDay = dayFromURL;
                     currentExerciseIndex = 0;
                     completedExercises = 0;
@@ -511,7 +521,7 @@
                 const firstBoxDay = document.querySelector('.box-day:first-child');
                 if (firstBoxDay) {
                     firstBoxDay.classList.add('active-box-day');
-                    day.textContent = 'Ngày 1'; 
+                    day.textContent = 'Ngày 1';
                     loadExercises(1);
                     currentDay = 1;
                 }
