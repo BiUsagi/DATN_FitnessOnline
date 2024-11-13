@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->string('original_price'); // Giá gốc
             $table->string('purchase_price'); // Giá mua cuối cùng sau khi giảm giá
             $table->unsignedBigInteger('voucher_id')->nullable();
+            $table->tinyInteger('status')->default(0)->comment('0: chờ xử lí, 1 đã thanh toán, 2 hủy');
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

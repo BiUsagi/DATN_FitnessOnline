@@ -9,15 +9,25 @@ use App\Models\Package_Exercise;
 use App\Models\user_package_progress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
 
 
 class Workout_PackageController extends Controller
 {
-    public function index()
-    {
-        $data = Workout_Package::orderBy('id', 'asc')->get();
-        return response()->json($data);
-    }
+    // public function index()
+    // {   
+    //     $user = Auth::user();
+    //     if($user->role_012 === 2) {
+    //         $data = Workout_Package::orderBy('id', 'asc')->get();
+    //     }else {
+    //         $data = Workout_Package::where('staff_id',$user->id)->get();
+    //     }    
+        
+    //     $data = Workout_Package::orderBy('id', 'asc')->get();
+
+    //     return response()->json($user);
+    // }
 
     public function get_exercises()
     {
@@ -79,6 +89,12 @@ class Workout_PackageController extends Controller
 
 
         if ($request->hasFile('image')) {
+
+            $old_image = 'uploads/gym_package'.$set->image;
+            if(file::exists($old_image)){
+                file::delete($old_image);
+            }
+
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;

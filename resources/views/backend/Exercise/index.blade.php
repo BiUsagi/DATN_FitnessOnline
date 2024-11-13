@@ -38,7 +38,22 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody id="list-items"></tbody>
+                                <tbody id="list-items">
+                                    @foreach($data as $ex)
+                                        <tr>
+                                            <td>{{ $ex->id }}</td>
+                                            <td>{{ $ex->name }}</td>
+                                            <td>{{ $ex->description }}</td>
+                                            <td>{{ $ex->sets }}</td>
+                                            <td>{{ $ex->reps }}</td>
+                                            <td class="customize-width">
+                                                <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a>    
+                                                <a href="admin/exercise/update/{{ $ex->id }}" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a>   
+                                                <a href="" class="btn-custom danger delete-exercise" data-id="{{ $ex->id }}" ><i class="bi bi-trash"></i></a>    
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
 
@@ -52,32 +67,31 @@
         </main><!-- End #main -->
     <script>
         
-        $.get('http://127.0.0.1:8000/api/admin/exercises', function(res) {
-                let data = res;                
-                console.log(res);
-                let returnData = '';
+        // $.get('http://127.0.0.1:8000/api/admin/exercises', function(res) {
+        //         let data = res;                
+        //         console.log(res);
+        //         let returnData = '';
 
                 
-                data.forEach(item => {
-                    returnData += `
-                     <tr>
-
-                        <td>${item.id}</td>
-                                    <td>${item.name}</td>
-                                    <td>${item.name}</td>
-                                    <td>${item.sets}</td>
-                                    <td>${item.reps}</td>
-                                    <td class="customize-width">
-                                        <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a>    
-                                        <a href="admin/exercise/update/${item.id}" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a>   
-                                        <a href="" class="btn-custom danger delete-exercise" data-id="${item.id}" ><i class="bi bi-trash"></i></a>    
-                                    </td>
-                                </tr>
-               `;
-                });
-                $('#list-items').html(returnData);
-            }
-        )
+        //         data.forEach(item => {
+        //             returnData += `
+        //              <tr>
+        //                 <td>${item.id}</td>
+        //                 <td>${item.name}</td>
+        //                 <td>${item.description}</td>
+        //                 <td>${item.sets}</td>
+        //                 <td>${item.reps}</td>
+        //                 <td class="customize-width">
+        //                     <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a>    
+        //                     <a href="admin/exercise/update/${item.id}" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a>   
+        //                     <a href="" class="btn-custom danger delete-exercise" data-id="${item.id}" ><i class="bi bi-trash"></i></a>    
+        //                 </td>
+        //             </tr>
+        //        `;
+        //         });
+        //         $('#list-items').html(returnData);
+        //     }
+        // )
 
         $(document).ready(function() {
         // Xử lý click cho nút xóa (delete-button)

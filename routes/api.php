@@ -16,6 +16,8 @@ use App\Http\Controllers\backend\api\PostController;
 use App\Http\Controllers\Backend\api\Workout_hubController;
 use App\Http\Controllers\backend\api\WalletController;
 use App\Http\Controllers\backend\api\DepositHistoriesController;
+use App\Models\User;
+
 
 
 
