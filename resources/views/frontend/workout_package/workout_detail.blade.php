@@ -9,7 +9,8 @@
     <div class="breadcrumb_wrapper">
         <div class="container">
             <div class="breadcrumb_block">
-                <img src="{{ asset('assets/frontend/images/'. $package->staff->avatar)}}" alt="" height="250px" style="z-index: 2 ">
+                <img src="{{ asset('assets/frontend/images/' . $package->staff->avatar)}}" alt="" height="250px"
+                    style="z-index: 2 ">
                 <h2 class="name-author">{{ $package->staff->staff_name }}</h2>
             </div>
         </div>
@@ -17,7 +18,7 @@
     <!-- BREADCRUMS SECTION END HERE -->
 
     <!-- ABOUT BLOCK START HERE -->
-    <form action="" id="form-pay" method="post">
+    <form action="{{ route('thanhtoan2') }}" id="form-pay" method="post">
         @csrf
 
         <div class="input-hidden">
@@ -286,21 +287,25 @@
             $('#user_id').val(userId);
             var workout_package_id = $('#workout_package_id').val();
 
-            $.get('http://127.0.0.1:8000/api/web/checkorder', { workout_package_id: workout_package_id, user_id: userId }, function (res) {
-                let order = res;
-                console.log('res: ' + order);
+            // $.get('http://127.0.0.1:8000/api/web/checkorder', { workout_package_id: workout_package_id, user_id: userId }, function (res) {
+            //     let order = res;
+            //     console.log('res: ' + order);
 
-                if (order == null || Object.keys(order).length === 0) {
-                    $('#button-pay').html(
-                        '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
-                    )
-                } else {
-                    //xem 
-                    $('#button-pay').html(
-                        '<button type="button" class="by-now">Xem</button>'
-                    )
-                }
-            })
+            //     if (order == null || Object.keys(order).length === 0) {
+            //         $('#button-pay').html(
+            //             '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
+            //         )
+            //     } else {
+            //         //xem 
+            //         $('#button-pay').html(
+            //             '<button type="button" class="by-now">Xem</button>'
+            //         )
+            //     }
+            // })
+
+            $('#button-pay').html(
+                '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
+            )
         @else
             $('#button-pay').html('<a href="#1" class="by-now">Đăng nhập để mua gói</a href="#1">')
         @endif
@@ -381,7 +386,7 @@
 
 
     $('#form-pay').on('submit', function (ev) {
-        ev.preventDefault();
+        // ev.preventDefault();
         let form = $(this);  // Lấy đối tượng form
         let payform = form.serialize(); // Lấy dữ liệu form
         console.log(payform);
@@ -395,8 +400,8 @@
                     document.getElementById('displayText').innerHTML = res.error;
                 } else {
                     loadButton();
-                    alert('Mua thành công.');
-                    location.reload(); // Tải lại trang
+                    // alert('Mua thành công.');
+                    // location.reload(); // Tải lại trang
                 }
             },
             error: function (xhr, status, error) {

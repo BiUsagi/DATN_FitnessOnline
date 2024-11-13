@@ -9,6 +9,7 @@ use App\Http\Controllers\frontend\ProfileController;
 use App\Http\Controllers\frontend\AjaxloginController;
 use App\Http\Controllers\frontend\CommentsController;
 use App\Http\Controllers\frontend\PostController;
+use App\Http\Controllers\frontend\VNPayController;
 use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
@@ -66,6 +67,10 @@ Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->n
 Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
 
 Route::get('/list_submit_exercise', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
+
+//vnpay
+Route::get('/thanhtoan', [VNPayController::class, 'index'])->name('thanhtoan1');
+Route::post('/thanhtoan2', [VNPayController::class, 'createpay'])->name('thanhtoan2');
 
 
 // Back End

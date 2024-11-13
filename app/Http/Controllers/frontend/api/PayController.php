@@ -80,33 +80,51 @@ class PayController extends Controller
         $purchase_price = $request['purchase_price'];
         $voucher_id = $request['voucher_id'];
 
-        $wallet = Wallet::where('user_id', $user_id)->first();
-        if ($wallet->balance < $purchase_price) {
-            return response()->json(['error' => 'Số dư trong ví không đủ để thực hiện giao dịch.'], 400);
-        } else {
+        // $wallet = Wallet::where('user_id', $user_id)->first();
+        // if ($wallet->balance < $purchase_price) {
+        //     return response()->json(['error' => 'Số dư trong ví không đủ để thực hiện giao dịch.'], 400);
+        // } else {
 
-            $record = Order::create([
-                'user_id' => $user_id,
+        //     $record = Order::create([
+        //         'user_id' => $user_id,
+        //         'workout_package_id' => $workout_package_id,
+        //         'original_price' => $original_price,
+        //         'purchase_price' => $purchase_price,
+        //         'voucher_id' => $voucher_id, // Có thể null
+        //     ]);
+
+        //     if ($request->has('voucher_id') && $request->filled('voucher_id')) {
+        //         $voucherP = Voucher_package::create([
+        //             'workout_package_id' => $workout_package_id,
+        //             'user_id' => $user_id,
+        //             'voucher_id' => $voucher_id,
+        //         ]);
+        //     }
+
+        //     $wallet = Wallet::where('user_id', $user_id)->first();
+        //     $wallet->balance -= $purchase_price;
+        //     $wallet->save();
+
+        //     return redirect()->back()->with('success', 'Mua thành công!');
+        // }
+
+        $record = Order::create([
+            'user_id' => $user_id,
+            'workout_package_id' => $workout_package_id,
+            'original_price' => $original_price,
+            'purchase_price' => $purchase_price,
+            'voucher_id' => $voucher_id, // Có thể null
+        ]);
+
+        if ($request->has('voucher_id') && $request->filled('voucher_id')) {
+            $voucherP = Voucher_package::create([
                 'workout_package_id' => $workout_package_id,
-                'original_price' => $original_price,
-                'purchase_price' => $purchase_price,
-                'voucher_id' => $voucher_id, // Có thể null
+                'user_id' => $user_id,
+                'voucher_id' => $voucher_id,
             ]);
-
-            if ($request->has('voucher_id') && $request->filled('voucher_id')) {
-                $voucherP = Voucher_package::create([
-                    'workout_package_id' => $workout_package_id,
-                    'user_id' => $user_id,
-                    'voucher_id' => $voucher_id,
-                ]);
-            }
-
-            $wallet = Wallet::where('user_id', $user_id)->first();
-            $wallet->balance -= $purchase_price;
-            $wallet->save();
-
-            return redirect()->back()->with('success', 'Mua thành công!');
         }
+        
+        return redirect()->back()->with('success', 'Mua thành công!');
     }
 
 
