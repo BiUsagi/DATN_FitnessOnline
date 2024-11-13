@@ -24,4 +24,5 @@ class Workout_hubController extends Controller
         return response()->json($workoutPackage->exercises);
     }
     
+    
 }

@@ -59,7 +59,7 @@
                                             <div class="image-package">
                                                 <img src="{{ asset('uploads/gym_package/'. $workout->workoutPackage->image)}}" alt="">
                                                 <div class="box-action">
-                                                    <a href="{{route('admin.workout_hub', $workout->workoutPackage->id)}}"><i class="fa-regular fa-circle-play"></i></a>
+                                                    <a href="{{route('workout_hub', $workout->workoutPackage->id)}}"><i class="fa-regular fa-circle-play"></i></a>
                                                 </div>
                                             </div>
                                             <div class="content-package">
@@ -67,7 +67,7 @@
                                                 <p>Loại gói tập: {{$workout->workoutPackage->level}}</p>
                                                 <div class="price-status">
                                                     <span class="price">Tác giả: <a href="#!">{{$workout->workoutPackage->staff->staff_name}}</a></span>
-                                                    <p class="status">Đã hoàn thành</p>
+                                                    <p class="status">Đang thực hiện</p>
                                                 </div>
                                                 <div class="duration">
                                                     <div class="progress-bar-customize">
