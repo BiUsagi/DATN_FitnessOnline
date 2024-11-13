@@ -100,35 +100,7 @@
                 </ul>
             </li><!-- End bài tập -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed {{ Request::is('admin/res_client') || Request::is('admin/res_client/create') ? 'active' : '' }}"
-                    data-bs-target="#res_client-nav" data-bs-toggle="collapse" href="#">
-                    <i class="ri-user-heart-line"></i><span>Quản lý khách hàng</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="res_client-nav"
-                    class="nav-content collapse {{ Request::is('admin/res_client') || Request::is('admin/res_client/create') ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('admin.exercise') }}"
-                            class="{{ Request::is('admin/res_client') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Danh sách bài tập</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.orders.customer_manage') }}"
-                            class="{{ Request::is('admin/res_client/create') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Danh Sách khách hàng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.exercise-create') }}"
-                            class="{{ Request::is('admin/res_client/create') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Thêm bài tập</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End quản lý khách hàng -->
+           
 
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/posts*') ? 'active' : '' }}"
@@ -336,6 +308,36 @@
                     </li>
                 </ul>
             </li><!-- End bài tập -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed {{ Request::is('admin/res_client') || Request::is('admin/res_client/create') ? 'active' : '' }}"
+                    data-bs-target="#res_client-nav" data-bs-toggle="collapse" href="#">
+                    <i class="ri-user-heart-line"></i><span>Quản lý học viên</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="res_client-nav"
+                    class="nav-content collapse {{ Request::is('admin/res_client') || Request::is('admin/res_client/create') ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('admin.exercise') }}"
+                            class="{{ Request::is('admin/res_client') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Danh sách bài tập</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.orders.customer_manage') }}"
+                            class="{{ Request::is('admin/res_client/create') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Danh Sách khách hàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.exercise-create') }}"
+                            class="{{ Request::is('admin/res_client/create') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Thêm bài tập</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End quản lý khách hàng -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/posts*') ? 'active' : '' }}"
