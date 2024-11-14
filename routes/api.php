@@ -26,8 +26,8 @@ use App\Http\Controllers\frontend\api\WalletsController;
 use App\Http\Controllers\frontend\api\NotificationController;
 use App\Http\Controllers\frontend\api\PayController;
 use App\Http\Controllers\frontend\api\UserVideoController;
-
-
+use App\Http\Controllers\frontend\ProfileController;
+use App\Http\Controllers\frontend\api\TrainerRequestController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -74,6 +74,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::post('/application/{id}/approve', [AccountsController::class, 'approve'])->name('api.staffrequests.approve');
     Route::post('/application/{id}/reject', [AccountsController::class, 'reject'])->name('api.staffrequests.reject');
 
+
     //SupportExercises
     Route::get('/supportexercises', [SupportExercisesController::class, 'index']);
     Route::get('/supportexercises/{id}', [SupportExercisesController::class, 'show']);
@@ -97,7 +98,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/post', [PostController::class, 'index']);
     Route::post('/post', [PostController::class, 'create_']);
     Route::post('/post/{id}', [PostController::class, 'update_']);
-    Route::delete('/post/{id}', [PostController::class, 'delete'] );
+    Route::delete('/post/{id}', [PostController::class, 'delete']);
 
 
     //DepositHistories
@@ -127,5 +128,9 @@ Route::group(['prefix' => 'web',], function () {
     Route::get('/getvouchercode', [PayController::class, 'getVoucherCode']);
     Route::post('/pay', [PayController::class, 'pay']);
     Route::get('/checkorder', [PayController::class, 'checkorder']);
+
+    // application
+    Route::post('/submit-application/{id}', [TrainerRequestController::class, 'store'])->name('submit.application');
+    
 
 });
