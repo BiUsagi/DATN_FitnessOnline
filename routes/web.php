@@ -196,7 +196,7 @@ Route::group(['prefix' => 'ajax'], function () {
     route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
     route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
-    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('comment.report');
+    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('report.comment');
     Route::put('/comment/{id}', [CommentsController::class, 'updateComment'])->name('ajax.comment.update');
     Route::delete('/comment/{id}', [CommentsController::class, 'deleteComment'])->name('ajax.comment.delete');
     Route::put('/comment/reply/{id}', [CommentsController::class, 'updateReply'])->name('comment.reply.update');

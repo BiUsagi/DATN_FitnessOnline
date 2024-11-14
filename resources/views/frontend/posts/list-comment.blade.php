@@ -7,7 +7,7 @@
                 <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $item->user->avatar)}}" alt="">
             </div>
             <div class="content-box">
-                <strong class="css-name"><span>@</span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
+                <strong class="css-name"><span></span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
                 <div class="options-menu">
                     @if ($item->user_id === Auth::id())
                         <span class="three-dots" onclick="toggleMenu({{ $item->id }})" style="color: white">⋮</span>
@@ -20,17 +20,28 @@
                 <div class="comment-text">{{$item->content}}</div>
                 <div class="comment-actions">
                     <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button btn-rep" data-id="{{$item->id}}" data-username="{{$item->user->user_name}}">Phản hồi</span> 
-                    <span class="reply-button report-comment" style="color: red" data-id="{{$item->id}}">Report</span>
+                    <span class="reply-button report-comment" style="color: red" data-id="{{$item->id}}" onclick="openModal({{ $item->id }})">Report</span>
                 </div>
             </div>
         </div>
+        
+        {{-- MODAL BÁO CÁO --}}
+        <div id="reportModal" style="display: none;">
+            <div class="modal-content">
+                <h3>Báo cáo bình luận</h3>
+                <textarea id="reportContent" placeholder="Nhập lý do báo cáo..."></textarea>
+                <button onclick="submitReport()">Gửi báo cáo</button>
+                <button onclick="closeModal()">Đóng</button>
+            </div>
+        </div>
+
     @else
     <div class="single-comment-box">
         <div class="css-img">
             <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $item->user->avatar)}}" alt="">
         </div>
         <div class="content-box">
-            <strong class="css-name"><span>@</span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
+            <strong class="css-name"><span></span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
             <div class="options-menu">
                 @if ($item->user_id === Auth::id())
                 <span class="three-dots" onclick="toggleMenu()" style="color: white">⋮</span>
@@ -78,7 +89,8 @@
                     </div>
                 <div class="comment-text">{{$con->content}}</div>
                 <div class="comment-actions">
-                    <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button btn-rep" data-id="{{$item->id}}" data-username="{{$con->user->user_name}}">Phản hồi</span> <span class="reply-button report-comment"  style="color: red" data-id="{{$item->id}}">Report</span>
+                    <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button btn-rep" data-id="{{$item->id}}" data-username="{{$con->user->user_name}}">Phản hồi</span>
+                    <span class="reply-button report-comment" style="color: red" data-id="{{$con->id}}" onclick="openModal({{ $con->id }})">Report</span>
                 </div>
             </div>
         </div>
@@ -101,7 +113,7 @@
     @endforeach
     {{-- FORM TRẢ LỜI BÌNH LUẬN --}}
     <form action="" method="POST" class="formRep form-rep-{{$item->id}}" style="display: none">
-        <div class="col-md-11" style="float: right;">
+        <div class="col-md-11" style="margin-left: 50px;">
             <div class="">
                 <div class="form-group comments">
                     <textarea class="form-control" name="comments" placeholder="Message*" rows="1" id="comment-con-{{$item->id}}"></textarea>
