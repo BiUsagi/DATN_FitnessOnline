@@ -162,7 +162,7 @@
                                 icon: "success"
                             }).then(() => {
                                 location.reload();
-                            });;
+                            });
                         },
                         error: function(error) {
                             Swal.fire({
