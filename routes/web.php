@@ -9,6 +9,7 @@ use App\Http\Controllers\frontend\ProfileController;
 use App\Http\Controllers\frontend\AjaxloginController;
 use App\Http\Controllers\frontend\CommentsController;
 use App\Http\Controllers\frontend\PostController;
+use App\Http\Controllers\frontend\VNPayController;
 use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
@@ -70,9 +71,13 @@ Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.a
 
 Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
 //view workout_exercise
-Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub')->middleware('can:manage_workout_packages');
+Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub');
 
-Route::get('/list_submit_exercise', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
+Route::get('/workout_id/{workout_id}/user/{user_id}', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
+
+//vnpay
+Route::get('/thanhtoan', [VNPayController::class, 'index'])->name('thanhtoan1');
+Route::post('/thanhtoan2', [VNPayController::class, 'createpay'])->name('thanhtoan2');
 
 
 // Back End
@@ -183,6 +188,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders')->middleware('can:manage_order'); //Danh sách đơn hàng
     Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders')->middleware('can:manage_order'); // Chi tiết đơn hàng
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder')->middleware('can:manage_order');
+    Route::get('/customer_manage', [OrderController::class, 'customer_manage'])->name('admin.orders.customer_manage'); //Danh sách khách hàng
+    Route::get('/customer_days', [OrderController::class, 'customer_days'])->name('admin.orders.customer_days'); //Danh sách khách hàng
+
 
 
 
@@ -203,7 +211,7 @@ Route::group(['prefix' => 'ajax'], function () {
     route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
     route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
-    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('comment.report');
+    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('report.comment');
     Route::put('/comment/{id}', [CommentsController::class, 'updateComment'])->name('ajax.comment.update');
     Route::delete('/comment/{id}', [CommentsController::class, 'deleteComment'])->name('ajax.comment.delete');
     Route::put('/comment/reply/{id}', [CommentsController::class, 'updateReply'])->name('comment.reply.update');

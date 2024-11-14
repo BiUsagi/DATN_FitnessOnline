@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('user_videos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('package_exercise_id')->nullable(); // Liên kết bài tập trong gói
-            $table->unsignedBigInteger('staff_id')->nullable(); // Huấn luyện viên đánh giá video
+            $table->unsignedBigInteger('workout_package_id'); // Liên kết đến gói tập
+            $table->integer('day_number')->comment('Ngày trong gói tập'); // Ngày trong gói tập
             $table->string('video_path');
             $table->text('description')->nullable()->comment('Mô tả về bài tập trong video');
             $table->tinyInteger('status')->default(0)->comment('0 - chưa đánh giá, 1 - đạt, 2 - chưa đạt');
             $table->timestamps();
-    
+
+            // Khóa ngoại
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('package_exercise_id')->references('id')->on('package_exercises')->onDelete('set null');
-            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('set null');
+            $table->foreign('workout_package_id')->references('id')->on('workout_packages')->onDelete('cascade');
         });
     }
 

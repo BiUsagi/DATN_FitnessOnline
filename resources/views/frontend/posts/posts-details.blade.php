@@ -10,8 +10,8 @@
     }
     
     .css-img {
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
         border: 1px solid white;
         overflow: hidden;
         border-radius: 50%; /* Để hình dạng tròn */
@@ -26,26 +26,29 @@
     }
     
     .css-name {
-        font-size: 15px;
+        font-size: 15.5px;
+        font-weight: 500;
         color: #1FACE1;
     }
     
     .timing {
         color: white;
         font-size: 12px;
-        padding-left: 30px;
+        padding-left: 10px;
     }
     
     .comment-text {
         color: white;
         margin-top: 5px;
-        margin-bottom: 8px;
+        margin-bottom: 2px;
+        font-size: 15px;
     }
     
     .comment-actions {
         display: flex;
         align-items: center;
         gap: 10px;
+        font-size: 13px;
     }
     
     .reply-button {
@@ -64,7 +67,7 @@
     
     .formRep .col-md-11 {
         width: 100%; /* Đảm bảo textarea rộng toàn bộ */
-        padding-right: 10px;
+        padding-right: 60px;
     }
     
     .form-group.comments {
@@ -75,7 +78,7 @@
     }
     
     .form-control {
-        width: 100%;
+        width: 78%;
         border: none;
         background-color: #242529;
         border-bottom: 2px solid #ccc;
@@ -181,9 +184,8 @@
             background-color: #444;
             color: white;
             border-radius: 5px;
-            padding: 5px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            min-width: 120px; /* Chiều rộng của menu */
+            min-width: 80px; /* Chiều rộng của menu */
             z-index: 100;
         }
     
@@ -206,6 +208,89 @@
             padding-left: 12px;
             width: calc(100% - 3px); /* Đảm bảo nó vừa với menu khi có border */
         }
+        /* CSS MODAL REPORT */
+        #reportModal {
+            display: none; /* Ẩn modal mặc định */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Làm mờ nền phía sau */
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Nội dung chính của modal */
+        #reportModal .modal-content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 0.3s ease; /* Hiệu ứng mở modal */
+        }
+
+        /* Tiêu đề modal */
+        #reportModal h3 {
+            margin: 0 0 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Textarea để nhập lý do báo cáo */
+        #reportContent {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            font-size: 14px;
+        }
+
+        /* Nút gửi và đóng modal */
+        #reportModal button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Nút gửi báo cáo */
+        #reportModal button:first-of-type {
+            background-color: #28a745;
+            color: white;
+        }
+
+        #reportModal button:first-of-type:hover {
+            background-color: #218838;
+        }
+
+        /* Nút đóng modal */
+        #reportModal button:last-of-type {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        #reportModal button:last-of-type:hover {
+            background-color: #c82333;
+        }
+
+        /* Hiệu ứng mở modal */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
     </style>
 <section>
     <div class="breadcrumb_wrapper">
@@ -265,7 +350,34 @@
                             <div class="section-title">
                                 <h3 style="color: white">Comments (*)</h3>
                             </div>
-
+                            {{-- FORM BÌNH LUẬN --}}
+                        @if (Auth::guard('web')->check())
+                       
+                        <form action="" method="POST" class="contact-form">
+                            <div class="col-md-12">
+                                    <div class="form-group comments">
+                                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
+                                        <small id="comment-error" style="color:aliceblue"></small>
+                                        <div class="col-md-1" style="float: right;">
+                                            <button type="button" class="css-button" id="btn-comments">Gửi</button>
+                                        </div>
+                                    </div>
+                            </div>                                
+                        </form>
+                    @else
+                    <form action="" method="POST" class="contact-form">
+                        <div class="col-md-12">
+                                <div class="form-group comments">
+                                    <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
+                                    <small id="comment-error" style="color:aliceblue"></small>
+                                    <div class="col-md-1" style="float: right;">
+                                        <button type="button" class="css-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Gửi</button>
+                                    </div>
+                                </div>
+                        </div>                                
+                    </form>
+                    @endif
+                    {{-- END FORM BÌNH LUẬN --}}
                             <div id="comment">
                                @include('frontend.posts.list-comment',['Comments'=>$posts->Comments])
                             </div>
@@ -275,34 +387,7 @@
 
 
 
-                        {{-- FORM BÌNH LUẬN --}}
-                        @if (Auth::guard('web')->check())
-                       
-                            <form action="" method="POST" class="contact-form">
-                                <div class="col-md-12">
-                                        <div class="form-group comments">
-                                            <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
-                                            <small id="comment-error" style="color:aliceblue"></small>
-                                            <div class="col-md-1" style="float: right;">
-                                                <button type="button" class="css-button" id="btn-comments">Gửi</button>
-                                            </div>
-                                        </div>
-                                </div>                                
-                            </form>
-                        @else
-                        <form action="" method="POST" class="contact-form">
-                            <div class="col-md-12">
-                                    <div class="form-group comments">
-                                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
-                                        <small id="comment-error" style="color:aliceblue"></small>
-                                        <div class="col-md-1" style="float: right;">
-                                            <button type="button" class="css-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Gửi</button>
-                                        </div>
-                                    </div>
-                            </div>                                
-                        </form>
-                        @endif
-                        {{-- END FORM BÌNH LUẬN --}}
+                        
 
 
 
@@ -477,6 +562,18 @@
 
 
     // TRẢ LỜI BÌNH LUẬN
+    $(document).on('click', function(event) {
+        // Kiểm tra nếu click vào ngoài form trả lời và nút "Phản hồi"
+        if (!$(event.target).closest('.formRep, .btn-rep, ').length) {
+            // Đóng tất cả các form trả lời
+            $('.formRep').slideUp();
+            $('.edit-comment').slideUp();
+            $('.edit-reply').slideUp();
+            // Hiển thị lại form bình luận chính
+            $('.contact-form').slideDown();
+        }
+    });
+
     $(document).on('click', '.btn-rep',function(ev){
         ev.preventDefault();
         let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
@@ -532,36 +629,46 @@
         })
     });
     //Report
-    function attachReportEvent() {
-        $('.report-comment').off('click').on('click', function(ev) {
-            ev.preventDefault();
-            var $this = $(this);  // Lưu tham chiếu đúng của nút bấm
-            var commentId = $this.data('id');  // Lấy ID của comment được báo cáo
+    let commentId = null;
 
-            $.ajax({
-                url: '{{ route("comment.report") }}',
-                method: 'POST',
-                data: {
-                    id: commentId,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    if (response.success) {
-                        // Cập nhật giao diện: thay đổi nội dung nút bấm
-                        $this.text("Đã báo cáo").css("color", "gray");
-                        alert("Bình luận đã được báo cáo.");
-                    } else {
-                        alert("Đã có lỗi xảy ra khi báo cáo bình luận.");
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Có lỗi xảy ra khi báo cáo bình luận.");
-                }
-            });
+    // Mở modal và lưu lại ID bình luận
+    function openModal(id) {
+        commentId = id;
+        document.getElementById('reportModal').style.display = 'flex';
+    }
+
+    // Đóng modal
+    function closeModal() {
+        document.getElementById('reportModal').style.display = 'none';
+    }
+
+    // Gửi báo cáo bằng AJAX
+    function submitReport() {
+        const reportContent = document.getElementById('reportContent').value;
+        if (!reportContent) {
+            alert("Vui lòng nhập nội dung báo cáo.");
+            return;
+        }
+        
+        // Sử dụng AJAX để gửi báo cáo đến server
+        $.ajax({
+            url: 'ajax/report-comment',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                comment_id: commentId,
+                report: reportContent
+            },
+            success: function(response) {
+                alert("Báo cáo của bạn đã được gửi.");
+                closeModal();
+            },
+            error: function(error) {
+                alert("Đã xảy ra lỗi khi gửi báo cáo.");
+            }
         });
     }
-    // Gọi hàm ngay khi tải trang để gắn sự kiện cho các bình luận có sẵn
-    attachReportEvent();
+
 
     //Update comments cha
     $(document).on('click', '.edit-comment', function() {
@@ -572,8 +679,8 @@
         const currentContent = $(this).data('content');
 
         // Hiển thị input để sửa nội dung bình luận
-        const editHtml = `<textarea class="form-control" id="edit-content-${commentId}" rows="1" cols="78px">${currentContent}</textarea>
-                        <button type="button" class="btn-save-edit" data-id="${commentId}"  style="color: #1E90FF;">Lưu</button>
+        const editHtml = `<textarea class="form-control" id="edit-content-${commentId}" rows="1" cols="95px">${currentContent}</textarea>
+                        <button type="button" class="btn-save-edit" data-id="${commentId}"  style="color: #1E90FF;margin-left: 550px;">Lưu</button>
                         `;
         
         $(this).closest('.single-comment-box').find('.comment-text').html(editHtml);

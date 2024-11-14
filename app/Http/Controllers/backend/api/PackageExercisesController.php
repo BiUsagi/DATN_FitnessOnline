@@ -19,6 +19,8 @@ class PackageExercisesController extends Controller
     }
     public function saveExercises(Request $request, $id, $day)
     {
+        $ptId = $request->input('pt_id'); 
+
         Package_Exercise::where('workout_package_id', $id)
             ->where('day_number', $day)
             ->delete();
@@ -34,6 +36,7 @@ class PackageExercisesController extends Controller
                     'day_number' => $day,
                     'sequence' => $index + 1,
                     'is_day_off' => false,
+                    'pt_id' => $ptId,
                 ]);
             }
         }

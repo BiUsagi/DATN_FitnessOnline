@@ -94,4 +94,9 @@ class User extends Authenticatable
 
         return response()->json(['success' => true, 'message' => 'Vai trò đã được gán cho user.']);
     }
+
+    public function userVideos()
+    {
+        return $this->hasMany(user_videos::class, 'user_id');
+    }
 }

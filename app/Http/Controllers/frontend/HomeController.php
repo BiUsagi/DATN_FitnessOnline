@@ -21,7 +21,7 @@ class HomeController extends Controller
         $top_workout_packages = Workout_package::orderBy('id', 'DESC')->get();//lấy bài viết mới nhất nhất
         $AllPT = staff::all();
         // $TopPost= Posts::orderBy('id', )
-        // dd($AllPT); show ra dữ liệu xem trước
+        // dd($AllPT); 
         // return view('frontend/index',compact('slides','PTHot','topPost','AllPT'));
         return view('frontend/index')->with([
             'slides' => $slides,

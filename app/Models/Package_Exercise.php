@@ -15,7 +15,8 @@ class Package_Exercise extends Model
         'exercise_id',
         'day_number',
         'sequence',
-        'is_day_off'
+        'is_day_off',
+        'pt_id'
     ];
     public function workoutPackage()
     {
