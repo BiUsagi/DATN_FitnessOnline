@@ -75,14 +75,9 @@
             </div>
             <div class="list-exercise">
                 {{-- render bài tập --}}
-                {{-- <div class="default-layout">
-                    <div class="avatar-pt">
-                        <img src="assets/backend/img/4.jpg" alt="">
-                    </div>
-                    <p>Chào mừng bạn đến với gói tập của</p>
-                    <h2>{{ Auth::user()->user_name }}</h2>
-
-                </div> --}}
+                <div class="default-layout">
+                    <p>Vui lòng chọn một ngày để xem các bài tập.</p>
+                </div>
 
                 <div class="made-with">
                     <p>Made with <i class="fa-solid fa-dumbbell"></i> · Powered by GymFitness</p>
@@ -330,7 +325,7 @@
             $.get(`http://127.0.0.1:8000/api/admin/workout_hub/${packageId}/day/${dayNumber}`, function(res) {
                 exercisesData = res;
                 let returnData = '';
-                if (exercisesData.length === 0) {
+                if (exercisesData.length === 0 && dayNumber) {
                     returnData = `<p class="no-data">Hiện tại chưa có bài tập nào được thêm vào</p>`;
                 } else {
                     exercisesData.forEach((item, index) => {
@@ -492,9 +487,8 @@
 
                     const dayNumber = item.getAttribute('data-day');
                     day.textContent = 'Ngày ' + dayNumber;
-
                     loadExercises(dayNumber);
-
+                    
                     updateURL(dayNumber);
 
                     currentDay = dayNumber;

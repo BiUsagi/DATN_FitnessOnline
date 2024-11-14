@@ -297,7 +297,7 @@
                 } else {
                     //xem 
                     $('#button-pay').html(
-                        '<button type="button" class="by-now">Xem</button>'
+                        '<a href="{{route('workout_hub', $package->id)}}" class="by-now">Xem</a>'
                     )
                 }
             })

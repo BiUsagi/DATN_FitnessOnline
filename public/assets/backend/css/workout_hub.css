@@ -1082,3 +1082,165 @@ video {
     font-size: 14px;
     font-weight: 500;
 }
+/* Cách tạo hiệu ứng cho các thông báo */
+.view-default p,
+.no-feedback {
+    background-color: #f8f9fa;  /* Màu nền nhạt */
+    color: #6c757d;             /* Màu chữ xám nhạt */
+    border-left: 4px solid #ffc107; /* Viền trái màu vàng */
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 5px; /* Bo góc */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Tạo bóng mờ */
+    animation: fadeIn 0.5s ease-out; /* Hiệu ứng hiển thị */
+    font-weight: 600;
+}
+
+/* Hiệu ứng cho khi PT chưa phản hồi */
+.no-feedback {
+    font-weight: bold; /* Đậm chữ */
+    color: #dc3545;    /* Màu chữ đỏ tươi để tạo sự chú ý */
+    background-color: #fff3cd; /* Nền màu vàng nhẹ */
+}
+
+/* Cách tạo hiệu ứng cho phần phản hồi của PT */
+.gave-feedback {
+    background-color: #d4edda; /* Nền xanh lá nhạt */
+    color: #155724;            /* Màu chữ xanh lá đậm */
+    border-left: 4px solid #28a745; /* Viền xanh lá đậm */
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    animation: slideIn 0.5s ease-out; /* Hiệu ứng trượt */
+}
+
+/* Cả hai hiệu ứng fadeIn và slideIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Phong cách tổng thể cho phần view default */
+#default-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #1295c5, #000); /* Gradient chủ đạo xanh và đen */
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Hình ảnh minh họa */
+#default-view img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tiêu đề */
+#default-view h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    animation: slide-in 0.6s ease-out forwards;
+}
+
+/* Đoạn mô tả */
+#default-view p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    max-width: 90%;
+    margin-bottom: 25px;
+    animation: fade-in 1s ease-out forwards;
+}
+
+/* Nút kêu gọi hành động */
+#default-view .cta-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1295c5;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+#default-view .cta-button:hover {
+    background-color: #1295c5;
+    color: #ffffff;
+}
+
+/* Icon quả tạ */
+.icon-container {
+    margin-top: 20px;
+    font-size: 40px;
+    color: #ffffff;
+    animation: bounce 1s infinite alternate;
+}
+
+/* Animation cho hiệu ứng động */
+@keyframes slide-in {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+    #default-view {
+        padding: 30px;
+    }
+
+    #default-view h2 {
+        font-size: 1.8rem;
+    }
+
+    #default-view p {
+        font-size: 1rem;
+    }
+}
+
