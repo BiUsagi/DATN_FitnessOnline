@@ -45,7 +45,7 @@
                                         <td>{{ $p->title }}</td>
                                         <td>{{ $p->description }}</td>
                                         <td>{{ $p->image }}</td>
-                                        <td>{{ $p->content }}</td>
+                                        <td>{!! $p->content !!}</td>
                                         <td>
                                         <a class="btn btn-outline-success" data-bs-placement="top" 
                                         data-bs-title="Xem Chi Tiết">

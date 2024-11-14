@@ -38,20 +38,19 @@ class CommentsController extends Controller
     }
 
     //Report comment
-    public function reportComment(Request $request){
-        $comment = Comment::find($request->id);
-
-        if ($comment) {
-            // Xử lý báo cáo
-            $comment->report = $comment->report = 1; // hoặc thay đổi trạng thái báo cáo
-            $comment->save();
-
-            return response()->json(['success' => true, 'message' => 'Bình luận đã được báo cáo.']);
-        } else {
-            // Không tìm thấy bình luận
-            return response()->json(['success' => false, 'message' => 'Không tìm thấy bình luận.']);
-        }
-    }
+    public function reportComment(Request $request)
+    {
+        $request->validate([
+            'comment_id' => 'required|integer|exists:comments,id',
+            'report' => 'required|string|max:255'
+        ]);
+    
+        $comment = Comment::find($request->comment_id);
+        $comment->report = $request->report;
+        $comment->save();
+    
+        return response()->json(['success' => 'Báo cáo đã được gửi.']);
+    }    
      // Bảo vệ các route yêu cầu đăng nhập
     public function __construct()
     {

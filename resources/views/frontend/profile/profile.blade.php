@@ -1,90 +1,92 @@
 @extends('frontend/layouts/app-user')
 
+
+@section('custom_css')
+    <link rel="stylesheet" href="assets/frontend/css/info.css">
+@endsection
+
+
 @section('main')
-<div id="container">
-    <div class="containerr">
+<div class="box-header"></div>
+    <section>
         
-        <div class="form-container">
-            <h2 class="form-header">Chỉnh Sửa Thông Tin</h2>
 
-            <!-- Hiển thị thông báo khi cập nhật thành công -->
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <div class="container ctiet-main">
+            <div class="row">
+                @include('frontend/profile/layouts/sidebar')
 
-            <!-- Form cập nhật thông tin -->
-            <form action="{{ route('profile.update') }}" method="POST">
-                @csrf
-                @method('PUT')
 
-                <div class="form-group">
-                    <label for="fullname">Họ và Tên</label>
-                    <input type="text" id="fullname" name="fullname" value="{{ old('fullname', $user->fullname) }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="{{ $user->email }}" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Số điện thoại</label>
-                    <input type="tel" id="phone" name="phone" value="{{ old('phone', $user->phone_number) }}" placeholder="Nhập số điện thoại">
-                </div>
-
-                <div class="form-group">
-                    <label for="dob">Ngày sinh</label>
-                    <input type="date" id="dob" name="dob" value="{{ old('dob', $user->birthday) }}">
-                </div>
-
-                <div class="form-group">
-                    <label>Giới tính</label>
-                    <div class="gender-group">
-                        <input type="radio" id="male" name="gender" value="male" {{ $user->gender == 'male' ? 'checked' : '' }}>
-                        <label for="male">Nam</label>
+                <!-- main -->
+                <div class="col-9 bd-left ctiet-thongtin">
+                    <div class="row">
+                        <div class="col-12 ctiet-title">
+                            <p>HỒ SƠ CỦA TÔI</p>
+                            Quản lý thông tin hồ sơ để bảo mật tài khoản
+                        </div>
+                        <!-- thongtin -->
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-4 justify-content-end d-flex mg-top">Tên:</div>
+                                <div class="col-8 mg-top">{{ $user->user_name }}</div>
                         
-                        <input type="radio" id="female" name="gender" value="female" {{ $user->gender == 'female' ? 'checked' : '' }}>
-                        <label for="female">Nữ</label>
+                                <div class="col-4 justify-content-end d-flex mg-top">Email:</div>
+                                <div class="col-8 mg-top">{{ $user->email }}</div>
                         
-                        <input type="radio" id="other" name="gender" value="other" {{ $user->gender == 'other' ? 'checked' : '' }}>
-                        <label for="other">Khác</label>
+                                <div class="col-4 justify-content-end d-flex mg-top">Số Điện Thoại:</div>
+                                <div class="col-8 mg-top">
+                                    @if ($user->phone_number)
+                                        {{ $user->phone_number }}
+                                    @else
+                                        <a href="{{ route('profile.edit') }}">Cập Nhật Số Điện Thoại</a>
+                                    @endif
+                                </div>
+                        
+                                <div class="col-4 justify-content-end d-flex mg-top">Giới Tính:</div>
+                                <div class="col-8 mg-top">
+                                    @if ($user->gender == 1)
+                                        <i class="fa-solid fa-mars blue"></i> Nam
+                                    @elseif($user->gender == 0)
+                                        <i class="fa-solid fa-venus pink"></i> Nữ
+                                    @else
+                                        <i class="bi bi-gender-trans text-secondary"></i> Khác
+                                    @endif
+                                </div>
+                        
+                                <div class="col-4 justify-content-end d-flex mg-top">Ngày Sinh:</div>
+                                <div class="col-8 mg-top">
+                                    @if ($user->birthday)
+                                        {{ $user->birthday }}
+                                    @else
+                                        <a href="{{ route('profile.edit') }}">Cập nhật ngày sinh</a>
+                                    @endif
+                                </div>
+                        
+                                <div class="col-4 justify-content-end d-flex mg-top">Địa chỉ:</div>
+                                <div class="col-8 mg-top">
+                                    @if ($user->address)
+                                        {{ $user->address }}
+                                    @else
+                                        <a href="{{ route('profile.edit') }}">Cập nhật địa chỉ</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- END thong tin -->
+
+                        <!-- avata -->
+                        <div class="col-4 row">
+                            <div class="col-12 mg-top">Hình ảnh cá nhân:</div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="{{ ('uploads/user_image/' . $user->avatar) }}" alt="" class="ctiet-imguserbig">
+                            </div>
+                        </div>
+                        <!-- END avata -->
                     </div>
                 </div>
-
-                <button type="submit" class="submit-btn">Cập Nhật Thông Tin</button>
-            </form>
+                <!-- END main -->
+            </div>
         </div>
-    </div>
-</div>
-    <script>
-        // JavaScript hiển thị hình ảnh đại diện đã chọn
-        const avatarInput = document.getElementById('avatar');
-        const avatarPreview = document.getElementById('avatarPreview');
 
-        avatarInput.addEventListener('change', function () {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    avatarPreview.src = e.target.result;
-                    avatarPreview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // JavaScript xử lý địa chỉ dựa trên tỉnh/huyện/xã (mẫu, cần thêm API hoặc dữ liệu địa phương để tự động điền)
-        document.getElementById('province').addEventListener('change', function () {
-            // Code để cập nhật danh sách huyện dựa trên tỉnh đã chọn
-        });
-        document.getElementById('district').addEventListener('change', function () {
-            // Code để cập nhật danh sách xã dựa trên huyện đã chọn
-        });
-    </script>
-
-
-
-
+    </section>
 @endsection

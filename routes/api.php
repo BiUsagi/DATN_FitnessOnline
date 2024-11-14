@@ -36,6 +36,7 @@ Route::get('/user', function (Request $request) {
 
 //User Upload
 Route::post('/video_user', [UserVideoController::class, 'store']);
+Route::get('/get-video/{workout_id}/{user_id}/{day_number}', [UserVideoController::class, 'getVideo'])->name('get_video');
 
 Route::group(['prefix' => 'admin',], function () {
     //API of exercises
