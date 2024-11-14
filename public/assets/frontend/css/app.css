@@ -8,7 +8,8 @@
 
 .nav-item:hover .dropdown-menu {
     display: block;
-    margin-top: 12rem;
+    margin-top: 11.7rem;
+    /* margin-top: 12rem; */
     right: 0;
     background-color: #5d5d5d;
     width: 300px;
@@ -18,48 +19,53 @@
     background-color: blue;
 }
 
-.text{
+.text {
     font-size: 13px;
 }
 
-.name{
+.name {
     text-align: center;
     color: #fff;
     font-size: 14px;
 }
 
-.underline{
+.underline {
     text-decoration: underline;
 
 }
 
-.rounded-circle{
+.rounded-circle {
     width: 30px;
 }
 
-.account{
+.account {
     display: flex !important;
     align-items: center !important;
 }
-hr{
+
+hr {
     margin-left: 10px;
     margin-right: 10px;
     color: #fff;
 }
-a{
+
+a {
     text-decoration: none !important;
 }
 
-a{
+a {
     text-decoration: none !important;
 }
-.text-footer{
+
+.text-footer {
     font-size: 15px;
     color: white;
 }
-.text-footer a{
+
+.text-footer a {
     color: white;
 }
+
 .team-block img:hover {
     margin: auto;
     display: block;

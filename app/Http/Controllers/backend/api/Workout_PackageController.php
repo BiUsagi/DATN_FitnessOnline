@@ -131,6 +131,7 @@ class Workout_PackageController extends Controller
     public function getDaysWithExerciseCount($id)
     {
         $package = Workout_package::with('exercises')->find($id);
+
         $days = [];
 
         for ($i = 1; $i <= $package->duration_days; $i++) {
