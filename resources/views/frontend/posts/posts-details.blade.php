@@ -42,6 +42,7 @@
         margin-top: 5px;
         margin-bottom: 2px;
         font-size: 15px;
+        width: 665px;
     }
     
     .comment-actions {
