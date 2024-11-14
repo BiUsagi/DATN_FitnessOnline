@@ -21,17 +21,21 @@ class LoginController extends Controller
     {
         // Tìm người dùng theo email
         $user = User::where('email', $request->email)->first();
-
+        $role = User::where('role_012', $request->email)->first();
         // Kiểm tra xem người dùng có tồn tại không và so sánh mật khẩu
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['message' => 'Thông tin đăng nhập không chính xác'], 401);
         }
         Auth::login($user);
-        $redirectUrl = $request->input('redirect_url') ?? route('index');
 
+        if ($user->role_012 == 1 || $user->role_012 == 2) {
+            $redirectUrl = route('admin');
+        } else {
+            $redirectUrl = $request->input('redirect_url') ?? route('index');
+        }
         // Tạo token khi người dùng đăng nhập thành công
         $token = $user->createToken('AdminAPI')->plainTextToken;
-        
+
         // Trả về token cùng thông tin người dùng
         return response()->json([
             'success' => true,

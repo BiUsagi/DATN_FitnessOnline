@@ -68,7 +68,7 @@
                         <p>Dù bạn muốn tăng cơ, giảm cân hay đơn giản là duy trì một lối sống lành mạnh, tập gym là một lựa chọn
                             hiệu quả và phù hợp với mọi đối tượng. Hãy bắt đầu hành trình tập luyện để có một cơ thể khỏe mạnh
                             và tự tin hơn mỗi ngày! </p>
-                        <a href="contact-us.html" class="btn">Get Started </a>
+                        {{-- <a href="contact-us.html" class="btn">Get Started </a> --}}
                     </div>
                 </div>
             </div>
@@ -332,8 +332,8 @@
                 <div class="swiper-wrapper">
                     @foreach ($AllPT as $PTall)
                         <div class="swiper-slide">
-                            <a href="#!" class="slides" aria-label="Slide 1" style="object-fit: cover; width:250px; height:300px">
-                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="object-fit:contain ;width:auto; height:280px">
+                            <a href="{{ route('info.trainer', ['id' => $PTall->id]) }}" class="slides" aria-label="Slide 1" style="object-fit: cover; width:250px; height:400px">
+                                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PTall->avatar) }}" alt="Post Image" style="object-fit:cover ;width:250px; height:385px; ">
                                 <div class="links">
                                     <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
                                 </div>

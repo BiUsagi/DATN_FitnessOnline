@@ -90,9 +90,9 @@ class CommentController extends Controller
 
 public function ReportedComments()
 {
-    $reportedComments = Comment::where('report', true) // Lọc comment bị report
+    $reportedComments = Comment::whereNotNull('report') // Lọc các comment bị report
         ->with(['replies' => function ($query) {
-            $query->where('report', true); // Lọc reply bị report
+            $query->whereNotNull('report'); // Lọc các reply bị report
         }, 'user', 'posts'])
         ->get()
         ->map(function ($comment) {
@@ -114,7 +114,7 @@ public function ReportedComments()
                 })
             ];
         });
-        
+
     return response()->json($reportedComments);
 }
 

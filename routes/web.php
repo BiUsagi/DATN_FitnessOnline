@@ -9,6 +9,7 @@ use App\Http\Controllers\frontend\ProfileController;
 use App\Http\Controllers\frontend\AjaxloginController;
 use App\Http\Controllers\frontend\CommentsController;
 use App\Http\Controllers\frontend\PostController;
+use App\Http\Controllers\frontend\VNPayController;
 use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
@@ -40,14 +41,21 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 // Route::get('/footer', [HomeController::class, 'footer'])->name('footer.index');
 
-Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
-Route::get('/posts', [PostController::class, 'posts'])->name('posts.index'); //các post
-Route::get('/posts/posts-details/{id}', [PostController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
+// profile
+Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
+Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/edit_', [ProfileController::class, 'edit_'])->name('profile.edit_');
+Route::get('/changepassword', [ProfileController::class, 'changePassword'])->name('profile.changepass');
+Route::post('/changepassword_', [ProfileController::class, 'changePassword_'])->name('profile.changepass_');
+
 Route::get('/trainers', [ProfileController::class, 'trainers'])->name('trainers.index');
 Route::get('/trainer/{id}', [ProfileController::class, 'info_trainer'])->name('info.trainer');
 Route::get('/staffrequest', [ProfileController::class, 'staff_request'])->name('staff_request.index');// đăng kí staff
 
 
+// posts
+Route::get('/posts', [PostController::class, 'posts'])->name('posts.index'); //các post
+Route::get('/posts/posts-details/{id}', [PostController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 
 //workout package
 Route::get('/workout_detail/{id}', [Workout_packageController::class, 'workout_detail'])->name('workout_detail');
@@ -66,6 +74,10 @@ Route::get('/workout_hub', [WorkoutPackagesController::class, 'workout_hub'])->n
 Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('workout_hub');
 
 Route::get('/workout_id/{workout_id}/user/{user_id}', [Workout_packageController::class, 'submit_exercise'])->name('submit_exercise');
+
+//vnpay
+Route::get('/thanhtoan', [VNPayController::class, 'index'])->name('thanhtoan1');
+Route::post('/thanhtoan2', [VNPayController::class, 'createpay'])->name('thanhtoan2');
 
 
 // Back End
@@ -199,7 +211,7 @@ Route::group(['prefix' => 'ajax'], function () {
     route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
     route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
-    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('comment.report');
+    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('report.comment');
     Route::put('/comment/{id}', [CommentsController::class, 'updateComment'])->name('ajax.comment.update');
     Route::delete('/comment/{id}', [CommentsController::class, 'deleteComment'])->name('ajax.comment.delete');
     Route::put('/comment/reply/{id}', [CommentsController::class, 'updateReply'])->name('comment.reply.update');

@@ -41,7 +41,8 @@
                             <h3>Thông Tin <span>Cá Nhân</span></h3>
                         </div>
 
-                        <form id="applyForm" class="card">
+                        <form id="applyForm" action= "#" class="card" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <p class="text-secondary text-center pt-3 fst-italic"> *Chọn ô <span class="note">*Không
                                     Đổi*</span> hoặc
                                 <span class="note">bỏ
@@ -55,7 +56,7 @@
                                     </div>
                                     <div class="col-md-7 pe-5">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingName"
+                                            <input type="text" class="form-control" name="name" id="floatingName"
                                                 placeholder="name@example.com" />
                                             <label for="floatingName">{{ $data->user_name }}</label>
                                         </div>
@@ -78,7 +79,7 @@
                                     </div>
                                     <div class="col-md-7 pe-5">
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="floatingEmail"
+                                            <input type="email" class="form-control" name="email" id="floatingEmail"
                                                 placeholder="name@example.com" />
                                             <label for="floatingEmail">{{ $data->email }}</label>
                                         </div>
@@ -120,7 +121,7 @@
                                     </div>
                                     <div class="col-md-7 pe-5">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingPhone"
+                                            <input type="text" class="form-control" name="phonenumber" id="floatingPhone"
                                                 placeholder="name@example.com" />
                                             <label for="floatingPhone">{{ $data->phone_number }}</label>
                                         </div>
@@ -142,8 +143,8 @@
                                     </div>
                                     <div class="col-md-7 pe-5">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingAddress"
-                                                placeholder="name@example.com" />
+                                            <input type="text" class="form-control" name="address"
+                                                id="floatingAddress" placeholder="name@example.com" />
                                             <label for="floatingAddress">{{ $data->address }}</label>
                                         </div>
                                     </div>
@@ -163,7 +164,8 @@
                                         <h6 class="mb-0">Giới Thiệu</h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <textarea class="form-control" style="min-height: 10rem;" placeholder="Giới thiệu 1 chút về bản thân..."></textarea>
+                                        <textarea class="form-control" name="introduction" style="min-height: 10rem;"
+                                            placeholder="Giới thiệu 1 chút về bản thân..."></textarea>
                                     </div>
                                 </div>
                                 <hr class="mx-n3">
@@ -173,7 +175,7 @@
                                         <h6 class="mb-0">Hồ Sơ</h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <input class="form-control " id="formFileLg" type="file" />
+                                        <input class="form-control " name="file-up" id="formFileLg" type="file" />
                                         <div class="small text-muted mt-2">Tải lên CV/Resume của bạn hoặc bất kì tài liệu
                                             nào liên quan.
                                         </div>
@@ -182,7 +184,7 @@
                                 <hr class="mx-n3">
 
                                 <div class="px-5 py-4">
-                                    <button type="submit" class="btn btn-primary ">Gửi Hồ Sơ</button>
+                                    <button type="submit" id="submitButton" class="btn btn-primary">Gửi Hồ Sơ</button>
                                 </div>
                             </div>
                         </form>
@@ -196,6 +198,43 @@
 
 
 @section('custom_js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#submitButton').on('click', function(e) {
+                e.preventDefault();
+
+                var formData = new FormData(document.getElementById('applyForm'));
+
+                let userid = @json(Auth::user()->id);
+
+                $.ajax({
+                    url: "{{ route('submit.application', ['id' => ':id']) }}".replace(':id',
+                    userid);,
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        Swal.fire({
+                            title: "Thành công!",
+                            text: "Hồ sơ của bạn đã được gủi đi!",
+                            icon: "success"
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: "Lỗi!",
+                            text: "Có lỗi xảy ra khi gửi hồ sơ.",
+                            icon: "error"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
     <script>
         function previewImage(event) {
             const image = document.getElementById('avatar-image');
