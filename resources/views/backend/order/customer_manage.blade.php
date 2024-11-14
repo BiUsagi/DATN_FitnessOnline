@@ -41,7 +41,7 @@
                                         <td>{{  $list->workoutPackage->package_name }}</td>
                                         <td style="text-align:center;">11/11/2024</td>
                                         <td style="text-align:center;">
-                                           <a href="#" class="btn btn-primary text-white" data-bs-title="Xóa lộ trình" ><i class="bi bi-eye-fill"></i></a>                                           
+                                           <a href="/admin/customer_days/{{  $list->workout_package_id }}/{{  $list->user_id }}" class="btn btn-primary text-white" data-bs-title="Xóa lộ trình" ><i class="bi bi-eye-fill"></i></a>                                           
                                         </td>
                                     </tr>
                                     @endforeach
