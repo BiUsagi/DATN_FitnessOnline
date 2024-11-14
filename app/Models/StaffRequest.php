@@ -18,6 +18,7 @@ class StaffRequest extends Model
         'new_avatar',
         'new_address',
         'new_phone_number',
+        'introduction',
         'certificate',
         'status',
         'approved_at',

@@ -16,7 +16,11 @@
     </head>
 
     <body>
-        <?php require_once("./config.php"); ?>             
+        <?php 
+            // require_once("./config.php"); 
+            $startTime = date("YmdHis");
+            $expire = date('YmdHis',strtotime('+15 minutes',strtotime($startTime)));
+        ?>            
         <div class="container">
             <div class="header clearfix">
                 <h3 class="text-muted">VNPAY DEMO</h3>
@@ -25,7 +29,7 @@
             <div class="table-responsive">
                 <form action="/vnpay_php/vnpay_create_payment.php" id="create_form" method="post">       
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="language">Loại hàng hóa </label>
                         <select name="order_type" id="order_type" class="form-control">
                             <option value="topup">Nạp tiền điện thoại</option>
@@ -33,15 +37,15 @@
                             <option value="fashion">Thời trang</option>
                             <option value="other">Khác - Xem thêm tại VNPAY</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="order_id">Mã hóa đơn</label>
-                        <input class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>"/>
+                        <input class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>" disabled />
                     </div>
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
-                        <input class="form-control" id="amount"
-                               name="amount" type="number" value="10000"/>
+                        <input class="form-control" id="amount" 
+                               name="amount" type="number" value="<?php echo $data['purchase_price'] ?>" disabled/>
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Nội dung thanh toán</label>
@@ -87,7 +91,7 @@
                         <input class="form-control" id="txtexpire"
                                name="txtexpire" type="text" value="<?php echo $expire; ?>"/>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <h3>Thông tin hóa đơn (Billing)</h3>
                     </div>
                     <div class="form-group">
@@ -212,9 +216,9 @@
                         <label >Điện thoại</label>
                         <input class="form-control" id="txt_inv_mobile"
                                name="txt_inv_mobile" type="text" value="02437764668"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán Post</button>
-                    <button type="submit" name="redirect" id="redirect" class="btn btn-default">Thanh toán Redirect</button>
+                    </div> -->
+                    <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán</button>
+                    <button type="button" name="redirect" id="redirect" class="btn btn-default" onclick="history.back()">Quay lại</button>
 
                 </form>
             </div>
@@ -226,8 +230,5 @@
             </footer>
         </div>  
        
-         
-
-
     </body>
 </html>
