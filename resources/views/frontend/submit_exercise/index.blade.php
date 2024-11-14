@@ -60,6 +60,7 @@
             <div class="list-exercise">
                 <h2>Video đã nộp</h2>
                 <div class="container-video">
+                    
                     <video id="videoPlayer" src="uploads/user_video/1731254189.mp4" controls width="100%" max-height="550px"></video>
                 </div>
                 <div class="line"></div>

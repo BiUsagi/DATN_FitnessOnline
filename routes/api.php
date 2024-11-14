@@ -16,6 +16,7 @@ use App\Http\Controllers\backend\api\PostController;
 use App\Http\Controllers\Backend\api\Workout_hubController;
 use App\Http\Controllers\backend\api\WalletController;
 use App\Http\Controllers\backend\api\DepositHistoriesController;
+use App\Http\Controllers\backend\api\OrderController;
 use App\Models\User;
 
 
@@ -109,6 +110,9 @@ Route::group(['prefix' => 'admin',], function () {
     //wallets
     Route::get('/wallet/{id}', [WalletController::class, 'wallet']);
     Route::put('/wallet/{id}/{dong}', [WalletController::class, 'addmoney']);
+
+    //feedback
+    Route::post('/feedback', [OrderController::class, 'sendFeedback']);
 
 
 });

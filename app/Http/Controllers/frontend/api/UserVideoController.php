@@ -39,6 +39,7 @@ class UserVideoController extends Controller
     // Kiểm tra xem có video hay không, nếu có thì trả về video, nếu không thì trả về thông báo lỗi
     if ($userVideo) {
         return response()->json([
+            'video_id'=> $userVideo->id, //lấy id video
             'status' => 'success',
             'video_url' => asset('uploads/user_video/' . $userVideo->video_path), // Đảm bảo đường dẫn video chính xác
         ]);
