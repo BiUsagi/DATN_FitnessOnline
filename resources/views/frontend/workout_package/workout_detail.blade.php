@@ -291,21 +291,17 @@
             //     let order = res;
             //     console.log('res: ' + order);
 
-            //     if (order == null || Object.keys(order).length === 0) {
-            //         $('#button-pay').html(
-            //             '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
-            //         )
-            //     } else {
-            //         //xem 
-            //         $('#button-pay').html(
-            //             '<button type="button" class="by-now">Xem</button>'
-            //         )
-            //     }
-            // })
-
-            $('#button-pay').html(
-                '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
-            )
+                if (order == null || Object.keys(order).length === 0) {
+                    $('#button-pay').html(
+                        '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
+                    )
+                } else {
+                    //xem 
+                    $('#button-pay').html(
+                        '<a href="{{route('workout_hub', $package->id)}}" class="by-now">Xem</a>'
+                    )
+                }
+            })
         @else
             $('#button-pay').html('<a href="#1" class="by-now">Đăng nhập để mua gói</a href="#1">')
         @endif
