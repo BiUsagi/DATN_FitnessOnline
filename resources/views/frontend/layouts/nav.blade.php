@@ -46,7 +46,7 @@
                                                     class="dropdown-item text-white">Nạp Tiền</a>
                                             </li>
                                             <li class="text">
-                                                <a href="{{ route('profile.index') }}"
+                                                <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}"
                                                     class="dropdown-item text-white">Thông
                                                     Tin Tài Khoản</a>
                                             </li>
