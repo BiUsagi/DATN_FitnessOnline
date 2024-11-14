@@ -199,6 +199,7 @@
 
 @section('custom_js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             $('#submitButton').on('click', function(e) {
@@ -210,16 +211,20 @@
 
                 $.ajax({
                     url: "{{ route('submit.application', ['id' => ':id']) }}".replace(':id',
-                    userid);,
+                        userid),
                     type: 'POST',
                     data: formData,
                     contentType: false,
                     processData: false,
                     success: function(response) {
+                        console.log(response);
                         Swal.fire({
                             title: "Thành công!",
-                            text: "Hồ sơ của bạn đã được gủi đi!",
+                            text: "Hồ sơ của bạn đã được gửi đi!",
                             icon: "success"
+                        }).then(() => {
+                            window.location.href =
+                                "{{ route('index') }}";
                         });
                     },
                     error: function(error) {
