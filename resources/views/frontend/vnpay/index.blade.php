@@ -16,18 +16,21 @@
     </head>
 
     <body>
+
         <?php 
             // require_once("./config.php"); 
             $startTime = date("YmdHis");
             $expire = date('YmdHis',strtotime('+15 minutes',strtotime($startTime)));
         ?>            
+
         <div class="container">
             <div class="header clearfix">
                 <h3 class="text-muted">VNPAY DEMO</h3>
             </div>
             <h3>Tạo mới đơn hàng</h3>
             <div class="table-responsive">
-                <form action="/vnpay_php/vnpay_create_payment.php" id="create_form" method="post">       
+                <form action="{{route('payment.create')}}" id="create_form" method="post"> 
+                    @csrf      
 
                     <!-- <div class="form-group">
                         <label for="language">Loại hàng hóa </label>
