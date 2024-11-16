@@ -46,7 +46,7 @@
                                                     class="dropdown-item text-white">Nạp Tiền</a>
                                             </li>
                                             <li class="text">
-                                                <a href="{{ route('profile.index') }}"
+                                                <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}"
                                                     class="dropdown-item text-white">Thông
                                                     Tin Tài Khoản</a>
                                             </li>
@@ -54,13 +54,12 @@
                                                 <a href="{{ route('workout_bought', Auth::user()->id) }}"
                                                     class="dropdown-item text-white">Gói tập của tôi</a>
                                             </li>
-                                            @if (Auth::user()->role === 1)
+                                            @if (Auth::user()->role_012 === 1 || Auth::user()->role_012 === 2)
                                                 <li class="text">
                                                     <a href="{{ route('admin') }}"
                                                         class="dropdown-item text-white">Trang quản trị</a>
                                                 </li>
                                             @else
-                                                
                                             @endif
                                             <li class="text">
                                                 <form action="{{ route('logout.index') }}" method="POST">

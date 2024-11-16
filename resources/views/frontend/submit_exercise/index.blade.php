@@ -29,7 +29,17 @@
         </div>
     </header>
     <div id="main">
-        <div id="content">
+        <div id="default-view">
+            <img src="https://zshop.vn/blogs/wp-content/uploads/2022/08/ezgif.com-gif-maker-15-1.png" alt="Hình ảnh tập gym" />
+            <h2>Danh sách Video Đã Nộp</h2>
+            <p>Cảm ơn bạn đã nộp video bài tập của mình! Những video này sẽ được huấn luyện viên (PT) của chúng tôi kiểm tra và đánh giá. Đảm bảo rằng bạn đã thực hiện đúng theo yêu cầu của bài tập, và bạn sẽ nhận được phản hồi sớm nhất có thể.</p>
+            <p>Hãy tiếp tục theo dõi thông báo từ PT của bạn để cải thiện kết quả tập luyện và đạt được mục tiêu sức khỏe của mình.</p>
+            {{-- <a href="/" class="cta-button">Khám phá ngay</a> --}}
+            <div class="icon-container">
+                <i class="fas fa-dumbbell"></i>
+            </div>
+        </div>
+        <div id="content" style="display: none">
             <div class="title-day">
                 <div class="box-left">
                     <div class="title">
@@ -59,7 +69,11 @@
             </div>
             <div class="list-exercise">
                 <h2>Video đã nộp</h2>
+                <div class="view-default">
+                    <p>Bạn chưa nộp video cho ngày này</p>
+                </div>
                 <div class="container-video">
+                    
                     <video id="videoPlayer" src="uploads/user_video/1731254189.mp4" controls width="100%" max-height="550px"></video>
                 </div>
                 <div class="line"></div>
@@ -67,11 +81,13 @@
                 <h2 class="feedback-of-pt">Phản hồi của PT</h2>
                 <div class="content-feedback">
                     <i class="fa-regular fa-message"></i>
-                    <p>"Chào bạn! Mình đã xem video tập luyện của bạn, và phải nói là bài tập rất tốt! 💪
+                    <p class="gave-feedback">"Chào bạn! Mình đã xem video tập luyện của bạn, và phải nói là bài tập rất tốt! 💪
                         Kỹ thuật: Bạn đã thực hiện động tác rất chuẩn, đúng tư thế và kiểm soát tốt. Đặc biệt, cách bạn duy trì nhịp thở trong suốt bài tập là rất quan trọng, giúp tăng hiệu quả và tránh căng cơ quá mức.
                         Sự tập trung: Rất ấn tượng với sự tập trung của bạn! Điều này cho thấy bạn rất nghiêm túc và có trách nhiệm với bài tập của mình.
                         Cải thiện: Nếu có thể, bạn hãy thử giảm tốc độ một chút trong phần hạ tạ để cảm nhận cơ tốt hơn, điều này sẽ giúp tối đa hóa hiệu quả của bài tập.
-                        Tiếp tục phát huy nhé! Nếu bạn cần thêm lời khuyên hoặc muốn điều chỉnh động tác, đừng ngần ngại hỏi mình. Chúc bạn đạt được mục tiêu nhanh chóng và hiệu quả nhất! 🏋️‍♀️"</p>
+                        Tiếp tục phát huy nhé! Nếu bạn cần thêm lời khuyên hoặc muốn điều chỉnh động tác, đừng ngần ngại hỏi mình. Chúc bạn đạt được mục tiêu nhanh chóng và hiệu quả nhất! 🏋️‍♀️"
+                    </p>
+                    <p class="no-feedback">Hiện tại PT chưa có phản hồi gì cho bạn</p>
                 </div>
 
                 <h2 class="contact-of-pt">Thông tin liên hệ của PT</h2>
@@ -112,7 +128,7 @@
                             <p>Ngày {{ $i }}</p>
                             
                         </div>
-                        <div class="completed">
+                        <div class="completed" style="display: none">
                             <i class="fa-solid fa-circle-check"></i>    
                         </div>
                     </div>
@@ -130,10 +146,17 @@
         const day = document.querySelector('.day-number');
         const feedbackElement = document.querySelector('.content-feedback p');
         const durationElement = document.querySelector('.text-submit-exercise.duration');
+        const viewDefault = document.querySelector('.view-default');
+        const gaveFeedback = document.querySelector('.gave-feedback');
+        const noFeedback = document.querySelector('.no-feedback');
+        const defaultView = document.getElementById('default-view');
+        const contentView = document.getElementById('content');
         
         boxList.forEach(item => {
             item.addEventListener('click', function() {
                 if (!item.classList.contains('is-blocking')) {
+                    defaultView.style.display = 'none';
+                    contentView.style.display = 'block';
                     boxList.forEach(box => box.classList.remove('active-box-day'));
                     item.classList.add('active-box-day');
                     const dayNumber = item.getAttribute('data-day');
@@ -149,15 +172,18 @@
                                 // Cập nhật video
                                 videoPlayer.src = data.video_url;
                                 videoPlayer.style.display = 'block'; // Hiển thị video
-    
+                                viewDefault.style.display = 'none';
+                                gaveFeedback.style.display = 'block';
+                                noFeedback.style.display = 'none';
                                 // // Cập nhật phản hồi của PT
                                 // feedbackElement.textContent = data.feedback;
     
                                 // // Cập nhật thời gian video
                                 // durationElement.textContent = data.duration;
                             } else {
-                                // Xử lý khi không tìm thấy video
-                                alert(data.message);
+                                viewDefault.style.display = 'block';
+                                gaveFeedback.style.display = 'none';
+                                noFeedback.style.display = 'block';
                                 videoPlayer.style.display = 'none'; // Ẩn video nếu không tìm thấy
                             }
                         })

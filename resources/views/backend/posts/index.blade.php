@@ -1,6 +1,12 @@
 @extends('backend/layouts/app-admin')
 
 @section('main')
+<style>
+    .truncated-text {
+
+
+}
+</style>
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>Quản lý bài viết</h1>
@@ -27,14 +33,14 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th style="width: 10%;text-align: left; word-wrap: break-word">
                                             ID
                                         </th>
-                                        <th>Tiêu đề</th>
-                                        <th>Tóm tắt</th>
-                                        <th>Hình ảnh</th>
-                                        <th>Nội dung</th>
-                                        <th>Hành động</th>
+                                        <th style="width: 25%;text-align: left; word-wrap: break-word">Tiêu đề</th>
+                                        <th style="width: 20%;text-align: left; word-wrap: break-word">Tóm tắt</th>
+                                        <th style="width: 10%;text-align: left; word-wrap: break-word">Hình ảnh</th>
+                                        <th style="width: 30%;text-align: left; word-wrap: break-word">Nội dung</th>
+                                        <th style="width: 5%;text-align: left; word-wrap: break-word">Hành động</th>
                                     </tr>
                                 </thead>
                               
@@ -42,10 +48,10 @@
                                     @foreach($post as $p)
                                     <tr>
                                         <th scope="row">{{ $p->id }}</th>
-                                        <td>{{ $p->title }}</td>
-                                        <td>{{ $p->description }}</td>
-                                        <td>{{ $p->image }}</td>
-                                        <td>{!! $p->content !!}</td>
+                                        <td  class="truncated-text ">{{ $p->title }}</td>
+                                        <td  class="truncated-text">{{ $p->description }}</td>
+                                        <td  class="truncated-text">{{ $p->image }}</td>
+                                        <td  class="truncated-text">{!! $p->content !!}</td>
                                         <td>
                                         <a class="btn btn-outline-success" data-bs-placement="top" 
                                         data-bs-title="Xem Chi Tiết">

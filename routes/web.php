@@ -41,14 +41,21 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index'
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 // Route::get('/footer', [HomeController::class, 'footer'])->name('footer.index');
 
-Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
-Route::get('/posts', [PostController::class, 'posts'])->name('posts.index'); //các post
-Route::get('/posts/posts-details/{id}', [PostController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
+// profile
+Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
+Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/edit_', [ProfileController::class, 'edit_'])->name('profile.edit_');
+Route::get('/changepassword', [ProfileController::class, 'changePassword'])->name('profile.changepass');
+Route::post('/changepassword_', [ProfileController::class, 'changePassword_'])->name('profile.changepass_');
+
 Route::get('/trainers', [ProfileController::class, 'trainers'])->name('trainers.index');
 Route::get('/trainer/{id}', [ProfileController::class, 'info_trainer'])->name('info.trainer');
 Route::get('/staffrequest', [ProfileController::class, 'staff_request'])->name('staff_request.index');// đăng kí staff
 
 
+// posts
+Route::get('/posts', [PostController::class, 'posts'])->name('posts.index'); //các post
+Route::get('/posts/posts-details/{id}', [PostController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
 
 //workout package
 Route::get('/workout_detail/{id}', [Workout_packageController::class, 'workout_detail'])->name('workout_detail');
@@ -183,7 +190,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders/{id}', [OrderController::class, 'info_order'])->name('admin.info.orders')->middleware('can:manage_order'); // Chi tiết đơn hàng
     Route::get('/userorder', [OrderController::class, 'user'])->name('admin.userorder')->middleware('can:manage_order');
     Route::get('/customer_manage', [OrderController::class, 'customer_manage'])->name('admin.orders.customer_manage'); //Danh sách khách hàng
-    Route::get('/customer_days', [OrderController::class, 'customer_days'])->name('admin.orders.customer_days'); //Danh sách khách hàng
+    Route::get('/customer_days/{id}/{user_id}', [OrderController::class, 'customer_days'])->name('admin.orders.customer_days'); //Danh sách khách hàng
 
 
 
@@ -205,7 +212,7 @@ Route::group(['prefix' => 'ajax'], function () {
     route::post('/login', [AjaxloginController::class, 'login'])->name('ajax.login');
     route::get('/logout', [AjaxloginController::class, 'logout'])->name('ajax.logout');
     route::post('/comment/{id}', [CommentsController::class, 'comment'])->name('ajax.comment');
-    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('comment.report');
+    Route::post('/report-comment', [CommentsController::class, 'reportComment'])->name('report.comment');
     Route::put('/comment/{id}', [CommentsController::class, 'updateComment'])->name('ajax.comment.update');
     Route::delete('/comment/{id}', [CommentsController::class, 'deleteComment'])->name('ajax.comment.delete');
     Route::put('/comment/reply/{id}', [CommentsController::class, 'updateReply'])->name('comment.reply.update');

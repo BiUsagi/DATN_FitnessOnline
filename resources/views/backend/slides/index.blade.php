@@ -1,6 +1,6 @@
 @extends('backend/layouts/app-admin')
 @section('main')
-<main id="main" class="main">
+<main id="main" class="main"  style="min-height: 100vh">
   <div class="pagetitle">
     <h1>Quản lý giao diện </h1>
     <nav>
@@ -40,7 +40,7 @@
                                     <td class="text-center"  style="vertical-align: middle;">{{ $slide->description }}</td>
                                     <td class="text-center"  style="vertical-align: middle;">
                                         @if($slide->image)
-                                            <img src="{{ asset('assets/backend/img/accounts/'.$slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: cover;">
+                                            <img src="{{ asset('assets/backend/img/accounts/'.$slide->image) }}" alt="Avatar" width="70" height="70" style="object-fit: contain;">
                                         @else
                                             No Image
                                         @endif

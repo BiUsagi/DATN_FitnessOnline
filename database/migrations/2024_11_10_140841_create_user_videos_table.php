@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_videos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('workout_package_id'); // Liên kết đến gói tập
+            $table->unsignedBigInteger('workout_package_id')->nullable(); // Liên kết đến gói tập
             $table->integer('day_number')->comment('Ngày trong gói tập'); // Ngày trong gói tập
             $table->string('video_path');
             $table->text('description')->nullable()->comment('Mô tả về bài tập trong video');
