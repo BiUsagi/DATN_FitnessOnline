@@ -123,8 +123,17 @@ class PayController extends Controller
                 'voucher_id' => $voucher_id,
             ]);
         }
+
+        // session(['order_id' => $record->id]);
+
+        // dd([
+        //     'session_driver' => config('session.driver'),
+        //     'all_session_data' => session()->all(),
+        //     'order_id' => session('order_id'),
+        // ]);
         
-        return redirect()->back()->with('success', 'Mua thành công!');
+        // return redirect()->back()->with('success', 'Mua thành công!');
+        return response()->json($record);
     }
 
 

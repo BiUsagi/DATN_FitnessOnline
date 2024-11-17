@@ -79,6 +79,7 @@ Route::get('/workout_id/{workout_id}/user/{user_id}', [Workout_packageController
 Route::get('/thanhtoan', [VNPayController::class, 'index'])->name('thanhtoan1');
 Route::post('/thanhtoan2', [VNPayController::class, 'createpay'])->name('thanhtoan2');
 Route::post('/createpayment', [VNPayController::class, 'createpayment'])->name('payment.create');
+Route::get('/returnpay', [VNPayController::class, 'vnpayReturn'])->name('payment.return');
 
 
 // Back End

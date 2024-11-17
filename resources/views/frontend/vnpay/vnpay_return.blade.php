@@ -16,7 +16,7 @@
     </head>
     <body>
         <?php
-        require_once("./config.php");
+        // require_once("./config.php");
         $vnp_SecureHash = $_GET['vnp_SecureHash'];
         $inputData = array();
         foreach ($_GET as $key => $value) {
@@ -38,7 +38,7 @@
             }
         }
 
-        $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
+        $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
         ?>
         <!--Begin display -->
         <div class="container">

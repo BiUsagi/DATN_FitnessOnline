@@ -27,6 +27,7 @@
                 <input type="hidden" name="workout_package_id" id="workout_package_id" value="{{ $package->id }}">
                 <input type="hidden" name="original_price" id="original_price" value="{{ $package->price }}">
                 <input type="hidden" name="purchase_price" id="purchase_price" value="{{ $package->price }}">
+                <input type="hidden" name="order_id" id="order_id" value="">
             </div>
 
             <div class="default-padding">
@@ -390,7 +391,7 @@
         });
 
 
-        $('#form-pay').on('submit', function(ev) {
+        $('#form-pay').on('click', function(ev) {
             // ev.preventDefault();
             let form = $(this); // Lấy đối tượng form
             let payform = form.serialize(); // Lấy dữ liệu form
@@ -404,7 +405,12 @@
                     if (res.error) {
                         document.getElementById('displayText').innerHTML = res.error;
                     } else {
+                        let data=res;
+                        $('#order_id').val(data.id);
+                        console.log('oder.id:' + $('#order_id').val());
+
                         loadButton();
+                        load();
                         // alert('Mua thành công.');
                         // location.reload(); // Tải lại trang
                     }
