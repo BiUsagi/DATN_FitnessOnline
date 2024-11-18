@@ -117,6 +117,7 @@ class PayController extends Controller
 
         $checkOrder = Order::where('user_id', $user_id)->where('workout_package_id', $workout_package_id)->first();
         if (empty($checkOrder)) {
+
             $record = Order::create([
                 'user_id' => $user_id,
                 'workout_package_id' => $workout_package_id,
@@ -138,11 +139,9 @@ class PayController extends Controller
                 'data' => $record
             ]);
 
-
         } else {
             return response()->json(['message' => 'Đơn hàng đã tồn tại.']);
         }
-
     }
 
 
