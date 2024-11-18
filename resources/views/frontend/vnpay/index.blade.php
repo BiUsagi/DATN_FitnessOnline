@@ -32,64 +32,84 @@ $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
         <div class="table-responsive">
             <form action="{{route('payment.create')}}" id="create_form" method="post">
                 @csrf
+
+                <!-- in4 -->
                 <div class="form-group">
-                    <label for="order_id">Mã đơn hàng</label>
-                    <input class="form-control" id="order_id" name="order_id" type="number"
-                        value="<?php echo $data['order_id'] ?>" disabled />
-                </div>
-                <div class="form-group">
-                    <label for="amount">Số tiền</label>
-                    <input class="form-control" id="amount" name="amount" type="number"
-                        value="<?php echo $data['purchase_price'] ?>" disabled/>
-                    <input class="form-control" id="amount" name="amount" type="hidden"
+
+                    <input class="form-control" id="original_price" name="original_price" type="hidden"
+                        value="<?php echo $data['original_price'] ?>" />
+                    <input class="form-control" id="purchase_price" name="purchase_price" type="hidden"
                         value="<?php echo $data['purchase_price'] ?>" />
-                </div>
-                <div class="form-group">
-                    <label for="order_desc">Nội dung thanh toán</label>
-                    <textarea class="form-control" cols="20" id="order_desc" name="order_desc"
-                        rows="2">Noi dung thanh toan</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="bank_code">Ngân hàng</label>
-                    <select name="bank_code" id="bank_code" class="form-control">
-                        <option value="">Không chọn</option>
-                        <option value="NCB"> Ngan hang NCB</option>
-                        <option value="AGRIBANK"> Ngan hang Agribank</option>
-                        <option value="SCB"> Ngan hang SCB</option>
-                        <option value="SACOMBANK">Ngan hang SacomBank</option>
-                        <option value="EXIMBANK"> Ngan hang EximBank</option>
-                        <option value="MSBANK"> Ngan hang MSBANK</option>
-                        <option value="NAMABANK"> Ngan hang NamABank</option>
-                        <option value="VNMART"> Vi dien tu VnMart</option>
-                        <option value="VIETINBANK">Ngan hang Vietinbank</option>
-                        <option value="VIETCOMBANK"> Ngan hang VCB</option>
-                        <option value="HDBANK">Ngan hang HDBank</option>
-                        <option value="DONGABANK"> Ngan hang Dong A</option>
-                        <option value="TPBANK"> Ngân hàng TPBank</option>
-                        <option value="OJB"> Ngân hàng OceanBank</option>
-                        <option value="BIDV"> Ngân hàng BIDV</option>
-                        <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
-                        <option value="VPBANK"> Ngan hang VPBank</option>
-                        <option value="MBBANK"> Ngan hang MBBank</option>
-                        <option value="ACB"> Ngan hang ACB</option>
-                        <option value="OCB"> Ngan hang OCB</option>
-                        <option value="IVB"> Ngan hang IVB</option>
-                        <option value="VISA"> Thanh toan qua VISA/MASTER</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="language">Ngôn ngữ</label>
-                    <select name="language" id="language" class="form-control">
-                        <option value="vn">Tiếng Việt</option>
-                        <option value="en">English</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Thời hạn thanh toán</label>
-                    <input class="form-control" id="txtexpire" name="txtexpire" type="text"
-                        value="<?php echo $expire; ?>" />
-                </div>
-                <!-- <div class="form-group">
+                    <input class="form-control" id="voucher_id" name="voucher_id" type="hidden"
+                        value="<?php echo $data['voucher_id'] ?>" />
+                    <input class="form-control" id="user_id" name="user_id" type="hidden"
+                        value="<?php echo $data['user_id'] ?>" />
+                    <input class="form-control" id="workout_package_id" name="workout_package_id" type="hidden"
+                        value="<?php echo $data['workout_package_id'] ?>" />
+
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="order_id">Mã đơn hàng</label>
+                        <input class="form-control" id="order_id" name="order_id" type="number"
+                            value="<?php echo $data['order_id'] ?>" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Số tiền</label>
+                        <input class="form-control" id="amount" name="amount" type="number"
+                            value="<?php echo $data['purchase_price'] ?>" disabled />
+                        <input class="form-control" id="amount" name="amount" type="hidden"
+                            value="<?php echo $data['purchase_price'] ?>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="order_desc">Nội dung thanh toán</label>
+                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc"
+                            rows="2">Noi dung thanh toan</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bank_code">Ngân hàng</label>
+                        <select name="bank_code" id="bank_code" class="form-control">
+                            <option value="">Không chọn</option>
+                            <option value="NCB"> Ngan hang NCB</option>
+                            <option value="AGRIBANK"> Ngan hang Agribank</option>
+                            <option value="SCB"> Ngan hang SCB</option>
+                            <option value="SACOMBANK">Ngan hang SacomBank</option>
+                            <option value="EXIMBANK"> Ngan hang EximBank</option>
+                            <option value="MSBANK"> Ngan hang MSBANK</option>
+                            <option value="NAMABANK"> Ngan hang NamABank</option>
+                            <option value="VNMART"> Vi dien tu VnMart</option>
+                            <option value="VIETINBANK">Ngan hang Vietinbank</option>
+                            <option value="VIETCOMBANK"> Ngan hang VCB</option>
+                            <option value="HDBANK">Ngan hang HDBank</option>
+                            <option value="DONGABANK"> Ngan hang Dong A</option>
+                            <option value="TPBANK"> Ngân hàng TPBank</option>
+                            <option value="OJB"> Ngân hàng OceanBank</option>
+                            <option value="BIDV"> Ngân hàng BIDV</option>
+                            <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
+                            <option value="VPBANK"> Ngan hang VPBank</option>
+                            <option value="MBBANK"> Ngan hang MBBank</option>
+                            <option value="ACB"> Ngan hang ACB</option>
+                            <option value="OCB"> Ngan hang OCB</option>
+                            <option value="IVB"> Ngan hang IVB</option>
+                            <option value="VISA"> Thanh toan qua VISA/MASTER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Ngôn ngữ</label>
+                        <select name="language" id="language" class="form-control">
+                            <option value="vn">Tiếng Việt</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Thời hạn thanh toán</label>
+                        <input class="form-control" id="txtexpire" name="txtexpire" type="text"
+                            value="<?php echo $expire; ?>" />
+                    </div>
+                    <!-- <div class="form-group">
                         <h3>Thông tin hóa đơn (Billing)</h3>
                     </div>
                     <div class="form-group">
@@ -215,9 +235,9 @@ $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
                         <input class="form-control" id="txt_inv_mobile"
                                name="txt_inv_mobile" type="text" value="02437764668"/>
                     </div> -->
-                <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán</button>
-                <button type="button" name="redirect" id="redirect" class="btn btn-default"
-                    onclick="history.back()">Quay lại</button>
+                    <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán</button>
+                    <button type="button" name="redirect" id="redirect" class="btn btn-default"
+                        onclick="history.back()">Quay lại</button>
 
             </form>
         </div>

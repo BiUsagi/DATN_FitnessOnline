@@ -294,21 +294,21 @@
             $('#user_id').val(userId);
             var workout_package_id = $('#workout_package_id').val();
 
-            // $.get('http://127.0.0.1:8000/api/web/checkorder', { workout_package_id: workout_package_id, user_id: userId }, function (res) {
-            //     let order = res;
-            //     console.log('res: ' + order);
+            $.get('http://127.0.0.1:8000/api/web/checkorder', { workout_package_id: workout_package_id, user_id: userId }, function (res) {
+                let order = res;
+                console.log('res: ' + order);
 
-            //     if (order == null || Object.keys(order).length === 0) {
+                if (order == null || Object.keys(order).length === 0) {
             $('#button-pay').html(
                 '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
             )
-            //     } else {
-            //         //xem 
-            //         $('#button-pay').html(
-            //             '<a href="{{ route('workout_hub', $package->id) }}" class="by-now">Xem</a>'
-            //         )
-            //     }
-            // })
+                } else {
+                    //xem 
+                    $('#button-pay').html(
+                        '<a href="{{ route('workout_hub', $package->id) }}" class="by-now">Xem</a>'
+                    )
+                }
+            })
         @else
             $('#button-pay').html('<a href="#1" class="by-now">Đăng nhập để mua gói</a href="#1">')
         @endif

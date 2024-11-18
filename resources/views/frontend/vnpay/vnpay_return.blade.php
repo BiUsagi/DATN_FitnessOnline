@@ -83,6 +83,12 @@
                         if ($secureHash == $vnp_SecureHash) {
                             if ($_GET['vnp_ResponseCode'] == '00') {
                                 echo "<span style='color:blue'>GD Thanh cong</span>";
+                                echo "<script type='text/javascript'>
+                                        // Đảm bảo mã JavaScript chỉ chạy sau khi tài liệu đã tải xong
+                                        $(document).ready(function() {
+                                            addOrder(); // Gọi hàm tạo đơn hàng
+                                        });
+                                    </script>";
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
                             }
@@ -103,3 +109,20 @@
         </div>  
     </body>
 </html>
+
+<script type='text/javascript'>
+    function addOrder(){
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/web/pay', // URL API
+            type: 'POST',
+            success: function(res) {
+                // Kiểm tra nếu có lỗi trong phản hồi
+                if (res.error) {
+                    console.log(res.error);
+                } else {
+                    console.log(res.message);
+                }
+            },
+        });
+    }
+</script>

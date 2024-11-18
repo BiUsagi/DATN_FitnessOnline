@@ -25,7 +25,7 @@ class VNPayController extends Controller
 
     public function createpayment(request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $vnp_TxnRef = rand(1, 10000); //Mã giao dịch thanh toán tham chiếu của merchant
         $vnp_Amount = $request['amount']; // Số tiền thanh toán
         $vnp_Locale = $request['language']; //Ngôn ngữ chuyển hướng thanh toán
@@ -73,10 +73,21 @@ class VNPayController extends Controller
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
 
+        //lay thong tin request
+        $original_price = $request['original_price']; 
+        $purchase_price = $request['purchase_price']; 
+        $voucher_id = $request['voucher_id']; 
+        $user_id = $request['user_id']; 
+        $workout_package_id = $request['workout_package_id']; 
+
+
         //luu order vào cache
         $orderData = [
-            'money' => rand(100, 1000),
-            'status' => ['pending', 'completed', 'failed'][rand(0, 2)],
+            'original_price' => $original_price,
+            'purchase_price' => $purchase_price,
+            'voucher_id' => $voucher_id,
+            'user_id' => $user_id,
+            'workout_package_id' => $workout_package_id
         ];
 
         // Xóa order cũ nếu có
@@ -84,6 +95,7 @@ class VNPayController extends Controller
 
         // Lưu order mới vào cache
         Cache::put('order_data', $orderData, now()->addMinutes(30));
+        // dd(Cache::get('order_data'));
 
         header('Location: ' . $vnp_Url);
         die();
@@ -91,7 +103,7 @@ class VNPayController extends Controller
 
     public function vnpayReturn(request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         return view('frontend/vnpay/vnpay_return');
     }
 }
