@@ -108,13 +108,13 @@ class AccountsController extends Controller
         $staff = new Staff();
         $staff->user_id = $staffRequest->user_id;
         $staff->staff_name = $staffRequest->new_name ?? $staffRequest->user->user_name;
-        $staff->email = $staffRequest->new_email;
+        $staff->email = $staffRequest->new_email ?? $staffRequest->user->email;
         $staff->avatar = $staffRequest->new_avatar ?? $staffRequest->user->avatar;
         $staff->gender = $staffRequest->user->gender;
         $staff->birthday = $staffRequest->user->birthday;
         $staff->introduction = $staffRequest->introduction;
-        $staff->address = $staffRequest->new_address;
-        $staff->phone_number = $staffRequest->new_phone_number;
+        $staff->address = $staffRequest->new_address ?? $staffRequest->user->address;
+        $staff->phone_number = $staffRequest->new_phone_number ?? $staffRequest->user->phone_number;
         $staff->created_at = now();
         $staff->save();
 
