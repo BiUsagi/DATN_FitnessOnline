@@ -41,10 +41,10 @@
                                             <p class="text-center text-white"><i class="bi bi-wallet-fill"></i>&nbsp;<i
                                                     id="money"></i> <i class="underline">đ</i> </p>
                                             <hr>
-                                            <li class="text">
-                                                <a href="{{ route('wallets.addmoney') }}"
-                                                    class="dropdown-item text-white">Nạp Tiền</a>
-                                            </li>
+                                            <!-- <li class="text">
+                                                    <a href="{{ route('wallets.addmoney') }}"
+                                                        class="dropdown-item text-white">Nạp Tiền</a>
+                                                </li> -->
                                             <li class="text">
                                                 <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}"
                                                     class="dropdown-item text-white">Thông
@@ -56,8 +56,8 @@
                                             </li>
                                             @if (Auth::user()->role_012 === 1 || Auth::user()->role_012 === 2)
                                                 <li class="text">
-                                                    <a href="{{ route('admin') }}"
-                                                        class="dropdown-item text-white">Trang quản trị</a>
+                                                    <a href="{{ route('admin') }}" class="dropdown-item text-white">Trang quản
+                                                        trị</a>
                                                 </li>
                                             @else
                                             @endif
@@ -74,6 +74,43 @@
                                     @endif
                                 </li>
 
+                                <li class="nav-item">
+                                    @if (Auth::check())
+                                        <span class=" nav-link account">
+                                            <i class="bi bi-bell-fill"></i>
+                                        </span> <!-- Hiển thị tên đăng nhập -->
+                                        <ul class="dropdown-menu" aria-labelledby="username">
+                                            <p class="text-center text-white"> <i class="underline">Thông báo</i> </p>
+                                            <hr>
+
+                                            <li class="text">
+                                                <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}"
+                                                    class="dropdown-item text-white">Thông
+                                                    Tin Tài Khoản</a>
+                                            </li>
+                                            <li class="text">
+                                                <a href="{{ route('workout_bought', Auth::user()->id) }}"
+                                                    class="dropdown-item text-white">Gói tập của tôi</a>
+                                            </li>
+                                            @if (Auth::user()->role_012 === 1 || Auth::user()->role_012 === 2)
+                                                <li class="text">
+                                                    <a href="{{ route('admin') }}" class="dropdown-item text-white">Trang quản
+                                                        trị</a>
+                                                </li>
+                                            @else
+                                            @endif
+                                            <li class="text">
+                                                <form action="{{ route('logout.index') }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item text-white">Đăng
+                                                        Xuất</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+
+                                    @endif
+                                </li>
+
 
                             </ul>
                         </div>
@@ -84,7 +121,7 @@
     </div>
 
     <script>
-        $("#btn-login").click(function() {
+        $("#btn-login").click(function () {
             var currentUrl = window.location.href;
 
             // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
@@ -96,7 +133,7 @@
         @if (Auth::check())
             var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
-            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function(res) {
+            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function (res) {
                 let data = res;
                 var formattedBalance = data.balance.toLocaleString('vi-VN'); // Định dạng theo ngôn ngữ Việt Nam
                 $('#money').html(formattedBalance);

@@ -10,6 +10,7 @@ use App\Http\Controllers\frontend\AjaxloginController;
 use App\Http\Controllers\frontend\CommentsController;
 use App\Http\Controllers\frontend\PostController;
 use App\Http\Controllers\frontend\VNPayController;
+use App\Http\Controllers\frontend\MailController;
 use App\Http\Controllers\backend\WalletController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ConfigController;
@@ -33,6 +34,8 @@ use App\Http\Controllers\ApiController;
 // use App\Http\Controllers\backend\api\PackageExercisesController;
 // use App\Http\Controllers\backend\api\PackageExercisesController;
 
+//send mail
+Route::get('/sendmail', [MailController::class, 'sendmail']);
 
 //Front End
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -220,3 +223,6 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::delete('/comment/reply/{id}', [CommentsController::class, 'deleteReply'])->name('comment.reply.delete');
 
 });
+
+
+

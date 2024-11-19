@@ -86,11 +86,11 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
                             if ($_GET['vnp_ResponseCode'] == '00') {
                                 echo "<span style='color:blue'>GD Thanh cong</span>";
                                 echo "<script type='text/javascript'>
-                                                                // Đảm bảo mã JavaScript chỉ chạy sau khi tài liệu đã tải xong
-                                                                $(document).ready(function() {
-                                                                    addOrder(); // Gọi hàm tạo đơn hàng
-                                                                });
-                                                            </script>";
+                                        // Đảm bảo mã JavaScript chỉ chạy sau khi tài liệu đã tải xong
+                                        $(document).ready(function() {
+                                            addOrder(); // Gọi hàm tạo đơn hàng
+                                        });
+                                    </script>";
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
                             }
@@ -104,7 +104,12 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
             <button id="btn-id" value="<?php
                 $data = Cache::get('order_data');
                 echo $data['workout_package_id'];
-            ?>"  onclick="back()">Quay lại</button>
+            ?>" onclick="back()">Quay lại</button>
+
+            <input type="hidden" id="user_id" value="<?php
+                $data = Cache::get('order_data');
+                echo $data['user_id'];
+            ?>">
 
         </div>
         <p>
@@ -130,6 +135,32 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
                 } else {
                     console.log(res.message);
                 }
+
+                if(res.message == 'Tạo đơn hàng thành công'){
+                    //them thong bao
+                
+                    let w_id = $('#btn-id').val();
+                    let user_id = $('#user_id').val();
+
+                    const notificationData = {
+                        user_id: user_id,
+                        message: "Bạn đã mua gói tập thành công.",
+                        type: 2,
+                        link: "/workout_detail/" + w_id
+                    };
+
+                    //them thong bao
+                    $.ajax({
+                        url: 'http://127.0.0.1:8000/api/web/add-notification',
+                        method: 'POST',
+                        data: JSON.stringify(notificationData), // Chuyển đổi dữ liệu thành chuỗi JSON
+                        contentType: 'application/json',        // Định dạng nội dung là JSON
+                        dataType: 'json',                       // Kiểu dữ liệu mong đợi trả về
+                    });
+                }
+
+                
+
             },
         });
     }
