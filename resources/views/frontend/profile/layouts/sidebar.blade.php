@@ -34,8 +34,11 @@
             </p>
             <p class="mg-top-sb"><a href="{{ route('staff_request.index') }}" class="{{ Request::is('') ? 'text-color' : 'text-secondary' }}"><i
                         class="fa-solid fa-clock-rotate-left me-2"></i> Đăng ký nhân viên </a></p>
-            <p class="mg-top-sb"><a href="index.php?tkh=dangxuat" class="{{ Request::is('') ? 'text-color' : 'text-secondary' }}"><i
-                        class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a></p>
+            <p class="mg-top-sb">
+                
+                <a href="{{ route('logout.index') }}" class="{{ Request::is('') ? 'text-color' : 'text-secondary' }}"><i
+                        class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a>
+            </p>
         </div>
     </div>
 </div>
