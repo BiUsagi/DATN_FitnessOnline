@@ -65,6 +65,7 @@ Route::get('/workout_bought/{user_id}', [Workout_packageController::class, 'work
 Route::post('/login', [LoginController::class, 'login_'])->name('login_.index'); //xử lý input login;
 Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.addmoney'); //link nạp tiền
@@ -78,6 +79,8 @@ Route::get('/workout_id/{workout_id}/user/{user_id}', [Workout_packageController
 //vnpay
 Route::get('/thanhtoan', [VNPayController::class, 'index'])->name('thanhtoan1');
 Route::post('/thanhtoan2', [VNPayController::class, 'createpay'])->name('thanhtoan2');
+Route::post('/createpayment', [VNPayController::class, 'createpayment'])->name('payment.create');
+Route::get('/returnpay', [VNPayController::class, 'vnpayReturn'])->name('payment.return');
 
 
 // Back End

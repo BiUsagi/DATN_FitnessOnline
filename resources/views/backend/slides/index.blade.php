@@ -1,6 +1,6 @@
 @extends('backend/layouts/app-admin')
 @section('main')
-<main id="main" class="main">
+<main id="main" class="main"  style="min-height: 100vh">
   <div class="pagetitle">
     <h1>Quản lý giao diện </h1>
     <nav>

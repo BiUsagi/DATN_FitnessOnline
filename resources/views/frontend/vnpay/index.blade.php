@@ -1,55 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Tạo mới đơn hàng</title>
-        <!-- Bootstrap core CSS -->
-        <link href="/vnpay_php/assets/bootstrap.min.css" rel="stylesheet"/>
-        <!-- Custom styles for this template -->
-        <link href="/vnpay_php/assets/jumbotron-narrow.css" rel="stylesheet">  
-        <script src="/vnpay_php/assets/jquery-1.11.3.min.js"></script>
-    </head>
 
-    <body>
-        <?php 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Tạo mới đơn hàng</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/vnpay_php/assets/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/vnpay_php/assets/jumbotron-narrow.css" rel="stylesheet">
+    <script src="/vnpay_php/assets/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+
+    <?php 
             // require_once("./config.php"); 
-            $startTime = date("YmdHis");
-            $expire = date('YmdHis',strtotime('+15 minutes',strtotime($startTime)));
-        ?>            
-        <div class="container">
-            <div class="header clearfix">
-                <h3 class="text-muted">VNPAY DEMO</h3>
-            </div>
-            <h3>Tạo mới đơn hàng</h3>
-            <div class="table-responsive">
-                <form action="/vnpay_php/vnpay_create_payment.php" id="create_form" method="post">       
+$startTime = date("YmdHis");
+$expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
+        ?>
 
-                    <!-- <div class="form-group">
-                        <label for="language">Loại hàng hóa </label>
-                        <select name="order_type" id="order_type" class="form-control">
-                            <option value="topup">Nạp tiền điện thoại</option>
-                            <option value="billpayment">Thanh toán hóa đơn</option>
-                            <option value="fashion">Thời trang</option>
-                            <option value="other">Khác - Xem thêm tại VNPAY</option>
-                        </select>
-                    </div> -->
+    <div class="container">
+        <div class="header clearfix">
+            <h3 class="text-muted">VNPAY DEMO</h3>
+        </div>
+        <h3>Tạo mới đơn hàng</h3>
+        <div class="table-responsive">
+            <form action="{{route('payment.create')}}" id="create_form" method="post">
+                @csrf
+
+                <!-- in4 -->
+                <div class="form-group">
+
+                    <input class="form-control" id="original_price" name="original_price" type="hidden"
+                        value="<?php echo $data['original_price'] ?>" />
+                    <input class="form-control" id="purchase_price" name="purchase_price" type="hidden"
+                        value="<?php echo $data['purchase_price'] ?>" />
+                    <input class="form-control" id="voucher_id" name="voucher_id" type="hidden"
+                        value="<?php echo $data['voucher_id'] ?>" />
+                    <input class="form-control" id="user_id" name="user_id" type="hidden"
+                        value="<?php echo $data['user_id'] ?>" />
+                    <input class="form-control" id="workout_package_id" name="workout_package_id" type="hidden"
+                        value="<?php echo $data['workout_package_id'] ?>" />
+
+
+
+
+
+
                     <div class="form-group">
-                        <label for="order_id">Mã hóa đơn</label>
-                        <input class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>" disabled />
+                        <label for="order_id">Mã đơn hàng</label>
+                        <input class="form-control" id="order_id" name="order_id" type="number"
+                            value="<?php echo $data['order_id'] ?>" disabled />
                     </div>
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
-                        <input class="form-control" id="amount" 
-                               name="amount" type="number" value="<?php echo $data['purchase_price'] ?>" disabled/>
+                        <input class="form-control" id="amount" name="amount" type="number"
+                            value="<?php echo $data['purchase_price'] ?>" disabled />
+                        <input class="form-control" id="amount" name="amount" type="hidden"
+                            value="<?php echo $data['purchase_price'] ?>" />
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Nội dung thanh toán</label>
-                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">Noi dung thanh toan</textarea>
+                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc"
+                            rows="2">Noi dung thanh toan</textarea>
                     </div>
                     <div class="form-group">
                         <label for="bank_code">Ngân hàng</label>
@@ -87,9 +105,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label >Thời hạn thanh toán</label>
-                        <input class="form-control" id="txtexpire"
-                               name="txtexpire" type="text" value="<?php echo $expire; ?>"/>
+                        <label>Thời hạn thanh toán</label>
+                        <input class="form-control" id="txtexpire" name="txtexpire" type="text"
+                            value="<?php echo $expire; ?>" />
                     </div>
                     <!-- <div class="form-group">
                         <h3>Thông tin hóa đơn (Billing)</h3>
@@ -218,17 +236,19 @@
                                name="txt_inv_mobile" type="text" value="02437764668"/>
                     </div> -->
                     <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán</button>
-                    <button type="button" name="redirect" id="redirect" class="btn btn-default" onclick="history.back()">Quay lại</button>
+                    <button type="button" name="redirect" id="redirect" class="btn btn-default"
+                        onclick="history.back()">Quay lại</button>
 
-                </form>
-            </div>
-            <p>
-                &nbsp;
-            </p>
-            <footer class="footer">
-                <p>&copy; VNPAY <?php echo date('Y')?></p>
-            </footer>
-        </div>  
-       
-    </body>
+            </form>
+        </div>
+        <p>
+            &nbsp;
+        </p>
+        <footer class="footer">
+            <p>&copy; VNPAY <?php echo date('Y')?></p>
+        </footer>
+    </div>
+
+</body>
+
 </html>
