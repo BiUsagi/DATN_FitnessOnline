@@ -1,7 +1,7 @@
 @extends('backend/layouts/app-admin')
 
 @section('main')
-    <main id="main" class="main">
+    <main id="main" class="main" style="min-height: 100vh">
         <div class="pagetitle">
             <h1>Quản lý giao diện</h1>
             <nav>
@@ -59,7 +59,7 @@
                                         src="assets/backend/img/no-image.jpg" 
                                         alt="Avatar" 
                                         id="avatar-image" 
-                                        style="cursor: pointer; max-width: 100%; height: 170px; object-fit: contain;" 
+                                        style="cursor: pointer; max-width: 100%; object-fit: cover;" 
                                         onclick="document.getElementById('avatar-input').click();" 
                                     >
                                     <input type="file" name="image" id="avatar-input" class="form-control" style="display: none;" onchange="previewImage(event)">

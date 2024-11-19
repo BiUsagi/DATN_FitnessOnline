@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\frontend\api;
+use Illuminate\Support\Facades\Cache;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -72,13 +74,16 @@ class PayController extends Controller
 
 
 
-    public function pay(Request $request)
+    public function pay()
     {
-        $user_id = $request['user_id'];
-        $workout_package_id = $request['workout_package_id'];
-        $original_price = $request['original_price'];
-        $purchase_price = $request['purchase_price'];
-        $voucher_id = $request['voucher_id'];
+        $data = Cache::get('order_data');
+
+        $user_id = $data['user_id'];
+        $workout_package_id = $data['workout_package_id'];
+        $original_price = $data['original_price'];
+        $purchase_price = $data['purchase_price'];
+        $voucher_id = $data['voucher_id'];
+
 
         // $wallet = Wallet::where('user_id', $user_id)->first();
         // if ($wallet->balance < $purchase_price) {
@@ -108,23 +113,35 @@ class PayController extends Controller
         //     return redirect()->back()->with('success', 'Mua thành công!');
         // }
 
-        $record = Order::create([
-            'user_id' => $user_id,
-            'workout_package_id' => $workout_package_id,
-            'original_price' => $original_price,
-            'purchase_price' => $purchase_price,
-            'voucher_id' => $voucher_id, // Có thể null
-        ]);
 
-        if ($request->has('voucher_id') && $request->filled('voucher_id')) {
-            $voucherP = Voucher_package::create([
-                'workout_package_id' => $workout_package_id,
+
+        $checkOrder = Order::where('user_id', $user_id)->where('workout_package_id', $workout_package_id)->first();
+        if (empty($checkOrder)) {
+
+            $record = Order::create([
                 'user_id' => $user_id,
-                'voucher_id' => $voucher_id,
+                'workout_package_id' => $workout_package_id,
+                'original_price' => $original_price,
+                'purchase_price' => $purchase_price,
+                'voucher_id' => $voucher_id, // Có thể null
             ]);
+
+            if ($voucher_id) {
+                $voucherP = Voucher_package::create([
+                    'workout_package_id' => $workout_package_id,
+                    'user_id' => $user_id,
+                    'voucher_id' => $voucher_id,
+                ]);
+            }
+
+            return response()->json([
+                'message' => 'Tạo đơn hàng thành công',
+                'data' => $record
+            ]);
+
+        } else {
+            return response()->json(['message' => 'Đơn hàng đã tồn tại.']);
         }
-        
-        return redirect()->back()->with('success', 'Mua thành công!');
     }
 
 

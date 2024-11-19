@@ -2,7 +2,10 @@
 
 @section('main')
 <style>
-    
+    .truncated-text {
+
+
+}
 </style>
     <main id="main" class="main">
         <div class="pagetitle">
@@ -45,10 +48,10 @@
                                     @foreach($post as $p)
                                     <tr>
                                         <th scope="row">{{ $p->id }}</th>
-                                        <td  class="truncated-multiline ">{{ $p->title }}</td>
-                                        <td  class="css-truncate">{{ $p->description }}</td>
-                                        <td  class="css-truncate">{{ $p->image }}</td>
-                                        <td  class="css-truncate">{!! $p->content !!}</td>
+                                        <td  class="truncated-text ">{{ $p->title }}</td>
+                                        <td  class="truncated-text">{{ $p->description }}</td>
+                                        <td  class="truncated-text">{{ $p->image }}</td>
+                                        <td  class="truncated-text">{!! $p->content !!}</td>
                                         <td>
                                         <a class="btn btn-outline-success" data-bs-placement="top" 
                                         data-bs-title="Xem Chi Tiết">

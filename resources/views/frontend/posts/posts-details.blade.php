@@ -437,7 +437,7 @@
                                         @foreach ($onlyBlog->take(3) as $only)
                                                 <li>
                                                     <div class="thumb"> 
-                                                        <a href="{{ route('posts-details.index', $only->id) }}" class="title-link">><img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp" style="width:70px; height:50px; object-fit: cover;" ></a>
+                                                        <a href="{{ route('posts-details.index', $only->id) }}" class="title-link"><img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp" style="width:70px; height:50px; object-fit: cover;" ></a>
                                                     </div>
                                                     <div class="info">
                                                         <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
