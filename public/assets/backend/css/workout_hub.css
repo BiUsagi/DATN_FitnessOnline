@@ -970,26 +970,26 @@ video {
 }
 
 .categories .level-infor .box-status{
-    background-color: #00c39b;
-    color: #fff;
+    color: #dc3545;
+    background-color: #fff3cd;
     padding: 8px 12px;
     border-radius: 5px;
 }
-.categories .level-infor .box-status:hover{
+/* .categories .level-infor .box-status:hover{
     background-color: #029e7f;
     cursor: pointer;
-}
+} */
 
 .categories .level-infor .scoring{
-    background-color: #00c39b;
-    color: #fff;
+    color: #dc3545;
+    background-color: #fff3cd;
     padding: 8px 12px;
     border-radius: 5px;
 }
-.categories .level-infor .scoring:hover{
+/* .categories .level-infor .scoring:hover{
     background-color: #029e7f;
     cursor: pointer;
-}
+} */
 
 .categories .level-infor .text-submit-exercise{
     font-size: 16px !important;

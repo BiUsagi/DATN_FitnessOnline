@@ -154,7 +154,243 @@
                     </div>
                 </div>
             </div>
-        </div>
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-fullscreen-sm-down modal-dialog-centered">
+                    <div class="modal-content" style="min-height: 50vh; display: flex; align-items: center;">
+                        <div class="row w-100">
+                            <div class="col-md-7 col-12 mb-3 pt-3">
+                                <div class="row">
+                                    <div class="col-3"><img src="{{ asset('uploads/gym_package/' . $package->image) }}"
+                                            class="hover-image rounded-circle avatar"></div>
+                                    <div class="col-9">
+                                        <div class="col-12">
+                                            <h3 class="title-modal text-info"><strong>{{ $package->package_name }}</strong>
+                                            </h3>
+                                        </div>
+                                        <div class="col-12"><strong>PT: Minh Tuấn</strong></div>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p>Thời gian: {{ $package->duration_days }} ngày.</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Bài tập: 50 bài. </p>
+                                    </div>
+                                </div>
+                                <div class="row pt-2 pb-4">
+                                    <div class="col-6">
+                                        <p>Mức độ: {{ $package->level }}.</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Luợt mua: {{ $package->duration_days }} người.</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5>Bạn nhận được gì khi mua gói:</h5>
+                                </div>
+                                <ul class="ul-modal">
+                                    <li>
+                                        <p>Chế độ luyện tập chuyên nghiệp hơn!</p>
+                                    </li>
+                                    <li>
+                                        <p>Được PT hướng dẫn tận tình.</p>
+                                    </li>
+                                    <li>
+                                        <p>Làm quen với cấp độ mới.</p>
+                                    </li>
+                                    <li>
+                                        <p>Nhận được hơn nhiều số tiền bỏ ra?</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-5 col-12 pt-3" id="modal-right">
+                                <h5>Phiếu giảm giá</h5>
+                                <hr>
+                                <div class="list-voucher" id="list-voucher">
+                                    <!-- voucher   -->
+                                </div>
+                                <div class="input-group mb-1 mt-1 row">
+                                    <span class="input-group-text col-2">Mã:</span>
+                                    <input type="text" class="form-control col-7" id="autotext"
+                                        aria-label="Amount (to the nearest dollar)" placeholder="..." value="">
+                                    <input class="btn-custom btn-outline-secondary col-3 text-white" type="button"
+                                        id="button-addon2" value="Dùng" data="">
+                                </div>
+                                <div class="mb-2 text-black-50 text-center"><small><i id="displayText">Vui lòng nhập
+                                            mã</i></small></div>
+                                <div class="text-black-50 mb-2">Giá gốc: <span
+                                        class="text-danger text-decoration-line-through">{{ number_format($package->price, 0, ',', '.') }}
+                                        VNĐ</span></div>
+                                <!-- <hr> -->
+                                <button type="submit" class="btn btn-danger btn-show-money">Mua với giá
+                                    {{ number_format($package->price, 0, ',', '.') }} VNĐ</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </form>
+        <!-- ABOUT BLOCK END'S HERE -->
+
+
+        <!-- CLIENT SAY'S SECTION START HERE -->
+        {{-- <div class="client-say default-padding">
+            <div class="container">
+                <div class="row justify-content-lg-center">
+                    <div class="col-lg-6">
+                        <div class="heading client-say-content">
+                            <h2>What Client's <span>Say</span></h2>
+                            <p>Quisque ullamcorper ex non leo blandit porta. Duis purus sapien, blandit non sem quis,
+                                mollis
+                                vehicula sapien.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper clientSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="client-details">
+                                <div class="d-flex">
+                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
+                                    <div class="client-info">
+                                        <h6>Kiara Milly</h6>
+                                        <p>Personal Trainer</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">
+                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
+                                    voluptatum deleniti atque.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="client-details">
+                                <div class="d-flex">
+                                    <img loading='lazy' src="assets/frontend/images/client-two.webp" alt="">
+                                    <div class="client-info">
+                                        <h6>Rihana Smith</h6>
+                                        <p>Personal Trainer</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">
+                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
+                                    voluptatum deleniti atque.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="client-details">
+                                <div class="d-flex">
+                                    <img loading='lazy' src="assets/frontend/images/client-three.webp" alt="">
+                                    <div class="client-info">
+                                        <h6>John Doe</h6>
+                                        <p>Personal Trainer</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">
+                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
+                                    voluptatum deleniti atque.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="client-details">
+                                <div class="d-flex">
+                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
+                                    <div class="client-info">
+                                        <h6>Kiara Milly</h6>
+                                        <p>Personal Trainer</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">
+                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
+                                    voluptatum deleniti atque.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="client-details">
+                                <div class="d-flex">
+                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
+                                    <div class="client-info">
+                                        <h6>Kiara Milly</h6>
+                                        <p>Personal Trainer</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">
+                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
+                                    voluptatum deleniti atque.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="client-details">
+                                <div class="d-flex">
+                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
+                                    <div class="client-info">
+                                        <h6>Kiara Milly</h6>
+                                        <p>Personal Trainer</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">
+                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
+                                    voluptatum deleniti atque.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div> --}}
+        <!-- CLIENT SAY'S SECTION START HERE -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    </section>
+    <script>
+        loadButton();
+
+        function loadButton() {
+            @if (Auth::check())
+                var userId = @json(Auth::user()->id);
+                $('#user_id').val(userId);
+                var workout_package_id = $('#workout_package_id').val();
+
+                // $.get('http://127.0.0.1:8000/api/web/checkorder', { workout_package_id: workout_package_id, user_id: userId }, function (res) {
+                //     let order = res;
+                //     console.log('res: ' + order);
+
+                //     if (order == null || Object.keys(order).length === 0) {
+                $('#button-pay').html(
+                    '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
+                )
+                //     } else {
+                //         //xem 
+                //         $('#button-pay').html(
+                //             '<a href="{{ route('workout_hub', $package->id) }}" class="by-now">Xem</a>'
+                //         )
+                //     }
+                // })
+            @else
+                $('#button-pay').html('<a href="#1" class="by-now">Đăng nhập để mua gói</a href="#1">')
+            @endif
+        }
 
 
 

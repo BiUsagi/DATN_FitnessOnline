@@ -6,7 +6,7 @@
         <div class="breadcrumb_wrapper">
             <div class="container">
                 <div class="breadcrumb_block">
-                    <h1><span>Blog</span></h1>
+                    <h1><span>Tin tức</span></h1>
                     <div class="trackPage">
                         <a href="{{ route('index') }}">Trang chủ</a>
                         <span>Blog</span>

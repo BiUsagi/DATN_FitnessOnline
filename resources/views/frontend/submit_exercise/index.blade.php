@@ -49,11 +49,11 @@
                     <div class="categories">
                         <div class="level-infor">
                             <p><i class="fa-solid fa-clipboard-list"></i> Trạng thái: </p>
-                            <span class="box-status text-submit-exercise">Đã hoàn thành</span>
+                            <span class="box-status text-submit-exercise">Chờ duyệt</span>
                         </div>
                         <div class="level-infor">
                             <p><i class="fa-solid fa-medal"></i> Đánh giá của PT: </p>
-                            <span class="scoring text-submit-exercise">Tốt</span>
+                            <span class="scoring text-submit-exercise">Chờ đánh giá</span>
                         </div>
                         <div class="level-infor">
                             <p class="confirm"><i class="fa-solid fa-book"></i> Tổng số bài tập: </p>

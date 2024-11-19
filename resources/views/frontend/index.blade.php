@@ -220,7 +220,7 @@
     <div class="blog_wrapper default-padding">
         <div class="container">
             <div class="heading text-center">
-                <h3>OUR <span>Blog</span></h3>
+                <h3>Tin <span>Tức</span></h3>
             </div>
             <div class="row">
                 @foreach ($topPost->take(3) as $Post)
@@ -262,7 +262,7 @@
     </div>
     <!-- OUR BLOG END'S HERE -->
     <!-- GET IT TOUCH START HERE -->
-    <div class="contact_wrapper">
+    {{-- <div class="contact_wrapper">
         <div class="container">
             <div class="row justify-content-lg-between justify-content-center align-items-end">
                 <div class="col-lg-6 col-md-8 col-sm-8 order-2 order-lg-1">
@@ -319,7 +319,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- GET IT TOUCH END HERE -->
     <!-- GYM SLIDER START HERE -->
     <div class="post_wrapper default-padding">

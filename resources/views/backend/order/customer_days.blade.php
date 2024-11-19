@@ -40,8 +40,8 @@
                             </div>
 
                             <div class="m-3">
-                                <input type="text" value="{{ $days->staff_id }}" name="pt_id">
-                                <input type="text" id="videoIdInput" name="video_id">
+                                <input type="hidden" value="{{ $days->staff_id }}" name="pt_id">
+                                <input type="hidden" id="videoIdInput" name="video_id">
                             </div>
                         </div>
 
