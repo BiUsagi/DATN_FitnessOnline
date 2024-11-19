@@ -165,7 +165,7 @@
 
 
         <!-- CLIENT SAY'S SECTION START HERE -->
-        <div class="client-say default-padding">
+        {{-- <div class="client-say default-padding">
             <div class="container">
                 <div class="row justify-content-lg-center">
                     <div class="col-lg-6">
@@ -274,7 +274,7 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- CLIENT SAY'S SECTION START HERE -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

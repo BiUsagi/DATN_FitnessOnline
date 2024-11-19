@@ -157,6 +157,8 @@
         const packageId = {{ $package->id }}
         const ptId = {{ Auth::user()->id }}
         function saveExercise() {
+            
+            
             document.querySelector('.btn-add').addEventListener('click', function(e) {
                 e.preventDefault();
                 const selectedExercises = Array.from(document.querySelector('#list-excercise').selectedOptions)
