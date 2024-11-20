@@ -76,7 +76,7 @@
 
                                 @if (Auth::check())
                                 <li class="nav-item">
-                                    <span class="nav-link account" tabindex="0">
+                                    <span class="nav-link account bell" tabindex="0">
                                         <i class="bi bi-bell-fill"></i>
                                         <span class="notification-count" id="notificationCount">0</span>
                                     </span>
@@ -207,7 +207,7 @@
 
         $(document).ready(function () {
             // Hiển thị và ẩn thông báo khi click vào chuông
-            $(".nav-link.account").on('click', function () {
+            $(".nav-link.account.bell").on('click', function () {
                 $(".notifications").toggle(); // Toggle (hiển thị/ẩn) danh sách thông báo
             });
 
