@@ -3,8 +3,10 @@
 
     @if (Auth::guard('web')->check())
         <div id="deletecomment-{{ $item->id }}" class="single-comment-box" style="position: relative;">
-            <div class="css-img">
-                <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $item->user->avatar)}}" alt="">
+            <div class="single-comment-box">
+                <div class="css-img">
+                    <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $item->user->avatar)}}" alt="">
+                </div>
             </div>
             <div class="content-box">
                 <strong class="css-name"><span></span>{{$item->user->user_name}}</strong><span class="timing"> {{ $item->created_at->locale('vi')->diffForHumans() }}</span>
@@ -26,7 +28,7 @@
         </div>
         
         {{-- MODAL BÁO CÁO --}}
-        <div id="reportModal" style="display: none;">
+        <div id="reportModal" style="display: none;" data-comment-id="">
             <div class="modal-content">
                 <h3>Báo cáo bình luận</h3>
                 <textarea id="reportContent" placeholder="Nhập lý do báo cáo..."></textarea>
@@ -128,7 +130,6 @@
 
 {{-- END VIEW COMMENT CON --}}
 <script>
-
     function toggleMenu(commentId) {
         const menu = document.getElementById(`menu-${commentId}`);
         if (menu) {
