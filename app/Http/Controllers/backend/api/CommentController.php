@@ -17,7 +17,7 @@ class CommentController extends Controller
     {
         $comments = Comment::with('user','posts')
         ->where('rep',0)
-        ->where('report', null)
+        ->where('report', 0)
         ->get()
         ->map(function ($comment) {
             return [
@@ -42,6 +42,7 @@ class CommentController extends Controller
         // Lấy các phản hồi của bình luận chính
         $replies = Comment::with('user')
             ->where('rep', $id)
+            ->where('report', 0)
             ->get()
             ->map(function ($reply) {
                 return [
@@ -90,9 +91,9 @@ class CommentController extends Controller
 
 public function ReportedComments()
 {
-    $reportedComments = Comment::whereNotNull('report') // Lọc các comment bị report
+    $reportedComments = Comment::where('report', '>=', 1) // Lọc các comment bị report
         ->with(['replies' => function ($query) {
-            $query->whereNotNull('report'); // Lọc các reply bị report
+            $query->where('report', '>=', 1); // Lọc các reply bị report
         }, 'user', 'posts'])
         ->get()
         ->map(function ($comment) {

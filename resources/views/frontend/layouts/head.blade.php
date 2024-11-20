@@ -67,7 +67,6 @@
 
 
 
-
     @yield('custom_css')
 
 

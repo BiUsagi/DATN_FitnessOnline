@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('posts_id');
             $table->integer('rep')->default(0); // Cột `rep` kiểu integer với giá trị mặc định là 0
-            $table->text('report')->nullable(); // Cột `report` kiểu text có thể NULL
+            // $table->text('report')->nullable(); 
+            $table->unsignedInteger('report')->default(0);
             $table->text('content');
             $table->timestamps();
 
