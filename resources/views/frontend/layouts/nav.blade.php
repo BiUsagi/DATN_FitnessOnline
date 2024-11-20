@@ -130,7 +130,7 @@
                     let data = res;
                     let returnDb = '';
                     console.log(data);
-                    data.forEach(element => {
+                    data.reverse().forEach(element => {
 
                         const createdAt = new Date(element.created_at);  // Chuyển đổi chuỗi thành đối tượng Date
 
@@ -162,7 +162,7 @@
                     }else{
                         $('#bell').html(`
                             <li class="unread">
-                                <div class="content">
+                                <div class="content text-white">
                                    Không có thông báo nào.
                                 </div>
                             </li>
