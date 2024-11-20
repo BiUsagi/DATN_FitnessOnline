@@ -127,6 +127,9 @@ Route::group(['prefix' => 'web',], function () {
 
     //Notification
     Route::post('/add-notification', [NotificationController::class, 'add']);
+    Route::get('/get-notification/{id}', [NotificationController::class, 'get']);
+    Route::get('/is_read/{id}', [NotificationController::class, 'put_read']);
+    Route::get('/count_read/{id}', [NotificationController::class, 'get_read']);
 
     //pay
     Route::get('/getvoucher', [PayController::class, 'getVoucher']);

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\frontend\api;
+use Illuminate\Support\Facades\Cache;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,8 +11,11 @@ use App\Models\Voucher;
 use App\Models\Order;
 use App\Models\Wallet;
 use App\Models\Voucher_package;
+use App\Models\Workout_Package;
+use App\Models\User;
 use Carbon\Carbon;
 use Psy\Readline\Hoa\Console;
+use Mail;
 
 
 class PayController extends Controller
@@ -72,13 +77,16 @@ class PayController extends Controller
 
 
 
-    public function pay(Request $request)
+    public function pay()
     {
-        $user_id = $request['user_id'];
-        $workout_package_id = $request['workout_package_id'];
-        $original_price = $request['original_price'];
-        $purchase_price = $request['purchase_price'];
-        $voucher_id = $request['voucher_id'];
+        $data = Cache::get('order_data');
+
+        $user_id = $data['user_id'];
+        $workout_package_id = $data['workout_package_id'];
+        $original_price = $data['original_price'];
+        $purchase_price = $data['purchase_price'];
+        $voucher_id = $data['voucher_id'];
+
 
         // $wallet = Wallet::where('user_id', $user_id)->first();
         // if ($wallet->balance < $purchase_price) {
@@ -108,23 +116,35 @@ class PayController extends Controller
         //     return redirect()->back()->with('success', 'Mua thành công!');
         // }
 
-        $record = Order::create([
-            'user_id' => $user_id,
-            'workout_package_id' => $workout_package_id,
-            'original_price' => $original_price,
-            'purchase_price' => $purchase_price,
-            'voucher_id' => $voucher_id, // Có thể null
-        ]);
 
-        if ($request->has('voucher_id') && $request->filled('voucher_id')) {
-            $voucherP = Voucher_package::create([
-                'workout_package_id' => $workout_package_id,
+
+        $checkOrder = Order::where('user_id', $user_id)->where('workout_package_id', $workout_package_id)->first();
+        if (empty($checkOrder)) {
+
+            $record = Order::create([
                 'user_id' => $user_id,
-                'voucher_id' => $voucher_id,
+                'workout_package_id' => $workout_package_id,
+                'original_price' => $original_price,
+                'purchase_price' => $purchase_price,
+                'voucher_id' => $voucher_id, // Có thể null
             ]);
+
+            if ($voucher_id) {
+                $voucherP = Voucher_package::create([
+                    'workout_package_id' => $workout_package_id,
+                    'user_id' => $user_id,
+                    'voucher_id' => $voucher_id,
+                ]);
+            }
+
+            return response()->json([
+                'message' => 'Tạo đơn hàng thành công',
+                'data' => $record
+            ]);
+
+        } else {
+            return response()->json(['message' => 'Đơn hàng đã tồn tại.']);
         }
-        
-        return redirect()->back()->with('success', 'Mua thành công!');
     }
 
 
@@ -141,5 +161,66 @@ class PayController extends Controller
         $user_id = $request['user_id'];
         $wallet = Wallet::where('user_id', $user_id)->first();
         return response()->json($wallet);
+    }
+
+
+    public function sendmail()
+    {
+        // Lấy dữ liệu order từ cache
+        $orderData = Cache::get('order_data');
+        if (!$orderData) {
+            return 'Không có dữ liệu order trong cache';
+        }
+
+        // Lấy dữ liệu VNPay từ cache
+        $vnpayData = Cache::get('vnpay_data');
+        if (!$vnpayData) {
+            return 'Không có dữ liệu VNPay trong cache';
+        }
+
+        // Lấy thông tin liên quan từ database
+        $user = User::find($orderData['user_id']);
+        if (!$user) {
+            return 'Không tìm thấy người dùng';
+        }
+
+        $workoutPackage = Workout_Package::find($orderData['workout_package_id']);
+        if (!$workoutPackage) {
+            return 'Không tìm thấy gói tập';
+        }
+
+        // Chuẩn bị dữ liệu cho email
+        $m_user_name = $user->user_name;
+        $m_user_mail = $user->email;
+        $m_workout_package_name = $workoutPackage->package_name;
+        $m_amount = $orderData['purchase_price'];
+
+        // Thông tin từ VNPay
+        $vnp_BankCode = $vnpayData['vnp_BankCode'] ?? 'N/A';
+        $vnp_TransactionNo = $vnpayData['vnp_TransactionNo'] ?? 'N/A';
+        $vnp_PayDate = $vnpayData['vnp_PayDate'] ?? 'N/A';
+
+        // Gửi email
+        try {
+            Mail::send(
+                'frontend.mail.index',
+                compact(
+                    'm_user_name',
+                    'm_workout_package_name',
+                    'm_amount',
+                    'vnp_BankCode',
+                    'vnp_TransactionNo',
+                    'vnp_PayDate'
+                ),
+                function ($email) use ($m_user_mail, $m_user_name) {
+                    $email->to($m_user_mail, $m_user_name)
+                        ->subject('Mua hàng thành công!');
+                }
+            );
+
+            return "Email sent successfully.";
+        } catch (\Exception $e) {
+            return "Failed to send email: " . $e->getMessage();
+        }
     }
 }
