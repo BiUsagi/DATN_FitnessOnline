@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Blade;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Report;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 class CommentsController extends Controller
@@ -41,16 +42,26 @@ class CommentsController extends Controller
     public function reportComment(Request $request)
     {
         $request->validate([
-            'comment_id' => 'required|integer|exists:comments,id',
-            'report' => 'required|string|max:255'
+            'comment_id' => 'required|exists:comments,id',
+            'report_content' => 'required|string|max:255',
         ]);
-    
-        $comment = Comment::find($request->comment_id);
-        $comment->report = $request->report;
-        $comment->save();
-    
-        return response()->json(['success' => 'Báo cáo đã được gửi.']);
-    }    
+
+        $comment = Comment::findOrFail($request->comment_id);
+
+        // Lưu thông tin báo cáo
+        Report::create([
+            'comment_id' => $comment->id,
+            'reported_by' => Auth::id(),
+            'report_content' => $request->report_content,
+        ]);
+
+        // Tăng số lần báo cáo trong bảng `comments`
+        $comment->increment('report');
+
+        return response()->json(['message' => 'Báo cáo bình luận thành công!']);
+    } 
+
+
      // Bảo vệ các route yêu cầu đăng nhập
     public function __construct()
     {

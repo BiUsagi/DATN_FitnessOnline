@@ -1,298 +1,10 @@
 @extends('frontend/layouts/app-user')
 
+@section('custom_css')
+    <link rel="stylesheet" href="assets/frontend/css/comment.css">
+@endsection
+
 @section('main')
-<style>
-    /* General styles */
-    .reply-box {
-        display: flex; /* Căn ngang các phần tử */
-        align-items: flex-start; /* Căn trên cho các phần tử con */
-        gap: 10px; /* Khoảng cách giữa ảnh và nội dung */
-    }
-    
-    .css-img {
-        width: 50px;
-        height: 50px;
-        border: 1px solid white;
-        overflow: hidden;
-        border-radius: 50%; /* Để hình dạng tròn */
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .css-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Đảm bảo ảnh được crop đúng khung */
-    }
-    
-    .css-name {
-        font-size: 15.5px;
-        font-weight: 500;
-        color: #1FACE1;
-    }
-    
-    .timing {
-        color: white;
-        font-size: 12px;
-        padding-left: 10px;
-    }
-    
-    .comment-text {
-        color: white;
-        margin-top: 5px;
-        margin-bottom: 2px;
-        font-size: 15px;
-        width: 665px;
-    }
-    
-    .comment-actions {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 13px;
-    }
-    
-    .reply-button {
-        color: white;
-        cursor: pointer;
-        font-weight: 500;
-    }
-    
-    /* Styles for the reply form */
-    .formRep {
-        width: 100%;
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .formRep .col-md-11 {
-        width: 100%; /* Đảm bảo textarea rộng toàn bộ */
-        padding-right: 60px;
-    }
-    
-    .form-group.comments {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .form-control {
-        width: 78%;
-        border: none;
-        background-color: #242529;
-        border-bottom: 2px solid #ccc;
-        color: white;
-        border-radius: 0;
-    }
-    
-    .form-control:focus {
-        border-bottom: 2px solid #007bff;
-        background-color: #242529;
-        color: white;
-    }
-    
-    .css-button {
-        background-color: #007bff;
-        color: white;
-        padding: 10px 20px;
-        margin-top: 10px;
-        border-radius: 10px;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .reply-box {
-            flex-direction: column; /* Xếp dọc các phần tử */
-            align-items: flex-start;
-        }
-    
-        .css-img {
-            width: 50px;
-            height: 50px;
-        }
-    
-        .css-name {
-            font-size: 14px;
-        }
-    
-        .comment-text {
-            font-size: 14px;
-        }
-    
-        .timing {
-            padding-left: 10px;
-            font-size: 11px;
-        }
-    
-        .comment-actions {
-            gap: 5px;
-            flex-wrap: wrap;
-        }
-    
-        .reply-button {
-            font-size: 12px;
-        }
-    
-        .formRep .form-control {
-            font-size: 14px;
-        }
-    
-        .css-button {
-            padding: 8px 16px;
-            font-size: 14px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .css-img {
-            width: 40px;
-            height: 40px;
-        }
-    
-        .css-name, .timing, .comment-text, .reply-button {
-            font-size: 12px;
-        }
-    
-        .css-button {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-    
-        .formRep .form-control {
-            font-size: 12px;
-        }
-    }
-        /* CSS NÚT BA CHẤM */
-        .options-menu {
-            position: absolute;
-            top: 5px;
-            right: 100px;
-        }
-    
-        .three-dots {
-            cursor: pointer;
-            font-size: 18px;
-            color: white;
-            display: inline-block; 
-        }
-    
-        .menu {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #444;
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            min-width: 80px; /* Chiều rộng của menu */
-            z-index: 100;
-        }
-    
-        .menu-item {
-            padding: 8px 15px;
-            cursor: pointer;
-            font-size: 14px;
-            color: #f0f0f0;
-            transition: all 0.3s ease;
-            display: block;
-            width: 100%; /* Để mục menu chiếm toàn bộ chiều rộng */
-            box-sizing: border-box;
-        }
-    
-        .menu-item:hover {
-            background-color: #555;
-            color: #ffffff;
-            font-weight: bold;
-            border-left: 3px solid #3498db;
-            padding-left: 12px;
-            width: calc(100% - 3px); /* Đảm bảo nó vừa với menu khi có border */
-        }
-        /* CSS MODAL REPORT */
-        #reportModal {
-            display: none; /* Ẩn modal mặc định */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Làm mờ nền phía sau */
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Nội dung chính của modal */
-        #reportModal .modal-content {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            animation: fadeIn 0.3s ease; /* Hiệu ứng mở modal */
-        }
-
-        /* Tiêu đề modal */
-        #reportModal h3 {
-            margin: 0 0 15px;
-            font-size: 18px;
-            color: #333;
-        }
-
-        /* Textarea để nhập lý do báo cáo */
-        #reportContent {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            resize: vertical;
-            font-size: 14px;
-        }
-
-        /* Nút gửi và đóng modal */
-        #reportModal button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            margin: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Nút gửi báo cáo */
-        #reportModal button:first-of-type {
-            background-color: #28a745;
-            color: white;
-        }
-
-        #reportModal button:first-of-type:hover {
-            background-color: #218838;
-        }
-
-        /* Nút đóng modal */
-        #reportModal button:last-of-type {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        #reportModal button:last-of-type:hover {
-            background-color: #c82333;
-        }
-
-        /* Hiệu ứng mở modal */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-    </style>
 <section>
     <div class="breadcrumb_wrapper">
         <div class="container"> 
@@ -343,9 +55,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
 
                         <div class="comment-box default-padding" style="padding-bottom: 20px">
                             <div class="section-title">
@@ -633,44 +342,41 @@
     let commentId = null;
 
     // Mở modal và lưu lại ID bình luận
-    function openModal(id) {
-        commentId = id;
-        document.getElementById('reportModal').style.display = 'flex';
-    }
-
+    function openModal(commentId) {
+    const modal = document.getElementById('reportModal');
+    modal.dataset.commentId = commentId; // Gán `comment_id` vào modal
+    modal.style.display = 'flex';
+}
     // Đóng modal
     function closeModal() {
         document.getElementById('reportModal').style.display = 'none';
     }
-
-    // Gửi báo cáo bằng AJAX
     function submitReport() {
+        const commentId = document.getElementById('reportModal').dataset.commentId;
         const reportContent = document.getElementById('reportContent').value;
-        if (!reportContent) {
-            alert("Vui lòng nhập nội dung báo cáo.");
+
+        if (!reportContent.trim()) {
+            alert('Nội dung báo cáo không được để trống!');
             return;
         }
-        
-        // Sử dụng AJAX để gửi báo cáo đến server
+
         $.ajax({
             url: 'ajax/report-comment',
             type: 'POST',
             data: {
-                _token: '{{ csrf_token() }}',
                 comment_id: commentId,
-                report: reportContent
+                report_content: reportContent,
+                _token: '{{ csrf_token() }}' // cần token CSRF
             },
-            success: function(response) {
-                alert("Báo cáo của bạn đã được gửi.");
+            success: function (response) {
+                alert(response.message);
                 closeModal();
             },
-            error: function(error) {
-                alert("Đã xảy ra lỗi khi gửi báo cáo.");
+            error: function (xhr) {
+                alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
             }
         });
     }
-
-
     //Update comments cha
     $(document).on('click', '.edit-comment', function() {
         $('.contact-form').slideUp();
@@ -680,8 +386,8 @@
         const currentContent = $(this).data('content');
 
         // Hiển thị input để sửa nội dung bình luận
-        const editHtml = `<textarea class="form-control" id="edit-content-${commentId}" rows="1" cols="95px">${currentContent}</textarea>
-                        <button type="button" class="btn-save-edit" data-id="${commentId}"  style="color: #1E90FF;margin-left: 550px;">Lưu</button>
+        const editHtml = `<textarea class="form-control" id="edit-content-${commentId}" rows="1" cols="75px">${currentContent}</textarea>
+                        <button type="button" class="btn-save-edit" data-id="${commentId}"  style="color: #1E90FF;">Lưu</button>
                         `;
         
         $(this).closest('.single-comment-box').find('.comment-text').html(editHtml);
@@ -702,6 +408,8 @@
                 if (response.success) {
                     $(`#edit-content-${commentId}`).closest('.comment-text').text(newContent);
                     alert('Bình luận đã được cập nhật.');
+                    $('.contact-form').slideDown();
+
                 } else {
                     alert('Có lỗi xảy ra khi cập nhật bình luận.');
                 }
