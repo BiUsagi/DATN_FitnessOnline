@@ -126,7 +126,7 @@
                 var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
 
-                
+
                 $.get('http://127.0.0.1:8000/api/web/get-notification/' + userId, function (res) {
                     let data = res;
                     let returnDb = '';
@@ -236,3 +236,4 @@
 
     </script>
 </header>
+
