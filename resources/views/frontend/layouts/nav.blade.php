@@ -6,8 +6,8 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-lg ">
                         <a class="navbar-brand" href="{{ route('index') }}">
-                            <img loading='lazy' src="assets/frontend/images/logo.svg" alt="logo" width="139"
-                                height="30">
+                            <img loading='lazy' src="logo/fitness-online light.png" alt="logo" width="200" 
+                                height="40">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -56,7 +56,8 @@
                                             </li>
                                             @if (Auth::user()->role_012 === 1 || Auth::user()->role_012 === 2)
                                                 <li class="text">
-                                                    <a href="{{ route('admin') }}" class="dropdown-item text-white">Trang quản
+                                                    <a href="{{ route('admin') }}"
+                                                        class="dropdown-item text-white">Trang quản
                                                         trị</a>
                                                 </li>
                                             @else
@@ -94,7 +95,8 @@
                                             </li>
                                             @if (Auth::user()->role_012 === 1 || Auth::user()->role_012 === 2)
                                                 <li class="text">
-                                                    <a href="{{ route('admin') }}" class="dropdown-item text-white">Trang quản
+                                                    <a href="{{ route('admin') }}"
+                                                        class="dropdown-item text-white">Trang quản
                                                         trị</a>
                                                 </li>
                                             @else
@@ -121,7 +123,7 @@
     </div>
 
     <script>
-        $("#btn-login").click(function () {
+        $("#btn-login").click(function() {
             var currentUrl = window.location.href;
 
             // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
@@ -133,7 +135,7 @@
         @if (Auth::check())
             var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
-            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function (res) {
+            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function(res) {
                 let data = res;
                 var formattedBalance = data.balance.toLocaleString('vi-VN'); // Định dạng theo ngôn ngữ Việt Nam
                 $('#money').html(formattedBalance);
