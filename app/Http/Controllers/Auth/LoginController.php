@@ -7,9 +7,13 @@ use App\Models\User;
 use App\Models\Wallet;
 use App\Http\Requests\frontend\LoginRequest;
 use App\Http\Requests\frontend\RegisterRequest;
+use App\Mail\VerifyAccount;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+
 class LoginController extends Controller
 {
     function index()
@@ -51,21 +55,22 @@ class LoginController extends Controller
         $user = User::create([
             'user_name' => $request['user_name'],
             'email' => $request['email1'],
-            'password' => bcrypt($request['password1']),
+            'password' => bcrypt( $request['password1']),
             'gender' => 2,
         ]);
+
 
         $user->assignRoleBasedOnField($user->id);
 
 
-        // Tạo ví cho người dùng vừa đăng ký
+        //Tạo ví cho người dùng vừa đăng ký
         $wallet = new Wallet();
         $wallet->user_id = $user->id; // Lấy ID người dùng vừa tạo
         $wallet->balance = 0.00; // Số dư mặc định
         $wallet->currency = 'VND'; // Đơn vị tiền tệ mặc định
         $wallet->save();
 
-        // Nếu đăng ký thành công
+        //Nếu đăng ký thành công
         return redirect()->route('login.index')->with('success', 'Đăng ký thành công!');
     }
 
