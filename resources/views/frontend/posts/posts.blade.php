@@ -219,32 +219,18 @@
                                     <h5>Tìm kiếm</h5>
                                 </div>
                                 <div class="sidebar-item search">
-                                    <form class="input-search">
-                                        <input type="text" class="form-control input-lg" placeholder="Search..." required>
+                                    <form class="input-search" id="search-form">
+                                        <input type="text" class="form-control input-lg" id="search-input" placeholder="Search..." required>
                                         <button class="btn-search" type="submit"><img loading='lazy' src="assets/frontend/images/search-btn.svg" alt="icon"></button>
                                     </form>
                                 </div>
                                 <div class="widget recentpost-widget">
                                     <div class="heading">
                                     </div>
-                                    <div class="sidebar-item recent-post text-left">
-                                        <div class="sidebar-info">
-                                            <ul>
-                                                @foreach ($onlyBlog->take(3) as $only)
-                                                    <li>
-                                                        <div class="thumb"> 
-                                                            <a href="#!"><img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp"></a>
-                                                        </div>
-                                                        <div class="info">
-                                                            <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
-                                                            <div class="meta-title">
-                                                                <span class="post-date">{{$only->created_at->locale('vi')->diffForHumans()}}</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
+                                    <div class="sidebar-item recent-post text-left" id="search-results">
+                                        
+                                        {{-- LIST TÌM KIẾM --}}
+
                                     </div>
                                 </div>
                             </div>
@@ -340,4 +326,54 @@
             </div>
         </div>
 </section>
+<script>
+    $(document).ready(function() {
+        // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
+        $('#search-input').on('input', function() {
+            var query = $(this).val(); // Lấy giá trị tìm kiếm
+
+            if (query.length > 2) { // Chỉ tìm khi nhập ít nhất 3 ký tự
+                $.ajax({
+                    url: '{{ route('posts.search') }}',
+                    method: 'GET',
+                    data: { query: query },
+                    success: function(response) {
+                        // Xử lý kết quả trả về từ API
+                        var resultsHTML = '';
+                        if (response.length > 0) {
+                            response.forEach(function(post) {
+                                resultsHTML += `
+                                    <div class="sidebar-info">
+                                        <ul>
+                                            <li>
+                                                <div class="thumb">
+                                                    <a href="#"><img loading='lazy' src="{{ asset('uploads/post_image') }}/${post.image}" alt="post-1.webp"></a>
+                                                </div>
+                                                <div class="info">
+                                                    <a href="{{ route('posts-details.index', '') }}/${post.id}">${post.title}</a>
+                                                    <div class="meta-title">
+                                                        <span class="post-date">${new Date(post.created_at).toLocaleDateString('vi-VN')}</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                `;
+                            });
+                        } else {
+                            resultsHTML = '<p>Không có bài viết nào.</p>';
+                        }
+
+                        $('#search-results').html(resultsHTML); // Hiển thị kết quả tìm kiếm
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error: " + error);
+                    }
+                });
+            } else {
+                $('#search-results').html(''); // Nếu không có kết quả tìm kiếm
+            }
+        });
+    });
+</script>
 @endsection

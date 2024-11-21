@@ -2,8 +2,8 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="" class="logo d-flex align-items-center">
-            <span class="d-none d-lg-block">GYMFIT Admin</span>
+        <a href="" class="logo d-flex align-items-center justify-content-center">
+            <span class="d-none d-lg-block"> <img src="logo/fitness-online dark.png" alt="logo"></span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
