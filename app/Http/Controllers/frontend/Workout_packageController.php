@@ -47,13 +47,17 @@ class Workout_packageController extends Controller
         return view('frontend.workout_hub.index', compact('package', 'progress', 'orders'));
     }
     
-
     public function submit_exercise($workout_id, $user_id)
     {
-    $userUpload = user_videos::where('user_id', $user_id)->first();
-    $workoutPackage = Workout_Package::find($workout_id);
+        $userUpload = User_Videos::where('user_id', $user_id)
+        ->where('workout_package_id', $workout_id)
+        ->orderBy('day_number')
+        ->get();
     
-    return view('frontend.submit_exercise.index', compact('userUpload', 'workoutPackage'));
+        $workoutPackage = Workout_Package::find($workout_id);
+    
+        return view('frontend.submit_exercise.index', compact('userUpload', 'workoutPackage'));
     }
+    
     
 }

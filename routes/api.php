@@ -93,6 +93,8 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/comments/{id}', [CommentController::class, 'show']);
     Route::delete('/comments/{id}', [CommentController::class, 'delete']);
     Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments');
+    Route::get('/comments/reports/{id}', [CommentController::class, 'showCommentreport']);
+
 
 
 

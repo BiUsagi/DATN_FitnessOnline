@@ -59,6 +59,7 @@ Route::get('/staffrequest', [ProfileController::class, 'staff_request'])->name('
 // posts
 Route::get('/posts', [PostController::class, 'posts'])->name('posts.index'); //các post
 Route::get('/posts/posts-details/{id}', [PostController::class, 'posts_details'])->name('posts-details.index');//post chi tiết
+Route::get('posts/search-posts', [PostController::class, 'searchPosts'])->name('posts.search');
 
 //workout package
 Route::get('/workout_detail/{id}', [Workout_packageController::class, 'workout_detail'])->name('workout_detail');

@@ -1421,3 +1421,25 @@ input[placeholder] {
 .fs-7 {
   font-size: 0.9rem;
 }
+
+.post_description p{
+  width: 100%; 
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: normal; 
+  position: relative;
+  transition: all 0.3s ease; 
+}
+
+.post_description p:hover {
+  -webkit-line-clamp: unset; 
+  overflow: visible; 
+  white-space: normal; 
+  background: #fff; 
+  padding: 10px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  z-index: 10; 
+}
