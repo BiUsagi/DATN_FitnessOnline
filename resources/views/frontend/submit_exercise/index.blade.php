@@ -50,10 +50,11 @@
                         <div class="level-infor">
                             <p><i class="fa-solid fa-clipboard-list"></i> Trạng thái: </p>
                             <span class="box-status text-submit-exercise">Chờ duyệt</span>
+                           
                         </div>
                         <div class="level-infor">
                             <p><i class="fa-solid fa-medal"></i> Đánh giá của PT: </p>
-                            <span class="scoring text-submit-exercise">Chờ đánh giá</span>
+                                <span class="scoring text-submit-exercise">Chờ duyệt</span>
                         </div>
                         <div class="level-infor">
                             <p class="confirm"><i class="fa-solid fa-book"></i> Tổng số bài tập: </p>
@@ -122,7 +123,7 @@
                 <p>Tổng hợp các ngày</p>
             </div>
             <div class="list-days">
-                @for ($i = 1; $i <= 15; $i++)
+                @for ($i = 1; $i <= $workoutPackage->duration_days; $i++)
                     <div class="box-day " data-day="{{ $i }}">
                         <div class="info">
                             <p>Ngày {{ $i }}</p>
@@ -168,7 +169,7 @@
                     fetch(`api/get-video/${workoutId}/${userId}/${dayNumber}`)
                         .then(response => response.json())
                         .then(data => {
-                            if (data.status === 'success') {
+                            if (data.status_main === 'success') {
                                 // Cập nhật video
                                 videoPlayer.src = data.video_url;
                                 videoPlayer.style.display = 'block'; // Hiển thị video

@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <base href='http://127.0.0.1:8000/'>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $package->package_name }}</title>
@@ -18,7 +16,7 @@
         <div class="header-block">
             <div class="block-left">
                 <div class="name-workout">
-                    <p><a href="{{ route('admin.workout_package') }}"><i class="fa-solid fa-chevron-left"></i></a>
+                    <p><a href="{{ route('workout_bought', Auth::user()->id) }}"><i class="fa-solid fa-chevron-left"></i></a>
                         {{ $package->package_name }}</p>
                 </div>
             </div>
