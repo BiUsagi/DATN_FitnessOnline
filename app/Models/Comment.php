@@ -37,5 +37,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Comment::class, 'rep');
     }
+    public function reports()
+    {
+        return $this->hasMany(Report::class, 'comment_id');
+    }
 }
  
