@@ -237,6 +237,7 @@ h6 {
   font-size: 18px;
   font-weight: 700;
   color: #012970;
+  padding-top: 5px;
   /* font-family: "Poppins", sans-serif; */
 }
 
@@ -394,8 +395,7 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
-  margin-right: 6px;
+  max-height: 40px;
 }
 
 .logo span {
@@ -850,7 +850,7 @@ input[placeholder] {
 }
 
 .dashboard .info-card h6 {
-  font-size: 28px;
+  font-size: 20px;
   color: #012970;
   font-weight: 700;
   margin: 0;
@@ -1420,4 +1420,26 @@ input[placeholder] {
 
 .fs-7 {
   font-size: 0.9rem;
+}
+
+.post_description p{
+  width: 100%; 
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: normal; 
+  position: relative;
+  transition: all 0.3s ease; 
+}
+
+.post_description p:hover {
+  -webkit-line-clamp: unset; 
+  overflow: visible; 
+  white-space: normal; 
+  background: #fff; 
+  padding: 10px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  z-index: 10; 
 }
