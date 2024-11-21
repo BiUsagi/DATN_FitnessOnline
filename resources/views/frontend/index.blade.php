@@ -63,7 +63,7 @@
                     <div class="col-lg-6 order-1 order-lg-2 mb-lg-0 mb-5 wow fadeInUp" data-wow-duration="1.5s">
                         <div class="about_right">
                             <div class="heading">
-                                <h2>VỀ PHÒNG TẬP <span>GYMFIT</span></h2>
+                                <h2>VỀ PHÒNG TẬP <span>CHÚNG TÔI</span></h2>
                             </div>
                             <p class="mb-3">Tập gym là một hoạt động thể dục giúp cải thiện sức khỏe và vóc dáng thông
                                 qua các bài tập với tạ, máy tập, và các bài cardio. Việc tập gym không chỉ giúp tăng cường

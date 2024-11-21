@@ -26,5 +26,11 @@ class PostController extends Controller
         $onlyBlog = Posts::orderBy('id', 'DESC')->get();
         return view('frontend/posts/posts-details', compact('posts', 'showUser','onlyBlog'));
     }
+    public function searchPosts(Request $request)
+    {
+        $query = $request->input('query');
+        $posts = Posts::where('title', 'LIKE', "%{$query}%")->take(5)->get(); // Tìm kiếm theo tên bài viết
 
+        return response()->json($posts);
+    }
 }
