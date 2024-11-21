@@ -56,7 +56,7 @@
                                         <tr>
                                             <td>{{ $ex->id }}</td>
                                             <td>{{ $ex->name }}</td>
-                                            <td>{{ $ex->description }}</td>
+                                            <td class="post_description">{!! $ex->description !!}</td>
                                             <td>{{ $ex->sets }}</td>
                                             <td>{{ $ex->reps }}</td>
                                             <td class="customize-width">

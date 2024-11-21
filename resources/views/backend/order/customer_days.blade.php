@@ -116,7 +116,10 @@
                             videoPlayer.src = data.video_url;
                             videoPlayer.style.display = 'block';
                         } else {
-                            alert(data.message);
+                            Swal.fire({
+                            icon: "error",
+                            title: "Khách hàng chưa nộp video của ngày này",
+                            });
                         }
                     })
                     .catch(error => {
