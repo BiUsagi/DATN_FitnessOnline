@@ -1,10 +1,6 @@
 @extends('frontend/layouts/app-user')
-
-
 @section('main')
 <section>
-
-
     <!-- BREADCRUMS SECTION START HERE -->
     <div class="breadcrumb_wrapper">
         <div class="container">
@@ -73,6 +69,9 @@
 
 
 
+
+
+
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -85,7 +84,8 @@
                                         class="hover-image rounded-circle avatar"></div>
                                 <div class="col-9">
                                     <div class="col-12">
-                                        <h3 class="title-modal text-info"><strong>{{ $package->package_name }}</strong>
+                                        <h3 class="title-modal text-info">
+                                            <strong>{{ $package->package_name }}</strong>
                                         </h3>
                                     </div>
                                     <div class="col-12"><strong>PT: Minh Tuấn</strong></div>
@@ -245,121 +245,7 @@
 
 
         </form>
-        <!-- ABOUT BLOCK END'S HERE -->
-
-
-        <!-- CLIENT SAY'S SECTION START HERE -->
-        {{-- <div class="client-say default-padding">
-            <div class="container">
-                <div class="row justify-content-lg-center">
-                    <div class="col-lg-6">
-                        <div class="heading client-say-content">
-                            <h2>What Client's <span>Say</span></h2>
-                            <p>Quisque ullamcorper ex non leo blandit porta. Duis purus sapien, blandit non sem quis,
-                                mollis
-                                vehicula sapien.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper clientSwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Kiara Milly</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-two.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Rihana Smith</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-three.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>John Doe</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Kiara Milly</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Kiara Milly</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Kiara Milly</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div> --}}
-        <!-- CLIENT SAY'S SECTION START HERE -->
+        
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     </section>
@@ -391,131 +277,7 @@
                 $('#button-pay').html('<a href="#1" class="by-now">Đăng nhập để mua gói</a href="#1">')
             @endif
         }
-
-
-
-
-
-    </form>
-    <!-- ABOUT BLOCK END'S HERE -->
-
-
-    <!-- CLIENT SAY'S SECTION START HERE -->
-    <div class="client-say default-padding">
-        <div class="container">
-            <div class="row justify-content-lg-center">
-                <div class="col-lg-6">
-                    <div class="heading client-say-content">
-                        <h2>What Client's <span>Say</span></h2>
-                        <p>Quisque ullamcorper ex non leo blandit porta. Duis purus sapien, blandit non sem quis,
-                            mollis
-                            vehicula sapien.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper clientSwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="client-details">
-                            <div class="d-flex">
-                                <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                <div class="client-info">
-                                    <h6>Kiara Milly</h6>
-                                    <p>Personal Trainer</p>
-                                </div>
-                            </div>
-                            <p class="text-center">
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                voluptatum deleniti atque.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="client-details">
-                            <div class="d-flex">
-                                <img loading='lazy' src="assets/frontend/images/client-two.webp" alt="">
-                                <div class="client-info">
-                                    <h6>Rihana Smith</h6>
-                                    <p>Personal Trainer</p>
-                                </div>
-                            </div>
-                            <p class="text-center">
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                voluptatum deleniti atque.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="client-details">
-                            <div class="d-flex">
-                                <img loading='lazy' src="assets/frontend/images/client-three.webp" alt="">
-                                <div class="client-info">
-                                    <h6>John Doe</h6>
-                                    <p>Personal Trainer</p>
-                                </div>
-                            </div>
-                            <p class="text-center">
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                voluptatum deleniti atque.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="client-details">
-                            <div class="d-flex">
-                                <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                <div class="client-info">
-                                    <h6>Kiara Milly</h6>
-                                    <p>Personal Trainer</p>
-                                </div>
-                            </div>
-                            <p class="text-center">
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                voluptatum deleniti atque.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="client-details">
-                            <div class="d-flex">
-                                <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                <div class="client-info">
-                                    <h6>Kiara Milly</h6>
-                                    <p>Personal Trainer</p>
-                                </div>
-                            </div>
-                            <p class="text-center">
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                voluptatum deleniti atque.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="client-details">
-                            <div class="d-flex">
-                                <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                <div class="client-info">
-                                    <h6>Kiara Milly</h6>
-                                    <p>Personal Trainer</p>
-                                </div>
-                            </div>
-                            <p class="text-center">
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                voluptatum deleniti atque.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
-    <!-- CLIENT SAY'S SECTION START HERE -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-</section>
-<script>
+   
     loadButton();
 
     // Lấy thời gian hiện tại và chuyển thành chuỗi
@@ -535,9 +297,9 @@
                 console.log('res: ' + order);
 
                 if (order == null || Object.keys(order).length === 0) {
-            $('#button-pay').html(
-                '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
-            )
+                    $('#button-pay').html(
+                        '<button type="button" class="by-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mua ngay</button>'
+                    )
                 } else {
                     //xem 
                     $('#button-pay').html(

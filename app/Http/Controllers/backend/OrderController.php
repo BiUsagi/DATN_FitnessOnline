@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Workout_package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Staff;
+
+
 
 class OrderController extends Controller
 {
@@ -28,7 +32,15 @@ class OrderController extends Controller
 
     public function customer_manage()
     {   
-        $list_customer = Order::with(['user','workoutPackage'])->get();
+        $user = Auth::user();
+        $pt_id = Staff::where('user_id',Auth::user()->id)->first();
+        $id = $pt_id->id;
+
+        $list_customer = Order::with(['user','workoutPackage'])
+        ->whereHas('workoutPackage', function($query) use ($id) {
+            $query->where('staff_id',$id);
+        })->get();
+
         return view('backend/order/customer_manage',['list_customer' => $list_customer]);
     }
 
