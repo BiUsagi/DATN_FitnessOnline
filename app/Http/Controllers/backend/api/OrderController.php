@@ -13,20 +13,15 @@ use App\Models\video_feedback;
 
 class OrderController extends Controller
 {
-    public function sendFeedback(Request $request)
+    public function sendFeedback(Request $request, $id)
     {
         
-        $feedback = new video_feedback();
-        $feedback->video_id = $request->input('video_id');
+        $feedback = user_videos::find($id);
         $feedback->feedback = $request->input('feedback');
-        $feedback->pt_id = $request->input('pt_id');
+        $feedback->status = $request->input('status');
 
         $feedback->save();
 
-        $video = user_videos::find($request->input('video_id'));
-        $video->status = 1; 
-        $video->save();
- 
         return response()->json(['status' => 'success', 'message' => 'Feedback đã được gửi thành công.']);
 
 

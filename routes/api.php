@@ -115,7 +115,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::put('/wallet/{id}/{dong}', [WalletController::class, 'addmoney']);
 
     //feedback
-    Route::post('/feedback', [OrderController::class, 'sendFeedback']);
+    Route::post('/feedback/{id}', [OrderController::class, 'sendFeedback']);
 
 
 });

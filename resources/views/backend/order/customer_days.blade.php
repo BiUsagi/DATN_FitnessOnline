@@ -60,6 +60,22 @@
                             </div>
                         </div>
                         
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="1" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Đạt
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="2" id="flexRadioDefault2" >
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Không Đạt
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="card">
                             <input type="submit" class="btn btn-primary" value="Xác nhận">
                         </div>
@@ -137,9 +153,9 @@
             let formData = new FormData(this);
             let content = CKEDITOR.instances['feedback'].getData();
             formData.append('feedback', content);
-
+            const videoId = document.getElementById('videoIdInput').value;
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/admin/feedback',
+                url: `http://127.0.0.1:8000/api/admin/feedback/${videoId}`,
                 type: 'POST',
                 data: formData,
                 contentType: false, 
