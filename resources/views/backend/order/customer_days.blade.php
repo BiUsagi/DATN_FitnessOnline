@@ -61,6 +61,21 @@
                         </div>
                         
                         <div class="card">
+                            <div class="card-header text-uppercase">Đánh giá</div>
+                            <div class="card-body">
+                                <div class="action-package-exercise">
+                                    <div class="action-online">
+                                        <input type="radio" checked name="status" id="status-online">
+                                        <label for="status-online"><a>Đạt</a></label>
+                                    </div>
+                                    <div class="action-offline">
+                                        <input type="radio" name="status" id="status-offline">
+                                        <label for="status-offline"><a>Chưa đạt</a></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
                             <input type="submit" class="btn btn-primary" value="Xác nhận">
                         </div>
                     </div>

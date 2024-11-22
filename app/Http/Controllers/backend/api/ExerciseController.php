@@ -28,7 +28,13 @@ class ExerciseController extends Controller
             $file->move('uploads/video_exercise', $filename);
             $exercise->video_url = $filename;
         }
-        
+        if($request->hasFile('video_url2')){
+            $file = $request->file('video_url2');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/video_exercise', $filename);
+            $exercise->video_url_second = $filename;
+        }
 
         $exercise->save();
 
@@ -49,6 +55,13 @@ class ExerciseController extends Controller
             $filename = time().'.'.$extension;
             $file->move('uploads/video_exercise', $filename);
             $exercise->video_url = $filename;
+        }
+        if($request->hasFile('video_url2')){
+            $file = $request->file('video_url2');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/video_exercise', $filename);
+            $exercise->video_url_second = $filename;
         }
         
 
