@@ -35,11 +35,19 @@ class HomeController extends Controller
     // {
     //     $topPost = Posts::orderBy('id', 'DESC')->get();
     //     return view('frontend/layouts/footer')->with([
-      
+
     //         'topPost' => $topPost
-            
+
     // ]);
     // }
+
+
+    public function searchCourse()
+    {
+        return view('frontend/searchcourse');
+    }
+
+
     public function about()
     {
         return view('frontend/about');
@@ -48,6 +56,6 @@ class HomeController extends Controller
     {
         return view('frontend/contact');
     }
-  
+
 }
 

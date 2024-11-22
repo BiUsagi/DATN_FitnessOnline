@@ -43,6 +43,9 @@ Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 // Route::get('/footer', [HomeController::class, 'footer'])->name('footer.index');
+Route::get('/searchcourse', [HomeController::class, 'searchCourse'])->name('searchcourse.index');
+
+
 
 // profile
 Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
