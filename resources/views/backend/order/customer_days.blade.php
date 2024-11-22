@@ -103,7 +103,7 @@
                 fetch(`api/get-video/${workoutId}/${userId}/${dayNumber}`)
                     .then(response => response.json())
                     .then(data => {
-                        if (data.status === 'success') {
+                        if (data.status_main === 'success') {
                             //lấy id video
                             const videoId = data.video_id;
                             console.log('Video ID:', videoId);
@@ -117,7 +117,7 @@
                             videoPlayer.style.display = 'block';
                         } else {
                             Swal.fire({
-                            icon: "error",
+                            icon: "warning",
                             title: "Khách hàng chưa nộp video của ngày này",
                             });
                         }

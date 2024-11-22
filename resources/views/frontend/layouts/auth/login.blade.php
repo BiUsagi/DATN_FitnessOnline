@@ -201,7 +201,7 @@
                 password1: password,
                 password1_confirmation: password_confirmation
             }, function(data) {
-                window.location.href = "{{ route('login.index') }}";
+                window.location.href = "{{ route('otp.index') }}";
                 $(".errors1").text('');
                 $("#ketqua1").html(data.message); // Hiển thị thông báo từ server
             }).fail(function(xhr) {

@@ -975,6 +975,12 @@ video {
     padding: 8px 12px;
     border-radius: 5px;
 }
+.categories .level-infor .box-status.success{
+    background-color: #d4edda;
+    color: #155724;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
 /* .categories .level-infor .box-status:hover{
     background-color: #029e7f;
     cursor: pointer;
@@ -983,6 +989,19 @@ video {
 .categories .level-infor .scoring{
     color: #dc3545;
     background-color: #fff3cd;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.categories .level-infor .scoring.success{
+    background-color: #d4edda;
+    color: #155724;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.categories .level-infor .scoring.error{
+    background-color: #dc3545;
+    color: #fff3cd;
     padding: 8px 12px;
     border-radius: 5px;
 }
