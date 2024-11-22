@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Report;
 class CommentController extends Controller
 {
 
@@ -118,6 +119,38 @@ public function ReportedComments()
 
     return response()->json($reportedComments);
 }
+public function showCommentreport($id)
+{
+    $comment = Comment::with('replies', 'user')
+        ->with(['reports' => function ($query) {
+            $query->with('user'); // Lấy thông tin người báo cáo
+        }])
+        ->findOrFail($id);
 
+    return response()->json([
+        'id' => $comment->id,
+        'content' => $comment->content,
+        'created_at' => $comment->created_at,
+        'user_name' => $comment->user->user_name,
+        'user_avatar' => $comment->user->avatar,
+        'title' => $comment->posts->title ?? 'Không xác định',
+        'rep' => $comment->replies->map(function ($reply) {
+            return [
+                'id' => $reply->id,
+                'user_name' => $reply->user->user_name,
+                'avatar' => $reply->user->avatar,
+                'content' => $reply->content,
+            ];
+        }),
+        'reports' => $comment->reports->map(function ($report) {
+            return [
+                'report_content' => $report->report_content,
+                'created_at' => $report->created_at,
+                'user_name' => $report->user->user_name,
+                'user_avatar' => $report->user->avatar,
+            ];
+        }),
+    ]);
+}
 
 }
