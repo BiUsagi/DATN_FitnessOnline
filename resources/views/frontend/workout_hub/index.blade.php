@@ -434,24 +434,6 @@
         }
         upLoadVideoUser()
 
-        function goToNextExercise() {
-            if (currentExerciseIndex < exercisesData.length - 1) {
-                currentExerciseIndex++;
-                completedExercises++;
-                loadExerciseByIndex(currentExerciseIndex);
-            } else {
-                completedExercises = 0;
-                currentExerciseIndex = 0;
-
-            }
-        }
-
-        function goToPrevExercise() {
-            if (currentExerciseIndex > 0) {
-                currentExerciseIndex--;
-                loadExerciseByIndex(currentExerciseIndex);
-            }
-        }
 
         function loadExerciseByIndex(index) {
             const exercise = exercisesData[index];

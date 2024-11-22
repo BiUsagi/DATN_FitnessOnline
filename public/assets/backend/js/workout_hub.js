@@ -1,5 +1,5 @@
 const closeModalExercise = document.querySelector('.close-modal-exercise');
-    closeModalExercise.addEventListener('click', function() {
+    closeModalExercise?.addEventListener('click', function() {
         const overflow = document.querySelector('.overflow');   
       
         overflow.classList.remove('show-modal');   
@@ -7,7 +7,7 @@ const closeModalExercise = document.querySelector('.close-modal-exercise');
     });
 
     
-    document.querySelector('.btn-start-exercise').addEventListener('click', function() {
+    document.querySelector('.btn-start-exercise')?.addEventListener('click', function() {
         const countdownElement = document.querySelector('.countdown');
         const videoElement = document.querySelector('.show-video video'); // Chỉ video hiện tại
         const startButton = document.querySelector('.btn-start-exercise');

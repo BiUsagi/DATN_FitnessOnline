@@ -40,13 +40,13 @@ class UserVideoController extends Controller
     if ($userVideo) {
         return response()->json([
             'video_id'=> $userVideo->id, //lấy id video
+            'status' => $userVideo->status,
             'status_main' => 'success',
             'video_url' => asset('uploads/user_video/' . $userVideo->video_path),
-            'status' => $userVideo->status,
         ]);
     } else {
         return response()->json([
-            'status' => 'error',
+            'status_main' => 'error',
             'message' => 'Video not found for this day.'
         ]);
     }
