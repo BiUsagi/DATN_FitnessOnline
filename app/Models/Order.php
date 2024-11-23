@@ -38,5 +38,9 @@ class Order extends Model
     {
         return $this->user ? $this->user->user_name : 'N/A';
     }
+    public function voucher()
+    {
+        return $this->belongsTo(Voucher::class);  // Thêm quan hệ này
+    }
 
 }
