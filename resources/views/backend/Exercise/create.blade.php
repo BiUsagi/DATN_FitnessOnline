@@ -152,8 +152,8 @@
         const videoFile2 = document.getElementById('video-input2').files[0];
         if (videoFile) {
             formData.append('video_url', videoFile);
-            formData.append('video_url2', videoFile2);
         }
+        formData.append('video_url_second', videoFile2);
 
         $.ajax({
             url: 'http://127.0.0.1:8000/api/admin/exercises',
@@ -171,6 +171,7 @@
                 $('#form-exercise')[0].reset();
                 CKEDITOR.instances['description'].setData('');
                 $('#media-preview').replaceWith('<img id="media-preview" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById(\'video-input\').click();">');
+                $('#media-preview2').replaceWith('<img id="media-preview2" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById(\'video-input2\').click();">');
             }
         });
     });

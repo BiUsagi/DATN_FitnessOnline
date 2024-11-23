@@ -82,12 +82,7 @@
                 <h2 class="feedback-of-pt">Phản hồi của PT</h2>
                 <div class="content-feedback">
                     <i class="fa-regular fa-message"></i>
-                    <p class="gave-feedback">"Chào bạn! Mình đã xem video tập luyện của bạn, và phải nói là bài tập rất tốt! 💪
-                        Kỹ thuật: Bạn đã thực hiện động tác rất chuẩn, đúng tư thế và kiểm soát tốt. Đặc biệt, cách bạn duy trì nhịp thở trong suốt bài tập là rất quan trọng, giúp tăng hiệu quả và tránh căng cơ quá mức.
-                        Sự tập trung: Rất ấn tượng với sự tập trung của bạn! Điều này cho thấy bạn rất nghiêm túc và có trách nhiệm với bài tập của mình.
-                        Cải thiện: Nếu có thể, bạn hãy thử giảm tốc độ một chút trong phần hạ tạ để cảm nhận cơ tốt hơn, điều này sẽ giúp tối đa hóa hiệu quả của bài tập.
-                        Tiếp tục phát huy nhé! Nếu bạn cần thêm lời khuyên hoặc muốn điều chỉnh động tác, đừng ngần ngại hỏi mình. Chúc bạn đạt được mục tiêu nhanh chóng và hiệu quả nhất! 🏋️‍♀️"
-                    </p>
+                    <p class="gave-feedback"></p>
                     <p class="no-feedback">Hiện tại PT chưa có phản hồi gì cho bạn</p>
                 </div>
 
@@ -148,12 +143,12 @@
         const feedbackElement = document.querySelector('.content-feedback p');
         const durationElement = document.querySelector('.text-submit-exercise.duration');
         const viewDefault = document.querySelector('.view-default');
-        const gaveFeedback = document.querySelector('.gave-feedback');
-        const noFeedback = document.querySelector('.no-feedback');
         const defaultView = document.getElementById('default-view');
         const contentView = document.getElementById('content');
         const scoring = document.querySelector('.scoring');
         const boxStatus = document.querySelector('.box-status');
+        const gaveFeedback = document.querySelector('.gave-feedback');
+        const noFeedback = document.querySelector('.no-feedback');
         
         boxList.forEach(item => {
             item.addEventListener('click', function() {
@@ -168,56 +163,65 @@
                     const userId = "{{ Auth::user()->id }}"; 
                     
                
-                fetch(`api/get-video/${workoutId}/${userId}/${dayNumber}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data && data.status_main === 'success') {
-                            videoPlayer.src = data.video_url;
-                            videoPlayer.style.display = 'block'; // Hiển thị video
-                            viewDefault.style.display = 'none';
-                            gaveFeedback.style.display = 'block';
-                            noFeedback.style.display = 'none';
-                            if (data.status === 0) {
-                                scoring.classList.remove('success');
-                                boxStatus.classList.remove('success');
-                                scoring.textContent = 'Chờ duyệt';
-                                boxStatus.textContent = 'Chờ duyệt';
-                            } else if (data.status === 1) {
-                                scoring.classList.remove('error');
-                                scoring.classList.add('success');
-                                boxStatus.classList.add('success');
-                                scoring.textContent = 'Đạt';
-                                boxStatus.textContent = 'Đã duyệt';
-                            } else {
-                                scoring.classList.add('error');
-                                boxStatus.classList.add('success');
-                                scoring.textContent = 'Không đạt';
-                                boxStatus.textContent = 'Đã duyệt';
-                            }
-                        } else {
-                            viewDefault.style.display = 'block';
-                            gaveFeedback.style.display = 'none';
-                            noFeedback.style.display = 'block';
-                            videoPlayer.style.display = 'none';
-                            scoring.classList.remove('success', 'error');
-                            boxStatus.classList.remove('success', 'error');
+                    fetch(`api/get-video/${workoutId}/${userId}/${dayNumber}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    gaveFeedback.innerHTML = ''; 
+                    gaveFeedback.style.display = 'none';
+                    noFeedback.style.display = 'none';
+                    viewDefault.style.display = 'block';
+                    videoPlayer.style.display = 'none';
+                    scoring.classList.remove('success', 'error');
+                    boxStatus.classList.remove('success', 'error');
+                    scoring.textContent = 'Chờ duyệt';
+                    boxStatus.textContent = 'Chờ duyệt';
+
+                    if (data.feedback) {
+                        gaveFeedback.innerHTML = data.feedback;
+                        gaveFeedback.style.display = 'block';
+                        noFeedback.style.display = 'none';
+                    } else {
+                        noFeedback.style.display = 'block';
+                    }
+
+                    if (data && data.status_main === 'success') {
+                        videoPlayer.src = data.video_url;
+                        videoPlayer.style.display = 'block';
+                        viewDefault.style.display = 'none';
+
+                        if (data.status === 0) {
                             scoring.textContent = 'Chờ duyệt';
                             boxStatus.textContent = 'Chờ duyệt';
+                        } else if (data.status === 1) {
+                            scoring.classList.add('success');
+                            boxStatus.classList.add('success');
+                            scoring.textContent = 'Đạt';
+                            boxStatus.textContent = 'Đã duyệt';
+                        } else {
+                            scoring.classList.add('error');
+                            boxStatus.classList.add('success');
+                            scoring.textContent = 'Không đạt';
+                            boxStatus.textContent = 'Đã duyệt';
                         }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching video:', error);
-                        scoring.classList.remove('success', 'error');
-                        boxStatus.classList.remove('success', 'error');
-                        scoring.textContent = 'Chờ duyệt';
-                        boxStatus.textContent = 'Chờ duyệt';
-                    });
-                }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching video:', error);
+                    viewDefault.style.display = 'block';
+                    gaveFeedback.style.display = 'none';
+                    noFeedback.style.display = 'block';
+                    videoPlayer.style.display = 'none';
+                    scoring.classList.remove('success', 'error');
+                    boxStatus.classList.remove('success', 'error');
+                    scoring.textContent = 'Chờ duyệt';
+                    boxStatus.textContent = 'Chờ duyệt';
+                });
+            }
             });
         });
     </script>

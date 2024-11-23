@@ -16,7 +16,10 @@
             <div class="row">
                 <div class="col-9 text-bold">
                     <div class="card">
-                        <p class="m-3 fw-bold title-day">NGÀY </p>
+                        <div class="confirm d-flex align-items-center justify-content-between">
+                            <p class="m-3 fw-bold title-day">NGÀY </p>
+                            <a href="#" class="m-3 confirm-success"><i class="ri-checkbox-circle-fill"></i> Xác nhận hoàn thành</a>
+                        </div>
                         <div class="d-flex justify-content-around fw-bold ">
                             <p > <i class="bi bi-backpack4"></i> Trạng Thái : <p class="text-success">Đang hoạt động</p></p>
                             <p>Số Bài Tập :<p class="text-primary">6 bài tập</p></p>
@@ -59,33 +62,17 @@
                                 @endfor
                             </div>
                         </div>
-                        
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" value="1" id="flexRadioDefault1" checked>
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Đạt
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" value="2" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Không Đạt
-                                </label>
-                            </div>
-                        </div>
 
                         <div class="card">
                             <div class="card-header text-uppercase">Đánh giá</div>
                             <div class="card-body">
                                 <div class="action-package-exercise">
                                     <div class="action-online">
-                                        <input type="radio" checked name="status" id="status-online">
+                                        <input type="radio" class="form-check-input" checked name="status" id="status-online" value="1">
                                         <label for="status-online"><a>Đạt</a></label>
                                     </div>
                                     <div class="action-offline">
-                                        <input type="radio" name="status" id="status-offline">
+                                        <input type="radio" class="form-check-input" name="status" id="status-offline" value="2">
                                         <label for="status-offline"><a>Chưa đạt</a></label>
                                     </div>
                                 </div>
@@ -122,13 +109,7 @@
                 // Cập nhật nội dung ngày
                 document.querySelector('.title-day').textContent = `NGÀY ${dayNumber}`;
 
-                // Tại đây, bạn có thể thực hiện thêm các thao tác khác cho từng ngày như:
-                // - Gọi API để lấy dữ liệu video tương ứng với ngày được chọn
-                // - Cập nhật video và thông tin cho ngày đó
-
-                // Ví dụ: Gọi API lấy video cho ngày
                 const workoutId = "{{ $info->workout_package_id }}";
-                console.log(workoutId)
                 const userId = "{{ $info->user_id }}";
                 
                 fetch(`api/get-video/${workoutId}/${userId}/${dayNumber}`)
@@ -142,7 +123,6 @@
                             const videoIdInput = document.getElementById('videoIdInput');
                             videoIdInput.value = videoId;
 
-                            // Cập nhật video
                             const videoPlayer = document.getElementById('videoPlayer');
                             videoPlayer.src = data.video_url;
                             videoPlayer.style.display = 'block';
@@ -193,6 +173,76 @@
                 }
             });
         });
+        function confirmSuccess() {
+                const confirmButton = document.querySelector('.confirm-success');
+                confirmButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const workoutId = "{{ $info->workout_package_id }}"; 
+                    const userId = "{{ $info->user_id }}"; 
+                    const activeDay = document.querySelector('.box-day.active');
+                    const dayNumber = activeDay ? parseInt(activeDay.textContent.trim().split(' ')[1]) : null;
+
+
+                    if (!dayNumber) {
+                        Swal.fire({
+                            icon: "warning",
+                            title: "Chưa chọn ngày tập",
+                            text: "Vui lòng chọn ngày tập trước khi xác nhận.",
+                        });
+                        return;
+                    }
+
+                    Swal.fire({
+                        title: 'Xác nhận hoàn thành ngày tập cho khách hàng',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#5edd50',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Xác nhận',
+                        cancelButtonText: 'Hủy'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            fetch(`/api/admin/confirm-completion`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    workout_package_id: workoutId,
+                                    user_id: userId,
+                                    current_day: dayNumber + 1,
+                                }),
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    Swal.fire({
+                                        icon: "success",
+                                        title: "Thành công!",
+                                        text: "Ngày tập đã được xác nhận hoàn thành.",
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Lỗi!",
+                                        text: "Không thể xác nhận ngày tập. Vui lòng thử lại.",
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.log('Error:', error);
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Lỗi!",
+                                    text: "Đã xảy ra lỗi khi xác nhận.",
+                                });
+                            });
+                        }
+                    });        
+                });
+            }
+            confirmSuccess();
 
 
     </script>

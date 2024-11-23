@@ -17,6 +17,7 @@ class Exercise extends Model
         'sets',
         'reps',
         'video_url',
+        'video_url_second',
         'status'
     ];
 
