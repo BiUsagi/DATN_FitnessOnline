@@ -43,6 +43,9 @@ Route::get('/about', [HomeController::class, 'about'])->name('about.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact.index');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog.index');
 // Route::get('/footer', [HomeController::class, 'footer'])->name('footer.index');
+Route::get('/searchcourse', [HomeController::class, 'searchCourse'])->name('searchcourse.index');
+
+
 
 // profile
 Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
@@ -70,6 +73,7 @@ Route::post('/login', [LoginController::class, 'login_'])->name('login_.index');
 Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
+Route::get('/otp', [LoginController::class, 'otp'])->name('otp.index'); //xử lý input register;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.addmoney'); //link nạp tiền

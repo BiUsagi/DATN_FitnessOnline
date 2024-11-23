@@ -78,6 +78,15 @@
                             <!-- Input để chọn video -->
                             <input type="file" name="video_url" id="video-input" class="form-control" style="display: none;" accept="video/*" onchange="previewMedia(event)">
                         </div>
+                        <div class="card">
+                            <div class="card-header text-uppercase">Video bài tập 2</div>
+                            
+                            <!-- Ban đầu hiển thị hình ảnh -->
+                            <img id="media-preview2" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById('video-input2').click();">
+                            
+                            <!-- Input để chọn video -->
+                            <input type="file" name="video_url2" id="video-input2" class="form-control" style="display: none;" accept="video/*" onchange="previewMedia2(event)">
+                        </div>
                         
                         
 
@@ -94,7 +103,7 @@
 </main><!-- End #main -->
 
 <script>
-         function previewMedia(event) {
+    function previewMedia(event) {
         const file = event.target.files[0];
         const previewElement = document.getElementById('media-preview');
 
@@ -112,6 +121,24 @@
             }
         }
     }
+    function previewMedia2(event) {
+        const file = event.target.files[0];
+        const previewElement2 = document.getElementById('media-preview2');
+
+        if (file) {
+            if (file.type.startsWith('video/')) {
+                const video = document.createElement('video');
+                video.id = 'media-preview2';
+                video.controls = true;
+                video.style.width = '100%';
+                video.src = URL.createObjectURL(file);
+                
+                previewElement2.replaceWith(video);
+            } else {
+                previewElement2.src = URL.createObjectURL(file);
+            }
+        }
+    }
 
     $('#form-exercise').on('submit', function(e) {
         e.preventDefault();
@@ -122,9 +149,11 @@
         formData.append('description', description);
 
         const videoFile = document.getElementById('video-input').files[0];
+        const videoFile2 = document.getElementById('video-input2').files[0];
         if (videoFile) {
             formData.append('video_url', videoFile);
         }
+        formData.append('video_url_second', videoFile2);
 
         $.ajax({
             url: 'http://127.0.0.1:8000/api/admin/exercises',
@@ -142,6 +171,7 @@
                 $('#form-exercise')[0].reset();
                 CKEDITOR.instances['description'].setData('');
                 $('#media-preview').replaceWith('<img id="media-preview" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById(\'video-input\').click();">');
+                $('#media-preview2').replaceWith('<img id="media-preview2" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById(\'video-input2\').click();">');
             }
         });
     });
