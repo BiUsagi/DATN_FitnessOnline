@@ -158,10 +158,10 @@
                                                         <div class="form-check ps-0 q-box">
                                                             <div class="q-box__question">
                                                                 <input class="form-check-input question__input"
-                                                                    id="q_4_br" name="q_3" type="checkbox"
+                                                                    id="q_4_bra" name="q_3" type="checkbox"
                                                                     value="br">
                                                                 <label class="form-check-label question__label"
-                                                                    for="q_4_br">Hỗ trợ điều trị</label>
+                                                                    for="q_4_bra">Hỗ trợ điều trị</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -196,10 +196,10 @@
                                                         <div class="form-check ps-0 q-box">
                                                             <div class="q-box__question">
                                                                 <input class="form-check-input question__input"
-                                                                    id="q_4_eu" name="q_4" type="checkbox"
+                                                                    id="q_4_eua" name="q_4" type="checkbox"
                                                                     value="eu">
                                                                 <label class="form-check-label question__label"
-                                                                    for="q_4_eu">Rèn luyện sức khỏe</label>
+                                                                    for="q_4_eua">Rèn luyện sức khỏe</label>
                                                             </div>
                                                         </div>
                                                     </div>
