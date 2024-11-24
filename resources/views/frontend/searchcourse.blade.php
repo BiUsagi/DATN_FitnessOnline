@@ -62,14 +62,14 @@
                                                             for="q_1_nam">Nam</label>
                                                     </div>
                                                     <div class="q-box__question">
-                                                        <input checked class="form-check-input question__input"
-                                                            id="q_1_nu" name="q_1" type="radio" value="No">
+                                                        <input class="form-check-input question__input" id="q_1_nu"
+                                                            name="q_1" type="radio" value="No">
                                                         <label class="form-check-label question__label"
                                                             for="q_1_nu">Nữ</label>
                                                     </div>
                                                     <div class="q-box__question">
-                                                        <input class="form-check-input question__input" id="q_1_khac"
-                                                            name="q_1" type="radio" value="Yes">
+                                                        <input checked class="form-check-input question__input"
+                                                            id="q_1_khac" name="q_1" type="radio" value="Yes">
                                                         <label class="form-check-label question__label"
                                                             for="q_1_khac">Khác</label>
                                                     </div>
@@ -86,8 +86,8 @@
                                                             đã có kinh nghiệm</label>
                                                     </div>
                                                     <div class="q-box__question">
-                                                        <input checked class="form-check-input question__input"
-                                                            id="q_2_maybe" name="q_2" type="radio" value="No">
+                                                        <input class="form-check-input question__input" id="q_2_maybe"
+                                                            name="q_2" type="radio" value="No">
                                                         <label class="form-check-label question__label" for="q_2_maybe">Tôi
                                                             chỉ biết cơ bản</label>
                                                     </div>
@@ -110,8 +110,8 @@
                                                             có đầy đủ</label>
                                                     </div>
                                                     <div class="q-box__question">
-                                                        <input checked class="form-check-input question__input"
-                                                            id="q_3_no" name="q_3" type="radio" value="No">
+                                                        <input class="form-check-input question__input" id="q_3_no"
+                                                            name="q_3" type="radio" value="No">
                                                         <label class="form-check-label question__label" for="q_3_no">Tôi
                                                             không có</label>
                                                     </div>
@@ -223,8 +223,8 @@
                                                 <div class="row">
                                                     <div class="form-check ps-0 q-box">
                                                         <div class="q-box__question">
-                                                            <input class="form-check-input question__input"
-                                                                id="q_5_breathing" name="q_5_breathing" type="checkbox"
+                                                            <input checked class="form-check-input question__input"
+                                                                id="q_5_breathing" name="q_5" type="radio"
                                                                 value="breathing">
                                                             <label class="form-check-label question__label"
                                                                 for="q_5_breathing">
@@ -234,7 +234,7 @@
                                                     <div class="form-check ps-0 q-box">
                                                         <div class="q-box__question">
                                                             <input class="form-check-input question__input" id="q_5_chest"
-                                                                name="q_5_chest" type="checkbox" value="chest pain">
+                                                                name="q_5" type="radio" value="chest pain">
                                                             <label class="form-check-label question__label"
                                                                 for="q_5_chest">1 ~ 3 tháng</label>
                                                         </div>
@@ -242,7 +242,7 @@
                                                     <div class="form-check ps-0 q-box">
                                                         <div class="q-box__question">
                                                             <input class="form-check-input question__input"
-                                                                id="q_5_speech" name="q_5_speech" type="checkbox"
+                                                                id="q_5_speech" name="q_5" type="radio"
                                                                 value="speech problem">
                                                             <label class="form-check-label question__label"
                                                                 for="q_5_speech">~ 6 tháng</label>
@@ -251,7 +251,7 @@
                                                     <div class="form-check ps-0 q-box">
                                                         <div class="q-box__question">
                                                             <input class="form-check-input question__input" id="q_5_pale"
-                                                                name="q_5_pale" type="checkbox" value="pale">
+                                                                name="q_5" type="radio" value="pale">
                                                             <label class="form-check-label question__label"
                                                                 for="q_5_pale">> 1 năm</label>
                                                         </div>
