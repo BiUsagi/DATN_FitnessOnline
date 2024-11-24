@@ -40,4 +40,8 @@ class Posts extends Model
     {
         return $this->user ? $this->user->staff_name : 'Không xác định';
     }
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class);
+    }
 }

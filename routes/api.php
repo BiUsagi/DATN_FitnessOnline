@@ -19,9 +19,6 @@ use App\Http\Controllers\backend\api\DepositHistoriesController;
 use App\Http\Controllers\backend\api\OrderController;
 use App\Models\User;
 
-
-
-
 //frontend
 use App\Http\Controllers\frontend\api\WalletsController;
 use App\Http\Controllers\frontend\api\NotificationController;
@@ -65,7 +62,7 @@ Route::group(['prefix' => 'admin',], function () {
     // Route lấy tiến độ của người dùng
 
     Route::post('/workout_hub/{id}/save-progress', [Workout_PackageController::class, 'saveProgress']);
-
+    Route::post('/confirm-completion', [OrderController::class, 'confirmCompletion']);
 
 
     // account
@@ -93,6 +90,8 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/comments/{id}', [CommentController::class, 'show']);
     Route::delete('/comments/{id}', [CommentController::class, 'delete']);
     Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments');
+    Route::get('/comments/reports/{id}', [CommentController::class, 'showCommentreport']);
+
 
 
 
@@ -113,7 +112,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::put('/wallet/{id}/{dong}', [WalletController::class, 'addmoney']);
 
     //feedback
-    Route::post('/feedback', [OrderController::class, 'sendFeedback']);
+    Route::post('/feedback/{id}', [OrderController::class, 'sendFeedback']);
 
 
 });

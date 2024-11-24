@@ -48,6 +48,11 @@ class LoginController extends Controller
         ]);
     }
 
+    function otp()
+    {
+        return view('frontend/layouts/auth/otp');
+    }
+
 
     public function register(RegisterRequest $request)
     {

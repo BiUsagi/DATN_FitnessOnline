@@ -24,36 +24,36 @@ class Workout_packageController extends Controller
     }
 
     public function workout_hub($id) {
-        // Lấy thông tin gói tập với các quan hệ liên quan
         $package = Workout_Package::with('userPackageProgress')->find($id);
     
         if (!$package) {
             return redirect()->back()->with('error', 'Không tìm thấy gói tập này!');
         }
     
-        // Lấy tiến độ của người dùng đăng nhập cho gói tập này
         $progress = $package->userPackageProgress()->where('user_id', auth()->id())->first(); 
     
         if (!$progress) {
-            // Nếu không tìm thấy tiến độ, có thể hiển thị thông báo hoặc một thông tin mặc định
             $progress = null;
         }
     
-        // Lấy đơn hàng của người dùng đã mua gói tập này
         $orders = Order::where('workout_package_id', $id)
-                        ->with('user') // Tải thông tin người dùng liên quan
+                        ->with('user') 
                         ->get();
     
         return view('frontend.workout_hub.index', compact('package', 'progress', 'orders'));
     }
     
-
     public function submit_exercise($workout_id, $user_id)
     {
-    $userUpload = user_videos::where('user_id', $user_id)->first();
-    $workoutPackage = Workout_Package::find($workout_id);
+        $userUpload = User_Videos::where('user_id', $user_id)
+        ->where('workout_package_id', $workout_id)
+        ->orderBy('day_number')
+        ->get();
     
-    return view('frontend.submit_exercise.index', compact('userUpload', 'workoutPackage'));
+        $workoutPackage = Workout_Package::find($workout_id);
+    
+        return view('frontend.submit_exercise.index', compact('userUpload', 'workoutPackage'));
     }
+    
     
 }

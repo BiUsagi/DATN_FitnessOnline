@@ -30,22 +30,21 @@ class UserVideoController extends Controller
     }
     public function getVideo($workout_id, $user_id, $day_number)
     {
-    // Lấy video của người dùng cho ngày đó
     $userVideo = user_videos::where('user_id', $user_id)
                             ->where('workout_package_id', $workout_id)
                             ->where('day_number', $day_number)
                             ->first();
-
-    // Kiểm tra xem có video hay không, nếu có thì trả về video, nếu không thì trả về thông báo lỗi
     if ($userVideo) {
         return response()->json([
-            'video_id'=> $userVideo->id, //lấy id video
-            'status' => 'success',
-            'video_url' => asset('uploads/user_video/' . $userVideo->video_path), // Đảm bảo đường dẫn video chính xác
+            'video_id'=> $userVideo->id,
+            'status' => $userVideo->status,
+            'status_main' => 'success',
+            'feedback' => $userVideo->feedback,
+            'video_url' => asset('uploads/user_video/' . $userVideo->video_path),
         ]);
     } else {
         return response()->json([
-            'status' => 'error',
+            'status_main' => 'error',
             'message' => 'Video not found for this day.'
         ]);
     }
