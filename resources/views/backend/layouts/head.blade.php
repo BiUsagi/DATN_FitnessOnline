@@ -16,6 +16,7 @@
 
     <!-- money style -->
     <link rel="stylesheet" href="assets/frontend/css/money.css">
+    <link rel="stylesheet" href="assets/frontend/css/ruttien.css">
 
 
     <!-- Favicons -->

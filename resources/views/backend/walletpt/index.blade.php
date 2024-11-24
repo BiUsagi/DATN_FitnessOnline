@@ -30,12 +30,15 @@
                                 <h5 class="card-title">Số dư của bạn<span></span></h5>
 
                                 <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6><span class="text-danger small pt-1 fw-bold">12.000.000</span> VNĐ</h6>
-                                    </div> 
+                                        <h6><span
+                                                class="text-danger small pt-1 fw-bold"><?php echo number_format($sodu, 0, ',', '.'); ?>
+                                            </span> VNĐ</h6>
+                                    </div>
                                     <button class="btn-customize ms-3">Rút tiền</button>
                                 </div>
 
@@ -57,7 +60,7 @@
                                         <i class="bi bi-cart"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>10 gói tập</h6>
+                                        <h6><?php echo $tonggt ?> gói tập</h6>
 
 
                                     </div>
@@ -82,7 +85,8 @@
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1.000.000 VNĐ</h6>
+                                        <h6><?php echo number_format($tongdt, 0, ',', '.'); ?>
+                                        VNĐ</h6>
 
                                     </div>
                                 </div>

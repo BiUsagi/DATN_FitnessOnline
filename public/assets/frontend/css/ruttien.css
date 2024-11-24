@@ -1,0 +1,100 @@
+/* CSS cho trang rút tiền */
+.withdraw-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0; /* Thêm padding để tạo khoảng cách trên và dưới */
+}
+
+.withdraw-box {
+    width: 100%;
+    max-width: 600px; /* Đặt độ rộng hơi lớn hơn */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.withdraw-title {
+    font-size: 26px;
+    color: #333; /* Màu tiêu đề không còn là màu xanh */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.withdraw-info {
+    font-size: 18px;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.withdraw-form {
+    margin-bottom: 30px;
+}
+
+.withdraw-form label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+    text-align: left; /* Tiêu đề không căn giữa */
+}
+
+.withdraw-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.withdraw-form .btn-submit {
+    background-color: #1face1; /* Màu chủ đạo */
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.withdraw-form .btn-submit:hover {
+    background-color: #17e3b7; /* Màu chủ đạo khi hover */
+}
+
+.note {
+    font-size: 16px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+    background-color: #fce4e4;
+    padding: 15px;
+    border-left: 4px solid #e74c3c;
+    font-weight: bold;
+}
+
+.contact-zalo {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.contact-zalo i {
+    font-size: 24px;
+    color: #25D366; /* Màu của Zalo */
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.contact-zalo i:hover {
+    transform: scale(1.1);
+}
+
+.contact-zalo span {
+    font-weight: bold;
+    color: #333;
+}

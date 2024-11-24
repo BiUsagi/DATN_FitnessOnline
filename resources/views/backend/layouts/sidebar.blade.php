@@ -262,12 +262,12 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/walletpt*') ? 'active' : '' }}"
-                    data-bs-target="#package-nav" data-bs-toggle="collapse"
+                    data-bs-target="#money-nav" data-bs-toggle="collapse"
                     href="{{ route('admin.walletpt') }}">
                     <i class="bi bi-bar-chart"></i><span>Quản lý số dư</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="package-nav"
+                <ul id="money-nav"
                     class="nav-content collapse {{ Request::is('admin/walletpt*') ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
                     <li>
@@ -277,8 +277,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.workout_package-create') }}"
-                            class="{{ Request::is('admin/workout_package/create') ? 'active' : '' }}">
+                        <a href="{{ route('admin.ruttien') }}"
+                            class="{{ Request::is('admin/walletpt/ruttien') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Rút tiền</span>
                         </a>
                     </li>
