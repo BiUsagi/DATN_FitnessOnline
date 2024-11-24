@@ -261,6 +261,31 @@
             <!-- End Dashboard Nav -->
 
             <li class="nav-item">
+                <a class="nav-link collapsed {{ Request::is('admin/walletpt*') ? 'active' : '' }}"
+                    data-bs-target="#money-nav" data-bs-toggle="collapse"
+                    href="{{ route('admin.walletpt') }}">
+                    <i class="bi bi-bar-chart"></i><span>Quản lý số dư</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="money-nav"
+                    class="nav-content collapse {{ Request::is('admin/walletpt*') ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('admin.walletpt') }}"
+                            class="{{ Request::is('admin/walletpt') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Thống kê</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.ruttien') }}"
+                            class="{{ Request::is('admin/walletpt/ruttien') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Rút tiền</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End money -->
+
+            <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/workout_package*') ? 'active' : '' }}"
                     data-bs-target="#package-nav" data-bs-toggle="collapse"
                     href="{{ route('admin.workout_package') }}">
@@ -319,21 +344,9 @@
                     class="nav-content collapse {{ Request::is('admin/res_client') || Request::is('admin/res_client/create') ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('admin.exercise') }}"
-                            class="{{ Request::is('admin/res_client') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Danh sách bài tập</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ route('admin.orders.customer_manage') }}"
                             class="{{ Request::is('admin/res_client/create') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Danh Sách khách hàng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.exercise-create') }}"
-                            class="{{ Request::is('admin/res_client/create') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Thêm bài tập</span>
+                            <i class="bi bi-circle"></i><span>Danh sách khách hàng</span>
                         </a>
                     </li>
                 </ul>

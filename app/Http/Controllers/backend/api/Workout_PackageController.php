@@ -15,20 +15,6 @@ use Illuminate\Support\Facades\File;
 
 class Workout_PackageController extends Controller
 {
-    // public function index()
-    // {   
-    //     $user = Auth::user();
-    //     if($user->role_012 === 2) {
-    //         $data = Workout_Package::orderBy('id', 'asc')->get();
-    //     }else {
-    //         $data = Workout_Package::where('staff_id',$user->id)->get();
-    //     }    
-        
-    //     $data = Workout_Package::orderBy('id', 'asc')->get();
-
-    //     return response()->json($user);
-    // }
-
     public function get_exercises()
     {
         $data = Exercise::orderBy('id', 'asc')->select('id', 'name')->get();
@@ -46,7 +32,6 @@ class Workout_PackageController extends Controller
     {
         $request->validate([
             'package_name' => 'required|string|max:255',
-            // ... các quy tắc khác
         ]);
 
         $set = new Workout_package;

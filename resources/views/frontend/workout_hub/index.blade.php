@@ -129,7 +129,14 @@
                             <video>
                                 <source type="video/mp4">
                             </video>
-
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="show-video2">
+                        <div class="video-container">
+                            <video>
+                                <source type="video/mp4">
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -364,31 +371,40 @@
 
                 const actionStart = document.querySelectorAll('.action-start a');
                 actionStart.forEach(item => {
-                    item.addEventListener('click', function() {
-                        const videoExercise = document.querySelector('.video-exercise');
-                        const videoId = videoExercise.getAttribute('data-videoId');
-                        console.log(videoId);
+                item.addEventListener('click', function () {
+                    const videoExercise = document.querySelector('.video-exercise');
+                    const videoId = videoExercise.getAttribute('data-videoId');
+                    const exerciseId = this.getAttribute('data-id');
+                    const exercise = exercisesData.find(ex => ex.id == exerciseId);
+                    const overflow = document.querySelector('.overflow');
 
-                        const exerciseId = this.getAttribute('data-id');
-                        const exercise = exercisesData.find(ex => ex.id == exerciseId);
-                        const overflow = document.querySelector('.overflow');
+                    document.querySelector('.title-detail h3').textContent = exercise.name;
 
-                        document.querySelector('.title-detail h3').textContent = exercise.name;
+                    const videoSrc = `/uploads/video_exercise/${exercise.video_url}`;
+                    const videoSrc2 = `/uploads/video_exercise/${exercise.video_url_second}`;
 
-                        const videoSrc = `/uploads/video_exercise/${exercise.video_url}`;
-                        const videoElement = document.querySelector(
-                            '.show-video .video-container video');
-                        const sourceElement = videoElement.querySelector('source');
+                    // Video 1
+                    const videoElement = document.querySelector('.show-video .video-container video');
+                    const sourceElement = videoElement.querySelector('source');
+                    sourceElement.src = videoSrc;
+                    videoElement.load();
 
-                        const description = document.querySelector('.content').innerHTML = exercise
-                            .description;
+                    // Video 2
+                    const videoElement2 = document.querySelector('.show-video2 .video-container video');
+                    const sourceElement2 = videoElement2.querySelector('source');
+                    sourceElement2.src = videoSrc2;
+                    videoElement2.load();
 
-                        sourceElement.src = videoSrc;
-                        videoElement.load();
+                    // Nội dung mô tả
+                    document.querySelector('.content').innerHTML = exercise.description;
 
-                        overflow.classList.add('show-modal');
-                    });
+                    // Hiển thị modal
+                    overflow.classList.add('show-modal');
+
+                 
                 });
+            });
+
             });
         }
 

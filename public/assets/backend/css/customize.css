@@ -489,3 +489,16 @@ input[name=link]{
     margin-left: 0.3rem;
     /* margin-top: 0.3rem; */
 }
+
+.confirm-success{
+    background-color: #5edd50;
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 3px;
+}
+
+.confirm-success:hover{
+    background-color: #39D127;
+    color: #fff;
+}

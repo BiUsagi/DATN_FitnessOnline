@@ -9,7 +9,8 @@ const closeModalExercise = document.querySelector('.close-modal-exercise');
     
     document.querySelector('.btn-start-exercise')?.addEventListener('click', function() {
         const countdownElement = document.querySelector('.countdown');
-        const videoElement = document.querySelector('.show-video video'); // Chỉ video hiện tại
+        const videoElement = document.querySelector('.show-video video');
+        const videoElement2 = document.querySelector('.show-video2 video');
         const startButton = document.querySelector('.btn-start-exercise');
         const overflowColLeft = document.querySelector('.overflow-col-left');
     
@@ -31,7 +32,9 @@ const closeModalExercise = document.querySelector('.close-modal-exercise');
     
                 // Phát video đã chọn
                 videoElement.play();
+                videoElement2.play();
                 videoElement.removeAttribute('controls');
+                videoElement2.removeAttribute('controls');
             }
         }, 1000);
     });

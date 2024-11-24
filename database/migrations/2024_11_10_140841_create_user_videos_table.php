@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('day_number')->comment('Ngày trong gói tập'); // Ngày trong gói tập
             $table->string('video_path');
             $table->text('description')->nullable()->comment('Mô tả về bài tập trong video');
+            $table->text('feedback')->nullable();
             $table->tinyInteger('status')->default(0)->comment('0 - chưa đánh giá, 1 - đạt, 2 - chưa đạt');
             $table->timestamps();
 

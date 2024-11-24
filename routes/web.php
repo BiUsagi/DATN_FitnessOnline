@@ -153,6 +153,12 @@ Route::prefix('admin')->group(function () {
     // wallets
     Route::get('/deposithistories', [DepositHistoriesController::class, 'index'])->name('admin.addmoney');
     Route::get('/deposithistories/list', [DepositHistoriesController::class, 'list'])->name('admin.listmoney');
+    Route::get('/deposithistories', [DepositHistoriesController::class, 'index'])->name('admin.addmoney');
+
+    Route::get('/walletpt', [WalletController::class, 'index'])->name('admin.walletpt');
+    Route::get('/walletpt/ruttien', [WalletController::class, 'ruttienpt'])->name('admin.ruttien');
+
+
 
 
 
