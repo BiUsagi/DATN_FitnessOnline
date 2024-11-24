@@ -26,7 +26,7 @@
         content="We craft website in a way which improves the web experience. We take pride in treating all customers with the highest degree of care, understanding, services, and support.">
     <meta property="twitter:image" content="https://site_url.com/assets/frontend/images/thumbnail.webp">
     <!-- ------------- META TAG END'S HERE ------------- -->
-    <title>Gymfit.com</title>
+    <title>FITNESS ONLINE</title>
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="assets/frontend/images/favicon.svg">
 
