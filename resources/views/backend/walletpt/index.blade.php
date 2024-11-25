@@ -1,5 +1,6 @@
 @extends('backend/layouts/app-admin')
 
+
 @section('main')
 <main id="main" class="main">
 
@@ -86,7 +87,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6><?php echo number_format($tongdt, 0, ',', '.'); ?>
-                                        VNĐ</h6>
+                                            VNĐ</h6>
 
                                     </div>
                                 </div>

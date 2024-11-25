@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Wallet;
+use App\Models\User;
 use App\Models\Workout_Package;
 use Auth;
 use Carbon\Carbon;
@@ -29,7 +30,10 @@ class WalletController extends Controller
             ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
             ->sum('purchase_price');
 
-        $totalWorkoutPackages = Workout_Package::count();
+        // $totalWorkoutPackages = Workout_Package::count();
+        $totalWorkoutPackages = Workout_Package::whereHas('staff.user', function ($query) {
+            $query->where('id', Auth::id());
+        }) ->count();
 
 
         return view('backend/walletpt/index', [
@@ -42,7 +46,18 @@ class WalletController extends Controller
     }
 
     public function ruttienpt(){
-        return view('backend/walletpt/ruttien');
+        $userId = Auth::user()->id;
+        $user = User::find($userId);
+
+        $wallet = Wallet::where('user_id', $userId)->first();
+
+        return view('backend/walletpt/ruttien',[
+            'sodu' => $wallet->balance,
+            'user_name' => $user->user_name,
+            'user_id' => $userId,
+            'wallet' => $wallet->id
+        ]);
     }
+    
 
 }
