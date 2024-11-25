@@ -24,7 +24,7 @@
                 <h1 class="withdraw-title">Rút Tiền</h1>
 
                 <!-- Thông tin số tiền rút -->
-                <div class="">
+                <div class="money">
                     <p>Số dư của bạn: <strong class="text-info" id="sodu1"></strong></p>
                 </div>
 
@@ -57,7 +57,7 @@
 
                 <!-- Lưu ý về giao dịch -->
                 <div class="note">
-                    <p><strong>Lưu ý:</strong> Giao dịch sẽ được thực hiện qua Zalo. Vui lòng liên hệ với chúng tôi qua
+                    <p><strong>Lưu ý(*):</strong> Giao dịch sẽ được thực hiện qua Zalo. Vui lòng liên hệ với chúng tôi qua
                         Zalo để hoàn tất giao dịch.</p>
                 </div>
 

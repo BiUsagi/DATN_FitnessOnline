@@ -52,7 +52,13 @@ class Workout_packageController extends Controller
     
         $workoutPackage = Workout_Package::find($workout_id);
     
-        return view('frontend.submit_exercise.index', compact('userUpload', 'workoutPackage'));
+        $daysStatus = [];
+        for ($day = 1; $day <= $workoutPackage->duration_days; $day++) {
+            $video = $userUpload->firstWhere('day_number', $day);
+            $daysStatus[$day] = $video ? $video->status : 0;
+        }
+
+    return view('frontend.submit_exercise.index', compact('userUpload', 'workoutPackage', 'daysStatus'));
     }
     
     
