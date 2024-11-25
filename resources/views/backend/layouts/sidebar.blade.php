@@ -35,7 +35,7 @@
                         <a href="{{ route('admin.addmoney') }}"
                             class="{{ Request::is('admin/deposithistories') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span class="position-relative">
-                                Yêu cầu nạp
+                                Yêu cầu rút tiền
                                 <span
                                     class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-danger custom-badge request-money"></span>
                             </span>
@@ -44,7 +44,7 @@
                     <li>
                         <a href="{{ route('admin.listmoney') }}"
                             class="{{ Request::is('admin/deposithistories/list') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Lịch sử nạp</span>
+                            <i class="bi bi-circle"></i><span>Lịch sử giao dịch</span>
                         </a>
                     </li>
                 </ul>
@@ -259,6 +259,31 @@
                 </a>
             </li>
             <!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed {{ Request::is('admin/walletpt*') ? 'active' : '' }}"
+                    data-bs-target="#money-nav" data-bs-toggle="collapse"
+                    href="{{ route('admin.walletpt') }}">
+                    <i class="bi bi-bar-chart"></i><span>Quản lý số dư</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="money-nav"
+                    class="nav-content collapse {{ Request::is('admin/walletpt*') ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('admin.walletpt') }}"
+                            class="{{ Request::is('admin/walletpt') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Thống kê</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.ruttien') }}"
+                            class="{{ Request::is('admin/walletpt/ruttien') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Rút tiền</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End money -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/workout_package*') ? 'active' : '' }}"

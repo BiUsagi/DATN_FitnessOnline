@@ -122,6 +122,7 @@ Route::group(['prefix' => 'web',], function () {
 
     //wallets
     Route::get('/wallets/{id}', [WalletsController::class, 'index']);
+    Route::get('/walletsbyuser/{id}', [WalletController::class, 'walletbyuser']);
     Route::post('/requestbill', [WalletsController::class, 'requestbill']);
 
     //Notification
