@@ -40,7 +40,7 @@
                                                 class="text-danger small pt-1 fw-bold"><?php echo number_format($sodu, 0, ',', '.'); ?>
                                             </span> VNĐ</h6>
                                     </div>
-                                    <button class="btn-customize ms-3">Rút tiền</button>
+                                    <a class="btn-customize ms-3" href="/admin/walletpt/ruttien">Rút tiền</a>
                                 </div>
 
                             </div>
@@ -111,17 +111,59 @@
                             <div class="card-body pb-0">
                                 <h5 class="card-title">Lịch sử rút tiền<span></span></h5>
 
-                                <table class="table table-borderless datatable">
+                                <!-- table -->
+                                <table class="table datatable">
                                     <thead>
                                         <tr>
-                                            <th scope="col">STT</th>
-                                            <th scope="col">Tên nhân viên</th>
-                                            <th scope="col">Ảnh</th>
-                                            <th scope="col">Ngày sinh</th>
-                                            <th scope="col">Đánh giá</th>
+                                            <th class="text-center">Giá</th>
+                                            <th>Nội dung</th>
+                                            <th class="text-center">Mã giao dịch</th>
+                                            <th class="text-center">Thời gian</th>
+                                            <th class="text-center">Trạng thái</th>
+                                            <!-- <th></th> -->
                                         </tr>
                                     </thead>
-                                    <tbody>
+
+                                    <tbody class="show-data">
+                                        <?php
+                                            foreach ($Deposit_histories->reverse() as $item) {
+                                                $status = $item->status === 1 
+                                                ? '<i class="bx bx-check text-success">Hoàn tất</i>' 
+                                                : ($item->status === 0 
+                                                    ? '<i class="bx bx-time text-warning"> Chờ</i>' 
+                                                    : '<i class="ri-close-circle-line text-danger"> Đã hủy</i>');
+
+                                                if ($item->amount == 10000) {
+                                                    $amountClass = 'money-10k';
+                                                } elseif ($item->amount == 20000) {
+                                                    $amountClass = 'money-20k';
+                                                } elseif ($item->amount == 50000) {
+                                                    $amountClass = 'money-50k';
+                                                } elseif ($item->amount == 100000) {
+                                                    $amountClass = 'money-100k';
+                                                } elseif ($item->amount == 200000) {
+                                                    $amountClass = 'money-200k';
+                                                } elseif ($item->amount == 500000) {
+                                                    $amountClass = 'money-500k';
+                                                } elseif ($item->amount == 1000000) {
+                                                    $amountClass = 'money-1tr';
+                                                } elseif ($item->amount == 2000000) {
+                                                    $amountClass = 'money-2tr';
+                                                } else {
+                                                    $amountClass = 'money-other';
+                                                }
+
+                                                echo'
+                                                    <tr>
+                                                        <td class="text-center" id="'.$amountClass.'"><strong>'.$item->amount.'</strong></td>
+                                                        <td>'.$item->description.'</td>
+                                                        <td class="text-center">'.$item->transaction_id.'</td>
+                                                        <td class="text-center">'.$item->created_at.'</td>
+                                                        <td class="text-center">'.$status.'</td>
+                                                    </tr>
+                                                ';
+                                            }
+                                        ?>
 
                                     </tbody>
                                 </table>

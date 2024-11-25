@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Wallet;
 use App\Models\User;
 use App\Models\Workout_Package;
+use App\Models\Deposit_histories;
+
 use Auth;
 use Carbon\Carbon;
 
@@ -35,11 +37,14 @@ class WalletController extends Controller
             $query->where('id', Auth::id());
         }) ->count();
 
+        $Deposit_histories = Deposit_histories::where('user_id', $userId)->get();
+
 
         return view('backend/walletpt/index', [
             'tongdt' => $totalPurchasePrice,
             'sodu' => $wallet->balance,
-            'tonggt' => $totalWorkoutPackages
+            'tonggt' => $totalWorkoutPackages,
+            'Deposit_histories' => $Deposit_histories
         ]);
 
         //goi tap, doanh thu thang nay, lich su rut tien, thong bao

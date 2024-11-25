@@ -78,6 +78,14 @@ header .header-block{
     padding-top: 46px;
 }
 
+#main #sidebar .list-days .box-day .completed{
+    color: #28a745;
+}
+
+#main #sidebar .list-days .box-day .failed{
+    color: #dc3545;
+}
+
 #main #sidebar .list-days .box-day.is-blocking{
     content: '';
     cursor: not-allowed;

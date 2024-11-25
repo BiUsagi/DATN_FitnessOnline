@@ -89,6 +89,7 @@ Route::get('/thanhtoan', [VNPayController::class, 'index'])->name('thanhtoan1');
 Route::post('/thanhtoan2', [VNPayController::class, 'createpay'])->name('thanhtoan2');
 Route::post('/createpayment', [VNPayController::class, 'createpayment'])->name('payment.create');
 Route::get('/returnpay', [VNPayController::class, 'vnpayReturn'])->name('payment.return');
+Route::get('/test', [VNPayController::class, 'test']);
 
 
 // Back End

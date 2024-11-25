@@ -35,7 +35,7 @@
                         <a href="{{ route('admin.addmoney') }}"
                             class="{{ Request::is('admin/deposithistories') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span class="position-relative">
-                                Yêu cầu nạp
+                                Yêu cầu rút tiền
                                 <span
                                     class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-danger custom-badge request-money"></span>
                             </span>
@@ -44,7 +44,7 @@
                     <li>
                         <a href="{{ route('admin.listmoney') }}"
                             class="{{ Request::is('admin/deposithistories/list') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Lịch sử nạp</span>
+                            <i class="bi bi-circle"></i><span>Lịch sử giao dịch</span>
                         </a>
                     </li>
                 </ul>

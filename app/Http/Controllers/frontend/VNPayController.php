@@ -7,10 +7,28 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Mail;
 use App\Models\User;
+use App\Models\Staff;
+use App\Models\Wallet;
 use App\Models\Workout_Package;
 
 class VNPayController extends Controller
 {
+    public function test(){
+        $data = Cache::get('order_data');
+
+        $user_id = $data['user_id'];
+        $workout_package_id = $data['workout_package_id'];
+        $original_price = $data['original_price'];
+        $purchase_price = $data['purchase_price'];
+        $voucher_id = $data['voucher_id'];
+
+        $workout_package = Workout_Package::find($workout_package_id);
+        $staff = Staff::find($workout_package->staff_id);
+        $user_pt = User::find($staff->user_id);
+        $wallet_pt = Wallet::where('user_id', $user_pt->id)->first();
+
+        echo $wallet_pt;
+    }
     public function index()
     {
         return view('frontend/vnpay/index');
@@ -28,6 +46,7 @@ class VNPayController extends Controller
 
     public function createpayment(request $request)
     {
+        
         // dd($request->all());
         $vnp_TxnRef = rand(1, 10000); //Mã giao dịch thanh toán tham chiếu của merchant
         $vnp_Amount = $request['amount']; // Số tiền thanh toán

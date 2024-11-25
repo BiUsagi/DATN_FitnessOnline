@@ -27,6 +27,13 @@ class WalletsController extends Controller
 
     public function requestbill(Request $request)
     {
+        $wallet_id = $request->wallet_id;
+        $wallet = Wallet::find($wallet_id);
+        $amount = $request->amount;
+
+        $wallet->balance -= $amount;
+        $wallet->save();
+
         $transaction_id = $this->generateUniqueTransactionId();
         $depositHistory = Deposit_histories::create([
             'wallet_id' => $request->wallet_id,

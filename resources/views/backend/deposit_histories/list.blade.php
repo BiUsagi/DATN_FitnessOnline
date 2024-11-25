@@ -82,7 +82,7 @@
                     item.amount == 200000 ? 'money-200k' :
                     item.amount == 500000 ? 'money-500k' :
                     item.amount == 1000000 ? 'money-1tr' :
-                    item.amount == 2000000 ? 'money-2tr' : '';
+                    item.amount == 2000000 ? 'money-2tr' : 'money-other';
 
                 returnData += `
                     <tr>
