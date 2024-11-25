@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\frontend\api;
+use App\Models\Staff;
 use Illuminate\Support\Facades\Cache;
 
 
@@ -86,6 +87,13 @@ class PayController extends Controller
         $original_price = $data['original_price'];
         $purchase_price = $data['purchase_price'];
         $voucher_id = $data['voucher_id'];
+
+        $workout_package = Workout_Package::find($workout_package_id);
+        $staff = Staff::find($workout_package->staff_id);
+        $user_pt = User::find($staff->user_id);
+        $wallet_pt = Wallet::where('user_id', $user_pt->id)->first();
+        $wallet_pt->balance += ($purchase_price*70/100);
+        $wallet_pt->save();
 
 
         // $wallet = Wallet::where('user_id', $user_id)->first();

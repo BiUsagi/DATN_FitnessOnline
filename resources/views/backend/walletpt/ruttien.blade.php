@@ -25,12 +25,11 @@
 
                 <!-- Thông tin số tiền rút -->
                 <div class="">
-                    <p>Số dư của bạn: <strong class="text-info"><?php echo number_format($sodu, 0, ',', '.'); ?>
-                            VNĐ</strong></p>
+                    <p>Số dư của bạn: <strong class="text-info" id="sodu1"></strong></p>
                 </div>
 
                 <!-- input so du -->
-                <input type="hidden" id="sodu" value="<?php echo $sodu ?>">
+                <input type="hidden" id="sodu" value="">
 
                 <!-- Form gửi thông báo rút tiền -->
                 <div class="withdraw-form">
@@ -42,11 +41,13 @@
                         <input type="hidden" name="user_id" value="<?php echo $user_id ?>">
 
                         <label for="amount">Nhập số tiền muốn rút:</label>
-                        <input type="number" id="amount" name="amount" placeholder="Nhập số tiền" value="5000" required>
+                        <input type="number" id="amount" name="amount" placeholder="Nhập số tiền" value="" required>
 
                         <label for="description">Nội dung:</label>
                         <input type="text" id="description" name="description" placeholder="Nhập lý do rút tiền"
-                            value="<?php echo $user_name ?> yêu cầu rút tiền." required>
+                            value="<?php echo $user_name ?> yêu cầu rút tiền." disabled>
+                        <input type="hidden" id="description" name="description" placeholder="Nhập lý do rút tiền"
+                        value="<?php echo $user_name ?> yêu cầu rút tiền.">
 
                         <div class="text-danger mt-0 mb-3"><strong id="thongbao"></strong></div>
 
@@ -115,6 +116,8 @@
 <!-- End #main -->
 
 <script>
+    capnhatsodu();
+
 
     const sotienInput = document.getElementById('amount');
     const soduInput = document.getElementById('sodu');
@@ -154,11 +157,24 @@
                 let data = re;
                 // alert('Thành công. Mã giao dịch của bạn là: ' + data.transaction_id);
                 $('#magiaodich').text(data.transaction_id);
+                capnhatsodu();
                 zaloModal.show();
 
             });
         })
     });
+
+    function capnhatsodu(){
+        var userId = @json(Auth::user()->id);
+        $.get('http://127.0.0.1:8000/api/web/walletsbyuser/' + userId, function (re) {
+            let data = re;
+            let formattedBalance = Number(data.balance).toLocaleString('vi-VN') + ' VNĐ';
+            $('#amount').val(data.balance);
+            $('#sodu').val(data.balance);
+            $('#sodu1').text(formattedBalance);
+        });
+    }
+
 
 </script>
 
