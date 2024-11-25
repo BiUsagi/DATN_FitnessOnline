@@ -165,6 +165,7 @@
     });
 
     function capnhatsodu(){
+        
         var userId = @json(Auth::user()->id);
         $.get('http://127.0.0.1:8000/api/web/walletsbyuser/' + userId, function (re) {
             let data = re;
