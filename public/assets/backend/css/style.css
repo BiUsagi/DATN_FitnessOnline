@@ -1443,3 +1443,78 @@ input[placeholder] {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
   z-index: 10; 
 }
+
+/* Phong cách tổng thể cho phần view default */
+#default-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px;
+  background: linear-gradient(135deg, #1295c5, #000); /* Gradient chủ đạo xanh và đen */
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Hình ảnh minh họa */
+#default-view img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tiêu đề */
+#default-view h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  animation: slide-in 0.6s ease-out forwards;
+}
+
+/* Đoạn mô tả */
+#default-view p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+  max-width: 90%;
+  margin-bottom: 25px;
+  animation: fade-in 1s ease-out forwards;
+}
+
+/* Nút kêu gọi hành động */
+#default-view .cta-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1295c5;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+#default-view .cta-button:hover {
+  background-color: #1295c5;
+  color: #ffffff;
+}
+
+/* Icon quả tạ */
+.icon-container {
+  margin-top: 20px;
+  font-size: 40px;
+  color: #ffffff;
+  animation: bounce 1s infinite alternate;
+}

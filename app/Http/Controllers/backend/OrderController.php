@@ -8,6 +8,7 @@ use App\Models\Workout_package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Staff;
+use App\Models\User;
 
 
 
@@ -46,9 +47,10 @@ class OrderController extends Controller
 
     public function customer_days($id, $user_id)
     {
+        $avatar_user = User::find($user_id);
         $days = Workout_package::find($id);
         $info = Order::where('user_id',$user_id)
                      ->where('workout_package_id',$id)->first();
-        return view('backend/order/customer_days',['days'=>$days, 'info'=>$info ]);
+        return view('backend/order/customer_days',['days'=>$days, 'info'=>$info, 'avatar'=>$avatar_user]);
     }
 }
