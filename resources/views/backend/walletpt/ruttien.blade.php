@@ -125,6 +125,14 @@
     const inputsm = document.getElementById('input-sm');
     const zaloModal = new bootstrap.Modal(document.getElementById('zaloModal'));
 
+    const sotien1 = parseFloat(sotienInput.value) || 0;
+    if (sotien1 < 5000) {
+            thongbao.textContent = 'Yêu cầu rút tối thiểu 5.000 VNĐ';
+            inputsm.disabled = true;
+    } 
+
+
+
     // Lắng nghe sự kiện input
     sotienInput.addEventListener('input', function () {
 
