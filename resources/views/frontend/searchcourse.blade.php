@@ -444,7 +444,7 @@
 
 
                 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
-                timer(1000)
+                timer(3000)
                     .then(() => {
                         bodyElement.classList.add('loaded');
                     })
