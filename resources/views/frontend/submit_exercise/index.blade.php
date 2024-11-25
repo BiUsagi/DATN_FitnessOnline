@@ -119,14 +119,20 @@
             </div>
             <div class="list-days">
                 @for ($i = 1; $i <= $workoutPackage->duration_days; $i++)
-                    <div class="box-day " data-day="{{ $i }}">
+                    <div class="box-day" data-day="{{ $i }}">
                         <div class="info">
                             <p>Ngày {{ $i }}</p>
-                            
                         </div>
-                        <div class="completed" style="display: none">
-                            <i class="fa-solid fa-circle-check"></i>    
-                        </div>
+                        @if (isset($daysStatus[$i]) && $daysStatus[$i] === 1)
+                            <div class="completed">
+                                <i class="fa-regular fa-circle-check"></i>
+                            </div>
+                        @endif
+                        @if (isset($daysStatus[$i]) && $daysStatus[$i] === 2)
+                            <div class="failed">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </div>
+                        @endif
                     </div>
                 @endfor
             </div>
@@ -163,7 +169,7 @@
                     const userId = "{{ Auth::user()->id }}"; 
                     
                
-                    fetch(`api/get-video/${workoutId}/${userId}/${dayNumber}`)
+            fetch(`api/get-video/${workoutId}/${userId}/${dayNumber}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
