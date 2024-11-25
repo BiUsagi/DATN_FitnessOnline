@@ -23,9 +23,12 @@ use App\Models\User;
 use App\Http\Controllers\frontend\api\WalletsController;
 use App\Http\Controllers\frontend\api\NotificationController;
 use App\Http\Controllers\frontend\api\PayController;
+use App\Http\Controllers\frontend\api\SearchController;
 use App\Http\Controllers\frontend\api\UserVideoController;
 use App\Http\Controllers\frontend\ProfileController;
 use App\Http\Controllers\frontend\api\TrainerRequestController;
+use App\Http\Controllers\frontend\HomeController;
+use App\Models\Workout_Package;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -35,6 +38,9 @@ Route::get('/user', function (Request $request) {
 //User Upload
 Route::post('/video_user', [UserVideoController::class, 'store']);
 Route::get('/get-video/{workout_id}/{user_id}/{day_number}', [UserVideoController::class, 'getVideo'])->name('get_video');
+
+// search
+Route::post('/workout-packages/search', [SearchController::class, 'searchWorkoutPackages']);
 
 Route::group(['prefix' => 'admin',], function () {
     //API of exercises
@@ -122,6 +128,7 @@ Route::group(['prefix' => 'web',], function () {
 
     //wallets
     Route::get('/wallets/{id}', [WalletsController::class, 'index']);
+    Route::get('/walletsbyuser/{id}', [WalletController::class, 'walletbyuser']);
     Route::post('/requestbill', [WalletsController::class, 'requestbill']);
 
     //Notification
@@ -138,6 +145,6 @@ Route::group(['prefix' => 'web',], function () {
 
     // application
     Route::post('/submit-application/{id}', [TrainerRequestController::class, 'store'])->name('submit.application');
-    
+
 
 });

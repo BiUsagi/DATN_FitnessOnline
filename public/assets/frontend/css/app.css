@@ -9865,7 +9865,9 @@ footer .website-footer .social-icon-mob a {
 }
 
 .rounded-circle {
-    width: 30px;
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
 }
 
 .account {

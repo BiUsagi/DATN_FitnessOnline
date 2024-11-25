@@ -17,36 +17,55 @@
                 <div class="col-9 text-bold">
                     <div class="card">
                         <div class="confirm d-flex align-items-center justify-content-between">
-                            <p class="m-3 fw-bold title-day">NGÀY </p>
+                            <p class="m-3 fw-bold title-day">NGÀY  </p>
                             <a href="#" class="m-3 confirm-success"><i class="ri-checkbox-circle-fill"></i> Xác nhận hoàn thành</a>
                         </div>
-                        <div class="d-flex justify-content-around fw-bold ">
-                            <p > <i class="bi bi-backpack4"></i> Trạng Thái : <p class="text-success">Đang hoạt động</p></p>
-                            <p>Số Bài Tập :<p class="text-primary">6 bài tập</p></p>
-                            <p>Thời lượng : <p class="text-primary">10p30s</p></p>
+                        <div class="fw-bold ">
+                            <p class="m-3 day-upload"></p>
                         </div>
                     </div>
+                    
+                    <div class="hidden-default" style="display: block;">
+                        <div id="default-view">
+                            <img src="uploads/user_image/{{ $avatar->avatar }}" alt="Hình ảnh tập gym" />
+                            <h2>Danh sách Video đã nộp của {{ $avatar->user_name }}</h2>
+                            <p>Bạn đang duyệt video bài tập của học viên. Hãy kiểm tra và đánh giá kỹ lưỡng từng video để đảm bảo rằng học viên đã thực hiện đúng theo yêu cầu của bài tập.
+                            Vui lòng cung cấp phản hồi chi tiết và đầy đủ để giúp học viên cải thiện kỹ thuật và đạt được mục tiêu tập luyện của họ.</p>
+                            <p>Cảm ơn bạn vì sự tận tâm và hỗ trợ trong việc hướng dẫn học viên!</p>
+                            {{-- <a href="/" class="cta-button">Khám phá ngay</a> --}}
+                            <div class="icon-container">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                        </div>
+                    </div>
+        
                     <form action="#" id="form_feedback" method ="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="card">
-                            <p class="m-3 fw-bold"><i class="bi bi-file-earmark-play-fill"></i> Video Đã Nộp</p>
-                            <div class="mt-3">
-                                <video id="videoPlayer" src="uploads/user_video/1731254189.mp4" controls width="859px" max-height="450px"></video>
+                        <div class="hidden" style="display: none;">
+                            <div class="card">
+                                <p class="m-3 fw-bold" id="pUpload"><i class="bi bi-file-earmark-play-fill"></i> Video Đã Nộp</p>
+                                <div class="mt-3">
+                                    <video id="videoPlayer"  src="uploads/user_video/1731254189.mp4" controls width="100%" max-height="450px" style="display: none;"></video>
+                                </div>
                             </div>
                         </div>
+                       
+                        <div class="card hidden" style="display: none;">
+                            <div class="card">
+                            
+                                <div class="m-3">
+                                    <p class="m-3 fw-bold"> <i class="bi bi-chat-heart-fill"></i> Phản Hồi </p> 
+                                    <textarea type="text" class="form-control-customize ck-editor" id="feedback" data_height="10" name="feedback"></textarea>
+                                </div>
 
-                        <div class="card">
-                        
-                            <div class="m-3">
-                                <p class="m-3 fw-bold"> <i class="bi bi-chat-heart-fill"></i> Phản Hồi </p> 
-                                <textarea type="text" class="form-control-customize ck-editor" id="feedback" data_height="10" name="feedback"></textarea>
-                            </div>
+                                <div class="m-3">
+                                    <input type="hidden" value="{{ $days->staff_id }}" name="pt_id">
+                                    <input type="hidden" id="videoIdInput" name="video_id">
+                                </div>
 
-                            <div class="m-3">
-                                <input type="hidden" value="{{ $days->staff_id }}" name="pt_id">
-                                <input type="hidden" id="videoIdInput" name="video_id">
                             </div>
                         </div>
+                       
 
                     </div>
 
@@ -63,7 +82,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card hidden" style="display: none;">
                             <div class="card-header text-uppercase">Đánh giá</div>
                             <div class="card-body">
                                 <div class="action-package-exercise">
@@ -78,14 +97,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <input type="submit" class="btn btn-primary" value="Xác nhận">
+
+                        <div class="hidden" style="display: none;">
+                            <div class="card">
+                                <input type="submit" class="btn btn-primary" value="Xác nhận">
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
 
         </div><!-- End Page Title -->
+        
 
         
     </main><!-- End #main -->
@@ -94,6 +117,8 @@
 
         document.addEventListener('DOMContentLoaded', function () {
         const days = document.querySelectorAll('.box-day'); // Chọn tất cả phần tử có class 'box-day'
+        const elementHidden = document.querySelectorAll('.hidden'); 
+        const hiddenDf = document.querySelector('.hidden-default'); 
 
         // Thêm sự kiện click cho mỗi ngày
         days.forEach(day => {
@@ -106,6 +131,12 @@
                 // Lấy số ngày từ phần tử được click
                 const dayNumber = this.textContent.trim().split(' ')[1]; // Lấy số ngày từ nội dung text
 
+                hiddenDf.style.display = 'none';
+
+                elementHidden.forEach(element => {
+                    element.style.display = 'block';
+                });
+
                 // Cập nhật nội dung ngày
                 document.querySelector('.title-day').textContent = `NGÀY ${dayNumber}`;
 
@@ -116,6 +147,14 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.status_main === 'success') {
+
+                            const dayUpload= new Date(data.created_at);
+                            const formattedDate = `${dayUpload.getHours().toString().padStart(2, '0')}:${dayUpload.getMinutes().toString().padStart(2, '0')} ${dayUpload.getDate().toString().padStart(2, '0')}/${(dayUpload.getMonth() + 1).toString().padStart(2, '0')}/${dayUpload.getFullYear()}`;
+                            
+                            
+                            dayUploadHtml = document.querySelector('.day-upload')
+                            dayUploadHtml.innerHTML = `<p>Ngày đăng : ${formattedDate} </p>`
+
                             //lấy id video
                             const videoId = data.video_id;
                             console.log('Video ID:', videoId);
@@ -215,6 +254,7 @@
                                 }),
                             })
                             .then(response => response.json())
+                            
                             .then(data => {
                                 if (data.status === 'success') {
                                     Swal.fire({

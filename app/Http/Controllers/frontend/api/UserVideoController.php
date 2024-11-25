@@ -37,6 +37,7 @@ class UserVideoController extends Controller
     if ($userVideo) {
         return response()->json([
             'video_id'=> $userVideo->id,
+            'created_at'=> $userVideo->created_at,
             'status' => $userVideo->status,
             'status_main' => 'success',
             'feedback' => $userVideo->feedback,

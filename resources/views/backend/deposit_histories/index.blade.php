@@ -79,7 +79,7 @@
                                     item.amount == 200000 ? 'money-200k' :
                                         item.amount == 500000 ? 'money-500k' :
                                             item.amount == 1000000 ? 'money-1tr' :
-                                                item.amount == 2000000 ? 'money-2tr' : '';
+                                                item.amount == 2000000 ? 'money-2tr' : 'money-other';
 
                 returnData += `
             <tr class="align-middle">
@@ -106,7 +106,7 @@
 
 
     //duyet
-    $(document).on('click', '#status1', function () {
+    $(document).on('click', '#status2', function () {
         var id = $(this).data('id');
         var amount = $(this).data('amount');
         var user_id = $(this).data('user_id');
@@ -115,7 +115,7 @@
 
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id + '/' + 1,
+            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id + '/' + 2,
             type: 'PUT',
             data: {},
             success: function (response) {
@@ -154,7 +154,7 @@
 
                 Swal.fire({
                     title: "Thành công!",
-                    text: "Duyệt thành công!",
+                    text: "Đã hủy yêu cầu!",
                     icon: "success"
                 });
             },
@@ -166,12 +166,12 @@
 
 
     //huy
-    $(document).on('click', '#status2', function () {
+    $(document).on('click', '#status1', function () {
         var id = $(this).data('id');
         var amount = $(this).data('amount');
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id + '/' + 2,
+            url: 'http://127.0.0.1:8000/api/admin/tickstatus/' + id + '/' + 1,
             type: 'PUT',
             data: {},
             success: function (response) {
@@ -180,7 +180,7 @@
 
                 Swal.fire({
                     title: "Thành công!",
-                    text: "Hủy thành công!",
+                    text: "Đã thanh toán!",
                     icon: "success"
                 });
             },
