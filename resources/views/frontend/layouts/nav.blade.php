@@ -83,7 +83,7 @@
                                            <div class="img-name">
                                                 <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="">
                                                 <div class="nameuser">
-                                                    <p>Minh Tuấn</p>
+                                                    <p>{{Auth::user()->user_name}}</p>
                                                 </div>
                                             </div>
                                             <div class="line"></div>
