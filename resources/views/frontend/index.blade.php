@@ -240,6 +240,7 @@
                 <div class="heading text-center">
                     <h3>Tin <span>Tức</span></h3>
                 </div>
+                
                 <div class="row">
                     @foreach ($topPost->take(3) as $Post)
                         <div class="col-lg-4 col-md-8 mx-auto">
