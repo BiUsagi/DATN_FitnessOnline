@@ -8,6 +8,7 @@ use App\Models\Workout_Package;
 use App\Models\Staff;
 use App\Models\Posts;
 use App\Models\Order;
+use App\Models\User;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -28,6 +29,8 @@ class AdminController extends Controller
         $totaloder = Order::sum('purchase_price');
         //LẤY TẤT CẢ BÀI VIẾT
         $posts = Posts::orderBy('created_at', 'desc')->get();
-        return view('backend/index', compact('totalPackages','totalStaff','allpackages','allstaff','orders','totaloder','posts'));
+        //Lấy TẤT CẢ USER
+        $allUsers = User::orderBy('created_at', 'desc')->take(5)->get();
+        return view('backend/index', compact('totalPackages','totalStaff','allpackages','allstaff','orders','totaloder','posts','allUsers'));
     }
 }
