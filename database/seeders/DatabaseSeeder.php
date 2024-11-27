@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $this->call([
-            ModelHasRolesSeeder::class,
             RolePermissionSeeder::class,
             UserSeeder::class,
-            StaffSeeder::class
+            StaffSeeder::class,
+            ModelHasRolesSeeder::class,
         ]);
     }
 }
