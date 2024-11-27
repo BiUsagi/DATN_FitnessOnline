@@ -107,7 +107,4 @@ class Staff extends Model
     {
         return $this->hasMany(Workout_Package::class, 'staff_id');
     }
-
-
-
 }

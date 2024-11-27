@@ -262,6 +262,148 @@
                                         </div>
                                     </div>
                                     <div class="step">
+                                        <h4>Bạn có tuân theo bất kì chế độ ăn kiêng nào không?
+                                        </h4>
+                                        <div class="row">
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_6_1"
+                                                        name="q_6" type="radio" value="31">
+                                                    <label class="form-check-label question__label" for="q_6_1">
+                                                        Ăn chay trường <span class="text-secondary fw-lighter">(Không
+                                                            bao gồm thịt) </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_6_2"
+                                                        name="q_6" type="radio" value="93">
+                                                    <label class="form-check-label question__label" for="q_6_2">
+                                                        Ăn chay <span class="text-secondary fw-lighter">(Không bao gồm
+                                                            tất cả các sản phầm động vật)</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_6_3"
+                                                        name="q_6" type="radio" value="186">
+                                                    <label class="form-check-label question__label" for="q_6_3">
+                                                        Keto <span class="text-secondary fw-lighter">(Ăn ít carb, nhiều
+                                                            chất béo)</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_6_4"
+                                                        name="q_6" type="radio" value="365">
+                                                    <label class="form-check-label question__label" for="q_6_4">
+                                                        Địa Trung Hải <span class="text-secondary fw-lighter">(Giàu
+                                                            thực phẩm có nguồn gốc từ động vật)</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_6_5"
+                                                        name="q_6" type="radio" value="365">
+                                                    <label class="form-check-label question__label" for="q_6_5">
+                                                        Không có cái nào ở trên</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_6_6"
+                                                        name="q_6" type="radio" value="365">
+                                                    <label class="form-check-label question__label" for="q_6_6">
+                                                        Tôi không ăn kiêng</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <h4>Bạn có thường ăn hoặc uống đồ uống có đường không?
+                                        </h4>
+                                        <div class="row">
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input checked class="form-check-input question__input"
+                                                        id="q_7_1" name="q_7" type="radio" value="31">
+                                                    <label class="form-check-label question__label" for="q_7_1">
+                                                        Không thường xuyên. Tôi không hảo ngọt</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_7_2"
+                                                        name="q_7" type="radio" value="93">
+                                                    <label class="form-check-label question__label" for="q_7_2">
+                                                        3~5 lần mỗi tuần</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_7_3"
+                                                        name="q_7" type="radio" value="186">
+                                                    <label class="form-check-label question__label" for="q_7_3">
+                                                        Khá nhiều mỗi ngày</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <h4>Bạn uống bao nhiêu nước mỗi ngày?
+                                        </h4>
+                                        <div class="row">
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input checked class="form-check-input question__input"
+                                                        id="q_8_1" name="q_8" type="radio" value="31">
+                                                    <label class="form-check-label question__label" for="q_8_1">
+                                                        Chỉ cà phê hoặc trà </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_8_2"
+                                                        name="q_8" type="radio" value="93">
+                                                    <label class="form-check-label question__label" for="q_8_2">1
+                                                        Ít hơn 2 ly nước <span class="text-secondary fw-lighter">(~0,5
+                                                            lít nước)</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_8_3"
+                                                        name="q_8" type="radio" value="186">
+                                                    <label class="form-check-label question__label" for="q_8_3">~
+                                                        2~6 ly nước <span class="text-secondary fw-lighter">(0,5~1,5
+                                                            lít nước)</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_8_4"
+                                                        name="q_8" type="radio" value="365">
+                                                    <label class="form-check-label question__label"
+                                                        for="q_8_4">7~10 ly nước <span
+                                                            class="text-secondary fw-lighter">(1,5~2,5
+                                                            lít nước)</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-check ps-0 q-box">
+                                                <div class="q-box__question">
+                                                    <input class="form-check-input question__input" id="q_8_5"
+                                                        name="q_8" type="radio" value="365">
+                                                    <label class="form-check-label question__label" for="q_8_5">Hơn
+                                                        10 ly nước <span class="text-secondary fw-lighter">(hơn 2,5
+                                                            lít nước)</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="step">
                                         <div class="mt-1">
                                             <div class="closing-text">
                                                 <h4>Đã hoàn thành!</h4>
@@ -333,7 +475,7 @@
                 return false
             }
             let current_step = 0;
-            let stepCount = 5
+            let stepCount = 8
             step[current_step].classList.add('d-block');
             if (current_step == 0) {
                 prevBtn.classList.add('d-none');
