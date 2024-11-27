@@ -76,7 +76,7 @@ class LoginController extends Controller
         ];
 
         // Lưu order mới vào cache
-        Cache::put('cache_email', $cache_email, now()->addMinutes(5));
+        Cache::put('cache_email', $cache_email, now()->addMinutes(10));
 
         // Gửi mã OTP tới email
         Mail::to($user->email)->send(new \App\Mail\OtpMail($otp));
@@ -97,7 +97,18 @@ class LoginController extends Controller
 
     public function otp()
     {
-        return view('frontend/layouts/auth/otp');
+        // Lấy email từ cache
+        $cache_email = Cache::get('cache_email');
+
+        // Nếu không có email trong cache, bạn có thể trả về một thông báo lỗi
+        if (!$cache_email) {
+            return redirect()->route('login.index')->withErrors(['email' => 'Không tìm thấy email trong cache.']);
+        }
+
+        $email = $cache_email['email'];
+
+        // Truyền email vào view
+        return view('frontend/layouts/auth/otp', compact('email'));
     }
 
     public function otp_(Request $request)
@@ -163,7 +174,4 @@ class LoginController extends Controller
     {
         return view('frontend/layouts/auth/forgot_password');
     }
-
-
-
 }

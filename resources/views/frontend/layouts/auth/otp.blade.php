@@ -10,10 +10,12 @@
   <div class="otp-container">
     <form action="{{ route ('otp_.index') }}" method="POST">
       <h2>Xác nhận OTP</h2>
-      <p>Vui lòng nhập mã OTP đã được gửi đến số điện thoại/email của bạn.</p>
+      <div class="otp-mail">
+        <p class="otp-mail">Vui lòng nhập mã OTP đã được gửi đến</p>
+        <p class="otp-mail">" <strong>{{ $email }}</strong> "</p>
+      </div>
       <div class="otp-inputs">
         @csrf
-
         <input type="text" name="otp1" maxlength="1" required>
         <input type="text" name="otp2" maxlength="1" required>
         <input type="text" name="otp3" maxlength="1" required>
@@ -22,14 +24,12 @@
         <input type="text" name="otp6" maxlength="1" required>
       </div>
       @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
+        <div class="errors">
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                {{ $error }}
             @endforeach
-        </ul>
-    </div>
-@endif
+        </div>
+      @endif
       <button type="submit">Xác nhận</button>
       <p class="resend-otp">
         Không nhận được mã? <a href="/resend-otp">Gửi lại</a>
@@ -38,14 +38,13 @@
   </div>
 </body>
 </html>
-{{-- <script>
+<script>
   document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll(".otp-inputs input");
 
-  // Khởi tạo: chỉ cho phép nhập vào ô đầu tiên
-  inputs.forEach((input, index) => {
-    input.disabled = index !== 0;
-  });
+  // Đảm bảo ô đầu tiên luôn được phép nhập và mở khóa ô đầu tiên
+  inputs[0].disabled = false;
+  inputs[0].focus(); // Đặt focus vào ô đầu tiên khi trang được tải
 
   inputs.forEach((input, index) => {
     // Khi người dùng nhập
@@ -82,12 +81,16 @@
         input.blur(); // Hủy focus khỏi ô bị khóa
       }
     });
-  });
 
-  // Kích hoạt ô đầu tiên
-  inputs[0].disabled = false;
-  inputs[0].focus();
+    // Ngăn không cho người dùng click vào ô bị khóa
+    input.addEventListener("click", (event) => {
+      if (input.disabled) {
+        event.preventDefault(); // Ngăn việc click vào ô bị khóa
+        input.blur(); // Hủy focus khỏi ô bị khóa nếu click vào
+      }
+    });
+  });
 });
 
 
-</script> --}}
+</script>
