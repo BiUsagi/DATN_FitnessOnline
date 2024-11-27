@@ -31,10 +31,13 @@ class WorkoutPackagesController extends Controller
 
     public function detail($id){
         $package = Workout_Package::find($id);
+        $user = Auth::user();
+        $pt_id = Staff::where('user_id',Auth::user()->id)->first();
+        $id = $pt_id->id;
         if (!$package) {
             return redirect()->back()->with('error', 'Không tìm thấy gói tập này!');
         }
-        return view('backend.workout_package.detail', compact('package'));
+        return view('backend.workout_package.detail', compact('package', 'user', 'id'));
     }
 
     public function create(){
