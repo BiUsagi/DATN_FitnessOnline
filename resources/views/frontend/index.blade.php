@@ -1,7 +1,16 @@
 @extends('frontend/layouts/app-user')
 
 @section('main')
-    <section>
+<style>
+    .truncate-text {
+    display: -webkit-box; /* Sử dụng flexbox để xử lý cắt chữ */
+    -webkit-line-clamp: 1; /* Số dòng tối đa (ở đây là 2 dòng) */
+    -webkit-box-orient: vertical; /* Hướng bố cục */
+    overflow: hidden; /* Ẩn phần nội dung vượt quá */
+    text-overflow: ellipsis; /* Thêm dấu "..." ở cuối */
+    white-space: normal; /* Cho phép xuống dòng */
+}
+</style>
         <!-- BANNER BLOCK START HERE -->
         <div class="banner_wrapper">
             <div class="swiper mySwiper">
@@ -100,8 +109,17 @@
                                 <div class="col-md-4 f-0">
                                     <div class="team-block"
                                         style=" width: 100%;max-width: 100%;height: 100%;  display: flex;align-items: center;justify-content: center;">
-                                        <img loading='lazy' src="{{ asset('assets/backend/img/accounts/' . $PT->avatar) }}"
-                                            alt="Coaches">
+                                        <img loading='lazy' 
+                                            src="{{ 
+                                                $PT->avatar && $PT->avatar !== 'no-image.jpg' 
+                                                    ? asset('assets/backend/img/accounts/' . $PT->avatar) 
+                                                    : ($PT->gender === 1 
+                                                        ? asset('assets/backend/img/accounts/avatar-nam.png') 
+                                                        : ($PT->gender === 0 
+                                                            ? asset('assets/backend/img/accounts/hinh-avatar-nữ.jpg') 
+                                                            : asset('assets/backend/img/default-other.png'))) 
+                                            }}" 
+                                        alt="Coaches">
                                         <h3><span>{{ $PT->staff_name }}</span></h3>
                                     </div>
                                 </div>
@@ -254,7 +272,7 @@
                                 </a>
                                 <div class="card-body" style="border: 1px solid #1FACE1">
                                     <span>{{ $Post->created_at->locale('vi')->diffForHumans() }}</span>
-                                    <h5 class="card-title">{{ $Post->title }}</h5>
+                                    <h5 class="card-title truncate-text">{{ $Post->title }}</h5>
                                     <p class="card-text">{{ $Post->description }}</p>
                                     <div class="button-sec">
                                         <a href="{{ route('posts-details.index', $Post->id) }}"
