@@ -60,7 +60,7 @@ class LoginController extends Controller
         $user = User::create([
             'user_name' => $request['user_name'],
             'email' => $request['email1'],
-            'password' => bcrypt( $request['password1']),
+            'password' => bcrypt($request['password1']),
             'gender' => 2,
         ]);
 
@@ -86,6 +86,10 @@ class LoginController extends Controller
         return redirect()->route('login.index');
     }
 
+    public function forgotPass()
+    {
+        return view('frontend/layouts/auth/forgot_password');
+    }
 
 
 

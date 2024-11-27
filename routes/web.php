@@ -74,6 +74,8 @@ Route::post('/register', [LoginController::class, 'register'])->name('register.i
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
 Route::get('/otp', [LoginController::class, 'otp'])->name('otp.index'); //xử lý input register;
+Route::get('/forgot_pass', [LoginController::class, 'forgotPass'])->name('forgot.pass.index');
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index'); //link view login
 Route::get('/addmoney', [WalletsController::class, 'addmoney'])->name('wallets.addmoney'); //link nạp tiền
@@ -125,7 +127,7 @@ Route::prefix('admin')->group(function () {
 
 
     Route::get('/workout_hub/{id}', [Workout_packageController::class, 'workout_hub'])->name('admin.workout_hub')->middleware('can:manage_workout_packages');
-    
+
     // Route::get('/workout_hub/{id}/day/{day_id}', [WorkoutPackagesController::class, 'workout_hub'])->name('admin.workout_hub.detail');
 
 
