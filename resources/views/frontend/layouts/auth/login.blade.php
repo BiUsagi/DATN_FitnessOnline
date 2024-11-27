@@ -7,17 +7,16 @@
     <title>Login Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/frontend/css/login.css">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="assets/frontend/css/style.css">
     {{-- <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/app.css'> --}}
 
-    <script src="assets/frontend/js/script.js"></script>
+    <script src="assets/frontend/js/login.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='assets/frontend/js/main.js'></script>
-
-  
-
 </head>
 
 <body>

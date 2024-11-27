@@ -35,7 +35,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/swiper.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/app.css'>
     <link rel="stylesheet" href="assets/frontend/css/profile.css">
-    <link rel="stylesheet" href="assets/frontend/css/style.css">
+    <link rel="stylesheet" href="assets/frontend/css/login.css">
     <link rel="stylesheet" href="assets/frontend/css/workout_bought.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
         rel="stylesheet">
@@ -43,7 +43,6 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/frontend/css/customize.css">
-    <script src="assets/frontend/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
