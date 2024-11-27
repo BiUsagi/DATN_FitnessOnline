@@ -20,7 +20,8 @@ return new class extends Migration {
             $table->tinyInteger('gender')->nullable()->comment('1 - Nam, 0 - Nữ, 2 - Khác');
             $table->string('password');
             $table->text('phone_number')->nullable();
-            $table->integer('trial')->default('30');
+            $table->text('token')->nullable();
+            $table->boolean('is_verified')->default(0);
             $table->tinyInteger('status')->nullable()->comment('1 - block, 0 - bình thường, 2 - Khác');
             $table->integer('role_012')->default('0')->comment('1 - pt, 0 - user, 2 - admin');
             $table->timestamps();

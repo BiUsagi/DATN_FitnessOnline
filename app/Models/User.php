@@ -27,7 +27,8 @@ class User extends Authenticatable
         'gender',
         'password',
         'phone_number',
-        'trial',        // số ngày dùng thử
+        'token',
+        'boolean',
     ];
 
 
