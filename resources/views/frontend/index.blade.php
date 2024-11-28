@@ -124,26 +124,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            {{-- <div class="col-md-4 f-0">
-                            <div class="team-block">
-                                <img loading='lazy' src="assets/frontend/images/team/1.webp" alt="Coaches" width="210"
-                                    height="339">
-                                <h3>Joshua <span>Franklin</span></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-4 f-0">
-                            <div class="team-block">
-                                <img loading='lazy' src="assets/frontend/images/team/2.webp" alt="Coaches" width="210"
-                                    height="339">
-                                <h3>Reflina <span>Deovanger</span></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-4 f-0">
-                            <div class="team-block">
-                                <img loading='lazy' src="assets/frontend/images/team/3.webp" alt="Coaches" width="210"
-                                    height="339">
-                                <h3>TUẤN</h3>
-                            </div> --}}
                         </div>
 
                     </div>
