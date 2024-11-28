@@ -4441,7 +4441,8 @@ header .navbar .navbar-nav .nav-item .nav-link.active:after {
 
 .error-page {
     position: relative;
-    background: url("../images/404-bg.webp") no-repeat;
+    /* background: url("../images/404-bg.webp") no-repeat; */
+    background-color: #212225;
     background-size: cover;
     padding-top: 105px;
     height: 100%;
@@ -9361,7 +9362,7 @@ header .navbar .navbar-nav .nav-item .nav-link.active:after {
 
 .error-page {
     position: relative;
-    background: url("../images/404-bg.webp") no-repeat;
+    /* background: url("../images/404-bg.webp") no-repeat; */
     background-size: cover;
     padding-top: 105px;
     height: 100%;
@@ -9452,6 +9453,7 @@ header .navbar .navbar-nav .nav-item .nav-link.active:after {
         margin-bottom: 35px
     }
 }
+
 
 @media(max-width: 767px) {
     .error-page .not-found-section .main-content p {

@@ -104,9 +104,6 @@
                                             @endif
                                             <div class="line"></div>
                                             <div class="infor-account">
-                                                <a href="#">Cài đặt</a>
-                                            </div>
-                                            <div class="infor-account">
                                                 <form action="{{ route('logout.index') }}" method="POST">
                                                 @csrf
                                                      <button type="submit">Đăng xuất</button>
