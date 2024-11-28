@@ -30,9 +30,9 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => 'Bạn chưa nhập thông tin !',
+            'email.required' => 'Bạn chưa nhập Email !',
             'email.email' => 'Email không hợp lệ.',
-            'password.required' => 'Bạn chưa nhập thông tin !',
+            'password.required' => 'Bạn chưa nhập mật khẩu !',
         ];
     }
 }
