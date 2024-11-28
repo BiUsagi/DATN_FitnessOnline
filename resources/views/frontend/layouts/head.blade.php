@@ -78,8 +78,8 @@
 
 <body>
     <!-- LOADER START HERE -->
-    {{-- <div class="page_loader">
+    <div class="page_loader">
         <img loading='lazy' src="assets/frontend/images/loader.svg" alt="img">
-    </div> --}}
+    </div>
     <!-- LOADER END HERE -->
     <!-- HEADER START HERE -->
