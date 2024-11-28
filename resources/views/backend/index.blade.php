@@ -213,65 +213,64 @@
             <!-- Recent Sales -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
-                <div class="card-body">
-                  <h5 class="card-title">Gói tập<span></span></h5>
-
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">STT</th>
-                        <th scope="col">Tên gói tập</th>
-                        <th scope="col">Level</th>
-                        <th scope="col">Special_level</th>
-                        <th scope="col">Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($allpackages as $index => $package)
-                        <tr>
-                          <th scope="row" style="">{{ $index + 1 }}</th>
-                          <td class="ps-3">
-                            <a href="{{ route('admin.workout_package_detail', $package->id) }}" class="text-dark fw-bold">
-                              {{ $package->package_name }}
-                            </a>
-                          </td>
-                          <td class="ps-3">{{ $package->level }}</td>
-                          <td class="ps-3">{{ $package->special_level }}</td>
-                          <td class="ps-3"><span>{{ number_format($package->price, 0, ',', '.') }} VNĐ</span></td>
-                        </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-
-                </div>
-
+                  <div class="card-body">
+                      <h5 class="card-title">Top gói Tập Bán Nhiều Nhất</h5>
+                      <table class="table table-borderless">
+                          <thead>
+                              <tr>
+                                  <th scope="col">STT</th>
+                                  <th scope="col">Tên gói tập</th>
+                                  <th scope="col">Price</th>
+                                  <th scope="col">Tổng số bán</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach ($topPackages as $index => $package)
+                                  <tr>
+                                      <th scope="row">{{ $index + 1 }}</th>
+                                      <td class="ps-3">
+                                          <a href="{{ route('workout_detail', $package->id) }}" class="text-dark fw-bold">
+                                              {{ $package->package_name }}
+                                          </a>
+                                      </td>
+                                      <td class="ps-3">{{ number_format($package->price, 0, ',', '.') }} VNĐ</td>
+                                      <td class="ps-3">{{ $package->total_sold }} lượt bán</td>
+                                  </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
+                  </div>
               </div>
-            </div>
+          </div>
+          
             <!-- End Recent Sales -->
             <!-- Recent Sales -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
                 <div class="card-body">
-                  <h5 class="card-title">Mua Hàng<span></span></h5>
+                  <h5 class="card-title">Top khách hàng mua hàng<span></span></h5>
 
                   <table class="table table-borderless">
                     <thead>
                       <tr>
                         <th scope="col">STT</th>
                         <th scope="col">Tên khách hàng</th>
-                        <th scope="col">Tên gói tập</th>
-                        <th scope="col">Ngày mua</th>
-                        <th scope="col">Giá</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Thứ hạng</th>
+
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($orders as $index => $order)
                         <tr>
                           <th scope="row">{{ $index + 1 }}</th>
-                          <td>{{ $order->user->user_name }}</td>  <!-- Tên khách hàng -->
-                          <td>{{ $order->workoutPackage->package_name }}</td>  <!-- Tên gói tập -->
-                          <td>{{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}</td>  <!-- Ngày mua -->
-                          <td>{{ number_format($order->purchase_price, 0, ',', '.') }} VNĐ</td>  <!-- Giá -->
+                          <td>
+                            <a href="{{ route('admin.customer.info', ['id' => $order->id]) }}" class="text-dark fw-bold">
+                                {{$order->user_name }}
+                            </a>
+                          </td>
+                          <td>{{ number_format($order->total_spent, 0, ',', '.') }} VNĐ</td>
+                          <td>Hạng {{ $index + 1 }}</td>
                         </tr>
                       @endforeach
                     </tbody>
@@ -290,7 +289,7 @@
                 </div>
 
                 <div class="card-body pb-0">
-                  <h5 class="card-title">Nhân viên<span></span></h5>
+                  <h5 class="card-title">Top nhân viên được đánh giá<span></span></h5>
 
                   <table class="table table-borderless">
                     <thead>
@@ -307,10 +306,10 @@
                             <tr>
                                 <td>{{ $index + 1 }}</td> <!-- Số thứ tự -->
                                 <td>
-                                    <a href="#" class="text-dark fw-bold">{{ $staff->staff_name }}</a> <!-- Tên nhân viên -->
+                                    <a href="{{ route('admin.staff.info', ['id' => $staff->id]) }}" class="text-dark fw-bold">{{ $staff->staff_name }}</a> <!-- Tên nhân viên -->
                                 </td>
                                 <td>
-                                    <a href="#">
+                                    <a href="{{ route('admin.staff.info', ['id' => $staff->id]) }}">
                                         <img src="assets/backend/img/accounts/{{ $staff->avatar }}" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
                                     </a> <!-- Ảnh nhân viên -->
                                 </td>
@@ -342,17 +341,21 @@
                     <div class="activity-item d-flex">
                       <div class="activite-label">
                         @if ($user->created_at->isToday())
-                            Hôm nay, {{ $user->created_at->format('H:i') }}
+                            Hôm nay, 
+                            <br> {{ $user->created_at->format('H:i') }}
                         @elseif ($user->created_at->isYesterday())
-                            Hôm qua, {{ $user->created_at->format('H:i') }}
+                            Hôm qua, 
+                           <br> {{ $user->created_at->format('H:i') }}
                         @else
                             {{ $user->created_at->format('d/m H:i') }}
                         @endif
                     </div>
                         <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                         <div class="activity-content">
-                            {{ $user->user_name }} đã đăng ký thành công
-                            <a href="#" class="fw-bold text-dark">{{ $user->email }}</a>
+                          <a href="{{ route('admin.customer.info', ['id' => $user->id]) }}" class="text-dark fw-bold">
+                            {{ $user->user_name }}
+                          </a> đã đăng ký thành công
+                            {{-- <a href="{{ route('admin.customer.info', ['id' => $user->id]) }}" class="fw-bold text-dark">{{ $user->email }}</a> --}}
                         </div>
                     </div>
                 @endforeach
@@ -368,8 +371,8 @@
                 @foreach($posts->take(5) as $post)
                 <div class="post-item clearfix">
                     <a href="{{ route('posts-details.index', $post->id) }}"><img src="{{ asset('uploads/post_image/' . $post->image) }}" alt=""></a>
-                    <h4><a href="{{ route('posts-details.index', $post->id) }}">{{ $post->title }}</a></h4>
-                    <p>{{ Str::limit($post->description, 100) }}...</p>  <!-- Giới hạn mô tả -->
+                    <h4><a href="{{ route('posts-details.index', $post->id) }}">{{ Str::limit($post->title , 70) }}</a></h4>
+                    {{-- <p>{{ Str::limit($post->description, 60) }}</p>  <!-- Giới hạn mô tả --> --}}
                 </div>
             @endforeach
 
