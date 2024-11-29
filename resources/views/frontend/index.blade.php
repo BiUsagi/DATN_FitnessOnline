@@ -1,40 +1,11 @@
 @extends('frontend/layouts/app-user')
 
 @section('main')
-<style>
-    .truncate-text {
-    display: -webkit-box; /* Sử dụng flexbox để xử lý cắt chữ */
-    -webkit-line-clamp: 1; /* Số dòng tối đa (ở đây là 2 dòng) */
-    -webkit-box-orient: vertical; /* Hướng bố cục */
-    overflow: hidden; /* Ẩn phần nội dung vượt quá */
-    text-overflow: ellipsis; /* Thêm dấu "..." ở cuối */
-    white-space: normal; /* Cho phép xuống dòng */
-}
-</style>
+
         <!-- BANNER BLOCK START HERE -->
         <div class="banner_wrapper">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    {{-- <div class="swiper-slide">
-                    <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/slide1.png"
-                            alt="banner-slide" width="900" height="666">
-                        <div class="banner-text">
-                            <h2 data-swiper-parallax="-800">BUILD YOUR</h2>
-                            <h3 data-swiper-parallax="-1000">BODY</h3>
-                        </div>
-                    </div>
-                </div> --}}
-                    {{-- <div class="swiper-slide">
-                    <div class="banner-slide">
-                        <img loading='lazy' data-swiper-parallax="-700" src="assets/frontend/images/banner/slide2.png"
-                            alt="banner-slide" width="700" height="800">
-                        <div class="banner-text">
-                            <h2 data-swiper-parallax="-800">BUILD YOUR</h2>
-                            <h3 data-swiper-parallax="-1000">Shape</h3>
-                        </div>
-                    </div>
-                </div> --}}
 
                     {{-- GIAO DIỆN SLIDE --}}
 
@@ -83,7 +54,7 @@
                                 hiệu quả và phù hợp với mọi đối tượng. Hãy bắt đầu hành trình tập luyện để có một cơ thể
                                 khỏe mạnh
                                 và tự tin hơn mỗi ngày! </p>
-                            {{-- <a href="contact-us.html" class="btn">Get Started </a> --}}
+                            <a href="{{ route('searchcourse.index') }}" class="btn btn-primary">Hỗ trợ tìm gói tập?</a>
                         </div>
                     </div>
                 </div>
@@ -110,46 +81,17 @@
                                     <div class="team-block"
                                         style=" width: 100%;max-width: 100%;height: 100%;  display: flex;align-items: center;justify-content: center;">
                                         <img loading='lazy' 
-                                            src="{{ 
-                                                $PT->avatar && $PT->avatar !== 'no-image.jpg' 
-                                                    ? asset('assets/backend/img/accounts/' . $PT->avatar) 
-                                                    : ($PT->gender === 1 
-                                                        ? asset('assets/backend/img/accounts/avatar-nam.png') 
-                                                        : ($PT->gender === 0 
-                                                            ? asset('assets/backend/img/accounts/hinh-avatar-nữ.jpg') 
-                                                            : asset('assets/backend/img/default-other.png'))) 
-                                            }}" 
+                                            src="{{asset('assets/backend/img/accounts/' . $PT->avatar) }}" 
                                         alt="Coaches">
                                         <h3><span>{{ $PT->staff_name }}</span></h3>
                                     </div>
                                 </div>
                             @endforeach
-                            {{-- <div class="col-md-4 f-0">
-                            <div class="team-block">
-                                <img loading='lazy' src="assets/frontend/images/team/1.webp" alt="Coaches" width="210"
-                                    height="339">
-                                <h3>Joshua <span>Franklin</span></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-4 f-0">
-                            <div class="team-block">
-                                <img loading='lazy' src="assets/frontend/images/team/2.webp" alt="Coaches" width="210"
-                                    height="339">
-                                <h3>Reflina <span>Deovanger</span></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-4 f-0">
-                            <div class="team-block">
-                                <img loading='lazy' src="assets/frontend/images/team/3.webp" alt="Coaches" width="210"
-                                    height="339">
-                                <h3>TUẤN</h3>
-                            </div> --}}
                         </div>
 
                     </div>
                 </div>
             </div>
-        </div>
         </div>
         <!-- TEAM BLOCK END'S HERE -->
         <!-- FEATURE BLOCK START HERE -->
@@ -184,76 +126,17 @@
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-                <div class="text-center looking pt-3">
-                    <a href="{{ route('searchcourse.index') }}" class="text-black ">
-                        <h4>Bạn cần hỗ trợ<span> tìm khóa học?</span></h4>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- FEATURE BLOCK END'S HERE -->
-        <!-- PRICING BLOCK START HERE -->
-        {{-- <div class="pricing_wrapper default-padding-top">
-        <div class="container">
-            <div class="heading left">
-                <h3>Our <span>Pricing</span></h3>
-            </div>
-            <div class="row align-items-end">
-                <div class="col-xl-9 col-lg-12">
-                    <div class="default-padding-bottom">
-                        <div class="row">
-                            @foreach ($top_workout_packages as $top_workout_package)
-                            <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
-                                <div class="plan_block">
-                                    <h3>{{$top_workout_package->package_name}}</h3>
-                                    
-                                    <p>
-                                        {!!$top_workout_package->description!!}
-                                    </p>
-                                    <h2>{{$top_workout_package->price}}</h2>
-                                    <a href="contact-us.html" class="btn">Buy Now</a>
-                                </div>
-                            </div>
-                            @endforeach --}}
-
-        {{-- <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
-                                <div class="plan_block">
-                                    <h3>Standard Account</h3>
-                                    <h4>Only for first month</h4>
-                                    <p>
-                                        Vivamus in imperdiet libero, at dapibus eros. In varius lacinia gravida.
-                                        Aenean dignissim nulla nibh.
-                                    </p>
-                                    <h2>$69.00</h2>
-                                    <a href="contact-us.html" class="btn">Buy Now</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12">
-                                <div class="plan_block">
-                                    <h3>Premium Account</h3>
-                                    <h4>Only for first month</h4>
-                                    <p>
-                                        Vivamus in imperdiet libero, at dapibus eros. In varius lacinia gravida.
-                                        Aenean dignissim nulla nibh.
-                                    </p>
-                                    <h2>$99.00</h2>
-                                    <a href="contact-us.html" class="btn">Buy Now</a>
-                                </div>
-                            </div> --}}
-        {{-- </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-xl-block d-none">
-                    <div class="images_wrapper f-0">
-                        <img loading='lazy' src="assets/frontend/images/pricing-2.webp" alt="pricing">
+                <div class="">
+                    <div class=" text-center looking pt-3">
+                        <a href="{{ route('searchcourse.index') }}" class="text-black ">
+                            <h4>Bạn cần hỗ trợ<span> tìm khóa học?</span></h4>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div> --}}
-        <!-- PRICING BLOCK END'S HERE -->
         <!-- OUR BLOG START HERE -->
-        <div class="blog_wrapper default-padding">
+        <div class="blog_wrapper default-padding" style="background-color: #212225">
             <div class="container">
                 <div class="heading text-center">
                     <h3>Tin <span>Tức</span></h3>
@@ -272,8 +155,8 @@
                                 </a>
                                 <div class="card-body" style="border: 1px solid #1FACE1">
                                     <span>{{ $Post->created_at->locale('vi')->diffForHumans() }}</span>
-                                    <h5 class="card-title truncate-text">{{ $Post->title }}</h5>
-                                    <p class="card-text">{{ $Post->description }}</p>
+                                    <h5 class="card-title truncate-text-tieude">{{ $Post->title }}</h5>
+                                    <p class="truncate-text-post card-text">{{ $Post->description }}</p>
                                     <div class="button-sec">
                                         <a href="{{ route('posts-details.index', $Post->id) }}"
                                             aria-label="Blog Details">Chi tiết</a>
