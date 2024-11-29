@@ -73,7 +73,8 @@ Route::post('/login', [LoginController::class, 'login_'])->name('login_.index');
 Route::post('/register', [LoginController::class, 'register'])->name('register.index'); //xử lý input register;
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout.index'); //xử lý input register;
-Route::get('/otp', [LoginController::class, 'otp'])->name('otp.index'); //xử lý input register;
+Route::get('/otp', [LoginController::class, 'otp'])->name('otp.index'); //form otp;
+Route::post('/otp_', [LoginController::class, 'otp_'])->name('otp_.index'); //xử lý otp;
 Route::get('/forgot_pass', [LoginController::class, 'forgotPass'])->name('forgot.pass.index');
 
 

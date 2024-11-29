@@ -21,7 +21,6 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($id); // Tìm người dùng dựa trên ID
         return view('frontend/profile/profile', compact('user'));
-
     }
 
     // Hiển thị form chỉnh sửa thông tin
@@ -34,7 +33,7 @@ class ProfileController extends Controller
     public function edit_(Request $request)
     {
         // Lấy thông tin người dùng đã đăng nhập
-        // $user = Auth::user();
+
         $user_id = $request->user_id;
         $user = User::findOrFail($user_id); // Tìm người dùng dựa trên ID
 
@@ -55,22 +54,22 @@ class ProfileController extends Controller
         $user->birthday = $request->ngaysinh;
         $user->address = $request->address;
         // $user->avatar = $request->hinhanh;
-    
-        // Xử lý ảnh mới nếu có
-        if($request->hasFile('hinhanh')){
 
-            $old_image = 'uploads/user_image'.$user->avatar;
-            if(file::exists($old_image)){
+        // Xử lý ảnh mới nếu có
+        if ($request->hasFile('hinhanh')) {
+
+            $old_image = 'uploads/user_image' . $user->avatar;
+            if (file::exists($old_image)) {
                 file::delete($old_image);
             }
 
             $file = $request->file('hinhanh');
             $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
-            $filename = time().'.'.$extension;
+            $filename = time() . '.' . $extension;
             $file->move('uploads/user_image', $filename);
             $user->avatar = $filename;
         }
-        
+
         // Lưu thông tin người dùng
         $user->save();
         return redirect()->route('profile.index', ['id' => Auth::user()->id])->with('success', 'Thông tin đã được cập nhật!');
@@ -83,26 +82,26 @@ class ProfileController extends Controller
     }
 
     public function changePassword_(Request $request)
-{
-    $user = Auth::user(); // Lấy thông tin người dùng đang đăng nhập
+    {
+        $user = Auth::user(); // Lấy thông tin người dùng đang đăng nhập
 
-    // Kiểm tra mật khẩu cũ
-    $request->validate([
-        'pass' => 'required|string', // Mật khẩu cũ là bắt buộc
-        'newpass' => 'required|string|min:8|confirmed', // Mật khẩu mới yêu cầu dài ít nhất 8 ký tự và xác nhận mật khẩu mới
-    ]);
+        // Kiểm tra mật khẩu cũ
+        $request->validate([
+            'pass' => 'required|string', // Mật khẩu cũ là bắt buộc
+            'newpass' => 'required|string|min:8|confirmed', // Mật khẩu mới yêu cầu dài ít nhất 8 ký tự và xác nhận mật khẩu mới
+        ]);
 
-    // Kiểm tra mật khẩu cũ có đúng không
-    if (!Hash::check($request->input('pass'), $user->password)) {
-        return back()->withErrors(['pass' => 'Mật khẩu cũ không chính xác.']); // Trả về thông báo lỗi nếu mật khẩu cũ không đúng
+        // Kiểm tra mật khẩu cũ có đúng không
+        if (!Hash::check($request->input('pass'), $user->password)) {
+            return back()->withErrors(['pass' => 'Mật khẩu cũ không chính xác.']); // Trả về thông báo lỗi nếu mật khẩu cũ không đúng
+        }
+
+        // Cập nhật mật khẩu mới
+        $user->password = Hash::make($request->input('newpass')); // Mã hóa mật khẩu mới trước khi lưu
+        $user->save();
+
+        return back()->with('success', 'Mật khẩu đã được thay đổi thành công!'); // Trả về thông báo thành công
     }
-
-    // Cập nhật mật khẩu mới
-    $user->password = Hash::make($request->input('newpass')); // Mã hóa mật khẩu mới trước khi lưu
-    $user->save();
-
-    return back()->with('success', 'Mật khẩu đã được thay đổi thành công!'); // Trả về thông báo thành công
-}
 
     // Cập nhật thông tin người dùng
     public function update(Request $request)
@@ -122,7 +121,7 @@ class ProfileController extends Controller
         $user->phone_number = $request->input('phone');
         $user->birthday = $request->input('dob');
         $user->gender = $request->input('gender');
-        
+
         // Lưu thay đổi vào cơ sở dữ liệu
         $user->save();
 
@@ -135,7 +134,7 @@ class ProfileController extends Controller
 
 
 
-    
+
     public function trainers()
     {
         $data = Staff::paginate(8);
@@ -156,4 +155,3 @@ class ProfileController extends Controller
         return view('frontend/profile/staff_request', compact('data'));
     }
 }
-

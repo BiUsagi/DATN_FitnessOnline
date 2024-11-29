@@ -28,15 +28,20 @@ body {
   }
   
   .otp-container p {
-    font-size: 14px;
+    font-size: 13px;
     color: #ccc;
-    margin-bottom: 20px;
   }
   
   .otp-inputs {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
     margin-bottom: 20px;
+  }
+
+  .otp-mail{
+    margin: 0;
+    padding: 0;
   }
   
   .otp-inputs input {
@@ -85,4 +90,16 @@ body {
   .resend-otp a:hover {
     text-decoration: underline;
   }
+
+  .errors {
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+strong{
+  color: #1face1;
+}
   
