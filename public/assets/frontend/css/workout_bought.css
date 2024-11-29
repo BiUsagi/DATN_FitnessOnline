@@ -202,12 +202,16 @@
     color: red;
 }
 .section .box-list .card-custom .card-body-custom .content-package .price-status .status{
-    background-color: #39D127;
+    background-color: #1576D0;
     padding: 5px 10px;
     border-radius: 3px;
     color: #fff;
     font-size: 12px;
     font-weight: 600;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .price-status .status.completed{
+    background-color: #39D127;
 }
 
 .section .box-list .card-custom .card-body-custom .content-package .price-status .status-error{

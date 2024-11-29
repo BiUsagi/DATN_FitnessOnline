@@ -35,7 +35,7 @@
                                 <input type="text" placeholder="Tìm kiếm...">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
-                            <div class="filter-status">
+                            {{-- <div class="filter-status">
                                 <p class="title-filter">Lọc theo trạng thái</p>
                                 <div class="filter-completed">
                                     <input type="radio" name="filter" id="completed">
@@ -45,7 +45,7 @@
                                     <input type="radio" name="filter" id="doing">
                                     <label for="doing">Đang thực hiện</label>
                                 </div>
-                            </div>
+                            </div> --}}
                        
                     </div>
                 </div>
@@ -66,15 +66,19 @@
                                                 <a href="#">{{$workout->workoutPackage->package_name}}</a>
                                                 <p>Loại gói tập: {{$workout->workoutPackage->level}}</p>
                                                 <div class="price-status">
+                                                    @php
+                                                        $progress = $workout->progress == 100 ? 'Đã hoàn thành' : 'Đang thực hiện'; 
+                                                        $progressCss = $workout->progress == 100 ? 'completed' : ''; 
+                                                    @endphp
                                                     <span class="price">Tác giả: <a href="#!">{{$workout->workoutPackage->staff->staff_name}}</a></span>
-                                                    <p class="status">Đang thực hiện</p>
+                                                    <p class="status {{$progressCss}}">{{$progress}}</p>
                                                 </div>
                                                 <div class="duration">
                                                     <div class="progress-bar-customize">
-                                                        <div class="progress-customize" style="width: 0%"></div>
+                                                        <div class="progress-customize" style="width: {{ $workout->progress }}%"></div>
                                                     </div>
                                                     <div class="box-feedback">
-                                                        <p>Hoàn thành 0%</p>
+                                                        <p>Hoàn thành {{ $workout->progress }}%</p>
                                                         <div class="feedback">
                                                             <div class="star">
                                                                 <i class="fa-solid fa-star"></i>

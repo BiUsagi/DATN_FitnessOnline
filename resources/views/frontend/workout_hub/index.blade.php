@@ -125,8 +125,8 @@
                         <h3>Hít đất</h3>
                     </div>
                     <div class="show-video">
-                        <div class="video-container">
-                            <video>
+                        <div class="video-container" >
+                            <video loop>
                                 <source type="video/mp4">
                             </video>
                         </div>
@@ -134,7 +134,7 @@
                     <div class="line"></div>
                     <div class="show-video2">
                         <div class="video-container">
-                            <video>
+                            <video loop>
                                 <source type="video/mp4">
                             </video>
                         </div>
