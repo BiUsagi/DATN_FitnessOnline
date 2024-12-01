@@ -514,3 +514,13 @@ input[type="radio"]:hover {
     height: 10rem;
     object-fit: cover;
 }
+
+.feature-list p {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-height: 4.5em !important;
+    line-height: 1.5em !important;
+}
