@@ -126,13 +126,13 @@
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-                <div class="">
+                {{-- <div class="">
                     <div class=" text-center looking pt-3">
                         <a href="{{ route('searchcourse.index') }}" class="text-black ">
                             <h4>Bạn cần hỗ trợ<span> tìm khóa học?</span></h4>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- OUR BLOG START HERE -->
