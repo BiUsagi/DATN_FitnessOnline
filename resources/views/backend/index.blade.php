@@ -73,7 +73,7 @@
                 </div> --}}
 
                 <div class="card-body">
-                  <h5 class="card-title">Tổng danh thu<span></span></h5>
+                  <h5 class="card-title">Tổng doanh thu<span></span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -213,65 +213,64 @@
             <!-- Recent Sales -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
-                <div class="card-body">
-                  <h5 class="card-title">Gói tập<span></span></h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">STT</th>
-                        <th scope="col">Tên gói tập</th>
-                        <th scope="col">Level</th>
-                        <th scope="col">Special_level</th>
-                        <th scope="col">Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($allpackages as $index => $package)
-                        <tr>
-                          <th scope="row" style="padding-left: 22px">{{ $index + 1 }}</th>
-                          <td class="ps-3">
-                            <a href="{{ route('admin.workout_package_detail', $package->id) }}" class="text-dark fw-bold">
-                              {{ $package->package_name }}
-                            </a>
-                          </td>
-                          <td class="ps-3">{{ $package->level }}</td>
-                          <td class="ps-3">{{ $package->special_level }}</td>
-                          <td class="ps-3"><span>{{ number_format($package->price, 0, ',', '.') }} VNĐ</span></td>
-                        </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-
-                </div>
-
+                  <div class="card-body">
+                      <h5 class="card-title">Top gói Tập Bán Nhiều Nhất</h5>
+                      <table class="table table-borderless">
+                          <thead>
+                              <tr>
+                                  <th scope="col">STT</th>
+                                  <th scope="col">Tên gói tập</th>
+                                  <th scope="col">Price</th>
+                                  <th scope="col">Tổng số bán</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach ($topPackages as $index => $package)
+                                  <tr>
+                                      <th scope="row">{{ $index + 1 }}</th>
+                                      <td class="ps-3">
+                                          <a href="{{ route('workout_detail', $package->id) }}" class="text-dark fw-bold">
+                                              {{ $package->package_name }}
+                                          </a>
+                                      </td>
+                                      <td class="ps-3">{{ number_format($package->price, 0, ',', '.') }} VNĐ</td>
+                                      <td class="ps-3">{{ $package->total_sold }} lượt bán</td>
+                                  </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
+                  </div>
               </div>
-            </div>
+          </div>
+          
             <!-- End Recent Sales -->
             <!-- Recent Sales -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
                 <div class="card-body">
-                  <h5 class="card-title">Mua Hàng<span></span></h5>
+                  <h5 class="card-title">Top khách hàng mua hàng<span></span></h5>
 
-                  <table class="table table-borderless datatable">
+                  <table class="table table-borderless">
                     <thead>
                       <tr>
                         <th scope="col">STT</th>
                         <th scope="col">Tên khách hàng</th>
-                        <th scope="col">Tên gói tập</th>
-                        <th scope="col">Ngày mua</th>
-                        <th scope="col">Giá</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Thứ hạng</th>
+
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($orders as $index => $order)
                         <tr>
                           <th scope="row">{{ $index + 1 }}</th>
-                          <td>{{ $order->user->user_name }}</td>  <!-- Tên khách hàng -->
-                          <td>{{ $order->workoutPackage->package_name }}</td>  <!-- Tên gói tập -->
-                          <td>{{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}</td>  <!-- Ngày mua -->
-                          <td>{{ number_format($order->purchase_price, 0, ',', '.') }} VNĐ</td>  <!-- Giá -->
+                          <td>
+                            <a href="{{ route('admin.customer.info', ['id' => $order->id]) }}" class="text-dark fw-bold">
+                                {{$order->user_name }}
+                            </a>
+                          </td>
+                          <td>{{ number_format($order->total_spent, 0, ',', '.') }} VNĐ</td>
+                          <td>Hạng {{ $index + 1 }}</td>
                         </tr>
                       @endforeach
                     </tbody>
@@ -290,9 +289,9 @@
                 </div>
 
                 <div class="card-body pb-0">
-                  <h5 class="card-title">Nhân viên<span></span></h5>
+                  <h5 class="card-title">Top nhân viên được đánh giá<span></span></h5>
 
-                  <table class="table table-borderless datatable">
+                  <table class="table table-borderless">
                     <thead>
                         <tr>
                             <th scope="col">STT</th>
@@ -307,10 +306,10 @@
                             <tr>
                                 <td>{{ $index + 1 }}</td> <!-- Số thứ tự -->
                                 <td>
-                                    <a href="#" class="text-dark fw-bold">{{ $staff->staff_name }}</a> <!-- Tên nhân viên -->
+                                    <a href="{{ route('admin.staff.info', ['id' => $staff->id]) }}" class="text-dark fw-bold">{{ $staff->staff_name }}</a> <!-- Tên nhân viên -->
                                 </td>
                                 <td>
-                                    <a href="#">
+                                    <a href="{{ route('admin.staff.info', ['id' => $staff->id]) }}">
                                         <img src="assets/backend/img/accounts/{{ $staff->avatar }}" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
                                     </a> <!-- Ảnh nhân viên -->
                                 </td>
@@ -334,231 +333,36 @@
 
           <!-- Recent Activity -->
           <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
             <div class="card-body">
-              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+              <h5 class="card-title">Khách hàng đăng ký gần đây<span></span></h5>
 
               <div class="activity">
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">32 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptatem blanditiis blanditiis eveniet
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptates corrupti molestias voluptatem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Est sit eum reiciendis exercitationem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                  </div>
-                </div><!-- End activity item-->
-
+                @foreach ($allUsers as $user)
+                    <div class="activity-item d-flex">
+                      <div class="activite-label">
+                        @if ($user->created_at->isToday())
+                            Hôm nay, 
+                            <br> {{ $user->created_at->format('H:i') }}
+                        @elseif ($user->created_at->isYesterday())
+                            Hôm qua, 
+                           <br> {{ $user->created_at->format('H:i') }}
+                        @else
+                            {{ $user->created_at->format('d/m H:i') }}
+                        @endif
+                    </div>
+                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                        <div class="activity-content">
+                          <a href="{{ route('admin.customer.info', ['id' => $user->id]) }}" class="text-dark fw-bold">
+                            {{ $user->user_name }}
+                          </a> đã đăng ký thành công
+                            {{-- <a href="{{ route('admin.customer.info', ['id' => $user->id]) }}" class="fw-bold text-dark">{{ $user->email }}</a> --}}
+                        </div>
+                    </div>
+                @endforeach
               </div>
-
             </div>
-          </div><!-- End Recent Activity -->
-
-          <!-- Budget Report -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-
-              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
-                    legend: {
-                      data: ['Allocated Budget', 'Actual Spending']
-                    },
-                    radar: {
-                      // shape: 'circle',
-                      indicator: [{
-                          name: 'Sales',
-                          max: 6500
-                        },
-                        {
-                          name: 'Administration',
-                          max: 16000
-                        },
-                        {
-                          name: 'Information Technology',
-                          max: 30000
-                        },
-                        {
-                          name: 'Customer Support',
-                          max: 38000
-                        },
-                        {
-                          name: 'Development',
-                          max: 52000
-                        },
-                        {
-                          name: 'Marketing',
-                          max: 25000
-                        }
-                      ]
-                    },
-                    series: [{
-                      name: 'Budget vs spending',
-                      type: 'radar',
-                      data: [{
-                          value: [4200, 3000, 20000, 35000, 50000, 18000],
-                          name: 'Allocated Budget'
-                        },
-                        {
-                          value: [5000, 14000, 28000, 26000, 42000, 21000],
-                          name: 'Actual Spending'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div><!-- End Budget Report -->
-
-          <!-- Website Traffic -->
-          {{-- <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Search Engine'
-                        },
-                        {
-                          value: 735,
-                          name: 'Direct'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Union Ads'
-                        },
-                        {
-                          value: 300,
-                          name: 'Video Ads'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div> --}}
-          <!-- End Website Traffic -->
-
-          <!-- News & Updates Traffic -->
+          </div>
+          <!-- End Recent Activity -->
           <div class="card">
             <div class="card-body pb-0">
               <h5 class="card-title">Bài viết<span></span></h5>
@@ -567,8 +371,8 @@
                 @foreach($posts->take(5) as $post)
                 <div class="post-item clearfix">
                     <a href="{{ route('posts-details.index', $post->id) }}"><img src="{{ asset('uploads/post_image/' . $post->image) }}" alt=""></a>
-                    <h4><a href="{{ route('posts-details.index', $post->id) }}">{{ $post->title }}</a></h4>
-                    <p>{{ Str::limit($post->description, 100) }}...</p>  <!-- Giới hạn mô tả -->
+                    <h4><a href="{{ route('posts-details.index', $post->id) }}">{{ Str::limit($post->title , 70) }}</a></h4>
+                    {{-- <p>{{ Str::limit($post->description, 60) }}</p>  <!-- Giới hạn mô tả --> --}}
                 </div>
             @endforeach
 

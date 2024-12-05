@@ -51,65 +51,65 @@
                                 <div class="media">
                                     <label>Facebook</label>
                                     <p "><a href="{{ $data->facebook }}" class="text-secondary"
-                                                    target="blank">{{ $data->facebook }}</a></p>
+                                                        target="blank">{{ $data->facebook }}</a></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="media">
-                                            <label>E-mail</label>
-                                            <p>{{ $data->email }}</p>
-                                        </div>
-                                        <div class="media">
-                                            <label>Di Động</label>
-                                            <p>{{ $data->phone_number }}</p>
-                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="media">
+                                                <label>E-mail</label>
+                                                <p>{{ $data->email }}</p>
+                                            </div>
+                                            <div class="media">
+                                                <label>Di Động</label>
+                                                <p>{{ $data->phone_number }}</p>
+                                            </div>
 
-                                        <div class="media">
-                                            <label>Địa Chỉ</label>
-                                            <p>{{ $data->address }}</p>
+                                            <div class="media">
+                                                <label>Địa Chỉ</label>
+                                                <p>{{ $data->address }}</p>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 ">
+                                <div class="about-avatar-custom d-flex justify-content-end">
+                                    <img src="assets/backend/img/accounts/{{ $data->avatar }}" title="" alt="">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 ">
-                            <div class="about-avatar-custom d-flex justify-content-end">
-                                <img src="assets/backend/img/accounts/{{ $data->avatar }}" title="" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="counter-custom">
-                        <div class="row">
-                            <div class="col-6 col-lg-3">
-                                <div class="count-data text-center">
-                                    <h6 class="count h2" data-to="500" data-speed="500">{{ $data->getActiveDuration() }}</h6>
-                                    <p class="m-0px font-w-600">Hoạt Động</p>
+                        <div class="counter-custom">
+                            <div class="row">
+                                <div class="col-6 col-lg-3">
+                                    <div class="count-data text-center">
+                                        <h6 class="count h2" data-to="500" data-speed="500">{{ $data->getActiveDuration() }}</h6>
+                                        <p class="m-0px font-w-600">Hoạt Động</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <div class="count-data text-center">
-                                    <h6 class="count h2" data-to="150" data-speed="150">{{ $data->getCourseCount() }}</h6>
-                                    <p class="m-0px font-w-600">Khóa Học</p>
+                                <div class="col-6 col-lg-3">
+                                    <div class="count-data text-center">
+                                        <h6 class="count h2" data-to="150" data-speed="150">{{ $data->getCourseCount() }}</h6>
+                                        <p class="m-0px font-w-600">Khóa Học</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <div class="count-data text-center">
-                                    <h6 class="count h2" data-to="850" data-speed="850">{{ $data->getStudentCount() }}</h6>
-                                    <p class="m-0px font-w-600">Học Viên</p>
+                                <div class="col-6 col-lg-3">
+                                    <div class="count-data text-center">
+                                        <h6 class="count h2" data-to="850" data-speed="850">{{ $data->getStudentCount() }}</h6>
+                                        <p class="m-0px font-w-600">Học Viên</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <div class="count-data text-center">
-                                    <h6 class="count h2" data-to="190" data-speed="190">
-                                        <span class="text-warning">
-                                            @php
-                                                // tính số sao
-                                                $fullStars = floor($data->rating); // full sao
-                                                $halfStar = $data->rating - $fullStars >= 0.5 ? 1 : 0; //nửa sao
-                                            @endphp
+                                <div class="col-6 col-lg-3">
+                                    <div class="count-data text-center">
+                                        <h6 class="count h2" data-to="190" data-speed="190">
+                                            <span class="text-warning">
+                                                @php
+                                                    // tính số sao
+                                                    $fullStars = floor($data->rating); // full sao
+                                                    $halfStar = $data->rating - $fullStars >= 0.5 ? 1 : 0; //nửa sao
+                                                @endphp
 
-                                            <!-- Hiển thị full sao -->
-                                              @for ($i=1; $i <=$fullStars; $i++)
+                                                <!-- Hiển thị full sao -->
+                                                   @for ($i=1; $i <=$fullStars; $i++)
                                         <i class="bi bi-star-fill"></i>
                                         @endfor
 
@@ -303,3 +303,6 @@
         });
     </script>
 @endsection
+
+
+

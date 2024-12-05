@@ -31,20 +31,30 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
                                 </li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse tabActive" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto">
+                                
+                                @if (Auth::check())
+                                <li class="nav-item nav-item-customize">
+                                    <span class="nav-link account bell" tabindex="0">
+                                        <i class="bi bi-bell-fill fs-6"></i>
+                                        <span class="notification-count" id="notificationCount">0</span>
+                                    </span>
+                                    
+                                    <!-- thong bao -->
+                                    <ul class="notifications" id="bell"></ul>
+                                </li>
+                                @endif
                                 <li class="nav-item">
                                     @if (Auth::check())
-                                        <span class=" nav-link account">
+                                        <span class="nav-link account">
                                             <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile"
                                                 class="rounded-circle">&nbsp;
-                                            {{ Auth::user()->user_name }}</span> <!-- Hiển thị tên đăng nhập -->
-                                        <ul class="dropdown-menu" aria-labelledby="username">
-                                            <p class="text-center text-white"><i class="bi bi-wallet-fill"></i>&nbsp;<i
-                                                    id="money"></i> <i class="underline">đ</i> </p>
-                                            <hr>
-                                            <!-- <li class="text">
-                                                                                        <a href="{{ route('wallets.addmoney') }}"
-                                                                                            class="dropdown-item text-white">Nạp Tiền</a>
-                                                                                    </li> -->
+                                            </span> <!-- Hiển thị tên đăng nhập -->
+                                        {{-- <ul class="dropdown-menu" aria-labelledby="username">
+                                           
                                             <li class="text">
                                                 <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}"
                                                     class="dropdown-item text-white">Thông
@@ -68,25 +78,44 @@
                                                         Xuất</button>
                                                 </form>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
+                                        <div class="dropdown-account">
+                                           <div class="img-name">
+                                                <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="">
+                                                <div class="nameuser">
+                                                    <p>{{Auth::user()->user_name}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="infor-account">
+                                                <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}">Trang cá nhân</a>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="infor-account">
+                                                <a href="{{ route('workout_bought', Auth::user()->id) }}">Gói tập của tôi</a>
+                                            </div>
+                                            <div class="infor-account">
+                                                <a href="#">Lịch sử mua hàng</a>
+                                            </div>
+                                            @if (Auth::user()->role_012 === 1 || Auth::user()->role_012 === 2)
+                                                <div class="infor-account">
+                                                    <a href="{{ route('admin') }}">Trang quản trị</a>
+                                                </div>
+                                            @endif
+                                            <div class="line"></div>
+                                            <div class="infor-account">
+                                                <form action="{{ route('logout.index') }}" method="POST">
+                                                @csrf
+                                                     <button type="submit">Đăng xuất</button>
+                                                </form>
+                                            </div>
+
+                                        </div>
                                     @else
                                         <a id="btn-login" class="nav-link btn">Đăng nhập</a>
                                     @endif
                                 </li>
 
-                                @if (Auth::check())
-                                <li class="nav-item">
-                                    <span class="nav-link account bell" tabindex="0">
-                                        <i class="bi bi-bell-fill"></i>
-                                        <span class="notification-count" id="notificationCount">0</span>
-                                    </span>
-                                    
-                                    <!-- thong bao -->
-                                    <ul class="notifications" id="bell"></ul>
-                                </li>
-
-
-                                @endif
 
 
 
@@ -122,6 +151,7 @@
         @endif
 
         function loadbell() {
+            
             @if (Auth::check())
                 var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
@@ -160,6 +190,7 @@
 
                     if(returnDb != ''){
                         $('#bell').html(returnDb);
+                        $('#bell').prepend('<h6 class="title">Thông báo</h6>');
                     }else{
                         $('#bell').html(`
                             <li class="unread">
@@ -230,6 +261,12 @@
             });
         });
 
+        const clickAccount = document.querySelector('.rounded-circle');
+        const dropdown = document.querySelector('.dropdown-account');
+
+        clickAccount.addEventListener('click', function(){
+            dropdown.classList.toggle('show-dropdown');
+        });
     </script>
 </header>
 

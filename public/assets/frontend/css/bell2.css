@@ -27,14 +27,34 @@
     width: 360px;
     max-height: 85vh;
     overflow-y: auto;
-    background-color: #242529;
-    border: 1px solid #334155;
+    background-color: #fff;
+    /* border: 1px solid #334155; */
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     display: none; /* Ẩn mặc định */
-    padding: 0;
+    padding: 10px;
     scrollbar-width: none;
+    animation: scroll .3s ease-in-out;
+}
+
+@keyframes scroll {
+    0%{
+        transform: translateY(-3%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.notifications .title {
+    color: #292929; 
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px;
+
 }
 
 .notifications li {
@@ -46,11 +66,16 @@
 }
 
 .notifications li.unread {
-    background-color: #343435;
+    background-color: rgba(117, 204, 236, 0.6);
+    border-radius: 5px;
+}
+
+.notifications li.unread a{
+    /* font-weight: 600; */
 }
 
 .notifications li.unread:hover {
-    background-color: #34495e;
+    background-color: rgba(117, 204, 236, 0.8);
 }
 
 .notifications li i {
@@ -62,16 +87,20 @@
 .notifications li .content {
     display: flex;
     flex-direction: column;
+    font-size: 16px;
+    color: #333 !important;
 }
 
 .notifications li a {
     text-decoration: none;
-    color: #e2e8f0;
+    color: #292929;
     font-size: 14px;
     margin-bottom: 5px;
+    font-weight: 600;
+
 }
 
 .notifications li .date {
-    color: #a0aec0;
+    color: #292929;
     font-size: 12px;
 }

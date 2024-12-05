@@ -8,10 +8,14 @@
 </head>
 <body>
   <div class="otp-container">
-    <form action="/verify-otp" method="POST">
+    <form action="{{ route ('otp_.index') }}" method="POST">
       <h2>Xác nhận OTP</h2>
-      <p>Vui lòng nhập mã OTP đã được gửi đến số điện thoại/email của bạn.</p>
+      <div class="otp-mail">
+        <p class="otp-mail">Vui lòng nhập mã OTP đã được gửi đến</p>
+        <p class="otp-mail">" <strong>{{ $email }}</strong> "</p>
+      </div>
       <div class="otp-inputs">
+        @csrf
         <input type="text" name="otp1" maxlength="1" required>
         <input type="text" name="otp2" maxlength="1" required>
         <input type="text" name="otp3" maxlength="1" required>
@@ -19,6 +23,13 @@
         <input type="text" name="otp5" maxlength="1" required>
         <input type="text" name="otp6" maxlength="1" required>
       </div>
+      @if ($errors->any())
+        <div class="errors">
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+        </div>
+      @endif
       <button type="submit">Xác nhận</button>
       <p class="resend-otp">
         Không nhận được mã? <a href="/resend-otp">Gửi lại</a>
@@ -28,30 +39,26 @@
 </body>
 </html>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll(".otp-inputs input");
 
-  // Chỉ cho phép ô đầu tiên được nhập lúc đầu
-  inputs.forEach((input, index) => {
-    if (index !== 0) {
-      input.setAttribute("disabled", true);
-    }
-  });
+  // Đảm bảo ô đầu tiên luôn được phép nhập và mở khóa ô đầu tiên
+  inputs[0].disabled = false;
+  inputs[0].focus(); // Đặt focus vào ô đầu tiên khi trang được tải
 
   inputs.forEach((input, index) => {
-    // Khi người dùng nhập số
+    // Khi người dùng nhập
     input.addEventListener("input", (event) => {
       const value = event.target.value;
 
       if (/^\d$/.test(value)) {
-        // Mở khóa ô tiếp theo (nếu có)
+        // Nếu nhập hợp lệ và không phải ô cuối cùng
         if (index < inputs.length - 1) {
-          inputs[index].setAttribute("disabled", true); // Khóa ô hiện tại
-          inputs[index + 1].removeAttribute("disabled"); // Mở khóa ô tiếp theo
-          inputs[index + 1].focus();
+          inputs[index + 1].disabled = false; // Mở khóa ô tiếp theo
+          inputs[index + 1].focus(); // Chuyển focus
         }
       } else {
-        // Xóa nếu nhập ký tự không hợp lệ
+        // Nếu nhập không hợp lệ, xóa giá trị
         event.target.value = "";
       }
     });
@@ -59,31 +66,31 @@
     // Khi người dùng nhấn Backspace
     input.addEventListener("keydown", (event) => {
       if (event.key === "Backspace") {
-        event.preventDefault(); // Ngăn backspace xóa ký tự không cần thiết
-
-        if (input.value !== "") {
-          input.value = ""; // Xóa ký tự hiện tại
-        } else if (index > 0) {
-          // Quay lại ô trước đó
-          inputs[index].setAttribute("disabled", true);
-          inputs[index - 1].removeAttribute("disabled");
+        if (input.value === "" && index > 0) {
+          // Quay lại ô trước đó nếu đang rỗng
+          inputs[index - 1].disabled = false;
           inputs[index - 1].focus();
-          inputs[index - 1].value = ""; // Xóa ký tự ô trước
+          inputs[index - 1].value = ""; // Xóa giá trị ô trước
         }
       }
     });
 
     // Ngăn người dùng focus vào các ô không được phép
     input.addEventListener("focus", (event) => {
-      if (input.hasAttribute("disabled")) {
-        input.blur(); // Xóa focus khỏi ô không hợp lệ
+      if (input.disabled) {
+        input.blur(); // Hủy focus khỏi ô bị khóa
+      }
+    });
+
+    // Ngăn không cho người dùng click vào ô bị khóa
+    input.addEventListener("click", (event) => {
+      if (input.disabled) {
+        event.preventDefault(); // Ngăn việc click vào ô bị khóa
+        input.blur(); // Hủy focus khỏi ô bị khóa nếu click vào
       }
     });
   });
-
-  // Kích hoạt ô đầu tiên
-  inputs[0].removeAttribute("disabled");
-  inputs[0].focus();
 });
+
 
 </script>

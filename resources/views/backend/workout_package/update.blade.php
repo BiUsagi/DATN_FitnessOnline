@@ -119,18 +119,18 @@
                             <div class="card-header text-uppercase">Cấp độ</div>
                             <div class="card-body">
                                 <select name="level" id="level" class="form-control-select2 setupSelect2">\
-                                    @if ( $update_id->level  == 'beginner')
+                                    @if ( $update_id->level  == 'Người Mới Bắt Đầu')
                                         <option value="{{$update_id->level}}">Người Mới Bắt Đầu</option>
-                                    @elseif ( $update_id->level  == 'intermediate')
+                                    @elseif ( $update_id->level  == 'Trung Cấp')
                                         <option value="{{$update_id->level}}">Trung Cấp</option>
-                                    @elseif ( $update_id->level  == 'advanced')
+                                    @elseif ( $update_id->level  == 'Nâng Cao')
                                         <option value="{{$update_id->level}}">Nâng Cao</option>
                                     @else
                                         <option value="0">Chọn cấp độ</option>
                                     @endif
-                                    <option value="beginner">Người Mới Bắt Đầu</option>
-                                    <option value="intermediate">Trung Cấp</option>
-                                    <option value="advanced">Nâng Cao</option>
+                                    <option value="Người Mới Bắt Đầu">Người Mới Bắt Đầu</option>
+                                    <option value="Trung Cấp">Trung Cấp</option>
+                                    <option value="Nâng Cao">Nâng Cao</option>
                                 </select>
                             </div>
                         </div>
@@ -139,18 +139,18 @@
                             <div class="card-header text-uppercase">Cấp độ đặc biệt</div>
                             <div class="card-body">
                                 <select name="special_level" id="special_level" class="form-control-select2 setupSelect2">
-                                    @if ( $update_id->special_level  == 'cutting')
+                                    @if ( $update_id->special_level  == 'Giảm cân')
                                         <option value="{{$update_id->special_level }}">Giảm cân</option>
-                                    @elseif ( $update_id->level  == 'bulking')
+                                    @elseif ( $update_id->special_level  == 'Tăng cơ')
                                         <option value="{{$update_id->special_level }}">Tăng cơ</option>
-                                    @elseif ( $update_id->level  == 'endurance')
+                                    @elseif ( $update_id->special_level  == 'Thể lực và sức bền')
                                         <option value="{{$update_id->special_level }}">Thể lực và sức bền</option>
                                     @else
                                         <option value="0">Chọn cấp độ</option>
                                     @endif
-                                    <option value="cutting">Giảm cân</option>
-                                    <option value="bulking">Tăng cơ</option>
-                                    <option value="endurance">Thể lực và sức bền</option>
+                                    <option value="Giảm cân">Giảm cân</option>
+                                    <option value="Tăng cơ">Tăng cơ</option>
+                                    <option value="Thể lực và sức bền">Thể lực và sức bền</option>
                                 </select>
                             </div>
                         </div>
