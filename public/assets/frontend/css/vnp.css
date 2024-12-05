@@ -1,0 +1,146 @@
+/* Reset mặc định */
+body, h1, h2, h3, h4, p, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1face1;
+}
+
+/* Form */
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+form .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form .form-control:focus {
+    border-color: #1face1;
+    box-shadow: 0 0 5px rgba(31, 174, 225, 0.5);
+    outline: none;
+}
+
+form textarea.form-control {
+    resize: vertical;
+}
+
+/* Select dropdown */
+form select.form-control {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Buttons */
+form .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form .btn-primary {
+    background-color: #1face1;
+    color: #fff;
+}
+
+form .btn-primary:hover {
+    background-color: #168cb0;
+}
+
+form .btn-default {
+    background-color: #ddd;
+    color: #333;
+}
+
+form .btn-default:hover {
+    background-color: #bbb;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer p a {
+    color: #1face1;
+    text-decoration: none;
+}
+
+.footer p a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* Đặt form ở giữa màn hình */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Chiều cao 100% màn hình */
+    margin: 0;
+    background-color: #f5f7fa; /* Màu nền nhẹ */
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
