@@ -187,7 +187,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/report-comments', [CommentController::class, 'ReportedComments'])->name('api.admin.report-comments')->middleware('can:view_comment');
 
 
-    //___________________________________ Sơn Lít Đờ __________________________ FaKe ____________________________//
+   
 
 
 

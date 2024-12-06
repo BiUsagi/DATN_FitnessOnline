@@ -47,7 +47,10 @@ class AccountsController extends Controller
     {
         $data = User::where('id', $id)->first();
         $age = $data->getAgeFromBirthday();
-        return view('backend/accounts/info_customer', compact('data', 'age'));
+        $workout_packages = User::where('id', $id)
+            ->with(['orders.workoutPackage'])
+            ->first();
+        return view('backend/accounts/info_customer', compact('data', 'age', 'workout_packages'));
     }
 
 
