@@ -31,6 +31,8 @@ class TrainerRequestController extends Controller
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('assets/backend/img/accounts', $filename);
             $staff->new_avatar = $filename; // Lưu tên file vào database
+        } else {
+            $staff->new_avatar = $user->avatar;
         }
 
         if ($request->hasFile('file-up')) {

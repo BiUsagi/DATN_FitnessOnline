@@ -94,23 +94,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 row">
-                    <div class="card col-12">
-                        <div class="title-top">
-                            <h5 class="card-title text-uppercase ps-2">Tệp đính kèm</h5>
-                        </div>
-                        <div class="card-body">
-                            <ul>
-                                <li>
-                                    <a href="assets/backend/docs/certificate.pdf" target="_blank">Chứng chỉ</a>
-                                </li>
-                                <li>
-                                    <a href="assets/backend/docs/cv.docx" target="_blank">CV</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="card  col-12">
                         <div class="title-top">
                             <h5 class="card-title text-uppercase ps-2">Giới thiệu</h5>
@@ -122,6 +105,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 row">
+                    <div class="card col-12">
+                        <div class="title-top">
+                            <h5 class="card-title text-uppercase ps-2">Tệp đính kèm</h5>
+                        </div>
+                        <div class="card-body">
+                            <a href="uploads/cv_resume/{{ $staff->certificate }}"
+                                class="btn btn-info d-flex justify-content-center mb-3" target="_blank">Xem
+                                trong
+                                trang
+                                mới</a>
+                            <div>
+                                <iframe src="uploads/cv_resume/{{ $staff->certificate }}" width="100%"
+                                    height="500px"></iframe>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -129,6 +132,7 @@
 @endsection
 
 @section('custom_js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script>
         $(document).ready(function() {
             $('[data-bs-toggle="tooltip"]').tooltip();
