@@ -6,7 +6,7 @@
                     <div class="col-xl-4 d-xl-flex justify-content-xl-start">
                         <div class="our-information">
                             <a href="index.html" class="website-logo"><img loading='lazy'
-                                    src="assets/frontend/images/footer-logo.svg" alt="logo" width="140"
+                                    src="logo/fitness-online light.png" alt="logo" width="140"
                                     height="30"></a>
                             <p class="web-about">Tập gym là một hoạt động thể dục giúp cải thiện sức khỏe và vóc dáng 
                                 thông qua các bài tập với tạ, máy tập, và các bài cardio. Việc tập gym không chỉ giúp tăng cường cơ bắp, 
@@ -26,7 +26,7 @@
                     <div class="col-xl-2 col-lg-3 d-lg-flex justify-content-xl-start justify-content-lg-start">
                         <div class="footer-links">
                             <h2 class="footer-title mob" data-bs-target="#links" data-bs-toggle="collapse">
-                                Links
+                                Liên kết
                                 <div class="footer-toggler">
                                 </div>
                             </h2>
@@ -42,7 +42,7 @@
                     <div class="col-xl-3 col-lg-5 d-lg-flex justify-content-xl-start d-none justify-content-lg-center">
                         <div class="footer-links">
                             <h2 class="footer-title">
-                                Recent Post
+                                Bài viết
                             </h2>
                             <div class="recent-posts">
                                     {{-- @foreach ($topPost->take(3) as $Post)
@@ -128,7 +128,7 @@
     </div>
     <div class="copy-right">
         <div class="container">
-            <p class="copy-content">© 2024 <a class="web-name" href="#!">GYMFIT</a>. Mọi quyền được bảo lưu.
+            <p class="copy-content">© 2024 <a class="web-name" href="#!">Fitness Online</a>. Mọi quyền được bảo lưu.
             </p>
         </div>
     </div>
