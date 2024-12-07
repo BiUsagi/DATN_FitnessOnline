@@ -14,6 +14,7 @@
     <!-- Custom styles for this template -->
     <link href="/vnpay_php/assets/jumbotron-narrow.css" rel="stylesheet">
     <script src="/vnpay_php/assets/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="assets/frontend/css/endpay.css">
 </head>
 
 <body>
@@ -45,7 +46,7 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
     <!--Begin display -->
     <div class="container">
         <div class="header clearfix">
-            <h3 class="text-muted">VNPAY RESPONSE</h3>
+            <h3 class="text-muted">HÓA ĐƠN THANH TOÁN</h3>
         </div>
         <div class="table-responsive">
             <div class="form-group">
@@ -63,7 +64,7 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
                 <label><?php echo $_GET['vnp_OrderInfo'] ?></label>
             </div>
             <div class="form-group">
-                <label>Mã phản hồi (vnp_ResponseCode):</label>
+                <label>Mã phản hồi:</label>
                 <label><?php echo $_GET['vnp_ResponseCode'] ?></label>
             </div>
             <div class="form-group">
@@ -115,9 +116,7 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
         <p>
             &nbsp;
         </p>
-        <footer class="footer">
-            <p>&copy; VNPAY <?php echo date('Y')?></p>
-        </footer>
+        
     </div>
 </body>
 
