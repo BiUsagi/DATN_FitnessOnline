@@ -82,6 +82,7 @@
                                 <div class="footer-toggler">
                                 </div>
                             </h2>
+                            
                             <ul id="contactus" class="collapse foot-mob" data-bs-parent="#foot-accordion">
                                 <div class="contacts">
                                     <img loading='lazy' src="assets/frontend/images/icons/foot-call.svg" alt="call"
