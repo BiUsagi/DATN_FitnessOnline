@@ -145,6 +145,9 @@ class PayController extends Controller
                 ]);
             }
 
+            //gui mail
+            $this->sendmail();
+
             return response()->json([
                 'message' => 'Tạo đơn hàng thành công',
                 'data' => $record
