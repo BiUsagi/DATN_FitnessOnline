@@ -173,10 +173,10 @@
                                         <li><a href="#!">Food</a></li>
                                         <li><a href="#!">Training</a></li>
                                         <li><a href="#!">Health</a></li>
-                                        <li><a href="#!">Diet</a></li>
+                                        {{-- <li><a href="#!">Diet</a></li>
                                         <li><a href="#!">Boxing</a></li>
                                         <li><a href="#!">Food</a></li>
-                                        <li><a href="#!">Cardio</a></li>
+                                        <li><a href="#!">Cardio</a></li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -249,41 +249,40 @@
         let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
         
         $.ajax({
-            url:_commentUrl,
-            type : 'POST',
-            data:{
+            url: _commentUrl,
+            type: 'POST',
+            data: {
                 content: content,
                 _token: '{{ csrf_token() }}' // cần token CSRF
             },
-            success: function (res){
-                if (res.error){
-                    $('#comment-error').html(res.error)
-                }else{
+            success: function(res) {
+                if (res.error) {
+                    $('#comment-error').html(res.error);
+                } else {
                     $('#comment-error').html('');
                     $('#comment-content').val('');
                     $('#comment').html(res);
-                    // console.log(res);
+
+                    // Hiển thị thông báo thành công với toastr
+                    toastr.success('Bình luận đã được gửi thành công!');
+
                     // Gọi hàm để gắn sự kiện "Báo cáo" cho các bình luận mới
                     attachReportEvent();
                 }
             }
-        })
+        });
     });
+
 
 
     // TRẢ LỜI BÌNH LUẬN
-    $(document).on('click', function(event) {
-        // Kiểm tra nếu click vào ngoài form trả lời và nút "Phản hồi"
-        if (!$(event.target).closest('.formRep, .btn-rep, ').length) {
-            // Đóng tất cả các form trả lời
+    $(document).on('click', function (event) {
+        if (!isEditing && !$(event.target).closest('.formRep, .btn-rep, .contact-form').length) {
+            // Nếu không đang chỉnh sửa, ẩn form trả lời và hiển thị lại form chính
             $('.formRep').slideUp();
-            $('.edit-comment').slideUp();
-            $('.edit-reply').slideUp();
-            // Hiển thị lại form bình luận chính
             $('.contact-form').slideDown();
         }
     });
-
     $(document).on('click', '.btn-rep',function(ev){
         ev.preventDefault();
         let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
@@ -323,17 +322,19 @@
                 rep: id,
                 _token: '{{ csrf_token() }}' // cần token CSRF
             },
-            success: function (res){
-                if (res.error){
-                    $('#comment-error').html(res.error)
-                }else{
+            success: function (res) {
+                if (res.error) {
+                    $('#comment-error').html(res.error);
+                } else {
                     $('#comment-error').html('');
                     $('#comment-content').val('');
                     $('#comment').html(res);
+                    toastr.success('Bình luận đã được gửi thành công!');
                     attachReportEvent();
-                    // console.log(res);
-                    $('.contact-form').slideDown(); // Hiện lại form bình luận chính
+                    
+                    // Đảm bảo ẩn form trả lời và hiển thị lại form chính
                     $('.formRep').slideUp();
+                    $('.contact-form').slideDown();
                 }
             }
         })
@@ -379,9 +380,11 @@
     }
     //Update comments cha
     $(document).on('click', '.edit-comment', function() {
+        // Đặt trạng thái đang chỉnh sửa
+        isEditing = true;
         $('.contact-form').slideUp();
         $('.formRep').slideUp();
-        // $('.edit-reply').slideUp();
+        $('.edit-reply').slideUp();
         const commentId = $(this).data('id');
         const currentContent = $(this).data('content');
 
@@ -406,10 +409,19 @@
             },
             success: function(response) {
                 if (response.success) {
-                    $(`#edit-content-${commentId}`).closest('.comment-text').text(newContent);
-                    alert('Bình luận đã được cập nhật.');
-                    $('.contact-form').slideDown();
+                    // Cập nhật nội dung bình luận trên giao diện
+                    const commentBox = $(`#edit-content-${commentId}`).closest('.single-comment-box');
+                    commentBox.find('.comment-text').text(newContent);
 
+                    // Cập nhật lại giá trị data-content để tránh việc lấy lại nội dung cũ khi sửa tiếp
+                    commentBox.find('.edit-comment').data('content', newContent);
+
+                    // Hiển thị thông báo thành công với toastr
+                    toastr.success('Bình luận đã được cập nhật thành công!');
+
+                    // Kết thúc chỉnh sửa
+                    isEditing = false;
+                    $('.contact-form').slideDown();
                 } else {
                     alert('Có lỗi xảy ra khi cập nhật bình luận.');
                 }
@@ -448,10 +460,16 @@
 
     //update comment con
     $(document).on('click', '.edit-reply', function (ev) {
-        $('.contact-form').slideUp();
+        // Đặt trạng thái đang chỉnh sửa
+        isEditing = true;
+
+        // Ẩn các form không cần thiết
         $('.formRep').slideUp();
-        // $('.edit-comment').slideUp();
-        
+        if (!$('.contact-form').is(':hidden')) {
+            $('.contact-form').slideUp(); // Chỉ ẩn form chính nếu nó đang hiển thị
+        }
+        $('.edit-comment').slideUp(); // Đảm bảo ẩn form chỉnh sửa bình luận cha
+
         ev.preventDefault();
         let replyId = $(this).data('id');
         let currentContent = $(this).data('content');
@@ -487,14 +505,28 @@
             success: function(response) {
                 if (response.success) {
                     // Cập nhật lại nội dung bình luận con trên giao diện
-                    $(`#reply-${replyId} .comment-text`).text(newContent);
-                    alert('Bình luận con đã được sửa.');
+                    const replyBox = $(`#reply-${replyId}`);
+                    replyBox.find('.comment-text').text(newContent);
+
+                    // Cập nhật lại giá trị data-content của nút "Sửa" để tránh lấy lại nội dung cũ khi sửa tiếp
+                    replyBox.find('.edit-reply').data('content', newContent);
+
+                    // Hiển thị thông báo thành công với toastr
+                    toastr.success('Bình luận con đã được cập nhật thành công!');
+
+                    // Kết thúc chỉnh sửa
+                    isEditing = false;
+                    $('.contact-form').slideDown();
                 } else {
                     alert('Có lỗi xảy ra khi sửa bình luận con.');
                 }
             },
             error: function(xhr, status, error) {
                 alert('Có lỗi xảy ra khi sửa bình luận con.');
+            },
+            complete: function () {
+                // Dù thành công hay thất bại, đảm bảo trạng thái chỉnh sửa được tắt
+                isEditing = false;
             }
         });
     });
