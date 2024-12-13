@@ -39,8 +39,10 @@ class LoginController extends Controller
         }
         Auth::login($user);
 
-        if ($user->role_012 == 1 || $user->role_012 == 2) {
+        if ($user->role_012 == 2) {
             $redirectUrl = route('admin');
+        }elseif($user->role_012 == 1){
+            $redirectUrl = route('admin.walletpt');
         } else {
             $redirectUrl = $request->input('redirect_url') ?? route('index');
         }

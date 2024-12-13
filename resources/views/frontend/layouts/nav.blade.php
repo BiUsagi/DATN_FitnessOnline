@@ -100,9 +100,14 @@
                                             <div class="infor-account">
                                                 <a href="#">Lịch sử mua hàng</a>
                                             </div>
-                                            @if (Auth::user()->role_012 === 1 || Auth::user()->role_012 === 2)
+                                            @if (Auth::user()->role_012 === 2)
                                                 <div class="infor-account">
                                                     <a href="{{ route('admin') }}">Trang quản trị</a>
+                                                </div>
+                                            @endif
+                                            @if (Auth::user()->role_012 === 1)
+                                                <div class="infor-account">
+                                                    <a href="{{ route('admin.walletpt') }}">Trang quản trị</a>
                                                 </div>
                                             @endif
                                             <div class="line"></div>
