@@ -111,6 +111,22 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
                 $data = Cache::get('order_data');
                 echo $data['user_id'];
             ?>">
+            <input type="hidden" id="workout_package_name" value="<?php
+                $data = Cache::get('order_data');
+                echo $data['workout_package_name'];
+            ?>">
+            <input type="hidden" id="staff_name" value="<?php
+                $data = Cache::get('order_data');
+                echo $data['staff_name'];
+            ?>">
+            <input type="hidden" id="staff_uid" value="<?php
+                $data = Cache::get('order_data');
+                echo $data['staff_uid'];
+            ?>">
+            <input type="hidden" id="user_name" value="<?php
+                $data = Cache::get('order_data');
+                echo $data['user_name'];
+            ?>">
 
         </div>
         <p>
@@ -140,19 +156,42 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
                 
                     let w_id = $('#btn-id').val();
                     let user_id = $('#user_id').val();
+                    let workout_package_name = $('#workout_package_name').val();
+                    let staff_uid = $('#staff_uid').val();
+                    let user_name = $('#user_name').val();
+
+
+                    //them thong bao cho user
 
                     const notificationData = {
                         user_id: user_id,
-                        message: "Bạn đã mua gói tập thành công.",
+                        message: "Bạn đã mua gói <strong class='text-primary'>" + workout_package_name + "</strong> thành công.",
                         type: 2,
                         link: "/workout_detail/" + w_id
                     };
 
-                    //them thong bao
                     $.ajax({
                         url: 'http://127.0.0.1:8000/api/web/add-notification',
                         method: 'POST',
                         data: JSON.stringify(notificationData), // Chuyển đổi dữ liệu thành chuỗi JSON
+                        contentType: 'application/json',        // Định dạng nội dung là JSON
+                        dataType: 'json',                       // Kiểu dữ liệu mong đợi trả về
+                    });
+
+
+                    //them thong bao cho staff
+
+                    const notificationDataStaff = {
+                        user_id: staff_uid,
+                        message: "<strong class='text-primary'>" + user_name + "</strong> đã mua gói <strong class='text-primary'>" + workout_package_name + "</strong> của bạn.",
+                        type: 1,
+                        link: "/workout_detail/" + w_id
+                    };
+
+                    $.ajax({
+                        url: 'http://127.0.0.1:8000/api/web/add-notification',
+                        method: 'POST',
+                        data: JSON.stringify(notificationDataStaff), // Chuyển đổi dữ liệu thành chuỗi JSON
                         contentType: 'application/json',        // Định dạng nội dung là JSON
                         dataType: 'json',                       // Kiểu dữ liệu mong đợi trả về
                     });
