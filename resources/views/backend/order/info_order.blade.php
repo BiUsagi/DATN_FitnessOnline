@@ -23,8 +23,8 @@
                             <!-- Row start -->
                             <div class="row">
                                 <div class="col-xxl-3 col-sm-3 col-12">
-                                    <img src="assets/frontend/images/logo.svg" alt="Bootstrap Admin Dashboard"
-                                        class="img-fluid bg-black">
+                                    <img src="logo/fitness-online dark.png" alt="Bootstrap Admin Dashboard"
+                                        class="img-fluid">
                                 </div>
                                 <div class="col-sm-9 col-12">
                                     <div class="text-end">
@@ -107,21 +107,22 @@
                             </div>
                             <!-- Row end -->
 
-                            <!-- Row start -->
-                            <div class="row mt-3">
-                                <div class="col-sm-12 col-12">
-                                    <div class="d-flex justify-content-end gap-2">
-                                        <button class="btn btn-outline-secondary">
-                                            Tải xuống
-                                        </button>
-                                        <button class="btn btn-primary">
-                                            In ra
-                                        </button>
-                                    </div>
+
+                        </div>
+                        <!-- Row start -->
+                        <div class="row mt-3 me-2 mb-4">
+                            <div class="col-sm-12 col-12">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-outline-secondary">
+                                        Tải xuống
+                                    </button>
+                                    <button class="btn btn-primary">
+                                        In ra
+                                    </button>
                                 </div>
                             </div>
-                            <!-- Row end -->
                         </div>
+                        <!-- Row end -->
                     </div>
 
                 </div>
