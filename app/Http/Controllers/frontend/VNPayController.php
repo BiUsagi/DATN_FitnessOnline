@@ -102,6 +102,16 @@ class VNPayController extends Controller
         $user_id = $request['user_id'];
         $workout_package_id = $request['workout_package_id'];
 
+        $user = User::find($user_id);
+        $user_name = $user->user_name;
+
+        $workout_package = Workout_Package::find($workout_package_id);
+        $workout_package_name = $workout_package->package_name;
+        $staff_id = $workout_package->staff_id;
+        $staff = Staff::find($staff_id);
+        $staff_uid = $staff->user_id;
+        $staff_name = $staff->staff_name;
+
 
         //luu order vào cache
         $orderData = [
@@ -109,7 +119,11 @@ class VNPayController extends Controller
             'purchase_price' => $purchase_price,
             'voucher_id' => $voucher_id,
             'user_id' => $user_id,
-            'workout_package_id' => $workout_package_id
+            'workout_package_id' => $workout_package_id,
+            'workout_package_name' => $workout_package_name,
+            'staff_uid' => $staff_uid,
+            'staff_name' => $staff_name,
+            'user_name' => $user_name
         ];
 
         // Xóa order cũ nếu có
@@ -146,7 +160,7 @@ class VNPayController extends Controller
         // Lưu vào cache với thời gian tùy chọn (ở đây là 60 phút)
         Cache::put('vnpay_data', $data, now()->addMinutes(60));
 
-        $this->sendmail();
+        // $this->sendmail();
         return view('frontend/vnpay/vnpay_return');
     }
 

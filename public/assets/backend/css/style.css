@@ -252,7 +252,7 @@ h6 {
 }
 
 .card-body {
-  padding: 0 20px 20px 20px;
+  padding: 10px 20px 20px 20px;
 }
 
 .card-img-overlay {
@@ -1422,26 +1422,26 @@ input[placeholder] {
   font-size: 0.9rem;
 }
 
-.post_description p{
-  width: 100%; 
-  display: -webkit-box; 
-  -webkit-box-orient: vertical; 
-  -webkit-line-clamp: 2; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  white-space: normal; 
+.post_description p {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
   position: relative;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 }
 
 .post_description p:hover {
-  -webkit-line-clamp: unset; 
-  overflow: visible; 
-  white-space: normal; 
-  background: #fff; 
-  padding: 10px; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-  z-index: 10; 
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  white-space: normal;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 /* Phong cách tổng thể cho phần view default */
@@ -1452,7 +1452,8 @@ input[placeholder] {
   justify-content: center;
   text-align: center;
   padding: 50px;
-  background: linear-gradient(135deg, #1295c5, #000); /* Gradient chủ đạo xanh và đen */
+  background: linear-gradient(135deg, #1295c5, #000);
+  /* Gradient chủ đạo xanh và đen */
   color: #ffffff;
   font-family: 'Arial', sans-serif;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -1517,4 +1518,11 @@ input[placeholder] {
   font-size: 40px;
   color: #ffffff;
   animation: bounce 1s infinite alternate;
+}
+
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }

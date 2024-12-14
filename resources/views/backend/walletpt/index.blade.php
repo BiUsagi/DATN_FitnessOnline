@@ -155,7 +155,7 @@
 
                                                 echo'
                                                     <tr>
-                                                        <td class="text-center" id="'.$amountClass.'"><strong>'.$item->amount.'</strong></td>
+                                                        <td class="text-center" id="'.$amountClass.'"><strong>'.number_format($item->amount, 0, ',', '.').'</strong></td>
                                                         <td>'.$item->description.'</td>
                                                         <td class="text-center">'.$item->transaction_id.'</td>
                                                         <td class="text-center">'.$item->created_at.'</td>
@@ -186,14 +186,29 @@
                         <h5 class="card-title">Hoạt động gần đây <span>| Hôm nay</span></h5>
 
                         <div class="activity">
+                            <?php
+                                foreach ($notifications as $tb) {
+                                    echo'
+                                        <div class="activity-item d-flex">
+                                            <div class="activite-label">'. $tb->created_at->setTimezone('Asia/Ho_Chi_Minh')->format('H:i') .'</div>
 
-                            <div class="activity-item d-flex">
+                                            <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                                            <div class="activity-content">
+                                                <a href="#" class="fw-bold text-dark">'.$tb->message.'</a>
+                                            </div>
+                                        </div>
+                                    ';
+                                }
+                            ?>
+
+                            
+                            <!-- <div class="activity-item d-flex">
                                 <div class="activite-label">15:03</div>
                                 <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                                 <div class="activity-content">
                                     <a href="#" class="fw-bold text-dark">Luân đã mua gói tập cấp tốc.</a>
                                 </div>
-                            </div><!-- End activity item-->
+                            </div>
 
                             <div class="activity-item d-flex">
                                 <div class="activite-label">09:05</div>
@@ -201,7 +216,7 @@
                                 <div class="activity-content">
                                     <a href="#" class="fw-bold text-dark">Tuấn pro đã mua gói tập cơ bản.</a>
                                 </div>
-                            </div><!-- End activity item-->
+                            </div>
 
                             <div class="activity-item d-flex">
                                 <div class="activite-label">07:03</div>
@@ -209,53 +224,7 @@
                                 <div class="activity-content">
                                     <a href="#" class="fw-bold text-dark">Rin đã nộp 1 video.</a>
                                 </div>
-                            </div><!-- End activity item-->
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">15:03</div>
-                                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                <div class="activity-content">
-                                    <a href="#" class="fw-bold text-dark">Luân đã mua gói tập cấp tốc.</a>
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">09:05</div>
-                                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                                <div class="activity-content">
-                                    <a href="#" class="fw-bold text-dark">Tuấn pro đã mua gói tập cơ bản.</a>
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">07:03</div>
-                                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                <div class="activity-content">
-                                    <a href="#" class="fw-bold text-dark">Rin đã nộp 1 video.</a>
-                                </div>
-                            </div><!-- End activity item-->
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">15:03</div>
-                                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                <div class="activity-content">
-                                    <a href="#" class="fw-bold text-dark">Luân đã mua gói tập cấp tốc.</a>
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">09:05</div>
-                                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                                <div class="activity-content">
-                                    <a href="#" class="fw-bold text-dark">Tuấn pro đã mua gói tập cơ bản.</a>
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">07:03</div>
-                                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                <div class="activity-content">
-                                    <a href="#" class="fw-bold text-dark">Rin đã nộp 1 video.</a>
-                                </div>
-                            </div><!-- End activity item-->
+                            </div> -->
 
                         </div>
 

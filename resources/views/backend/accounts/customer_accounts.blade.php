@@ -25,80 +25,79 @@
                             </div>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th>Tên</th>
-                                        <th>Tuổi</th>
-                                        <th>Giới Tính</th>
-                                        <th>Số Điện Thoại</th>
-                                        <th>Email</th>
-                                        <th>Trải Nghiệm</th>
-                                        <th class="text-center">Hành Động</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    {{-- Lặp hiện thị danh sách nhân viên --}}
-
-                                    @php $stt = 1; @endphp
-
-                                    @foreach ($data as $item)
-                                        <tr data-id="{{ $item->id }}">
-                                            <td class="text-center align-middle">
-                                                {{ $stt++ }}
-                                            </td>
-                                            <td>
-                                                {{-- Avatar --}}
-                                                <img src="assets/backend/img/accounts/{{ $item->avatar }}"
-                                                    class="rounded-circle object-fit-cover me-2 avatar-table">
-                                                {{-- name --}}
-                                                {{ $item->user_name }}
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                {{ $item->age }}
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                @if ($item->gender == 1)
-                                                    <i class="bi bi-gender-male text-primary"></i> Nam
-                                                @elseif ($item->gender == 0)
-                                                    <i class="bi bi-gender-female text-danger"></i> Nữ
-                                                @elseif ($item->gender == 2)
-                                                    <i class="bi bi-gender-trans text-warning"></i> Khác
-                                                @else
-                                                    <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
-                                                @endif
-                                            </td>
-                                            {{-- sdt --}}
-                                            <td class="align-middle">{{ $item->phone_number }}</td>
-                                            {{-- email --}}
-                                            <td class=" align-middle">{{ $item->email }}</td>
-                                            {{-- Trải nghiệm --}}
-                                            <td class=" align-middle text-center">{{ $item->trial }} ngày</td>
-                                            <td class="text-center align-middle">
-                                                {{-- xem --}}
-                                                <a href="{{ route('admin.customer.info', ['id' => $item->id]) }}"
-                                                    class="btn btn-outline-success" data-bs-placement="top"
-                                                    data-bs-title="Xem Chi Tiết">
-                                                    <i class="ri-eye-fill"></i>
-                                                </a>
-                                                {{-- sua --}}
-                                                <button type="button" class="btn btn-outline-primary"
-                                                    data-bs-toggle="modal" data-bs-target="#editUserModal"
-                                                    onclick="editUser({{ $item->id }})" data-bs-placement="top"
-                                                    data-bs-title="Chỉnh Sửa"><i class="ri-edit-line"></i></button>
-                                                {{-- hạn chế --}}
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    data-bs-placement="top" data-bs-title="Hạn Chế Tài Khoản Này"><i
-                                                        class="ri-error-warning-line"></i></button>
-                                            </td>
+                            <div class="table-responsive">
+                                <table class="table datatable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th style="min-width: 160px;">Tên Khách Hàng</th>
+                                            <th style="min-width: 80px;">Tuổi</th>
+                                            <th style="min-width: 110px;">Giới Tính</th>
+                                            <th style="min-width: 150px;">Số Điện Thoại</th>
+                                            <th>Email</th>
+                                            <th class="text-center" style="min-width: 170px;">Hành Động</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <!-- End Table with stripped rows -->
+                                    </thead>
+                                    <tbody>
 
+                                        {{-- Lặp hiện thị danh sách nhân viên --}}
+
+                                        @php $stt = 1; @endphp
+
+                                        @foreach ($data as $item)
+                                            <tr data-id="{{ $item->id }}">
+                                                <td class="text-center align-middle">
+                                                    {{ $stt++ }}
+                                                </td>
+                                                <td>
+                                                    {{-- Avatar --}}
+                                                    <img src="assets/backend/img/accounts/{{ $item->avatar }}"
+                                                        class="rounded-circle object-fit-cover me-2 avatar-table">
+                                                    {{-- name --}}
+                                                    {{ $item->user_name }}
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    {{ $item->age }}
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    @if ($item->gender == 1)
+                                                        <i class="bi bi-gender-male text-primary"></i> Nam
+                                                    @elseif ($item->gender == 0)
+                                                        <i class="bi bi-gender-female text-danger"></i> Nữ
+                                                    @elseif ($item->gender == 2)
+                                                        <i class="bi bi-gender-trans text-warning"></i> Khác
+                                                    @else
+                                                        <i class="bi bi-gender-trans text-secondary"></i> Chưa xác định
+                                                    @endif
+                                                </td>
+                                                {{-- sdt --}}
+                                                <td class="align-middle">{{ $item->phone_number }}</td>
+                                                {{-- email --}}
+                                                <td class=" align-middle">{{ $item->email }}</td>
+                                                <td class="text-center align-middle">
+                                                    {{-- xem --}}
+                                                    <a href="{{ route('admin.customer.info', ['id' => $item->id]) }}"
+                                                        class="btn btn-outline-success" data-bs-placement="top"
+                                                        data-bs-title="Xem Chi Tiết">
+                                                        <i class="ri-eye-fill"></i>
+                                                    </a>
+                                                    {{-- sua --}}
+                                                    <button type="button" class="btn btn-outline-primary"
+                                                        data-bs-toggle="modal" data-bs-target="#editUserModal"
+                                                        onclick="editUser({{ $item->id }})" data-bs-placement="top"
+                                                        data-bs-title="Chỉnh Sửa"><i class="ri-edit-line"></i></button>
+                                                    {{-- hạn chế --}}
+                                                    <button type="button" class="btn btn-outline-danger"
+                                                        data-bs-placement="top" data-bs-title="Hạn Chế Tài Khoản Này"><i
+                                                            class="ri-error-warning-line"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- End Table with stripped rows -->
                         </div>
                     </div>
 

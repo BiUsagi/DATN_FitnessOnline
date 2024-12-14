@@ -77,50 +77,29 @@
                             <h4 class="mb-3">
                                 <strong>Gói tập đã tham gia:</strong>
                             </h4>
-                            <div class="row justify-content-center d-flex">
-                                <div class="col-md-4 col-xxl-3 col-sm-6">
-                                    <div class="card p-0">
-                                        <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
-                                            alt="...">
-                                        <div class="card-body pt-3 row">
-                                            <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
-                                            <div class="card-text col-12">Thời gian: 3 tháng</div>
-                                            <div class="card-text col-12">Còn lại: 24 ngày</div>
+                            <div class="card-body">
+                                <div class="row justify-content-center d-flex">
+                                    @foreach ($workout_packages->orders as $order)
+                                        <div class=" col-lg-4 col-sm-6">
+                                            <div class="card p-0">
+                                                <a href="{{ route('workout_detail', $order->workoutPackage->id) }}"><img
+                                                        src="{{ asset('uploads/gym_package/' . $order->workoutPackage->image) }}"
+                                                        class="img-cover img-banner-custom" alt="..."></a>
+                                                <div class="card-body  row">
+                                                    <span class="mb-1">{{ $order->workoutPackage->special_level }}</span>
+                                                    <h5 class="card-title col-12"><a
+                                                            href="{{ route('workout_detail', $order->workoutPackage->id) }}">{{ $order->workoutPackage->package_name }}</a>
+                                                    </h5>
+                                                    <div class="card-text col-12">
+                                                        <p class="text-clamp">{!! nl2br(strip_tags($order->workoutPackage->description)) !!}</p>
+                                                    </div>
+                                                    <div class="card-text col-12"><span
+                                                            class="d-inline-block fw-bold fs-5">{{ number_format($order->workoutPackage->price, 0, ',', '.') }}
+                                                            VNĐ</span></div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-xxl-3 col-sm-6">
-                                    <div class="card p-0">
-                                        <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
-                                            alt="...">
-                                        <div class="card-body pt-3 row">
-                                            <h5 class="card-title col-12">Tập tay anh Rin</h5>
-                                            <div class="card-text col-12">Thời gian: 6 tháng</div>
-                                            <div class="card-text col-12">Còn lại: 24 ngày</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-xxl-3 col-sm-6">
-                                    <div class="card  p-0">
-                                        <img src="assets/backend/img/z5744025567765_d84710b48e5ca2efa1db72137f826b60.jpg"
-                                            class="img-cover img-banner-custom" alt="...">
-                                        <div class="card-body pt-3 row">
-                                            <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
-                                            <div class="card-text col-12">Thời gian: 3 tháng</div>
-                                            <div class="card-text col-12">Đã hoàn thành</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-xxl-3 col-sm-6">
-                                    <div class="card  p-0">
-                                        <img src="assets/backend/img/demo3.png" class="img-cover img-banner-custom"
-                                            alt="...">
-                                        <div class="card-body pt-3 row">
-                                            <h5 class="card-title col-12">Tập chân thầy Đạt</h5>
-                                            <div class="card-text col-12">Thời gian: 3 tháng</div>
-                                            <div class="card-text col-12">Đã hoàn thành</div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

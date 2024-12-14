@@ -14,6 +14,8 @@
     <!-- Custom styles for this template -->
     <link href="/vnpay_php/assets/jumbotron-narrow.css" rel="stylesheet">
     <script src="/vnpay_php/assets/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="assets/frontend/css/vnp.css">
+
 </head>
 
 <body>
@@ -22,13 +24,14 @@
             // require_once("./config.php"); 
 $startTime = date("YmdHis");
 $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
+$expire1 = date('d-m-Y H:i:s', strtotime('+15 minutes'));
         ?>
 
     <div class="container">
         <div class="header clearfix">
-            <h3 class="text-muted">VNPAY DEMO</h3>
+            <h3 class="text-muted">THÔNG TIN ĐƠN HÀNG</h3>
         </div>
-        <h3>Tạo mới đơn hàng</h3>
+        <!-- <h3>Tạo mới đơn hàng</h3> -->
         <div class="table-responsive">
             <form action="{{route('payment.create')}}" id="create_form" method="post">
                 @csrf
@@ -69,7 +72,7 @@ $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
                         <textarea class="form-control" cols="20" id="order_desc" name="order_desc"
                             rows="2">Noi dung thanh toan</textarea>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group hidden">
                         <label for="bank_code">Ngân hàng</label>
                         <select name="bank_code" id="bank_code" class="form-control">
                             <option value="">Không chọn</option>
@@ -97,7 +100,7 @@ $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
                             <option value="VISA"> Thanh toan qua VISA/MASTER</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group hidden">
                         <label for="language">Ngôn ngữ</label>
                         <select name="language" id="language" class="form-control">
                             <option value="vn">Tiếng Việt</option>
@@ -106,8 +109,10 @@ $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
                     </div>
                     <div class="form-group">
                         <label>Thời hạn thanh toán</label>
-                        <input class="form-control" id="txtexpire" name="txtexpire" type="text"
+                        <input class="form-control" id="txtexpire" name="txtexpire" type="hidden"
                             value="<?php echo $expire; ?>" />
+                        <input class="form-control" id="" name="" type="text"
+                            value="<?php echo $expire1; ?>" />
                     </div>
                     <!-- <div class="form-group">
                         <h3>Thông tin hóa đơn (Billing)</h3>
@@ -244,9 +249,9 @@ $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
         <p>
             &nbsp;
         </p>
-        <footer class="footer">
+        <!-- <footer class="footer">
             <p>&copy; VNPAY <?php echo date('Y')?></p>
-        </footer>
+        </footer> -->
     </div>
 
 </body>

@@ -9,9 +9,11 @@ use App\Models\Wallet;
 use App\Models\User;
 use App\Models\Workout_Package;
 use App\Models\Deposit_histories;
+use App\Models\Notification;
 
 use Auth;
 use Carbon\Carbon;
+
 
 class WalletController extends Controller
 {
@@ -19,6 +21,7 @@ class WalletController extends Controller
     {
         $startOfMonth = Carbon::now()->startOfMonth();
         $endOfMonth = Carbon::now()->endOfMonth();
+        $today = Carbon::today();
 
         $userId = Auth::user()->id;
         $wallet = Wallet::where('user_id', $userId)->first();
@@ -35,34 +38,41 @@ class WalletController extends Controller
         // $totalWorkoutPackages = Workout_Package::count();
         $totalWorkoutPackages = Workout_Package::whereHas('staff.user', function ($query) {
             $query->where('id', Auth::id());
-        }) ->count();
+        })->count();
 
         $Deposit_histories = Deposit_histories::where('user_id', $userId)->get();
+
+        $notifications = Notification::where('user_id', $userId)
+            ->whereDate('created_at', $today)
+            ->where('type', 1)
+            ->get();
 
 
         return view('backend/walletpt/index', [
             'tongdt' => $totalPurchasePrice,
             'sodu' => $wallet->balance,
             'tonggt' => $totalWorkoutPackages,
-            'Deposit_histories' => $Deposit_histories
+            'Deposit_histories' => $Deposit_histories,
+            'notifications' => $notifications
         ]);
 
         //goi tap, doanh thu thang nay, lich su rut tien, thong bao
     }
 
-    public function ruttienpt(){
+    public function ruttienpt()
+    {
         $userId = Auth::user()->id;
         $user = User::find($userId);
 
         $wallet = Wallet::where('user_id', $userId)->first();
 
-        return view('backend/walletpt/ruttien',[
+        return view('backend/walletpt/ruttien', [
             'sodu' => $wallet->balance,
             'user_name' => $user->user_name,
             'user_id' => $userId,
             'wallet' => $wallet->id
         ]);
     }
-    
+
 
 }

@@ -10,10 +10,13 @@ use App\Models\Posts;
 use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+   
+    
     public function index()
     {
         //ĐẾM TỔNG CÁC BÀI TẬP
