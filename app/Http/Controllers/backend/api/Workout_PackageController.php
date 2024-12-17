@@ -10,6 +10,9 @@ use App\Models\user_package_progress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\backend\PackageRequest;
+
+
 
 
 
@@ -28,12 +31,8 @@ class Workout_PackageController extends Controller
         return response()->json($details);
     }
 
-    public function create_(Request $request)
+    public function create_(PackageRequest $request)
     {
-        $request->validate([
-            'package_name' => 'required|string|max:255',
-        ]);
-
         $set = new Workout_package;
         $set->package_name = $request->input('package_name');
         $set->price = $request->input('price');
@@ -53,6 +52,7 @@ class Workout_PackageController extends Controller
             $file->move('uploads/gym_package', $filename);
             $set->image = $filename;
         }
+    
 
         $set->save();
         return response()->json($set);

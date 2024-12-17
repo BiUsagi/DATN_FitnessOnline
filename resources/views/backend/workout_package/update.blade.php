@@ -51,33 +51,7 @@
                         </div>
                     </div>
 
-                    <div class="card">
-                            <div class="card-header text-uppercase">GÓI TẬP VỪA THÊM</div>
-                                <div class="card-body">                   
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Tên gói tập</th>
-                                                <th>PT</th>
-                                                <th>Giá gói tập</th>
-                                            </tr>
-                                        </thead>
-                                        @for( $i=1; $i<=5; $i++)
-                                            <tr>
-                                                <td>{{$i}}</td>
-                                                <td>Bài tập số {{$i}} </td>
-                                                <td>PT {{$i}} </td>
-                                                <td>200.000 VND</td>
-                                            </tr>
-                                        @endfor
-                                        <tbody>
-
-                                        </tbody>
-                                    </table>     
-
-                                </div>
-                        </div>
+                    
 
 
                 </div>
