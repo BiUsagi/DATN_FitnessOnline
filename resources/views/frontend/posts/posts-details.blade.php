@@ -65,13 +65,13 @@
                        
                         <form action="" method="POST" class="contact-form">
                             <div class="col-md-12">
-                                    <div class="form-group comments">
-                                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
-                                        <small id="comment-error" style="color:aliceblue"></small>
-                                        <div class="col-md-1" style="float: right;">
-                                            <button type="button" class="css-button" id="btn-comments">Gửi</button>
-                                        </div>
+                                <div class="form-group comments">
+                                    <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
+                                    <small id="comment-error" style="color:aliceblue"></small>
+                                    <div class="col-md-1" style="float: right;">
+                                        <button type="button" class="css-button" id="btn-comments">Gửi</button>
                                     </div>
+                                </div>
                             </div>                                
                         </form>
                     @else
@@ -142,22 +142,27 @@
                             </div>
                             <div class="sidebar-item recent-post text-left">
                                 <div class="sidebar-info">
-                                    <ul>
-                                        @foreach ($onlyBlog->take(3) as $only)
+                                    @if($onlyBlog->isEmpty())
+                                        <p>Không có bài viết nào</p>
+                                    @else
+                                        <ul>
+                                            @foreach ($onlyBlog as $only)
                                                 <li>
-                                                    <div class="thumb"> 
-                                                        <a href="{{ route('posts-details.index', $only->id) }}" class="title-link"><img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp" style="width:70px; height:50px; object-fit: cover;" ></a>
+                                                    <div class="thumb">
+                                                        <a href="{{ route('posts-details.index', $only->id) }}" class="title-link">
+                                                            <img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp" style="width:70px; height:50px; object-fit: cover;">
+                                                        </a>
                                                     </div>
                                                     <div class="info">
-                                                        <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
+                                                        <a href="{{ route('posts-details.index', $only->id) }}">{{ $only->title }}</a>
                                                         <div class="meta-title">
-                                                            <span class="post-date">{{$only->created_at->locale('vi')->diffForHumans()}}</span>
+                                                            <span class="post-date">{{ $only->created_at->locale('vi')->diffForHumans() }}</span>
                                                         </div>
                                                     </div>
                                                 </li>
                                             @endforeach
-                                        
-                                    </ul>
+                                        </ul>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -298,7 +303,6 @@
         // Kiểm tra xem form trả lời hiện tại có đang mở không
         if (!$(form_rep).is(':visible')) {
             $(form_rep).slideDown();
-            $('.contact-form').slideUp(); // Ẩn form bình luận chính
         }
         // Lấy tên người dùng từ data-username
         var userName = $(this).data('username');
@@ -344,13 +348,15 @@
 
     // Mở modal và lưu lại ID bình luận
     function openModal(commentId) {
-    const modal = document.getElementById('reportModal');
-    modal.dataset.commentId = commentId; // Gán `comment_id` vào modal
-    modal.style.display = 'flex';
-}
+        const modal = document.getElementById('reportModal');
+        modal.dataset.commentId = commentId; // Gán `comment_id` vào modal
+        modal.style.display = 'flex';
+    }
     // Đóng modal
     function closeModal() {
         document.getElementById('reportModal').style.display = 'none';
+        // Xóa nội dung trong textarea
+        document.getElementById('reportContent').value = '';
     }
     function submitReport() {
         const commentId = document.getElementById('reportModal').dataset.commentId;
@@ -370,7 +376,8 @@
                 _token: '{{ csrf_token() }}' // cần token CSRF
             },
             success: function (response) {
-                alert(response.message);
+                // Hiển thị thông báo thành công
+                toastr.success('Báo cáo đã được gửi thành công!');
                 closeModal();
             },
             error: function (xhr) {
@@ -389,7 +396,7 @@
         const currentContent = $(this).data('content');
 
         // Hiển thị input để sửa nội dung bình luận
-        const editHtml = `<textarea class="form-control" id="edit-content-${commentId}" rows="1" cols="75px">${currentContent}</textarea>
+        const editHtml = `<textarea class="form-controll" id="edit-content-${commentId}" rows="1" cols="85">${currentContent}</textarea>
                         <button type="button" class="btn-save-edit" data-id="${commentId}"  style="color: #1E90FF;">Lưu</button>
                         `;
         
@@ -479,7 +486,7 @@
         console.log('Current Content:', currentContent);
 
         const editHtml = `
-                        <textarea class="form-control" id="edit-content-${replyId}" rows="1" cols="75px"> ${currentContent}</textarea>
+                        <textarea class="form-controll" id="edit-content-${replyId}" rows="1" cols="75"> ${currentContent}</textarea>
                         <button type="button" class="btn-save-edit-reply" data-id="${replyId}" style="color: #1E90FF;">Lưu</button>
                         `;
 
@@ -558,7 +565,6 @@
             }
         });
     });
-
 </script>
 @endsection
 
