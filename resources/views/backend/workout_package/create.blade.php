@@ -38,7 +38,7 @@
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label-customize">Thời gian<span class="note">(*
                                             Ngày)</span></label>
-                                    <input type="text" class="form-control-customize " id="inputNanme4"
+                                    <input type="number" class="form-control-customize " id="inputNanme4"
                                         name="duration_days">
                                 </div>
 
@@ -93,7 +93,7 @@
                             <div class="card-header text-uppercase">Cấp độ</div>
                             <div class="card-body">
                                 <select name="level" id="level" class="form-control-select2 setupSelect2">
-                                    <option value="0">Chọn cấp độ</option>
+                                  
                                     <option value="Người Mới Bắt Đầu">Người Mới Bắt Đầu</option>
                                     <option value="Trung Cấp">Trung Cấp</option>
                                     <option value="Nâng Cao">Nâng Cao</option>
@@ -105,7 +105,7 @@
                             <div class="card-header text-uppercase">Cấp độ đặc biệt</div>
                             <div class="card-body">
                                 <select name="special_level" id="special_level" class="form-control-select2 setupSelect2">
-                                    <option value="0">Chọn cấp độ</option>
+                                    
                                     <option value="Giảm cân">Giảm cân</option>
                                     <option value="Tăng cơ">Tăng cơ</option>
                                     <option value="Thể lực và sức bền">Thể lực và sức bền</option>
@@ -148,11 +148,27 @@
                     'assets/backend/img/no-image.jpg');
                 },
                 error: function(err) {
-                    Swal.fire({
-                        title: "Lỗi!",
-                        text: "Có lỗi xảy ra khi thêm gói tập!",
-                        icon: "error"
-                    });
+                    if (err.status === 422) { // Nếu lỗi validate
+                        let errors = err.responseJSON.errors; // Lấy danh sách lỗi từ response
+                        
+                        // Lấy lỗi đầu tiên
+                        let firstField = Object.keys(errors)[0]; // Lấy key đầu tiên
+                        let firstErrorMessage = errors[firstField][0]; // Lấy lỗi đầu tiên từ key đó
+
+                        // Hiển thị SweetAlert với lỗi đầu tiên
+                        Swal.fire({
+                            title: "Lỗi xác thực!",
+                            text: firstErrorMessage, // Chỉ hiển thị lỗi đầu tiên
+                            icon: "error"
+                        });
+                    } else {
+                        // Các lỗi khác
+                        Swal.fire({
+                            title: "Lỗi!",
+                            text: "Có lỗi xảy ra khi thêm gói tập!",
+                            icon: "error"
+                        });
+                    }
                 }
             });
         });

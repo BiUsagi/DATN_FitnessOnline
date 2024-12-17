@@ -17,6 +17,8 @@
             </li>
             <!-- End Dashboard Nav -->
 
+            
+
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/deposithistories*') ? 'active' : '' }}"
                     data-bs-target="#deposithistories-nav" data-bs-toggle="collapse" href="#">
@@ -202,6 +204,15 @@
                     </li>
                 </ul>
             </li><!-- End interface -->
+
+            <!-- Thống kê -->
+            <li class="nav-item">
+                <a class="nav-link collapsed {{ Request::is('admin/statistical*') ? 'active' : '' }}"
+                    href="{{ route('admin.statistical') }} ">
+                    <i class="bi bi-graph-up"></i><span>Thống kê</span>
+                </a>
+            </li>
+            <!-- End Thống kê -->
 
 
             <li class="nav-item">
