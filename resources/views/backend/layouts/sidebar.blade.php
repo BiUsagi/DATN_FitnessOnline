@@ -348,7 +348,7 @@
             </li><!-- End bài viết -->
 
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/comments*') ? 'active' : '' }}"
                     data-bs-target="#comment-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-chat-dots"></i><span>Quản lý bình luận</span><i
@@ -368,7 +368,7 @@
                         </a>
                     </li>
                 </ul>
-            </li><!-- End bình luận -->
+            </li><!-- End bình luận --> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/supportexercises*') ? 'active' : '' }}"
