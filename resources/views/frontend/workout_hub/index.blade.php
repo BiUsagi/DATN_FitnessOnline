@@ -26,7 +26,10 @@
                 </div>
             </div>
         </div>
+        
     </header>
+
+
     <div id="main">
         <div id="content">
             <div class="title-day">
@@ -82,6 +85,13 @@
                 </div>
             </div>
         </div>
+        {{-- Header responsive --}}
+        <div class="header-responsive">
+            <label for="side-right" id="check">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+        </div>
+        <input type="checkbox" id="side-right">
         <div id="sidebar">
             <div class="title">
                 <p>Nội dung khóa tập</p>
@@ -106,6 +116,7 @@
                 @endfor
             </div>
         </div>
+  
     </div>
 
     <div class="overflow">
