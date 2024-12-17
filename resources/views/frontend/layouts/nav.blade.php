@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-lg ">
                         <a class="navbar-brand" href="{{ route('index') }}">
-                            <img loading='lazy' src="logo/fitness-online light.png" alt="logo" width="139"
+                            <img loading='lazy' src="logo/fitness-online light.png" alt="logo" width="160"
                                 height="30">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -35,24 +35,24 @@
                         </div>
                         <div class="collapse navbar-collapse tabActive" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto">
-                                
+
                                 @if (Auth::check())
-                                <li class="nav-item nav-item-customize">
-                                    <span class="nav-link account bell" tabindex="0">
-                                        <i class="bi bi-bell-fill fs-6"></i>
-                                        <span class="notification-count" id="notificationCount">0</span>
-                                    </span>
-                                    
-                                    <!-- thong bao -->
-                                    <ul class="notifications" id="bell"></ul>
-                                </li>
+                                    <li class="nav-item nav-item-customize">
+                                        <span class="nav-link account bell" tabindex="0">
+                                            <i class="bi bi-bell-fill fs-6"></i>
+                                            <span class="notification-count" id="notificationCount">0</span>
+                                        </span>
+
+                                        <!-- thong bao -->
+                                        <ul class="notifications" id="bell"></ul>
+                                    </li>
                                 @endif
                                 <li class="nav-item">
                                     @if (Auth::check())
                                         <span class="nav-link account">
                                             <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="Profile"
                                                 class="rounded-circle">&nbsp;
-                                            </span> <!-- Hiển thị tên đăng nhập -->
+                                        </span> <!-- Hiển thị tên đăng nhập -->
                                         {{-- <ul class="dropdown-menu" aria-labelledby="username">
                                            
                                             <li class="text">
@@ -80,36 +80,41 @@
                                             </li>
                                         </ul> --}}
                                         <div class="dropdown-account">
-                                           <div class="img-name">
-                                                <img src="{{ asset('assets/backend/img/profile-img.jpg') }}" alt="">
+                                            <div class="img-name">
+                                                <img src="{{ asset('assets/backend/img/profile-img.jpg') }}"
+                                                    alt="">
                                                 <div class="nameuser">
-                                                    <p>Minh Tuấn</p>
+                                                    <p>{{ Auth::user()->user_name }}</p>
                                                 </div>
                                             </div>
                                             <div class="line"></div>
                                             <div class="infor-account">
-                                                <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}">Trang cá nhân</a>
+                                                <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}">Trang
+                                                    cá nhân</a>
                                             </div>
                                             <div class="line"></div>
                                             <div class="infor-account">
-                                                <a href="{{ route('workout_bought', Auth::user()->id) }}">Gói tập của tôi</a>
+                                                <a href="{{ route('workout_bought', Auth::user()->id) }}">Gói tập của
+                                                    tôi</a>
                                             </div>
                                             <div class="infor-account">
                                                 <a href="#">Lịch sử mua hàng</a>
                                             </div>
-                                            @if (Auth::user()->role_012 === 1 || Auth::user()->role_012 === 2)
+                                            @if (Auth::user()->role_012 === 2)
                                                 <div class="infor-account">
                                                     <a href="{{ route('admin') }}">Trang quản trị</a>
                                                 </div>
                                             @endif
+                                            @if (Auth::user()->role_012 === 1)
+                                                <div class="infor-account">
+                                                    <a href="{{ route('admin.walletpt') }}">Trang quản trị</a>
+                                                </div>
+                                            @endif
                                             <div class="line"></div>
                                             <div class="infor-account">
-                                                <a href="#">Cài đặt</a>
-                                            </div>
-                                            <div class="infor-account">
                                                 <form action="{{ route('logout.index') }}" method="POST">
-                                                @csrf
-                                                     <button type="submit">Đăng xuất</button>
+                                                    @csrf
+                                                    <button type="submit">Đăng xuất</button>
                                                 </form>
                                             </div>
 
@@ -134,7 +139,7 @@
     <script>
         loadbell();
 
-        $("#btn-login").click(function () {
+        $("#btn-login").click(function() {
             var currentUrl = window.location.href;
 
             // Chuyển hướng người dùng đến trang đăng nhập, truyền URL hiện tại
@@ -146,7 +151,7 @@
         @if (Auth::check())
             var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
-            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function (res) {
+            $.get('http://127.0.0.1:8000/api/web/wallets/' + userId, function(res) {
                 let data = res;
                 var formattedBalance = data.balance.toLocaleString('vi-VN'); // Định dạng theo ngôn ngữ Việt Nam
                 $('#money').html(formattedBalance);
@@ -154,19 +159,20 @@
         @endif
 
         function loadbell() {
-            
+
             @if (Auth::check())
                 var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
 
 
-                $.get('http://127.0.0.1:8000/api/web/get-notification/' + userId, function (res) {
+                $.get('http://127.0.0.1:8000/api/web/get-notification/' + userId, function(res) {
                     let data = res;
                     let returnDb = '';
                     console.log(data);
                     data.reverse().forEach(element => {
 
-                        const createdAt = new Date(element.created_at);  // Chuyển đổi chuỗi thành đối tượng Date
+                        const createdAt = new Date(element
+                        .created_at); // Chuyển đổi chuỗi thành đối tượng Date
 
                         // Lấy ngày, tháng, năm, giờ, phút, giây
                         const day = createdAt.getDate();
@@ -177,7 +183,8 @@
                         const seconds = createdAt.getSeconds();
 
                         // Đảm bảo định dạng số hai chữ số cho phút và giây
-                        const formattedDate = `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year} ${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                        const formattedDate =
+                            `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year} ${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
 
                         returnDb += `
@@ -191,10 +198,10 @@
                             `
                     });
 
-                    if(returnDb != ''){
+                    if (returnDb != '') {
                         $('#bell').html(returnDb);
                         $('#bell').prepend('<h6 class="title">Thông báo</h6>');
-                    }else{
+                    } else {
                         $('#bell').html(`
                             <li class="unread">
                                 <div class="content text-white">
@@ -207,10 +214,9 @@
             @endif
         }
 
-        $(document).on('click', '.is_read', function (res) {
+        $(document).on('click', '.is_read', function(res) {
             var id = $(this).data('id');
-            $.get('http://127.0.0.1:8000/api/web/is_read/' + id, function (res) {
-            });
+            $.get('http://127.0.0.1:8000/api/web/is_read/' + id, function(res) {});
         });
 
 
@@ -218,9 +224,9 @@
             @if (Auth::check())
                 var userId = @json(Auth::user()->id); // Truyền id người dùng từ PHP sang JavaScript
 
-                $.get('http://127.0.0.1:8000/api/web/count_read/' + userId, function (res) {
-                   
-                    var unreadCount = res; 
+                $.get('http://127.0.0.1:8000/api/web/count_read/' + userId, function(res) {
+
+                    var unreadCount = res;
 
                     // Cập nhật số lượng vào span.notification-count
                     $('#notificationCount').text(unreadCount);
@@ -231,33 +237,33 @@
                     } else {
                         $('#notificationCount').show();
                     }
-                
+
                 });
             @endif
-            
+
         });
 
 
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Hiển thị và ẩn thông báo khi click vào chuông
-            $(".nav-link.account.bell").on('click', function () {
+            $(".nav-link.account.bell").on('click', function() {
                 $(".notifications").toggle(); // Toggle (hiển thị/ẩn) danh sách thông báo
             });
 
             // Đánh dấu thông báo là đã đọc khi click vào một thông báo
-            $(".notifications li").on('click', function () {
+            $(".notifications li").on('click', function() {
                 var notificationId = $(this).data('id'); // Lấy id của thông báo
                 $(this).addClass('read'); // Thêm class 'read' để thay đổi màu sắc
 
                 // Gửi yêu cầu đánh dấu là đã đọc
                 $.ajax({
-                    url: '/put-read/' + notificationId,  // Đổi thành URL API của bạn
+                    url: '/put-read/' + notificationId, // Đổi thành URL API của bạn
                     method: 'PUT',
-                    success: function (response) {
+                    success: function(response) {
                         console.log('Notification marked as read', response);
                     },
-                    error: function (error) {
+                    error: function(error) {
                         console.log('Error marking notification as read', error);
                     }
                 });
@@ -267,9 +273,8 @@
         const clickAccount = document.querySelector('.rounded-circle');
         const dropdown = document.querySelector('.dropdown-account');
 
-        clickAccount.addEventListener('click', function(){
+        clickAccount.addEventListener('click', function() {
             dropdown.classList.toggle('show-dropdown');
         });
     </script>
 </header>
-

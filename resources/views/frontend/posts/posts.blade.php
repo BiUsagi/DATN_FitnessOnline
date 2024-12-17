@@ -256,7 +256,7 @@
                             </div> --}}
                             <div class="widget recentpost-widget">
                                 <div class="heading">
-                                    <h5>Blog liên quan</h5>
+                                    <h5>Blog mới nhất</h5>
                                 </div>
                                 <div class="sidebar-item recent-post text-left">
                                     <div class="sidebar-info">

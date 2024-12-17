@@ -4441,7 +4441,8 @@ header .navbar .navbar-nav .nav-item .nav-link.active:after {
 
 .error-page {
     position: relative;
-    background: url("../images/404-bg.webp") no-repeat;
+    /* background: url("../images/404-bg.webp") no-repeat; */
+    background-color: #212225;
     background-size: cover;
     padding-top: 105px;
     height: 100%;
@@ -6156,7 +6157,7 @@ header .navbar .navbar-nav .nav-item .nav-link.active:after {
 }
 
 .features_wrapper .feature-list {
-    max-height: 440px;
+    max-height: 462px;
     padding: 15px 15px 3px;
     background: #fff;
     border: 1px solid #E5E5E5;
@@ -9361,7 +9362,7 @@ header .navbar .navbar-nav .nav-item .nav-link.active:after {
 
 .error-page {
     position: relative;
-    background: url("../images/404-bg.webp") no-repeat;
+    /* background: url("../images/404-bg.webp") no-repeat; */
     background-size: cover;
     padding-top: 105px;
     height: 100%;
@@ -9452,6 +9453,7 @@ header .navbar .navbar-nav .nav-item .nav-link.active:after {
         margin-bottom: 35px
     }
 }
+
 
 @media(max-width: 767px) {
     .error-page .not-found-section .main-content p {
@@ -9938,3 +9940,20 @@ a {
     position: absolute;
     width: 15px;
 } */
+
+.truncate-text-tieude {
+    display: -webkit-box; 
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: normal; 
+}
+.truncate-text-post {
+    display: -webkit-box; 
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: normal; 
+}

@@ -17,41 +17,101 @@ class RolePermissionSeeder extends Seeder
         Role::create(['name' => 'staff']);
         Role::create(['name' => 'customer']);
 
-        // Tạo các quyền
+        // Danh sách quyền
         $permissions = [
-            'access_dashboard',             // truy cập dashboard
-            'manage_workout_packages',      // quản lý gói tập
-            'manage_exercises',             // quản lí bài tập
-            'manage_posts',                 // quản lí bài viết
-            'manage_comments',              // quản lý bình luận
-            'customer_support',             // hỗ trợ khách hàng
-            'manage_config',                // cấu hình
-            'manage_order',                 // đơn hàng
-            'manage_statistical',           // thống kê
-            'manage_marketing',             // marketing
-            'manage_component',             // 
-            'manage_slides',                // slide
-            'manage_accounts',              // tài khoản
+            // Truy cập Dashboard
+            'dashboard' => ['access_dashboard'],
+            // Quản lý tài khoản
+            'account_management' => ['manage_account'],
+            // Gói tập
+            'workout_package_management' => ['view_package', 'create_package', 'edit_package', 'delete_package'],
+            // Bài viết
+            'post_management' => ['view_post', 'create_post', 'edit_post', 'delete_post'],
+            // Bình luận
+            'comment_management' => ['view_comment', 'restrict_comment'],
+            // Bài tập
+            'exercise_management' => ['view_exercise', 'create_exercise', 'edit_exercise', 'delete_exercise'],
+            // Cấu hình
+            'configuration' => ['manage_config'],
+            // Đơn hàng
+            'order_management' => ['manage_order'],
+            // Thống kê
+            'statistical' => ['view_statistical'],
+            // Marketing
+            'marketing' => ['manage_marketing'],
+            // Slide
+            'slide_management' => ['manage_slides'],
+            // Hỗ trợ khách hàng
+            'customer_support' => ['support_customer'],
+            // Tìm bài tập
+            'exercise_search' => ['search_exercise'],
+            // thống kê
+            'statistical_management' => ['manage_statistical'],
+            // quản lý học viên 
+            'student_management' => ['manage_student']
         ];
 
-        foreach ($permissions as $permission) {
-            Permission::firstOrCreate(['name' => $permission]);
+        foreach ($permissions as $group => $perms) {
+            foreach ($perms as $permission) {
+                Permission::firstOrCreate(['name' => $permission]);
+            }
         }
 
 
+
+
+        $adminPermissions = [
+            'access_dashboard',
+            'manage_account',
+            'view_package',
+            'delete_package',
+            'view_post',
+            'delete_post',
+            'view_comment',
+            'restrict_comment',
+            'view_exercise',
+            'manage_config',
+            'manage_order',
+            'view_statistical',
+            'manage_marketing',
+            'manage_slides',
+            'search_exercise',
+            'manage_statistical'
+        ];
+        $staffPermissions = [
+            'view_post',
+            'create_post',
+            'edit_post',
+            'delete_post',
+            'view_package',
+            'manage_student',
+            'create_package',
+            'edit_package',
+            'delete_package',
+            'view_exercise',
+            'create_exercise',
+            'edit_exercise',
+            'delete_exercise',
+            'view_comment',
+            'restrict_comment',
+            'support_customer',
+            'search_exercise',
+            'manage_statistical'
+        ];
+
+        $customerPermissions = [
+            'search_exercise'
+        ];
+
+
+        // Gán quyền vào các vai trò
         $adminRole = Role::findByName('admin');
         $staffRole = Role::findByName('staff');
+        $customerRole = Role::findByName('customer');
 
 
-        $adminRole->givePermissionTo(Permission::all());
-
-        $staffRole->givePermissionTo([
-            'access_dashboard',
-            'manage_workout_packages',
-            'manage_exercises',
-            'manage_posts',
-            'manage_comments',
-            'customer_support',
-        ]);
+        $adminRole->syncPermissions($adminPermissions);
+        $staffRole->syncPermissions($staffPermissions);
+        $customerRole->syncPermissions($customerPermissions);
     }
 }

@@ -7,9 +7,9 @@
 
 
 @section('main')
-<div class="box-header"></div>
-    <section>
-        
+    <div class="box-header"></div>
+    <section class="profile-bg-custom">
+
 
         <div class="container ctiet-main">
             <div class="row">
@@ -28,10 +28,10 @@
                             <div class="row">
                                 <div class="col-4 justify-content-end d-flex mg-top">Tên:</div>
                                 <div class="col-8 mg-top">{{ $user->user_name }}</div>
-                        
+
                                 <div class="col-4 justify-content-end d-flex mg-top">Email:</div>
                                 <div class="col-8 mg-top">{{ $user->email }}</div>
-                        
+
                                 <div class="col-4 justify-content-end d-flex mg-top">Số Điện Thoại:</div>
                                 <div class="col-8 mg-top">
                                     @if ($user->phone_number)
@@ -40,7 +40,7 @@
                                         <a href="{{ route('profile.edit') }}">Cập Nhật Số Điện Thoại</a>
                                     @endif
                                 </div>
-                        
+
                                 <div class="col-4 justify-content-end d-flex mg-top">Giới Tính:</div>
                                 <div class="col-8 mg-top">
                                     @if ($user->gender == 1)
@@ -51,7 +51,7 @@
                                         <i class="bi bi-gender-trans text-secondary"></i> Khác
                                     @endif
                                 </div>
-                        
+
                                 <div class="col-4 justify-content-end d-flex mg-top">Ngày Sinh:</div>
                                 <div class="col-8 mg-top">
                                     @if ($user->birthday)
@@ -60,7 +60,7 @@
                                         <a href="{{ route('profile.edit') }}">Cập nhật ngày sinh</a>
                                     @endif
                                 </div>
-                        
+
                                 <div class="col-4 justify-content-end d-flex mg-top">Địa chỉ:</div>
                                 <div class="col-8 mg-top">
                                     @if ($user->address)
@@ -71,14 +71,15 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- END thong tin -->
 
                         <!-- avata -->
                         <div class="col-4 row">
                             <div class="col-12 mg-top">Hình ảnh cá nhân:</div>
                             <div class="col-12 d-flex justify-content-center">
-                                <img src="{{ ('uploads/user_image/' . $user->avatar) }}" alt="" class="ctiet-imguserbig">
+                                <img src="{{ 'assets/backend/img/accounts/' . $user->avatar }}" alt=""
+                                    class="ctiet-imguserbig">
                             </div>
                         </div>
                         <!-- END avata -->

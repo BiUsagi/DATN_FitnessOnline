@@ -202,12 +202,16 @@
     color: red;
 }
 .section .box-list .card-custom .card-body-custom .content-package .price-status .status{
-    background-color: #39D127;
+    background-color: #1576D0;
     padding: 5px 10px;
     border-radius: 3px;
     color: #fff;
     font-size: 12px;
     font-weight: 600;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .price-status .status.completed{
+    background-color: #39D127;
 }
 
 .section .box-list .card-custom .card-body-custom .content-package .price-status .status-error{
@@ -266,4 +270,25 @@
 .section .box-list .card-custom .card-body-custom .content-package .duration .box-feedback .feedback .star i{
     font-size: 12px;
     color: #b4690e;
+}
+
+
+@media (max-width: 992px) {
+    .box-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .default-padding{
+        width: 100% !important;
+    }
+    .customize-responsive{
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        
+    }
+    .box-list {
+        grid-template-columns: 1fr !important; 
+    }
 }

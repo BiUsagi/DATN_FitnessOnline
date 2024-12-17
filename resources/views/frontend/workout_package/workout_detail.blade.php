@@ -32,18 +32,21 @@
                     <div class="col-8">
                         <h2 class="title">{{ $package->package_name }}</h2>
                         <p class="description">{!! $package->description !!}</p>
-                        <span class="title-content">Nôi dung gói tập</span>
+                        <span class="title-content fw-bold">Nôi dung gói tập</span>
                         <div class="infor-package">
-                            <p>20 ngày tập</p>
-                            <p>50 bài tập</p>
+                            <p class="mt-2 mb-2 fw-bold">{{ $package->duration_days }} ngày tập</p>
+                            {{-- <p>50 bài tập</p> --}}
                         </div>
-                        <div class="list-days">
+                        <div class="list-days accordion accordion-flush">
                             @for ($i = 1; $i <= $package->duration_days; $i++)
-                                <div class="box-day">
-                                    <span class="day"><i class="fa-solid fa-dumbbell me-2"></i> Ngày
+                                <div class="box-day" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{$i}}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <span class="day fw-bold collapsed"><i class="fa-solid fa-dumbbell me-2"></i> Ngày
                                         {{ $i }}</span>
                                     <span class="quantity-exercise">3 bài tập</span>
                                 </div>
+                                {{-- <div id="flush-collapseOne{{$i}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                                </div> --}}
                             @endfor
                         </div>
                     </div>
@@ -58,7 +61,7 @@
                         <div class="box">
                             <div class="infor-workout">
                                 <p><i class="fa-solid fa-gauge-high"></i> {{ $package->level }}</p>
-                                <p><i class="fa-solid fa-calendar-days"></i> Tổng số 20 ngày tập</p>
+                                <p><i class="fa-solid fa-calendar-days"></i> Tổng số {{ $package->duration_days }} ngày tập</p>
                                 <p><i class="fa-solid fa-book-open"></i> Tổng số 50 bài tập</p>
                             </div>
                         </div>

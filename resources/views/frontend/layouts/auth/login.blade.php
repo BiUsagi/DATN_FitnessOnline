@@ -7,16 +7,23 @@
     <title>Login Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/frontend/css/login.css">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="assets/frontend/css/style.css">
-    <script src="assets/frontend/js/script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+    {{-- <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/app.css'> --}}
 
+    <script src="assets/frontend/js/login.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='assets/frontend/js/main.js'></script>
 </head>
 
 <body>
+    {{-- <div class="page_loader">
+        <img loading='lazy' src="assets/frontend/images/loader.svg" alt="img">
+    </div> --}}
+
     <div class="container-custom">
         <div class="wrapper">
             <span class="icon-close">
@@ -25,18 +32,6 @@
             <!-- đăng nhập -->
             <div class="form-box login">
                 <h2>Đăng Nhập</h2>
-
-                @if(session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
-
-                @if(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
                 <form id="loginForm" action="{{ route('login_.index') }}" method="POST">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -232,6 +227,10 @@
             });
         });
     });
+
+
+    
+
     </script>
 </body>
 

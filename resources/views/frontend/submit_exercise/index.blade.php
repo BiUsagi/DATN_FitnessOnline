@@ -18,7 +18,7 @@
         <div class="header-block">
             <div class="block-left">
                 <div class="name-workout">
-                    <p><a href="{{ route('admin.workout_package') }}"><i class="fa-solid fa-chevron-left"></i></a>
+                    <p><a href="{{ route('workout_bought', Auth::user()->id) }}"><i class="fa-solid fa-chevron-left"></i></a>
                 </div>
             </div>
             <div class="block-right">
@@ -119,7 +119,10 @@
             </div>
             <div class="list-days">
                 @for ($i = 1; $i <= $workoutPackage->duration_days; $i++)
-                    <div class="box-day" data-day="{{ $i }}">
+                    @php
+                        $success = $daysStatus[$i] == 1 ? 'success' : '';
+                    @endphp
+                    <div class="box-day {{$success}}" data-day="{{ $i }}">
                         <div class="info">
                             <p>Ngày {{ $i }}</p>
                         </div>
