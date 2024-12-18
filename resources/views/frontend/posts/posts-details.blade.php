@@ -306,7 +306,9 @@
         }
         // Lấy tên người dùng từ data-username
         var userName = $(this).data('username');
-        $(comment_rep_id).val('@' + userName + ' ' + contentRep);
+        // Xóa nội dung cũ trước khi gán lại
+        $(comment_rep_id).val(''); 
+        $(comment_rep_id).val('@' + userName + ' ');
 
     });
     
@@ -469,14 +471,8 @@
     $(document).on('click', '.edit-reply', function (ev) {
         // Đặt trạng thái đang chỉnh sửa
         isEditing = true;
-
         // Ẩn các form không cần thiết
         $('.formRep').slideUp();
-        if (!$('.contact-form').is(':hidden')) {
-            $('.contact-form').slideUp(); // Chỉ ẩn form chính nếu nó đang hiển thị
-        }
-        $('.edit-comment').slideUp(); // Đảm bảo ẩn form chỉnh sửa bình luận cha
-
         ev.preventDefault();
         let replyId = $(this).data('id');
         let currentContent = $(this).data('content');
@@ -486,7 +482,7 @@
         console.log('Current Content:', currentContent);
 
         const editHtml = `
-                        <textarea class="form-controll" id="edit-content-${replyId}" rows="1" cols="75"> ${currentContent}</textarea>
+                        <textarea class="form-controll" id="edit-content-${replyId}" rows="1" cols="75"> ${currentContent}</textarea> <br>
                         <button type="button" class="btn-save-edit-reply" data-id="${replyId}" style="color: #1E90FF;">Lưu</button>
                         `;
 
