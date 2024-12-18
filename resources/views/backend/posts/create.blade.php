@@ -65,7 +65,6 @@
                             <div class="card-header text-uppercase">Trạng thái</div>
                                 <div class="card-body">
                                     <select name="" id="select2" class="form-control-select2 setupSelect2">
-                                        <option value="0">Trạng thái</option>
                                         <option value="1">Công khai bài viết</option>
                                         <option value="2">Ẩn bài viết</option>
                                     </select>
@@ -105,11 +104,27 @@
                     'assets/backend/img/no-image.jpg');
                 },
                 error: function(err) {
-                    Swal.fire({
-                        title: "Lỗi!",
-                        text: "Có lỗi xảy ra khi thêm bài viết!",
-                        icon: "error"
-                    });
+                    if (err.status === 422) { // Nếu lỗi validate
+                        let errors = err.responseJSON.errors; // Lấy danh sách lỗi từ response
+                        
+                        // Lấy lỗi đầu tiên
+                        let firstField = Object.keys(errors)[0]; // Lấy key đầu tiên
+                        let firstErrorMessage = errors[firstField][0]; // Lấy lỗi đầu tiên từ key đó
+
+                        // Hiển thị SweetAlert với lỗi đầu tiên
+                        Swal.fire({
+                            title: "Lỗi xác thực!",
+                            text: firstErrorMessage, // Chỉ hiển thị lỗi đầu tiên
+                            icon: "error"
+                        });
+                    } else {
+                        // Các lỗi khác
+                        Swal.fire({
+                            title: "Lỗi!",
+                            text: "Có lỗi xảy ra khi thêm bài viết!",
+                            icon: "error"
+                        });
+                    }
                 }
             });
         });

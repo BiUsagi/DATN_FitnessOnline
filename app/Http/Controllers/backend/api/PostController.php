@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\backend\PostRequest;
+
 
 
 class PostController extends Controller
@@ -15,7 +17,7 @@ class PostController extends Controller
         return response()->json($data) ;
     }
 
-    public function create_(Request $request){
+    public function create_(PostRequest $request){
         $post = new Posts();
         $post->title = $request->input('title');
         $post->content = $request->input('content');

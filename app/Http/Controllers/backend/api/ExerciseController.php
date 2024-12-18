@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend\api;
 use App\Http\Controllers\Controller;
 use App\Models\Exercise;
 use Illuminate\Http\Request;
+use App\Http\Requests\backend\ExerciseRequest;
+
 
 class ExerciseController extends Controller
 {
@@ -13,9 +15,9 @@ class ExerciseController extends Controller
         return response()->json($data) ;
     }
 
-    public function add(Request $request){
+    public function add(ExerciseRequest $request){
         $exercise = new Exercise();
-        $exercise->name = $request->input('exercise_name');
+        $exercise->name = $request->input('name');
         $exercise->sets = $request->input('sets');
         $exercise->reps = $request->input('reps');
         $exercise->description = $request->input('description');
