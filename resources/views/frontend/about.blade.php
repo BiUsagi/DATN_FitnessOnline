@@ -7,10 +7,10 @@
         <div class="breadcrumb_wrapper">
             <div class="container">
                 <div class="breadcrumb_block">
-                    <h1>ABOUT <span>Us</span></h1>
+                    <h1>GIỚI THIỆU VỀ <span>chúng tôi</span></h1>
                     <div class="trackPage">
-                        <a href="index.html">HOME</a>
-                        <span>About Us</span>
+                        <a href="index.html">trang chủ</a>
+                        <span>giới thiệu</span>
                     </div>
                 </div>
             </div>
@@ -29,14 +29,12 @@
                     <div class="col-lg-6 order-1 order-lg-2 mb-lg-0 mb-5 wow fadeInUp" data-wow-duration="1.5s">
                         <div class="about_right">
                             <div class="heading">
-                                <h2>ABOUT <span>FITNESS ONLINE</span></h2>
+                                <h2>giới thiệu về <span>FITNESS ONLINE</span></h2>
                             </div>
-                            <p class="mb-3">Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo
-                                blandit porta. Duis purus sapien, blandit non sem quis, mollis vehicula sapien. Fusce mollis
-                                mauris vitae enim varius scelerisque id id ex. Maecenas vel iaculis purus, a ornare quam.
+                            <p class="mb-3">Fitness online là giải pháp tuyệt vời cho những ai muốn duy trì sức khỏe mà không cần ra khỏi nhà. Với các khóa học và hướng dẫn tập luyện trực tuyến, người dùng có thể truy cập vào các bài tập phù hợp với mục tiêu và khả năng của mình bất cứ lúc nào. Web fitness cung cấp sự linh hoạt tối đa, giúp bạn dễ dàng sắp xếp thời gian và không bị giới hạn bởi không gian hay lịch trình của các phòng gym. Chỉ cần một chiếc máy tính hoặc điện thoại kết nối internet, bạn có thể tham gia các lớp tập luyện từ các huấn luyện viên chuyên nghiệp mà không cần phải di chuyển.
                             </p>
-                            <p>Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo blandit porta.
-                                Duis purus sapien, blandit non sem quis, mollis vehicula sapien. </p>
+                            <p>
+                                Fitness online không chỉ mang lại sự thuận tiện mà còn đảm bảo hiệu quả nhờ sự giám sát chặt chẽ từ các huấn luyện viên cá nhân (PT). Các PT chuyên nghiệp sẽ theo dõi và hướng dẫn bạn qua từng bài tập, giúp điều chỉnh kỹ thuật và đảm bảo bạn thực hiện đúng các động tác, tránh chấn thương. Với sự hỗ trợ của công nghệ, các huấn luyện viên có thể cung cấp phản hồi nhanh chóng, điều chỉnh kế hoạch tập luyện sao cho phù hợp với tiến độ và mục tiêu của mỗi người. Điều này giúp tối ưu hóa hiệu quả tập luyện, mang lại kết quả nhanh chóng và bền vững ngay tại nhà. </p>
                             <a href="contact-us.html" class="btn">Get Started </a>
                         </div>
                     </div>
@@ -57,26 +55,24 @@
                     <div class="col-lg-5 order-1 order-lg-2">
                         <div class="why-choose-right">
                             <div class="heading why-choose-title left">
-                                <h2>Why Choose <span>Us</span></h2>
+                                <h2>Vì sao chọn <span>chúng tôi</span></h2>
                             </div>
-                            <p>Suspendisse consectetur congue orci, eu cursus ante ultrices sit amet. Morbi egestas
-                                purus ut purus scelerisque, vel iaculis neque molestie. Pellentesque rhoncus felis sed
-                                enim finibus pulvinar.</p>
+                            <p>Bởi vì Fitness Online mang lại sự thuận tiện khi không cần phải ra ngoài, có thể lựa chọn bài tập phù hợp và mang lại hiệu quả cao nhờ sự kiểm soát chặt chẽ của các huấn luyện viên.</p>
                             <div class="gym-progressbar">
                                 <div class="single-progressbar">
-                                    <h4 class="title">GYM</h4>
+                                    <h4 class="title">THUẬN TIỆN </h4>
                                     <div class="gym"></div>
                                 </div>
                                 <div class="single-progressbar">
-                                    <h4 class="title">YOGA</h4>
+                                    <h4 class="title">DỄ DÀNG</h4>
                                     <div class="yoga"></div>
                                 </div>
                                 <div class="single-progressbar">
-                                    <h4 class="title">BUILD BODY</h4>
+                                    <h4 class="title">NHANH CHÓNG</h4>
                                     <div class="build-body"></div>
                                 </div>
                                 <div class="single-progressbar">
-                                    <h4 class="title">MARTIAL ARTS</h4>
+                                    <h4 class="title">PHÙ HỢP</h4>
                                     <div class="martial-arts"></div>
                                 </div>
                             </div>
@@ -87,118 +83,7 @@
         </div>
         <!-- WHY CHOOSE SECTION END HERE -->
 
-        <!-- CLIENT SAY'S SECTION START HERE -->
-        <div class="client-say default-padding">
-            <div class="container">
-                <div class="row justify-content-lg-center">
-                    <div class="col-lg-6">
-                        <div class="heading client-say-content">
-                            <h2>What Client's <span>Say</span></h2>
-                            <p>Quisque ullamcorper ex non leo blandit porta. Duis purus sapien, blandit non sem quis,
-                                mollis
-                                vehicula sapien.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper clientSwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Kiara Milly</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-two.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Rihana Smith</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-three.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>John Doe</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Kiara Milly</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Kiara Milly</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="client-details">
-                                <div class="d-flex">
-                                    <img loading='lazy' src="assets/frontend/images/client-one.webp" alt="">
-                                    <div class="client-info">
-                                        <h6>Kiara Milly</h6>
-                                        <p>Personal Trainer</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis will
-                                    voluptatum deleniti atque.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div>
-        <!-- CLIENT SAY'S SECTION START HERE -->
+ 
 
         <!-- GYM VIDEO START HERE -->
         <div class="Video">
@@ -215,8 +100,8 @@
                     </div>
                     <div class="video_text">
                         <div class="text">
-                            <h5>EXPLORE FITNESS COMPLEX</h5>
-                            <span class="watch">Watch Now !</span>
+                            <h5>KHÁM PHÁ FITNESS ONLINE</h5>
+                            <span class="watch">Xem ngay !</span>
                         </div>
                     </div>
                 </button>
@@ -225,13 +110,13 @@
         <!-- GYM VIDEO END HERE -->
 
         <!-- TEAM BLOCK START HERE -->
-        <div class="team_wrapper default-padding">
+        {{-- <div class="team_wrapper default-padding">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-4 col-lg-12">
                         <div class="left_block">
                             <div class="heading left">
-                                <h2>Team of expert <span>Coaches</span></h2>
+                                <h2>ĐỘI NGŨ <span>HƯỚNG DẪN</span></h2>
                                 <p>Vivamus in imperdiet libero, at dapibus eros. In varius lacinia gravida. Aenean dignissim
                                     nulla nibh.</p>
                             </div>
@@ -261,7 +146,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- TEAM BLOCK END'S HERE -->
 
     </section>
