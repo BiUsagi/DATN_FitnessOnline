@@ -63,7 +63,7 @@
                             <div class="col-4 row">
                                 <div class="col-12 mg-top">Hình ảnh cá nhân:</div>
                                 <div class="col-12 d-flex justify-content-center">
-                                    <img src="{{ ('uploads/user_image/' . $user->avatar) }}" alt="Avatar" class="ctiet-imguserbig" id="previewImg">
+                                    <img src="{{ ('assets/backend/img/accounts/' . $user->avatar) }}" alt="Avatar" class="ctiet-imguserbig" id="previewImg">
 
                                 </div>
                                 <div class="col-12 justify-content-center">
