@@ -156,16 +156,16 @@
         const ptId = {{ $id }}
                 
         function saveExercise() {
+            let selectElement = document.querySelector('.selectpicker');
             document.querySelector('.btn-add').addEventListener('click', function(e) {
                 e.preventDefault();
                 const selectedExercises = Array.from(document.querySelector('#list-excercise').selectedOptions)
                     .map(option => ({
                         id: option.value
                     }));
-                // const isDayOff = document.querySelector('#check-day-off').checked;
+                const isDayOff = document.querySelector('#check-day-off').checked;
                 const day = document.querySelector('#staticBackdropLabel').textContent.split(' ')[1];
 
-                // Gửi yêu cầu lưu
                 $.post(`http://127.0.0.1:8000/api/admin/workout_package/${packageId}/day/${day}/exercises`, {
                     exercises: selectedExercises,
                     pt_id: ptId
@@ -182,19 +182,16 @@
         function getDay() {
             const detailButtons = document.querySelectorAll('.btn-detail');
             const modalTitle = document.querySelector('#staticBackdropLabel');
-
+            const selectElement = document.querySelector('#list-excercise');
             detailButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const dayNumber = button.getAttribute('data-day'); // Lấy số ngày từ thuộc tính data-day
+                    const dayNumber = button.getAttribute('data-day');
                     modalTitle.textContent = 'Ngày ' + dayNumber;
-
-                    // Gọi API để lấy danh sách bài tập cho ngày đã chọn
                     $.get(`http://127.0.0.1:8000/api/admin/workout_package/${packageId}/day/${dayNumber}/exercises`,
                         function(res) {
                             const showDataSelect = $(
-                                '.show-data-select'); // Lưu trữ đối tượng chứa danh sách bài tập
-                            showDataSelect.empty(); // Xóa nội dung trước đó
-
+                                '.show-data-select'); 
+                            showDataSelect.empty();
                             if (res.length > 0) {
                                 res.forEach(item => {
                                     const exerciseItem = $(`
@@ -203,20 +200,12 @@
                                     <i class="bi bi-x-circle ms-1 remove-exercise" data-id="${item.id}"></i>
                                 </p>
                             `);
-
-                                    // Thêm sự kiện xóa cho biểu tượng xóa
                                     exerciseItem.find('.remove-exercise').on('click',
                                         function() {
-                                            // Xóa mục hiển thị
                                             exerciseItem.remove();
-
-                                            // Thực hiện thêm bất kỳ logic nào khác cần thiết
-                                            // Ví dụ: Nếu bạn cần xóa bài tập từ server, gọi API để thực hiện việc đó ở đây.
                                             console.log('Bài tập đã được xóa:', item
                                                 .exercise.name);
                                         });
-
-                                    // Thêm bài tập đã chọn vào danh sách
                                     showDataSelect.append(exerciseItem);
                                 });
                             } else {
@@ -228,64 +217,44 @@
             });
         }
 
-
         function actions() {
             const selectElement = document.querySelector('.selectpicker');
             const showDataSelect = document.querySelector('.show-data-select');
             const dayOffCheckbox = document.querySelector('#check-day-off');
 
-            // Lắng nghe sự kiện thay đổi trên ô select
             selectElement.addEventListener('change', function() {
-                // Xóa các mục đã hiển thị trước đó
                 showDataSelect.innerHTML = '';
-
-                // Lấy tất cả các tùy chọn đã chọn
                 const selectedOptions = Array.from(selectElement.selectedOptions);
-
-                // Kiểm tra nếu không có lựa chọn nào thì hiển thị thông báo
                 if (selectedOptions.length === 0) {
                     showDataSelect.innerHTML = '<p class="no-selection">Chưa có bài tập nào được chọn</p>';
                 } else {
-                    // Nếu có lựa chọn, hiển thị các mục đã chọn
                     selectedOptions.forEach(option => {
                         const p = document.createElement('p');
                         p.classList.add('data-select', 'mb-2', 'd-flex', 'justify-content-between');
                         p.innerHTML = `${option.text} <i class="bi bi-x-circle ms-1"></i>`;
-
-                        // Thêm sự kiện để xóa khi nhấn vào icon
                         p.querySelector('i').addEventListener('click', function() {
-                            p.remove(); // Xóa mục hiển thị
-
-                            // Bỏ chọn bài tập trong ô select
-                            option.selected = false;
-                            // Kích hoạt lại sự kiện 'change' để cập nhật danh sách hiển thị
+                            p.remove(); 
+                            option.selected = false; 
                             selectElement.dispatchEvent(new Event('change'));
                         });
-
-                        // Thêm bài tập đã chọn vào danh sách
                         showDataSelect.appendChild(p);
                     });
                 }
             });
 
-            // Lắng nghe sự kiện cho checkbox "Ngày nghỉ"
             dayOffCheckbox.addEventListener('change', function() {
                 if (dayOffCheckbox.checked) {
-                    // Nếu ngày nghỉ được chọn, bỏ chọn tất cả bài tập
                     Array.from(selectElement.options).forEach(option => {
-                        option.selected = false; // Bỏ chọn bài tập
+                        option.selected = false; 
                     });
                     showDataSelect.innerHTML =
-                    '<p class="no-selection">Chưa có bài tập nào được chọn</p>'; // Cập nhật thông báo
+                    '<p class="no-selection">Chưa có bài tập nào được chọn</p>'; 
                 }
-                // Cập nhật lại danh sách bài tập
                 selectElement.dispatchEvent(new Event('change'));
             });
 
-            // Kích hoạt sự kiện thay đổi ngay từ đầu để hiển thị đúng danh sách
             selectElement.dispatchEvent(new Event('change'));
         }
-
 
         function main() {
             actions();
