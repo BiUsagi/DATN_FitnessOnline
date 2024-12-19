@@ -55,8 +55,14 @@
             </div>
             <div class="comment-text">{{$item->content}}</div>
             <div class="comment-actions">
-                <i class="fas fa-thumbs-up" style="color: white" ></i><span class="reply-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Phản hồi</span>
-                <span class="reply-button" style="color: red"data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Report</span>
+                <i class="fas fa-thumbs-up" style="color: white" ></i>
+                <a href="{{ route('login_.index') }}">
+                    <span class="reply-button">Phản hồi</span>
+                </a>
+                <a href="{{ route('login_.index') }}">
+                    <span class="reply-button" style="color: red">Report</span>
+                </a>
+               
             </div>
             
         </div>
@@ -104,7 +110,12 @@
                 <strong class="css-name"><span>@</span>{{$con->user->user_name}}</strong><span class="timing"> {{ $con->created_at->locale('vi')->diffForHumans() }}</span>
             <div class="comment-text">{{$con->content}}</div>
             <div class="comment-actions">
-                <span class="reply-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Phản hồi</span>
+                <a href="{{ route('login_.index') }}">
+                    <span class="reply-button">Phản hồi</span>
+                </a>
+                <a href="{{ route('login_.index') }}">
+                    <span class="reply-button" style="color: red">Report</span>
+                </a>
             </div>
         </div>
     </div>

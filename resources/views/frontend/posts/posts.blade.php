@@ -70,7 +70,6 @@
 
                             {{-- end Show bài viết --}}
                         </div>
-
                     {{-- phân trang --}}
                         <div class="pagination-container d-flex justify-content-center">
                             <ul class="pagination">
