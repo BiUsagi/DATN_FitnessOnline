@@ -1,0 +1,13 @@
+.profile-image {
+    width: 100px; /* Kích thước hình ảnh */
+    height: 100px; /* Kích thước hình ảnh */
+    border-radius: 50%; /* Biến hình ảnh thành hình tròn */
+    object-fit: cover; /* Cắt gọn ảnh để vừa với khung */
+}
+
+.profile-image2 {
+    width: 50px; /* Kích thước hình ảnh */
+    height: 50px; /* Kích thước hình ảnh */
+    border-radius: 50%; /* Biến hình ảnh thành hình tròn */
+    object-fit: cover; /* Cắt gọn ảnh để vừa với khung */
+}
