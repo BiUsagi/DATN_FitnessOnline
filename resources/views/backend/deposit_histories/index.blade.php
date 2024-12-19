@@ -30,9 +30,9 @@
                                     <th class="text-center">STT</th>
                                     <th class="text-center">Giá</th>
                                     <th>Tên</th>
-                                    <th>Nội dung</th>
+                                    <th class="text-center my-custom-class">Nội dung</th>
                                     <th class="text-center">Mã giao dịch</th>
-                                    <th class="text-center">Thời gian</th>
+                                    <th class="text-center my-custom-class">Thời gian</th>
                                     <th class="text-center">Hành động</th>
                                     <th></th>
                                 </tr>
@@ -86,9 +86,9 @@
                 <td class="text-center text-black-50">${index}</td>
                 <td class="text-center" id="${amountClass}"><strong>${parseInt(item.amount).toLocaleString('vi-VN')}</strong></td>
                 <td>${item.user_name}</td>
-                <td>${item.description}</td>
+                <td class="text-center my-custom-class">${item.description}</td>
                 <td class="text-center">${item.transaction_id}</td>
-                <td class="text-center">${formattedDate}</td>
+                <td class="text-center my-custom-class">${formattedDate}</td>
                 <td class="text-center align-middle">
                     <button type="button" class="btn btn-success" data-bs-placement="top" data-bs-title="Duyệt thanh toán" id="status1" data-id="${item.id}" data-amount="${item.amount}" data-user_id="${item.user_id}">
                     <i class="bx bx-check-double"></i></button>
