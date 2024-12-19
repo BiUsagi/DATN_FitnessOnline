@@ -61,82 +61,41 @@
                                 <h3 style="color: white">Comments (*)</h3>
                             </div>
                             {{-- FORM BÌNH LUẬN --}}
-                        @if (Auth::guard('web')->check())
-                       
+                            @if (Auth::guard('web')->check())
+                        
+                            <form action="" method="POST" class="contact-form">
+                                <div class="col-md-12">
+                                    <div class="form-group comments">
+                                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
+                                        <div class="col-md-1" style="float: right;">
+                                            <button type="button" class="css-button" id="btn-comments">Gửi</button>
+                                        </div>
+                                    </div>  
+                                </div>   
+                                <small id="comment-error" style="font-weight: 500  !important; font-size: 13px !important; font-style: italic !important; color: red !important; padding: 10px 10px !important;"></small>                             
+                            </form>
+                        @else
                         <form action="" method="POST" class="contact-form">
                             <div class="col-md-12">
-                                <div class="form-group comments">
-                                    <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
-                                    {{-- <small id="comment-error" style="color:aliceblue"></small> --}}
-                                    <div class="col-md-1" style="float: right;">
-                                        <button type="button" class="css-button" id="btn-comments">Gửi</button>
+                                    <div class="form-group comments">
+                                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
+                                        <small id="comment-error" style="color:aliceblue"></small>
+                                        <div class="col-md-1" style="float: right;">
+                                            <button type="button" class="css-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Gửi</button>
+                                        </div>
                                     </div>
-                                </div>  
-                            </div>   
-                            <small id="comment-error" style="font-weight: 500  !important; font-size: 13px !important; font-style: italic !important; color: red !important; padding: 10px 10px !important;"></small>                             
+                            </div>                                
                         </form>
-                    @else
-                    <form action="" method="POST" class="contact-form">
-                        <div class="col-md-12">
-                                <div class="form-group comments">
-                                    <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
-                                    <small id="comment-error" style="color:aliceblue"></small>
-                                    <div class="col-md-1" style="float: right;">
-                                        <button type="button" class="css-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Gửi</button>
-                                    </div>
-                                </div>
-                        </div>                                
-                    </form>
-                    @endif
-                    {{-- END FORM BÌNH LUẬN --}}
-                            <div id="comment" style=" margin-top: 20px; ">
-                               @include('frontend.posts.list-comment',['Comments'=>$posts->Comments])
-                            </div>
-
-
+                        @endif
+                        {{-- END FORM BÌNH LUẬN --}}
+                                <div id="comment" style=" margin-top: 20px; ">
+                                    @include('frontend.posts.list-comment',['Comments'=>$posts->Comments])
+                                </div> {{--END LIST BÌNH LUẬN--}}
                         </div>
-
-
-
-                        
-
-
-
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-9">
                     <div class="sidebar">
-                        {{-- <div class="widget search-widget">
-                            <div class="heading">
-                                <h5>Tìm kiếm</h5>
-                            </div>
-                            <div class="sidebar-item search">
-                                <form class="input-search">
-                                    <input type="text" class="form-control input-lg" placeholder="Search..." required>
-                                    <button class="btn-search" type="submit"><img loading='lazy' src="assets/frontend/images/search-btn.svg" alt="icon"></button>
-                                </form>
-                            </div>
-                        </div> --}}
-                        {{-- <div class="widget categories-widget">
-                            <div class="heading">
-                                <h5>Categories</h5>
-                            </div>
-                            <div class="sidebar-item category">
-                                <div class="sidebar-info">
-                                    <ul>
-                                        <li><a href="#!">Fitness</a></li>
-                                        <li><a href="#!">Yoga</a></li>
-                                        <li><a href="#!">Fat Loss</a></li>
-                                        <li><a href="#!">Weight Gain</a></li>
-                                        <li><a href="#!">Cardio</a></li>
-                                        <li><a href="#!">Running</a></li>
-                                        <li><a href="#!">Goal</a></li>
-                                        <li><a href="#!">Body Building</a></li>
-                                        <li><a href="#!">Gym</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="widget recentpost-widget">
                             <div class="heading">
                                 <h5>Blog liên quan</h5>
@@ -179,10 +138,6 @@
                                         <li><a href="#!">Food</a></li>
                                         <li><a href="#!">Training</a></li>
                                         <li><a href="#!">Health</a></li>
-                                        {{-- <li><a href="#!">Diet</a></li>
-                                        <li><a href="#!">Boxing</a></li>
-                                        <li><a href="#!">Food</a></li>
-                                        <li><a href="#!">Cardio</a></li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -229,13 +184,12 @@
                 data: {
                     email: email,
                     password: password,
-                    _token: '{{ csrf_token() }}' // cần token CSRF
+                    _token: '{{ csrf_token() }}'
                 },
                 success: function(response) {
                     if (response.success) {
                         alert(response.message);
                         location.reload();
-                        // Có thể thực hiện thêm hành động sau khi đăng nhập thành công
                     } else {
                         alert(response.message);
                     }
@@ -259,7 +213,7 @@
             type: 'POST',
             data: {
                 content: content,
-                _token: '{{ csrf_token() }}' // cần token CSRF
+                _token: '{{ csrf_token() }}'
             },
             success: function(res) {
                 if (res.error) {
@@ -269,10 +223,8 @@
                     $('#comment-content').val('');
                     $('#comment').html(res);
 
-                    // Hiển thị thông báo thành công với toastr
                     toastr.success('Bình luận đã được gửi thành công!');
 
-                    // Gọi hàm để gắn sự kiện "Báo cáo" cho các bình luận mới
                     attachReportEvent();
                 }
             }
@@ -284,7 +236,6 @@
     // TRẢ LỜI BÌNH LUẬN
     $(document).on('click', function (event) {
         if (!isEditing && !$(event.target).closest('.formRep, .btn-rep, .contact-form').length) {
-            // Nếu không đang chỉnh sửa, ẩn form trả lời và hiển thị lại form chính
             $('.formRep').slideUp();
             $('.contact-form').slideDown();
         }
@@ -292,22 +243,22 @@
     $(document).on('click', '.btn-rep',function(ev){
         ev.preventDefault();
         let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
-        // Lấy ID và phần tử textarea của bình luận cần trả lời
+
         var id = $(this).data('id');
         var comment_rep_id = '#comment-con-' +id;
         var form_rep = '.form-rep-' +id; 
         var contentRep = $(comment_rep_id).val();
-         // Ẩn tất cả các form trả lời trước khi hiển thị form hiện tại
+
         $('.formRep').slideUp();
-        $('.contact-form').slideDown(); // Luôn hiện form bình luận chính
+        $('.contact-form').slideDown();
         
-        // Kiểm tra xem form trả lời hiện tại có đang mở không
+
         if (!$(form_rep).is(':visible')) {
             $(form_rep).slideDown();
         }
-        // Lấy tên người dùng từ data-username
+
         var userName = $(this).data('username');
-        // Xóa nội dung cũ trước khi gán lại
+
         $(comment_rep_id).val(''); 
         $(comment_rep_id).val('@' + userName + ' ');
 
@@ -327,7 +278,7 @@
             data:{
                 content:  contentRep,
                 rep: id,
-                _token: '{{ csrf_token() }}' // cần token CSRF
+                _token: '{{ csrf_token() }}'
             },
             success: function (res) {
                 if (res.error) {
@@ -339,7 +290,6 @@
                     toastr.success('Bình luận đã được gửi thành công!');
                     attachReportEvent();
                     
-                    // Đảm bảo ẩn form trả lời và hiển thị lại form chính
                     $('.formRep').slideUp();
                     $('.contact-form').slideDown();
                 }
@@ -349,7 +299,6 @@
     //Report
     let commentId = null;
 
-    // Mở modal và lưu lại ID bình luận
     function openModal(commentId) {
         const modal = document.getElementById('reportModal');
         modal.dataset.commentId = commentId; // Gán `comment_id` vào modal
@@ -358,7 +307,6 @@
     // Đóng modal
     function closeModal() {
         document.getElementById('reportModal').style.display = 'none';
-        // Xóa nội dung trong textarea
         document.getElementById('reportContent').value = '';
     }
     function submitReport() {
@@ -376,10 +324,10 @@
             data: {
                 comment_id: commentId,
                 report_content: reportContent,
-                _token: '{{ csrf_token() }}' // cần token CSRF
+                _token: '{{ csrf_token() }}'
             },
             success: function (response) {
-                // Hiển thị thông báo thành công
+                
                 toastr.success('Báo cáo đã được gửi thành công!');
                 closeModal();
             },
@@ -390,7 +338,7 @@
     }
     //Update comments cha
     $(document).on('click', '.edit-comment', function() {
-        // Đặt trạng thái đang chỉnh sửa
+      
         isEditing = true;
         $('.contact-form').slideUp();
         $('.formRep').slideUp();
@@ -419,17 +367,13 @@
             },
             success: function(response) {
                 if (response.success) {
-                    // Cập nhật nội dung bình luận trên giao diện
+
                     const commentBox = $(`#edit-content-${commentId}`).closest('.single-comment-box');
                     commentBox.find('.comment-text').text(newContent);
-
-                    // Cập nhật lại giá trị data-content để tránh việc lấy lại nội dung cũ khi sửa tiếp
                     commentBox.find('.edit-comment').data('content', newContent);
 
-                    // Hiển thị thông báo thành công với toastr
                     toastr.success('Bình luận đã được cập nhật thành công!');
 
-                    // Kết thúc chỉnh sửa
                     isEditing = false;
                     $('.contact-form').slideDown();
                 } else {
@@ -441,17 +385,16 @@
     //Xóa comment
     $(document).on('click', '.delete-comment', function (ev) {
         ev.preventDefault();
-        let commentId = $(this).data('id'); // Lấy ID của bình luận cần xóa
-
+        let commentId = $(this).data('id');
         $.ajax({
-            url: `ajax/comment/${commentId}`,  // URL của route xóa bình luận
+            url: `ajax/comment/${commentId}`,  
             type: 'DELETE',
             data: {
-                _token: '{{ csrf_token() }}'  // CSRF token để bảo mật
+                _token: '{{ csrf_token() }}'  
             },
             success: function (response) {
                 if (response.success) {
-                    // Xóa bình luận cha và bình luận con khỏi giao diện
+                    
                     $(`#deletecomment-${commentId}`).remove();
                     
                     // Xóa tất cả bình luận con nếu có
@@ -470,15 +413,14 @@
 
     //update comment con
     $(document).on('click', '.edit-reply', function (ev) {
-        // Đặt trạng thái đang chỉnh sửa
+       
         isEditing = true;
-        // Ẩn các form không cần thiết
+        
         $('.formRep').slideUp();
         ev.preventDefault();
         let replyId = $(this).data('id');
         let currentContent = $(this).data('content');
 
-        // Kiểm tra xem phần tử comment-text có tồn tại không
         console.log('Reply ID:', replyId);
         console.log('Current Content:', currentContent);
 
@@ -487,7 +429,6 @@
                         <button type="button" class="btn-save-edit-reply" data-id="${replyId}" style="color: #1E90FF;">Lưu</button>
                         `;
 
-        // Kiểm tra xem phần tử comment-text có tồn tại trước khi thay thế nội dung
         const commentTextElem = $(`#reply-${replyId} .comment-text`);
         if (commentTextElem.length > 0) {
             commentTextElem.html(editHtml);
@@ -508,17 +449,14 @@
             },
             success: function(response) {
                 if (response.success) {
-                    // Cập nhật lại nội dung bình luận con trên giao diện
+
                     const replyBox = $(`#reply-${replyId}`);
                     replyBox.find('.comment-text').text(newContent);
 
-                    // Cập nhật lại giá trị data-content của nút "Sửa" để tránh lấy lại nội dung cũ khi sửa tiếp
                     replyBox.find('.edit-reply').data('content', newContent);
 
-                    // Hiển thị thông báo thành công với toastr
                     toastr.success('Bình luận con đã được cập nhật thành công!');
 
-                    // Kết thúc chỉnh sửa
                     isEditing = false;
                     $('.contact-form').slideDown();
                 } else {
@@ -529,7 +467,7 @@
                 alert('Có lỗi xảy ra khi sửa bình luận con.');
             },
             complete: function () {
-                // Dù thành công hay thất bại, đảm bảo trạng thái chỉnh sửa được tắt
+
                 isEditing = false;
             }
         });
@@ -540,17 +478,16 @@
     //xóa comment con
     $(document).on('click', '.delete-reply', function (ev) {
         ev.preventDefault();
-        let replyId = $(this).data('id'); // Lấy ID của bình luận con cần xóa
+        let replyId = $(this).data('id'); 
 
         $.ajax({
             url: `ajax/comment/reply/${replyId}`,
             type: 'DELETE',
             data: {
-                _token: '{{ csrf_token() }}'  // CSRF token để bảo mật
+                _token: '{{ csrf_token() }}'
             },
             success: function (response) {
                 if (response.success) {
-                    // Xóa bình luận con khỏi giao diện ngay lập tức
                     $(`#reply-${replyId}`).remove();
                     alert("Bình luận con đã được xóa.");
                 } else {

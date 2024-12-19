@@ -50,10 +50,10 @@
                                 <li class="nav-item">
                                     @if (Auth::check())
                                         <span class="nav-link account">
-                                            <img src="{{ 'uploads/user_image/' . Auth::user()->avatar }}" alt="Profile"
+                                            <img src="{{ 'assets/backend/img/accounts/' . Auth::user()->avatar }}" alt="Profile"
                                                 class="rounded-circle">&nbsp;
 
-                                             
+
                                         </span> <!-- Hiển thị tên đăng nhập -->
                                         {{-- <ul class="dropdown-menu" aria-labelledby="username">
                                            
@@ -83,8 +83,8 @@
                                         </ul> --}}
                                         <div class="dropdown-account">
                                             <div class="img-name">
-                                                <img src="{{ 'uploads/user_image/' . Auth::user()->avatar }}" class="rounded-circle profile-image"
-                                                    alt="">
+                                                <img src="{{ 'assets/backend/img/accounts/' . Auth::user()->avatar }}"
+                                                    class="rounded-circle profile-image" alt="">
                                                 <div class="nameuser">
                                                     <p>{{ Auth::user()->user_name }}</p>
                                                 </div>
@@ -174,7 +174,7 @@
                     data.reverse().forEach(element => {
 
                         const createdAt = new Date(element
-                        .created_at); // Chuyển đổi chuỗi thành đối tượng Date
+                            .created_at); // Chuyển đổi chuỗi thành đối tượng Date
 
                         // Lấy ngày, tháng, năm, giờ, phút, giây
                         const day = createdAt.getDate();

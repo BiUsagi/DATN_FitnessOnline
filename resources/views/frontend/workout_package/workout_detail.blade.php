@@ -5,7 +5,7 @@
     <div class="breadcrumb_wrapper">
         <div class="container">
             <div class="breadcrumb_block">
-                <img src="{{ asset('assets/frontend/images/' . $package->staff->avatar) }}" alt="" height="250px"
+                <img src="{{ asset('assets/backend/img/accounts/' . $package->staff->avatar) }}" alt="" height="250px"
                     style="z-index: 2 ">
                 <h2 class="name-author">{{ $package->staff->staff_name }}</h2>
             </div>
@@ -91,7 +91,7 @@
                                             <strong>{{ $package->package_name }}</strong>
                                         </h3>
                                     </div>
-                                    <div class="col-12"><strong>PT: Minh Tuấn</strong></div>
+                                    <div class="col-12"><strong>{{ $package->staff->staff_name }}</strong></div>
                                 </div>
                             </div>
 

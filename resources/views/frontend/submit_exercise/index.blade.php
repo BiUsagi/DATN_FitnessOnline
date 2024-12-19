@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="img-pt">
-                        <img src="assets/backend/img/4.jpg" alt="">
+                        <img src="assets/backend/img/accounts/1734624640.png" alt="">
                     </div>
                 </div>
                 <div class="line"></div>
