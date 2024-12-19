@@ -58,7 +58,7 @@ class ProfileController extends Controller
         // Xử lý ảnh mới nếu có
         if ($request->hasFile('hinhanh')) {
 
-            $old_image = 'uploads/user_image' . $user->avatar;
+            $old_image = 'assets/backend/img/accounts' . $user->avatar;
             if (file::exists($old_image)) {
                 file::delete($old_image);
             }
@@ -66,7 +66,7 @@ class ProfileController extends Controller
             $file = $request->file('hinhanh');
             $extension = $file->getClientOriginalExtension(); //lay ten mo rong png, jpg, ..
             $filename = time() . '.' . $extension;
-            $file->move('uploads/user_image', $filename);
+            $file->move('assets/backend/img/accounts', $filename);
             $user->avatar = $filename;
         }
 
