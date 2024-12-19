@@ -84,7 +84,7 @@
                     <!-- Biểu đồ Doanh Thu -->
                     <div class="card">
                     <!-- Học Viên Tham Gia -->
-                    <div class="card">
+                    <div class="">
                         <div class="card-body">
                             <h5 class="card-title text-center">Học Viên Tham Gia (Năm {{ $selectedYear }})</h5>
                             <canvas id="customerRegistrationChart" style="max-height: 400px;"></canvas>
@@ -92,29 +92,25 @@
                     </div>
                     <script>
                         document.addEventListener('DOMContentLoaded', function () {
-                        // Dữ liệu số học viên tham gia từ backend
-                        const monthlyRegistrationsData = @json($monthlyRegistrations); // Dữ liệu từ controller
+                        const monthlyRegistrationsData = @json($monthlyRegistrations);
 
-                        // Tạo mảng cho tháng và số học viên tham gia
                         const labels = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
-                        const data = new Array(12).fill(0);  // Mảng chứa số học viên tham gia của từng tháng (khởi tạo với giá trị 0)
+                        const data = new Array(12).fill(0);  
 
-                        // Điền dữ liệu số học viên tham gia vào mảng data
                         monthlyRegistrationsData.forEach(item => {
-                            data[item.month - 1] = item.total_registrations;  // Gán số học viên vào đúng tháng (tháng bắt đầu từ 1, mảng bắt đầu từ 0)
+                            data[item.month - 1] = item.total_registrations;  
                         });
 
-                        // Tạo biểu đồ
                         const ctx = document.getElementById('customerRegistrationChart').getContext('2d');
                         const registrationChart = new Chart(ctx, {
-                            type: 'line',  // Loại biểu đồ
+                            type: 'line',  
                             data: {
-                                labels: labels,  // Các tháng
+                                labels: labels,
                                 datasets: [{
                                     label: 'Số Học Viên Tham Gia',
-                                    data: data,  // Dữ liệu số học viên tham gia
-                                    backgroundColor: 'rgba(75, 192, 192, 0.5)',  // Màu nền
-                                    borderColor: 'rgba(75, 192, 192, 1)',  // Màu đường viền
+                                    data: data,  
+                                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                                    borderColor: 'rgba(75, 192, 192, 1)',  
                                     borderWidth: 1
                                 }]
                             },
@@ -134,7 +130,7 @@
                                             text: 'Số Học Viên',
                                         },
                                         ticks: {
-                                            stepSize: 1 // Đặt bước nhảy của trục y là 1
+                                            stepSize: 1 
                                         }
                                     }
                                 }
