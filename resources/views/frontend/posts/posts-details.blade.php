@@ -67,12 +67,13 @@
                             <div class="col-md-12">
                                 <div class="form-group comments">
                                     <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
-                                    <small id="comment-error" style="color:aliceblue"></small>
+                                    {{-- <small id="comment-error" style="color:aliceblue"></small> --}}
                                     <div class="col-md-1" style="float: right;">
                                         <button type="button" class="css-button" id="btn-comments">Gửi</button>
                                     </div>
-                                </div>
-                            </div>                                
+                                </div>  
+                            </div>   
+                            <small id="comment-error" style="font-weight: 500  !important; font-size: 13px !important; font-style: italic !important; color: red !important; padding: 10px 10px !important;"></small>                             
                         </form>
                     @else
                     <form action="" method="POST" class="contact-form">
@@ -88,7 +89,7 @@
                     </form>
                     @endif
                     {{-- END FORM BÌNH LUẬN --}}
-                            <div id="comment">
+                            <div id="comment" style=" margin-top: 20px; ">
                                @include('frontend.posts.list-comment',['Comments'=>$posts->Comments])
                             </div>
 
