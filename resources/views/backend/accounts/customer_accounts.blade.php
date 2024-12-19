@@ -123,8 +123,7 @@
                                 </div>
                                 <!-- giới tính -->
                                 <div class="mb-3">
-                                    <label for="userGender" class="form-label">Giới Tính <span
-                                            class="note">(*)</span></label>
+                                    <label for="userGender" class="form-label">Giới Tính </label>
                                     <select class="form-control" id="userGender" name="userGender">
                                         <option value="1">Nam</option>
                                         <option value="0">Nữ</option>
@@ -136,18 +135,15 @@
                                     <input type="email" class="form-control" id="userEmail" name="userEmail">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="userPhone" class="form-label">Số Điện Thoại <span
-                                            class="note">(*)</span></label>
+                                    <label for="userPhone" class="form-label">Số Điện Thoại </label>
                                     <input type="text" class="form-control" id="userPhone" name="userPhone">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="userBirthday" class="form-label">Ngày Sinh <span
-                                            class="note">(*)</span></label>
+                                    <label for="userBirthday" class="form-label">Ngày Sinh </label>
                                     <input type="date" class="form-control" id="userBirthday" name="userBirthday">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="userAddress" class="form-label">Địa Chỉ <span
-                                            class="note">(*)</span></label>
+                                    <label for="userAddress" class="form-label">Địa Chỉ </label>
                                     <input type="text" class="form-control" id="userAddress" name="userAddress">
                                 </div>
                                 <div class="modal-footer">
@@ -200,7 +196,76 @@
 
         }
 
-        function updateUser() {
+        async function isEmailUnique(email, userId) {
+            try {
+                const response = await $.ajax({
+                    url: "{{ route('api.check.email') }}",
+                    type: 'POST',
+                    data: {
+                        email: email,
+                        user_id: userId,
+                        _token: $('input[name="_token"]').val()
+                    }
+                });
+
+                return response.unique;
+            } catch (error) {
+                console.error("Error checking email uniqueness:", error);
+                return false;
+            }
+        }
+
+        async function validateEditUserForm() {
+            const userName = $('#userName').val().trim();
+            const userGender = $('#userGender').val();
+            const userEmail = $('#userEmail').val().trim();
+            const userPhone = $('#userPhone').val().trim();
+            const userBirthday = $('#userBirthday').val();
+            const userAddress = $('#userAddress').val().trim();
+            const userId = $('#userId').val();
+
+            if (userName === "") {
+                await Swal.fire({
+                    title: "Lỗi!",
+                    text: "Tên không được để trống.",
+                    icon: "error"
+                });
+                return false;
+            }
+
+            const phoneRegex = /^0[0-9]{9,10}$/;
+            if (!phoneRegex.test(userPhone)) {
+                await Swal.fire({
+                    title: "Lỗi!",
+                    text: "Số điện thoại phải bắt đầu bằng số 0 và có 10-11 chữ số.",
+                    icon: "error"
+                });
+                return false;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userEmail)) {
+                await Swal.fire({
+                    title: "Lỗi!",
+                    text: "Email không hợp lệ.",
+                    icon: "error"
+                });
+                return false;
+            }
+
+            const emailUnique = await isEmailUnique(userEmail, userId);
+            if (!emailUnique) {
+                await Swal.fire({
+                    title: "Lỗi!",
+                    text: "Email đã tồn tại trong hệ thống.",
+                    icon: "error"
+                });
+                return false;
+            }
+            return true;
+        }
+
+        async function updateUser() {
             // Thu thập dữ liệu từ form
             var formData = {
                 user_name: $('#userName').val(),
@@ -216,68 +281,73 @@
             // Lấy ID người dùng từ hidden input
             var userId = $('#userId').val();
 
-            // Gửi yêu cầu AJAX
-            $.ajax({
-                url: "{{ route('api.user.update', '') }}" + '/' + userId,
-                type: 'PUT',
-                data: formData,
-                success: function(response) {
-                    $('#editUserModal').modal('hide');
-                    Swal.fire({
-                        title: "Thành công!",
-                        text: "Cập nhật thông tin người dùng thành công!",
-                        icon: "success"
-                    });
+            if (await validateEditUserForm()) {
+                // Gửi yêu cầu AJAX
+                $.ajax({
+                    url: "{{ route('api.user.update', '') }}" + '/' + userId,
+                    type: 'PUT',
+                    data: formData,
+                    success: function(response) {
+                        $('#editUserModal').modal('hide');
+                        Swal.fire({
+                            title: "Thành công!",
+                            text: "Cập nhật thông tin người dùng thành công!",
+                            icon: "success"
+                        });
 
-                    // Cập nhật thông tin trên bảng nếu có
-                    $('tr').each(function() {
+                        // Cập nhật thông tin trên bảng nếu có
+                        $('tr').each(function() {
 
-                        var rowId = $(this).data('id'); // Lấy giá trị data-id từ thẻ tr
+                            var rowId = $(this).data('id'); // Lấy giá trị data-id từ thẻ tr
 
-                        // Kiểm tra nếu ID của hàng trùng với response.id
-                        if (rowId == response.id) {
+                            // Kiểm tra nếu ID của hàng trùng với response.id
+                            if (rowId == response.id) {
 
-                            // Cập nhật Avatar và tên người dùng
-                            $(this).find('td:eq(1)').html(`
+                                // Cập nhật Avatar và tên người dùng
+                                $(this).find('td:eq(1)').html(`
                                 <img src="assets/backend/img/accounts/${response.avatar}" class="rounded-circle object-fit-cover me-2 avatar-table">
                                 ${response.user_name}
                             `);
 
-                            // Cập nhật giới tính với icon và màu sắc tương ứng
-                            let genderHtml = '';
-                            if (response.gender == 1) {
-                                genderHtml = '<i class="bi bi-gender-male text-primary"></i> Nam';
-                            } else if (response.gender == 0) {
-                                genderHtml = '<i class="bi bi-gender-female text-danger"></i> Nữ';
-                            } else if (response.gender == 2) {
-                                genderHtml = '<i class="bi bi-gender-trans text-warning"></i> Khác';
-                            } else {
-                                genderHtml =
-                                    '<i class="bi bi-gender-trans text-secondary"></i> Chưa xác định';
+                                $(this).find('td:eq(2)').text();
+
+                                // Cập nhật giới tính với icon và màu sắc tương ứng
+                                let genderHtml = '';
+                                if (response.gender == 1) {
+                                    genderHtml =
+                                        '<i class="bi bi-gender-male text-primary"></i> Nam';
+                                } else if (response.gender == 0) {
+                                    genderHtml =
+                                        '<i class="bi bi-gender-female text-danger"></i> Nữ';
+                                } else if (response.gender == 2) {
+                                    genderHtml =
+                                        '<i class="bi bi-gender-trans text-warning"></i> Khác';
+                                } else {
+                                    genderHtml =
+                                        '<i class="bi bi-gender-trans text-secondary"></i> Chưa xác định';
+                                }
+                                // Cập nhật giới tính
+                                $(this).find('td:eq(3)').html(genderHtml);
+
+
+                                // Cập nhật email
+                                $(this).find('td:eq(4)').text(response.email);
+
+                                // Cập nhật số điện thoại
+                                $(this).find('td:eq(5)').text(response.phone_number);
                             }
-                            // Cập nhật giới tính
-                            $(this).find('td:eq(2)').html(genderHtml);
-
-                            // Cập nhật số điện thoại
-                            $(this).find('td:eq(3)').text(response.phone_number);
-
-                            // Cập nhật email
-                            $(this).find('td:eq(4)').text(response.email);
-
-                            // Cập nhật số ngày trải nghiệm
-                            $(this).find('td:eq(5)').text(`${response.trial} ngày`);
-                        }
-                    });
-                },
-                error: function(error) {
-                    console.log(error);
-                    Swal.fire({
-                        title: "Lỗi!",
-                        text: "Có lỗi xảy ra khi cập nhật thông tin người dùng.",
-                        icon: "error"
-                    });
-                }
-            });
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: "Lỗi!",
+                            text: "Có lỗi xảy ra khi cập nhật thông tin người dùng.",
+                            icon: "error"
+                        });
+                    }
+                });
+            }
         }
 
 
