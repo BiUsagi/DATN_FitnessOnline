@@ -26,15 +26,15 @@
                         </div>
 
                         <!-- Table with stripped rows -->
-                        <table class="table datatable">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th class="text-center">STT </th>
                                     <th class="text-center">Giá</th>
                                     <th>Tên</th>
-                                    <th>Nội dung</th>
+                                    <th class="text-center my-custom-class">Nội dung</th>
                                     <th class="text-center">Mã giao dịch</th>
-                                    <th class="text-center">Thời gian</th>
+                                    <th class="text-center my-custom-class">Thời gian</th>
                                     <th class="text-center">Trạng thái</th>
                                     <!-- <th></th> -->
                                 </tr>
@@ -89,9 +89,9 @@
                         <td class="text-center text-black-50">${index}</td>
                         <td class="text-center" id="${amountClass}"><strong>${parseInt(item.amount).toLocaleString('vi-VN')}</strong></td>
                         <td>${item.user_name}</td>
-                        <td>${item.description}</td>
+                        <td class="text-center my-custom-class">${item.description}</td>
                         <td class="text-center">${item.transaction_id}</td>
-                        <td class="text-center">${formattedDate}</td>
+                        <td class="text-center my-custom-class">${formattedDate}</td>
                         <td class="text-center">${status}</td>
                     </tr>
              `;

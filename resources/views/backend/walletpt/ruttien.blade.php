@@ -92,12 +92,12 @@
                         <div class="note-container" style="width: 50%; padding-left: 20px;">
                             <p><strong>Vui lòng chú ý:</strong></p>
                             <p>
-                                Để thực hiện giao dịch, chúng tôi yêu cầu bạn phải liên hệ trực tiếp với admin qua Zalo.
-                                Đây là bước bắt buộc nhằm đảm bảo mọi giao dịch được thực hiện một cách nhanh chóng và
+                                Để thực hiện giao dịch, chúng tôi yêu cầu bạn phải <span class="text-danger">liên hệ trực tiếp với admin qua Zalo</span>.
+                                Đây là bước <span class="text-danger"> bắt buộc </span> nhằm đảm bảo mọi giao dịch được thực hiện một cách nhanh chóng và
                                 chính xác.
                             </p>
                             <p>
-                                Khi nhắn tin cho admin, vui lòng cung cấp thông tin chi tiết về giao dịch của bạn và đợi
+                                Khi nhắn tin cho admin, vui lòng cung cấp <span class="text-danger"> mã giao dịch </span> của bạn và đợi
                                 phản hồi. Chúng tôi sẽ hướng dẫn bạn tiếp theo để hoàn tất giao dịch một cách thuận lợi
                                 nhất. Cảm ơn bạn đã hợp tác!
                             </p>

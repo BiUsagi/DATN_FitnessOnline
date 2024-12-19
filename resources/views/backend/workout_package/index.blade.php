@@ -22,7 +22,7 @@
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="title-top d-flex justify-content-between">
+                    <div class="title-top d-flex justify-content-between my">
                         @if (auth()->user()->hasRole('admin'))
                             <h5 class="card-title text-uppercase">Tất cả lộ trình học tập
                             </h5>
@@ -30,7 +30,7 @@
                             <h5 class="card-title text-uppercase">Danh sách lộ trình tập của: {{ Auth::user()->user_name }}
                             </h5>
                             <a href="{{ route('admin.workout_package-create') }}" class="btn-customize"><i
-                                    class="bi bi-plus-lg"></i> Thêm mới lộ trình tập</a>
+                                    class="bi bi-plus-lg"></i> Thêm gói tập</a>
                         @endif
 
                     </div>
@@ -61,7 +61,7 @@
                                                     VND</span></p>
                                             <p class="status{{ $w->status == 0 ? '-error' : '' }}">
                                                 {{ $w->status == 0 ? 'Ngừng hoạt động' : 'Đang hoạt động' }}</p>
-                                        </div>
+                                        </div>  
                                         <div class="duration">
                                             <p class="quantity"><i class="bi bi-person-fill"></i> 200 </p>
                                             <p class="quantity"><i class="bi bi-caret-right-square-fill"></i> 200 </p>

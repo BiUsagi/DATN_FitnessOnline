@@ -45,6 +45,7 @@ Route::post('/workout-packages/search', [SearchController::class, 'searchWorkout
 Route::group(['prefix' => 'admin',], function () {
     //API of exercises
     Route::get('/exercises', [ExerciseController::class, 'index']);
+    Route::get('/exercises/{id}', [ExerciseController::class, 'show'])->name('admin.exercises-show');
     Route::post('/exercises', [ExerciseController::class, 'add']);
     // Route::get('/exercises/{id}', [ExerciseController::class, 'add']);
     Route::post('/exercises/{id}', [ExerciseController::class, 'update']);
@@ -78,7 +79,8 @@ Route::group(['prefix' => 'admin',], function () {
     Route::put('/staff/{id}', [AccountsController::class, 'updateS'])->name('api.staff.update');
     Route::post('/application/{id}/approve', [AccountsController::class, 'approve'])->name('api.staffrequests.approve');
     Route::post('/application/{id}/reject', [AccountsController::class, 'reject'])->name('api.staffrequests.reject');
-
+    Route::post('/check-email', [AccountsController::class, 'checkEmail'])->name('api.check.email');
+    Route::get('/check-email', [AccountsController::class, 'staffCheckEmail'])->name('api.staff.checkEmail');
 
     //SupportExercises
     Route::get('/supportexercises', [SupportExercisesController::class, 'index']);

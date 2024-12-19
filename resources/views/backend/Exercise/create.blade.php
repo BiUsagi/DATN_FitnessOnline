@@ -27,7 +27,7 @@
 
                             <div class="col-12">
                                 <label for="exercise_name" class="form-label-customize">Tên bài tập <span class="note">(*)</span></label>
-                                <input type="text" class="form-control-customize" name="exercise_name" id="exercise_name">
+                                <input type="text" class="form-control-customize" name="name" id="exercise_name">
                             </div>
                             
                             <div class="col-12 d-flex justify-content-between">
@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="description" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
+                                <label for="description" class="form-label-customize">Hướng dẫn tập <span class="note">(*)</span></label>
                                 <input type="text" class="form-control-customize ck-editor" id="description" name="description" data_height="500">
                             </div>
                         </div>
@@ -62,7 +62,6 @@
                                 <div class="card-header text-uppercase">Trạng thái</div>
                                 <div class="card-body">
                                     <select name="exercise-status" id="exercise-status" class="form-control-select2 setupSelect2">
-                                        <option value="0">Trạng thái</option>
                                         <option value="1">Công khai bài viết</option>
                                         <option value="2">Ẩn bài viết</option>
                                     </select>
@@ -172,7 +171,30 @@
                 CKEDITOR.instances['description'].setData('');
                 $('#media-preview').replaceWith('<img id="media-preview" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById(\'video-input\').click();">');
                 $('#media-preview2').replaceWith('<img id="media-preview2" class="img-cover" src="assets/backend/img/no-video.jpg" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById(\'video-input2\').click();">');
-            }
+            },
+            error: function(err) {
+                    if (err.status === 422) { // Nếu lỗi validate
+                        let errors = err.responseJSON.errors; // Lấy danh sách lỗi từ response
+                        
+                        // Lấy lỗi đầu tiên
+                        let firstField = Object.keys(errors)[0]; // Lấy key đầu tiên
+                        let firstErrorMessage = errors[firstField][0]; // Lấy lỗi đầu tiên từ key đó
+
+                        // Hiển thị SweetAlert với lỗi đầu tiên
+                        Swal.fire({
+                            title: "Lỗi xác thực!",
+                            text: firstErrorMessage, // Chỉ hiển thị lỗi đầu tiên
+                            icon: "error"
+                        });
+                    } else {
+                        // Các lỗi khác
+                        Swal.fire({
+                            title: "Lỗi!",
+                            text: "Có lỗi xảy ra khi thêm bài tập!",
+                            icon: "error"
+                        });
+                    }
+                }
         });
     });
 
