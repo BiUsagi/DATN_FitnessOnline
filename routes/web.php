@@ -52,8 +52,8 @@ Route::get('/searchcourse', [HomeController::class, 'searchCourse'])->name('sear
 Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.index'); //thông tin cá nhân
 Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/edit_', [ProfileController::class, 'edit_'])->name('profile.edit_');
-Route::get('/changepassword', [ProfileController::class, 'changePassword'])->name('profile.changepass');
-Route::post('/changepassword_', [ProfileController::class, 'changePassword_'])->name('profile.changepass_');
+Route::get('/changepassword/{id}', [ProfileController::class, 'changePassword'])->name('profile.changepass');
+Route::post('/changepassword_/{id}', [ProfileController::class, 'changePassword_'])->name('profile.changepass_');
 
 Route::get('/trainers', [ProfileController::class, 'trainers'])->name('trainers.index');
 Route::get('/trainer/{id}', [ProfileController::class, 'info_trainer'])->name('info.trainer');

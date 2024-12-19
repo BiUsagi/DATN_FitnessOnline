@@ -5,7 +5,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <div class="pagetitle">
             <h1>Thống Kê</h1>
-            
+
             <form method="GET" action="{{ route('staff.statistical') }}" id="filterForm" class="d-flex align-items-center mb-4 ms-4 mt-4">
                 <label for="year" class="me-2 fw-bold">Chọn Năm:</label>
                 <select name="year" id="year" class="form-select w-auto" onchange="document.getElementById('filterForm').submit();">

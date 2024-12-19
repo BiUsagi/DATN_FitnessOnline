@@ -75,23 +75,23 @@ class ProfileController extends Controller
         return redirect()->route('profile.index', ['id' => Auth::user()->id])->with('success', 'Thông tin đã được cập nhật!');
     }
 
-    public function changePassword()
+    public function changePassword($id)
     {
-        $user = Auth::user(); // Lấy thông tin người dùng đang đăng nhập
+        $user = User::findOrFail($id);
         return view('frontend.profile.changepassword', compact('user'));
     }
 
-    public function changePassword_(Request $request)
+    public function changePassword_(Request $request, $id)
     {
-        $user = Auth::user(); // Lấy thông tin người dùng đang đăng nhập
+        $user = User::findOrFail($id); // Tìm người dùng dựa trên ID
 
-        // Kiểm tra mật khẩu cũ
+        // Validate dữ liệu từ form
         $request->validate([
             'pass' => 'required|string', // Mật khẩu cũ là bắt buộc
-            'newpass' => 'required|string|min:8|confirmed', // Mật khẩu mới yêu cầu dài ít nhất 8 ký tự và xác nhận mật khẩu mới
+            'newpass' => 'required|string|min:8|confirmed', // Mật khẩu mới yêu cầu dài ít nhất 8 ký tự và xác nhận mật khẩu
         ]);
 
-        // Kiểm tra mật khẩu cũ có đúng không
+        // Kiểm tra mật khẩu cũ
         if (!Hash::check($request->input('pass'), $user->password)) {
             return back()->withErrors(['pass' => 'Mật khẩu cũ không chính xác.']); // Trả về thông báo lỗi nếu mật khẩu cũ không đúng
         }
@@ -101,13 +101,13 @@ class ProfileController extends Controller
         $user->save();
 
         return back()->with('success', 'Mật khẩu đã được thay đổi thành công!'); // Trả về thông báo thành công
+    
     }
 
     // Cập nhật thông tin người dùng
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $user = Auth::user();
-
+        $user = User::findOrFail($id);
         // Validate dữ liệu
         $request->validate([
             'fullname' => 'required|string|max:255',

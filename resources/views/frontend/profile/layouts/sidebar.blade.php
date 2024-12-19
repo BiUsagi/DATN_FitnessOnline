@@ -29,7 +29,7 @@
                     Thông tin tài khoản</a></p>
             <p class="mg-top-sb"><a href="{{ route('profile.edit') }}" class="{{ Request::is('edit') ? 'text-color' : 'text-secondary' }}"><i
                         class="fa-solid fa-pen me-2"></i> Sửa hồ sơ</a></p>
-            <p class="mg-top-sb"><a href="{{ route('profile.changepass') }}" class="{{ Request::is('changepassword') ? 'text-color' : 'text-secondary' }}"><i
+            <p class="mg-top-sb"><a href="{{ route('profile.changepass', ['id' => $user->id]) }}" class="{{ Request::is('changepassword') ? 'text-color' : 'text-secondary' }}"><i
                         class="fa-solid fa-lock me-2"></i> Thay đổi mật khẩu</a>
             </p>
             <p class="mg-top-sb"><a href="{{ route('staff_request.index') }}" class="{{ Request::is('') ? 'text-color' : 'text-secondary' }}"><i

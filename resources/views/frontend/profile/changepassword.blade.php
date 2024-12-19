@@ -23,23 +23,34 @@
                             <p>THAY ĐỔI MẬT KHẨU</p>
                             Quản lý thông tin hồ sơ để bảo mật tài khoản
                         </div>
+                        @if (session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+
                         <!-- thongtin -->
-                        <form action="{{ route('profile.changepass_') }}" method="post" enctype="multipart/form-data" class="row">
+                        <form action="{{ route('profile.changepass_', $user->id) }}" method="post" enctype="multipart/form-data" class="row">
                             @csrf
                             <div class="col-8">
                                 <div class="mg-top row">
                                     <label for="pass" class=" col-4 justify-content-end d-flex">Mật khẩu cũ:</label>
                                     <input type="password" class="col-8 ctiet-input" name="pass" id="pass" placeholder="Nhập mật khẩu hiện tại của bạn" required>
-                                    @error('pass')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <div class="col-4"></div>
+                                    <div class="col-8">
+                                        @error('pass')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="mg-top row">
                                     <label for="newpass" class=" col-4 justify-content-end d-flex">Mật khẩu mới:</label>
                                     <input type="password" class="col-8 ctiet-input" name="newpass" id="newpass" placeholder="Nhập mật khẩu muốn đổi" required>
-                                    @error('newpass')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <div class="col-4"></div>
+                                    <div class="col-8">
+                                        @error('newpass')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="mg-top row">
                                     <label for="cfpass" class=" col-4 justify-content-end d-flex">Nhập lại mật khẩu:</label>
