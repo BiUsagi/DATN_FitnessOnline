@@ -118,7 +118,7 @@
                 event.preventDefault(); // Ngăn chặn hành vi mặc định của link
 
                 Swal.fire({
-                    title: 'Bạn có chắc chắn muốn xóa bài viết này không?',
+                    title: 'Bạn có chắc chắn muốn xóa bài tập này không?',
                     text: "Hành động này không thể khôi phục!",
                     icon: 'warning',
                     showCancelButton: true,
@@ -137,12 +137,12 @@
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 }
-                            })
+                            })  
                             .then(response => response.json())
                             .then(data => {
                                 Swal.fire(
                                     'Đã xóa!',
-                                    'Bài viết đã được xóa thành công.',
+                                    'Bài tập   đã được xóa thành công.',
                                     'success'
                                 )
                                 button.closest('tr').remove();
