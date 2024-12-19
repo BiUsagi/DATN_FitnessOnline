@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\api\Workout_hubController;
 use App\Http\Controllers\backend\api\WalletController;
 use App\Http\Controllers\backend\api\DepositHistoriesController;
 use App\Http\Controllers\backend\api\OrderController;
+use App\Http\Controllers\backend\api\StatisticalController;
 use App\Models\User;
 
 //frontend
@@ -121,6 +122,10 @@ Route::group(['prefix' => 'admin',], function () {
 
     //feedback
     Route::post('/feedback/{id}', [OrderController::class, 'sendFeedback']);
+
+    //Statistical;
+    Route::get('/revenue', [StatisticalController::class, 'revenue']);
+
 
 
 });
