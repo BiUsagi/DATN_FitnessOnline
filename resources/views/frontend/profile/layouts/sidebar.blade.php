@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="row ctiet-top">
                 <div class="col-3"><img src="{{ ('uploads/user_image/' . $user->avatar) }}" alt=""
-                        class="ctiet-imguser"></div>
+                        class="ctiet-imguser profile-image2"></div>
                 <div class="col-9">
 
                     <p>{{ $user->user_name }}</p>

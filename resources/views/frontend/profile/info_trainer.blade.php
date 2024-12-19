@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="media">
                                     <label>Facebook</label>
-                                    <p "><a href="{{ $data->facebook }}" class="text-secondary"
+                                    <p><a href="{{ $data->facebook }}" class="text-secondary"
                                                         target="blank">{{ $data->facebook }}</a></p>
                                             </div>
                                         </div>

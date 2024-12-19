@@ -110,7 +110,6 @@
 
     </main>
     <script>
-        
 
     $(document).ready(function() {
         // Xử lý click cho nút xóa (delete-button)
