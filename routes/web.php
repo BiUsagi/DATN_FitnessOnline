@@ -28,6 +28,7 @@ use App\Http\Controllers\backend\ComponentController;
 use App\Http\Controllers\backend\AccountsController;
 use App\Http\Controllers\backend\SlidesController;
 use App\Http\Controllers\backend\DepositHistoriesController;
+use App\Http\Controllers\backend\StatisticalStaffController;
 use App\Http\Controllers\ApiController;
 
 
@@ -136,6 +137,7 @@ Route::prefix('admin')->group(function () {
 
     // statistical - thống kê
     Route::get('/statistical', [StatisticalController::class, 'index'])->name('admin.statistical')->middleware('can:manage_statistical');
+    Route::get('/statistical_staff', [StatisticalStaffController::class, 'staff'])->name('staff.statistical')->middleware('can:manage_statistical');
     Route::get('/package', [StatisticalController::class, 'package'])->name('admin.package');
 
 

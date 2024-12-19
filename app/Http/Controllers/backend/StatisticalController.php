@@ -95,15 +95,9 @@ class StatisticalController extends Controller
 
         return view('backend/statistical/index', compact('customerData','revenueData','selectedYear','packageSalesData','topPTs','topPackages','startDate', 'endDate'));
     }
-    public function customer()
-    {
-        return view('backend/statistical/customer');
-    }
+    
     public function package()
     {
         return view('backend/statistical/package');
     }
-
-    
-
 }
