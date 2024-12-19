@@ -81,7 +81,11 @@
                                         <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
                                         <small id="comment-error" style="color:aliceblue"></small>
                                         <div class="col-md-1" style="float: right;">
-                                            <button type="button" class="css-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Gửi</button>
+                                            <a href="{{ route('login_.index') }}">
+                                                <button type="button" class="css-button">
+                                                    Gửi
+                                                </button>
+                                            </a>
                                         </div>
                                     </div>
                             </div>                                
@@ -148,7 +152,7 @@
         </div>
     </div>
    <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        {{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -170,36 +174,36 @@
                 </div>
             </div>
             </div>
-        </div>
+        </div> --}}
 </section>
 <script>
-    $(document).ready(function() {
-        $('#ajaxlogin').click(function() {
-            var email = $('#email').val();
-            var password = $('#password').val();
+    // $(document).ready(function() {
+    //     $('#ajaxlogin').click(function() {
+    //         var email = $('#email').val();
+    //         var password = $('#password').val();
 
-            $.ajax({
-                url: '{{ route('ajax.login') }}',
-                type: 'POST',
-                data: {
-                    email: email,
-                    password: password,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    if (response.success) {
-                        alert(response.message);
-                        location.reload();
-                    } else {
-                        alert(response.message);
-                    }
-                },
-                error: function(xhr) {
-                    alert('Có lỗi xảy ra! Vui lòng thử lại.');
-                }
-            });
-        });
-    });
+    //         $.ajax({
+    //             url: '{{ route('ajax.login') }}',
+    //             type: 'POST',
+    //             data: {
+    //                 email: email,
+    //                 password: password,
+    //                 _token: '{{ csrf_token() }}'
+    //             },
+    //             success: function(response) {
+    //                 if (response.success) {
+    //                     alert(response.message);
+    //                     location.reload();
+    //                 } else {
+    //                     alert(response.message);
+    //                 }
+    //             },
+    //             error: function(xhr) {
+    //                 alert('Có lỗi xảy ra! Vui lòng thử lại.');
+    //             }
+    //         });
+    //     });
+    // });
 
 
     //SUBMIT BÌNH LUẬN
@@ -382,7 +386,7 @@
             }
         });
     });
-    //Xóa comment
+    //Xóa comment cha
     $(document).on('click', '.delete-comment', function (ev) {
         ev.preventDefault();
         let commentId = $(this).data('id');
@@ -400,7 +404,7 @@
                     // Xóa tất cả bình luận con nếu có
                     $(`.reply-box[data-parent-id="${commentId}"]`).remove();
                     
-                    alert("Bình luận và bình luận con đã được xóa.");
+                    toastr.success('Xóa bình luận thành công!');
                 } else {
                     alert("Có lỗi xảy ra khi xóa bình luận.");
                 }
@@ -489,7 +493,7 @@
             success: function (response) {
                 if (response.success) {
                     $(`#reply-${replyId}`).remove();
-                    alert("Bình luận con đã được xóa.");
+                    toastr.success('Xóa bình luận con thành công!');
                 } else {
                     alert("Có lỗi xảy ra khi xóa bình luận con.");
                 }
