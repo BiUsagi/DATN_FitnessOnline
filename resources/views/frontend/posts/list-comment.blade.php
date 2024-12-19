@@ -36,7 +36,7 @@
                 <button onclick="closeModal()">Đóng</button>
             </div>
         </div>
-
+        {{-- MODAL BÁO CÁO --}}
     @else
     <div class="single-comment-box">
         <div class="css-img">
@@ -62,9 +62,6 @@
         </div>
     </div>
     @endif
-
-
-    
     {{-- END VIEW COMMENT CHA --}}
 
 
@@ -141,7 +138,6 @@
     document.addEventListener("click", function (event) {
         const menus = document.querySelectorAll(".menu");
         const threeDots = document.querySelectorAll(".three-dots");
-
         // Kiểm tra nếu sự kiện xảy ra không nằm trong nút hoặc menu
         let isClickOutside = true;
         threeDots.forEach(dot => {

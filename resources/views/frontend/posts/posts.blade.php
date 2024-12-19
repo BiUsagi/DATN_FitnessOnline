@@ -69,148 +69,45 @@
                             @endforeach 
 
                             {{-- end Show bài viết --}}
-
-                            {{-- <div class="single-blog-post">
-                                <div class="blog-image">
-                                    <a href="blog-details.html">
-                                    <img loading='lazy' src="assets/frontend/images/blog/blog-page-2.webp" alt="blog_detail_img.webp"></a>
-                                </div>
-                                <div class="blog-detail">
-                                    <div class="blog-desc">
-                                        <div class="blog-meta">
-                                            <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>June 1st, 2022</span></div>
-                                            <div class="date"><img loading='lazy' src="assets/frontend/images/icons/chat.svg"><span>5</span></div>
-                                            <div class="date"><img loading='lazy' src="assets/frontend/images/icons/heart.svg"><span>123</span></div>
-                                        </div>
-                                        <a href="blog-details.html">
-                                            <h2 class="blog-title">Lorem ipsum dolor sit amet</h2>
-                                        </a>                                       
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus congue dapibus. Nam nec nisi ac purus varius tempus. Sed ac ante mattis felis porta dignissim et non ligula. Maecenas at sem sed sapien congue mattis. Praesent vel dapibus orci. In et dolor leo.</p>
-                                      
-                                        <div class="tags">
-                                            <ul>
-                                                <li><a href="blog-details.html">Read More</a>
-                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-										                viewBox="0 0 500 279" style="enable-background:new 0 0 500 279;" xml:space="preserve">
-                                                    <style type="text/css">
-                                                        .st0{fill:#1face1;}
-                                                    </style>
-                                                    <path class="st0" d="M495,141.4c-1.4,1.1-3,2.1-4.3,3.4c-41.9,41.8-83.8,83.7-125.6,125.6c-1.3,1.3-2.2,3.1-3.1,4.5
-                                                        c-8.1-8.1-15.2-15.1-22.4-22.4c31.8-31.7,63.7-63.6,96.6-96.4c-144,0-286.7,0-429.8,0c0-10.5,0-20.4,0-30.8c142.8,0,285.6,0,429,0
-                                                        c-32.5-32.5-64.5-64.4-96.3-96.2c7.9-7.9,14.9-14.9,23-23c0.9,1.4,1.8,3.2,3.1,4.5c41.8,41.9,83.7,83.8,125.6,125.6
-                                                        c1.3,1.3,2.9,2.3,4.3,3.4C495,140.2,495,140.8,495,141.4z"/>
-                                                    </svg>
-                                                </li>
-                                            </ul>
-                                            <ul class="social">
-                                                <li>Share:</li>
-                                                <li><a href="#!"aria-label="Facebook"><img loading='lazy' src="assets/frontend/images/icons/facebook-blue.svg" alt="icon"></a></li>
-                                                <li><a href="#!" aria-label="Twitter"><img loading='lazy' src="assets/frontend/images/icons/twitter-blue.svg" alt="icon"></a></li>
-                                                <li class="me-0"><a href="#!" aria-label="Instagram"><img loading='lazy' src="assets/frontend/images/icons/instagram-blue.svg" alt="icon"></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-blog-post">
-                                <div class="blog-image">
-                                    <a href="blog-details.html">
-                                    <img loading='lazy' src="assets/frontend/images/blog/blog-page-3.webp" alt="blog_detail_img.webp"></a>
-                                </div>
-                                <div class="blog-detail">
-                                    <div class="blog-desc">
-                                        <div class="blog-meta">
-                                            <div class="date"><img loading='lazy' src="assets/frontend/images/icons/calendar.svg"><span>June 1st, 2022</span></div>
-                                            <div class="date"><img loading='lazy' src="assets/frontend/images/icons/chat.svg"><span>5</span></div>
-                                            <div class="date"><img loading='lazy' src="assets/frontend/images/icons/heart.svg"><span>123</span></div>
-                                        </div>
-                                        <a href="blog-details.html">
-                                            <h2 class="blog-title">Lorem ipsum dolor sit amet</h2>
-                                        </a>                                       
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus congue dapibus. Nam nec nisi ac purus varius tempus. Sed ac ante mattis felis porta dignissim et non ligula. Maecenas at sem sed sapien congue mattis. Praesent vel dapibus orci. In et dolor leo.</p>
-                                      
-                                        <div class="tags">
-                                            <ul>
-                                                <li><a href="blog-details.html">Read More</a>
-                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-										                viewBox="0 0 500 279" style="enable-background:new 0 0 500 279;" xml:space="preserve">
-                                                    <style type="text/css">
-                                                        .st0{fill:#1face1;}
-                                                    </style>
-                                                    <path class="st0" d="M495,141.4c-1.4,1.1-3,2.1-4.3,3.4c-41.9,41.8-83.8,83.7-125.6,125.6c-1.3,1.3-2.2,3.1-3.1,4.5
-                                                        c-8.1-8.1-15.2-15.1-22.4-22.4c31.8-31.7,63.7-63.6,96.6-96.4c-144,0-286.7,0-429.8,0c0-10.5,0-20.4,0-30.8c142.8,0,285.6,0,429,0
-                                                        c-32.5-32.5-64.5-64.4-96.3-96.2c7.9-7.9,14.9-14.9,23-23c0.9,1.4,1.8,3.2,3.1,4.5c41.8,41.9,83.7,83.8,125.6,125.6
-                                                        c1.3,1.3,2.9,2.3,4.3,3.4C495,140.2,495,140.8,495,141.4z"/>
-                                                    </svg>
-                                                </li>
-                                            </ul>
-                                            <ul class="social">
-                                                <li>Share:</li>
-                                                <li><a href="#!"aria-label="Facebook"><img loading='lazy' src="assets/frontend/images/icons/facebook-blue.svg" alt="icon"></a></li>
-                                                <li><a href="#!" aria-label="Twitter"><img loading='lazy' src="assets/frontend/images/icons/twitter-blue.svg" alt="icon"></a></li>
-                                                <li class="me-0"><a href="#!" aria-label="Instagram"><img loading='lazy' src="assets/frontend/images/icons/instagram-blue.svg" alt="icon"></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
-                        {{-- <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                              <li class="page-item">
-                                <a class="page-link arrow" href="#!" aria-label="Previous">
-                                  <span aria-hidden="true"><img loading='lazy' src="assets/frontend/images/icons/arrow-right.svg" class="left" alt=""></span>
-                                </a>
-                              </li>
-                              <li class="page-item active"><a class="page-link" href="#!">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#!">4</a></li>
-                              <li class="page-item"><a class="page-link" href="#!">5</a></li>
-                              <li class="page-item">
-                                <a class="page-link arrow" href="#!" aria-label="Next">
-                                  <span aria-hidden="true"><img loading='lazy' src="assets/frontend/images/icons/arrow-right.svg" alt=""></span>
-                                </a>
-                              </li>
-                            </ul>
-                        </nav> --}}
-                        {{-- phân trang --}}
-                    <div class="pagination-container d-flex justify-content-center">
-                        <ul class="pagination">
-                            {{-- Nút Previous --}}
-                            @if ($TopBlog->onFirstPage())
-                                <li class="pagination-item--wide first">
-                                    <a class="pagination-link--wide text-secondary disabled" href="#">&lt;
-                                        Trước</a>
-                                </li>
-                            @else
-                                <li class="pagination-item--wide first">
-                                    <a class="pagination-link--wide text-white" href="{{ $TopBlog->previousPageUrl() }}">&lt;
-                                        Trước</a>
-                                </li>
-                            @endif
-                            <li class="pagination-item first-number"></li>
-                            {{-- Danh sách các trang --}}
-                            @foreach ($TopBlog->getUrlRange(1, $TopBlog->lastPage()) as $page => $url)
-                                <li class="pagination-item {{ $page == $TopBlog->currentPage() ? 'is-active' : '' }}">
-                                    <a class="pagination-link text-white" href="{{ $url }}">{{ $page }}</a>
-                                </li>
-                            @endforeach
 
-                            {{-- Nút Next --}}
-                            @if ($TopBlog->hasMorePages())
-                                <li class="pagination-item--wide last">
-                                    <a class="pagination-link--wide text-white" href="{{ $TopBlog->nextPageUrl() }}">Tiếp
-                                        &gt;</a>
-                                </li>
-                            @else
-                                <li class="pagination-item--wide last">
-                                    <a class="pagination-link--wide text-secondary disabled" href="#">Tiếp
-                                        &gt;</a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
+                    {{-- phân trang --}}
+                        <div class="pagination-container d-flex justify-content-center">
+                            <ul class="pagination">
+                                {{-- Nút Previous --}}
+                                @if ($TopBlog->onFirstPage())
+                                    <li class="pagination-item--wide first">
+                                        <a class="pagination-link--wide text-secondary disabled" href="#">&lt;
+                                            Trước</a>
+                                    </li>
+                                @else
+                                    <li class="pagination-item--wide first">
+                                        <a class="pagination-link--wide text-white" href="{{ $TopBlog->previousPageUrl() }}">&lt;
+                                            Trước</a>
+                                    </li>
+                                @endif
+                                <li class="pagination-item first-number"></li>
+                                {{-- Danh sách các trang --}}
+                                @foreach ($TopBlog->getUrlRange(1, $TopBlog->lastPage()) as $page => $url)
+                                    <li class="pagination-item {{ $page == $TopBlog->currentPage() ? 'is-active' : '' }}">
+                                        <a class="pagination-link text-white" href="{{ $url }}">{{ $page }}</a>
+                                    </li>
+                                @endforeach
+
+                                {{-- Nút Next --}}
+                                @if ($TopBlog->hasMorePages())
+                                    <li class="pagination-item--wide last">
+                                        <a class="pagination-link--wide text-white" href="{{ $TopBlog->nextPageUrl() }}">Tiếp
+                                            &gt;</a>
+                                    </li>
+                                @else
+                                    <li class="pagination-item--wide last">
+                                        <a class="pagination-link--wide text-secondary disabled" href="#">Tiếp
+                                            &gt;</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-lg-4 col-md-9">
                         <div class="sidebar">
@@ -268,9 +165,9 @@
     $(document).ready(function() {
         // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
         $('#search-input').on('input', function() {
-            var query = $(this).val(); // Lấy giá trị tìm kiếm
+            var query = $(this).val(); 
 
-            if (query.length > 2) { // Chỉ tìm khi nhập ít nhất 3 ký tự
+            if (query.length > 2) { 
                 $.ajax({
                     url: '{{ route('posts.search') }}',
                     method: 'GET',
@@ -302,14 +199,14 @@
                             resultsHTML = '<p>Không có bài viết nào.</p>';
                         }
 
-                        $('#search-results').html(resultsHTML); // Hiển thị kết quả tìm kiếm
+                        $('#search-results').html(resultsHTML);
                     },
                     error: function(xhr, status, error) {
                         console.log("Error: " + error);
                     }
                 });
             } else {
-                $('#search-results').html(''); // Nếu không có kết quả tìm kiếm
+                $('#search-results').html(''); 
             }
         });
     });
