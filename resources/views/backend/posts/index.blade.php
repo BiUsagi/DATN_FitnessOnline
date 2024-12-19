@@ -36,11 +36,11 @@
                                         <th style="width: 10%;text-align: left; word-wrap: break-word">
                                             ID
                                         </th>
-                                        <th style="width: 25%;text-align: left; word-wrap: break-word">Tiêu đề</th>
-                                        <th style="width: 20%;text-align: left; word-wrap: break-word">Tóm tắt</th>
-                                        <th style="width: 10%;text-align: left; word-wrap: break-word">Hình ảnh</th>
-                                        <th style="width: 30%;text-align: left; word-wrap: break-word">Nội dung</th>
-                                        <th style="width: 5%;text-align: left; word-wrap: break-word">Hành động</th>
+                                        <th style="text-align: left; word-wrap: break-word">Tiêu đề</th>
+                                        <th style="text-align: left; word-wrap: break-word">Tóm tắt</th>
+                                        <th style="text-align: left; word-wrap: break-word">Hình ảnh</th>
+                                        <!-- <th style="text-align: left; word-wrap: break-word">Nội dung</th> -->
+                                        <th style="ext-align: left; word-wrap: break-word">Hành động</th>
                                     </tr>
                                 </thead>
                               
@@ -51,20 +51,20 @@
                                         <td  class="truncated-text ">{{ $p->title }}</td>
                                         <td  class="truncated-text">{{ $p->description }}</td>
                                         <td  class="truncated-text"><img src="uploads/post_image/{{ $p->image }}" alt="" width="90px" height="90px"></td>
-                                        <td  class="truncated-text">{!! $p->content !!}</td>
-                                        <td>
-                                        <a class="btn btn-outline-success" data-bs-placement="top" 
-                                        data-bs-title="Xem Chi Tiết">
-                                            <i class="ri-eye-fill"></i>
-                                        </a>
-                                        <a href="admin/posts/update/{{ $p->id }}" class="btn btn-outline-primary" data-bs-placement="top" 
-                                        data-bs-title="Xem Chi Tiết">
-                                            <i class="ri-edit-line"></i>
-                                        </a>
-                                        <a class="btn btn-outline-danger delete-post" data-bs-placement="top" data-id="{{ $p->id }}"
-                                        data-bs-title="Xem Chi Tiết">
-                                            <i class="ri-error-warning-line"></i>
-                                        </a>
+                                        <!-- <td  class="truncated-text">{!! $p->content !!}</td> -->
+                                        <td class="customize-width">
+                                            <a class="btn-custom primary" data-bs-placement="top" 
+                                            data-bs-title="Xem Chi Tiết">
+                                            <i class="bi bi-eye-fill"></i>
+                                            </a>
+                                            <a href="admin/posts/update/{{ $p->id }}" class="btn-custom success ms-1 me-1" data-bs-placement="top" 
+                                            data-bs-title="Xem Chi Tiết">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a class="btn-custom danger delete-post" data-bs-placement="top" data-id="{{ $p->id }}"
+                                            data-bs-title="Xem Chi Tiết">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -80,86 +80,36 @@
             </div>
         </section>
 
+         <!-- Modal -->
+        <div class="modal fade" id="exerciseDetailModal" tabindex="-1" aria-labelledby="exerciseDetailLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exerciseDetailLabel">Chi tiết bài viết</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Tiêu đề:</strong> <span id="post-title"></span></p>
+                        <p><strong>Tóm tắt:</strong> <span id="post-description"></span></p>
+
+                        <p><strong>Hình ảnh:</strong></p>
+                        <div id="post-image" class="text-center">
+                            <!-- Ảnh sẽ được thêm vào đây -->
+                        </div>
+
+                        <p><strong>Nội dung:</strong> <span id="post-content"></span></p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
     <script>
-        // $.get('http://127.0.0.1:8000/api/admin/post', function(res){
-        //     let data = res;
-        //     let returnData = '';
-        //     data.forEach(item =>{
-        //     returnData += `
-        //     <tr>
-        //         <th scope="row">${item.id}</th>
-        //         <td>${item.title}</td>
-        //         <td>${item.description}</td>
-        //         <td>${item.image}</td>
-        //         <td>content</td>
-        //         <td>
-        //         <a class="btn btn-outline-success" data-bs-placement="top" 
-        //         data-bs-title="Xem Chi Tiết">
-        //             <i class="ri-eye-fill"></i>
-        //         </a>
-        //         <a href="admin/posts/update/${item.id}" class="btn btn-outline-primary" data-bs-placement="top" 
-        //         data-bs-title="Xem Chi Tiết">
-        //             <i class="ri-edit-line"></i>
-        //         </a>
-        //         <a class="btn btn-outline-danger delete-post" data-bs-placement="top" data-id="${item.id}"
-        //         data-bs-title="Xem Chi Tiết">
-        //             <i class="ri-error-warning-line"></i>
-        //         </a>
-        //         </td>
-        //     </tr>
-        //      `;
-        //     });
-        //     $('.show-data').html(returnData);
-        // });
-
-    // $(document).ready(function() {
-    // // Xử lý click cho nút xóa (delete-button)
-    //     $('.delete-post').click(function(event) {
-    //     event.preventDefault(); // Ngăn chặn hành vi mặc định của link
-
-    //     let confirmation = confirm('Bạn có chắc chắn muốn xóa gói tập này không?');
-    //     if (confirmation) {
-    //         let button = $(this); // Lấy nút delete được click
-
-    //         // Lấy ID của sản phẩm cần xóa từ data-id của nút (nếu có)
-    //         let postId = button.data('id');
-    //         if (!postId) {
-    //         console.error('Không tìm thấy ID sản phẩm!');
-    //         return;
-    //         }
-
-    //         // Gửi yêu cầu DELETE đến server
-    //         fetch(`/api/admin/post/${postId}`, {
-    //         method: 'DELETE',
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //         }
-    //         })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //         // khi xóa thành công
-    //         Swal.fire({
-    //             title: "Thành công!",
-    //             text: "Xóa gói tập thành công!",
-    //             icon: "success"
-    //             });
-    //         // Xóa element của sản phẩm khỏi giao diện
-    //         button.closest('tr').remove();
-    //         })
-    //         .catch(error => {
-    //         // Xử lý khi xóa thất bại
-    //         Swal.fire({
-    //             title: "Lỗi!",
-    //             text: "Có lỗi xảy ra khi xóa gói tập!",
-    //             icon: "error"
-    //             });
-    //         });
-    //     }
-    //     });
-
-    //     // ... code xử lý các nút khác (detail, edit)
-    // });
 
     $(document).ready(function() {
         // Xử lý click cho nút xóa (delete-button)
@@ -206,6 +156,49 @@
             }
             })
         });
+        });
+
+        //Xem chi tiết
+        $(document).ready(function() {
+            // Xử lý click nút con mắt
+            $('.btn-custom.primary').click(function(event) {
+                event.preventDefault();
+
+                const postId = $(this).closest('tr').find('.delete-post').data('id');
+
+                fetch(`/api/admin/post/${postId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Hiển thị dữ liệu lên modal
+                        $('#post-title').text(data.title);
+                        $('#post-description').text(data.description || 'Không có mô tả');
+                        $('#post-content').html(data.content);
+                        
+
+                        // Hiển thị hình ảnh
+                        const imageContainer = $('#post-image');
+                        imageContainer.empty(); // Xóa nội dung cũ nếu có
+
+                        // Hiển thị ảnh nếu tồn tại
+                        if (data.image) {
+                            imageContainer.append(`
+                                <img src="uploads/post_image/${data.image}" alt="Hình minh họa" style="width: 350px; height: auto; border-radius: 8px;">
+                            `);
+                        } else {
+                            imageContainer.append('<p>Không có hình ảnh minh họa.</p>');
+                        }
+
+                        // Mở modal
+                        $('#exerciseDetailModal').modal('show');
+                    })
+                    .catch(error => {
+                        Swal.fire(
+                            'Lỗi!',
+                            'Không thể tải chi tiết bài viết.',
+                            'error'
+                        );
+                    });
+            });
         });
     </script>
 @endsection

@@ -10,7 +10,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>GYMFIT Admin</title>
+    <title>FITNESS ONLINE</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="assets/frontend/css/money.css">
 
 
-    <!-- Favicons -->
-    <link href="assets/backend/img/favicon.png" rel="icon">
-    <link href="assets/backend/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+
+    <link rel="icon" type="image/png" href="logo/icon_title-removebg.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -39,6 +39,7 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/backend/css/style.css" rel="stylesheet">
+    <link href="assets/backend/css/style2.css" rel="stylesheet">
     <link href="assets/backend/css/customize.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">

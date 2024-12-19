@@ -44,10 +44,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Tên bài tập</th>
-                                        <th>Mô tả</th>
                                         <th>Số set</th>
                                         <th>Số rep</th>
-                                        <!-- <th data-type="date" data-format="YYYY/DD/MM">Ngày đăng</th> -->
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -56,14 +54,15 @@
                                         <tr>
                                             <td>{{ $ex->id }}</td>
                                             <td>{{ $ex->name }}</td>
-                                            <td class="post_description">{!! $ex->description !!}</td>
                                             <td>{{ $ex->sets }}</td>
                                             <td>{{ $ex->reps }}</td>
                                             <td class="customize-width">
                                                 <a href="" class="btn-custom primary"><i
                                                         class="bi bi-eye-fill"></i></a>
+
                                                 <a href="admin/exercise/update/{{ $ex->id }}"
                                                     class="btn-custom success"><i class="bi bi-pencil-square"></i></a>
+
                                                 <a href="" class="btn-custom danger delete-exercise"
                                                     data-id="{{ $ex->id }}"><i class="bi bi-trash"></i></a>
                                             </td>
@@ -81,40 +80,45 @@
         </section>
 
     </main><!-- End #main -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exerciseDetailModal" tabindex="-1" aria-labelledby="exerciseDetailLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exerciseDetailLabel">Chi tiết bài tập</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Tên bài tập:</strong> <span id="exercise-name"></span></p>
+                    <p><strong>Số set:</strong> <span id="exercise-sets"></span></p>
+                    <p><strong>Số rep:</strong> <span id="exercise-reps"></span></p>
+
+                    <p><strong>Video hướng dẫn:</strong></p>
+                    <div id="exercise-videos" class="d-flex gap-3 justify-content-center">
+                        
+                    </div>
+
+                    <p><strong>Hướng dẫn tập:</strong> <span id="exercise-description"></span></p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // $.get('http://127.0.0.1:8000/api/admin/exercises', function(res) {
-        //         let data = res;                
-        //         console.log(res);
-        //         let returnData = '';
-
-
-        //         data.forEach(item => {
-        //             returnData += `
-    //              <tr>
-    //                 <td>${item.id}</td>
-    //                 <td>${item.name}</td>
-    //                 <td>${item.description}</td>
-    //                 <td>${item.sets}</td>
-    //                 <td>${item.reps}</td>
-    //                 <td class="customize-width">
-    //                     <a href="" class="btn-custom primary" ><i class="bi bi-eye-fill"></i></a>    
-    //                     <a href="admin/exercise/update/${item.id}" class="btn-custom success" ><i class="bi bi-pencil-square"></i></a>   
-    //                     <a href="" class="btn-custom danger delete-exercise" data-id="${item.id}" ><i class="bi bi-trash"></i></a>    
-    //                 </td>
-    //             </tr>
-    //        `;
-        //         });
-        //         $('#list-items').html(returnData);
-        //     }
-        // )
-
+        //Xóa
         $(document).ready(function() {
             // Xử lý click cho nút xóa (delete-button)
             $('.delete-exercise').click(function(event) {
                 event.preventDefault(); // Ngăn chặn hành vi mặc định của link
 
                 Swal.fire({
-                    title: 'Bạn có chắc chắn muốn xóa bài viết này không?',
+                    title: 'Bạn có chắc chắn muốn xóa bài tập này không?',
                     text: "Hành động này không thể khôi phục!",
                     icon: 'warning',
                     showCancelButton: true,
@@ -133,12 +137,12 @@
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 }
-                            })
+                            })  
                             .then(response => response.json())
                             .then(data => {
                                 Swal.fire(
                                     'Đã xóa!',
-                                    'Bài viết đã được xóa thành công.',
+                                    'Bài tập   đã được xóa thành công.',
                                     'success'
                                 )
                                 button.closest('tr').remove();
@@ -152,6 +156,65 @@
                             });
                     }
                 })
+            });
+        });
+
+        //Xem chi tiết
+        $(document).ready(function() {
+            // Xử lý click nút con mắt
+            $('.btn-custom.primary').click(function(event) {
+                event.preventDefault();
+
+                const exerciseId = $(this).closest('tr').find('.delete-exercise').data('id');
+
+                fetch(`/api/admin/exercises/${exerciseId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Hiển thị dữ liệu lên modal
+                        $('#exercise-name').text(data.name);
+                        $('#exercise-description').html(data.description || 'Không có mô tả');
+                        $('#exercise-sets').text(data.sets);
+                        $('#exercise-reps').text(data.reps);
+
+                        // Hiển thị video
+                        const videoContainer = $('#exercise-videos');
+                        videoContainer.empty(); // Xóa nội dung cũ nếu có
+
+                        // Hiển thị video 1
+                        if (data.video_1) {
+                            videoContainer.append(`
+                                <video controls style="width: 350px; margin-bottom: 10px;">
+                                    <source src="uploads/video_exercise/${data.video_1}" type="video/mp4">
+                                    Trình duyệt của bạn không hỗ trợ video.
+                                </video>
+                            `);
+                        }
+
+                        // Hiển thị video 2
+                        if (data.video_2) {
+                            videoContainer.append(`
+                                <video controls style="width: 350px; margin-bottom: 10px;">
+                                    <source src="uploads/video_exercise/${data.video_2}" type="video/mp4">
+                                    Trình duyệt của bạn không hỗ trợ video.
+                                </video>
+                            `);
+                        }
+
+                        // Nếu không có video nào
+                        if (!data.video_1 && !data.video_2) {
+                            videoContainer.append('<p>Không có video hướng dẫn.</p>');
+                        }
+
+                        // Mở modal
+                        $('#exerciseDetailModal').modal('show');
+                    })
+                    .catch(error => {
+                        Swal.fire(
+                            'Lỗi!',
+                            'Không thể tải chi tiết bài tập.',
+                            'error'
+                        );
+                    });
             });
         });
     </script>

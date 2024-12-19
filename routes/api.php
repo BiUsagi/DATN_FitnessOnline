@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\api\Workout_hubController;
 use App\Http\Controllers\backend\api\WalletController;
 use App\Http\Controllers\backend\api\DepositHistoriesController;
 use App\Http\Controllers\backend\api\OrderController;
+use App\Http\Controllers\backend\api\StatisticalController;
 use App\Models\User;
 
 //frontend
@@ -45,6 +46,7 @@ Route::post('/workout-packages/search', [SearchController::class, 'searchWorkout
 Route::group(['prefix' => 'admin',], function () {
     //API of exercises
     Route::get('/exercises', [ExerciseController::class, 'index']);
+    Route::get('/exercises/{id}', [ExerciseController::class, 'show'])->name('admin.exercises-show');
     Route::post('/exercises', [ExerciseController::class, 'add']);
     // Route::get('/exercises/{id}', [ExerciseController::class, 'add']);
     Route::post('/exercises/{id}', [ExerciseController::class, 'update']);
@@ -104,6 +106,7 @@ Route::group(['prefix' => 'admin',], function () {
 
     //Post
     Route::get('/post', [PostController::class, 'index']);
+    Route::get('/post/{id}', [PostController::class, 'show']);
     Route::post('/post', [PostController::class, 'create_']);
     Route::post('/post/{id}', [PostController::class, 'update_']);
     Route::delete('/post/{id}', [PostController::class, 'delete']);
@@ -120,6 +123,10 @@ Route::group(['prefix' => 'admin',], function () {
 
     //feedback
     Route::post('/feedback/{id}', [OrderController::class, 'sendFeedback']);
+
+    //Statistical;
+    Route::get('/revenue', [StatisticalController::class, 'revenue']);
+
 
 
 });
