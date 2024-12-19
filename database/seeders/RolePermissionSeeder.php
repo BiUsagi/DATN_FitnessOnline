@@ -92,8 +92,6 @@ class RolePermissionSeeder extends Seeder
             'create_exercise',
             'edit_exercise',
             'delete_exercise',
-            'view_comment',
-            'restrict_comment',
             'support_customer',
             'search_exercise',
             'manage_statistical'
