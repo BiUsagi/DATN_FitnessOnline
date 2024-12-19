@@ -105,6 +105,7 @@ Route::group(['prefix' => 'admin',], function () {
 
     //Post
     Route::get('/post', [PostController::class, 'index']);
+    Route::get('/post/{id}', [PostController::class, 'show']);
     Route::post('/post', [PostController::class, 'create_']);
     Route::post('/post/{id}', [PostController::class, 'update_']);
     Route::delete('/post/{id}', [PostController::class, 'delete']);
