@@ -30,9 +30,9 @@
                                     <th class="text-center">STT</th>
                                     <th class="text-center">Giá</th>
                                     <th>Tên</th>
-                                    <th class="text-center my-custom-class">Nội dung</th>
+                                    <th class="text-center my-custom-class" style="min-width: 150px;">Nội dung</th>
                                     <th class="text-center">Mã giao dịch</th>
-                                    <th class="text-center my-custom-class">Thời gian</th>
+                                    <th class="text-center my-custom-class" style="min-width: 150px;">Thời gian</th>
                                     <th class="text-center">Hành động</th>
                                     <th></th>
                                 </tr>
@@ -92,7 +92,7 @@
                 <td class="text-center align-middle">
                     <button type="button" class="btn btn-success" data-bs-placement="top" data-bs-title="Duyệt thanh toán" id="status1" data-id="${item.id}" data-amount="${item.amount}" data-user_id="${item.user_id}">
                     <i class="bx bx-check-double"></i></button>
-                    <button type="button" class="btn btn-danger" data-bs-placement="top" data-bs-title="Hủy" id="status2" data-id="${item.id}">
+                    <button type="button" class="btn btn-danger" data-bs-placement="top" data-bs-title="Hủy" id="status2" data-id="${item.id}" data-amount="${item.amount}">
                     <i class="ri-close-circle-line"></i></button>
                 </td>
             </tr>
