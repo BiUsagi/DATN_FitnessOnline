@@ -107,4 +107,8 @@ class Staff extends Model
     {
         return $this->hasMany(Workout_Package::class, 'staff_id');
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'staff_id'); // 'staff_id' là khóa ngoại trong bảng orders
+    }
 }

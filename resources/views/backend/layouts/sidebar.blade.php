@@ -352,6 +352,15 @@
                 </ul>
             </li><!-- End bài viết -->
 
+            <!-- Thống kê -->
+            <li class="nav-item">
+                <a class="nav-link collapsed {{ Request::is('admin/statistical*') ? 'active' : '' }}"
+                    href="{{ route('staff.statistical') }} ">
+                    <i class="bi bi-graph-up"></i><span>Thống kê</span>
+                </a>
+            </li>
+            <!-- End Thống kê -->
+
 
             {{-- <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/comments*') ? 'active' : '' }}"

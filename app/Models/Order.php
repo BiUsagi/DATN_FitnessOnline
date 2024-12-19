@@ -42,5 +42,9 @@ class Order extends Model
     {
         return $this->belongsTo(Voucher::class);  // Thêm quan hệ này
     }
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'staff_id');
+    }
 
 }
