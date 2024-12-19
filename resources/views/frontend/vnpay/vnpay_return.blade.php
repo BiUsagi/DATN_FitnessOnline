@@ -85,7 +85,7 @@ $secureHash = hash_hmac('sha512', $hashData, env('vnp_HashSecret'));
                     <?php
                         if ($secureHash == $vnp_SecureHash) {
                             if ($_GET['vnp_ResponseCode'] == '00') {
-                                echo "<span style='color:blue'>GD Thanh cong</span>";
+                                echo "<span style='color:green'>GD Thanh cong</span>";
                                 echo "<script type='text/javascript'>
                                         // Đảm bảo mã JavaScript chỉ chạy sau khi tài liệu đã tải xong
                                         $(document).ready(function() {

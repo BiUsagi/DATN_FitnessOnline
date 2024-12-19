@@ -29,7 +29,7 @@
                     <div class="col-lg-6 order-1 order-lg-2 mb-lg-0 mb-5 wow fadeInUp" data-wow-duration="1.5s">
                         <div class="about_right">
                             <div class="heading">
-                                <h2>ABOUT <span>GYMFIT</span></h2>
+                                <h2>ABOUT <span>FITNESS ONLINE</span></h2>
                             </div>
                             <p class="mb-3">Morbi commodo sapien at risus aliquam dapibus. Quisque ullamcorper ex non leo
                                 blandit porta. Duis purus sapien, blandit non sem quis, mollis vehicula sapien. Fusce mollis

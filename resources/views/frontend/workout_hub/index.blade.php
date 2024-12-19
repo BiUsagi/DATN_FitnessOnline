@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="made-with">
-                    <p>Made with <i class="fa-solid fa-dumbbell"></i> · Powered by GymFitness</p>
+                    <p>Made with <i class="fa-solid fa-dumbbell"></i> · Powered by FITNESS ONLINE</p>
                 </div>
             </div>
         </div>

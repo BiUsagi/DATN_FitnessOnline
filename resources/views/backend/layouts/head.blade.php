@@ -10,7 +10,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>GYMFIT Admin</title>
+    <title>FITNESS ONLINE</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
