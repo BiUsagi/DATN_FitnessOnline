@@ -14,6 +14,20 @@ class ExerciseController extends Controller
         $data = Exercise::orderBy('id', 'asc')->get();
         return response()->json($data) ;
     }
+    
+    public function show($id){
+        $exercise = Exercise::findOrFail($id);
+        
+        return response()->json([
+            'id' => $exercise->id,
+            'name' => $exercise->name,
+            'description' => $exercise->description,
+            'sets' => $exercise->sets,
+            'reps' => $exercise->reps,
+            'video_1' => $exercise->video_url,
+            'video_2' => $exercise->video_url_second
+        ]);
+    }
 
     public function add(ExerciseRequest $request){
         $exercise = new Exercise();
