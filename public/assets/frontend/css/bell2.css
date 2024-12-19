@@ -65,6 +65,10 @@
     transition: background-color 0.3s ease;
 }
 
+.unread{
+    margin-bottom: 5px !important;
+}
+
 .notifications li.unread {
     background-color: rgba(117, 204, 236, 0.6);
     border-radius: 5px;

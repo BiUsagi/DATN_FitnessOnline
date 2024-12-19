@@ -234,8 +234,10 @@
 
 
             {{-- end admin --}}
+            
             <!-- staff -->
         @elseif(auth()->user()->hasRole('staff'))
+         
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/walletpt*') ? 'active' : '' }}"
                     data-bs-target="#money-nav" data-bs-toggle="collapse" href="{{ route('admin.walletpt') }}">
@@ -258,7 +260,14 @@
                     </li>
                 </ul>
             </li><!-- End money -->
-
+            <!-- Thống kê -->
+            <li class="nav-item">
+                <a class="nav-link collapsed {{ Request::is('admin/statistical*') ? 'active' : '' }}"
+                    href="{{ route('staff.statistical') }} ">
+                    <i class="bi bi-graph-up"></i><span>Thống kê</span>
+                </a>
+            </li>
+            <!-- End Thống kê -->
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/workout_package*') ? 'active' : '' }}"
                     data-bs-target="#package-nav" data-bs-toggle="collapse"
@@ -348,6 +357,8 @@
                     </li>
                 </ul>
             </li><!-- End bài viết -->
+
+           
 
 
 

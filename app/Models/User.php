@@ -100,4 +100,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(user_videos::class, 'user_id');
     }
+
+    public function pt()
+    {
+        return $this->belongsTo(Staff::class, 'pt_id');
+    }
 }

@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="card">
-                            <div class="list-group" id="days-list">
+                            <div class="list-group" id="days-list" style="max-height: 850px;overflow-y: scroll;scrollbar-width: none;">
                                 @for( $i = 1; $i <= $days->duration_days; $i++)
                                     <a class="list-group-item box-day" style="cursor: pointer;">Ngày {{$i}}</a>
                                 @endfor

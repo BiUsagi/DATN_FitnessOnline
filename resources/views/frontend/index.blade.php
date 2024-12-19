@@ -57,7 +57,7 @@
                             class="btn btn-primary border-info d-dlex align-content-center"
                             style="background-color: #1face1">Hỗ
                             trợ tìm gói
-                            tập?</a>
+                            tập</a>
                     </div>
                 </div>
             </div>

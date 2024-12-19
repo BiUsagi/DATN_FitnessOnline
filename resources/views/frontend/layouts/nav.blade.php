@@ -205,7 +205,7 @@
                         $('#bell').prepend('<h6 class="title">Thông báo</h6>');
                     } else {
                         $('#bell').html(`
-                            <li class="unread">
+                            <li class="unread !mb-2">
                                 <div class="content text-white">
                                    Không có thông báo nào.
                                 </div>
