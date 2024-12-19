@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="content-box">
-                    <strong class="css-name"><span>@</span>{{$con->user->user_name}}</strong><span class="timing"> {{ $con->created_at->locale('vi')->diffForHumans() }}</span>
+                    <strong class="css-name"><span></span>{{$con->user->user_name}}</strong><span class="timing"> {{ $con->created_at->locale('vi')->diffForHumans() }}</span>
                     
                     <div class="options-menu">
                         @if ($con->user_id === Auth::id())
@@ -113,20 +113,20 @@
     </div>
     @endif
     @endforeach
-    {{-- FORM TRẢ LỜI BÌNH LUẬN --}}
-    <form action="" method="POST" class="formRep form-rep-{{$item->id}}" style="display: none">
-        <div class="col-md-11" style="margin-left: 50px;">
-            <div class="">
-                <div class="form-group comments">
-                    <textarea class="form-control" name="comments" placeholder="Message*" rows="1" id="comment-con-{{$item->id}}"></textarea>
-                    <div class="col-md-1" style="float: right;">
-                        <button type="button" data-id="{{$item->id}}" class="css-button btn-send-rep">Gửi</button> 
+        {{-- FORM TRẢ LỜI BÌNH LUẬN --}}
+        <form action="" method="POST" class="formRep form-rep-{{$item->id}}" style="display: none">
+            <div class="col-md-11" style="margin-left: 50px;">
+                <div class="">
+                    <div class="form-group comments">
+                        <textarea class="form-control" name="comments" placeholder="Message*" rows="1" id="comment-con-{{$item->id}}"></textarea>
+                        <div class="col-md-1" style="float: right;">
+                            <button type="button" data-id="{{$item->id}}" class="css-button btn-send-rep">Gửi</button> 
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>                             
-    </form>
-@endforeach
+            </div>                             
+        </form>
+    @endforeach
 
 {{-- END VIEW COMMENT CON --}}
 <script>

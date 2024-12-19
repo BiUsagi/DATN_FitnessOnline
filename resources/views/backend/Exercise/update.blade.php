@@ -84,6 +84,16 @@
                             <!-- Input để chọn video -->
                             <input type="file" name="video_url" id="video-input" class="form-control" style="display: none;" accept="video/*" onchange="previewMedia(event)">
                         </div>
+
+                        <div class="card">
+                            <div class="card-header text-uppercase">Video bài tập 2</div>
+                            
+                            <!-- Ban đầu hiển thị hình ảnh -->
+                            <video id="media-preview" class="img-cover" src="uploads/video_exercise/{{ $ex->video_url_second }}" alt="Ảnh placeholder" style="width: 100%; cursor: pointer;" onclick="document.getElementById('video-input').click();">
+                            
+                            <!-- Input để chọn video -->
+                            <input type="file" name="video_url2" id="video-input2" class="form-control" style="display: none;" accept="video/*" onchange="previewMedia(event)">
+                        </div>
                         
                         
 

@@ -28,21 +28,17 @@
                                 <div class="col-12">
                                     <label for="inputName" class="form-label-customize">Tên nhân viên <span
                                             class="note">(*)</span></label>
-                                    <input type="text" class="form-control-customize" id="inputName" name="staff_name"
-                                        required>
+                                    <input type="text" class="form-control-customize" id="inputName" name="staff_name">
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputPhone" class="form-label-customize">Số điện thoại <span
-                                            class="note">(*)</span></label>
-                                    <input type="text" class="form-control-customize" id="inputPhone" name="staff_phone"
-                                        required>
+                                    <label for="inputPhone" class="form-label-customize">Số điện thoại </label>
+                                    <input type="text" class="form-control-customize" id="inputPhone" name="staff_phone">
                                 </div>
 
                                 <div class="col-12">
                                     <label for="inputEmail" class="form-label-customize">Email <span
                                             class="note">(*)</span></label>
-                                    <input type="email" class="form-control-customize" id="inputEmail" name="staff_email"
-                                        required>
+                                    <input type="text" class="form-control-customize" id="inputEmail" name="staff_email">
                                 </div>
                                 <div class="col-12">
                                     <label for="inputGender" class="form-label-customize">Giới Tính</label>
@@ -53,24 +49,21 @@
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputBirthday" class="form-label-customize">Ngày sinh <span
-                                            class="note">(*)</span></label>
+                                    <label for="inputBirthday" class="form-label-customize">Ngày sinh </label>
                                     <input type="date" class="form-control-customize" id="inputBirthday"
-                                        name="staff_birthday" required>
+                                        name="staff_birthday">
                                 </div>
 
 
 
                                 <div class="col-12">
-                                    <label for="inputAddress" class="form-label-customize">Địa chỉ <span
-                                            class="note">(*)</span></label>
+                                    <label for="inputAddress" class="form-label-customize">Địa chỉ </label>
                                     <input type="text" class="form-control-customize" id="inputAddress"
-                                        name="staff_address" required>
+                                        name="staff_address">
                                 </div>
 
                                 <div class="col-12">
-                                    <label for="inputDescription" class="form-label-customize">Giới thiệu <span
-                                            class="note">(*)</span></label>
+                                    <label for="inputDescription" class="form-label-customize">Giới thiệu </label>
                                     <textarea type="text" class="form-control-customize textarea-custom" id="inputDescription" name="description"></textarea>
                                 </div>
 
@@ -158,8 +151,97 @@
 
 
     <script>
-        $('#form-update-staff').on('submit', function(e) {
+        function validateUpdateStaffForm() {
+            const staffName = $('#inputName').val().trim();
+            const staffEmail = $('#inputEmail').val().trim();
+            const phoneRegex = /^0[0-9]{9,10}$/;
+
+            if (!staffName) {
+                Swal.fire({
+                    title: "Lỗi!",
+                    text: "Tên nhân viên không được để trống.",
+                    icon: "error"
+                });
+                return false;
+            }
+
+            // Kiểm tra số điện thoại
+            const staffPhone = $('#inputPhone').val().trim();
+            if (staffPhone && !phoneRegex.test(staffPhone)) {
+                Swal.fire({
+                    title: "Lỗi!",
+                    text: "Số điện thoại phải bắt đầu bằng số 0 và có 10-11 chữ số.",
+                    icon: "error"
+                });
+                return false;
+            }
+
+            if (!staffEmail) {
+                Swal.fire({
+                    title: "Lỗi!",
+                    text: "Email không được để trống.",
+                    icon: "error"
+                });
+                return false;
+            }
+
+            // Kiểm tra định dạng email
+            if (!/^\S+@\S+\.\S+$/.test(staffEmail)) {
+                Swal.fire({
+                    title: "Lỗi!",
+                    text: "Email không hợp lệ.",
+                    icon: "error"
+                });
+                return false;
+            }
+
+
+
+            return true;
+        }
+
+
+        async function isEmailUnique(email) {
+            try {
+                const response = await $.ajax({
+                    url: "{{ route('api.staff.checkEmail') }}",
+                    type: "GET",
+                    data: {
+                        email: email
+                    }
+                });
+                return response.isUnique; // API trả về `isUnique: true/false`
+            } catch (error) {
+                console.log(error);
+                Swal.fire({
+                    title: "Lỗi!",
+                    text: "Không thể kiểm tra email. Vui lòng thử lại.",
+                    icon: "error"
+                });
+                return false;
+            }
+        }
+
+
+        $('#form-update-staff').on('submit', async function(e) {
             e.preventDefault();
+
+
+            if (!validateUpdateStaffForm()) {
+                return; // Dừng lại nếu form không hợp lệ
+            }
+
+            const staffEmail = $('#inputEmail').val().trim();
+            const isUnique = await isEmailUnique(staffEmail);
+            if (!isUnique) {
+                Swal.fire({
+                    title: "Lỗi!",
+                    text: "Email này đã được sử dụng. Vui lòng chọn email khác.",
+                    icon: "error"
+                });
+                return; // Dừng lại nếu email không unique
+            }
+
 
             let formData = new FormData(this);
             formData.append('_method', 'PUT');

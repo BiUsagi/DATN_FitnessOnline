@@ -45,16 +45,15 @@
                                 Bài viết
                             </h2>
                             <div class="recent-posts">
-                                    {{-- @foreach ($topPost->take(3) as $Post)
-                                        <div class="post">
-                                            <img loading='lazy' src="{{ asset('uploads/post_image/' . $Post->image) }}"
-                                                alt="post" class="post-img">
-                                            <a href={{ route('posts-details.index', $Post->id) }}>
-                                                <p class="post-content">{{ $Post->title }}</p>
-                                            </a>
-                                        </div>
-                                    @endforeach --}}
-                                <div class="post">
+                                @foreach ($topPosts as $post)
+                                    <div class="post">
+                                        <img loading="lazy" src="{{ asset('uploads/post_image/' . $post->image) }}" alt="{{ $post->title }}" class="post-img">
+                                        <a href="{{ route('posts-details.index', $post->id) }}">
+                                            <p class="post-content">{{ $post->title }}</p>
+                                        </a>
+                                    </div>
+                                @endforeach
+                                {{-- <div class="post">
                                         <img loading='lazy' src="uploads/post_image/1732654484.jpg" alt="post" class="post-img">
                                         <a href="blog-details.html">
                                             <p class="post-content">Lý do nên ăn chuối trước và sau khi tập luyện</p>
@@ -71,7 +70,7 @@
                                         <a href="blog-details.html">
                                             <p class="post-content">HLV thể hình nhồi máu cơ tim sau tập cường độ cao</p>
                                         </a>
-                                    </div>
+                                    </div> --}}
                             </div>
                         </div>
                     </div>

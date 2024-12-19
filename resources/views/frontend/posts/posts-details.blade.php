@@ -65,13 +65,13 @@
                        
                         <form action="" method="POST" class="contact-form">
                             <div class="col-md-12">
-                                    <div class="form-group comments">
-                                        <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
-                                        <small id="comment-error" style="color:aliceblue"></small>
-                                        <div class="col-md-1" style="float: right;">
-                                            <button type="button" class="css-button" id="btn-comments">Gửi</button>
-                                        </div>
+                                <div class="form-group comments">
+                                    <textarea class="form-control" id="comment-content" name="comments" placeholder="Message*" rows="1"></textarea>
+                                    <small id="comment-error" style="color:aliceblue"></small>
+                                    <div class="col-md-1" style="float: right;">
+                                        <button type="button" class="css-button" id="btn-comments">Gửi</button>
                                     </div>
+                                </div>
                             </div>                                
                         </form>
                     @else
@@ -142,22 +142,27 @@
                             </div>
                             <div class="sidebar-item recent-post text-left">
                                 <div class="sidebar-info">
-                                    <ul>
-                                        @foreach ($onlyBlog->take(3) as $only)
+                                    @if($onlyBlog->isEmpty())
+                                        <p>Không có bài viết nào</p>
+                                    @else
+                                        <ul>
+                                            @foreach ($onlyBlog as $only)
                                                 <li>
-                                                    <div class="thumb"> 
-                                                        <a href="{{ route('posts-details.index', $only->id) }}" class="title-link"><img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp" style="width:70px; height:50px; object-fit: cover;" ></a>
+                                                    <div class="thumb">
+                                                        <a href="{{ route('posts-details.index', $only->id) }}" class="title-link">
+                                                            <img loading='lazy' src="{{ asset('uploads/post_image/' . $only->image) }}" alt="post-1.webp" style="width:70px; height:50px; object-fit: cover;">
+                                                        </a>
                                                     </div>
                                                     <div class="info">
-                                                        <a href="{{ route('posts-details.index', $only->id) }}">{{$only->title}}</a>
+                                                        <a href="{{ route('posts-details.index', $only->id) }}">{{ $only->title }}</a>
                                                         <div class="meta-title">
-                                                            <span class="post-date">{{$only->created_at->locale('vi')->diffForHumans()}}</span>
+                                                            <span class="post-date">{{ $only->created_at->locale('vi')->diffForHumans() }}</span>
                                                         </div>
                                                     </div>
                                                 </li>
                                             @endforeach
-                                        
-                                    </ul>
+                                        </ul>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -173,10 +178,10 @@
                                         <li><a href="#!">Food</a></li>
                                         <li><a href="#!">Training</a></li>
                                         <li><a href="#!">Health</a></li>
-                                        <li><a href="#!">Diet</a></li>
+                                        {{-- <li><a href="#!">Diet</a></li>
                                         <li><a href="#!">Boxing</a></li>
                                         <li><a href="#!">Food</a></li>
-                                        <li><a href="#!">Cardio</a></li>
+                                        <li><a href="#!">Cardio</a></li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -249,41 +254,40 @@
         let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
         
         $.ajax({
-            url:_commentUrl,
-            type : 'POST',
-            data:{
+            url: _commentUrl,
+            type: 'POST',
+            data: {
                 content: content,
                 _token: '{{ csrf_token() }}' // cần token CSRF
             },
-            success: function (res){
-                if (res.error){
-                    $('#comment-error').html(res.error)
-                }else{
+            success: function(res) {
+                if (res.error) {
+                    $('#comment-error').html(res.error);
+                } else {
                     $('#comment-error').html('');
                     $('#comment-content').val('');
                     $('#comment').html(res);
-                    // console.log(res);
+
+                    // Hiển thị thông báo thành công với toastr
+                    toastr.success('Bình luận đã được gửi thành công!');
+
                     // Gọi hàm để gắn sự kiện "Báo cáo" cho các bình luận mới
                     attachReportEvent();
                 }
             }
-        })
+        });
     });
+
 
 
     // TRẢ LỜI BÌNH LUẬN
-    $(document).on('click', function(event) {
-        // Kiểm tra nếu click vào ngoài form trả lời và nút "Phản hồi"
-        if (!$(event.target).closest('.formRep, .btn-rep, ').length) {
-            // Đóng tất cả các form trả lời
+    $(document).on('click', function (event) {
+        if (!isEditing && !$(event.target).closest('.formRep, .btn-rep, .contact-form').length) {
+            // Nếu không đang chỉnh sửa, ẩn form trả lời và hiển thị lại form chính
             $('.formRep').slideUp();
-            $('.edit-comment').slideUp();
-            $('.edit-reply').slideUp();
-            // Hiển thị lại form bình luận chính
             $('.contact-form').slideDown();
         }
     });
-
     $(document).on('click', '.btn-rep',function(ev){
         ev.preventDefault();
         let _commentUrl = '{{ route("ajax.comment", $posts->id) }}';
@@ -299,11 +303,12 @@
         // Kiểm tra xem form trả lời hiện tại có đang mở không
         if (!$(form_rep).is(':visible')) {
             $(form_rep).slideDown();
-            $('.contact-form').slideUp(); // Ẩn form bình luận chính
         }
         // Lấy tên người dùng từ data-username
         var userName = $(this).data('username');
-        $(comment_rep_id).val('@' + userName + ' ' + contentRep);
+        // Xóa nội dung cũ trước khi gán lại
+        $(comment_rep_id).val(''); 
+        $(comment_rep_id).val('@' + userName + ' ');
 
     });
     
@@ -323,17 +328,19 @@
                 rep: id,
                 _token: '{{ csrf_token() }}' // cần token CSRF
             },
-            success: function (res){
-                if (res.error){
-                    $('#comment-error').html(res.error)
-                }else{
+            success: function (res) {
+                if (res.error) {
+                    $('#comment-error').html(res.error);
+                } else {
                     $('#comment-error').html('');
                     $('#comment-content').val('');
                     $('#comment').html(res);
+                    toastr.success('Bình luận đã được gửi thành công!');
                     attachReportEvent();
-                    // console.log(res);
-                    $('.contact-form').slideDown(); // Hiện lại form bình luận chính
+                    
+                    // Đảm bảo ẩn form trả lời và hiển thị lại form chính
                     $('.formRep').slideUp();
+                    $('.contact-form').slideDown();
                 }
             }
         })
@@ -343,13 +350,15 @@
 
     // Mở modal và lưu lại ID bình luận
     function openModal(commentId) {
-    const modal = document.getElementById('reportModal');
-    modal.dataset.commentId = commentId; // Gán `comment_id` vào modal
-    modal.style.display = 'flex';
-}
+        const modal = document.getElementById('reportModal');
+        modal.dataset.commentId = commentId; // Gán `comment_id` vào modal
+        modal.style.display = 'flex';
+    }
     // Đóng modal
     function closeModal() {
         document.getElementById('reportModal').style.display = 'none';
+        // Xóa nội dung trong textarea
+        document.getElementById('reportContent').value = '';
     }
     function submitReport() {
         const commentId = document.getElementById('reportModal').dataset.commentId;
@@ -369,7 +378,8 @@
                 _token: '{{ csrf_token() }}' // cần token CSRF
             },
             success: function (response) {
-                alert(response.message);
+                // Hiển thị thông báo thành công
+                toastr.success('Báo cáo đã được gửi thành công!');
                 closeModal();
             },
             error: function (xhr) {
@@ -379,14 +389,16 @@
     }
     //Update comments cha
     $(document).on('click', '.edit-comment', function() {
+        // Đặt trạng thái đang chỉnh sửa
+        isEditing = true;
         $('.contact-form').slideUp();
         $('.formRep').slideUp();
-        // $('.edit-reply').slideUp();
+        $('.edit-reply').slideUp();
         const commentId = $(this).data('id');
         const currentContent = $(this).data('content');
 
         // Hiển thị input để sửa nội dung bình luận
-        const editHtml = `<textarea class="form-control" id="edit-content-${commentId}" rows="1" cols="75px">${currentContent}</textarea>
+        const editHtml = `<textarea class="form-controll" id="edit-content-${commentId}" rows="1" cols="85">${currentContent}</textarea>
                         <button type="button" class="btn-save-edit" data-id="${commentId}"  style="color: #1E90FF;">Lưu</button>
                         `;
         
@@ -406,10 +418,19 @@
             },
             success: function(response) {
                 if (response.success) {
-                    $(`#edit-content-${commentId}`).closest('.comment-text').text(newContent);
-                    alert('Bình luận đã được cập nhật.');
-                    $('.contact-form').slideDown();
+                    // Cập nhật nội dung bình luận trên giao diện
+                    const commentBox = $(`#edit-content-${commentId}`).closest('.single-comment-box');
+                    commentBox.find('.comment-text').text(newContent);
 
+                    // Cập nhật lại giá trị data-content để tránh việc lấy lại nội dung cũ khi sửa tiếp
+                    commentBox.find('.edit-comment').data('content', newContent);
+
+                    // Hiển thị thông báo thành công với toastr
+                    toastr.success('Bình luận đã được cập nhật thành công!');
+
+                    // Kết thúc chỉnh sửa
+                    isEditing = false;
+                    $('.contact-form').slideDown();
                 } else {
                     alert('Có lỗi xảy ra khi cập nhật bình luận.');
                 }
@@ -448,10 +469,10 @@
 
     //update comment con
     $(document).on('click', '.edit-reply', function (ev) {
-        $('.contact-form').slideUp();
+        // Đặt trạng thái đang chỉnh sửa
+        isEditing = true;
+        // Ẩn các form không cần thiết
         $('.formRep').slideUp();
-        // $('.edit-comment').slideUp();
-        
         ev.preventDefault();
         let replyId = $(this).data('id');
         let currentContent = $(this).data('content');
@@ -461,7 +482,7 @@
         console.log('Current Content:', currentContent);
 
         const editHtml = `
-                        <textarea class="form-control" id="edit-content-${replyId}" rows="1" cols="75px"> ${currentContent}</textarea>
+                        <textarea class="form-controll" id="edit-content-${replyId}" rows="1" cols="75"> ${currentContent}</textarea> <br>
                         <button type="button" class="btn-save-edit-reply" data-id="${replyId}" style="color: #1E90FF;">Lưu</button>
                         `;
 
@@ -487,14 +508,28 @@
             success: function(response) {
                 if (response.success) {
                     // Cập nhật lại nội dung bình luận con trên giao diện
-                    $(`#reply-${replyId} .comment-text`).text(newContent);
-                    alert('Bình luận con đã được sửa.');
+                    const replyBox = $(`#reply-${replyId}`);
+                    replyBox.find('.comment-text').text(newContent);
+
+                    // Cập nhật lại giá trị data-content của nút "Sửa" để tránh lấy lại nội dung cũ khi sửa tiếp
+                    replyBox.find('.edit-reply').data('content', newContent);
+
+                    // Hiển thị thông báo thành công với toastr
+                    toastr.success('Bình luận con đã được cập nhật thành công!');
+
+                    // Kết thúc chỉnh sửa
+                    isEditing = false;
+                    $('.contact-form').slideDown();
                 } else {
                     alert('Có lỗi xảy ra khi sửa bình luận con.');
                 }
             },
             error: function(xhr, status, error) {
                 alert('Có lỗi xảy ra khi sửa bình luận con.');
+            },
+            complete: function () {
+                // Dù thành công hay thất bại, đảm bảo trạng thái chỉnh sửa được tắt
+                isEditing = false;
             }
         });
     });
@@ -526,7 +561,6 @@
             }
         });
     });
-
 </script>
 @endsection
 

@@ -23,7 +23,11 @@ class PostController extends Controller
     {
         $posts = Posts::findOrFail($id); // Tìm bài viết theo id
         $showUser = Auth::user();
-        $onlyBlog = Posts::orderBy('id', 'DESC')->get();
+        $onlyBlog = Posts::where('staff_id', $posts->staff_id)
+                     ->where('id', '!=', $id) // Loại trừ bài viết hiện tại
+                     ->orderBy('id', 'DESC')
+                     ->take(3) // Giới hạn số lượng bài viết liên quan
+                     ->get();
         return view('frontend/posts/posts-details', compact('posts', 'showUser','onlyBlog'));
     }
     public function searchPosts(Request $request)

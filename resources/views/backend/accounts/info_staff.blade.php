@@ -37,11 +37,11 @@
 
                             <!-- Row starts -->
                             <div class="row gx-4">
-                                <div class="col-xxl-2 col-sm-3">
+                                <div class="col-xxl-2 col-sm-3 text-center text-sm-start">
                                     <img src="assets/backend/img/accounts/{{ $data->avatar }}"
                                         class="img-fluid rounded-3 staff-avatar-custom" alt="Gym Dashboard">
                                 </div>
-                                <div class="col-xxl-4 col-sm-8">
+                                <div class="col-xxl-4 col-sm-8 text-center text-sm-start">
                                     <div class="mt-3">
                                         <h3>{{ $data->staff_name }}</h3>
                                         <h6>

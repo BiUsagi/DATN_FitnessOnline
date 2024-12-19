@@ -136,4 +136,31 @@ class AccountsController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Yêu cầu đã bị từ chối.']);
     }
+
+
+    public function checkEmail(Request $request)
+    {
+        $email = $request->email;
+        $userId = $request->user_id;
+
+
+        $exists = User::where('email', $email)
+            ->where('id', '!=', $userId) // Loại trừ người dùng hiện tại
+            ->exists();
+
+        return response()->json([
+            'unique' => !$exists, // unique = true nếu email chưa tồn tại
+        ]);
+    }
+
+
+    public function staffCheckEmail(Request $request)
+    {
+        $email = $request->get('email');
+        $exists = Staff::where('email', $email)->exists();
+
+        return response()->json([
+            'isUnique' => !$exists
+        ]);
+    }
 }

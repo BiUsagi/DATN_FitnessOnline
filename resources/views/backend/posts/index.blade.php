@@ -50,7 +50,7 @@
                                         <th scope="row">{{ $p->id }}</th>
                                         <td  class="truncated-text ">{{ $p->title }}</td>
                                         <td  class="truncated-text">{{ $p->description }}</td>
-                                        <td  class="truncated-text">{{ $p->image }}</td>
+                                        <td  class="truncated-text"><img src="uploads/post_image/{{ $p->image }}" alt="" width="90px" height="90px"></td>
                                         <td  class="truncated-text">{!! $p->content !!}</td>
                                         <td>
                                         <a class="btn btn-outline-success" data-bs-placement="top" 

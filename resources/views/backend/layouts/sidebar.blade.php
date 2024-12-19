@@ -17,6 +17,8 @@
             </li>
             <!-- End Dashboard Nav -->
 
+            
+
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/deposithistories*') ? 'active' : '' }}"
                     data-bs-target="#deposithistories-nav" data-bs-toggle="collapse" href="#">
@@ -203,6 +205,15 @@
                 </ul>
             </li><!-- End interface -->
 
+            <!-- Thống kê -->
+            <li class="nav-item">
+                <a class="nav-link collapsed {{ Request::is('admin/statistical*') ? 'active' : '' }}"
+                    href="{{ route('admin.statistical') }} ">
+                    <i class="bi bi-graph-up"></i><span>Thống kê</span>
+                </a>
+            </li>
+            <!-- End Thống kê -->
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/marketing*') ? 'active' : '' }}"
@@ -348,7 +359,7 @@
             </li><!-- End bài viết -->
 
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/comments*') ? 'active' : '' }}"
                     data-bs-target="#comment-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-chat-dots"></i><span>Quản lý bình luận</span><i
@@ -368,7 +379,7 @@
                         </a>
                     </li>
                 </ul>
-            </li><!-- End bình luận -->
+            </li><!-- End bình luận --> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/supportexercises*') ? 'active' : '' }}"
@@ -383,7 +394,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#">
-                <i class="bi bi-box-arrow-in-right"></i><span>Đăng xuất</span>
+                <i class="bi bi-box-arrow-in-right"></i><span>Thoát</span>
             </a>
         </li><!-- End đăng xuất -->
     </ul>

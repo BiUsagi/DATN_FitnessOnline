@@ -18,9 +18,8 @@
     <!-- BREADCRUMS SECTION END HERE -->
     <div class="default-padding">
         <div class="container">
-            <div class="row">
+            <div class="row customize-responsive">
                 <div class="col-lg-3 order-2 order-lg-1">
-                    
                         <div class="sidebar-workout">
                             <div class="title">
                                 <h3>Danh mục</h3>
@@ -35,18 +34,6 @@
                                 <input type="text" placeholder="Tìm kiếm...">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
-                            {{-- <div class="filter-status">
-                                <p class="title-filter">Lọc theo trạng thái</p>
-                                <div class="filter-completed">
-                                    <input type="radio" name="filter" id="completed">
-                                    <label for="completed">Đã hoàn thành</label>
-                                </div>
-                                <div class="filter-doing">
-                                    <input type="radio" name="filter" id="doing">
-                                    <label for="doing">Đang thực hiện</label>
-                                </div>
-                            </div> --}}
-                       
                     </div>
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2 mb-lg-0 mb-5 wow fadeInUp" data-wow-duration="1.5s">

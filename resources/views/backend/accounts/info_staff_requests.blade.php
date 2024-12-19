@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8 col-md-12">
                     <div class="card">
                         <div class="card-body row">
                             <div class="col-md-6">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="card  col-12">
                         <div class="title-top">
-                            <h5 class="card-title text-uppercase ps-2">Giới thiệu</h5>
+                            <h5 class="card-title text-uppercase ps-4">Giới thiệu</h5>
                         </div>
                         <div class="card-body">
                             <p>
@@ -112,13 +112,11 @@
                         </div>
                         <div class="card-body">
                             <a href="uploads/cv_resume/{{ $staff->certificate }}"
-                                class="btn btn-info d-flex justify-content-center mb-3" target="_blank">Xem
-                                trong
-                                trang
+                                class="btn btn-primary d-flex justify-content-center mb-3" target="_blank">Xem trong trang
                                 mới</a>
                             <div>
                                 <iframe src="uploads/cv_resume/{{ $staff->certificate }}" width="100%"
-                                    height="500px"></iframe>
+                                    height="550px"></iframe>
                             </div>
 
                         </div>

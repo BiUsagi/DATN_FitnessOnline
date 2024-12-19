@@ -22,51 +22,53 @@
                             </div>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th class="text-center">Tên Người Dùng</th>
-                                        <th class="text-center">ID Cá Nhân</th>
-                                        <th class="text-center">Ngày Tạo</th>
-                                        <th class="text-center">Tình Trạng</th>
-                                        <th class="text-center">Hành Động</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data as $item)
-                                        <tr data-id="{{ $item->id }}">
-                                            <td class="text-center align-middle">
-                                                {{ $item->id }}
-                                            </td>
-                                            <td class="text-center  align-middle">
-                                                {{ $item->getUserName() }}
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                {{ $item->user_id }}
-                                            </td>
-                                            <td class=" align-middle text-center">{{ $item->created_at }}</td>
-                                            <td class="align-middle text-center">
-                                                @if ($item->status == 0)
-                                                    <span class="badge bg-warning">Chờ Duyệt</span>
-                                                @elseif ($item->status == 1)
-                                                    <span class="badge bg-success">Đã Duyệt</span>
-                                                @elseif ($item->status == 2)
-                                                    <span class="badge bg-danger">Bị Từ Chối</span>
-                                                @endif
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                {{-- xem --}}
-                                                <a href="{{ route('admin.application.info', ['id' => $item->id]) }}"
-                                                    class="btn btn-outline-success" data-bs-placement="top"
-                                                    data-bs-toggle="tooltip" data-bs-title="Xem Chi Tiết">
-                                                    <i class="ri-eye-fill"></i>
-                                                </a>
-                                            </td>
+                            <div class="table-responsive">
+                                <table class="table datatable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th class="text-center" style="min-width: 170px;">Tên Người Dùng</th>
+                                            <th class="text-center" style="min-width: 130px;">ID Cá Nhân</th>
+                                            <th class="text-center" style="min-width: 130px;">Ngày Tạo</th>
+                                            <th class="text-center">Tình Trạng</th>
+                                            <th class="text-center" style="min-width: 130px;">Hành Động</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $item)
+                                            <tr data-id="{{ $item->id }}">
+                                                <td class="text-center align-middle">
+                                                    {{ $item->id }}
+                                                </td>
+                                                <td class="text-center  align-middle">
+                                                    {{ $item->getUserName() }}
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    {{ $item->user_id }}
+                                                </td>
+                                                <td class=" align-middle text-center">{{ $item->created_at }}</td>
+                                                <td class="align-middle text-center">
+                                                    @if ($item->status == 0)
+                                                        <span class="badge bg-warning">Chờ Duyệt</span>
+                                                    @elseif ($item->status == 1)
+                                                        <span class="badge bg-success">Đã Duyệt</span>
+                                                    @elseif ($item->status == 2)
+                                                        <span class="badge bg-danger">Bị Từ Chối</span>
+                                                    @endif
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    {{-- xem --}}
+                                                    <a href="{{ route('admin.application.info', ['id' => $item->id]) }}"
+                                                        class="btn btn-outline-success" data-bs-placement="top"
+                                                        data-bs-toggle="tooltip" data-bs-title="Xem Chi Tiết">
+                                                        <i class="ri-eye-fill"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                             <!-- End Table with stripped rows -->
 
                         </div>
