@@ -28,7 +28,7 @@
     <!-- ------------- META TAG END'S HERE ------------- -->
     <title>FITNESS ONLINE</title>
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="assets/frontend/images/favicon.svg">
+    <link rel="icon" type="image/png" href="logo/icon_title-removebg.png">
 
     <!-- LOCAL LINK ATTACHMENT -->
     <link rel='stylesheet' type='text/css' media='screen' href='assets/frontend/css/bootstrap.css'>
@@ -46,9 +46,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    <!-- Favicons -->
-    <link href="assets/backend/img/favicon.png" rel="icon">
-    <link href="assets/backend/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
@@ -58,7 +55,7 @@
     <link rel='stylesheet' href='assets/frontend/css/avata.css'>
     <link rel='stylesheet' href='assets/frontend/css/bell2.css'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    
+
     {{-- Thông báo --}}
     <!-- Thêm Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
