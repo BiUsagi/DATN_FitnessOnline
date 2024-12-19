@@ -45,6 +45,7 @@ Route::post('/workout-packages/search', [SearchController::class, 'searchWorkout
 Route::group(['prefix' => 'admin',], function () {
     //API of exercises
     Route::get('/exercises', [ExerciseController::class, 'index']);
+    Route::get('/exercises/{id}', [ExerciseController::class, 'show'])->name('admin.exercises-show');
     Route::post('/exercises', [ExerciseController::class, 'add']);
     // Route::get('/exercises/{id}', [ExerciseController::class, 'add']);
     Route::post('/exercises/{id}', [ExerciseController::class, 'update']);

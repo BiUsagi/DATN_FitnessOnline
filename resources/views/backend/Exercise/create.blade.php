@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="description" class="form-label-customize">Mô tả <span class="note">(*)</span></label>
+                                <label for="description" class="form-label-customize">Hướng dẫn tập <span class="note">(*)</span></label>
                                 <input type="text" class="form-control-customize ck-editor" id="description" name="description" data_height="500">
                             </div>
                         </div>
