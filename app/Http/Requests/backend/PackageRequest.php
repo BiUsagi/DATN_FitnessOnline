@@ -23,7 +23,7 @@ class PackageRequest extends FormRequest
     {
         return [
             'package_name' => 'required|string|max:255',
-            'duration_days' => 'required|numeric|max:31',
+            'duration_days' => 'required|numeric|max:200',
             'price' => 'required|numeric|max:10000000',
             'image' => 'required',
             'description' => 'required',
