@@ -155,19 +155,9 @@
                     <div class="title-detail">
                         <h3>Hướng dẫn tập</h3>
                     </div>
-                    <div class="content-training">
+                    <div class="content-training" style="display: flex; flex-direction:column; align-items:flex-end; justify-content: space-between">
                         <div class="content">
                             {{-- Show hướng dẫn tập --}}
-                        </div>
-
-                        <div class="btn-action">
-                            {{-- <div class="btn btn-prev">
-                                <p><i class="fa-solid fa-chevron-left"></i> Bài trước</p>
-                            </div> --}}
-                            {{-- <div class="btn btn-next">
-                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                <p>Bài tiếp theo <i class="fa-solid fa-chevron-right"></i></p>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
