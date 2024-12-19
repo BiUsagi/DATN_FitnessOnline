@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="assets/frontend/css/money.css">
 
 
-    <!-- Favicons -->
-    <link href="assets/backend/img/favicon.png" rel="icon">
-    <link href="assets/backend/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+
+    <link rel="icon" type="image/png" href="logo/icon_title-removebg.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

@@ -186,67 +186,6 @@
                 </div>
             </div>
         </div>
-        <!-- OUR BLOG END'S HERE -->
-        <!-- GET IT TOUCH START HERE -->
-        {{-- <div class="contact_wrapper">
-        <div class="container">
-            <div class="row justify-content-lg-between justify-content-center align-items-end">
-                <div class="col-lg-6 col-md-8 col-sm-8 order-2 order-lg-1">
-                    <div class="get-touch-banner">
-                        <img loading='lazy' src="assets/frontend/images/get-touch-img.webp" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-5 order-1 order-lg-2">
-                    <div class="get-in-right">
-                        <div class="heading left">
-                            <h2>Get In <span>Touch</span></h2>
-                        </div>
-                        <div class="send-message-form">
-                            <h4>Send us a message</h4>
-                            <form method="POST" class="form input-disabled-form">
-                                <div class="form-row">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="firstname" class="user-input"
-                                                    placeholder="Name*" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="number" name="phone" class="user-input"
-                                                    placeholder="Phone No.*" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="email" name="email" class="user-input" placeholder="Email*"
-                                                    required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea type="text" name="message" class="user-input"
-                                                placeholder="Message*" spellcheck="false" required></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn" type="submit">
-                                    <span>Send Message</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- GET IT TOUCH END HERE -->
     <!-- GYM SLIDER START HERE -->
     <div class="post_wrapper default-padding">
         <div class="heading text-center" style="margin-bottom: 20px">
@@ -269,33 +208,6 @@
                         </div>
                     @endforeach
 
-                    {{-- <div class="swiper-slide">
-                        <a href="#!" class="slides" aria-label="Slide 2">
-                            <img loading='lazy' src="assets/frontend/images/post/post-2.webp" alt="Post Image" width="309"
-                                height="309">
-                            <div class="links">
-                                <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#!" class="slides" aria-label="Slide 3">
-                            <img loading='lazy' src="assets/frontend/images/post/post-3.webp" alt="Post Image" width="309"
-                                height="309">
-                            <div class="links">
-                                <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#!" class="slides" aria-label="Slide 3">
-                            <img loading='lazy' src="assets/frontend/images/post/post-4.webp" alt="Post Image" width="309"
-                                height="309">
-                            <div class="links">
-                                <img loading='lazy' src="assets/frontend/images/icons/link.svg" alt="icon">
-                            </div>
-                        </a>
-                    </div> --}}
                 </div>
                 <div class="swiper-pagination"></div>
             </div>

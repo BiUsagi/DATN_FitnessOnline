@@ -234,26 +234,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="widget categories-widget">
-                                <div class="heading">
-                                    <h5>Categories</h5>
-                                </div>
-                                <div class="sidebar-item category">
-                                    <div class="sidebar-info">
-                                        <ul>
-                                            <li><a href="#!">Fitness</a></li>
-                                            <li><a href="#!">Yoga</a></li>
-                                            <li><a href="#!">Fat Loss</a></li>
-                                            <li><a href="#!">Weight Gain</a></li>
-                                            <li><a href="#!">Cardio</a></li>
-                                            <li><a href="#!">Running</a></li>
-                                            <li><a href="#!">Goal</a></li>
-                                            <li><a href="#!">Body Building</a></li>
-                                            <li><a href="#!">Gym</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> --}}
                             <div class="widget recentpost-widget">
                                 <div class="heading">
                                     <h5>Blog mới nhất</h5>
@@ -274,52 +254,10 @@
                                                     </div>
                                                 </li>
                                             @endforeach
-                                            {{-- <li>
-                                                <div class="thumb"> 
-                                                    <a href="#!"><img loading='lazy' src="assets/frontend/images/blog/article-2.webp" alt="post-1.webp"></a>
-                                                </div>
-                                                <div class="info">
-                                                    <a href="#!">Contrary to popular belief,  It is the</a>
-                                                    <div class="meta-title">
-                                                        <span class="post-date">05 Jan, 2022</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb"> 
-                                                    <a href="#!"><img loading='lazy' src="assets/frontend/images/blog/article-3.webp" alt="post-1.webp"></a>
-                                                </div>
-                                                <div class="info">
-                                                    <a href="#!">Contrary to popular belief,  It is the</a>
-                                                    <div class="meta-title">
-                                                        <span class="post-date">05 Jan, 2022</span>
-                                                    </div>
-                                                </div>
-                                            </li> --}}
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="widget tags-widget">
-                                <div class="heading">
-                                    <h5>Tags</h5>
-                                </div>
-                                <div class="sidebar-item tags">
-                                    <div class="sidebar-info">
-                                        <ul>
-                                            <li><a href="#!">Fitness</a></li>
-                                            <li><a href="#!">Lifestyle</a></li>
-                                            <li><a href="#!">Food</a></li>
-                                            <li><a href="#!">Training</a></li>
-                                            <li><a href="#!">Health</a></li>
-                                            <li><a href="#!">Diet</a></li>
-                                            <li><a href="#!">Boxing</a></li>
-                                            <li><a href="#!">Food</a></li>
-                                            <li><a href="#!">Cardio</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

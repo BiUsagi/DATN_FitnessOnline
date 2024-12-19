@@ -110,18 +110,19 @@ class CommentsController extends Controller
 
         return response()->json(['success' => false, 'message' => 'Không tìm thấy bình luận con hoặc không có quyền sửa.']);
     }
+    
     public function deleteReply($id)
-{
-    $comment = Comment::find($id);
+    {
+        $comment = Comment::find($id);
 
-    if ($comment && $comment->user_id === Auth::id()) {  // Kiểm tra quyền xóa
-        // Xóa bình luận con
-        $comment->delete();
+        if ($comment && $comment->user_id === Auth::id()) {  // Kiểm tra quyền xóa
+            // Xóa bình luận con
+            $comment->delete();
 
-        return response()->json(['success' => true, 'message' => 'Bình luận con đã được xóa.']);
+            return response()->json(['success' => true, 'message' => 'Bình luận con đã được xóa.']);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Không tìm thấy bình luận con hoặc không có quyền xóa.']);
     }
-
-    return response()->json(['success' => false, 'message' => 'Không tìm thấy bình luận con hoặc không có quyền xóa.']);
-}
 
 }
