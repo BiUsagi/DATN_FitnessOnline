@@ -96,7 +96,7 @@
                                                                 Nếu có bất kỳ điều gì khác chúng tôi có thể làm, vui lòng
                                                                 cho chúng tôi biết!
                                                             </p>
-                                                            <p class="small m-0">Email: gymfit@gmail.com</p>
+                                                            <p class="small m-0">Email: fitnessonline@gmail.com</p>
                                                         </td>
                                                     </tr>
                                                 </tbody>

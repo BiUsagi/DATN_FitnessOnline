@@ -10,7 +10,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>GYMFIT Admin</title>
+    <title>FITNESS ONLINE</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="assets/frontend/css/money.css">
 
 
-    <!-- Favicons -->
-    <link href="assets/backend/img/favicon.png" rel="icon">
-    <link href="assets/backend/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+
+    <link rel="icon" type="image/png" href="logo/icon_title-removebg.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
