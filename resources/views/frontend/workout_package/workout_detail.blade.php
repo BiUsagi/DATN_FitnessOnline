@@ -91,7 +91,7 @@
                                             <strong>{{ $package->package_name }}</strong>
                                         </h3>
                                     </div>
-                                    <div class="col-12"><strong>PT: Minh Tuấn</strong></div>
+                                    <div class="col-12"><strong>{{ $package->staff->staff_name }}</strong></div>
                                 </div>
                             </div>
 

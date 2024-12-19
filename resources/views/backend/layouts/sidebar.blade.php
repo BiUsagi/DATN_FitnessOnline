@@ -247,7 +247,7 @@
                     <li>
                         <a href="{{ route('admin.walletpt') }}"
                             class="{{ Request::is('admin/walletpt') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Thống kê</span>
+                            <i class="bi bi-circle"></i><span>Tổng quát</span>
                         </a>
                     </li>
                     <li>
@@ -352,12 +352,13 @@
 
 
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed {{ Request::is('admin/supportexercises*') ? 'active' : '' }}"
                     href="{{ route('admin.supportexercises') }} ">
                     <i class="bi bi-headset"></i><span>Chăm sóc khách hàng</span>
                 </a>
-            </li><!-- End hỗ trợ -->
+            </li> -->
+            <!-- End hỗ trợ -->
 
 
             {{-- end staff --}}
