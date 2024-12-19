@@ -1,12 +1,12 @@
 Dự Án Tốt Nghiệp Fitness Online
 
 Thành viên:
-Luân
-Sơn
-Đạt
-Chiến
-Tuấn
-Rin
+Nguyễn Phước Luân.
+Trương Bá Sơn.
+Lương Tiến Đạt.
+Phan Hữu Chiến.
+Hoàn Minh Tuấn.
+Nguyễn Thanh Rin.
 
 
 
