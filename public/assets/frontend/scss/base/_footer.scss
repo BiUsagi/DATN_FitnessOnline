@@ -1,0 +1,253 @@
+/*  FOOTER CSS START HERE */
+footer {
+    .website-footer {
+        background: $dark;
+        padding: 80px 0;
+        @media (max-width: 1199px){
+            padding: 70px 0 60px 0;
+        }
+        @media (max-width: 991px) {
+            padding: 50px 0 40px 0;
+        }
+        @media (max-width: 767px) {
+            padding: 40px 0 30px 0;
+        }
+        .our-information {
+            @media (max-width: 1199px) {
+                text-align: center;
+            }
+            .website-logo {
+                display: block;
+                margin-bottom: 30px;
+                img {
+                    max-width: 140px;
+                }
+                @media (max-width: 1199px) {
+                    margin-bottom: 30px;
+                }
+                @media (max-width: 991px) {
+                    margin-bottom: 20px;
+                    display: inherit;
+                }
+            }
+            .web-about {
+                color: $white;
+                max-width: 300px;
+                line-height: 2.1;
+                padding-bottom: 20px;
+                @media screen and (min-width: 992px) and (max-width: 1199px) {
+                    font-size: 15px;
+                }
+                @media (max-width: 1199px) {
+                    max-width: 600px;
+                    margin: 0 auto 40px auto;
+                }
+            }
+            .social-icon {
+                display: flex;
+                align-items: center;
+                @media (max-width: 1199px) {
+                    display: none;
+                }
+                a {
+                    display: flex;
+                    padding-right: 18px;
+                }
+            }
+        }
+        .footer-links {
+            .footer-title {
+                font-size: 24px;
+                line-height: 1.5;
+                font-weight: 600;
+                @media (max-width: 991px) {
+                    margin-bottom: 20px;
+                    font-size: 22px;
+                }
+                @media (max-width: 575px) {
+                    font-size: 20px;
+                    line-height: 1.2;
+                }
+                @media (max-width: 375px) {
+                    font-size: 18px;
+                }
+                &.mob {
+                    &[aria-expanded="true"] {
+                        .footer-toggler {
+                            transform: translateY(-50%) rotate(0deg);
+                            &:before {
+                                // margin-top: 3px;
+                            }
+                        }
+                    }
+                    @media (max-width: 991px) {
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                        .footer-toggler {
+                            transform: translateY(-50%) rotate(-90deg);
+                            top: 50%;
+                            position: absolute;
+                            right: 0;
+                            line-height: 0;
+                            display: block;
+                            border-radius: 8px 0;
+                            margin-left: 25px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 26px;
+                            height: 26px;
+                            transition: all .3s;
+                            &:before {
+                                content: "";
+                                display: block;
+                                width: 10px;
+                                height: 10px;
+                                border-top: 2px solid #1face1;
+                                border-left: 2px solid #1face1;
+                                transform: rotate(225deg);
+                                margin-top: -3px;
+                                -webkit-transition: 0.3s all;
+                                transition: 0.3s all;
+                            }
+                        }
+                    }
+                    @media (min-width: 992px) {
+                        .footer-toggler {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            h2 {
+                color: $white;
+                font-size: 22px;
+                line-height: 1.5;
+                letter-spacing: 1px;
+                margin-bottom: 30px;
+            }
+            ul {
+                @media (max-width: 991sspx) {
+                    margin-left: 30px;
+                }
+                @media (max-width: 480px) {
+                    margin-left: 20px;
+                }
+                &.foot-mob {
+                    @media (min-width: 992px) {
+                        display: block;
+                    }
+                }
+                li {
+                    margin-bottom: 10px;
+                    &:last-child {
+                        margin-bottom: 0;
+                        @media (max-width: 991px) {
+                            margin-bottom: 20px;
+                        }
+                    }
+                    a {
+                        color: $white;
+                        transition: 0.3s all;
+                        &:hover {
+                            color: $theme;
+                        }
+                    }
+                }
+                .contacts {
+                    display: flex;
+                    align-items: flex-start;
+                    padding-bottom: 30px;
+                    .support-icon {
+                        min-width: 15px;
+                        min-height: 15px;
+                    }
+                    .details {
+                        .text {
+                            color: $white;
+                            padding-left: 16px;
+                            line-height: 0.9;
+                            transition: 0.3s all;
+                            &.location {
+                                line-height: 1.5;
+                            }
+                            a {
+                                color: $white;
+                                transition: 0.3s all;
+                                &:hover {
+                                    color: $theme;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            .recent-posts {
+                .post {
+                    display: flex;
+                    padding-bottom: 20px;
+                    .post-img {
+                        min-width: 60px;
+                        width: 60px;
+                        height: 60px;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                    .post-content {
+                        line-height: 1.4;
+                        color: $white;
+                        padding-left: 15px;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        height: 45px;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        cursor: pointer;
+                        transition: 0.3s all;
+                        &:hover{
+                            color: $theme;
+                        }
+                    }
+                }
+            }
+        }
+        .social-icon-mob {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+            @media (min-width: 1200px) {
+                display: none;
+            }
+            a {
+                display: flex;
+                padding-right: 18px;
+            }
+        }
+    }
+}
+.copy-right {
+    padding: 15px 0;
+    text-align: center;
+    background: $blue-dark;
+    .copy-content {
+        font-size: 16px;
+        line-height: 1.5;
+        color: $white;
+        letter-spacing: 1px;
+        @media (max-width: 767px) {
+            font-size: 14px;
+        }
+        .web-name{
+            color: $theme;
+            &:hover{
+                color: $theme;
+            }
+        }
+    }
+}
+
+/*  FOOTER CSS START HERE */

@@ -1,0 +1,212 @@
+/* CSS cho trang rút tiền */
+.withdraw-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0; /* Thêm padding để tạo khoảng cách trên và dưới */
+}
+
+.withdraw-box {
+    width: 100%;
+    max-width: 600px; /* Đặt độ rộng hơi lớn hơn */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.withdraw-title {
+    font-size: 26px;
+    color: #333; /* Màu tiêu đề không còn là màu xanh */
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.withdraw-info {
+    font-size: 18px;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.money{
+    font-weight: 600;
+}
+.money strong{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.withdraw-form {
+    margin-bottom: 30px;
+}
+
+.withdraw-form label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+    text-align: left; /* Tiêu đề không căn giữa */
+}
+
+.withdraw-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.withdraw-form .btn-submit {
+    background-color: #1face1; /* Màu chủ đạo */
+    color: white;
+    padding: 10px 15px;
+    font-size: 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.withdraw-form .btn-submit:hover {
+    background-color: #17e3b7; /* Màu chủ đạo khi hover */
+}
+
+.note {
+    font-size: 13px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+    background-color: #fce4e4;
+    padding: 13px;
+    border-left: 4px solid #e74c3c;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.note strong{
+    font-style: normal;
+}
+
+.contact-zalo {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.contact-zalo a{
+    text-decoration: none;
+}
+
+.contact-zalo i {
+    font-size: 24px;
+    color: #25D366; /* Màu của Zalo */
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+
+.contact-zalo i:hover {
+    transform: scale(1.1);
+}
+
+.contact-zalo span {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: shake 0.5s ease infinite; /* Lặp vô hạn */
+}
+
+/* Modal */
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code-container img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.qr-code-container {
+    text-align: center;
+    padding-right: 20px;
+}
+
+.note-container {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;  /* Màu chữ tối để dễ đọc */
+}
+
+.note-container p {
+    margin-bottom: 15px;
+}
+
+.note-container strong {
+    color: #1face1;  /* Màu chủ đạo cho phần tiêu đề */
+    font-weight: bold;
+}
+
+/* Cải tiến giao diện modal */
+.modal-header {
+    background-color: #1face1; /* Màu nền tiêu đề modal */
+    color: #fff; /* Màu chữ trắng */
+    padding: 15px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.modal-footer {
+    border-top: 1px solid #ddd;
+    padding: 10px 20px;
+}
+
+.btn-close {
+    color: #fff;
+    font-size: 20px;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Responsive cho Modal */
+@media (max-width: 768px) {
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .qr-code-container {
+        margin-bottom: 20px;
+        padding-right: 0;
+    }
+
+    .note-container {
+        padding-left: 0;
+    }
+}

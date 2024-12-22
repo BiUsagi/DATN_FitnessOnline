@@ -1,0 +1,153 @@
+.box-header {
+  width: 100%;
+  height: 12vh;
+  background-color: #212225;
+  /* background-image: url('/assets/frontend/images/background-gym.jpg'); */
+}
+
+/* .profile-bg-custom {
+  height: 90vh;
+  background-image: url(../images/404-bg.webp);
+} */
+
+.ctiet-main {
+  color: black;
+  padding: 20px 20px 50px 20px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.08);
+  /* background-color: white; */
+}
+
+.text-color {
+  color: #1face1;
+  ;
+}
+
+.justify-content-end {
+  align-items: center;
+}
+
+.ctiet-imguser {
+  /* width: 50px;
+    height: 50px; */
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.ctiet-title {
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+.ctiet-imguserbig {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.mg-top {
+  margin-top: 20px;
+}
+
+.bd-left {
+  border-left: 1px solid lightgray;
+  ;
+}
+
+.ctiet-thongtin {
+  padding-left: 35px;
+}
+
+.ctiet-top {
+  padding-bottom: 20px;
+}
+
+.blue {
+  color: blue;
+  margin-right: 3px;
+}
+
+.yellow {
+  color: #FFBE1C;
+  margin-right: 5px;
+}
+
+.active {
+  color: #FFBE1C;
+}
+
+.mg-top-sb {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.ctiet-input {
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.ctiet-select {
+  width: 70.7%;
+
+}
+
+.pink {
+  color: rgb(251, 0, 42);
+}
+
+
+:root {
+  --bs-body-color: #212529;
+  --bs-body-bg: #fff;
+  --bs-border-radius: 0.375rem;
+}
+
+.ctiet-button {
+  text-align: center;
+  display: block;
+  padding: 7px 15px;
+  border-radius: 15px;
+  background-color: #1face1;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  width: 50%;
+}
+
+.ctiet-button:hover {
+  background-color: #fff;
+  border: 1px solid #1face1;
+  color: #1face1;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  text-align: center;
+  display: block;
+  padding: 7px 15px;
+  border-radius: 15px;
+  background-color: #1face1;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.custom-file-upload:hover {
+  background-color: #fff;
+  border: 1px solid #1face1;
+  color: #1face1;
+}

@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+body {
+    font-family: ibm-plex-sans, sans-serif;
+}
+
+.img-cover{
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border: 5px solid #fff;
+}
+.feature-list p{
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important; 
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-height: 4.5em !important; 
+    line-height: 1.5em !important;
+}
+.plan_block {
+    height: 372px;
+}
+
+.plan_block p{
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-height: 4.5em !important;
+    line-height: 1.5em !important;
+}
+
+.breadcrumb_wrapper .container .breadcrumb_block{
+    position: relative !important;
+}
+
+.breadcrumb_wrapper .container .breadcrumb_block img{
+    z-index: 2;
+    position: absolute;
+    object-fit: cover;
+    bottom: 10px;
+    /* right: 0; */
+}
+
+.breadcrumb_wrapper .container .breadcrumb_block img.img-qr{
+    z-index: 2;
+    position: absolute;
+    object-fit: cover;
+    bottom: 0;
+    right: 0;
+}
+
+.breadcrumb_wrapper .container .breadcrumb_block .name-author{
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    bottom: 0;
+    font-size: 55px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.default-padding .container .row .col-8 h2{
+    color: #1face1;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.default-padding .container .row .col-8 .description{
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.default-padding .container .row .col-8 .title-content{
+    font-size: 20px;
+    font-weight: 600;
+    color: #1face1;
+}
+
+.default-padding .container .row .col-8 .infor-package{
+    display: flex;
+}
+
+.default-padding .container .row .col-8 .infor-package p{
+    font-size: 15px;
+    margin-right: 20px;
+    color: #333;
+}
+
+.default-padding .container .row .col-8 .list-days{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 500px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.default-padding .container .row .col-8 .list-days .box-day{
+    display: flex;
+    background-color: #f5f5f5;
+    padding: 10px 25px;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.default-padding .container .row .col-8 .list-days .box-day .day{
+    font-weight: 600;
+    font-size: 16px;
+    color: #1face1;
+}
+
+.default-padding .container .row .col-8 .list-days .box-day .quantity-exercise{
+    font-size: 14px;
+}
+
+.default-padding .container .row .col-4{
+    max-width: 100%;
+}
+
+.image-container {
+    width: 415px;
+    height: 277px;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 4px solid #1face1;
+    display: inline-block;
+}
+
+.image-container .hover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease; 
+}
+
+.image-container .hover-image:hover {
+    transform: scale(1.2);
+}
+
+.default-padding .container .row .col-4 .buy{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.default-padding .container .row .col-4 .price{
+    color: #333;
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.default-padding .container .row .col-4 .by-now{
+    background-color: #1face1;
+    color: #fff;
+    padding: 6px 15px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    transition: all .2s ease-in-out;
+    border: 1px solid #1face1;
+    text-decoration: none;
+}
+
+.default-padding .container .row .col-4 .by-now:hover{
+    background-color: #fff;
+    color: #333;
+}
+
+.default-padding .container .row .col-4 .box{
+    display: flex;
+    justify-content: center;
+}
+
+.default-padding .container .row .col-4 .infor-workout{
+    margin-top: 20px;
+}
+
+.default-padding .container .row .col-4 .infor-workout i{
+    margin-right: 10px;
+}
+
+.default-padding .container .row .col-4 .infor-workout p{
+    color: #333;
+    margin: 5px auto;
+    font-size: 14px;
+}
+
+.default-padding .container .row .col-8{
+    height: 750px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.nav-item-customize{
+    margin-right: 30px !important;
+    font-size: 24px !important;
+}
+
+.nav-item-customize i{
+    font-size: 17px !important;
+}
+
+.nav-item .dropdown-account{
+    min-width: 230px;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    padding: 8px 25px;
+    height: auto !important;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    display: none;
+    animation: scroll .3s ease-in-out;
+}
+.show-dropdown{
+    display: block !important;
+}
+
+@keyframes scroll {
+    0%{
+        transform: translateY(-3%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.nav-item .dropdown-account .line{
+    margin: 8px 0;
+    border: none;
+    border-top: solid 1px rgba(0, 0, 0, .05)
+}
+
+
+.nav-item .dropdown-account .img-name{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 0;
+}
+
+.nav-item .dropdown-account .img-name img{
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.nav-item .dropdown-account .img-name .nameuser p{
+    font-size: 16px;
+    font-weight: 600;
+    color: #292929;
+}
+
+
+
+.nav-item .dropdown-account .infor-account{
+    padding: 5px 0;
+}
+
+.nav-item .dropdown-account a{
+    font-size: 14px;
+    color: #666;
+    padding: 5px 0;
+}
+.nav-item .dropdown-account a:hover{
+    color: #292929;
+}
+
+.nav-item .dropdown-account button{
+    font-size: 14px;
+    color: #666;
+    padding: 5px 0;
+}
+.nav-item .dropdown-account button:hover{
+    color: #292929;
+}

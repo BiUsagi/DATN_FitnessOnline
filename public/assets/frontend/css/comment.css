@@ -1,0 +1,268 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #fff;
+}
+
+.reply-box {
+    display: flex;
+    align-items: flex-start; /* Căn trên các phần tử */
+    gap: 10px; /* Khoảng cách giữa ảnh và nội dung */
+    margin-bottom: 15px;
+}
+
+.css-img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+    overflow: hidden;
+    border-radius: 50%; /* Ảnh tròn */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.css-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Giữ tỉ lệ ảnh */
+}
+
+.css-name {
+    font-size: 15.5px;
+    font-weight: 500;
+    color: #1FACE1;
+}
+
+.timing {
+    color: white;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.comment-text {
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 15px;
+    max-width: 665px; /* Giới hạn chiều rộng */
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.reply-button {
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.reply-button:hover {
+    color: #1FACE1;
+}
+
+/* Reply form styles */
+.formRep {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formRep .col-md-11 {
+    width: 100%;
+    padding-right: 60px;
+}
+
+.form-group.comments {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-control {
+    width: 78%;
+    border: none;
+    background-color: #242529;
+    border-bottom: 2px solid #ccc;
+    color: white;
+    border-radius: 0;
+}
+
+.form-control:focus {
+    border-bottom: 2px solid #007bff;
+    background-color: #242529;
+    color: white;
+    outline: none;
+}
+
+.css-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.css-button:hover {
+    background-color: #0056b3;
+}
+
+/* Options menu */
+.options-menu {
+    position: absolute;
+    top: 5px;
+    right: 100px;
+}
+
+.three-dots {
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    padding: 8px 15px;
+    right: 0;
+    background-color: #444;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    min-width: 80px;
+    z-index: 100;
+}
+
+.menu-item {
+    cursor: pointer;
+    font-size: 14px;
+    color: #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    color: #1FACE1;
+}
+
+/* Report modal */
+#reportModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reportModal .modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+#reportModal h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+#reportContent {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+#reportModal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#reportModal button:first-of-type {
+    background-color: #28a745;
+    color: white;
+}
+
+#reportModal button:last-of-type {
+    background-color: #dc3545;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reply-box {
+        flex-direction: column;
+    }
+    .css-name, .comment-text, .reply-button {
+        font-size: 14px;
+    }
+    .options-menu {
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .css-img {
+        width: 40px;
+        height: 40px;
+    }
+    .css-name, .comment-text, .reply-button {
+        font-size: 12px;
+    }
+    .css-button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+.form-controll {
+    border: none;
+    background-color: #242529;
+    border-bottom: 2px solid #ccc;
+    color: white;
+    border-radius: 0;
+}
+.form-controll:focus {
+    border-bottom: 2px solid #007bff;
+    background-color: #242529;
+    color: white;
+    outline: none;
+}

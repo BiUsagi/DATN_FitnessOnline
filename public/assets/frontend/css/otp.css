@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/assets/frontend/images/background-gym.jpg');
+
+  }
+  
+  .otp-container {
+    background: #1e1e1e;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .otp-container h2 {
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .otp-container p {
+    font-size: 13px;
+    color: #ccc;
+  }
+  
+  .otp-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .otp-mail{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .otp-inputs input {
+    width: 40px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    outline: none;
+    background: #333;
+    color: #fff;
+    cursor: not-allowed; /* Không cho trỏ chuột nếu ô bị disabled */
+  }
+  
+  .otp-inputs input:enabled {
+    cursor: text; /* Chỉ cho phép trỏ vào ô đang được kích hoạt */
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .resend-otp {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .resend-otp a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .resend-otp a:hover {
+    text-decoration: underline;
+  }
+
+  .errors {
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+strong{
+  color: #1face1;
+}
+  

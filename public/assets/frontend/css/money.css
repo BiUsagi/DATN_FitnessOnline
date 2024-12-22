@@ -1,0 +1,110 @@
+.btn {
+    padding: 10px 20px; /* Thêm khoảng cách bên trong */
+    font-size: 16px; /* Kích thước chữ */
+    border: none; /* Xóa viền mặc định */
+    border-radius: 5px; /* Bo góc */
+    cursor: pointer; /* Thay đổi con trỏ khi hover */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền */
+}
+
+.btn-back {
+    background-color: #b4b0b0; /* Màu nền cho nút Quay lại */
+    color: #333; /* Màu chữ */
+}
+
+.btn-back:hover {
+    background-color: #e0e0e0; /* Màu nền khi hover */
+}
+
+.btn-submit {
+    background-color: #007bff; /* Màu nền cho nút Gửi yêu cầu */
+    color: white; /* Màu chữ trắng */
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+    color: white; /* Màu chữ trắng */
+}
+
+.card {
+    border: 1px solid #e0e0e0; /* Viền cho card */
+    border-radius: 8px; /* Bo góc cho card */
+}
+
+.card-header {
+    background-color: #f8f9fa; /* Màu nền cho header */
+    font-weight: bold; /* In đậm chữ trong header */
+}
+
+.btn-back {
+    background-color: #f0f0f0; /* Màu nền cho nút Quay lại */
+    color: #333; /* Màu chữ */
+}
+
+.btn-back:hover {
+    background-color: #e0e0e0; /* Màu nền khi hover */
+}
+
+.btn-submit {
+    background-color: #007bff; /* Màu nền cho nút Gửi yêu cầu */
+    color: white; /* Màu chữ trắng */
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+/* Thêm margin cho hình ảnh */
+.img-fluid {
+    margin-top: 15px; /* Cách phía trên */
+    margin-bottom: 15px; /* Cách phía dưới */
+}
+
+
+
+
+
+#money-10k {
+    background-color: #efdbb8; 
+    color: #644b48; 
+}
+
+#money-20k {
+    background-color: #8bc0e9f4; 
+    color: #1e4e92;
+}
+
+#money-50k {
+    background-color: #eebac6; 
+    color: #b54746;
+}
+
+#money-100k {
+    background-color: #c0daad;
+    color: #36482b;
+}
+
+#money-200k {
+    background-color: #f0c195; 
+    color: #a83532;
+}
+
+#money-500k {
+    background-color: #68bfd4cc; 
+    color: #3d6373;
+}
+
+#money-1tr {
+    background-color: #11d43c; 
+    color: #ffffff;
+}
+
+#money-2tr {
+    background-color: #ed2323; 
+    color: #efefef;
+}
+
+#money-other {
+    background-color: #ff58f1; 
+    color: #efefef;
+}

@@ -1,0 +1,21 @@
+.my-custom-class {
+    display: none;
+    padding: 15px !important;
+
+  }
+  
+  @media (min-width: 700px) {
+    .my-custom-class {
+      display: block !important;
+    /* padding: 15px !important; */
+
+    }
+  }
+  
+
+  .profile-image {
+    width: 35px; /* Kích thước hình ảnh */
+    height: 35px; /* Kích thước hình ảnh */
+    border-radius: 50%; /* Biến hình ảnh thành hình tròn */
+    object-fit: cover; /* Cắt gọn ảnh để vừa với khung */
+}

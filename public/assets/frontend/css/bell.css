@@ -1,0 +1,69 @@
+.notification-menu {
+    max-height: 300px;
+    /* Đặt chiều cao tối đa cho thanh thông báo */
+    overflow-y: auto;
+    /* Thêm thanh cuộn nếu thông báo nhiều */
+    margin-top: 10px;
+    /* Khoảng cách trên dropdown */
+    position: absolute;
+    /* Đặt vị trí tuyệt đối */
+    z-index: 1000;
+    /* Đặt chỉ số z cao để dropdown nằm trên các phần tử khác */
+    right: 0;
+    /* Đặt vị trí bên phải */
+    top: -200px;
+}
+
+.notification-item {
+    color: #000;
+    /* Màu chữ thông báo */
+    margin-bottom: 5px;
+    /* Khoảng cách giữa các thông báo */
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+
+.title-modal {
+    text-transform: uppercase;
+}
+
+.ul-modal li {
+    list-style-type: circle;
+    margin-top: 2px;
+}
+
+.list-voucher::-webkit-scrollbar {
+    display: none;
+    /* Ẩn thanh cuộn trong trình duyệt WebKit (Chrome, Safari) */
+}
+
+.list-voucher {
+    -ms-overflow-style: none;
+    /* Ẩn thanh cuộn trong Internet Explorer và Edge */
+    scrollbar-width: none;
+    /* Ẩn thanh cuộn trong Firefox */
+    height: 100px;
+    overflow-y: auto;
+}
+
+.btn-custom {
+    background-color: #1FACE1;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, #137A9F, #0B4E64);
+}
+#modal-right{
+    background-color: whitesmoke;
+}

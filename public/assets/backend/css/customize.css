@@ -1,0 +1,524 @@
+.name-seo{
+    font-size: 15px;
+    color: #333;
+}
+.url-seo{
+    font-size: 12px;
+    font-weight: 500;
+    color: green;
+}
+.img-seo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.title-customize{
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a0dab;
+}
+.title-customize-small{
+    font-size: 14px;
+    color: #4d5156;
+}
+#cke_2_contents{
+    height: 400px !important;
+}
+.input-group-customize{
+    display: flex;
+}
+.select2 {
+    width: 100% !important;
+}
+.select2-selection{
+    border-radius: 3px !important;
+    border: 1px solid #ebeef4 !important;
+    font-size: 15px !important;
+}
+.select2-container--default{
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+    /* z-index: 9999 !important; */
+}
+.select2-container--default .select2-selection--single{
+    border-color: #ebedf2 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 15px;
+}
+.select2-selection__arrow{
+    padding: 15px;
+}
+input[name=link]{
+    color: navy !important;
+    font-weight: 600;
+}
+.customize-width{
+    width: 200px;
+}
+.customize-width .btn-custom{
+    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 3px;
+}
+
+.customize-width .btn-custom.primary{
+    background-color: #1576D0;
+    color: #fff;
+}
+.customize-width .btn-custom.success{
+    background-color: #39D127;
+    color: #fff;
+}
+.customize-width .btn-custom.danger{
+    background-color: #F02536;
+    color: #fff;
+}
+
+.section .box-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.section .box-list .card-custom{
+    background-color: #fff;
+    width: 100%;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.section .box-list .card-custom .card-body-custom .image-package{
+    position: relative;
+}
+
+.section .box-list .card-custom:hover{
+    opacity: 1;
+}
+
+.section .box-list .card-custom .card-body-custom .image-package .box-action{
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: opacity .3s ease, transform .3s ease;
+
+}
+
+.section .box-list .card-custom .card-body-custom .image-package:hover .box-action{
+    opacity: 1;
+    transform: translateY(-120%);
+}
+
+.section .box-list .card-custom .card-body-custom .image-package .box-action .btn-action{
+    background-color: #fff;
+    padding: 6px 10px;
+    border-radius: 3px;
+}
+
+.section .box-list .card-custom .card-body-custom .image-package .box-action .btn-action.detail{
+    background-color: #1576D0;
+    color: #fff;
+}
+.section .box-list .card-custom .card-body-custom .image-package .box-action .btn-action.edit{
+    background-color: #39D127;
+    color: #fff;
+}
+.section .box-list .card-custom .card-body-custom .image-package .box-action .btn-action.delete{
+    background-color: #F02536;
+    color: #fff;
+}
+
+.section .box-list .card-custom .card-body-custom .image-package img{
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 13px 20px;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package a{
+    color: #333;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package p{
+    font-size: 12px;
+    font-style: italic;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .price-status{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .price-status p {
+    font-style: normal;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .price-status .price span{
+    font-weight: bolder;
+    font-size: 15px;
+    color: red;
+}
+.section .box-list .card-custom .card-body-custom .content-package .price-status .status{
+    background-color: #39D127;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 11px;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .price-status .status-error{
+    background-color: #F02536;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 11px;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .quantity{
+    display: flex;
+    justify-content: start;
+    font-weight: normal;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .quantity i{
+    margin-right: 5px;
+}
+
+.section .box-list .card-custom .card-body-custom .content-package .duration{
+    display: flex;
+    justify-content: space-between;
+}
+.card .card-body .list-detail-exercise{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.card .card-body .row .detail-exercise{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.card .card-body .row .detail-exercise:hover .overflow{
+    transform: scale(1);
+    opacity: 1;
+} 
+
+.card .card-body .row .detail-exercise .overflow{
+    background-image: url(../img/background-gym.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 99;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.card .card-body .row .detail-exercise .overflow .btn-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+    font-size: 25px;
+}
+
+
+.card .card-body .row .detail-exercise .number-day{
+    text-align: center;
+    padding: 15px 0;   
+    position: relative;
+    width: 100%;
+}
+
+
+.card .card-body .row .detail-exercise .description-day{
+    text-align: center; 
+    position: absolute;
+    bottom: -7px;
+
+}
+
+.card .card-body .row .detail-exercise .description-day p{
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 600;
+    color: #1face1;
+}
+
+.card .card-body .row .detail-exercise .number-day h4{
+    font-size: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #012970;
+}
+
+.card .card-body .infor-package-exercise {
+    margin-top: 20px;
+}
+
+.card .card-body .infor-package-exercise p{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card .card-body .infor-package-exercise span{
+    font-style: italic;
+    color: #1576D0;
+}
+
+.card .card-body .box-action{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card .card-body .box-action .box-btn-delete{
+    background-color: #F02536;
+    text-align: center;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+.card .card-body .box-action .box-btn-save{
+    background-color: #39D127;
+    text-align: center;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+.card .card-body .box-btn-delete:hover{
+    background-color: #f14553;
+}
+
+.card .card-body .box-btn-save:hover{
+    background-color: #5edd50;
+}
+
+.card .card-body .box-btn-save a{
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.card .card-body .box-btn-delete a{
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.card .card-body .action-package-exercise{
+    padding: 20px 0;
+}
+
+.card .card-body .action-package-exercise .action-online a{
+    border: 1px solid #39D127;
+    color: #39D127;
+    padding: 6px 15px;
+    border-radius: 5px;
+}
+
+.card .card-body .action-package-exercise .action-online a:hover{
+    background-color: #39D127;
+    color: #fff;
+}
+
+.card .card-body .action-package-exercise .action-offline{
+    margin-top: 20px;
+}
+
+.card .card-body .action-package-exercise .action-offline a{
+    border: 1px solid #F02536;
+    color: #F02536;
+    padding: 6px 15px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.card .card-body .action-package-exercise .action-offline a:hover{
+    background-color: #F02536;
+    color: #fff;
+}
+
+.card .card-body .action-package-exercise a{
+   font-size: 12px;
+   margin-left: 10px;
+}
+
+.modal-body .form-add .row .col-6 label {
+    font-size: 14px;
+}
+.modal-body .form-add .row .col-6 .show-data-select p{
+    font-size: 13px;
+    color: #1576D0;
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: 1px solid #1576D0;
+}
+
+.modal-body .form-add .row .col-6 .show-data-select .data-select{
+    margin-bottom: 10px !important;
+}
+
+.modal-body .form-add .row .col-6 .show-data-select i{
+    cursor: pointer;
+    color: #F02536;
+}
+
+.modal-body .form-add .row .col-6 .show-data-select .no-selection{
+    font-size: 12px;
+    color: #333;
+    font-style: italic;
+}
+
+
+.modal-body .form-add .select-day-off{
+    margin-top: 20px;
+}
+
+.modal-body .form-add .select-day-off .day-off{
+    border: 1px solid #F02536;
+    color: #F02536;
+    padding: 6px 15px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.modal-body .form-add .select-day-off .day-off:hover{
+    background-color: #F02536;
+    color: #fff;
+}
+
+.modal-body .form-add .note-day-off{
+    font-size: 12px;
+    color: #333;
+    font-style: italic;
+}
+
+.modal-body .form-add .box-add-exercise{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day{
+    padding: 4px 8px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day.btn-add{
+    background-color: #39D127;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day.btn-add:hover{
+    background-color: #5edd50;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day.btn-reset{
+    background-color: #ddd;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-body .form-add .box-add-exercise .btn-in-day.btn-reset:hover{
+    background-color: #777;
+    color: #fff;
+}
+
+.card-btn-view{
+    padding: 10px 10px;
+}
+
+.card-btn-view .view-exercise{
+    background-color: #39D127;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-btn-view .view-exercise:hover{
+    background-color: #5edd50;
+
+}
+
+.custom-badge{
+    font-size: 12px;
+    margin-left: 0.3rem;
+    /* margin-top: 0.3rem; */
+}
+
+.confirm-success{
+    background-color: #5edd50;
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 3px;
+}
+
+.confirm-success:hover{
+    background-color: #39D127;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .section .box-list{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+     }
+     .my{
+        display: flex;
+        flex-direction: column !important;
+     }
+     .btn-customize{
+        width: 150px;
+        text-align: center;
+        margin-top: 10px;
+     }
+     .card .card-body .list-detail-exercise{
+        grid-template-columns: repeat(4, 1fr);
+
+     }
+}

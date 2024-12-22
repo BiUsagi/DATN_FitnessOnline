@@ -1,0 +1,244 @@
+// schedule-section css start here 
+
+.schedule-section{
+    background-color: $black;
+    padding: 85px 0;
+
+    .schedule-heading{
+        margin-bottom: 80px;
+
+        @media (max-width:991px) {
+            margin-bottom: 60px;
+        }
+
+        @media (max-width:767px) {
+            margin-bottom: 30px;
+        }
+
+        h2{
+            font-size: 36px;
+            letter-spacing: 2px;
+            line-height: 1.4;
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            span{
+                color: $theme;
+            }
+            @media (max-width:991px) {
+                font-size: 30px;
+            }
+    
+            @media (max-width:767px) {
+                font-size: 24px;
+            }
+        }
+    }
+
+    .schedule-nav{
+
+        .btn {
+            &.trigger-dropdown{
+                margin: 0 auto 20px;
+            }
+        }
+        .nav{
+            @media (max-width:991px) {
+              display: none;
+            }
+            &.horizontal-pills{
+                button{
+                    &:not(:last-child){
+                        margin-right: 20px;
+                    }
+                }
+            }
+
+            &.vertical-pills{
+            }
+            .clock{
+                // background-color: $theme;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 0;
+                border: 2px solid $theme;
+                min-width: 150px;
+                margin-right: 70px !important;
+                max-height: 59px;
+                img{
+                    width: 30px;
+                }
+                @media (max-width:1399px) {
+                    margin-right: 48px !important;
+                    min-width: 140px;
+                }
+                @media (max-width:1199px) {
+                    margin-right: 38px !important;
+                    min-width: 118px;
+                }
+
+                @media (max-width:991px) {
+                    display: none;
+                }
+            }
+            button{
+                padding: 17px 30px;
+                text-align: center;
+                color: $white;
+                font-size: 16px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                line-height: 1.3;
+                border: 2px solid #323336;
+                border-radius: 0;
+                margin-bottom: 20px;                
+                &.active{
+                    border: 2px solid $theme;
+                    color: $theme;
+                    background-color: transparent;
+                }
+
+                @media (max-width:1399px) {
+                    padding: 17px 24px;
+                }
+
+                @media (max-width:1199px) {
+                    padding: 17px 18px;
+                    font-size: 14px;
+                }
+                
+                @media (max-width:991px) {
+                    margin: 0 20px 10px;
+                    padding: 10px 15px;
+                    width: calc(100% - 40px);
+                   
+                }
+                @media (max-width:480px) {
+                    font-size: 12px; 
+                }
+            }
+
+            &.dropdown-menu{
+                width: 160px;
+                display:none;
+                z-index: 1;
+                position: absolute;
+                left: 50%;
+                top: 50px;
+                box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+                background-color: $black;
+                transform: translateX(-50%);
+                max-height: 250px;
+                overflow-y: auto;
+                &.show{
+                    display: block;
+                }
+            }
+        }
+
+        .tab-content{
+            .tab-pane{
+                .schedule-inner{
+                    display: flex;
+                    align-items: center;
+
+                    .schedule-block{
+                        border: 3px solid $theme;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        padding: 25px 0;
+
+                        img {
+                            width: 67px;
+                            height: auto;
+                            margin-bottom: 25px;
+                            
+                            @media (max-width:767px) {
+                                font-size: 15px; 
+                            }
+                        }
+
+                        p{
+                            margin-bottom: 12px;
+                            color: $theme;
+                            font-size: 18px;
+                            font-weight: bold;
+                            line-height: 1.5;
+
+                            @media (max-width:767px) {
+                                font-size: 16px; 
+                            }
+                        }
+
+                        span{
+                            color: $white;
+                            font-size: 16px;
+                            line-height: 1.4;
+                            @media (max-width:767px) {
+                                font-size: 14px; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// schedule-section css end here 
+
+.dropdown-wrapper {
+    display: block;
+    position: relative;
+  }
+  
+  .trigger-dropdown {
+    position: relative;
+    transition: 0.2s ease-in;
+    cursor:pointer;
+    display: none;
+    @media (max-width:991px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 160px;
+        padding: 10px 30px;
+
+    }
+    @media (max-width:480px) {
+        min-width: 120px;
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    &::after{
+        content: "";
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        right: 10px;
+        border-color: transparent;
+        border-top-color: $white;
+        border-style: solid;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid $white;
+        width: 0;
+        height: 0;
+        line-height: 0;
+        @media (max-width:480px) {
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid $white;
+        }
+    }
+
+}
+.text-left{
+    li{
+        text-align: left !important;
+    }
+}
