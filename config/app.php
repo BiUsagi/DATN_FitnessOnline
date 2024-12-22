@@ -25,7 +25,7 @@ return [
     | services the application utilizes. Set this in your ".env" file.
     |
     */
-
+    'locale' => 'vi',
     'env' => env('APP_ENV', 'production'),
 
     /*
@@ -66,6 +66,7 @@ return [
     */
 
     'timezone' => env('APP_TIMEZONE', 'UTC'),
+
 
     /*
     |--------------------------------------------------------------------------
