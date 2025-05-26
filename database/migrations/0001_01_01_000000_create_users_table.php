@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('user_name');
             $table->string('email')->unique();
-            $table->text('avatar')->default('no-image.jpg');
+            $table->string('avatar')->default('no-image.jpg');
             $table->text('address')->nullable();
             $table->date('birthday')->nullable();
             $table->tinyInteger('gender')->nullable()->comment('1 - Nam, 0 - Nữ, 2 - Khác');
